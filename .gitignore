@@ -1,0 +1,10 @@
+build/
+baserom.gbc
+*.gbc
+*.gb
+*.sav
+*.sym
+*.map
+*.o
+__pycache__/
+.DS_Store
