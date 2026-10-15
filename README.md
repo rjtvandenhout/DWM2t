@@ -78,3 +78,17 @@ A semantic cleanup is only considered accepted when `make verify` still reproduc
 ## Legal note
 
 This repository is a reverse-engineering research project. No license is asserted over the original game code, graphics, text, music, or other copyrighted game content. The original cartridge/ROM dump should be obtained lawfully by the user.
+
+
+## Matching decompilation status
+
+The repository now contains a complete byte-covering RGBDS assembly baseline for the verified USA Cobi's Journey ROM:
+
+- 256 ROM banks represented under `src/banks/`.
+- 4,194,304 bytes covered by source.
+- Target SHA-256: `8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e`.
+- `make verify` rebuilds the image using the repository's deterministic Python rebuilder and checks all known hashes.
+- `make rgbds` assembles and links the same source with RGBDS.
+- GitHub Actions verifies both rebuild paths are byte-identical to the target.
+
+This is a **matching disassembly baseline**, not a claim that every routine and data block has already been semantically named or rewritten. Known mechanics, tables, sprites and offsets are documented under `docs/`; semantic decompilation can proceed incrementally while exact-output CI prevents regressions.
