@@ -335,7 +335,7 @@ int run_title_probe(const std::filesystem::path& output_dir) {
     bool have_frame = false;
 
     constexpr std::size_t max_steps = 80'000'000;
-    constexpr std::uint64_t max_frames = 900;
+    constexpr std::uint64_t max_frames = 2400;
 
     std::cout << "M5 title boot probe: starting real CGB cartridge path at $0100\\n";
     std::cout << "AOT ROMX bank count: " << dwm2t::translated_romx_bank_count() << "\\n";
@@ -411,6 +411,7 @@ int run_title_probe(const std::filesystem::path& output_dir) {
                 frame == 600 ||
                 frame == 750 ||
                 frame == 900 ||
+                (frame > 900 && frame % 120 == 0) ||
                 state_changed;
 
             if (checkpoint) {
