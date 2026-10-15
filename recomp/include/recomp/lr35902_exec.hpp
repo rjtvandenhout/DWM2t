@@ -294,6 +294,13 @@ inline void exec_cb(Cpu& cpu, Memory& memory) {
     }
 }
 
+inline std::uint8_t cb_mcycles_dynamic(std::uint8_t cb) {
+    const std::uint8_t x = static_cast<std::uint8_t>(cb >> 6);
+    const std::uint8_t z = static_cast<std::uint8_t>(cb & 7u);
+    if (z != 6u) return 2u;
+    return x == 1u ? 3u : 4u;
+}
+
 inline void exec_cb_dynamic(Cpu& cpu, Memory& memory, std::uint8_t cb) {
 #define DWM2T_CB_CASE(N) case N: exec_cb<N>(cpu, memory); return
     switch (cb) {
@@ -408,7 +415,12 @@ inline void exec_base(Cpu& cpu, Memory& memory,
         }
     } else if constexpr (x == 1) {
         if constexpr (y == 6 && z == 6) {
-            cpu.halted = true;
+            if (!cpu.ime && memory.pending_interrupts() != 0) {
+                cpu.halt_bug = true;
+                cpu.halted = false;
+            } else {
+                cpu.halted = true;
+            }
         } else {
             write_r8<y>(cpu, memory, read_r8<z>(cpu, memory));
         }
