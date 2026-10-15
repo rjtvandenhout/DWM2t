@@ -19,6 +19,22 @@ struct Cpu {
     std::uint8_t l = 0;
     std::uint8_t f = 0;
 
+    std::uint16_t sp = 0xFFFE;
+    std::uint16_t pc = 0x0000;
+
+    bool ime = false;
+    std::uint8_t ime_delay = 0;
+    bool halted = false;
+    bool stopped = false;
+    bool trapped = false;
+    std::uint16_t trap_pc = 0;
+    std::uint8_t trap_opcode = 0;
+
+    [[nodiscard]] std::uint16_t af() const {
+        return static_cast<std::uint16_t>(
+            (static_cast<std::uint16_t>(a) << 8) | (f & 0xF0));
+    }
+
     [[nodiscard]] std::uint16_t bc() const {
         return static_cast<std::uint16_t>(
             (static_cast<std::uint16_t>(b) << 8) | c);
@@ -32,6 +48,11 @@ struct Cpu {
     [[nodiscard]] std::uint16_t hl() const {
         return static_cast<std::uint16_t>(
             (static_cast<std::uint16_t>(h) << 8) | l);
+    }
+
+    void set_af(std::uint16_t value) {
+        a = static_cast<std::uint8_t>(value >> 8);
+        f = static_cast<std::uint8_t>(value & 0xF0);
     }
 
     void set_bc(std::uint16_t value) {
@@ -49,13 +70,53 @@ struct Cpu {
         l = static_cast<std::uint8_t>(value);
     }
 
-    [[nodiscard]] bool zero() const {
-        return (f & FlagZ) != 0;
+    [[nodiscard]] bool flag(std::uint8_t mask) const {
+        return (f & mask) != 0;
     }
 
-    void or_a(std::uint8_t value) {
-        a = static_cast<std::uint8_t>(a | value);
-        f = (a == 0) ? FlagZ : 0;
+    [[nodiscard]] bool zero() const {
+        return flag(FlagZ);
+    }
+
+    [[nodiscard]] bool carry() const {
+        return flag(FlagC);
+    }
+
+    void set_flag(std::uint8_t mask, bool enabled) {
+        if (enabled) {
+            f = static_cast<std::uint8_t>(f | mask);
+        } else {
+            f = static_cast<std::uint8_t>(f & ~mask);
+        }
+        f &= 0xF0;
+    }
+
+    void set_flags(bool z, bool n, bool hflag, bool cflag) {
+        f = static_cast<std::uint8_t>(
+            (z ? FlagZ : 0) |
+            (n ? FlagN : 0) |
+            (hflag ? FlagH : 0) |
+            (cflag ? FlagC : 0));
+    }
+
+    void schedule_ime_enable() {
+        ime_delay = 2;
+    }
+
+    void finish_instruction() {
+        if (ime_delay != 0) {
+            --ime_delay;
+            if (ime_delay == 0) {
+                ime = true;
+            }
+        }
+        f &= 0xF0;
+    }
+
+    void trap(std::uint16_t at_pc, std::uint8_t opcode) {
+        trapped = true;
+        trap_pc = at_pc;
+        trap_opcode = opcode;
     }
 };
 
