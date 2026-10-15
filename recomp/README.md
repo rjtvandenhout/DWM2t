@@ -1,62 +1,51 @@
 # DWM2t native static recomp
 
-This branch is the native-PC recompilation track for DWM2t.
+This is the native-PC recompilation track for **Dragon Warrior Monsters 2:
+Cobi's Journey**.
 
 The matching RGBDS decompilation remains the source of truth. The native build
 reads the checked-in Game Boy machine-code bytes at **build time**, translates
-them to C++, and lets the host compiler produce native x86-64 code.
+the required game code to C++, and lets the host compiler produce native x86-64
+code.
 
-There is no LR35902 opcode decoder in the normal Bank 0 execution path at
-runtime. Bank 0 instruction entry points are generated ahead of time.
+The project does not load an external ROM file for the native build. The exact
+4 MiB matching ROM image is generated from `src/banks/` and embedded at build
+time for game-data reads and hardware mapping.
 
-## Current milestone: M2
+## Current milestone: M5
 
-M0 established the native EXE pipeline.
+M5 is the first visual proof that the original game itself is running through
+the native recomp path.
 
-M1 added a complete LR35902 frontend:
+The executable now boots from the real CGB cartridge entry point `$0100`,
+executes the original splash/intro sequence, and reaches the original
+**Dragon Warrior Monsters 2: Cobi's Journey** title screen.
 
-- 245 legal base opcodes;
-- all 11 illegal Game Boy CPU opcodes represented explicitly;
-- all 256 CB-prefixed opcodes;
-- stable instruction sizes and immediates;
-- independent decode coverage for every Bank 0 byte address.
-
-M2 takes the next step:
+Accepted title regression:
 
 ```text
-src/banks/bank_000.asm
-        |
-        v
-recompile_bank0.py
-        |
-        +--> bank0_master.cpp
-        +--> bank0_chunk_0.cpp
-        +--> bank0_chunk_1.cpp
-        +--> bank0_chunk_2.cpp
-        +--> bank0_chunk_3.cpp
-        |
-        v
-compile-time LR35902 semantic templates
-        |
-        v
-MSVC / clang / GCC
-        |
-        v
-DWM2tRecomp.exe
+frame reached:       1921
+framebuffer FNV-1a:  0x49c67a53ef4f8a80
+stable frames:       30
+game state C5DB:     5
+substate C5DC:       0
 ```
 
-All **16,384** fixed Bank 0 addresses receive a native translation entry.
-The exact Bank 0 bytes are also embedded for ROM-data reads.
+That framebuffer is produced by original DWM2 code writing VRAM, OAM, palettes,
+scroll/window registers and game state. It is not a host-side reconstruction of
+the title artwork.
 
-Current regression anchors include:
+### Native title path
 
-- `$0949` Bank 0 memset helper;
-- `$095B` RNG/table helper;
-- `$1679` Bank 0 memcpy helper;
-- arithmetic/half-carry/DAA edge checks.
+The title boot currently needs these ROMX banks translated ahead of time:
 
-This executable is still a technical native recomp milestone, **not yet the
-playable game**. The next milestone is the Game Boy hardware/runtime layer.
+```text
+1 2 7 127
+```
+
+A fixed OAM-DMA routine copied by the game to HRAM `$FF80-$FF89` is also
+compiled as a known native code fragment. Missing ROMX banks remain a hard
+runtime failure instead of silently falling back to an LR35902 interpreter.
 
 ## Windows build
 
@@ -69,34 +58,76 @@ Requirements:
 From the repository root:
 
 ```powershell
-python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
-python recomp/tools/recompile_bank0.py --bank src/banks/bank_000.asm --audit-only
-
 cmake -S recomp -B recomp/build -A x64
-cmake --build recomp/build --config Release
-.\recomp\build\Release\DWM2tRecomp.exe --self-test
+cmake --build recomp/build --config Release --parallel 4
 ```
 
-GitHub Actions performs the same validation and uploads the Windows executable.
+Run the retained hardware/renderer regression suite:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp\build\m4_renderer_test.bmp
+```
+
+Boot the real game and verify the accepted title screen:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --title-test recomp\build\m5_title_screen.bmp
+```
+
+Show the real title framebuffer in the native Win32 window:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --title-window
+```
+
+The exploratory boot tracer remains available when extending the game path:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --title-probe recomp\build\title_probe
+```
+
+## Milestone architecture
+
+```text
+matching RGBDS banks
+        |
+        +--> exact .gbc reference build
+        |
+        +--> build-time LR35902 analysis / AOT translation
+                    |
+                    v
+             generated C++
+                    |
+                    v
+              MSVC / clang
+                    |
+                    v
+             DWM2tRecomp.exe
+                    |
+        +-----------+-----------+
+        |           |           |
+    mapped GB    CGB software  native host
+     hardware      renderer      window/input
+```
 
 ## Roadmap
 
-1. **M0**: native EXE pipeline and initial statically translated routines.
-2. **M1**: complete LR35902 decode/frontend.
-3. **M2**: all fixed Bank 0 entry addresses statically translated to native C++.
-4. **M3**: Game Boy memory map, MBC5 banking, interrupts, timers and joypad.
-5. **M4**: PPU/OAM/tile compatibility renderer and native window.
-6. **M5**: reach the original title screen through recompiled code.
-7. **M6**: input, maps, overworld movement and save RAM.
-8. **M7**: battles, audio and remaining save/runtime behavior.
-9. **M8**: fully playable native PC release with optional enhanced patches.
+1. **M0** native EXE pipeline. ✅
+2. **M1** complete LR35902 frontend. ✅
+3. **M2** all fixed Bank 0 addresses statically translated. ✅
+4. **M3** memory map, MBC5, interrupts, timers and joypad. ✅
+5. **M4** CGB renderer and native window. ✅
+6. **M5** original title screen from recompiled game code. ✅
+7. **M6** live input, title/menu transition, overworld and save RAM.
+8. **M7** battles, audio and remaining runtime behavior.
+9. **M8** fully playable native PC release and optional enhanced patches.
 
 ## Project rules
 
-- The matching RGBDS build remains untouched as the reference.
-- Recomp work stays on `recomp/native-pc` until it is mature.
-- Each completed milestone gets a `restore/recomp-mN` branch.
-- Each milestone leaves a continuation note in `recomp/handoff/`.
-- Do not hide emulation/interpreter fallbacks inside a milestone and call them
-  static recompilation. Hardware compatibility code is fine; runtime opcode
-  decoding is not the normal execution strategy.
+- The matching RGBDS build is the behavioral/source reference.
+- Accepted milestones get immutable `restore/recomp-mN` branches.
+- Every milestone leaves continuation instructions under `recomp/handoff/`.
+- Missing native code is surfaced explicitly. It is not hidden behind an
+  instruction interpreter.
+- Hardware compatibility behavior is allowed in the runtime; game instructions
+  remain ahead-of-time translated.
