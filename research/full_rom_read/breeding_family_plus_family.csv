@@ -1,0 +1,122 @@
+﻿family_1_id,family_1_name,family_2_id,family_2_name,result_id,result_name,rom_offset
+0,Slime,0,Slime,65535,base monster,0x3BE99
+0,Slime,1,Dragon,1,DrakSlime,0x3BE9B
+0,Slime,2,Beast,2,SpotSlime,0x3BE9D
+0,Slime,3,Bird,3,WingSlime,0x3BE9F
+0,Slime,4,Plant,4,TreeSlime,0x3BEA1
+0,Slime,5,Bug,5,Snaily,0x3BEA3
+0,Slime,6,Demon,6,SlimeNite,0x3BEA5
+0,Slime,7,Zombie,7,Babble,0x3BEA7
+0,Slime,8,Material,8,BoxSlime,0x3BEA9
+0,Slime,9,Water,9,PearlGel,0x3BEAB
+0,Slime,10,<98><98><98><98>,16,KingSlime,0x3BEAD
+1,Dragon,0,Slime,36,DragonKid,0x3BEAF
+1,Dragon,1,Dragon,65535,base monster,0x3BEB1
+1,Dragon,2,Beast,37,Tortragon,0x3BEB3
+1,Dragon,3,Bird,38,Pteranod,0x3BEB5
+1,Dragon,4,Plant,39,Gasgon,0x3BEB7
+1,Dragon,5,Bug,40,FairyDrak,0x3BEB9
+1,Dragon,6,Demon,41,LizardMan,0x3BEBB
+1,Dragon,7,Zombie,42,Poisongon,0x3BEBD
+1,Dragon,8,Material,43,Swordgon,0x3BEBF
+1,Dragon,9,Water,44,Drygon,0x3BEC1
+1,Dragon,10,<98><98><98><98>,60,Orochi,0x3BEC3
+2,Beast,0,Slime,71,Tonguella,0x3BEC5
+2,Beast,1,Dragon,72,Almiraj,0x3BEC7
+2,Beast,2,Beast,65535,base monster,0x3BEC9
+2,Beast,3,Bird,73,CatFly,0x3BECB
+2,Beast,4,Plant,74,PillowRat,0x3BECD
+2,Beast,5,Bug,75,Saccer,0x3BECF
+2,Beast,6,Demon,85,Grizzly,0x3BED1
+2,Beast,7,Zombie,77,Skullroo,0x3BED3
+2,Beast,8,Material,78,WindBeast,0x3BED5
+2,Beast,9,Water,79,Beavern,0x3BED7
+2,Beast,10,<98><98><98><98>,97,DarkHorn,0x3BED9
+3,Bird,0,Slime,106,Picky,0x3BEDB
+3,Bird,1,Dragon,107,Wyvern,0x3BEDD
+3,Bird,2,Beast,108,BullBird,0x3BEDF
+3,Bird,3,Bird,65535,base monster,0x3BEE1
+3,Bird,4,Plant,109,Florajay,0x3BEE3
+3,Bird,5,Bug,110,DuckKite,0x3BEE5
+3,Bird,6,Demon,111,MadPecker,0x3BEE7
+3,Bird,7,Zombie,112,MadRaven,0x3BEE9
+3,Bird,8,Material,113,MistyWing,0x3BEEB
+3,Bird,9,Water,114,AquaHawk,0x3BEED
+3,Bird,10,<98><98><98><98>,125,ZapBird,0x3BEEF
+4,Plant,0,Slime,141,MadPlant,0x3BEF1
+4,Plant,1,Dragon,142,FireWeed,0x3BEF3
+4,Plant,2,Beast,143,FloraMan,0x3BEF5
+4,Plant,3,Bird,144,WingTree,0x3BEF7
+4,Plant,4,Plant,65535,base monster,0x3BEF9
+4,Plant,5,Bug,145,CactiBall,0x3BEFB
+4,Plant,6,Demon,146,Gulpple,0x3BEFD
+4,Plant,7,Zombie,147,Toadstool,0x3BEFF
+4,Plant,8,Material,148,AmberWeed,0x3BF01
+4,Plant,9,Water,149,Slurperon,0x3BF03
+4,Plant,10,<98><98><98><98>,162,Rosevine,0x3BF05
+5,Bug,0,Slime,176,GiantSlug,0x3BF07
+5,Bug,1,Dragon,177,Catapila,0x3BF09
+5,Bug,2,Beast,178,Gophecada,0x3BF0B
+5,Bug,3,Bird,179,Butterfly,0x3BF0D
+5,Bug,4,Plant,180,WeedBug,0x3BF0F
+5,Bug,5,Bug,65535,base monster,0x3BF11
+5,Bug,6,Demon,181,GiantWorm,0x3BF13
+5,Bug,7,Zombie,182,Lipsy,0x3BF15
+5,Bug,8,Material,183,StagBug,0x3BF17
+5,Bug,9,Water,184,Pyuro,0x3BF19
+5,Bug,10,<98><98><98><98>,199,Digster,0x3BF1B
+6,Demon,0,Slime,211,Pixy,0x3BF1D
+6,Demon,1,Dragon,212,MedusaEye,0x3BF1F
+6,Demon,2,Beast,221,Gremlin,0x3BF21
+6,Demon,3,Bird,214,Demonite,0x3BF23
+6,Demon,4,Plant,215,DarkEye,0x3BF25
+6,Demon,5,Bug,216,EyeBall,0x3BF27
+6,Demon,6,Demon,65535,base monster,0x3BF29
+6,Demon,7,Zombie,217,SkulRider,0x3BF2B
+6,Demon,8,Material,218,EvilBeast,0x3BF2D
+6,Demon,9,Water,219,Bubblemon,0x3BF2F
+6,Demon,10,<98><98><98><98>,222,ArcDemon,0x3BF31
+7,Zombie,0,Slime,246,Spooky,0x3BF33
+7,Zombie,1,Dragon,270,MadSpirit,0x3BF35
+7,Zombie,2,Beast,248,PutrePup,0x3BF37
+7,Zombie,3,Bird,249,RotRaven,0x3BF39
+7,Zombie,4,Plant,250,Mummy,0x3BF3B
+7,Zombie,5,Bug,251,DarkCrab,0x3BF3D
+7,Zombie,6,Demon,252,DeadNite,0x3BF3F
+7,Zombie,7,Zombie,65535,base monster,0x3BF41
+7,Zombie,8,Material,253,Shadow,0x3BF43
+7,Zombie,9,Water,254,Skulpent,0x3BF45
+7,Zombie,10,<98><98><98><98>,264,WhiteKing,0x3BF47
+8,Material,0,Slime,281,JewelBag,0x3BF49
+8,Material,1,Dragon,282,EvilWand,0x3BF4B
+8,Material,2,Beast,283,MadCandle,0x3BF4D
+8,Material,3,Bird,284,CoilBird,0x3BF4F
+8,Material,4,Plant,285,Facer,0x3BF51
+8,Material,5,Bug,286,SpikyBoy,0x3BF53
+8,Material,6,Demon,287,MadMirror,0x3BF55
+8,Material,7,Zombie,288,RogueNite,0x3BF57
+8,Material,8,Material,65535,base monster,0x3BF59
+8,Material,9,Water,296,Brushead,0x3BF5B
+8,Material,10,<98><98><98><98>,293,Balzak,0x3BF5D
+9,Water,0,Slime,316,Petiteel,0x3BF5F
+9,Water,1,Dragon,317,Moray,0x3BF61
+9,Water,2,Beast,318,WalrusMan,0x3BF63
+9,Water,3,Bird,319,RayGigas,0x3BF65
+9,Water,4,Plant,320,Anemon,0x3BF67
+9,Water,5,Bug,321,Aquarella,0x3BF69
+9,Water,6,Demon,322,Merman,0x3BF6B
+9,Water,7,Zombie,324,PutreFish,0x3BF6D
+9,Water,8,Material,323,Octokid,0x3BF6F
+9,Water,9,Water,65535,base monster,0x3BF71
+9,Water,10,<98><98><98><98>,344,Grakos,0x3BF73
+10,<98><98><98><98>,0,Slime,65535,base monster,0x3BF75
+10,<98><98><98><98>,1,Dragon,65535,base monster,0x3BF77
+10,<98><98><98><98>,2,Beast,65535,base monster,0x3BF79
+10,<98><98><98><98>,3,Bird,65535,base monster,0x3BF7B
+10,<98><98><98><98>,4,Plant,65535,base monster,0x3BF7D
+10,<98><98><98><98>,5,Bug,65535,base monster,0x3BF7F
+10,<98><98><98><98>,6,Demon,65535,base monster,0x3BF81
+10,<98><98><98><98>,7,Zombie,65535,base monster,0x3BF83
+10,<98><98><98><98>,8,Material,65535,base monster,0x3BF85
+10,<98><98><98><98>,9,Water,65535,base monster,0x3BF87
+10,<98><98><98><98>,10,<98><98><98><98>,65535,base monster,0x3BF89

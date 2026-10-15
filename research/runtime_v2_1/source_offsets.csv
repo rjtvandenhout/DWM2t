@@ -1,0 +1,26 @@
+mechanic,bank_cpu,physical_rom
+Breeding/newborn master routine,0E:5688,0x39688
+Newborn base-stat loop,0E:58B1,0x398B1
+Child + computation,0E:5940,0x39940
+Max-level computation,0E:599A,0x3999A
+Accessory stat correction before inheritance,0E:59E1,0x399E1
+Resistance inheritance,0E:5CB2,0x39CB2
+Hidden newborn percentage bonus,0E:5EE8,0x39EE8
+Parent trait-pair matrix lookup,0E:5F91,0x39F91
+Trait score encoder,0E:5FF9,0x39FF9
+Trait-pair packed matrix,0E:603F,0x3A03F
+Level-up stat routine,1A:6418,0x6A418
+Growth-ring bonus setup,1A:64A2,0x6A4A2
+Stat growth table lookup,1A:6562,0x6A562
+Apply growth-ring bonus,1A:6579,0x6A579
+999 cap helper,1A:65F4,0x6A5F4
+Stat growth tables,1A:6616,0x6A616
+8-bit multiply helper,00:1682,0x01682
+16-bit multiply helper,00:16AA,0x016AA
+16-bit divide helper,00:16D1,0x016D1
+Level-up caller A,31:6949,0xC6949
+Level-up stat apply A,31:6A2D,0xC6A2D
+Level-up add helper A,31:6A8B,0xC6A8B
+Level-up caller B,31:6BB5,0xC6BB5
+Level-up stat apply B,31:6BC9,0xC6BC9
+Level-up add helper B,31:6C28,0xC6C28

@@ -1,0 +1,42 @@
+﻿offset,description,status
+0x20242,Family name pointer table,decoded
+0x2025A,Monster name pointer table,decoded
+0x2055A,Skill name pointer table,decoded
+0x20718,Item name/description pointer table,decoded
+0x208D6,Personality name pointer table,decoded
+0x286AE,Wandering master set lengths,raw-known
+0x286EE,Wandering master sets,raw-known
+0x2881C,Boss battle structures,partially-decoded
+0x29773,Main-world random encounters,decoded
+0x2C03E,Library text pointers,known-not-full-text-dumped
+0x3136A,Library sizes,decoded
+0x31562,Library rarities,decoded
+0x3199F,Library upper breeding partner,decoded raw IDs
+0x31F9F,Library lower breeding partner,decoded raw IDs
+0x335D2,Arena rewards,raw-preserved
+0x3387F,Arena teams/pointers,raw-preserved
+0x3A208,Species + species breeding,decoded
+0x3B34E,Species + family breeding,decoded
+0x3BB83,Family + species breeding,decoded
+0x3BE83,Family + family row pointers,direct-ROM correction/decoded
+0x3BE99,Family + family result matrix,decoded
+0x58CC2,Item data,decoded 15-byte records
+0x64641,Cape resistances,raw-preserved
+0x64E60,EXP curves,decoded
+0x680D4,Skill data,decoded
+0x6900A,Skill requirements,decoded
+0x6A616,Stat growth curves,decoded
+0x72188,Shop inventories,raw-preserved
+0xC138C,Charge personality effects,decoded signed raw rows
+0xC13AC,Mixed personality effects,decoded signed raw rows
+0xC13CC,Defend personality effects,decoded signed raw rows
+0xC13EC,Command personality effects,decoded signed raw rows
+0xD0075,Prebuilt enemies part 1,decoded IDs 0-624
+0xD403B,Core monster pointer table,decoded
+0xD433B,Core monster structures,decoded
+0x182969,Magic key prefix thresholds,decoded
+0x182A09,Magic key suffix thresholds,decoded
+0x22001C,Prebuilt enemy name pointers,directly inferred/decoded
+0x22061C,Prebuilt enemy names,decoded
+0x288056,Prebuilt enemies part 2,decoded IDs 625-767
+0x28CB58,Species critical-attribute table,newly located by exact signature match; decoded

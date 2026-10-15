@@ -1,0 +1,774 @@
+﻿area,screen_index,pointer,rom_offset,max_enemies,max_chance,chance_1,chance_2,chance_3,chance_4,chance_5,possible_prebuilt_ids,possible_enemy_names
+Oasis World,0,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,1,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,2,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,3,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,4,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,5,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,6,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,7,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,8,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,9,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,10,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,11,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,12,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,13,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,14,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,15,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,16,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,17,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,18,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,19,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,20,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,21,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,22,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,23,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,24,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,25,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,26,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,27,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,28,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,29,0x57FE,0x297FE,1,11,4,8,11,0,0,2|3|5,SpotSlime|CactiBall|Crestpent
+Oasis World,30,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,31,0x5827,0x29827,2,13,2,4,9,13,0,2|3|5|6,SpotSlime|CactiBall|Crestpent|KingCobra
+Oasis World,32,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,33,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,34,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,35,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,36,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,37,0x5836,0x29836,2,14,2,4,9,14,0,2|3|5|4,SpotSlime|CactiBall|Crestpent|TailEater
+Oasis World,38,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,39,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,40,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,41,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,42,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,43,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,44,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,45,0x5836,0x29836,2,14,2,4,9,14,0,2|3|5|4,SpotSlime|CactiBall|Crestpent|TailEater
+Oasis World,46,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,47,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,48,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,49,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,50,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,51,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,52,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,53,0x5836,0x29836,2,14,2,4,9,14,0,2|3|5|4,SpotSlime|CactiBall|Crestpent|TailEater
+Oasis World,54,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,55,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,56,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,57,0x57F3,0x297F3,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Oasis World,58,0x580B,0x2980B,1,12,5,10,12,0,0,2|3|4,SpotSlime|CactiBall|TailEater
+Oasis World,59,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,60,0x5818,0x29818,1,16,5,10,12,16,0,2|3|4|5,SpotSlime|CactiBall|TailEater|Crestpent
+Oasis World,61,0x5836,0x29836,2,14,2,4,9,14,0,2|3|5|4,SpotSlime|CactiBall|Crestpent|TailEater
+Oasis World,62,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Oasis World,63,0x5845,0x29845,2,20,2,4,9,14,20,2|3|5|4|6,SpotSlime|CactiBall|Crestpent|TailEater|KingCobra
+Well,0,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,1,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,2,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,3,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,4,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,5,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,6,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,7,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,8,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,9,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,10,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,11,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,12,0x5881,0x29881,2,11,3,6,11,0,0,384|385|388,GiantWorm|Spooky|MadCandle
+Well,13,0x5876,0x29876,2,8,4,8,0,0,0,384|385,GiantWorm|Spooky
+Well,14,0x5876,0x29876,2,8,4,8,0,0,0,384|385,GiantWorm|Spooky
+Well,15,0x5876,0x29876,2,8,4,8,0,0,0,384|385,GiantWorm|Spooky
+Pirate World,0,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,1,0x59BD,0x299BD,3,14,4,9,14,0,0,395|393|394,MiniDrak|DanceVegi|Brushead
+Pirate World,2,0x59BD,0x299BD,3,14,4,9,14,0,0,395|393|394,MiniDrak|DanceVegi|Brushead
+Pirate World,3,0x595B,0x2995B,3,15,3,6,10,15,0,395|12|16|17,MiniDrak|Eggplaton|ArmyAnt|MadGopher
+Pirate World,4,0x596A,0x2996A,3,21,5,8,13,18,21,395|20|16|17|18,MiniDrak|Poisongon|ArmyAnt|MadGopher|1EyeClown
+Pirate World,5,0x597B,0x2997B,3,16,3,7,12,16,0,20|391|392|18,Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,6,0x597B,0x2997B,3,16,3,7,12,16,0,20|391|392|18,Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,7,0x598A,0x2998A,3,22,5,10,12,17,22,20|391|15|392|18,Poisongon|ArrowDog|Wyvern|Pyuro|1EyeClown
+Pirate World,8,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,9,0x59BD,0x299BD,3,14,4,9,14,0,0,395|393|394,MiniDrak|DanceVegi|Brushead
+Pirate World,10,0x595B,0x2995B,3,15,3,6,10,15,0,395|12|16|17,MiniDrak|Eggplaton|ArmyAnt|MadGopher
+Pirate World,11,0x596A,0x2996A,3,21,5,8,13,18,21,395|20|16|17|18,MiniDrak|Poisongon|ArmyAnt|MadGopher|1EyeClown
+Pirate World,12,0x597B,0x2997B,3,16,3,7,12,16,0,20|391|392|18,Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,13,0x597B,0x2997B,3,16,3,7,12,16,0,20|391|392|18,Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,14,0x597B,0x2997B,3,16,3,7,12,16,0,20|391|392|18,Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,15,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,16,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,17,0x59BD,0x299BD,3,14,4,9,14,0,0,395|393|394,MiniDrak|DanceVegi|Brushead
+Pirate World,18,0x595B,0x2995B,3,15,3,6,10,15,0,395|12|16|17,MiniDrak|Eggplaton|ArmyAnt|MadGopher
+Pirate World,19,0x5939,0x29939,3,18,3,7,11,16,18,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,20,0x595B,0x2995B,3,15,3,6,10,15,0,395|12|16|17,MiniDrak|Eggplaton|ArmyAnt|MadGopher
+Pirate World,21,0x599B,0x2999B,3,23,3,8,13,18,23,19|20|391|392|18,Snaily|Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,22,0x599B,0x2999B,3,23,3,8,13,18,23,19|20|391|392|18,Snaily|Poisongon|ArrowDog|Pyuro|1EyeClown
+Pirate World,23,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,24,0x594A,0x2994A,3,23,5,10,13,18,23,631|11|12|16|17,Healer|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,25,0x5939,0x29939,3,18,3,7,11,16,18,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,26,0x5939,0x29939,3,18,3,7,11,16,18,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,27,0x59E6,0x299E6,3,16,1,3,4,10,16,631|11|12|16|17,Healer|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,28,0x594A,0x2994A,3,23,5,10,13,18,23,631|11|12|16|17,Healer|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,29,0x59AC,0x299AC,3,20,3,7,12,15,20,397|391|393|392|394,DragonKid|ArrowDog|DanceVegi|Pyuro|Brushead
+Pirate World,30,0x59AC,0x299AC,3,20,3,7,12,15,20,397|391|393|392|394,DragonKid|ArrowDog|DanceVegi|Pyuro|Brushead
+Pirate World,31,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,32,0x594A,0x2994A,3,23,5,10,13,18,23,631|11|12|16|17,Healer|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,33,0x594A,0x2994A,3,23,5,10,13,18,23,631|11|12|16|17,Healer|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,34,0x59F7,0x299F7,3,19,2,3,4,12,19,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,35,0x5A08,0x29A08,3,19,1,3,4,11,19,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,36,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,37,0x59AC,0x299AC,3,20,3,7,12,15,20,397|391|393|392|394,DragonKid|ArrowDog|DanceVegi|Pyuro|Brushead
+Pirate World,38,0x59AC,0x299AC,3,20,3,7,12,15,20,397|391|393|392|394,DragonKid|ArrowDog|DanceVegi|Pyuro|Brushead
+Pirate World,39,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,40,0x5939,0x29939,3,18,3,7,11,16,18,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,41,0x5939,0x29939,3,18,3,7,11,16,18,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,42,0x5A19,0x29A19,3,19,1,3,5,10,19,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,43,0x5A2A,0x29A2A,3,16,1,3,5,7,16,9|11|12|16|17,Slime|Dracky|Eggplaton|ArmyAnt|MadGopher
+Pirate World,44,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,45,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,46,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,47,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,48,0x59CA,0x299CA,3,14,4,9,14,0,0,397|396|398,DragonKid|Pteranod|CatFly
+Pirate World,49,0x59CA,0x299CA,3,14,4,9,14,0,0,397|396|398,DragonKid|Pteranod|CatFly
+Pirate World,50,0x59D7,0x299D7,3,14,5,10,12,14,0,9|11|393|394,Slime|Dracky|DanceVegi|Brushead
+Pirate World,51,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,52,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,53,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,54,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,55,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,56,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,57,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,58,0x59D7,0x299D7,3,14,5,10,12,14,0,9|11|393|394,Slime|Dracky|DanceVegi|Brushead
+Pirate World,59,0x59D7,0x299D7,3,14,5,10,12,14,0,9|11|393|394,Slime|Dracky|DanceVegi|Brushead
+Pirate World,60,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,61,0x5928,0x29928,3,18,3,7,11,15,18,9|10|11|12|16,Slime|Antbear|Dracky|Eggplaton|ArmyAnt
+Pirate World,62,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+Pirate World,63,0x591B,0x2991B,3,12,4,8,12,0,0,9|10|12,Slime|Antbear|Eggplaton
+HoodSquid cave,0,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,1,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,2,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,3,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,4,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,5,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,6,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,7,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,8,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,9,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,10,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,11,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,12,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,13,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,14,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+HoodSquid cave,15,0x5A6C,0x29A6C,3,15,3,5,10,15,0,34|21|23|24,PearlGel|Moray|PutreFish|Gamanian
+Harmirror cave 1F,0,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,1,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,2,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,3,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,4,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,5,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,6,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,7,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,8,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,9,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,10,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,11,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,12,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,13,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,14,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 1F,15,0x5AAA,0x29AAA,3,12,4,8,12,0,0,36|37|39,AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,0,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,1,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,2,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,3,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,4,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,5,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,6,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,7,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,8,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,9,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,10,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 2F,11,0x5ACF,0x29ACF,3,18,3,8,13,18,0,35|36|37|39,Tortragon|AquaHawk|DarkEye|EvilWand
+Harmirror cave 3F,0,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,1,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,2,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,3,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,4,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,5,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,6,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,7,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Harmirror cave 3F,8,0x5AF0,0x29AF0,3,15,3,5,10,15,0,397|35|25|30,DragonKid|Tortragon|SpikyBoy|RotRaven
+Moonrock tower 1F,0,0x5B07,0x29B07,3,12,4,8,12,0,0,19|38|22,Snaily|RayGigas|Eyeder
+Moonrock tower 1F,1,0x5B07,0x29B07,3,12,4,8,12,0,0,19|38|22,Snaily|RayGigas|Eyeder
+Moonrock tower 1F,2,0x5B07,0x29B07,3,12,4,8,12,0,0,19|38|22,Snaily|RayGigas|Eyeder
+Moonrock tower 1F,3,0x5B07,0x29B07,3,12,4,8,12,0,0,19|38|22,Snaily|RayGigas|Eyeder
+Moonrock tower 2F,0,0x5B1C,0x29B1C,3,10,2,6,10,0,0,15|18|22,Wyvern|1EyeClown|Eyeder
+Moonrock tower 2F,1,0x5B1C,0x29B1C,3,10,2,6,10,0,0,15|18|22,Wyvern|1EyeClown|Eyeder
+Moonrock tower 2F,2,0x5B1C,0x29B1C,3,10,2,6,10,0,0,15|18|22,Wyvern|1EyeClown|Eyeder
+Moonrock tower 2F,3,0x5B1C,0x29B1C,3,10,2,6,10,0,0,15|18|22,Wyvern|1EyeClown|Eyeder
+Ghost ship 1F,0,0x5B2F,0x29B2F,2,8,4,8,0,0,0,38|14,RayGigas|Hork
+Ghost ship 1F,1,0x5B2F,0x29B2F,2,8,4,8,0,0,0,38|14,RayGigas|Hork
+Ghost ship 1F,2,0x5B2F,0x29B2F,2,8,4,8,0,0,0,38|14,RayGigas|Hork
+Ghost ship 2F,0,0x5B4B,0x29B4B,2,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ghost ship 2F,1,0x5B4B,0x29B4B,2,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ghost ship 2F,2,0x5B4B,0x29B4B,2,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ghost ship cabin,0,0x5B5E,0x29B5E,3,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ghost ship cabin,1,0x5B5E,0x29B5E,3,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ghost ship cabin,2,0x5B5E,0x29B5E,3,11,4,8,11,0,0,38|14|13,RayGigas|Hork|JewelBag
+Ice World,0,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,1,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,2,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,3,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,4,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,5,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,6,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,7,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,8,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,9,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,10,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,11,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,12,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,13,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,14,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,15,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,16,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,17,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,18,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,19,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,20,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,21,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,22,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,23,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,24,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,25,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,26,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,27,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,28,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,29,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,30,0x5CA3,0x29CA3,3,21,4,9,14,17,21,56|43|59|54|60,Almiraj|Yeti|Saccer|Gulpple|WingSlime
+Ice World,31,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,32,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,33,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,34,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,35,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,36,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,37,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,38,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,39,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,40,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,41,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,42,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,43,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,44,0x5CC3,0x29CC3,3,18,4,8,13,18,0,43|59|54|401,Yeti|Saccer|Gulpple|BeastNite
+Ice World,45,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,46,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,47,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,48,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,49,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,50,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,51,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,52,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,53,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,54,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,55,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,56,0x5CC3,0x29CC3,3,18,4,8,13,18,0,43|59|54|401,Yeti|Saccer|Gulpple|BeastNite
+Ice World,57,0x5CD2,0x29CD2,3,12,2,7,12,0,0,64|54|401,SeaHorse|Gulpple|BeastNite
+Ice World,58,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,59,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,60,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,61,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,62,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,63,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,64,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,65,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,66,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,67,0x5CB4,0x29CB4,3,18,5,9,13,18,0,42|43|59|54,HammerMan|Yeti|Saccer|Gulpple
+Ice World,68,0x5CD2,0x29CD2,3,12,2,7,12,0,0,64|54|401,SeaHorse|Gulpple|BeastNite
+Ice World,69,0x5CD2,0x29CD2,3,12,2,7,12,0,0,64|54|401,SeaHorse|Gulpple|BeastNite
+Ice World,70,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,71,0x5C96,0x29C96,3,14,4,9,14,0,0,54|60|401,Gulpple|WingSlime|BeastNite
+Ice World,72,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,73,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,74,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,75,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,76,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,77,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,78,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,79,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,80,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,81,0x5D2E,0x29D2E,3,17,3,8,13,17,0,51|58|61|402,RogueNite|Goategon|BullBird|Drygon
+Ice World,82,0x5D2E,0x29D2E,3,17,3,8,13,17,0,51|58|61|402,RogueNite|Goategon|BullBird|Drygon
+Ice World,83,0x5D2E,0x29D2E,3,17,3,8,13,17,0,51|58|61|402,RogueNite|Goategon|BullBird|Drygon
+Ice World,84,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,85,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,86,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,87,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,88,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,89,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,90,0x5CDF,0x29CDF,3,16,4,9,13,16,0,42|45|54|52,HammerMan|Gismo|Gulpple|Grizzly
+Ice World,91,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,92,0x5D3D,0x29D3D,3,21,5,10,14,18,21,63|64|55|41|51,Starfish|SeaHorse|FoxFire|LizardMan|RogueNite
+Ice World,93,0x5D2E,0x29D2E,3,17,3,8,13,17,0,51|58|61|402,RogueNite|Goategon|BullBird|Drygon
+Ice World,94,0x5D2E,0x29D2E,3,17,3,8,13,17,0,51|58|61|402,RogueNite|Goategon|BullBird|Drygon
+Ice World,95,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,96,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,97,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,98,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,99,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,100,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,101,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,102,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,103,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,104,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,105,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,106,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,107,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,108,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,109,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,110,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,111,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,112,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,113,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,114,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,115,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,116,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,117,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,118,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,119,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,120,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,121,0x5CFD,0x29CFD,3,21,3,7,13,17,21,40|45|56|59|62,SlimeNite|Gismo|Almiraj|Saccer|CragDevil
+Ice World,122,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,123,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,124,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,125,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,126,0x5D0E,0x29D0E,3,18,5,10,14,18,0,44|55|52|62,Orc|FoxFire|Grizzly|CragDevil
+Ice World,127,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,128,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,129,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,130,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,131,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,132,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,133,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,134,0x5CEE,0x29CEE,3,18,4,9,14,18,0,40|45|52|62,SlimeNite|Gismo|Grizzly|CragDevil
+Ice World,135,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,136,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,137,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,138,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,139,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,140,0x5C8B,0x29C8B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Ice World,141,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,142,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Ice World,143,0x5D1D,0x29D1D,3,21,4,7,11,16,21,41|51|55|57|402,LizardMan|RogueNite|FoxFire|LandOwl|Drygon
+Gold mine,0,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,1,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,2,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,3,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,4,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,5,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,6,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,7,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,8,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,9,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,10,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,11,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,12,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,13,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,14,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Gold mine,15,0x5D7D,0x29D7D,3,19,4,9,14,19,0,46|47|48|49,Droll|Goopi|Mummy|TreeBoy
+Spooky forest,0,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,1,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,2,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,3,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,4,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,5,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,6,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,7,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,8,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,9,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,10,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,11,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,12,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,13,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,14,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Spooky forest,15,0x5DBB,0x29DBB,3,16,4,8,12,16,0,65|406|407|53,ManEater|Stubsuck|Shadow|Demonite
+Sleep herb mountain,0,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,1,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,2,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,3,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,4,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,5,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,6,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Sleep herb mountain,7,0x5DDA,0x29DDA,3,12,4,8,12,0,0,66|67|408,StubBird|GiantMoth|WingTree
+Ice tower 1F,0,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,1,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,2,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,3,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,4,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,5,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,6,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,7,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,8,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,9,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,10,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 1F,11,0x5DFF,0x29DFF,3,12,4,9,12,0,0,414|415|416,AgDevil|Puppetor|Golem
+Ice tower 2F,0,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,1,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,2,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,3,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,4,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,5,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,6,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Ice tower 2F,7,0x5E1C,0x29E1C,3,14,1,5,10,14,0,413|414|415|416,MetalDrak|AgDevil|Puppetor|Golem
+Sky World,0,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,1,0x600A,0x2A00A,3,15,3,8,13,15,0,101|70|84|88,Andreal|RockSlime|FireWeed|Metaly
+Sky World,2,0x600A,0x2A00A,3,15,3,8,13,15,0,101|70|84|88,Andreal|RockSlime|FireWeed|Metaly
+Sky World,3,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,4,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,5,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,6,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,7,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,8,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,9,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,10,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,11,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,12,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,13,0x600A,0x2A00A,3,15,3,8,13,15,0,101|70|84|88,Andreal|RockSlime|FireWeed|Metaly
+Sky World,14,0x600A,0x2A00A,3,15,3,8,13,15,0,101|70|84|88,Andreal|RockSlime|FireWeed|Metaly
+Sky World,15,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,16,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,17,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,18,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,19,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,20,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,21,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,22,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,23,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,24,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,25,0x6019,0x2A019,2,13,2,3,10,13,0,88|75|81|429,Metaly|Roboster|EvilBeast|WingSnake
+Sky World,26,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,27,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,28,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,29,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,30,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,31,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,32,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,33,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,34,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,35,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,36,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,37,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,38,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,39,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,40,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,41,0x5FFB,0x29FFB,3,20,6,9,14,20,0,91|101|84|70,Lionex|Andreal|FireWeed|RockSlime
+Sky World,42,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,43,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,44,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,45,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,46,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,47,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,48,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,49,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,50,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,51,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,52,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,53,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,54,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,55,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,56,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,57,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,58,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,59,0x5F56,0x29F56,3,12,4,8,12,0,0,72|73|69,Emyu|FloraMan|FangSlime
+Sky World,60,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,61,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,62,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,63,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,64,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,65,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,66,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,67,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,68,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,69,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,70,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,71,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,72,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,73,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,74,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,75,0x5F92,0x29F92,3,20,6,12,18,20,0,94|425|82|88,Gigantes|Mommonja|WarMantis|Metaly
+Sky World,76,0x5F83,0x29F83,3,19,6,12,18,19,0,86|74|82|88,Dumbira|Slurperon|WarMantis|Metaly
+Sky World,77,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,78,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,79,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,80,0x5F72,0x29F72,3,23,5,10,15,20,23,86|423|74|71|85,Dumbira|FairyRat|Slurperon|MadRaven|WildApe
+Sky World,81,0x5F72,0x29F72,3,23,5,10,15,20,23,86|423|74|71|85,Dumbira|FairyRat|Slurperon|MadRaven|WildApe
+Sky World,82,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,83,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,84,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,85,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,86,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,87,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,88,0x5F83,0x29F83,3,19,6,12,18,19,0,86|74|82|88,Dumbira|Slurperon|WarMantis|Metaly
+Sky World,89,0x5F83,0x29F83,3,19,6,12,18,19,0,86|74|82|88,Dumbira|Slurperon|WarMantis|Metaly
+Sky World,90,0x5F63,0x29F63,3,16,4,8,12,16,0,86|423|74|71,Dumbira|FairyRat|Slurperon|MadRaven
+Sky World,91,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,92,0x5FCE,0x29FCE,3,22,4,9,14,19,22,85|93|77|92|424,WildApe|Bubblemon|Dragon|MadGoose|Swordgon
+Sky World,93,0x5FCE,0x29FCE,3,22,4,9,14,19,22,85|93|77|92|424,WildApe|Bubblemon|Dragon|MadGoose|Swordgon
+Sky World,94,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,95,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,96,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,97,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,98,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,99,0x5FA1,0x29FA1,2,16,3,6,11,16,0,94|425|424|77,Gigantes|Mommonja|Swordgon|Dragon
+Sky World,100,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,101,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,102,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,103,0x5FCE,0x29FCE,3,22,4,9,14,19,22,85|93|77|92|424,WildApe|Bubblemon|Dragon|MadGoose|Swordgon
+Sky World,104,0x5FCE,0x29FCE,3,22,4,9,14,19,22,85|93|77|92|424,WildApe|Bubblemon|Dragon|MadGoose|Swordgon
+Sky World,105,0x5FCE,0x29FCE,3,22,4,9,14,19,22,85|93|77|92|424,WildApe|Bubblemon|Dragon|MadGoose|Swordgon
+Sky World,106,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,107,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,108,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,109,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,110,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,111,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,112,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,113,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,114,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,115,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,116,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,117,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,118,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,119,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,120,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,121,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,122,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,123,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,124,0x5FB0,0x29FB0,2,19,6,12,18,19,0,424|92|77|83,Swordgon|MadGoose|Dragon|Phoenix
+Sky World,125,0x5FB0,0x29FB0,2,19,6,12,18,19,0,424|92|77|83,Swordgon|MadGoose|Dragon|Phoenix
+Sky World,126,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,127,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,128,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,129,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,130,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,131,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,132,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,133,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,134,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,135,0x5FEE,0x29FEE,2,12,4,8,12,0,0,110|76|104,Vampirus|MadDragon|CoilBird
+Sky World,136,0x5FB0,0x29FB0,2,19,6,12,18,19,0,424|92|77|83,Swordgon|MadGoose|Dragon|Phoenix
+Sky World,137,0x5FB0,0x29FB0,2,19,6,12,18,19,0,424|92|77|83,Swordgon|MadGoose|Dragon|Phoenix
+Sky World,138,0x5FBF,0x29FBF,2,20,6,12,18,20,0,424|92|77|88,Swordgon|MadGoose|Dragon|Metaly
+Sky World,139,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,140,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,141,0x5F4B,0x29F4B,1,7,3,7,0,0,0,2|3,SpotSlime|CactiBall
+Sky World,142,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Sky World,143,0x5FDF,0x29FDF,3,18,5,10,14,18,0,426|111|89|98,KiteHawk|Florajay|GhosTree|MadSpirit
+Fhunt tower 1F,0,0x6030,0x2A030,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 1F,1,0x6030,0x2A030,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 1F,2,0x6030,0x2A030,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 1F,3,0x6030,0x2A030,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 2F,0,0x6045,0x2A045,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 2F,1,0x6045,0x2A045,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 2F,2,0x6045,0x2A045,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 2F,3,0x6045,0x2A045,3,12,4,8,12,0,0,78|79|80,IronTurt|MadMirror|SabreMan
+Fhunt tower 3F,0,0x605A,0x2A05A,3,22,4,8,12,17,22,78|79|80|87|102,IronTurt|MadMirror|SabreMan|Belzebub|MadKnight
+Fhunt tower 3F,1,0x605A,0x2A05A,3,22,4,8,12,17,22,78|79|80|87|102,IronTurt|MadMirror|SabreMan|Belzebub|MadKnight
+Fhunt tower 3F,2,0x605A,0x2A05A,3,22,4,8,12,17,22,78|79|80|87|102,IronTurt|MadMirror|SabreMan|Belzebub|MadKnight
+Fhunt tower 3F,3,0x605A,0x2A05A,3,22,4,8,12,17,22,78|79|80|87|102,IronTurt|MadMirror|SabreMan|Belzebub|MadKnight
+Fhunt tower 4F,0,0x6073,0x2A073,3,22,4,8,12,17,22,78|79|80|81|87,IronTurt|MadMirror|SabreMan|EvilBeast|Belzebub
+Fhunt tower 4F,1,0x6073,0x2A073,3,22,4,8,12,17,22,78|79|80|81|87,IronTurt|MadMirror|SabreMan|EvilBeast|Belzebub
+Fhunt tower 4F,2,0x6073,0x2A073,3,22,4,8,12,17,22,78|79|80|81|87,IronTurt|MadMirror|SabreMan|EvilBeast|Belzebub
+Fhunt tower 4F,3,0x6073,0x2A073,3,22,4,8,12,17,22,78|79|80|81|87,IronTurt|MadMirror|SabreMan|EvilBeast|Belzebub
+Heaven helm cave 1F,0,0x6086,0x2A086,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,0,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,1,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,2,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,3,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,4,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,5,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,6,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,7,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 2F,8,0x60A9,0x2A0A9,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,0,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,1,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,2,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,3,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,4,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,5,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,6,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,7,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven helm cave 3F,8,0x60CC,0x2A0CC,3,20,4,8,12,16,20,417|418|419|420|421,EvilSeed|EyeBall|Chamelgon|FooHero|BoxSlime
+Heaven armor tower 1F,0,0x60E5,0x2A0E5,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 1F,1,0x60E5,0x2A0E5,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 1F,2,0x60E5,0x2A0E5,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 1F,3,0x60E5,0x2A0E5,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 2F,0,0x60FA,0x2A0FA,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 2F,1,0x60FA,0x2A0FA,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 2F,2,0x60FA,0x2A0FA,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 2F,3,0x60FA,0x2A0FA,3,14,5,9,14,0,0,95|104|105,Exaucers|CoilBird|ArmorPede
+Heaven armor tower 3F,0,0x610F,0x2A10F,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 3F,1,0x610F,0x2A10F,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 3F,2,0x610F,0x2A10F,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 3F,3,0x610F,0x2A10F,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 4F,0,0x6128,0x2A128,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 4F,1,0x6128,0x2A128,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 4F,2,0x6128,0x2A128,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven armor tower 4F,3,0x6128,0x2A128,3,23,4,9,13,18,23,95|103|104|105|106,Exaucers|SkyDragon|CoilBird|ArmorPede|MadHornet
+Heaven sword castle 1F,0,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,1,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,2,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,3,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,4,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,5,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,6,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,7,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,8,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,9,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,10,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 1F,11,0x6151,0x2A151,3,18,5,9,14,18,0,89|90|96|98,GhosTree|Babble|DeadNite|MadSpirit
+Heaven sword castle 2F,0,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,1,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,2,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,3,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,4,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,5,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,6,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,7,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 2F,8,0x6172,0x2A172,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 3F,0,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,1,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,2,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,3,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,4,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,5,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,6,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,7,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 3F,8,0x6193,0x2A193,3,18,5,9,14,18,0,87|89|96|98,Belzebub|GhosTree|DeadNite|MadSpirit
+Heaven sword castle 4F,0,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 4F,1,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 4F,2,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 4F,3,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 4F,4,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Heaven sword castle 4F,5,0x61AE,0x2A1AE,3,17,4,9,14,17,0,90|96|97|99,Babble|DeadNite|GateGuard|Copycat
+Limbo World,0,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,1,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,2,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,3,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,4,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,5,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,6,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,7,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,8,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,9,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,10,0x61EC,0x2A1EC,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,11,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,12,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,13,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,14,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Limbo World,15,0x61DD,0x2A1DD,3,14,4,7,11,14,0,112|113|114|430,BossTroll|ChopClown|MistyWing|GreatDrak
+Darck's castle,0,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,1,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,2,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,3,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,4,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,5,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,6,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,7,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,8,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,9,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,10,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Darck's castle,11,0x6213,0x2A213,3,10,4,8,10,0,0,112|113|613,BossTroll|ChopClown|StoneMan
+Elf World,0,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,1,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,2,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,3,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,4,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,5,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,6,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,7,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,8,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,9,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,10,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,11,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,12,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,13,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,14,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,15,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,16,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,17,0x6293,0x2A293,3,10,3,7,10,0,0,475|476|477,MadPlant|Snapper|Grendal
+Elf World,18,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,19,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,20,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,21,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,22,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,23,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,24,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,25,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,26,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,27,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,28,0x6275,0x2A275,3,10,3,5,8,10,0,471|472|473|475,Slabbit|MultiEyes|FairyRat|MadPlant
+Elf World,29,0x6284,0x2A284,3,10,3,5,7,10,0,472|475|477|478,MultiEyes|MadPlant|Grendal|GoHopper
+Elf World,30,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,31,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,32,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,33,0x6268,0x2A268,3,10,4,7,10,0,0,471|473|475,Slabbit|FairyRat|MadPlant
+Elf World,34,0x62A0,0x2A2A0,2,10,4,10,0,0,0,472|477,MultiEyes|Grendal
+Elf World,35,0x62A0,0x2A2A0,2,10,4,10,0,0,0,472|477,MultiEyes|Grendal
+AgDevil's lair,0,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,1,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,2,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,3,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,4,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,5,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,6,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,7,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,8,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,9,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,10,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+AgDevil's lair,11,0x62C3,0x2A2C3,3,10,3,5,7,10,0,476|477|480|481,Snapper|Grendal|StagBug|FireWeed
+Lonely World,0,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Lonely World,1,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Lonely World,2,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Lonely World,3,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Lonely World,4,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Lonely World,5,0x62DE,0x2A2DE,2,10,4,7,10,0,0,483|484|485,Grizzly|SkulRider|WalrusMan
+Basement,0,0x62F3,0x2A2F3,3,10,6,8,10,0,0,486|487|488,MadCandle|Reaper|ProtoMech
+Basement,1,0x62F3,0x2A2F3,3,10,6,8,10,0,0,486|487|488,MadCandle|Reaper|ProtoMech
+Basement,2,0x62F3,0x2A2F3,3,10,6,8,10,0,0,486|487|488,MadCandle|Reaper|ProtoMech
+Basement,3,0x62F3,0x2A2F3,3,10,6,8,10,0,0,486|487|488,MadCandle|Reaper|ProtoMech
+Traveler World,0,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,1,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,2,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,3,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,4,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,5,0x6332,0x2A332,3,10,3,7,10,0,0,495|498|503,Ogre|Lipsy|Butterfly
+Traveler World,6,0x6332,0x2A332,3,10,3,7,10,0,0,495|498|503,Ogre|Lipsy|Butterfly
+Traveler World,7,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,8,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,9,0x633F,0x2A33F,3,10,3,6,8,10,0,495|498|500|503,Ogre|Lipsy|Spikerous|Butterfly
+Traveler World,10,0x634E,0x2A34E,3,10,3,6,8,10,0,493|494|495|503,CatMage|FaceTree|Ogre|Butterfly
+Traveler World,11,0x634E,0x2A34E,3,10,3,6,8,10,0,493|494|495|503,CatMage|FaceTree|Ogre|Butterfly
+Traveler World,12,0x634E,0x2A34E,3,10,3,6,8,10,0,493|494|495|503,CatMage|FaceTree|Ogre|Butterfly
+Traveler World,13,0x634E,0x2A34E,3,10,3,6,8,10,0,493|494|495|503,CatMage|FaceTree|Ogre|Butterfly
+Traveler World,14,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,15,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,16,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,17,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,18,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,19,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,20,0x636A,0x2A36A,2,10,6,10,0,0,0,497|498,Anemon|Lipsy
+Traveler World,21,0x636A,0x2A36A,2,10,6,10,0,0,0,497|498,Anemon|Lipsy
+Traveler World,22,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,23,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Traveler World,24,0x635D,0x2A35D,3,10,4,7,10,0,0,493|494|503,CatMage|FaceTree|Butterfly
+Dark Merchant's Tower 1F,0,0x6384,0x2A384,3,10,2,4,8,10,0,496|498|500|503,CurseLamp|Lipsy|Spikerous|Butterfly
+Dark Merchant's Tower 2F,0,0x639B,0x2A39B,3,10,3,5,8,10,0,496|500|502|503,CurseLamp|Spikerous|Skulpent|Butterfly
+Dark Merchant's Tower 2F,1,0x639B,0x2A39B,3,10,3,5,8,10,0,496|500|502|503,CurseLamp|Spikerous|Skulpent|Butterfly
+Dark Merchant's Tower 2F,2,0x639B,0x2A39B,3,10,3,5,8,10,0,496|500|502|503,CurseLamp|Spikerous|Skulpent|Butterfly
+Dark Merchant's Tower 2F,3,0x639B,0x2A39B,3,10,3,5,8,10,0,496|500|502|503,CurseLamp|Spikerous|Skulpent|Butterfly
+Dark Merchant's Tower 3F,0,0x63B2,0x2A3B2,3,10,4,7,10,0,0,496|501|502,CurseLamp|Skullgon|Skulpent
+Dark Merchant's Tower 3F,1,0x63B2,0x2A3B2,3,10,4,7,10,0,0,496|501|502,CurseLamp|Skullgon|Skulpent
+Dark Merchant's Tower 3F,2,0x63B2,0x2A3B2,3,10,4,7,10,0,0,496|501|502,CurseLamp|Skullgon|Skulpent
+Dark Merchant's Tower 3F,3,0x63B2,0x2A3B2,3,10,4,7,10,0,0,496|501|502,CurseLamp|Skullgon|Skulpent
+Dark Merchant's Tower 4F,0,0x63C7,0x2A3C7,3,10,3,7,10,0,0,495|501|502,Ogre|Skullgon|Skulpent
+Dark Merchant's Tower 4F,1,0x63C7,0x2A3C7,3,10,3,7,10,0,0,495|501|502,Ogre|Skullgon|Skulpent
+Dark Merchant's Tower 4F,2,0x63C7,0x2A3C7,3,10,3,7,10,0,0,495|501|502,Ogre|Skullgon|Skulpent
+Dark Merchant's Tower 4F,3,0x63C7,0x2A3C7,3,10,3,7,10,0,0,495|501|502,Ogre|Skullgon|Skulpent

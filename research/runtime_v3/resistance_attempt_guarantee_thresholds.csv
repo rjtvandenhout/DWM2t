@@ -1,0 +1,7 @@
+﻿attempt_kind,factor,minimum_plus_for_100_percent,effective_threshold
+general_small,1,93,93
+general_small,2,47,94
+general_small,3,31,93
+general_small,5,19,95
+general_small,10,10,100
+special_wide,1,,

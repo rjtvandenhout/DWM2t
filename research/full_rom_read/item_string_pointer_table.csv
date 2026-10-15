@@ -1,0 +1,224 @@
+﻿pointer_index,role,pointer,rom_offset,text
+0,name,0x64E3,0x224E3,Herb
+1,name,0x64E8,0x224E8,LoveWater
+2,name,0x64F2,0x224F2,WorldDew
+3,name,0x64FB,0x224FB,Potion
+4,name,0x6502,0x22502,ElfWater
+5,name,0x650B,0x2250B,Antidote
+6,name,0x6514,0x22514,MoonHerb
+7,name,0x651D,0x2251D,Laurel
+8,name,0x6524,0x22524,AwakeSand
+9,name,0x652E,0x2252E,SkyBell
+10,name,0x6536,0x22536,SageRock
+11,name,0x653F,0x2253F,WorldLeaf
+12,name,0x6549,0x22549,ATKseed
+13,name,0x6551,0x22551,DEFseed
+14,name,0x6559,0x22559,AGLseed
+15,name,0x6561,0x22561,INTseed
+16,name,0x6569,0x22569,LifeAcorn
+17,name,0x6573,0x22573,MysticNut
+18,name,0x657D,0x2257D,Quest<50>
+19,name,0x6584,0x22584,Horror<50>
+20,name,0x658C,0x2258C,BeNice<50>
+21,name,0x6594,0x22594,Cheater<50>
+22,name,0x659D,0x2259D,Smart<50>
+23,name,0x65A4,0x225A4,Comedy<50>
+24,name,0x65AC,0x225AC,BeefJerky
+25,name,0x65B6,0x225B6,PorkChop
+26,name,0x65BF,0x225BF,Rib
+27,name,0x65C3,0x225C3,Sirloin
+28,name,0x65CB,0x225CB,BadMeat
+29,name,0x65D3,0x225D3,MeteOrb
+30,name,0x65DB,0x225DB,BeastTail
+31,name,0x65E5,0x225E5,Repellent
+32,name,0x65EF,0x225EF,ShinyHarp
+33,name,0x65F9,0x225F9,Mist<51>
+34,name,0x65FF,0x225FF,Friend<51>
+35,name,0x6607,0x22607,Wind<51>
+36,name,0x660D,0x2260D,Bolt<51>
+37,name,0x6613,0x22613,Snow<51>
+38,name,0x6619,0x22619,Fire<51>
+39,name,0x661F,0x2261F,Warp<51>
+40,name,0x6625,0x22625,WarpWing
+41,name,0x662E,0x2262E,ExitBell
+42,name,0x6637,0x22637,Bookmark
+43,name,0x6640,0x22640,TinyMedal
+44,name,0x664A,0x2264A,GoldPass
+45,name,0x6653,0x22653,LogTwig
+46,name,0x665B,0x2265B,
+47,name,0x665C,0x2265C,WaterCall
+48,name,0x6666,0x22666,MoonRock
+49,name,0x666F,0x2266F,Crest
+50,name,0x6675,0x22675,YunaSoul
+51,name,0x667E,0x2267E,SleepHerb
+52,name,0x6688,0x22688,Change<51>
+53,name,0x6690,0x22690,TidalBell
+54,name,0x669A,0x2269A,HarMirror
+55,name,0x66A4,0x226A4,Sky<5E>
+56,name,0x66A9,0x226A9,Heaven<52>
+57,name,0x66B1,0x226B1,Heaven<54>
+58,name,0x66B9,0x226B9,Heaven<53>
+59,name,0x66C1,0x226C1,WizStone
+60,name,0x66CA,0x226CA,Pretty<55>
+61,name,0x66D2,0x226D2,Accessory
+62,name,0x66D2,0x226D2,Accessory
+63,name,0x66DC,0x226DC,VITbelt
+64,name,0x66E4,0x226E4,DracoBelt
+65,name,0x66EE,0x226EE,MagicBelt
+66,name,0x66F8,0x226F8,OddBelt
+67,name,0x6700,0x22700,StoneFang
+68,name,0x670A,0x2270A,SteelFang
+69,name,0x6714,0x22714,MermScale
+70,name,0x671E,0x2271E,DrakScale
+71,name,0x6728,0x22728,AGL<55>
+72,name,0x672D,0x2272D,Starry<55>
+73,name,0x6735,0x22735,Smart<56>
+74,name,0x673C,0x2273C,Wise<56>
+75,name,0x6742,0x22742,MagicCape
+76,name,0x674C,0x2274C,DracoCape
+77,name,0x6756,0x22756,SilvrCape
+78,name,0x6760,0x22760,GoldCape
+79,name,0x6769,0x22769,PltnmCape
+80,name,0x6773,0x22773,OrcaCape
+81,name,0x677C,0x2277C,BraveCape
+82,name,0x6786,0x22786,D-Scale
+83,name,0x678E,0x2278E,None
+84,name,0x678E,0x2278E,None
+85,name,0x678E,0x2278E,None
+86,name,0x678E,0x2278E,None
+87,name,0x678E,0x2278E,None
+88,name,0x678E,0x2278E,None
+89,name,0x6793,0x22793,Life<55>
+90,name,0x6799,0x22799,Divine<55>
+91,name,0x67A1,0x227A1,War<55>
+92,name,0x67A6,0x227A6,Mage<55>
+93,name,0x67AC,0x227AC,Fight<55>
+94,name,0x67B3,0x227B3,Sailor<55>
+95,name,0x67BB,0x227BB,Thief<55>
+96,name,0x67C2,0x227C2,Cleric<55>
+97,name,0x67CA,0x227CA,
+98,name,0x67CA,0x227CA,
+99,name,0x67CA,0x227CA,
+100,name,0x67CA,0x227CA,
+101,name,0x67CA,0x227CA,
+102,name,0x67CA,0x227CA,
+103,name,0x67CA,0x227CA,
+104,name,0x67CA,0x227CA,
+105,name,0x67CA,0x227CA,
+106,name,0x67CA,0x227CA,
+107,name,0x67CA,0x227CA,
+108,name,0x67CA,0x227CA,
+109,name,0x67CA,0x227CA,
+110,name,0x67CA,0x227CA,
+111,description,0x67CB,0x227CB,Restores HP of one / monster by 30~40
+112,description,0x67CB,0x227CB,Restores HP of one / monster by 30~40
+113,description,0x67F0,0x227F0,Restores HP of one / monster by 60~70
+114,description,0x6815,0x22815,Fully restores HP / of all monsters
+115,description,0x6838,0x22838,Restores MP of one / monster by 20~30
+116,description,0x685D,0x2285D,Fully restores MP / of one monster
+117,description,0x687F,0x2287F,Removes all traces / of poison
+118,description,0x689D,0x2289D,Cures paralysis
+119,description,0x68AE,0x228AE,Lifts a curse off / one monster
+120,description,0x68CD,0x228CD,Awakens a sleeping / monster
+121,description,0x68E9,0x228E9,Snaps a monster / out of confusion
+122,description,0x690B,0x2290B,Restores HP of all / monsters by 60~70
+123,description,0x6931,0x22931,Revives a dead / monster
+124,description,0x6949,0x22949,Raises ATK by 3
+125,description,0x695A,0x2295A,Raises DEF by 3
+126,description,0x696B,0x2296B,Raises AGL by 3
+127,description,0x697C,0x2297C,Raises INT by 3
+128,description,0x698D,0x2298D,Raises max
+129,description,0x69A2,0x229A2,Raises max
+130,description,0x69B7,0x229B7,Makes the reader / braver
+131,description,0x69D0,0x229D0,Makes the reader / more cowardly
+132,description,0x69F0,0x229F0,Makes the reader / more kindly
+133,description,0x6A0E,0x22A0E,Makes the reader / more sly
+134,description,0x6A29,0x22A29,Makes the reader / more thoughtful
+135,description,0x6A4B,0x22A4B,Makes the reader / simple-minded
+136,description,0x6A6B,0x22A6B,Tames monsters / just a little
+137,description,0x6A89,0x22A89,Tames monsters a / little bit
+138,description,0x6AA6,0x22AA6,Tames monsters a / lot
+139,description,0x6ABC,0x22ABC,Tames monsters / very much
+140,description,0x6AD6,0x22AD6,Tames a tiny bit<AB> / but also poisons
+141,description,0x6AFA,0x22AFA,Tames monsters / incredibly
+142,description,0x6B15,0x22B15,Checks if monster / was caught before
+143,description,0x6B3A,0x22B3A,Prevents monsters / from appearing
+144,description,0x6B5C,0x22B5C,Attracts monsters / when strummed
+145,description,0x6B7D,0x22B7D,Prevents casting / of spells
+146,description,0x6B99,0x22B99,Doubles physical / power of one
+147,description,0x6BB8,0x22BB8,Hits all enemies / with a windstorm
+148,description,0x6BDB,0x22BDB,Hits all enemies / with lightning
+149,description,0x6BFC,0x22BFC,Hits all enemies / with a blizzard
+150,description,0x6C1E,0x22C1E,Hits one target / with a fireball
+151,description,0x6C3F,0x22C3F,Instantly warps to / the Door Shrine
+152,description,0x6C63,0x22C63,Instantly warps to / GreatLog
+153,description,0x6C80,0x22C80,Instantly warps to / the exit
+154,description,0x6C9D,0x22C9D,Enables saving in / the Journal
+155,description,0x6CBC,0x22CBC,Collect and trade / for rare gifts
+156,description,0x6CDE,0x22CDE,Get a 10-percent / discount at shops
+157,description,0x6D02,0x22D02,Moves the Door / Shrine
+158,description,0x6D19,0x22D19,Reveals Mirage / Lake
+159,description,0x6D19,0x22D19,Reveals Mirage / Lake
+160,description,0x6D2E,0x22D2E,A magic stone that / raises the tide
+161,description,0x6D52,0x22D52,A medal from the / elemental spirit
+162,description,0x6D75,0x22D75,The lost soul of a / princess
+163,description,0x6D92,0x22D92,A blue flower that / grows in snow
+164,description,0x6DB4,0x22DB4,Transforms users / into monsters
+165,description,0x6DD4,0x22DD4,Summons a clam for / crossing the sea
+166,description,0x6DF9,0x22DF9,Destroys what it / reflects
+167,description,0x6E14,0x22E14,Summons a cloud / for flying
+168,description,0x6E30,0x22E30,A legendary helmet / found in a cave
+169,description,0x6E54,0x22E54,A legendary armor / found in a tower
+170,description,0x6E78,0x22E78,A legendary sword / found in a castle
+171,description,0x6E9D,0x22E9D,A magical stone / that glows blue
+172,description,0x6EBE,0x22EBE,A beautiful gold / ring
+173,description,0x6ED5,0x22ED5,Undefined
+174,description,0x6ED5,0x22ED5,Undefined
+175,description,0x6EE0,0x22EE0,Raises max
+176,description,0x6EF6,0x22EF6,Raises max
+177,description,0x6F0C,0x22F0C,Raises max
+178,description,0x6F22,0x22F22,Raises max
+179,description,0x6F38,0x22F38,Raises ATK by 10
+180,description,0x6F4A,0x22F4A,Raises ATK by 50
+181,description,0x6F5C,0x22F5C,Raises DEF by 10
+182,description,0x6F6E,0x22F6E,Raises DEF by 50
+183,description,0x6F80,0x22F80,Raises AGL by 10
+184,description,0x6F92,0x22F92,Raises AGL by 50
+185,description,0x6FA4,0x22FA4,Raises INT by 50
+186,description,0x6FB6,0x22FB6,Raises INT by 100
+187,description,0x6FC9,0x22FC9,Raises resistance / to attack spells
+188,description,0x6FED,0x22FED,Raises resistance / to fire and ice
+189,description,0x7010,0x23010,Resists confusion<AB> / poison <B6> sleep
+190,description,0x7033,0x23033,Resists most / status skills
+191,description,0x704F,0x2304F,Resists curse<AB> / paralysis <B6> death
+192,description,0x7071,0x23071,Raises resistance / to water skills
+193,description,0x7094,0x23094,Prevents skills / from being sealed
+194,description,0x70B7,0x230B7,Raises DEF by 5
+195,description,0x70C8,0x230C8,Undefined
+196,description,0x70C8,0x230C8,Undefined
+197,description,0x70C8,0x230C8,Undefined
+198,description,0x70C8,0x230C8,Undefined
+199,description,0x70C8,0x230C8,Undefined
+200,description,0x70C8,0x230C8,Undefined
+201,description,0x70D3,0x230D3,Restores HP by 1 / on every step
+202,description,0x70F3,0x230F3,Restores MP by 1 / on every step
+203,description,0x7113,0x23113,Promotes max
+204,description,0x712A,0x2312A,Promotes max
+205,description,0x7141,0x23141,Promotes ATK gain / while growing
+206,description,0x7162,0x23162,Promotes DEF gain / while growing
+207,description,0x7183,0x23183,Promotes AGL gain / while growing
+208,description,0x71A4,0x231A4,Promotes INT gain / while growing
+209,description,0x71C5,0x231C5,Undefined
+210,description,0x71D0,0x231D0, / 
+211,description,0x71D0,0x231D0, / 
+212,description,0x71D0,0x231D0, / 
+213,description,0x71D0,0x231D0, / 
+214,description,0x71D0,0x231D0, / 
+215,description,0x71D0,0x231D0, / 
+216,description,0x71D0,0x231D0, / 
+217,description,0x71D0,0x231D0, / 
+218,description,0x71D0,0x231D0, / 
+219,description,0x71D0,0x231D0, / 
+220,description,0x71D0,0x231D0, / 
+221,description,0x71D0,0x231D0, / 
+222,description,0x71D2,0x231D2,Checks if monster / was caught before

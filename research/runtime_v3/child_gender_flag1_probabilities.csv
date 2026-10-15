@@ -1,0 +1,6 @@
+﻿case,condition,gender_ratio_low2,threshold,flag1_states_out_of_128,flag0_states_out_of_128,flag1_probability,flag1_percent,rng_behavior
+full_byte_zero,D009 == 0,,,0,128,0.0,0.0,no RNG call
+nonzero_byte,D009 != 0 and (D009 & 3) == 0,0,0,4,124,0.03125,3.125,small RNG
+nonzero_byte,D009 != 0 and (D009 & 3) == 1,1,10,16,112,0.125,12.5,small RNG
+nonzero_byte,D009 != 0 and (D009 & 3) == 2,2,50,70,58,0.546875,54.6875,small RNG
+nonzero_byte,D009 != 0 and (D009 & 3) == 3,3,90,123,5,0.9609375,96.09375,small RNG
