@@ -1,18 +1,33 @@
-name: Verify matching ROM
+name: Verify matching decompilation
 
 on:
   push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  verify:
+  python-rebuild:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Rebuild byte-exact ROM
+      - name: Rebuild from assembly source
         run: python tools/rebuild.py --out build/dwm2_cobi.gbc
-      - name: Verify known hashes
+      - name: Verify exact ROM hashes
         run: python tools/verify.py build/dwm2_cobi.gbc
+
+  rgbds-recompile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install RGBDS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rgbds
+      - name: Assemble and link with RGBDS
+        run: make rgbds
+      - name: Verify RGBDS output is byte-identical
+        run: python tools/verify.py build/dwm2_cobi_rgbds.gbc
