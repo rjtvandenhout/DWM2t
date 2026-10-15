@@ -101,14 +101,7 @@ StepResult Runtime::execute_current_instruction() {
     }
 
     if (cpu_.pc < 0x8000) {
-        const std::uint16_t bank = memory_.current_rom_bank();
-        switch (bank) {
-            case 2:
-                return execute_romx_bank_2(cpu_, memory_);
-            default:
-                cpu_.missing_bank = bank;
-                return StepResult::MissingBank;
-        }
+        return execute_translated_romx(cpu_, memory_);
     }
 
     cpu_.trap(cpu_.pc, memory_.read8(cpu_.pc));
