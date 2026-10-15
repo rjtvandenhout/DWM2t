@@ -1,5 +1,9 @@
 name: Native static recomp
 
+concurrency:
+  group: native-recomp-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -31,7 +35,7 @@ jobs:
         run: cmake -S recomp -B recomp/build -A x64
 
       - name: Build DWM2tRecomp.exe
-        run: cmake --build recomp/build --config Release
+        run: cmake --build recomp/build --config Release --parallel 4
 
       - name: Run M4 regression suite
         run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
