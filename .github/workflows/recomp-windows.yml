@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Validate complete LR35902 frontend
+        run: python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
+
       - name: Configure native recomp
         run: cmake -S recomp -B recomp/build -A x64
 
@@ -32,6 +35,6 @@ jobs:
       - name: Upload Windows executable
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M0-Windows-x64
+          name: DWM2tRecomp-M1-Windows-x64
           path: recomp/build/Release/DWM2tRecomp.exe
           if-no-files-found: error
