@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'bootstrap/rom.part.*'
+      - 'bootstrap/rom.part.*.b64'
   workflow_dispatch:
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
       - name: Reassemble verified user ROM
         shell: bash
         run: |
-          cat bootstrap/rom.part.* > /tmp/DWM2_rom.xz
+          cat bootstrap/rom.part.*.b64 | base64 -d > /tmp/DWM2_rom.xz
           echo 'ec976b83cd385b2806bb1c201fc3bae7393c91e4532236357986a2c366f824b2  /tmp/DWM2_rom.xz' | sha256sum -c -
           xz -dc /tmp/DWM2_rom.xz > /tmp/baserom.gbc
           echo '8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e  /tmp/baserom.gbc' | sha256sum -c -
@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm bootstrap/rom.part.*
+          git rm bootstrap/rom.part.*.b64
           git add src decomp_manifest.json
           git commit -m 'Generate complete matching DWM2 Cobi decompilation'
           git push
