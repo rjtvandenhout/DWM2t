@@ -14,6 +14,7 @@ enum class StepResult {
     Halted,
     Stopped,
     Trapped,
+    MissingBank,
     StepLimit,
 };
 
