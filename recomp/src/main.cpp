@@ -1,9 +1,13 @@
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
+#include "recomp/renderer.hpp"
 #include "recomp/runtime.hpp"
+#include "recomp/window.hpp"
 
 #include <cstdint>
 #include <cstdlib>
+#include <filesystem>
+#include <iomanip>
 #include <iostream>
 #include <string_view>
 
@@ -93,7 +97,7 @@ bool test_timer_and_joypad() {
 
     memory.write8(0xFF05, 0xFE);
     memory.write8(0xFF06, 0xA7);
-    memory.write8(0xFF07, 0x05); // enable, DIV bit 3 input
+    memory.write8(0xFF07, 0x05);
     memory.tick_tcycles(40);
 
     const bool timer_ok =
@@ -101,7 +105,7 @@ bool test_timer_and_joypad() {
         (memory.read8(0xFF0F) & 0x04) != 0;
 
     memory.write8(0xFF0F, 0);
-    memory.write8(0xFF00, 0x10); // buttons selected
+    memory.write8(0xFF00, 0x10);
     memory.set_joypad_state(dwm2t::JoyA | dwm2t::JoyStart);
     const std::uint8_t p1 = memory.read8(0xFF00);
 
@@ -144,9 +148,7 @@ bool test_halt_bug_trigger() {
     cpu.ime = false;
     memory.write8(0xFFFF, 0x01);
     memory.write8(0xFF0F, 0x01);
-
     dwm2t::lr35902::exec_base<0x76>(cpu, memory, 0, 0, 0x2000);
-
     return !cpu.halted && cpu.halt_bug;
 }
 
@@ -155,10 +157,8 @@ bool test_native_romx_bank2_call() {
     auto& cpu = runtime.cpu();
     auto& memory = runtime.memory();
 
-    // FUN_ROM2_42FA is part of the real CGB initialization path. It copies the
-    // eight bytes at Bank 2:$4322 to two WRAM locations using Bank 0 memcpy.
     memory.write8(0x2000, 0x02);
-    memory.write8(0xC525, 0x01); // IsGBC
+    memory.write8(0xC525, 0x01);
 
     cpu = dwm2t::Cpu{};
     cpu.pc = 0x42FA;
@@ -191,19 +191,136 @@ bool test_native_romx_bank2_call() {
            memory.read8(0xC527) == 0x7F;
 }
 
+void set_cgb_color(
+    dwm2t::Memory& memory,
+    bool obj,
+    unsigned palette,
+    unsigned color,
+    std::uint16_t bgr555) {
+
+    const std::uint16_t index_reg = obj ? 0xFF6A : 0xFF68;
+    const std::uint16_t data_reg = obj ? 0xFF6B : 0xFF69;
+    const std::uint8_t index =
+        static_cast<std::uint8_t>(palette * 8u + color * 2u);
+
+    memory.write8(index_reg, index);
+    memory.write8(data_reg, static_cast<std::uint8_t>(bgr555));
+    memory.write8(index_reg, static_cast<std::uint8_t>(index + 1));
+    memory.write8(data_reg, static_cast<std::uint8_t>(bgr555 >> 8));
+}
+
+void make_renderer_fixture(dwm2t::Memory& memory) {
+    memory.clear();
+
+    set_cgb_color(memory, false, 0, 0, 0x7FFF);
+    set_cgb_color(memory, false, 0, 1, 0x001F);
+    set_cgb_color(memory, false, 0, 2, 0x03E0);
+    set_cgb_color(memory, false, 0, 3, 0x7C00);
+
+    set_cgb_color(memory, false, 1, 0, 0x0000);
+    set_cgb_color(memory, false, 1, 1, 0x03FF);
+    set_cgb_color(memory, false, 1, 2, 0x7C1F);
+    set_cgb_color(memory, false, 1, 3, 0x7FE0);
+
+    set_cgb_color(memory, true, 1, 0, 0x0000);
+    set_cgb_color(memory, true, 1, 1, 0x7C00);
+    set_cgb_color(memory, true, 1, 2, 0x03E0);
+    set_cgb_color(memory, true, 1, 3, 0x01FF);
+
+    memory.write8(0xFF4F, 0);
+    for (unsigned row = 0; row < 8; ++row) {
+        memory.write8(static_cast<std::uint16_t>(0x8000 + row * 2), 0xAA);
+        memory.write8(static_cast<std::uint16_t>(0x8001 + row * 2), 0x00);
+    }
+
+    // Sprite tile 2: transparent border, opaque color 3 center.
+    for (unsigned row = 0; row < 8; ++row) {
+        const std::uint8_t bits = (row == 0 || row == 7) ? 0x00 : 0x7E;
+        memory.write8(static_cast<std::uint16_t>(0x8020 + row * 2), bits);
+        memory.write8(static_cast<std::uint16_t>(0x8021 + row * 2), bits);
+    }
+
+    for (unsigned i = 0; i < 32u * 32u; ++i) {
+        memory.write8(static_cast<std::uint16_t>(0x9800 + i), 0);
+        memory.write8(static_cast<std::uint16_t>(0x9C00 + i), 1);
+    }
+
+    memory.write8(0xFF4F, 1);
+    for (unsigned row = 0; row < 8; ++row) {
+        memory.write8(static_cast<std::uint16_t>(0x8010 + row * 2), 0xCC);
+        memory.write8(static_cast<std::uint16_t>(0x8011 + row * 2), 0x33);
+    }
+
+    for (unsigned i = 0; i < 32u * 32u; ++i) {
+        memory.write8(static_cast<std::uint16_t>(0x9800 + i), 0x00);
+        memory.write8(static_cast<std::uint16_t>(0x9C00 + i), 0x69);
+    }
+
+    memory.write8(0xFF4F, 0);
+
+    memory.write8(0xFE00, 64 + 16);
+    memory.write8(0xFE01, 72 + 8);
+    memory.write8(0xFE02, 2);
+    memory.write8(0xFE03, 1);
+
+    memory.write8(0xFF42, 5);
+    memory.write8(0xFF43, 3);
+    memory.write8(0xFF4A, 40);
+    memory.write8(0xFF4B, 47);
+
+    // LCD on, window map $9C00, window on, $8000 tile addressing,
+    // sprites on, BG/window master priority on.
+    memory.write8(0xFF40, 0xF3);
+}
+
+bool test_renderer(
+    dwm2t::Renderer& renderer,
+    const std::filesystem::path* bmp_path,
+    std::uint64_t& out_hash) {
+
+    dwm2t::Memory memory{};
+    make_renderer_fixture(memory);
+
+    const auto& first = renderer.render(memory, true);
+    out_hash = renderer.hash();
+
+    const std::uint32_t sprite_center =
+        first[67 * dwm2t::Renderer::Width + 75];
+
+    const std::uint64_t first_hash = out_hash;
+    renderer.render(memory, true);
+    const bool deterministic = renderer.hash() == first_hash;
+
+    bool diverse = false;
+    const std::uint32_t first_pixel = first[0];
+    for (const std::uint32_t pixel : first) {
+        if (pixel != first_pixel) {
+            diverse = true;
+            break;
+        }
+    }
+
+    bool bmp_ok = true;
+    if (bmp_path != nullptr) {
+        bmp_ok = renderer.write_bmp(*bmp_path);
+    }
+
+    // BGR555 $01FF -> R=255, G=123, B=0 in the deterministic converter.
+    constexpr std::uint32_t expected_sprite_center = 0xFFFF7B00u;
+
+    return deterministic &&
+           diverse &&
+           sprite_center == expected_sprite_center &&
+           first_hash != 0 &&
+           bmp_ok;
+}
+
 void print_result(std::string_view name, bool ok) {
     std::cout << name << ": " << (ok ? "PASS" : "FAIL") << "\n";
 }
 
-} // namespace
-
-int main(int argc, char** argv) {
-    if (argc > 1 && std::string_view(argv[1]) != "--self-test") {
-        std::cerr << "Usage: DWM2tRecomp.exe [--self-test]\n";
-        return EXIT_FAILURE;
-    }
-
-    std::cout << "DWM2t native static recomp - milestone M3\n";
+int run_self_tests(const std::filesystem::path* bmp_path) {
+    std::cout << "DWM2t native static recomp - milestone M4\n";
     std::cout << "Target ROM SHA-256: " << kTargetSha256 << "\n\n";
 
     const bool mbc_ok = test_embedded_rom_and_mbc5();
@@ -213,24 +330,61 @@ int main(int argc, char** argv) {
     const bool halt_ok = test_halt_bug_trigger();
     const bool bank2_ok = test_native_romx_bank2_call();
 
-    print_result("Embedded 4 MiB ROM + MBC5 ROM/SRAM banking", mbc_ok);
-    print_result("WRAM/VRAM banking + OAM DMA", memory_ok);
-    print_result("Timer overflow + joypad matrix/IRQ", timer_input_ok);
-    print_result("Interrupt priority/stack entry + 5 M-cycles", interrupt_ok);
-    print_result("HALT bug trigger condition", halt_ok);
-    print_result("Native Bank 2 -> Bank 0 -> Bank 2 call flow", bank2_ok);
+    dwm2t::Renderer renderer{};
+    std::uint64_t render_hash = 0;
+    const bool renderer_ok = test_renderer(renderer, bmp_path, render_hash);
+
+    print_result("M3 mapped hardware regression suite", 
+        mbc_ok && memory_ok && timer_input_ok && interrupt_ok && halt_ok && bank2_ok);
+    print_result("CGB BG/window/OAM/palette software renderer", renderer_ok);
+
+    std::cout << "Renderer FNV-1a: 0x"
+              << std::hex << std::setw(16) << std::setfill('0')
+              << render_hash << std::dec << "\n";
 
     if (!mbc_ok || !memory_ok || !timer_input_ok ||
-        !interrupt_ok || !halt_ok || !bank2_ok) {
-        std::cerr << "\nM3 hardware runtime self-test failed.\n";
+        !interrupt_ok || !halt_ok || !bank2_ok || !renderer_ok) {
+        std::cerr << "\nM4 native visual runtime self-test failed.\n";
         return EXIT_FAILURE;
     }
 
     std::cout
-        << "\nM3 PASS: the native recomp now has mapped Game Boy memory, "
-           "MBC5 banking, SRAM, timers, interrupts, joypad, cycle advancement "
-           "and ahead-of-time ROMX execution.\n";
+        << "\nM4 PASS: the native recomp now renders Game Boy Color tilemaps, "
+           "window layers, OAM sprites and palettes into a deterministic "
+           "160x144 host framebuffer and can present it in a Win32 window.\n";
     std::cout
-        << "Next milestone: M4 PPU/OAM/tile renderer and native PC window.\n";
+        << "Next milestone: M5 original DWM2 title screen from recompiled game code.\n";
     return EXIT_SUCCESS;
+}
+
+} // namespace
+
+int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--window-test") {
+        dwm2t::Memory memory{};
+        make_renderer_fixture(memory);
+        dwm2t::Renderer renderer{};
+        renderer.render(memory, true);
+        return dwm2t::run_native_window(renderer.framebuffer(), 4);
+    }
+
+    std::filesystem::path bmp_path;
+    const std::filesystem::path* bmp_ptr = nullptr;
+
+    if (argc >= 2 && std::string_view(argv[1]) != "--self-test") {
+        std::cerr
+            << "Usage: DWM2tRecomp.exe [--self-test [--bmp path]] | --window-test\n";
+        return EXIT_FAILURE;
+    }
+
+    if (argc == 4 && std::string_view(argv[2]) == "--bmp") {
+        bmp_path = argv[3];
+        bmp_ptr = &bmp_path;
+    } else if (argc != 1 && argc != 2) {
+        std::cerr
+            << "Usage: DWM2tRecomp.exe [--self-test [--bmp path]] | --window-test\n";
+        return EXIT_FAILURE;
+    }
+
+    return run_self_tests(bmp_ptr);
 }
