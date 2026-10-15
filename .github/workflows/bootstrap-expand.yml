@@ -1,0 +1,41 @@
+name: Expand bootstrap source
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bootstrap/src.part.*'
+      - 'bootstrap/research.part.*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble and expand generated source/research
+        shell: bash
+        run: |
+          cat bootstrap/src.part.* > /tmp/DWM2t_src.tar.xz
+          cat bootstrap/research.part.* > /tmp/DWM2t_research.tar.xz
+          echo 'eec31f0f18aacb217bd7e83aeb0d1eff6e4c945da83b11adfd000cf8ce37863b  /tmp/DWM2t_src.tar.xz' | sha256sum -c -
+          echo 'e8a3d85aaf047d7395404f07ace16c5b6dda1d4e4c88bb96bd268252cdda276f  /tmp/DWM2t_research.tar.xz' | sha256sum -c -
+          tar -xJf /tmp/DWM2t_src.tar.xz
+          tar -xJf /tmp/DWM2t_research.tar.xz
+      - name: Verify expanded matching source
+        run: |
+          python tools/rebuild.py --out build/dwm2_cobi.gbc
+          python tools/verify.py build/dwm2_cobi.gbc
+      - name: Commit expanded files
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm bootstrap/src.part.* bootstrap/research.part.*
+          git add src research decomp_manifest.json
+          git commit -m 'Expand complete matching DWM2 Cobi decompilation'
+          git push
