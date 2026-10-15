@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'recomp/native-pc'
+      - 'work/recomp-*'
     paths:
       - 'recomp/**'
       - 'src/banks/**'
@@ -32,12 +33,12 @@ jobs:
       - name: Build DWM2tRecomp.exe
         run: cmake --build recomp/build --config Release
 
-      - name: Run M2 native Bank 0 self-test
+      - name: Run native milestone self-test
         run: .\recomp\build\Release\DWM2tRecomp.exe --self-test
 
       - name: Upload Windows executable
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M2-Windows-x64
+          name: DWM2tRecomp-Windows-x64
           path: recomp/build/Release/DWM2tRecomp.exe
           if-no-files-found: error
