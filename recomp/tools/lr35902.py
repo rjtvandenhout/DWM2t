@@ -205,3 +205,101 @@ def validate_complete_decoder() -> None:
     for cb in range(256):
         ins = decode_one(bytes((0xCB, cb)), 0)
         assert ins.kind is Kind.CB and ins.cb_opcode == cb and ins.size == 2 and ins.mnemonic
+
+
+def base_opcode_mcycles(op: int, taken: bool = False) -> int:
+    """Return LR35902 machine cycles for a base opcode.
+
+    For conditional JR/JP/CALL/RET, pass taken=True for the taken timing.
+    CB-prefixed timing is handled by cb_opcode_mcycles().
+    """
+    op &= 0xFF
+    if op in ILLEGAL_BASE_OPCODES:
+        return 1
+    if op == 0xCB:
+        raise ValueError("use cb_opcode_mcycles for CB-prefixed instructions")
+
+    x = op >> 6
+    y = (op >> 3) & 7
+    z = op & 7
+    p = y >> 1
+    q = y & 1
+
+    if x == 0:
+        if z == 0:
+            if y == 0: return 1              # NOP
+            if y == 1: return 5              # LD (a16),SP
+            if y == 2: return 1              # STOP
+            if y == 3: return 3              # JR r8
+            return 3 if taken else 2         # JR cc,r8
+        if z == 1:
+            return 3 if q == 0 else 2
+        if z == 2:
+            return 2
+        if z == 3:
+            return 2
+        if z in (4, 5):
+            return 3 if y == 6 else 1
+        if z == 6:
+            return 3 if y == 6 else 2
+        return 1
+
+    if x == 1:
+        if y == 6 and z == 6:
+            return 1                         # HALT
+        return 2 if (y == 6 or z == 6) else 1
+
+    if x == 2:
+        return 2 if z == 6 else 1
+
+    # x == 3
+    if z == 0:
+        if y < 4:
+            return 5 if taken else 2          # RET cc
+        return (3, 4, 3, 3)[y - 4]           # LDH/ADD SP/LDH/LD HL,SP+r8
+    if z == 1:
+        if q == 0:
+            return 3                         # POP
+        return (4, 4, 1, 2)[p]               # RET/RETI/JP HL/LD SP,HL
+    if z == 2:
+        if y < 4:
+            return 4 if taken else 3          # JP cc,a16
+        return (2, 4, 2, 4)[y - 4]
+    if z == 3:
+        if y == 0: return 4                   # JP a16
+        if y == 1: return 1                   # prefix placeholder
+        return 1                              # illegal / DI / EI
+    if z == 4:
+        if y < 4:
+            return 6 if taken else 3          # CALL cc,a16
+        return 1
+    if z == 5:
+        if q == 0:
+            return 4                         # PUSH
+        return 6 if p == 0 else 1            # CALL / illegal
+    if z == 6:
+        return 2                             # ALU d8
+    return 4                                 # RST
+
+
+def cb_opcode_mcycles(cb: int) -> int:
+    cb &= 0xFF
+    x = cb >> 6
+    z = cb & 7
+    if z != 6:
+        return 2
+    return 3 if x == 1 else 4
+
+
+def conditional_code(op: int) -> int | None:
+    """Return condition index NZ/Z/NC/C for conditional control flow."""
+    op &= 0xFF
+    if op in (0x20, 0x28, 0x30, 0x38):
+        return (op >> 3) & 3
+    if op in (0xC0, 0xC8, 0xD0, 0xD8):
+        return (op >> 3) & 3
+    if op in (0xC2, 0xCA, 0xD2, 0xDA):
+        return (op >> 3) & 3
+    if op in (0xC4, 0xCC, 0xD4, 0xDC):
+        return (op >> 3) & 3
+    return None
