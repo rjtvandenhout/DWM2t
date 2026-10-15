@@ -23,11 +23,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install RGBDS
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build and install RGBDS
+        shell: bash
         run: |
           sudo apt-get update
-          sudo apt-get install -y rgbds
-      - name: Assemble and link with RGBDS
+          sudo apt-get install -y build-essential pkg-config bison flex libpng-dev
+          git clone --depth 1 https://github.com/gbdev/rgbds.git /tmp/rgbds
+          make -C /tmp/rgbds -j2
+          sudo make -C /tmp/rgbds install
+          rgbasm --version
+      - name: Assemble, link and verify byte-identical ROM
         run: make rgbds
-      - name: Verify RGBDS output is byte-identical
-        run: python tools/verify.py build/dwm2_cobi_rgbds.gbc
