@@ -1,0 +1,37 @@
+name: Native static recomp
+
+on:
+  push:
+    branches:
+      - 'recomp/native-pc'
+    paths:
+      - 'recomp/**'
+      - 'src/banks/**'
+      - '.github/workflows/recomp-windows.yml'
+  workflow_dispatch:
+
+jobs:
+  windows-x64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Configure native recomp
+        run: cmake -S recomp -B recomp/build -A x64
+
+      - name: Build DWM2tRecomp.exe
+        run: cmake --build recomp/build --config Release
+
+      - name: Run static recomp self-test
+        run: .\recomp\build\Release\DWM2tRecomp.exe --self-test
+
+      - name: Upload Windows executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2tRecomp-M0-Windows-x64
+          path: recomp/build/Release/DWM2tRecomp.exe
+          if-no-files-found: error
