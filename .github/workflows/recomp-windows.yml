@@ -37,21 +37,18 @@ jobs:
       - name: Build DWM2tRecomp.exe
         run: cmake --build recomp/build --config Release --parallel 4
 
-      - name: Run M4 regression suite
+      - name: Run M4 renderer regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
 
-      - name: Probe original DWM2 title boot path
-        id: title_probe
-        continue-on-error: true
-        run: .\recomp\build\Release\DWM2tRecomp.exe --title-probe recomp/build/title_probe
+      - name: Run M5 original title-screen regression
+        run: .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp/build/m5_title_screen.bmp
 
-      - name: Upload Windows executable and boot probe
-        if: always()
+      - name: Upload Windows executable and milestone images
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M5-Probe-Windows-x64
+          name: DWM2tRecomp-M5-Windows-x64
           path: |
             recomp/build/Release/DWM2tRecomp.exe
             recomp/build/m4_renderer_test.bmp
-            recomp/build/title_probe/*.bmp
-          if-no-files-found: warn
+            recomp/build/m5_title_screen.bmp
+          if-no-files-found: error
