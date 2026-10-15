@@ -1,15 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the complete native C++ translation for fixed ROM Bank 0.
-
-Every byte address in $0000-$3FFF receives an entry translation. This is
-intentional: LR35902 control flow can legally land on any byte, including an
-operand byte. No opcode decoding is performed at runtime for normal Bank 0
-execution.
-
-The only dynamic decode choice is the CB second byte if execution starts on a
-CB prefix at $3FFF, because that second byte is fetched from the currently
-mapped ROMX byte at $4000. MBC5 mapping itself belongs to milestone M3.
-"""
+"""Generate complete ahead-of-time C++ translation for fixed ROM Bank 0."""
 
 from __future__ import annotations
 
@@ -21,7 +11,14 @@ import sys
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from lr35902 import Kind, base_opcode_size, decode_one  # noqa: E402
+from lr35902 import (
+    Kind,
+    base_opcode_mcycles,
+    base_opcode_size,
+    cb_opcode_mcycles,
+    conditional_code,
+    decode_one,
+)
 
 DB_LINE = re.compile(r"^\s*db\b", re.IGNORECASE)
 BYTE = re.compile(r"\$([0-9A-Fa-f]{2})\b")
@@ -56,48 +53,82 @@ def byte_expr(bank: bytes, address: int) -> str:
     return f"memory.read8({cpp_u16(address)})"
 
 
+def shifted_byte_expr(bank: bytes, normal_address: int) -> str:
+    normal = byte_expr(bank, normal_address)
+    bugged = byte_expr(bank, normal_address - 1)
+    return f"(halt_bug ? {bugged} : {normal})"
+
+
 def word_expr(bank: bytes, address: int) -> str:
-    lo = byte_expr(bank, address)
-    hi = byte_expr(bank, address + 1)
-    if 0 <= address < BANK_SIZE - 1:
-        return cpp_u16(bank[address] | (bank[address + 1] << 8))
+    normal_lo = byte_expr(bank, address)
+    normal_hi = byte_expr(bank, address + 1)
+    bug_lo = byte_expr(bank, address - 1)
+    bug_hi = byte_expr(bank, address)
     return (
         "static_cast<std::uint16_t>("
-        f"static_cast<std::uint16_t>({lo}) | "
-        f"(static_cast<std::uint16_t>({hi}) << 8))"
+        f"static_cast<std::uint16_t>(halt_bug ? {bug_lo} : {normal_lo}) | "
+        f"(static_cast<std::uint16_t>(halt_bug ? {bug_hi} : {normal_hi}) << 8))"
+    )
+
+
+def cycle_line_for_base(op: int) -> str:
+    cc = conditional_code(op)
+    if cc is None:
+        return f"            cpu.last_mcycles = {base_opcode_mcycles(op)}u;"
+    not_taken = base_opcode_mcycles(op, False)
+    taken = base_opcode_mcycles(op, True)
+    return (
+        f"            cpu.last_mcycles = lr35902::condition<{cc}>(cpu) "
+        f"? {taken}u : {not_taken}u;"
     )
 
 
 def emit_case(bank: bytes, pc: int) -> str:
     ins = decode_one(bank, pc)
     lines = [f"        case {cpp_u16(pc)}: {{"]
+    lines.append("            const bool halt_bug = cpu.halt_bug;")
+    lines.append("            cpu.halt_bug = false;")
 
     if ins.kind is Kind.CB:
-        cb_expr = byte_expr(bank, pc + 1)
-        next_pc = (pc + 2) & 0xFFFF
-        lines.append(f"            cpu.pc = {cpp_u16(next_pc)};")
-        if pc + 1 < BANK_SIZE:
-            assert ins.cb_opcode is not None
-            lines.append(
-                f"            lr35902::exec_cb<{cpp_u8(ins.cb_opcode)}>(cpu, memory);"
-            )
-        else:
-            lines.append(
-                f"            lr35902::exec_cb_dynamic(cpu, memory, {cb_expr});"
-            )
+        assert ins.cb_opcode is not None
+        normal_cb = byte_expr(bank, pc + 1)
+        bug_cb = byte_expr(bank, pc)
+        lines.append(
+            f"            const std::uint8_t cb = halt_bug ? {bug_cb} : {normal_cb};"
+        )
+        lines.append(
+            f"            cpu.last_mcycles = halt_bug "
+            f"? lr35902::cb_mcycles_dynamic(cb) "
+            f": {cb_opcode_mcycles(ins.cb_opcode)}u;"
+        )
+        lines.append(
+            f"            cpu.pc = static_cast<std::uint16_t>({cpp_u16(pc)} + "
+            "(halt_bug ? 1u : 2u));"
+        )
+        lines.append("            if (halt_bug) {")
+        lines.append("                lr35902::exec_cb_dynamic(cpu, memory, cb);")
+        lines.append("            } else {")
+        lines.append(
+            f"                lr35902::exec_cb<{cpp_u8(ins.cb_opcode)}>(cpu, memory);"
+        )
+        lines.append("            }")
     else:
         op = ins.opcode
         size = base_opcode_size(op)
-        next_pc = (pc + size) & 0xFFFF
-        imm8 = byte_expr(bank, pc + 1) if size >= 2 else "0u"
+        imm8 = shifted_byte_expr(bank, pc + 1) if size >= 2 else "0u"
         imm16 = word_expr(bank, pc + 1) if size >= 3 else "0u"
-        lines.append(f"            cpu.pc = {cpp_u16(next_pc)};")
+        lines.append(cycle_line_for_base(op))
+        lines.append(
+            f"            cpu.pc = static_cast<std::uint16_t>({cpp_u16(pc)} + "
+            f"{size}u - (halt_bug ? 1u : 0u));"
+        )
         lines.append(
             f"            lr35902::exec_base<{cpp_u8(op)}>("
             f"cpu, memory, {imm8}, {imm16}, {cpp_u16(pc)});"
         )
 
     lines.append("            cpu.finish_instruction();")
+    lines.append("            memory.tick_mcycles(cpu.last_mcycles);")
     lines.append("            return classify_bank0_step(cpu);")
     lines.append("        }")
     return "\n".join(lines)
@@ -107,9 +138,8 @@ def emit_chunk(bank: bytes, chunk: int) -> str:
     begin = chunk * CHUNK_SIZE
     end = begin + CHUNK_SIZE
     body = "\n".join(emit_case(bank, pc) for pc in range(begin, end))
-
     return f"""// AUTO-GENERATED. DO NOT EDIT.
-// Bank 0 native translation chunk {chunk}: ${begin:04X}-${end - 1:04X}
+// Fixed Bank 0 native translation chunk {chunk}: 0x{begin:04X}-0x{end - 1:04X}
 
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
@@ -139,17 +169,13 @@ def emit_master(bank: bytes) -> str:
     decls = "\n".join(
         f"StepResult execute_bank0_chunk_{i}(Cpu&, Memory&);" for i in range(CHUNK_COUNT)
     )
-
-    dispatch = []
-    for i in range(CHUNK_COUNT):
-        hi = (i + 1) * CHUNK_SIZE
-        dispatch.append(
-            f"    if (cpu.pc < {cpp_u16(hi)}) return execute_bank0_chunk_{i}(cpu, memory);"
-        )
-    dispatch_text = "\n".join(dispatch)
+    dispatch = "\n".join(
+        f"    if (cpu.pc < {cpp_u16((i + 1) * CHUNK_SIZE)}) "
+        f"return execute_bank0_chunk_{i}(cpu, memory);"
+        for i in range(CHUNK_COUNT)
+    )
 
     return f"""// AUTO-GENERATED. DO NOT EDIT.
-// Complete fixed Bank 0 image plus native dispatch glue.
 
 #include "recomp/bank0.hpp"
 
@@ -162,22 +188,20 @@ namespace dwm2t {{
 {decls}
 
 namespace {{
-
 constexpr std::array<std::uint8_t, 0x4000> kBank0Image = {{
 {image}
 }};
-
 }} // namespace
 
 void load_bank0_image(Memory& memory) {{
     for (std::size_t i = 0; i < kBank0Image.size(); ++i) {{
-        memory.write8(static_cast<std::uint16_t>(i), kBank0Image[i]);
+        memory.set_rom_byte(i, kBank0Image[i]);
     }}
 }}
 
 StepResult execute_bank0_instruction(Cpu& cpu, Memory& memory) {{
     if (cpu.pc >= 0x4000) return StepResult::LeftBank0;
-{dispatch_text}
+{dispatch}
     cpu.trap(cpu.pc, memory.read8(cpu.pc));
     return StepResult::Trapped;
 }}
@@ -232,19 +256,16 @@ def main() -> int:
 
     if args.audit_only:
         return 0
-
     if args.out_dir is None:
         raise SystemExit("--out-dir is required unless --audit-only is used")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     (args.out_dir / "bank0_master.cpp").write_text(
-        emit_master(bank).replace("$", "$"), encoding="utf-8", newline="\n"
+        emit_master(bank), encoding="utf-8", newline="\n"
     )
     for chunk in range(CHUNK_COUNT):
         (args.out_dir / f"bank0_chunk_{chunk}.cpp").write_text(
-            emit_chunk(bank, chunk).replace("$", "$"),
-            encoding="utf-8",
-            newline="\n",
+            emit_chunk(bank, chunk), encoding="utf-8", newline="\n"
         )
 
     print(f"generated {CHUNK_COUNT + 1} C++ translation units in {args.out_dir}")
