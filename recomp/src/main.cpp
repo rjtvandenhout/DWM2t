@@ -455,6 +455,112 @@ int run_title_probe(const std::filesystem::path& output_dir) {
     return 23;
 }
 
+constexpr std::uint64_t kM5TitleHash = 0x49c67a53ef4f8a80ull;
+constexpr unsigned kM5TitleStableFrames = 30;
+
+int run_title_regression(
+    const std::filesystem::path* bmp_path,
+    bool show_window) {
+
+    dwm2t::Runtime runtime{};
+    dwm2t::Renderer renderer{};
+
+    auto& cpu = runtime.cpu();
+    auto& memory = runtime.memory();
+
+    std::uint64_t observed_frame = memory.frame_counter();
+    unsigned title_stable_frames = 0;
+
+    constexpr std::size_t max_steps = 80'000'000;
+    constexpr std::uint64_t max_frames = 2400;
+
+    std::cout
+        << "M5 original-title regression: booting recompiled DWM2 from $0100\n";
+    std::cout
+        << "AOT ROMX bank count: "
+        << dwm2t::translated_romx_bank_count() << "\n";
+
+    for (std::size_t step = 0; step < max_steps; ++step) {
+        const dwm2t::StepResult result = runtime.step();
+
+        if (result == dwm2t::StepResult::MissingBank) {
+            std::cerr
+                << "M5 FAIL: missing AOT ROMX bank " << cpu.missing_bank
+                << " at pc=0x" << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter() << "\n";
+            return 30;
+        }
+
+        if (result == dwm2t::StepResult::Trapped) {
+            std::cerr
+                << "M5 FAIL: trap at pc=0x" << std::hex << cpu.trap_pc
+                << " opcode=0x" << static_cast<unsigned>(cpu.trap_opcode)
+                << std::dec
+                << " bank=" << memory.current_rom_bank()
+                << " frame=" << memory.frame_counter() << "\n";
+            return 31;
+        }
+
+        if (result == dwm2t::StepResult::Stopped) {
+            std::cerr
+                << "M5 FAIL: unexpected STOP at pc=0x"
+                << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter() << "\n";
+            return 32;
+        }
+
+        const std::uint64_t frame = memory.frame_counter();
+        if (frame == observed_frame) continue;
+        observed_frame = frame;
+
+        renderer.render(memory, true);
+        const std::uint64_t hash = renderer.hash();
+        const std::uint8_t state = memory.read8(0xC5DB);
+        const std::uint8_t substate = memory.read8(0xC5DC);
+
+        if (hash == kM5TitleHash && state == 5 && substate == 0) {
+            ++title_stable_frames;
+        } else {
+            title_stable_frames = 0;
+        }
+
+        if (title_stable_frames >= kM5TitleStableFrames) {
+            if (bmp_path != nullptr && !renderer.write_bmp(*bmp_path)) {
+                std::cerr << "M5 FAIL: could not write title BMP\n";
+                return 33;
+            }
+
+            std::cout
+                << "M5_TITLE_REACHED frame=" << frame
+                << " hash=0x" << std::hex << hash << std::dec
+                << " stable_frames=" << title_stable_frames
+                << " C5DB=" << static_cast<unsigned>(state)
+                << " C5DC=" << static_cast<unsigned>(substate)
+                << "\n";
+            std::cout
+                << "M5 PASS: original DWM2 Cobi title framebuffer was produced "
+                   "by the recompiled cartridge boot path.\n";
+
+            if (show_window) {
+                return dwm2t::run_native_window(renderer.framebuffer(), 4);
+            }
+            return EXIT_SUCCESS;
+        }
+
+        if (frame >= max_frames) {
+            std::cerr
+                << "M5 FAIL: title hash 0x" << std::hex << kM5TitleHash
+                << std::dec << " did not remain stable for "
+                << kM5TitleStableFrames
+                << " frames before frame budget " << max_frames << "\n";
+            return 34;
+        }
+    }
+
+    std::cerr << "M5 FAIL: step budget exceeded before title screen\n";
+    return 35;
+}
+
 void print_result(std::string_view name, bool ok) {
     std::cout << name << ": " << (ok ? "PASS" : "FAIL") << "\n";
 }
@@ -500,6 +606,23 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--title-test") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --title-test <bmp-path>\\n";
+            return EXIT_FAILURE;
+        }
+        const std::filesystem::path title_bmp = argv[2];
+        return run_title_regression(&title_bmp, false);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--title-window") {
+        if (argc != 2) {
+            std::cerr << "Usage: DWM2tRecomp.exe --title-window\\n";
+            return EXIT_FAILURE;
+        }
+        return run_title_regression(nullptr, true);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--title-probe") {
         if (argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --title-probe <output-dir>\\n";
