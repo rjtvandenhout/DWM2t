@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <vector>
 
 namespace dwm2t {
 
@@ -30,7 +31,7 @@ public:
 
     void load_rom(const std::uint8_t* data, std::size_t size);
     void set_rom_byte(std::size_t offset, std::uint8_t value);
-    [[nodiscard]] const std::array<std::uint8_t, RomSize>& rom() const { return rom_; }
+    [[nodiscard]] const std::vector<std::uint8_t>& rom() const { return rom_; }
 
     [[nodiscard]] std::uint8_t read8(std::uint16_t address) const;
     void write8(std::uint16_t address, std::uint8_t value);
@@ -88,7 +89,7 @@ private:
     void update_stat_interrupt_line();
     void do_oam_dma(std::uint8_t page);
 
-    std::array<std::uint8_t, RomSize> rom_{};
+    std::vector<std::uint8_t> rom_;
     std::array<std::array<std::uint8_t, VramBankSize>, 2> vram_{};
     std::array<std::uint8_t, SramSize> sram_{};
     std::array<std::uint8_t, 0x1000> wram0_{};
