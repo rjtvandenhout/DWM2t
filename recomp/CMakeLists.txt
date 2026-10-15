@@ -11,26 +11,34 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 set(REPO_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(BANK0_SOURCE "${REPO_ROOT}/src/banks/bank_000.asm")
 set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
-set(GENERATED_CPP "${GENERATED_DIR}/recompiled_bank0_smoke.cpp")
+
+set(GENERATED_CPP
+    "${GENERATED_DIR}/bank0_master.cpp"
+    "${GENERATED_DIR}/bank0_chunk_0.cpp"
+    "${GENERATED_DIR}/bank0_chunk_1.cpp"
+    "${GENERATED_DIR}/bank0_chunk_2.cpp"
+    "${GENERATED_DIR}/bank0_chunk_3.cpp"
+)
 
 add_custom_command(
-    OUTPUT "${GENERATED_CPP}"
+    OUTPUT ${GENERATED_CPP}
     COMMAND "${CMAKE_COMMAND}" -E make_directory "${GENERATED_DIR}"
     COMMAND "${Python3_EXECUTABLE}"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_smoke.py"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_bank0.py"
             --bank "${BANK0_SOURCE}"
-            --out "${GENERATED_CPP}"
+            --out-dir "${GENERATED_DIR}"
     DEPENDS
         "${BANK0_SOURCE}"
-        "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_smoke.py"
-    COMMENT "Static-recompiling verified LR35902 Bank 0 routines to C++"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/lr35902.py"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_bank0.py"
+    COMMENT "Static-recompiling all 16,384 Bank 0 entry addresses to C++"
     VERBATIM
 )
 
 add_executable(DWM2tRecomp
     src/main.cpp
     src/memory.cpp
-    "${GENERATED_CPP}"
+    ${GENERATED_CPP}
 )
 
 target_include_directories(DWM2tRecomp PRIVATE
@@ -38,7 +46,7 @@ target_include_directories(DWM2tRecomp PRIVATE
 )
 
 if(MSVC)
-    target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive-)
+    target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive- /O1 /bigobj)
 else()
-    target_compile_options(DWM2tRecomp PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(DWM2tRecomp PRIVATE -Wall -Wextra -Wpedantic -O1)
 endif()
