@@ -1,5 +1,6 @@
 #include "recomp/runtime.hpp"
 
+#include "recomp/hram_exec.hpp"
 #include "recomp/lr35902_exec.hpp"
 #include "recomp/romx.hpp"
 
@@ -102,6 +103,10 @@ StepResult Runtime::execute_current_instruction() {
 
     if (cpu_.pc < 0x8000) {
         return execute_translated_romx(cpu_, memory_);
+    }
+
+    if (is_known_hram_dma_pc(cpu_.pc)) {
+        return execute_known_hram_dma(cpu_, memory_);
     }
 
     cpu_.trap(cpu_.pc, memory_.read8(cpu_.pc));
