@@ -88,14 +88,14 @@ std::vector<std::uint8_t> decode_rom() {{
     std::vector<std::uint8_t> out;
     out.reserve(Memory::RomSize);
 
-    int val = 0;
+    std::uint32_t val = 0;
     int bits = -8;
     for (const char c : kRomBase64) {{
         if (c == '\\0') break;
         const int d = b64_value(c);
         if (d == -2) break;
         if (d < 0) continue;
-        val = (val << 6) | d;
+        val = (val << 6) | static_cast<std::uint32_t>(d);
         bits += 6;
         if (bits >= 0) {{
             out.push_back(static_cast<std::uint8_t>((val >> bits) & 0xFF));
