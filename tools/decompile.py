@@ -42,7 +42,7 @@ def main() -> int:
 
     main_asm = args.out_dir.parent / "main.asm"
     main_asm.write_text(
-        "; Bit-perfect DWM2 Cobi decompilation root\n" +
+        "; Bit-perfect DWM2 Cobi decompilation root\n" +\n        'INCLUDE "src/include/known_regions.inc"\\n' +
         "".join(f'INCLUDE "src/banks/bank_{b:03d}.asm"\n' for b in range(BANK_COUNT)),
         encoding="utf-8",
     )

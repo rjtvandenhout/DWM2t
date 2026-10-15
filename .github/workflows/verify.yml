@@ -31,7 +31,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential pkg-config bison flex libpng-dev
-          git clone --depth 1 https://github.com/gbdev/rgbds.git /tmp/rgbds
+          git clone https://github.com/gbdev/rgbds.git /tmp/rgbds
+          git -C /tmp/rgbds checkout --detach 451cf69f7de88e55d5101c9bed0b8eb157191b1c
           make -C /tmp/rgbds -j2
           sudo make -C /tmp/rgbds install
           rgbasm --version
