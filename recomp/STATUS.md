@@ -5,8 +5,8 @@
 | M0 | Native EXE pipeline + two statically translated helpers | ✅ complete |
 | M1 | Complete LR35902 decoder/frontend | ✅ complete |
 | M2 | Bank 0 fully statically translated to native C++ | ✅ complete |
-| M3 | Memory map, MBC5, interrupts, timers and joypad | ⏳ next |
-| M4 | PPU/OAM compatibility renderer and native window | ⏳ |
+| M3 | Memory map, MBC5, interrupts, timers and joypad | ✅ complete |
+| M4 | PPU/OAM compatibility renderer and native window | ⏳ next |
 | M5 | Original title screen through recompiled code | ⏳ |
 | M6 | Input + overworld | ⏳ |
 | M7 | Battles + audio + saves | ⏳ |
@@ -15,18 +15,21 @@
 Restore branches live under `restore/recomp-mN`.
 Continuation notes live under `recomp/handoff/`.
 
-## M2 acceptance evidence
+## M3 acceptance evidence
 
-Windows CI run `38819460960` passed the complete milestone:
+Windows CI run `38821080893` passed at
+`8ec0c1e80b5cea3df8f9581d1424fae319ec67d6`.
 
-- LR35902 frontend validation: PASS
-- Bank 0 translation audit: 16,384 / 16,384 entry addresses
-- native Windows build: PASS
-- `$0949` memset regression: PASS
-- `$095B` RNG/table regression: PASS
-- `$1679` memcpy regression: PASS
-- arithmetic / DAA flag-edge checks: PASS
-- Windows artifact upload: PASS
+Verified in the native Windows executable:
 
-The immutable M2 restore point is `restore/recomp-m2` at
-`e68bd3e1136f93982a33d755d20bd3b093a6f7b5`.
+- exact 4 MiB ROM image embedded from checked-in matching source;
+- MBC5 ROM bank selection and cartridge RAM banking;
+- WRAM/VRAM bank mapping and OAM DMA;
+- timer overflow/reload and timer interrupt;
+- joypad matrix and joypad interrupt;
+- interrupt priority/stack entry with 5 M-cycle service timing;
+- HALT-bug trigger behavior;
+- ahead-of-time Bank 2 -> Bank 0 -> Bank 2 execution;
+- per-instruction machine-cycle advancement.
+
+Restore point: `restore/recomp-m3`.
