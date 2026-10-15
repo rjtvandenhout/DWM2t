@@ -109,6 +109,7 @@ add_executable(DWM2tRecomp
     src/main.cpp
     src/memory.cpp
     src/runtime.cpp
+    src/hram_exec.cpp
     src/renderer.cpp
     src/window.cpp
     ${BANK0_CPP}
