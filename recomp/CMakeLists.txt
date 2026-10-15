@@ -83,6 +83,8 @@ add_executable(DWM2tRecomp
     src/main.cpp
     src/memory.cpp
     src/runtime.cpp
+    src/renderer.cpp
+    src/window.cpp
     ${BANK0_CPP}
     ${BANK2_CPP}
     "${ROM_IMAGE_CPP}"
@@ -96,4 +98,8 @@ if(MSVC)
     target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive- /O1 /bigobj)
 else()
     target_compile_options(DWM2tRecomp PRIVATE -Wall -Wextra -Wpedantic -O1)
+endif()
+
+if(WIN32)
+    target_link_libraries(DWM2tRecomp PRIVATE user32 gdi32)
 endif()
