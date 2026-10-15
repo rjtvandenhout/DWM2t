@@ -11,7 +11,6 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 set(REPO_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(BANKS_DIR "${REPO_ROOT}/src/banks")
 set(BANK0_SOURCE "${BANKS_DIR}/bank_000.asm")
-set(BANK2_SOURCE "${BANKS_DIR}/bank_002.asm")
 set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
 file(GLOB BANK_SOURCES CONFIGURE_DEPENDS "${BANKS_DIR}/bank_*.asm")
@@ -23,16 +22,6 @@ set(BANK0_CPP
     "${GENERATED_DIR}/bank0_chunk_2.cpp"
     "${GENERATED_DIR}/bank0_chunk_3.cpp"
 )
-
-set(BANK2_CPP
-    "${GENERATED_DIR}/romx_bank_2_master.cpp"
-    "${GENERATED_DIR}/romx_bank_2_chunk_0.cpp"
-    "${GENERATED_DIR}/romx_bank_2_chunk_1.cpp"
-    "${GENERATED_DIR}/romx_bank_2_chunk_2.cpp"
-    "${GENERATED_DIR}/romx_bank_2_chunk_3.cpp"
-)
-
-set(ROM_IMAGE_CPP "${GENERATED_DIR}/rom_image.cpp")
 
 add_custom_command(
     OUTPUT ${BANK0_CPP}
@@ -49,22 +38,60 @@ add_custom_command(
     VERBATIM
 )
 
+# M5 starts with banks known to be on the CGB boot/title path. Missing-bank
+# instrumentation in Runtime is authoritative when this set needs to expand.
+set(NATIVE_ROMX_BANKS 1 2 7 127)
+set(BANK_FILE_1 "bank_001.asm")
+set(BANK_FILE_2 "bank_002.asm")
+set(BANK_FILE_7 "bank_007.asm")
+set(BANK_FILE_127 "bank_127.asm")
+
+set(ROMX_CPP)
+foreach(BANK IN LISTS NATIVE_ROMX_BANKS)
+    set(BANK_SOURCE "${BANKS_DIR}/${BANK_FILE_${BANK}}")
+    set(BANK_OUTPUTS
+        "${GENERATED_DIR}/romx_bank_${BANK}_master.cpp"
+        "${GENERATED_DIR}/romx_bank_${BANK}_chunk_0.cpp"
+        "${GENERATED_DIR}/romx_bank_${BANK}_chunk_1.cpp"
+        "${GENERATED_DIR}/romx_bank_${BANK}_chunk_2.cpp"
+        "${GENERATED_DIR}/romx_bank_${BANK}_chunk_3.cpp"
+    )
+
+    add_custom_command(
+        OUTPUT ${BANK_OUTPUTS}
+        COMMAND "${CMAKE_COMMAND}" -E make_directory "${GENERATED_DIR}"
+        COMMAND "${Python3_EXECUTABLE}"
+                "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_romx_bank.py"
+                --bank "${BANK_SOURCE}"
+                --bank-number "${BANK}"
+                --out-dir "${GENERATED_DIR}"
+        DEPENDS
+            "${BANK_SOURCE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/lr35902.py"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_romx_bank.py"
+        COMMENT "Static-recompiling switchable ROM Bank ${BANK}"
+        VERBATIM
+    )
+    list(APPEND ROMX_CPP ${BANK_OUTPUTS})
+endforeach()
+
+set(ROMX_DISPATCH_CPP "${GENERATED_DIR}/romx_dispatch.cpp")
 add_custom_command(
-    OUTPUT ${BANK2_CPP}
+    OUTPUT "${ROMX_DISPATCH_CPP}"
     COMMAND "${CMAKE_COMMAND}" -E make_directory "${GENERATED_DIR}"
     COMMAND "${Python3_EXECUTABLE}"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_romx_bank.py"
-            --bank "${BANK2_SOURCE}"
-            --bank-number 2
-            --out-dir "${GENERATED_DIR}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/generate_romx_dispatch.py"
+            --banks ${NATIVE_ROMX_BANKS}
+            --out "${ROMX_DISPATCH_CPP}"
     DEPENDS
-        "${BANK2_SOURCE}"
-        "${CMAKE_CURRENT_SOURCE_DIR}/tools/lr35902.py"
-        "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_romx_bank.py"
-    COMMENT "Static-recompiling switchable ROM Bank 2"
+        ${ROMX_CPP}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/generate_romx_dispatch.py"
+    COMMENT "Generating native ROMX bank registry"
+    COMMAND_EXPAND_LISTS
     VERBATIM
 )
 
+set(ROM_IMAGE_CPP "${GENERATED_DIR}/rom_image.cpp")
 add_custom_command(
     OUTPUT "${ROM_IMAGE_CPP}"
     COMMAND "${CMAKE_COMMAND}" -E make_directory "${GENERATED_DIR}"
@@ -83,10 +110,12 @@ add_executable(DWM2tRecomp
     src/main.cpp
     src/memory.cpp
     src/runtime.cpp
+    src/hram_exec.cpp
     src/renderer.cpp
     src/window.cpp
     ${BANK0_CPP}
-    ${BANK2_CPP}
+    ${ROMX_CPP}
+    "${ROMX_DISPATCH_CPP}"
     "${ROM_IMAGE_CPP}"
 )
 
