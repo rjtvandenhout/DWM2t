@@ -2,10 +2,16 @@
 
 #include "recomp/bank0.hpp"
 
+#include <cstddef>
+#include <cstdint>
+
 namespace dwm2t {
 
-// Milestone M3 starts native ROMX execution with Bank 2, which is used by the
-// game's CGB initialization path. Later milestones add more generated banks.
-StepResult execute_romx_bank_2(Cpu& cpu, Memory& memory);
+// Generated registry dispatches only banks translated ahead-of-time into the
+// executable. Unknown banks return MissingBank, making the real boot path
+// discoverable without falling back to runtime opcode interpretation.
+StepResult execute_translated_romx(Cpu& cpu, Memory& memory);
+bool romx_bank_is_translated(std::uint16_t bank);
+std::size_t translated_romx_bank_count();
 
 } // namespace dwm2t
