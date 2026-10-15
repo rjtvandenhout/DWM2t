@@ -1,6 +1,7 @@
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
 #include "recomp/renderer.hpp"
+#include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
 #include "recomp/window.hpp"
 
