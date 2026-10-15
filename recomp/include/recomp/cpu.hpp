@@ -26,9 +26,13 @@ struct Cpu {
     std::uint8_t ime_delay = 0;
     bool halted = false;
     bool stopped = false;
+    bool halt_bug = false;
     bool trapped = false;
     std::uint16_t trap_pc = 0;
     std::uint8_t trap_opcode = 0;
+
+    std::uint8_t last_mcycles = 0;
+    std::uint16_t missing_bank = 0xFFFF;
 
     [[nodiscard]] std::uint16_t af() const {
         return static_cast<std::uint16_t>(
