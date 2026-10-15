@@ -26,4 +26,4 @@ f4775b7d5510adaa03b961d31d36e226c80f48aac60f552ed7982c0aa32efb97
 ```
 
 The artifact contains the native executable and `m4_renderer_test.bmp`.
-M5 must continue from `recomp/handoff/M4_NEXT.md`.
+M5 continued from `recomp/handoff/M4_NEXT.md`.

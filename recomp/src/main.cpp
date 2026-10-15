@@ -1,6 +1,7 @@
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
 #include "recomp/renderer.hpp"
+#include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
 #include "recomp/window.hpp"
 
@@ -9,6 +10,7 @@
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
+#include <string>
 #include <string_view>
 
 namespace {
@@ -315,6 +317,250 @@ bool test_renderer(
            bmp_ok;
 }
 
+
+int run_title_probe(const std::filesystem::path& output_dir) {
+    std::filesystem::create_directories(output_dir);
+
+    dwm2t::Runtime runtime{};
+    dwm2t::Renderer renderer{};
+
+    auto& cpu = runtime.cpu();
+    auto& memory = runtime.memory();
+
+    std::uint64_t observed_frame = memory.frame_counter();
+    std::uint8_t last_state = memory.read8(0xC5DB);
+    std::uint8_t last_substate = memory.read8(0xC5DC);
+    std::uint64_t last_hash = 0;
+    unsigned stable_frames = 0;
+    bool have_frame = false;
+
+    constexpr std::size_t max_steps = 80'000'000;
+    constexpr std::uint64_t max_frames = 2400;
+
+    std::cout << "M5 title boot probe: starting real CGB cartridge path at $0100\\n";
+    std::cout << "AOT ROMX bank count: " << dwm2t::translated_romx_bank_count() << "\\n";
+
+    for (std::size_t step = 0; step < max_steps; ++step) {
+        const dwm2t::StepResult result = runtime.step();
+
+        if (result == dwm2t::StepResult::MissingBank) {
+            if (have_frame) {
+                renderer.write_bmp(output_dir / "last_frame_before_missing_bank.bmp");
+            }
+            std::cout
+                << "M5_PROBE_MISSING_BANK bank=" << cpu.missing_bank
+                << " pc=0x" << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter()
+                << " C5DB=" << static_cast<unsigned>(memory.read8(0xC5DB))
+                << " C5DC=" << static_cast<unsigned>(memory.read8(0xC5DC))
+                << " steps=" << step << "\\n";
+            return 20;
+        }
+
+        if (result == dwm2t::StepResult::Trapped) {
+            if (have_frame) {
+                renderer.write_bmp(output_dir / "last_frame_before_trap.bmp");
+            }
+            std::cout
+                << "M5_PROBE_TRAP pc=0x" << std::hex << cpu.trap_pc
+                << " opcode=0x" << static_cast<unsigned>(cpu.trap_opcode)
+                << std::dec
+                << " bank=" << memory.current_rom_bank()
+                << " frame=" << memory.frame_counter()
+                << " C5DB=" << static_cast<unsigned>(memory.read8(0xC5DB))
+                << " C5DC=" << static_cast<unsigned>(memory.read8(0xC5DC))
+                << " steps=" << step << "\\n";
+            return 21;
+        }
+
+        if (result == dwm2t::StepResult::Stopped) {
+            std::cout
+                << "M5_PROBE_STOP pc=0x" << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter() << "\\n";
+            return 22;
+        }
+
+        const std::uint64_t frame = memory.frame_counter();
+        if (frame != observed_frame) {
+            observed_frame = frame;
+            renderer.render(memory, true);
+            have_frame = true;
+            const std::uint64_t hash = renderer.hash();
+
+            if (hash == last_hash) ++stable_frames;
+            else stable_frames = 0;
+            last_hash = hash;
+
+            const std::uint8_t state = memory.read8(0xC5DB);
+            const std::uint8_t substate = memory.read8(0xC5DC);
+            const bool state_changed = state != last_state || substate != last_substate;
+            last_state = state;
+            last_substate = substate;
+
+            const bool checkpoint =
+                frame <= 5 ||
+                frame == 15 ||
+                frame == 30 ||
+                frame == 60 ||
+                frame == 90 ||
+                frame == 120 ||
+                frame == 180 ||
+                frame == 240 ||
+                frame == 360 ||
+                frame == 480 ||
+                frame == 600 ||
+                frame == 750 ||
+                frame == 900 ||
+                (frame > 900 && frame % 120 == 0) ||
+                state_changed;
+
+            if (checkpoint) {
+                const std::string file =
+                    "frame_" + std::to_string(frame) +
+                    "_state_" + std::to_string(state) +
+                    "_" + std::to_string(substate) +
+                    ".bmp";
+                renderer.write_bmp(output_dir / file);
+            }
+
+            if (frame <= 10 || frame % 30 == 0 || state_changed) {
+                std::cout
+                    << "M5_FRAME frame=" << frame
+                    << " hash=0x" << std::hex << hash << std::dec
+                    << " stable=" << stable_frames
+                    << " C5DB=" << static_cast<unsigned>(state)
+                    << " C5DC=" << static_cast<unsigned>(substate)
+                    << " bank=" << memory.current_rom_bank()
+                    << " pc=0x" << std::hex << cpu.pc << std::dec
+                    << "\\n";
+            }
+
+            if (frame >= max_frames) {
+                renderer.write_bmp(output_dir / "probe_final_frame.bmp");
+                std::cout
+                    << "M5_PROBE_FRAME_BUDGET frame=" << frame
+                    << " hash=0x" << std::hex << hash << std::dec
+                    << " stable=" << stable_frames
+                    << " C5DB=" << static_cast<unsigned>(state)
+                    << " C5DC=" << static_cast<unsigned>(substate)
+                    << "\\n";
+                return 0;
+            }
+        }
+    }
+
+    if (have_frame) renderer.write_bmp(output_dir / "probe_step_budget_frame.bmp");
+    std::cout << "M5_PROBE_STEP_BUDGET steps=" << max_steps
+              << " frame=" << memory.frame_counter() << "\\n";
+    return 23;
+}
+
+constexpr std::uint64_t kM5TitleHash = 0x49c67a53ef4f8a80ull;
+constexpr unsigned kM5TitleStableFrames = 30;
+
+int run_title_regression(
+    const std::filesystem::path* bmp_path,
+    bool show_window) {
+
+    dwm2t::Runtime runtime{};
+    dwm2t::Renderer renderer{};
+
+    auto& cpu = runtime.cpu();
+    auto& memory = runtime.memory();
+
+    std::uint64_t observed_frame = memory.frame_counter();
+    unsigned title_stable_frames = 0;
+
+    constexpr std::size_t max_steps = 80'000'000;
+    constexpr std::uint64_t max_frames = 2400;
+
+    std::cout
+        << "M5 original-title regression: booting recompiled DWM2 from $0100\n";
+    std::cout
+        << "AOT ROMX bank count: "
+        << dwm2t::translated_romx_bank_count() << "\n";
+
+    for (std::size_t step = 0; step < max_steps; ++step) {
+        const dwm2t::StepResult result = runtime.step();
+
+        if (result == dwm2t::StepResult::MissingBank) {
+            std::cerr
+                << "M5 FAIL: missing AOT ROMX bank " << cpu.missing_bank
+                << " at pc=0x" << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter() << "\n";
+            return 30;
+        }
+
+        if (result == dwm2t::StepResult::Trapped) {
+            std::cerr
+                << "M5 FAIL: trap at pc=0x" << std::hex << cpu.trap_pc
+                << " opcode=0x" << static_cast<unsigned>(cpu.trap_opcode)
+                << std::dec
+                << " bank=" << memory.current_rom_bank()
+                << " frame=" << memory.frame_counter() << "\n";
+            return 31;
+        }
+
+        if (result == dwm2t::StepResult::Stopped) {
+            std::cerr
+                << "M5 FAIL: unexpected STOP at pc=0x"
+                << std::hex << cpu.pc << std::dec
+                << " frame=" << memory.frame_counter() << "\n";
+            return 32;
+        }
+
+        const std::uint64_t frame = memory.frame_counter();
+        if (frame == observed_frame) continue;
+        observed_frame = frame;
+
+        renderer.render(memory, true);
+        const std::uint64_t hash = renderer.hash();
+        const std::uint8_t state = memory.read8(0xC5DB);
+        const std::uint8_t substate = memory.read8(0xC5DC);
+
+        if (hash == kM5TitleHash && state == 5 && substate == 0) {
+            ++title_stable_frames;
+        } else {
+            title_stable_frames = 0;
+        }
+
+        if (title_stable_frames >= kM5TitleStableFrames) {
+            if (bmp_path != nullptr && !renderer.write_bmp(*bmp_path)) {
+                std::cerr << "M5 FAIL: could not write title BMP\n";
+                return 33;
+            }
+
+            std::cout
+                << "M5_TITLE_REACHED frame=" << frame
+                << " hash=0x" << std::hex << hash << std::dec
+                << " stable_frames=" << title_stable_frames
+                << " C5DB=" << static_cast<unsigned>(state)
+                << " C5DC=" << static_cast<unsigned>(substate)
+                << "\n";
+            std::cout
+                << "M5 PASS: original DWM2 Cobi title framebuffer was produced "
+                   "by the recompiled cartridge boot path.\n";
+
+            if (show_window) {
+                return dwm2t::run_native_window(renderer.framebuffer(), 4);
+            }
+            return EXIT_SUCCESS;
+        }
+
+        if (frame >= max_frames) {
+            std::cerr
+                << "M5 FAIL: title hash 0x" << std::hex << kM5TitleHash
+                << std::dec << " did not remain stable for "
+                << kM5TitleStableFrames
+                << " frames before frame budget " << max_frames << "\n";
+            return 34;
+        }
+    }
+
+    std::cerr << "M5 FAIL: step budget exceeded before title screen\n";
+    return 35;
+}
+
 void print_result(std::string_view name, bool ok) {
     std::cout << name << ": " << (ok ? "PASS" : "FAIL") << "\n";
 }
@@ -360,6 +606,31 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--title-test") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --title-test <bmp-path>\\n";
+            return EXIT_FAILURE;
+        }
+        const std::filesystem::path title_bmp = argv[2];
+        return run_title_regression(&title_bmp, false);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--title-window") {
+        if (argc != 2) {
+            std::cerr << "Usage: DWM2tRecomp.exe --title-window\\n";
+            return EXIT_FAILURE;
+        }
+        return run_title_regression(nullptr, true);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--title-probe") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --title-probe <output-dir>\\n";
+            return EXIT_FAILURE;
+        }
+        return run_title_probe(argv[2]);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--window-test") {
         dwm2t::Memory memory{};
         make_renderer_fixture(memory);

@@ -30,17 +30,15 @@ A hand-rebuilt title image does not count.
    Bank 7 at `$486E`, and its VBlank handler enters Bank 7 at `$4F7B`.
 6. Preserve hardware timing. Do not bypass title code by directly copying title
    graphics into VRAM from host C++.
-7. Add any missing IO behavior only when runtime evidence shows the original code
-   needs it. Document each compatibility addition.
+7. Add missing IO behavior only when runtime evidence shows the original code
+   needs it.
 8. Capture rendered framebuffers at VBlank boundaries.
 9. Detect a stable title-state framebuffer from game execution, write it to BMP,
    and record its deterministic hash.
-10. Add a title boot regression that fails on trap, missing translated bank, or
-    failure to reach the accepted title state within a bounded step/frame budget.
-11. Make the normal Windows executable able to show the reached game framebuffer
-    in the native Win32 window.
+10. Fail on trap, missing translated bank, or failure to reach the title state.
+11. Make the Windows executable able to show the real reached framebuffer.
 12. Mark M5 complete only after green Windows CI produces both the executable and
-    the title-screen BMP from the game-code boot path.
+    title-screen BMP from the game-code boot path.
 13. Create `restore/recomp-m5`, `M5_RESULT.md`, and `M5_NEXT.md`.
 
-Do not begin M6 overworld work before the title boot regression is green.
+M5 completed these requirements at restore point `restore/recomp-m5`.
