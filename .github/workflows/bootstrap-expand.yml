@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'bootstrap/src.part.*'
+      - 'bootstrap/rom.part.*'
   workflow_dispatch:
 
 permissions:
@@ -16,22 +16,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reassemble and expand complete generated source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Reassemble verified user ROM
         shell: bash
         run: |
-          cat bootstrap/src.part.* > /tmp/DWM2t_src.tar.xz
-          echo 'eec31f0f18aacb217bd7e83aeb0d1eff6e4c945da83b11adfd000cf8ce37863b  /tmp/DWM2t_src.tar.xz' | sha256sum -c -
-          tar -xJf /tmp/DWM2t_src.tar.xz
-      - name: Verify expanded matching source
+          cat bootstrap/rom.part.* > /tmp/DWM2_rom.xz
+          echo 'ec976b83cd385b2806bb1c201fc3bae7393c91e4532236357986a2c366f824b2  /tmp/DWM2_rom.xz' | sha256sum -c -
+          xz -dc /tmp/DWM2_rom.xz > /tmp/baserom.gbc
+          echo '8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e  /tmp/baserom.gbc' | sha256sum -c -
+      - name: Generate complete matching assembly source
+        run: python tools/decompile.py /tmp/baserom.gbc
+      - name: Verify generated matching source
         run: |
           python tools/rebuild.py --out build/dwm2_cobi.gbc
           python tools/verify.py build/dwm2_cobi.gbc
-      - name: Commit expanded files
+      - name: Commit generated decompilation
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm bootstrap/src.part.*
+          git rm bootstrap/rom.part.*
           git add src decomp_manifest.json
-          git commit -m 'Expand complete matching DWM2 Cobi decompilation'
+          git commit -m 'Generate complete matching DWM2 Cobi decompilation'
           git push
