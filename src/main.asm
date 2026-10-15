@@ -1,4 +1,5 @@
 ; Bit-perfect DWM2 Cobi decompilation root
+INCLUDE "src/include/known_regions.inc"
 INCLUDE "src/banks/bank_000.asm"
 INCLUDE "src/banks/bank_001.asm"
 INCLUDE "src/banks/bank_002.asm"

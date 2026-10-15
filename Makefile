@@ -4,7 +4,7 @@ ROM := $(BUILD_DIR)/dwm2_cobi.gbc
 RGBDS_ROM := $(BUILD_DIR)/dwm2_cobi_rgbds.gbc
 OBJ := $(BUILD_DIR)/dwm2_cobi.o
 
-.PHONY: all rebuild verify rgbds clean
+.PHONY: all rebuild verify rgbds coverage clean
 
 all: verify
 
@@ -23,6 +23,9 @@ rgbds: | $(BUILD_DIR)
 	rgbasm -o $(OBJ) src/main.asm
 	rgblink -o $(RGBDS_ROM) $(OBJ)
 	$(PYTHON) tools/verify.py $(RGBDS_ROM)
+
+coverage:
+	$(PYTHON) tools/coverage.py
 
 clean:
 	rm -rf $(BUILD_DIR)
