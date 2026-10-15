@@ -31,12 +31,13 @@ constexpr std::uint8_t io_index(std::uint16_t address) {
 
 } // namespace
 
-Memory::Memory() {
+Memory::Memory()
+    : rom_(RomSize, 0) {
     clear();
 }
 
 void Memory::clear() {
-    rom_.fill(0);
+    std::fill(rom_.begin(), rom_.end(), 0);
     for (auto& bank : vram_) bank.fill(0);
     sram_.fill(0);
     wram0_.fill(0);
