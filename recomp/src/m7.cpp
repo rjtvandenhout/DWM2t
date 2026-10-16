@@ -1075,11 +1075,6 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << tilemap_hash(
                                        outdoor->memory())
                                 << std::dec << std::endl;
-
-                            std::cout << "M7_STORY_TRACE_COMPLETE" << std::endl;
-                            return 0;
-
-
                             if (region_renderer.hash() !=
                                 kOutdoorScreenHash) {
                                 std::cout
@@ -1108,6 +1103,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     std::make_unique<Runtime>(seed);
                                 bool saw_dispatch = false;
                                 bool saw_setter = false;
+                                bool saw_script_4e = false;
                                 constexpr std::uint64_t probe_frames = 48;
 
                                 for (std::uint64_t frame = 0;
@@ -1127,6 +1123,31 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 .current_rom_bank();
                                         const std::uint16_t pc =
                                             probe->cpu().pc;
+                                        if (!saw_script_4e &&
+                                            probe->memory().read8(0xC920) == 0x4Eu) {
+                                            saw_script_4e = true;
+                                            std::cout
+                                                << "M7_SCRIPT_4E_HIT depth="
+                                                << depth
+                                                << " frame=" << frame
+                                                << " step=" << step
+                                                << " C923=0x" << std::hex
+                                                << static_cast<unsigned>(
+                                                       probe->memory().read8(0xC923))
+                                                << " C552=0x"
+                                                << static_cast<unsigned>(
+                                                       probe->memory().read8(0xC552))
+                                                << " CBEB=0x"
+                                                << static_cast<unsigned>(
+                                                       probe->memory().read8(0xCBEB))
+                                                << " bank=" << std::dec
+                                                << bank
+                                                << " pc=0x" << std::hex
+                                                << pc
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                        }
                                         if (bank == 16 &&
                                             pc == 0x4D86) {
                                             saw_dispatch = true;
@@ -1205,6 +1226,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             << (saw_dispatch ? 1 : 0)
                                             << " setter="
                                             << (saw_setter ? 1 : 0)
+                                            << " script4e="
+                                            << (saw_script_4e ? 1 : 0)
                                             << " A6="
                                             << ((flags & 0x40u)
                                                     ? 1 : 0)
