@@ -1438,6 +1438,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             0xFF80u + i));
                             }
 
+                            const Runtime island_story_control_seed =
+                                *island_story;
+                            std::uint64_t island_dialog_elapsed_frames = 0;
+
                             bool island_dialog_seen = false;
                             bool island_dialog_closed = false;
                             unsigned island_dialog_page = 0;
@@ -1445,6 +1449,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             for (std::uint64_t frame = 0;
                                  frame < 1200; ++frame) {
+                                island_dialog_elapsed_frames = frame + 1;
                                 const std::uint8_t
                                     before_submode =
                                         island_story->memory()
@@ -1575,16 +1580,44 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << std::dec
                                 << std::endl;
 
+                            auto island_control =
+                                std::make_unique<Runtime>(
+                                    island_story_control_seed);
+                            for (std::uint64_t frame = 0;
+                                 frame < island_dialog_elapsed_frames;
+                                 ++frame) {
+                                const StepResult control_result =
+                                    advance_search_frame(
+                                        *island_control, 0);
+                                if (control_result !=
+                                    StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_CONTROL_ABORT frame="
+                                        << frame
+                                        << " result="
+                                        << static_cast<unsigned>(
+                                               control_result)
+                                        << std::endl;
+                                    break;
+                                }
+                            }
+                            island_control->memory()
+                                .set_joypad_state(0);
+
                             unsigned island_wram_change_count = 0;
                             for (std::size_t i = 0;
                                  i < island_visible_wram_before.size();
                                  ++i) {
+                                const std::uint16_t address =
+                                    static_cast<std::uint16_t>(
+                                        0xC000u + i);
                                 const std::uint8_t after =
                                     island_story->memory().read8(
-                                        static_cast<std::uint16_t>(
-                                            0xC000u + i));
-                                if (after ==
-                                    island_visible_wram_before[i]) {
+                                        address);
+                                const std::uint8_t control_after =
+                                    island_control->memory().read8(
+                                        address);
+                                if (after == control_after) {
                                     continue;
                                 }
                                 if (island_wram_change_count < 96) {
@@ -1592,10 +1625,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         << "M7_SEARCH_ISLAND_WRAM_CHANGE addr=0x"
                                         << std::hex
                                         << (0xC000u + i)
-                                        << " before=0x"
+                                        << " control=0x"
                                         << static_cast<unsigned>(
-                                               island_visible_wram_before[i])
-                                        << " after=0x"
+                                               control_after)
+                                        << " interaction=0x"
                                         << static_cast<unsigned>(after)
                                         << std::dec << std::endl;
                                 }
@@ -1606,11 +1639,16 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             for (std::size_t i = 0;
                                  i < island_hram_before.size();
                                  ++i) {
+                                const std::uint16_t address =
+                                    static_cast<std::uint16_t>(
+                                        0xFF80u + i);
                                 const std::uint8_t after =
                                     island_story->memory().read8(
-                                        static_cast<std::uint16_t>(
-                                            0xFF80u + i));
-                                if (after == island_hram_before[i]) {
+                                        address);
+                                const std::uint8_t control_after =
+                                    island_control->memory().read8(
+                                        address);
+                                if (after == control_after) {
                                     continue;
                                 }
                                 if (island_hram_change_count < 32) {
@@ -1618,21 +1656,38 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         << "M7_SEARCH_ISLAND_HRAM_CHANGE addr=0x"
                                         << std::hex
                                         << (0xFF80u + i)
-                                        << " before=0x"
+                                        << " control=0x"
                                         << static_cast<unsigned>(
-                                               island_hram_before[i])
-                                        << " after=0x"
+                                               control_after)
+                                        << " interaction=0x"
                                         << static_cast<unsigned>(after)
                                         << std::dec << std::endl;
                                 }
                                 ++island_hram_change_count;
                             }
 
+                            const std::uint64_t
+                                island_control_sram =
+                                    sram_hash(
+                                        island_control->memory());
                             std::cout
-                                << "M7_SEARCH_ISLAND_STATE_DIFF wram_changes="
+                                << "M7_SEARCH_ISLAND_STATE_DIFF frames="
+                                << island_dialog_elapsed_frames
+                                << " wram_changes="
                                 << island_wram_change_count
                                 << " hram_changes="
                                 << island_hram_change_count
+                                << " interaction_sram=0x"
+                                << std::hex
+                                << island_story_sram_after
+                                << " control_sram=0x"
+                                << island_control_sram
+                                << std::dec
+                                << " sram_diff="
+                                << (island_story_sram_after !=
+                                            island_control_sram
+                                        ? 1
+                                        : 0)
                                 << std::endl;
 
                             if (!island_dialog_seen ||
