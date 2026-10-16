@@ -182,3 +182,11 @@ target_link_libraries(DWM2tRecomp PRIVATE
 if(WIN32)
     target_link_libraries(DWM2tRecomp PRIVATE user32 gdi32 winmm)
 endif()
+
+
+if(MSVC)
+    # M7 diagnostic/search harnesses keep several 160x144 renderer snapshots
+    # alive in nested scopes. Give the native test executable enough stack
+    # without changing any emulated game state or cartridge execution.
+    target_link_options(DWM2tRecomp PRIVATE /STACK:8388608)
+endif()
