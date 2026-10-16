@@ -27,8 +27,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--banks-dir", type=pathlib.Path, required=True)
     ap.add_argument("--flags", nargs="+", required=True)
+    ap.add_argument("--pointers", nargs="*", default=[])
     args = ap.parse_args()
     flags = [int(v, 0) for v in args.flags]
+    pointers = [int(v, 0) for v in args.pointers]
     refs = 0
     for path in sorted(args.banks_dir.glob("bank_*.asm")):
         bank = int(path.stem.split("_")[-1])
@@ -44,6 +46,20 @@ def main() -> int:
                 for off in find_all(data, needle):
                     refs += 1
                     print(f"M7_FLAG_REF flag=0x{flag:04x} op={op} bank={bank} pc=0x{base + off:04x} file={path.name}")
+        for pointer in pointers:
+            needle = bytes((pointer & 0xff, (pointer >> 8) & 0xff))
+            for off in find_all(data, needle):
+                refs += 1
+                lo = max(0, off - 12)
+                hi = min(len(data), off + 14)
+                context = " ".join(f"{b:02x}" for b in data[lo:hi])
+                prev = data[off - 1] if off else -1
+                kind = "call" if prev == 0xcd else "jump" if prev == 0xc3 else "pointer"
+                print(
+                    f"M7_POINTER_REF target=0x{pointer:04x} kind={kind} "
+                    f"bank={bank} pc=0x{base + off:04x} prev=0x{prev & 0xff:02x} "
+                    f"context={context} file={path.name}"
+                )
     print(f"M7_FLAG_SCAN_COMPLETE refs={refs}")
     return 0
 
