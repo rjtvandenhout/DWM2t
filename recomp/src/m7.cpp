@@ -31,7 +31,26 @@ FrameResult advance_frame(Runtime& runtime, Renderer& renderer, std::uint8_t but
     memory.set_joypad_state(buttons);
     const std::uint64_t start_frame = memory.frame_counter();
     constexpr std::size_t max_steps_per_frame = 2'000'000;
+    bool logged_script_4e = false;
     for (std::size_t step = 0; step < max_steps_per_frame; ++step) {
+        if (!logged_script_4e && memory.read8(0xC920) == 0x4Eu) {
+            logged_script_4e = true;
+            std::cout
+                << "M7_GLOBAL_SCRIPT_4E"
+                << " frame=" << memory.frame_counter()
+                << " step=" << step
+                << " C923=0x" << std::hex
+                << static_cast<unsigned>(memory.read8(0xC923))
+                << " C552=0x"
+                << static_cast<unsigned>(memory.read8(0xC552))
+                << " CBEB=0x"
+                << static_cast<unsigned>(memory.read8(0xCBEB))
+                << " bank=" << std::dec
+                << memory.current_rom_bank()
+                << " pc=0x" << std::hex
+                << runtime.cpu().pc
+                << std::dec << std::endl;
+        }
         const StepResult result = runtime.step();
         if (result == StepResult::MissingBank ||
             result == StepResult::Trapped ||
@@ -1264,7 +1283,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             constexpr std::array<std::uint8_t, 4>
                                 a6_actions = {1, 3, 2, 0};
                             constexpr std::size_t a6_width = 40;
-                            constexpr std::size_t a6_depth = 36;
+                            constexpr std::size_t a6_depth = 0;
                             bool a6_found = false;
 
                             for (std::size_t depth = 0;
@@ -1400,8 +1419,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             std::cout
                                 << "M7_A6_SEARCH_NO_HIT states="
                                 << a6_seen.size()
+                                << " fallback=guide_vault_route"
                                 << std::endl;
-                            return 153;
 
                             // The earlier physical-navigation artifact shows a
                             // second building west of the farm with Tara/Cobi
