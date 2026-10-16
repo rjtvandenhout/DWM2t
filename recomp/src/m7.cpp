@@ -832,6 +832,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         JoyRight, JoyLeft,
                                         JoyUp, JoyDown
                                     };
+                                bool saw_lcd_off = false;
                                 for (std::uint64_t phase = 0;
                                      phase < macro_frames; ++phase) {
                                     const std::uint8_t buttons =
@@ -846,7 +847,52 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         StepResult::Continue) {
                                         return result;
                                     }
+                                    if ((runtime.memory().read8(
+                                             0xFF40) & 0x80u) == 0) {
+                                        saw_lcd_off = true;
+                                    }
                                 }
+
+                                // A room/region transition can keep LCDC off
+                                // longer than the movement macro. Do not hash
+                                // partially rebuilt VRAM as a new region.
+                                // Wait for the cartridge to turn the LCD back
+                                // on, then give it a few idle frames to present
+                                // the destination.
+                                if (saw_lcd_off ||
+                                    (runtime.memory().read8(
+                                         0xFF40) & 0x80u) == 0) {
+                                    bool lcd_back_on = false;
+                                    for (std::uint64_t settle = 0;
+                                         settle < 240; ++settle) {
+                                        const StepResult result =
+                                            advance_search_frame(
+                                                runtime, 0);
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            return result;
+                                        }
+                                        if ((runtime.memory().read8(
+                                                 0xFF40) & 0x80u) != 0) {
+                                            lcd_back_on = true;
+                                            for (unsigned idle = 0;
+                                                 idle < 12; ++idle) {
+                                                const StepResult idle_result =
+                                                    advance_search_frame(
+                                                        runtime, 0);
+                                                if (idle_result !=
+                                                    StepResult::Continue) {
+                                                    return idle_result;
+                                                }
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if (!lcd_back_on) {
+                                        return StepResult::StepLimit;
+                                    }
+                                }
+
                                 runtime.memory().set_joypad_state(0);
                                 (void)runtime.memory().apu()
                                     .take_samples();
