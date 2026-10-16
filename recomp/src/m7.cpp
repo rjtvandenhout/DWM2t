@@ -835,6 +835,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 std::uint8_t previous_post_submode =
                                     post.memory().read8(0xC5DC);
                                 unsigned post_dialogs = 0;
+                                bool vault_probe_done = false;
                                 std::uint64_t active_dialog_frames = 0;
                                 unsigned active_dialog_capture = 0;
 
@@ -977,8 +978,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     previous_post_submode = submode;
 
                                     if (post_seed == 0 &&
+                                        !vault_probe_done &&
                                         post_dialog_closed &&
                                         post_dialogs >= 8) {
+                                        vault_probe_done = true;
                                         // The in-ROM quest text says:
                                         // "The Vault is west of the Farm."
                                         // Dialogue #7 is the Farm-side NPC in
@@ -993,12 +996,14 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         constexpr std::array<
                                             std::array<VaultLeg, 5>, 6>
                                             vault_routes = {{
-                                            {{{JoyLeft, 180}, {0, 12}, {JoyA, 60}, {0, 20}, {JoyLeft, 80}}},
-                                            {{{JoyLeft, 180}, {JoyUp, 60}, {JoyLeft, 80}, {JoyA, 60}, {0, 20}}},
-                                            {{{JoyLeft, 180}, {JoyDown, 60}, {JoyLeft, 80}, {JoyA, 60}, {0, 20}}},
-                                            {{{JoyLeft, 280}, {0, 16}, {JoyA, 90}, {JoyUp, 48}, {JoyA, 60}}},
-                                            {{{JoyLeft, 140}, {JoyUp, 96}, {JoyLeft, 140}, {JoyDown, 48}, {JoyA, 60}}},
-                                            {{{JoyLeft, 140}, {JoyDown, 96}, {JoyLeft, 140}, {JoyUp, 48}, {JoyA, 60}}},
+                                            // Leave Farm through its northern
+                                            // bridge/stairs, then head west.
+                                            {{{0, 30}, {JoyRight, 48}, {JoyUp, 96}, {JoyLeft, 200}, {JoyA, 60}}},
+                                            {{{0, 30}, {JoyRight, 64}, {JoyUp, 112}, {JoyLeft, 240}, {JoyA, 60}}},
+                                            {{{0, 30}, {JoyRight, 80}, {JoyUp, 112}, {JoyLeft, 240}, {JoyA, 60}}},
+                                            {{{0, 30}, {JoyRight, 64}, {JoyUp, 140}, {JoyLeft, 300}, {JoyA, 60}}},
+                                            {{{0, 30}, {JoyRight, 48}, {JoyUp, 128}, {JoyLeft, 160}, {JoyDown, 64}}},
+                                            {{{0, 30}, {JoyRight, 80}, {JoyUp, 128}, {JoyLeft, 180}, {JoyUp, 64}}},
                                         }};
 
                                         auto vault_base_owner =
@@ -1128,7 +1133,6 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                         // One Vault probe per deterministic
                                         // post-story trial is sufficient.
-                                        post_dialogs = 0xFFu;
                                     }
 
                                     if (mode != 1) {
