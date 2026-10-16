@@ -42,8 +42,11 @@ jobs:
       - name: Configure native recomp
         run: cmake -S recomp -B recomp/build -A x64
 
-      - name: Build DWM2tRecomp.exe
-        run: cmake --build recomp/build --config Release --parallel 4
+      - name: Build newly discovered ROMX bank
+        run: cmake --build recomp/build --config Release --target m6_discovery_bank --parallel 4
+
+      - name: Relink DWM2tRecomp.exe from cached AOT libraries
+        run: cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4 -- /p:BuildProjectReferences=false
 
       - name: Save native recomp build cache
         uses: actions/cache/save@v4
