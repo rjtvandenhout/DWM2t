@@ -511,6 +511,96 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
         trial_renderer.render(trial.memory(), true);
         trial_renderer.write_bmp(
             output_dir / ("search_seed_" + std::to_string(seed) + "_final.bmp"));
+
+        if (seed <= 1) {
+            struct FocusLeg {
+                std::uint8_t buttons;
+                std::uint64_t frames;
+            };
+            constexpr std::array<std::array<FocusLeg, 5>, 6> strategies = {{
+                {{{JoyLeft, 100}, {0, 8}, {JoyUp, 80}, {0, 8}, {JoyA, 24}}},
+                {{{JoyUp, 80}, {0, 8}, {JoyLeft, 110}, {JoyUp, 40}, {JoyA, 24}}},
+                {{{JoyLeft, 150}, {JoyA, 24}, {JoyUp, 100}, {JoyA, 24}, {0, 8}}},
+                {{{JoyUp, 150}, {JoyLeft, 150}, {JoyA, 24}, {JoyUp, 32}, {0, 8}}},
+                {{{JoyLeft, 80}, {JoyUp, 160}, {JoyRight, 40}, {JoyA, 24}, {0, 8}}},
+                {{{JoyUp, 100}, {JoyA, 24}, {JoyLeft, 100}, {JoyA, 24}, {JoyUp, 40}}},
+            }};
+
+            const Runtime focus_base = trial;
+            for (std::size_t strategy = 0; strategy < strategies.size(); ++strategy) {
+                Runtime focused = focus_base;
+                bool abort = false;
+                for (const FocusLeg& leg : strategies[strategy]) {
+                    for (std::uint64_t f = 0; f < leg.frames; ++f) {
+                        std::uint8_t buttons = leg.buttons;
+                        if (leg.buttons == JoyA) {
+                            buttons = (f % 12u) < 2u ? JoyA : 0;
+                        }
+                        const StepResult result =
+                            advance_search_frame(focused, buttons);
+                        if (result == StepResult::MissingBank) {
+                            Renderer rr{};
+                            rr.render(focused.memory(), true);
+                            rr.write_bmp(output_dir /
+                                ("search_focus_missing_" +
+                                 std::to_string(seed) + "_" +
+                                 std::to_string(strategy) + ".bmp"));
+                            std::cout << "M7_SEARCH_FOCUS_MISSING_BANK seed=" << seed
+                                      << " strategy=" << strategy
+                                      << " bank=" << focused.cpu().missing_bank
+                                      << " pc=0x" << std::hex << focused.cpu().pc
+                                      << " screen=0x" << rr.hash()
+                                      << std::dec << std::endl;
+                            return 127;
+                        }
+                        if (result == StepResult::Trapped ||
+                            result == StepResult::Stopped ||
+                            result == StepResult::StepLimit) {
+                            abort = true;
+                            break;
+                        }
+                        if (focused.memory().read8(0xC5DB) != 1) {
+                            Renderer rr{};
+                            rr.render(focused.memory(), true);
+                            rr.write_bmp(output_dir /
+                                ("search_focus_mode_" +
+                                 std::to_string(seed) + "_" +
+                                 std::to_string(strategy) + ".bmp"));
+                            std::cout << "M7_SEARCH_FOCUS_MODE_CHANGE seed=" << seed
+                                      << " strategy=" << strategy
+                                      << " C5DB="
+                                      << static_cast<unsigned>(
+                                             focused.memory().read8(0xC5DB))
+                                      << " C5DC="
+                                      << static_cast<unsigned>(
+                                             focused.memory().read8(0xC5DC))
+                                      << " screen=0x" << std::hex << rr.hash()
+                                      << " map=0x" << tilemap_hash(focused.memory())
+                                      << std::dec << std::endl;
+                            return 0;
+                        }
+                    }
+                    if (abort) break;
+                }
+
+                Renderer rr{};
+                rr.render(focused.memory(), true);
+                rr.write_bmp(output_dir /
+                    ("search_focus_" + std::to_string(seed) + "_" +
+                     std::to_string(strategy) + ".bmp"));
+                std::cout << "M7_SEARCH_FOCUS_COMPLETE seed=" << seed
+                          << " strategy=" << strategy
+                          << " screen=0x" << std::hex << rr.hash()
+                          << " map=0x" << tilemap_hash(focused.memory())
+                          << " sram=0x" << sram_hash(focused.memory())
+                          << std::dec
+                          << " C5DB="
+                          << static_cast<unsigned>(focused.memory().read8(0xC5DB))
+                          << " C5DC="
+                          << static_cast<unsigned>(focused.memory().read8(0xC5DC))
+                          << std::endl;
+            }
+        }
         std::cout << "M7_SEARCH_TRIAL_COMPLETE seed=" << seed
                   << " screen=0x" << std::hex << trial_renderer.hash()
                   << " map=0x" << tilemap_hash(trial.memory())
