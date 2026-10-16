@@ -1805,7 +1805,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     bool probe_abort = false;
 
                                     for (std::uint64_t frame = 0;
-                                         frame < 720;
+                                         frame <
+                                             (interaction_seen
+                                                  ? 720u
+                                                  : 48u);
                                          ++frame) {
                                         const std::uint8_t
                                             submode_before =
