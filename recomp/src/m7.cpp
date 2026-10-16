@@ -1561,6 +1561,105 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             const Runtime island_progress_seed =
                                 *island_story;
 
+                            struct KeyActivator {
+                                std::uint8_t buttons;
+                                const char* name;
+                            };
+                            constexpr std::array<KeyActivator, 7>
+                                key_activators = {{
+                                    {JoyStart, "start"},
+                                    {JoySelect, "select"},
+                                    {JoyA, "a"},
+                                    {JoyB, "b"},
+                                    {static_cast<std::uint8_t>(
+                                         JoyStart | JoySelect),
+                                     "start_select"},
+                                    {static_cast<std::uint8_t>(
+                                         JoyA | JoyB),
+                                     "a_b"},
+                                    {static_cast<std::uint8_t>(
+                                         JoyStart | JoyA),
+                                     "start_a"}
+                                }};
+
+                            for (const KeyActivator& activator :
+                                 key_activators) {
+                                auto candidate =
+                                    std::make_unique<Runtime>(
+                                        island_progress_seed);
+                                const std::uint64_t before_wram =
+                                    wram_hash(
+                                        candidate->memory());
+                                for (unsigned frame = 0;
+                                     frame < 72; ++frame) {
+                                    const std::uint8_t buttons =
+                                        frame < 2
+                                            ? activator.buttons
+                                            : 0;
+                                    const StepResult result =
+                                        advance_search_frame(
+                                            *candidate,
+                                            buttons);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_SEARCH_KEY_ACTIVATOR_MISSING_BANK name="
+                                            << activator.name
+                                            << " bank="
+                                            << candidate->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << candidate->cpu().pc
+                                            << std::dec
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (result !=
+                                        StepResult::Continue) {
+                                        break;
+                                    }
+                                }
+
+                                vault_door_renderer.render(
+                                    candidate->memory(), true);
+                                vault_door_renderer.write_bmp(
+                                    output_dir /
+                                    (std::string(
+                                         "search_key_activator_") +
+                                     activator.name + ".bmp"));
+                                std::cout
+                                    << "M7_SEARCH_KEY_ACTIVATOR name="
+                                    << activator.name
+                                    << " buttons=0x"
+                                    << std::hex
+                                    << static_cast<unsigned>(
+                                           activator.buttons)
+                                    << " screen=0x"
+                                    << vault_door_renderer.hash()
+                                    << " bg=0x"
+                                    << background_hash(
+                                           candidate->memory())
+                                    << " map=0x"
+                                    << tilemap_hash(
+                                           candidate->memory())
+                                    << " wram_before=0x"
+                                    << before_wram
+                                    << " wram_after=0x"
+                                    << wram_hash(
+                                           candidate->memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           candidate->memory()
+                                               .read8(0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           candidate->memory()
+                                               .read8(0xC5DC))
+                                    << std::endl;
+                            }
+
                             for (std::size_t candidate = 0;
                                  candidate <
                                      vault_approaches.size();
