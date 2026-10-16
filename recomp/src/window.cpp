@@ -19,6 +19,12 @@ namespace {
 const Renderer::Framebuffer* g_framebuffer = nullptr;
 std::uint8_t g_host_buttons = 0;
 
+bool is_fatal_step(StepResult result) {
+    return result == StepResult::MissingBank ||
+           result == StepResult::Trapped ||
+           result == StepResult::Stopped;
+}
+
 void set_button(std::uint8_t button, bool down) {
     if (down) g_host_buttons = static_cast<std::uint8_t>(g_host_buttons | button);
     else g_host_buttons = static_cast<std::uint8_t>(g_host_buttons & ~button);
@@ -179,10 +185,10 @@ int run_live_window(
         while (memory.frame_counter() == start_frame && steps < max_steps_per_frame) {
             result = runtime.step();
             ++steps;
-            if (result != StepResult::Continue) break;
+            if (is_fatal_step(result)) break;
         }
 
-        if (result != StepResult::Continue) {
+        if (is_fatal_step(result)) {
             const auto& cpu = runtime.cpu();
             if (result == StepResult::MissingBank) {
                 std::cerr << "M6 live FAIL: missing AOT ROMX bank "
@@ -302,9 +308,9 @@ int run_live_window_smoke(
         while (memory.frame_counter() == start_frame && steps < max_steps_per_frame) {
             result = runtime.step();
             ++steps;
-            if (result != StepResult::Continue) break;
+            if (is_fatal_step(result)) break;
         }
-        if (result != StepResult::Continue || steps >= max_steps_per_frame) {
+        if (is_fatal_step(result) || steps >= max_steps_per_frame) {
             const auto& cpu = runtime.cpu();
             DestroyWindow(hwnd);
             g_framebuffer = nullptr;
