@@ -1695,10 +1695,29 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 std::unique_ptr<Runtime> runtime;
                                 std::vector<std::uint8_t> path;
                                 std::uint64_t screen = 0;
-                                std::uint64_t ram = 0;
+                                std::uint64_t position = 0;
+                                std::uint64_t oam = 0;
                             };
 
-                            std::vector<IslandNode> island_frontier;
+                            auto island_oam_hash =
+                                [](const Memory& memory) {
+                                    std::uint64_t hash =
+                                        1469598103934665603ull;
+                                    for (std::uint32_t address =
+                                             0xFE00;
+                                         address < 0xFEA0;
+                                         ++address) {
+                                        hash ^= memory.read8(
+                                            static_cast<std::uint16_t>(
+                                                address));
+                                        hash *=
+                                            1099511628211ull;
+                                    }
+                                    return hash;
+                                };
+
+                            std::vector<IslandNode>
+                                island_frontier;
                             {
                                 auto root =
                                     std::make_unique<Runtime>(
@@ -1709,37 +1728,319 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     std::move(root),
                                     {},
                                     vault_door_renderer.hash(),
-                                    wram_hash(
+                                    tilemap_hash(
+                                        island_seed.memory()),
+                                    island_oam_hash(
                                         island_seed.memory())
                                 });
                             }
 
                             std::unordered_set<std::uint64_t>
                                 island_seen;
-                            constexpr std::size_t
-                                island_beam_width = 40;
+                            {
+                                std::uint64_t sig =
+                                    island_frontier.front()
+                                        .screen;
+                                sig ^= island_frontier.front()
+                                           .position +
+                                    0x9E3779B97F4A7C15ull +
+                                    (sig << 6) +
+                                    (sig >> 2);
+                                sig ^= island_frontier.front()
+                                           .oam +
+                                    0x9E3779B97F4A7C15ull +
+                                    (sig << 6) +
+                                    (sig >> 2);
+                                island_seen.insert(sig);
+                            }
+
                             constexpr std::size_t
                                 island_depth = 28;
+                            constexpr std::size_t
+                                island_state_limit = 256;
                             constexpr std::array<
                                 std::uint8_t, 4>
                                 island_actions = {
                                     0, 1, 2, 3
                                 };
+                            constexpr std::uint64_t
+                                kGuideExteriorBg =
+                                    0x2c4791b344ab1745ull;
+
+                            std::size_t island_states = 1;
+                            unsigned interaction_capture = 0;
 
                             for (std::size_t depth = 0;
                                  depth < island_depth &&
                                  !island_frontier.empty();
                                  ++depth) {
                                 std::vector<IslandNode> next;
-                                next.reserve(
-                                    island_frontier.size() *
-                                    island_actions.size());
 
                                 for (const IslandNode& node :
                                      island_frontier) {
-                                    for (const std::uint8_t
-                                             action :
+                                    // Probe A from every unique physical
+                                    // state. This is kept in a clone so a
+                                    // failed interaction cannot perturb
+                                    // navigation discovery.
+                                    auto probe =
+                                        std::make_unique<Runtime>(
+                                            *node.runtime);
+                                    const std::uint64_t
+                                        probe_sram_before =
+                                            sram_hash(
+                                                probe->memory());
+                                    const std::uint64_t
+                                        probe_wram_before =
+                                            wram_hash(
+                                                probe->memory());
+                                    const std::uint64_t
+                                        probe_bg_before =
+                                            background_hash(
+                                                probe->memory());
+
+                                    bool interaction_seen =
+                                        false;
+                                    bool interaction_closed =
+                                        false;
+                                    bool probe_abort = false;
+
+                                    for (std::uint64_t frame = 0;
+                                         frame < 720;
+                                         ++frame) {
+                                        const std::uint8_t
+                                            submode_before =
+                                                probe->memory()
+                                                    .read8(
+                                                        0xC5DC);
+                                        if (interaction_seen &&
+                                            submode_before == 0) {
+                                            interaction_closed =
+                                                true;
+                                            break;
+                                        }
+
+                                        std::uint8_t buttons = 0;
+                                        if (!interaction_seen) {
+                                            if (frame < 2) {
+                                                buttons = JoyA;
+                                            }
+                                        } else if (
+                                            (frame % 60u) <
+                                            2u) {
+                                            buttons = JoyA;
+                                        }
+
+                                        const StepResult result =
+                                            advance_search_frame(
+                                                *probe,
+                                                buttons);
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            vault_door_renderer
+                                                .render(
+                                                    probe->memory(),
+                                                    true);
+                                            vault_door_renderer
+                                                .write_bmp(
+                                                    output_dir /
+                                                    "search_vault_interact_missing.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_INTERACT_MISSING_BANK depth="
+                                                << depth
+                                                << " bank="
+                                                << probe->cpu()
+                                                       .missing_bank
+                                                << " pc=0x"
+                                                << std::hex
+                                                << probe->cpu().pc
+                                                << std::dec;
+                                            print_search_path(
+                                                node.path);
+                                            std::cout
+                                                << std::endl;
+                                            return 127;
+                                        }
+                                        if (result ==
+                                                StepResult::Trapped ||
+                                            result ==
+                                                StepResult::Stopped ||
+                                            result ==
+                                                StepResult::StepLimit) {
+                                            probe_abort = true;
+                                            break;
+                                        }
+
+                                        const std::uint8_t
+                                            mode =
+                                                probe->memory()
+                                                    .read8(
+                                                        0xC5DB);
+                                        const std::uint8_t
+                                            submode =
+                                                probe->memory()
+                                                    .read8(
+                                                        0xC5DC);
+                                        if (submode != 0) {
+                                            interaction_seen =
+                                                true;
+                                        }
+
+                                        if (mode != 1) {
+                                            vault_door_renderer
+                                                .render(
+                                                    probe->memory(),
+                                                    true);
+                                            vault_door_renderer
+                                                .write_bmp(
+                                                    output_dir /
+                                                    "search_vault_interact_mode.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_INTERACT_MODE_CHANGE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<
+                                                       unsigned>(
+                                                       mode)
+                                                << " C5DC="
+                                                << static_cast<
+                                                       unsigned>(
+                                                       submode)
+                                                << " screen=0x"
+                                                << std::hex
+                                                << vault_door_renderer
+                                                       .hash()
+                                                << " bg=0x"
+                                                << background_hash(
+                                                       probe
+                                                           ->memory())
+                                                << " sram=0x"
+                                                << sram_hash(
+                                                       probe
+                                                           ->memory())
+                                                << std::dec;
+                                            print_search_path(
+                                                node.path);
+                                            std::cout
+                                                << std::endl;
+                                            return 0;
+                                        }
+                                    }
+
+                                    probe->memory()
+                                        .set_joypad_state(0);
+
+                                    if (!probe_abort) {
+                                        const std::uint64_t
+                                            probe_sram_after =
+                                                sram_hash(
+                                                    probe->memory());
+                                        const std::uint64_t
+                                            probe_wram_after =
+                                                wram_hash(
+                                                    probe->memory());
+                                        const std::uint64_t
+                                            probe_bg_after =
+                                                background_hash(
+                                                    probe->memory());
+
+                                        if (probe_bg_after !=
+                                                probe_bg_before &&
+                                            probe_bg_after !=
+                                                kGuideExteriorBg) {
+                                            vault_door_renderer
+                                                .render(
+                                                    probe->memory(),
+                                                    true);
+                                            vault_door_renderer
+                                                .write_bmp(
+                                                    output_dir /
+                                                    "search_vault_interact_exit.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_INTERACT_EXIT depth="
+                                                << depth
+                                                << " screen=0x"
+                                                << std::hex
+                                                << vault_door_renderer
+                                                       .hash()
+                                                << " bg_before=0x"
+                                                << probe_bg_before
+                                                << " bg_after=0x"
+                                                << probe_bg_after
+                                                << " sram=0x"
+                                                << probe_sram_after
+                                                << std::dec;
+                                            print_search_path(
+                                                node.path);
+                                            std::cout
+                                                << std::endl;
+                                            return 0;
+                                        }
+
+                                        if (interaction_seen ||
+                                            probe_sram_after !=
+                                                probe_sram_before) {
+                                            vault_door_renderer
+                                                .render(
+                                                    probe->memory(),
+                                                    true);
+                                            if (interaction_capture <
+                                                24) {
+                                                vault_door_renderer
+                                                    .write_bmp(
+                                                        output_dir /
+                                                        ("search_vault_interact_" +
+                                                         std::to_string(
+                                                             interaction_capture) +
+                                                         ".bmp"));
+                                            }
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_INTERACT depth="
+                                                << depth
+                                                << " capture="
+                                                << interaction_capture
+                                                << " seen="
+                                                << (interaction_seen
+                                                        ? 1
+                                                        : 0)
+                                                << " closed="
+                                                << (interaction_closed
+                                                        ? 1
+                                                        : 0)
+                                                << " screen=0x"
+                                                << std::hex
+                                                << vault_door_renderer
+                                                       .hash()
+                                                << " bg=0x"
+                                                << probe_bg_after
+                                                << " sram_before=0x"
+                                                << probe_sram_before
+                                                << " sram_after=0x"
+                                                << probe_sram_after
+                                                << " wram_before=0x"
+                                                << probe_wram_before
+                                                << " wram_after=0x"
+                                                << probe_wram_after
+                                                << std::dec;
+                                            print_search_path(
+                                                node.path);
+                                            std::cout
+                                                << std::endl;
+                                            ++interaction_capture;
+
+                                            if (probe_sram_after !=
+                                                probe_sram_before) {
+                                                return 0;
+                                            }
+                                        }
+                                    }
+
+                                    for (const std::uint8_t action :
                                          island_actions) {
+                                        if (island_states >=
+                                            island_state_limit) {
+                                            break;
+                                        }
+
                                         auto child =
                                             std::make_unique<
                                                 Runtime>(
@@ -1788,8 +2089,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         const std::uint64_t bg =
                                             background_hash(
                                                 child->memory());
-                                        const std::uint64_t ram =
-                                            wram_hash(
+                                        const std::uint64_t
+                                            position =
+                                                tilemap_hash(
+                                                    child->memory());
+                                        const std::uint64_t oam =
+                                            island_oam_hash(
                                                 child->memory());
 
                                         std::vector<
@@ -1834,15 +2139,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             return 0;
                                         }
 
-                                        constexpr std::uint64_t
-                                            kGuideExteriorBg =
-                                                0x2c4791b344ab1745ull;
                                         if (bg ==
                                             kGuideExteriorBg) {
-                                            // U,U is the known route back to
-                                            // the guide's building. Do not let
-                                            // the beam escape into already
-                                            // explored territory.
                                             continue;
                                         }
                                         if (bg != island_bg &&
@@ -1861,9 +2159,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << " bg=0x"
                                                 << bg
                                                 << " map=0x"
-                                                << tilemap_hash(
-                                                       child
-                                                           ->memory())
+                                                << position
                                                 << std::dec;
                                             print_search_path(
                                                 path);
@@ -1874,7 +2170,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                         std::uint64_t sig =
                                             screen;
-                                        sig ^= ram +
+                                        sig ^= position +
+                                            0x9E3779B97F4A7C15ull +
+                                            (sig << 6) +
+                                            (sig >> 2);
+                                        sig ^= oam +
                                             0x9E3779B97F4A7C15ull +
                                             (sig << 6) +
                                             (sig >> 2);
@@ -1884,52 +2184,44 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             continue;
                                         }
 
+                                        ++island_states;
                                         next.push_back({
                                             std::move(child),
                                             std::move(path),
                                             screen,
-                                            ram
+                                            position,
+                                            oam
                                         });
                                     }
                                 }
 
-                                std::stable_sort(
-                                    next.begin(),
-                                    next.end(),
-                                    [](const IslandNode& a,
-                                       const IslandNode& b) {
-                                        if (a.ram != b.ram) {
-                                            return a.ram <
-                                                   b.ram;
-                                        }
-                                        return a.screen <
-                                               b.screen;
-                                    });
-                                if (next.size() >
-                                    island_beam_width) {
-                                    next.resize(
-                                        island_beam_width);
-                                }
-
                                 if (!next.empty() &&
-                                    (depth % 6u) == 0u) {
+                                    (depth % 4u) == 0u) {
                                     std::cout
-                                        << "M7_SEARCH_VAULT_ISLAND depth="
+                                        << "M7_SEARCH_VAULT_GRID depth="
                                         << depth
                                         << " frontier="
-                                        << next.size();
-                                    print_search_path(
-                                        next.front().path);
-                                    std::cout
+                                        << next.size()
+                                        << " states="
+                                        << island_states
+                                        << " interactions="
+                                        << interaction_capture
                                         << std::endl;
                                 }
                                 island_frontier =
                                     std::move(next);
+
+                                if (island_states >=
+                                    island_state_limit) {
+                                    break;
+                                }
                             }
 
                             std::cout
-                                << "M7_SEARCH_VAULT_ISLAND_NO_EXIT depth="
-                                << island_depth
+                                << "M7_SEARCH_VAULT_GRID_COMPLETE states="
+                                << island_states
+                                << " interactions="
+                                << interaction_capture
                                 << std::endl;
                             return 141;
 
