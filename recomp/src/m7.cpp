@@ -2161,6 +2161,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << quest_stories.size()
                                 << std::endl;
 
+                            // During route discovery this quest beam is the
+                            // authoritative probe. Do not fall through into the
+                            // older exploratory hay/island searches after it
+                            // exhausts without leaving overworld.
+                            return 150;
+
                             struct WestLeg {
                                 std::uint8_t direction;
                                 unsigned count;
