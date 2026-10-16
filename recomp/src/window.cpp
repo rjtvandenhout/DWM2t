@@ -277,10 +277,23 @@ int run_live_window_smoke(
     pump_messages();
     const bool keydown_ok = (g_host_buttons & JoyRight) != 0;
 
+    // Prove that the Win32 keyboard mapping reaches the same P1/joypad state
+    // used by the deterministic M6 movement regression, then release it
+    // before advancing the cartridge boot path.
+    runtime.memory().set_joypad_state(g_host_buttons);
+    const bool p1_down_ok =
+        (runtime.memory().joypad_state() & JoyRight) != 0;
+
+    PostMessageW(hwnd, WM_KEYUP, VK_RIGHT, 0);
+    pump_messages();
+    const bool keyup_ok = (g_host_buttons & JoyRight) == 0;
+    runtime.memory().set_joypad_state(g_host_buttons);
+    const bool p1_up_ok =
+        (runtime.memory().joypad_state() & JoyRight) == 0;
+
     constexpr unsigned smoke_frames = 4;
     for (unsigned frame_index = 0; frame_index < smoke_frames; ++frame_index) {
         auto& memory = runtime.memory();
-        memory.set_joypad_state(g_host_buttons);
         const std::uint64_t start_frame = memory.frame_counter();
 
         StepResult result = StepResult::Continue;
@@ -292,11 +305,16 @@ int run_live_window_smoke(
             if (result != StepResult::Continue) break;
         }
         if (result != StepResult::Continue || steps >= max_steps_per_frame) {
+            const auto& cpu = runtime.cpu();
             DestroyWindow(hwnd);
             g_framebuffer = nullptr;
             g_host_buttons = 0;
             std::cerr << "M6_WINDOW_SMOKE_FAIL runtime frame="
-                      << frame_index << "\n";
+                      << frame_index
+                      << " result=" << static_cast<unsigned>(result)
+                      << " pc=0x" << std::hex << cpu.pc
+                      << " missing_bank=" << std::dec << cpu.missing_bank
+                      << "\n";
             return 82;
         }
 
@@ -307,25 +325,23 @@ int run_live_window_smoke(
         pump_messages();
     }
 
-    PostMessageW(hwnd, WM_KEYUP, VK_RIGHT, 0);
-    pump_messages();
-    const bool keyup_ok = (g_host_buttons & JoyRight) == 0;
-
     runtime.memory().set_joypad_state(0);
     if (IsWindow(hwnd)) DestroyWindow(hwnd);
     pump_messages();
     g_framebuffer = nullptr;
     g_host_buttons = 0;
 
-    if (!keydown_ok || !keyup_ok) {
+    if (!keydown_ok || !keyup_ok || !p1_down_ok || !p1_up_ok) {
         std::cerr << "M6_WINDOW_SMOKE_FAIL keyboard_mapping"
                   << " down=" << keydown_ok
-                  << " up=" << keyup_ok << "\n";
+                  << " up=" << keyup_ok
+                  << " p1_down=" << p1_down_ok
+                  << " p1_up=" << p1_up_ok << "\n";
         return 83;
     }
 
     std::cout << "M6_WINDOW_SMOKE_PASS frames=" << smoke_frames
-              << " keydown=1 keyup=1 framebuffer_hash=0x"
+              << " keydown=1 keyup=1 p1_down=1 p1_up=1 framebuffer_hash=0x"
               << std::hex << renderer.hash() << std::dec << "\n";
     return 0;
 }
