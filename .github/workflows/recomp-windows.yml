@@ -16,6 +16,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  m7-rom-flag-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan ROM event flag A6/A7 references
+        run: python recomp/tools/scan_event_flags.py --banks-dir src/banks --flags 0xA6 0xA7
+
   windows-x64:
     runs-on: windows-latest
     steps:
