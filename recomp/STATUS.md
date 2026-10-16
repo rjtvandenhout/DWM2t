@@ -15,6 +15,10 @@
 Restore branches live under `restore/recomp-mN`.
 Continuation notes live under `recomp/handoff/`.
 
+Repository-history and CI-baseline notes live in
+`recomp/HISTORY_AUDIT.md`. Historical restore snapshots remain immutable; the
+files on `recomp/native-pc` are the current source of truth.
+
 ## M5 retained acceptance evidence
 
 The permanent M5 regression still reaches the original title at:
