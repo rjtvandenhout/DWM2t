@@ -63,6 +63,7 @@ set(BANK_FILE_10 "bank_010.asm")
 set(BANK_FILE_15 "bank_015.asm")
 set(BANK_FILE_16 "bank_016.asm")
 set(BANK_FILE_17 "bank_017.asm")
+set(BANK_FILE_17 "bank_017.asm")
 set(BANK_FILE_18 "bank_018.asm")
 set(BANK_FILE_19 "bank_019.asm")
 set(BANK_FILE_20 "bank_020.asm")
@@ -120,7 +121,7 @@ foreach(BANK IN LISTS NATIVE_ROMX_BANKS)
 endforeach()
 
 # During M6 discovery, compile only the newest required bank before relinking.
-set(M6_DISCOVERY_BANK 15)
+set(M6_DISCOVERY_BANK 17)
 add_custom_target(m6_discovery_bank)
 add_dependencies(m6_discovery_bank dwm2t_romx_bank_${M6_DISCOVERY_BANK})
 
