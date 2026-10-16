@@ -796,8 +796,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             // The parent has just asked Tara to collect Grandma's
                             // delivery, so keep every trial rooted in this exact
                             // game-owned state and use only P1 input.
-                            constexpr std::uint32_t post_trial_count = 6;
-                            constexpr std::uint64_t post_trial_frames = 9000;
+                            constexpr std::uint32_t post_trial_count = 3;
+                            constexpr std::uint64_t post_trial_frames = 12000;
 
                             for (std::uint32_t post_seed = 0;
                                  post_seed < post_trial_count; ++post_seed) {
@@ -833,6 +833,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 std::uint8_t previous_post_submode =
                                     post.memory().read8(0xC5DC);
                                 unsigned post_dialogs = 0;
+                                std::uint64_t active_dialog_frames = 0;
+                                unsigned active_dialog_capture = 0;
 
                                 for (std::uint64_t relative = 0;
                                      relative < post_trial_frames; ++relative) {
@@ -851,14 +853,57 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             JoyRight, JoyLeft, JoyUp, JoyDown
                                         };
 
+                                    const std::uint8_t before_submode =
+                                        post.memory().read8(0xC5DC);
                                     std::uint8_t buttons = 0;
-                                    if (phase < 13) {
-                                        buttons = directions[mixed & 3u];
-                                    }
-                                    if (phase >= 14 && phase < 16) buttons = JoyA;
-                                    if ((segment + post_seed * 11u) % 47u == 0u &&
-                                        phase >= 17 && phase < 19) {
-                                        buttons = JoyB;
+
+                                    if (before_submode != 0) {
+                                        // While the game's text system owns
+                                        // input, stop overworld movement and
+                                        // advance the real dialogue with
+                                        // controlled A pulses.
+                                        if ((active_dialog_frames % 60u) < 2u) {
+                                            buttons = JoyA;
+                                        }
+
+                                        if (post_seed == 0 &&
+                                            active_dialog_capture < 8 &&
+                                            (active_dialog_frames == 25u ||
+                                             active_dialog_frames == 85u ||
+                                             active_dialog_frames == 145u)) {
+                                            Renderer text_renderer{};
+                                            text_renderer.render(post.memory(), true);
+                                            text_renderer.write_bmp(
+                                                output_dir /
+                                                ("search_post_text_" +
+                                                 std::to_string(active_dialog_capture) +
+                                                 "_" +
+                                                 std::to_string(active_dialog_frames) +
+                                                 ".bmp"));
+                                            std::cout
+                                                << "M7_SEARCH_POST_TEXT seed="
+                                                << post_seed
+                                                << " dialog="
+                                                << active_dialog_capture
+                                                << " active_frame="
+                                                << active_dialog_frames
+                                                << " screen=0x" << std::hex
+                                                << text_renderer.hash()
+                                                << std::dec << std::endl;
+                                        }
+                                        ++active_dialog_frames;
+                                    } else {
+                                        active_dialog_frames = 0;
+                                        if (phase < 13) {
+                                            buttons = directions[mixed & 3u];
+                                        }
+                                        if (phase >= 14 && phase < 16) {
+                                            buttons = JoyA;
+                                        }
+                                        if ((segment + post_seed * 11u) % 47u == 0u &&
+                                            phase >= 17 && phase < 19) {
+                                            buttons = JoyB;
+                                        }
                                     }
 
                                     const StepResult result =
@@ -899,6 +944,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                     if (previous_post_submode == 0 &&
                                         submode != 0 && post_dialogs < 12) {
+                                        active_dialog_frames = 0;
+                                        active_dialog_capture = post_dialogs;
                                         post_renderer.render(post.memory(), true);
                                         post_renderer.write_bmp(
                                             output_dir /
