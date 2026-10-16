@@ -4,48 +4,49 @@ This is the native-PC recompilation track for **Dragon Warrior Monsters 2:
 Cobi's Journey**.
 
 The matching RGBDS decompilation remains the source of truth. The native build
-reads the checked-in Game Boy machine-code bytes at **build time**, translates
-the required game code to C++, and lets the host compiler produce native x86-64
-code.
+reads checked-in Game Boy machine-code bytes at build time, ahead-of-time
+translates the required game code to C++, and lets the host compiler produce
+native x86-64 code.
 
-The project does not load an external ROM file for the native build. The exact
-4 MiB matching ROM image is generated from `src/banks/` and embedded at build
-time for game-data reads and hardware mapping.
+The project does not load an external ROM file in the native build. The exact
+4 MiB matching image is generated from `src/banks/` and embedded for original
+game-data reads and hardware mapping.
 
-## Current milestone: M5
+## Current milestone: M6
 
-M5 is the first visual proof that the original game itself is running through
-the native recomp path.
+M6 turns the M5 title-screen proof into the first interactive slice of the
+original game.
 
-The executable now boots from the real CGB cartridge entry point `$0100`,
-executes the original splash/intro sequence, and reaches the original
-**Dragon Warrior Monsters 2: Cobi's Journey** title screen.
+The native executable now:
 
-Accepted title regression:
+- boots the original CGB cartridge path from `$0100`;
+- retains the deterministic M5 title regression;
+- drives title/menu/new-game progression only through Game Boy P1 input;
+- reaches the real opening ship map through original game code;
+- moves the player on that map with D-pad input;
+- runs a live Win32 frame loop at Game Boy frame cadence;
+- maps host keyboard input to D-pad/A/B/Start/Select;
+- loads and saves the cartridge's exact 32 KiB MBC5 SRAM image;
+- autosaves dirty SRAM and flushes it on exit;
+- treats LR35902 HALT as a normal wait-for-interrupt state in the live loop.
 
-```text
-frame reached:       1921
-framebuffer FNV-1a:  0x49c67a53ef4f8a80
-stable frames:       30
-game state C5DB:     5
-substate C5DC:       0
-```
-
-That framebuffer is produced by original DWM2 code writing VRAM, OAM, palettes,
-scroll/window registers and game state. It is not a host-side reconstruction of
-the title artwork.
-
-### Native title path
-
-The title boot currently needs these ROMX banks translated ahead of time:
+Accepted movement regression:
 
 ```text
-1 2 7 127
+before framebuffer: 0xd926fc62969f3bb4
+after framebuffer:  0xea72400372e2d1c5
+WRAM bytes changed: 69
+frame:              3757
 ```
 
-A fixed OAM-DMA routine copied by the game to HRAM `$FF80-$FF89` is also
-compiled as a known native code fragment. Missing ROMX banks remain a hard
-runtime failure instead of silently falling back to an LR35902 interpreter.
+The accepted M6 AOT ROMX set is:
+
+```text
+1 2 4 7 15 16 18 19 20 22 23 31 40 52 53 95 96 105 127 132 133 135
+```
+
+Missing native ROMX code remains a hard runtime failure. There is no generic
+runtime LR35902 interpreter fallback.
 
 ## Windows build
 
@@ -53,7 +54,7 @@ Requirements:
 
 - CMake 3.24+
 - Python 3
-- Visual Studio 2022 Build Tools with the C++ workload
+- Visual Studio Build Tools with the C++ workload
 
 From the repository root:
 
@@ -62,28 +63,36 @@ cmake -S recomp -B recomp/build -A x64
 cmake --build recomp/build --config Release --parallel 4
 ```
 
-Run the retained hardware/renderer regression suite:
+Run the live game:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --play
+```
+
+Or choose an explicit save file:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --play my-save.sav
+```
+
+Controls:
+
+```text
+Arrow keys  D-pad
+Z           A
+X           B
+Enter       Start
+Backspace   Select
+```
+
+Permanent regression commands include:
 
 ```powershell
 .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp\build\m4_renderer_test.bmp
-```
-
-Boot the real game and verify the accepted title screen:
-
-```powershell
 .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp\build\m5_title_screen.bmp
-```
-
-Show the real title framebuffer in the native Win32 window:
-
-```powershell
-.\recomp\build\Release\DWM2tRecomp.exe --title-window
-```
-
-The exploratory boot tracer remains available when extending the game path:
-
-```powershell
-.\recomp\build\Release\DWM2tRecomp.exe --title-probe recomp\build\title_probe
+.\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp\build\m6_probe
+.\recomp\build\Release\DWM2tRecomp.exe --m6-sram-test recomp\build\m6_test.sav
+.\recomp\build\Release\DWM2tRecomp.exe --m6-window-smoke recomp\build\m6_test.sav
 ```
 
 ## Milestone architecture
@@ -91,12 +100,12 @@ The exploratory boot tracer remains available when extending the game path:
 ```text
 matching RGBDS banks
         |
-        +--> exact .gbc reference build
+        +--> exact embedded 4 MiB game image
         |
-        +--> build-time LR35902 analysis / AOT translation
+        +--> build-time LR35902 AOT translation
                     |
                     v
-             generated C++
+             generated native C++
                     |
                     v
               MSVC / clang
@@ -104,10 +113,10 @@ matching RGBDS banks
                     v
              DWM2tRecomp.exe
                     |
-        +-----------+-----------+
-        |           |           |
-    mapped GB    CGB software  native host
-     hardware      renderer      window/input
+        +-----------+-----------+-----------+
+        |           |           |           |
+    mapped GB    CGB software  Win32      .sav SRAM
+     hardware      renderer    input/UI   persistence
 ```
 
 ## Roadmap
@@ -118,8 +127,8 @@ matching RGBDS banks
 4. **M3** memory map, MBC5, interrupts, timers and joypad. ✅
 5. **M4** CGB renderer and native window. ✅
 6. **M5** original title screen from recompiled game code. ✅
-7. **M6** live input, title/menu transition, overworld and save RAM.
-8. **M7** battles, audio and remaining runtime behavior.
+7. **M6** live input, title/menu transition, real map movement and save RAM. ✅
+8. **M7** real battles, audio and original in-game save/continue.
 9. **M8** fully playable native PC release and optional enhanced patches.
 
 ## Project rules
@@ -127,7 +136,7 @@ matching RGBDS banks
 - The matching RGBDS build is the behavioral/source reference.
 - Accepted milestones get immutable `restore/recomp-mN` branches.
 - Every milestone leaves continuation instructions under `recomp/handoff/`.
-- Missing native code is surfaced explicitly. It is not hidden behind an
+- Missing native code is surfaced explicitly rather than hidden behind an
   instruction interpreter.
-- Hardware compatibility behavior is allowed in the runtime; game instructions
-  remain ahead-of-time translated.
+- Hardware compatibility behavior belongs in the runtime; original game
+  instructions remain ahead-of-time translated.

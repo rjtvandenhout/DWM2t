@@ -5,6 +5,18 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+def write_text_if_changed(path: Path, text: str) -> bool:
+    """Preserve mtime when generated content is already identical."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return True
+
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -62,8 +74,9 @@ std::size_t translated_romx_bank_count() {{
 '''
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(cpp, encoding="utf-8", newline="\n")
+    changed = write_text_if_changed(args.out, cpp)
     print("AOT ROMX banks:", " ".join(map(str, banks)))
+    print("ROMX registry changed:", "yes" if changed else "no")
     return 0
 
 

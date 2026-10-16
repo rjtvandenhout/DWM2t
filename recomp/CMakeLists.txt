@@ -8,6 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
+function(configure_native_target TARGET_NAME)
+    target_include_directories(${TARGET_NAME} PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    )
+    if(MSVC)
+        target_compile_options(${TARGET_NAME} PRIVATE /W4 /permissive- /O1 /bigobj /MP4)
+    else()
+        target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -O1)
+    endif()
+endfunction()
+
 set(REPO_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(BANKS_DIR "${REPO_ROOT}/src/banks")
 set(BANK0_SOURCE "${BANKS_DIR}/bank_000.asm")
@@ -38,15 +49,37 @@ add_custom_command(
     VERBATIM
 )
 
+add_library(dwm2t_bank0 STATIC ${BANK0_CPP})
+configure_native_target(dwm2t_bank0)
+
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 7 127)
+set(NATIVE_ROMX_BANKS 1 2 4 7 15 16 18 19 20 22 23 31 40 52 53 95 96 105 127 132 133 135)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
+set(BANK_FILE_4 "bank_004.asm")
 set(BANK_FILE_7 "bank_007.asm")
+set(BANK_FILE_15 "bank_015.asm")
+set(BANK_FILE_16 "bank_016.asm")
+set(BANK_FILE_18 "bank_018.asm")
+set(BANK_FILE_19 "bank_019.asm")
+set(BANK_FILE_20 "bank_020.asm")
+set(BANK_FILE_22 "bank_022.asm")
+set(BANK_FILE_23 "bank_023.asm")
+set(BANK_FILE_31 "bank_031.asm")
+set(BANK_FILE_40 "bank_040.asm")
+set(BANK_FILE_52 "bank_052.asm")
+set(BANK_FILE_53 "bank_053.asm")
+set(BANK_FILE_95 "bank_095.asm")
+set(BANK_FILE_96 "bank_096.asm")
+set(BANK_FILE_105 "bank_105.asm")
 set(BANK_FILE_127 "bank_127.asm")
+set(BANK_FILE_132 "bank_132.asm")
+set(BANK_FILE_133 "bank_133.asm")
+set(BANK_FILE_135 "bank_135.asm")
 
 set(ROMX_CPP)
+set(ROMX_TARGETS)
 foreach(BANK IN LISTS NATIVE_ROMX_BANKS)
     set(BANK_SOURCE "${BANKS_DIR}/${BANK_FILE_${BANK}}")
     set(BANK_OUTPUTS
@@ -72,8 +105,19 @@ foreach(BANK IN LISTS NATIVE_ROMX_BANKS)
         COMMENT "Static-recompiling switchable ROM Bank ${BANK}"
         VERBATIM
     )
+
+    set(BANK_TARGET "dwm2t_romx_bank_${BANK}")
+    add_library(${BANK_TARGET} STATIC ${BANK_OUTPUTS})
+    configure_native_target(${BANK_TARGET})
+
+    list(APPEND ROMX_TARGETS ${BANK_TARGET})
     list(APPEND ROMX_CPP ${BANK_OUTPUTS})
 endforeach()
+
+# During M6 discovery, compile only the newest required bank before relinking.
+set(M6_DISCOVERY_BANK 15)
+add_custom_target(m6_discovery_bank)
+add_dependencies(m6_discovery_bank dwm2t_romx_bank_${M6_DISCOVERY_BANK})
 
 set(ROMX_DISPATCH_CPP "${GENERATED_DIR}/romx_dispatch.cpp")
 add_custom_command(
@@ -106,28 +150,27 @@ add_custom_command(
     VERBATIM
 )
 
+add_library(dwm2t_rom_image STATIC "${ROM_IMAGE_CPP}")
+configure_native_target(dwm2t_rom_image)
+
 add_executable(DWM2tRecomp
     src/main.cpp
+    src/m6.cpp
     src/memory.cpp
     src/runtime.cpp
     src/hram_exec.cpp
     src/renderer.cpp
     src/window.cpp
-    ${BANK0_CPP}
-    ${ROMX_CPP}
     "${ROMX_DISPATCH_CPP}"
-    "${ROM_IMAGE_CPP}"
 )
 
-target_include_directories(DWM2tRecomp PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
+configure_native_target(DWM2tRecomp)
 
-if(MSVC)
-    target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive- /O1 /bigobj)
-else()
-    target_compile_options(DWM2tRecomp PRIVATE -Wall -Wextra -Wpedantic -O1)
-endif()
+target_link_libraries(DWM2tRecomp PRIVATE
+    dwm2t_bank0
+    dwm2t_rom_image
+    ${ROMX_TARGETS}
+)
 
 if(WIN32)
     target_link_libraries(DWM2tRecomp PRIVATE user32 gdi32)

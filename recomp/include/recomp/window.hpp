@@ -2,10 +2,24 @@
 
 #include "recomp/renderer.hpp"
 
+#include <filesystem>
+
 namespace dwm2t {
 
-// Displays a framebuffer in a simple native window until the user closes it.
-// Returns 0 on a normal close. On non-Windows hosts the function returns 1.
+class Runtime;
+
 int run_native_window(const Renderer::Framebuffer& framebuffer, int scale = 4);
+
+int run_live_window(
+    Runtime& runtime,
+    Renderer& renderer,
+    const std::filesystem::path& sav_path,
+    int scale = 4);
+
+int run_live_window_smoke(
+    Runtime& runtime,
+    Renderer& renderer,
+    const std::filesystem::path& sav_path,
+    int scale = 2);
 
 } // namespace dwm2t

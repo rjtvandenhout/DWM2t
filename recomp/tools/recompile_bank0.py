@@ -27,6 +27,18 @@ BANK_SIZE = 0x4000
 CHUNK_SIZE = 0x1000
 CHUNK_COUNT = BANK_SIZE // CHUNK_SIZE
 
+def write_text_if_changed(path: Path, text: str) -> bool:
+    """Preserve mtime when generated content is already identical."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return True
+
+
 
 def load_bank(path: Path) -> bytes:
     out = bytearray()
@@ -260,15 +272,19 @@ def main() -> int:
         raise SystemExit("--out-dir is required unless --audit-only is used")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    (args.out_dir / "bank0_master.cpp").write_text(
-        emit_master(bank), encoding="utf-8", newline="\n"
+    changed = 0
+    changed += write_text_if_changed(
+        args.out_dir / "bank0_master.cpp", emit_master(bank)
     )
     for chunk in range(CHUNK_COUNT):
-        (args.out_dir / f"bank0_chunk_{chunk}.cpp").write_text(
-            emit_chunk(bank, chunk), encoding="utf-8", newline="\n"
+        changed += write_text_if_changed(
+            args.out_dir / f"bank0_chunk_{chunk}.cpp", emit_chunk(bank, chunk)
         )
 
-    print(f"generated {CHUNK_COUNT + 1} C++ translation units in {args.out_dir}")
+    print(
+        f"generated {CHUNK_COUNT + 1} C++ translation units in {args.out_dir}; "
+        f"{changed} files changed"
+    )
     return 0
 
 

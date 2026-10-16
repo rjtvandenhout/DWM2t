@@ -2,81 +2,62 @@
 
 | Milestone | Goal | Status |
 |---|---|---|
-| M0 | Native EXE pipeline + two statically translated helpers | ✅ complete |
+| M0 | Native EXE pipeline + statically translated helpers | ✅ complete |
 | M1 | Complete LR35902 decoder/frontend | ✅ complete |
 | M2 | Bank 0 fully statically translated to native C++ | ✅ complete |
 | M3 | Memory map, MBC5, interrupts, timers and joypad | ✅ complete |
 | M4 | PPU/OAM compatibility renderer and native window | ✅ complete |
 | M5 | Original title screen through recompiled code | ✅ complete |
-| M6 | Input + overworld + save RAM | ⏳ next |
-| M7 | Battles + audio + remaining runtime | ⏳ |
+| M6 | Live input + real map movement + save RAM | ✅ complete |
+| M7 | Battles + audio + original save/continue | ⏳ next |
 | M8 | Fully playable native release | ⏳ |
 
 Restore branches live under `restore/recomp-mN`.
 Continuation notes live under `recomp/handoff/`.
 
-## M3 acceptance evidence
+## M5 retained acceptance evidence
 
-Windows CI run `38821080893` passed at
-`8ec0c1e80b5cea3df8f9581d1424fae319ec67d6`.
+The permanent M5 regression still reaches the original title at:
 
-Verified in the native Windows executable:
+```text
+frame=1921
+hash=0x49c67a53ef4f8a80
+stable_frames=30
+C5DB=5
+C5DC=0
+```
 
-- exact 4 MiB ROM image embedded from checked-in matching source;
-- MBC5 ROM/RAM banking;
-- WRAM/VRAM/OAM/HRAM mapping and OAM DMA;
-- timers and interrupts;
-- joypad matrix and IRQ;
-- HALT-bug trigger behavior;
-- native Bank 2 -> Bank 0 -> Bank 2 execution;
-- instruction machine-cycle accounting.
+## M6 acceptance evidence
 
-Restore point: `restore/recomp-m3`.
+Implementation CI run `38842905661` passed at
+`1cca3634ef0093f51c3bbf2d7c3e578eed5ab268`.
 
-## M4 acceptance evidence
-
-Windows CI run `38821625108` passed at
-`29c4c8249f5a77a17ea8194d624d20af52da3e6b`.
+The final milestone-record CI run `38843223801` also passed at
+`70628e9a6f210f494ace326c51d1ac295a36c023`.
 
 Verified:
 
-- deterministic 160x144 CGB framebuffer;
-- BG/window tile rendering;
-- VRAM-bank attributes and X/Y flip;
-- OAM sprite transparency/priority;
-- CGB BGR555 palette conversion;
-- Win32 native presentation;
-- renderer regression FNV-1a `0x284882dc2a98916f`.
+- original boot/title/menu/new-game execution reaches the real opening ship map;
+- all scripted input is delivered through Game Boy P1 semantics;
+- Right input visibly moves the player on the ship;
+- movement framebuffer hashes change
+  `0xd926fc62969f3bb4 -> 0xea72400372e2d1c5`;
+- 69 bytes of game-owned WRAM change during the accepted movement sample;
+- exact 32 KiB MBC5 SRAM survives save/reload/update/reload;
+- `--play` provides a live Win32 frame loop with keyboard input;
+- the Windows smoke test creates the real window, maps key down/up into P1,
+  advances native frames and renders successfully;
+- HALT is handled as normal wait-for-interrupt behavior in the live loop;
+- missing AOT code remains explicit and no generic LR35902 runtime interpreter
+  is used.
 
-Restore point: `restore/recomp-m4`.
-
-## M5 acceptance evidence
-
-Windows CI run `38825575292` passed at
-`9d0b9830ea6542def717a8cde726691cd0421cc2`.
-
-The executable boots the original DWM2 Cobi cartridge path from `$0100`
-using only embedded matching source data and ahead-of-time translated game code.
-It reaches the real title screen at frame 1921 with:
+Accepted AOT ROMX set:
 
 ```text
-framebuffer FNV-1a: 0x49c67a53ef4f8a80
-stable frames:      30
-C5DB game state:    5
-C5DC substate:      0
+1, 2, 4, 7, 15, 16, 18, 19, 20, 22, 23, 31, 40, 52, 53,
+95, 96, 105, 127, 132, 133, 135
 ```
 
-The regression fails on a missing native ROMX bank, CPU trap, unexpected STOP,
-or failure to reach the accepted title framebuffer within the bounded boot
-budget.
+Restore point: `restore/recomp-m6`.
 
-Native title-path ROMX banks currently compiled ahead-of-time:
-
-```text
-1, 2, 7, 127
-```
-
-The fixed HRAM OAM-DMA helper copied by the original game is also represented by
-an ahead-of-time native translation rather than a runtime opcode interpreter.
-
-Restore point: `restore/recomp-m5`.
+M7 instructions: `recomp/handoff/M6_NEXT.md`.

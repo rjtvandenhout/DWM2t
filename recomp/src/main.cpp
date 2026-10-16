@@ -1,5 +1,6 @@
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
+#include "recomp/m6.hpp"
 #include "recomp/renderer.hpp"
 #include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
@@ -606,6 +607,44 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--m6-window-smoke") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m6-window-smoke <save-path>\\n";
+            return EXIT_FAILURE;
+        }
+        dwm2t::Runtime runtime{};
+        dwm2t::Renderer renderer{};
+        return dwm2t::run_live_window_smoke(runtime, renderer, argv[2], 2);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--play") {
+        if (argc != 2 && argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --play [save-path]\\n";
+            return EXIT_FAILURE;
+        }
+        const std::filesystem::path save_path =
+            argc == 3 ? std::filesystem::path(argv[2]) : std::filesystem::path("DWM2t.sav");
+        dwm2t::Runtime runtime{};
+        dwm2t::Renderer renderer{};
+        return dwm2t::run_live_window(runtime, renderer, save_path, 4);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--m6-sram-test") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m6-sram-test <save-path>\\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_m6_sram_test(argv[2]);
+    }
+
+    if (argc >= 2 && std::string_view(argv[1]) == "--m6-probe") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m6-probe <output-dir>\\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_m6_probe(argv[2]);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--title-test") {
         if (argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --title-test <bmp-path>\\n";

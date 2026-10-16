@@ -1,6 +1,8 @@
 #include "recomp/memory.hpp"
 
 #include <algorithm>
+#include <array>
+#include <fstream>
 #include <stdexcept>
 
 namespace dwm2t {
@@ -52,6 +54,7 @@ void Memory::clear() {
     rom_bank_ = 1;
     ram_bank_ = 0;
     ram_enabled_ = false;
+    sram_dirty_ = false;
 
     joypad_pressed_ = 0;
     joypad_select_ = 0x30;
@@ -88,6 +91,14 @@ void Memory::set_rom_byte(std::size_t offset, std::uint8_t value) {
         throw std::out_of_range("ROM byte offset");
     }
     rom_[offset] = value;
+}
+
+void Memory::load_sram(const std::uint8_t* data, std::size_t size) {
+    if (size != SramSize) {
+        throw std::runtime_error("DWM2t runtime expected exactly 32 KiB of SRAM data");
+    }
+    std::copy_n(data, size, sram_.begin());
+    sram_dirty_ = false;
 }
 
 std::uint8_t Memory::selected_wram_bank() const {
@@ -222,7 +233,11 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
     if (address < 0xC000) {
         if (ram_enabled_) {
             const std::size_t bank = static_cast<std::size_t>(ram_bank_ & 0x03u);
-            sram_[bank * 0x2000u + (address - 0xA000u)] = value;
+            const std::size_t offset = bank * 0x2000u + (address - 0xA000u);
+            if (sram_[offset] != value) {
+                sram_[offset] = value;
+                sram_dirty_ = true;
+            }
         }
         return;
     }
@@ -477,6 +492,45 @@ std::uint8_t Memory::io(std::uint8_t offset) const {
 
 void Memory::set_io_direct(std::uint8_t offset, std::uint8_t value) {
     io_[offset & 0x7Fu] = value;
+}
+
+bool load_sram_file(Memory& memory, const std::filesystem::path& path) {
+    std::error_code ec;
+    if (!std::filesystem::exists(path, ec)) return !ec;
+
+    std::ifstream input(path, std::ios::binary);
+    if (!input) return false;
+
+    std::array<std::uint8_t, Memory::SramSize> data{};
+    input.read(reinterpret_cast<char*>(data.data()),
+               static_cast<std::streamsize>(data.size()));
+    if (input.gcount() != static_cast<std::streamsize>(data.size())) return false;
+
+    char extra = 0;
+    if (input.read(&extra, 1)) return false;
+
+    memory.load_sram(data.data(), data.size());
+    return true;
+}
+
+bool save_sram_file(Memory& memory, const std::filesystem::path& path) {
+    if (!path.parent_path().empty()) {
+        std::error_code ec;
+        std::filesystem::create_directories(path.parent_path(), ec);
+        if (ec) return false;
+    }
+
+    std::ofstream output(path, std::ios::binary | std::ios::trunc);
+    if (!output) return false;
+
+    const auto& data = memory.sram();
+    output.write(reinterpret_cast<const char*>(data.data()),
+                 static_cast<std::streamsize>(data.size()));
+    output.flush();
+    if (!output) return false;
+
+    memory.clear_sram_dirty();
+    return true;
 }
 
 } // namespace dwm2t

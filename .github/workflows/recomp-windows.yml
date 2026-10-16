@@ -25,6 +25,14 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Restore native recomp build cache
+        uses: actions/cache/restore@v4
+        with:
+          path: recomp/build
+          key: m6-native-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            m6-native-${{ runner.os }}-
+
       - name: Validate complete LR35902 frontend
         run: python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
 
@@ -34,8 +42,17 @@ jobs:
       - name: Configure native recomp
         run: cmake -S recomp -B recomp/build -A x64
 
-      - name: Build DWM2tRecomp.exe
-        run: cmake --build recomp/build --config Release --parallel 4
+      - name: Build newly discovered ROMX bank
+        run: cmake --build recomp/build --config Release --target m6_discovery_bank --parallel 4
+
+      - name: Relink DWM2tRecomp.exe from cached AOT libraries
+        run: cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4 -- /p:BuildProjectReferences=false
+
+      - name: Save native recomp build cache
+        uses: actions/cache/save@v4
+        with:
+          path: recomp/build
+          key: m6-native-${{ runner.os }}-${{ github.sha }}
 
       - name: Run M4 renderer regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
@@ -43,12 +60,24 @@ jobs:
       - name: Run M5 original title-screen regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp/build/m5_title_screen.bmp
 
+      - name: Run M6 input/flow exploration probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
+
+      - name: Run M6 SRAM persistence regression
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-sram-test recomp/build/m6_test.sav
+
+      - name: Run M6 live Win32 window smoke test
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-window-smoke recomp/build/m6_test.sav
+
       - name: Upload Windows executable and milestone images
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M5-Windows-x64
+          name: DWM2tRecomp-M6-Probe-Windows-x64
           path: |
             recomp/build/Release/DWM2tRecomp.exe
             recomp/build/m4_renderer_test.bmp
             recomp/build/m5_title_screen.bmp
+            recomp/build/m6_probe/**
+            recomp/build/m6_test.sav
           if-no-files-found: error
