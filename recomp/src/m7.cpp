@@ -283,6 +283,19 @@ std::uint64_t tilemap_hash(const Memory& memory) {
     return hash;
 }
 
+std::uint64_t background_hash(const Memory& memory) {
+    std::uint64_t hash = 1469598103934665603ull;
+    for (unsigned bank = 0; bank < 2; ++bank) {
+        const auto* vram =
+            memory.vram_bank_data(static_cast<std::uint8_t>(bank));
+        for (std::size_t i = 0x1800; i < 0x2000; ++i) {
+            hash ^= vram[i];
+            hash *= 1099511628211ull;
+        }
+    }
+    return hash;
+}
+
 std::uint64_t sram_hash(const Memory& memory) {
     std::uint64_t hash = 1469598103934665603ull;
     for (const std::uint8_t value : memory.sram()) {
@@ -794,22 +807,19 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         }
 
                         if (story == 0 && dialog_closed) {
-                            // Navigation discovery must not press A after every
-                            // movement. Search physical positions with pure
-                            // D-pad input so text windows and furniture do not
-                            // masquerade as new maps.
-                            auto oam_hash = [](const Memory& memory) {
-                                std::uint64_t hash =
-                                    1469598103934665603ull;
-                                for (std::uint32_t address = 0xFE00;
-                                     address < 0xFEA0; ++address) {
-                                    hash ^= memory.read8(
-                                        static_cast<std::uint16_t>(
-                                            address));
-                                    hash *= 1099511628211ull;
-                                }
-                                return hash;
-                            };
+                            // Pinned pure-D-pad path discovered by the physical
+                            // navigation search. It exits the bedroom/house and
+                            // reaches the outdoor area without any A presses.
+                            constexpr std::array<std::uint8_t, 18>
+                                outdoor_actions = {
+                                    3,3,3,3,3,3,3,3,
+                                    0,0,3,3,0,0,3,0,0,3
+                                };
+                            constexpr std::uint64_t kOutdoorScreenHash =
+                                0x7e0ce91b1463de95ull;
+
+                            auto outdoor =
+                                std::make_unique<Runtime>(story_runtime);
 
                             auto apply_navigation =
                                 [&](Runtime& runtime,
@@ -843,56 +853,131 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return StepResult::Continue;
                             };
 
-                            struct NavNode {
+                            for (std::size_t i = 0;
+                                 i < outdoor_actions.size(); ++i) {
+                                const StepResult result =
+                                    apply_navigation(
+                                        *outdoor,
+                                        outdoor_actions[i]);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_OUTDOOR_MISSING_BANK index="
+                                        << i
+                                        << " bank="
+                                        << outdoor->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << outdoor->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result !=
+                                    StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_OUTDOOR_ABORT index="
+                                        << i
+                                        << " result="
+                                        << static_cast<unsigned>(
+                                               result)
+                                        << std::endl;
+                                    return 133;
+                                }
+                            }
+
+                            Renderer region_renderer{};
+                            region_renderer.render(
+                                outdoor->memory(), true);
+                            region_renderer.write_bmp(
+                                output_dir /
+                                "search_outdoor_start.bmp");
+                            const std::uint64_t outdoor_region =
+                                background_hash(outdoor->memory());
+
+                            std::cout
+                                << "M7_SEARCH_OUTDOOR screen=0x"
+                                << std::hex
+                                << region_renderer.hash()
+                                << " expected=0x"
+                                << kOutdoorScreenHash
+                                << " region=0x"
+                                << outdoor_region
+                                << " scrollmap=0x"
+                                << tilemap_hash(
+                                       outdoor->memory())
+                                << std::dec << std::endl;
+
+                            if (region_renderer.hash() !=
+                                kOutdoorScreenHash) {
+                                std::cout
+                                    << "M7_SEARCH_OUTDOOR_FAIL deterministic_hash"
+                                    << std::endl;
+                                return 134;
+                            }
+
+                            auto oam_hash = [](const Memory& memory) {
+                                std::uint64_t hash =
+                                    1469598103934665603ull;
+                                for (std::uint32_t address = 0xFE00;
+                                     address < 0xFEA0; ++address) {
+                                    hash ^= memory.read8(
+                                        static_cast<std::uint16_t>(
+                                            address));
+                                    hash *= 1099511628211ull;
+                                }
+                                return hash;
+                            };
+
+                            struct RegionNode {
                                 std::unique_ptr<Runtime> runtime;
                                 std::vector<std::uint8_t> path;
                                 std::uint64_t score = 0;
-                                std::uint64_t map_hash = 0;
-                                std::uint64_t oam_hash = 0;
+                                std::uint64_t region = 0;
+                                std::uint64_t position = 0;
+                                std::uint64_t oam = 0;
                             };
 
-                            Renderer nav_renderer{};
-                            nav_renderer.render(
-                                story_runtime.memory(), true);
-                            const std::uint64_t start_map =
-                                tilemap_hash(story_runtime.memory());
-                            const std::uint64_t start_oam =
-                                oam_hash(story_runtime.memory());
-
-                            std::vector<NavNode> frontier;
+                            std::vector<RegionNode> frontier;
                             frontier.push_back({
-                                std::make_unique<Runtime>(
-                                    story_runtime),
+                                std::move(outdoor),
                                 {},
                                 0,
-                                start_map,
-                                start_oam
+                                outdoor_region,
+                                0,
+                                0
                             });
+                            frontier.front().position =
+                                tilemap_hash(
+                                    frontier.front()
+                                        .runtime->memory());
+                            frontier.front().oam =
+                                oam_hash(
+                                    frontier.front()
+                                        .runtime->memory());
 
                             std::unordered_set<std::uint64_t>
                                 seen_states;
                             std::unordered_set<std::uint64_t>
-                                seen_maps;
-                            seen_maps.insert(start_map);
-                            unsigned map_capture = 0;
+                                seen_regions;
+                            seen_regions.insert(outdoor_region);
+                            unsigned region_capture = 0;
 
                             constexpr std::array<std::uint8_t, 4>
-                                nav_actions = {3, 1, 0, 2};
-                            constexpr std::size_t nav_width = 48;
-                            constexpr std::size_t nav_depth = 64;
+                                region_actions = {1, 3, 2, 0};
+                            constexpr std::size_t region_width = 48;
+                            constexpr std::size_t region_depth = 72;
 
                             for (std::size_t depth = 0;
-                                 depth < nav_depth &&
+                                 depth < region_depth &&
                                  !frontier.empty(); ++depth) {
-                                std::vector<NavNode> next;
+                                std::vector<RegionNode> next;
                                 next.reserve(
                                     frontier.size() *
-                                    nav_actions.size());
+                                    region_actions.size());
 
-                                for (const NavNode& node :
+                                for (const RegionNode& node :
                                      frontier) {
                                     for (const std::uint8_t action :
-                                         nav_actions) {
+                                         region_actions) {
                                         auto child =
                                             std::make_unique<Runtime>(
                                                 *node.runtime);
@@ -902,13 +987,13 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                         if (result ==
                                             StepResult::MissingBank) {
-                                            nav_renderer.render(
+                                            region_renderer.render(
                                                 child->memory(), true);
-                                            nav_renderer.write_bmp(
+                                            region_renderer.write_bmp(
                                                 output_dir /
-                                                "search_nav_missing.bmp");
+                                                "search_region_missing.bmp");
                                             std::cout
-                                                << "M7_SEARCH_NAV_MISSING_BANK depth="
+                                                << "M7_SEARCH_REGION_MISSING_BANK depth="
                                                 << depth
                                                 << " action="
                                                 << search_action_name(
@@ -920,7 +1005,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << std::hex
                                                 << child->cpu().pc
                                                 << " screen=0x"
-                                                << nav_renderer.hash()
+                                                << region_renderer.hash()
                                                 << std::dec;
                                             print_search_path(
                                                 node.path);
@@ -943,24 +1028,28 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         const std::uint8_t submode =
                                             child->memory().read8(
                                                 0xC5DC);
-                                        nav_renderer.render(
-                                            child->memory(), true);
-                                        const std::uint64_t map =
+                                        const std::uint64_t region =
+                                            background_hash(
+                                                child->memory());
+                                        const std::uint64_t position =
                                             tilemap_hash(
                                                 child->memory());
                                         const std::uint64_t oam =
-                                            oam_hash(child->memory());
+                                            oam_hash(
+                                                child->memory());
 
                                         std::vector<std::uint8_t>
                                             path = node.path;
                                         path.push_back(action);
 
                                         if (mode != 1) {
-                                            nav_renderer.write_bmp(
+                                            region_renderer.render(
+                                                child->memory(), true);
+                                            region_renderer.write_bmp(
                                                 output_dir /
-                                                "search_nav_mode.bmp");
+                                                "search_region_mode.bmp");
                                             std::cout
-                                                << "M7_SEARCH_NAV_MODE_CHANGE depth="
+                                                << "M7_SEARCH_REGION_MODE_CHANGE depth="
                                                 << depth
                                                 << " C5DB="
                                                 << static_cast<unsigned>(
@@ -970,8 +1059,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                        submode)
                                                 << " screen=0x"
                                                 << std::hex
-                                                << nav_renderer.hash()
-                                                << " map=0x" << map
+                                                << region_renderer.hash()
+                                                << " region=0x"
+                                                << region
                                                 << std::dec;
                                             print_search_path(
                                                 path);
@@ -981,7 +1071,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         }
 
                                         std::uint64_t signature =
-                                            map;
+                                            region;
+                                        signature ^= position +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
                                         signature ^= oam +
                                             0x9E3779B97F4A7C15ull +
                                             (signature << 6) +
@@ -991,61 +1085,66 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             continue;
                                         }
 
-                                        const bool new_map =
-                                            seen_maps.insert(
-                                                map).second;
+                                        const bool new_region =
+                                            seen_regions.insert(
+                                                region).second;
                                         std::uint64_t score = 0;
-                                        if (new_map) {
+                                        if (new_region) {
                                             score +=
                                                 1'000'000'000'000ull;
-                                            if (map_capture < 24) {
-                                                nav_renderer.write_bmp(
+                                            if (region_capture < 32) {
+                                                region_renderer.render(
+                                                    child->memory(),
+                                                    true);
+                                                region_renderer.write_bmp(
                                                     output_dir /
-                                                    ("search_nav_map_" +
+                                                    ("search_region_" +
                                                      std::to_string(
-                                                         map_capture) +
+                                                         region_capture) +
                                                      ".bmp"));
                                                 std::cout
-                                                    << "M7_SEARCH_NAV_MAP capture="
-                                                    << map_capture
+                                                    << "M7_SEARCH_REGION_NEW capture="
+                                                    << region_capture
                                                     << " depth="
                                                     << depth
                                                     << " screen=0x"
                                                     << std::hex
-                                                    << nav_renderer.hash()
-                                                    << " map=0x"
-                                                    << map
+                                                    << region_renderer.hash()
+                                                    << " region=0x"
+                                                    << region
+                                                    << " scrollmap=0x"
+                                                    << position
                                                     << std::dec;
                                                 print_search_path(
                                                     path);
                                                 std::cout
                                                     << std::endl;
-                                                ++map_capture;
+                                                ++region_capture;
                                             }
                                         }
 
-                                        // Prefer moving down toward the
-                                        // visible room boundary, then west
-                                        // once an exit/map transition is
-                                        // reached.
-                                        if (action == 3) {
+                                        // Follow the ROM hint "The Vault is
+                                        // west", but keep enough alternatives
+                                        // to route around collisions.
+                                        if (action == 1) {
                                             score +=
-                                                20'000'000ull;
+                                                30'000'000ull;
                                         } else if (
-                                            action == 1) {
+                                            action == 3) {
                                             score +=
-                                                10'000'000ull;
+                                                8'000'000ull;
                                         } else if (
-                                            action == 0) {
+                                            action == 2) {
                                             score +=
-                                                2'000'000ull;
+                                                4'000'000ull;
                                         }
 
                                         next.push_back({
                                             std::move(child),
                                             std::move(path),
                                             score,
-                                            map,
+                                            region,
+                                            position,
                                             oam
                                         });
                                     }
@@ -1053,36 +1152,35 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                 std::stable_sort(
                                     next.begin(), next.end(),
-                                    [](const NavNode& a,
-                                       const NavNode& b) {
+                                    [](const RegionNode& a,
+                                       const RegionNode& b) {
                                         if (a.score != b.score) {
                                             return a.score >
                                                    b.score;
                                         }
-                                        if (a.map_hash !=
-                                            b.map_hash) {
-                                            return a.map_hash <
-                                                   b.map_hash;
+                                        if (a.region != b.region) {
+                                            return a.region <
+                                                   b.region;
                                         }
-                                        return a.oam_hash <
-                                               b.oam_hash;
+                                        return a.position <
+                                               b.position;
                                     });
-                                if (next.size() > nav_width) {
-                                    next.resize(nav_width);
+                                if (next.size() > region_width) {
+                                    next.resize(region_width);
                                 }
 
                                 if (!next.empty() &&
                                     (depth % 8u) == 0u) {
                                     std::cout
-                                        << "M7_SEARCH_NAV depth="
+                                        << "M7_SEARCH_REGION depth="
                                         << depth
                                         << " frontier="
                                         << next.size()
-                                        << " maps="
-                                        << seen_maps.size()
-                                        << " best_map=0x"
+                                        << " regions="
+                                        << seen_regions.size()
+                                        << " best_region=0x"
                                         << std::hex
-                                        << next.front().map_hash
+                                        << next.front().region
                                         << std::dec;
                                     print_search_path(
                                         next.front().path);
@@ -1095,22 +1193,24 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             for (std::size_t i = 0;
                                  i < frontier.size() &&
                                  i < 8; ++i) {
-                                nav_renderer.render(
+                                region_renderer.render(
                                     frontier[i].runtime->memory(),
                                     true);
-                                nav_renderer.write_bmp(
+                                region_renderer.write_bmp(
                                     output_dir /
-                                    ("search_nav_final_" +
+                                    ("search_region_final_" +
                                      std::to_string(i) +
                                      ".bmp"));
                                 std::cout
-                                    << "M7_SEARCH_NAV_FINAL index="
+                                    << "M7_SEARCH_REGION_FINAL index="
                                     << i
                                     << " screen=0x"
                                     << std::hex
-                                    << nav_renderer.hash()
-                                    << " map=0x"
-                                    << frontier[i].map_hash
+                                    << region_renderer.hash()
+                                    << " region=0x"
+                                    << frontier[i].region
+                                    << " scrollmap=0x"
+                                    << frontier[i].position
                                     << std::dec;
                                 print_search_path(
                                     frontier[i].path);
