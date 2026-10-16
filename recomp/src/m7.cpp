@@ -254,7 +254,9 @@ int run_m7_audio_probe() {
 
     for (std::size_t step = 0; step < max_steps; ++step) {
         const StepResult result = runtime.step();
-        if (result != StepResult::Continue) {
+        if (result == StepResult::MissingBank ||
+            result == StepResult::Trapped ||
+            result == StepResult::Stopped) {
             std::cout << "M7_AUDIO_FAIL runtime_result="
                       << static_cast<unsigned>(result)
                       << " bank=" << runtime.cpu().missing_bank
