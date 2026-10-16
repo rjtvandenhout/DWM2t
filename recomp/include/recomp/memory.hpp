@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <filesystem>
 #include <vector>
 
 namespace dwm2t {
@@ -32,6 +33,11 @@ public:
     void load_rom(const std::uint8_t* data, std::size_t size);
     void set_rom_byte(std::size_t offset, std::uint8_t value);
     [[nodiscard]] const std::vector<std::uint8_t>& rom() const { return rom_; }
+
+    void load_sram(const std::uint8_t* data, std::size_t size);
+    [[nodiscard]] const std::array<std::uint8_t, SramSize>& sram() const { return sram_; }
+    [[nodiscard]] bool sram_dirty() const { return sram_dirty_; }
+    void clear_sram_dirty() { sram_dirty_ = false; }
 
     [[nodiscard]] std::uint8_t read8(std::uint16_t address) const;
     void write8(std::uint16_t address, std::uint8_t value);
@@ -104,6 +110,7 @@ private:
     std::uint16_t rom_bank_ = 1;
     std::uint8_t ram_bank_ = 0;
     bool ram_enabled_ = false;
+    bool sram_dirty_ = false;
 
     std::uint8_t joypad_pressed_ = 0;
     std::uint8_t joypad_select_ = 0x30;
@@ -118,5 +125,7 @@ private:
 };
 
 void load_full_rom_image(Memory& memory);
+bool load_sram_file(Memory& memory, const std::filesystem::path& path);
+bool save_sram_file(Memory& memory, const std::filesystem::path& path);
 
 } // namespace dwm2t

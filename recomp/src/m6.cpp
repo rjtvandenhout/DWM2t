@@ -224,4 +224,66 @@ int run_m6_probe(const std::filesystem::path& output_dir) {
               << " hash=0x" << std::hex << renderer.hash() << std::dec << "\n";
     return 0;
 }
+
+int run_m6_sram_test(const std::filesystem::path& save_path) {
+    Memory source{};
+    load_full_rom_image(source);
+    source.write8(0x0000, 0x0A);
+
+    for (std::uint8_t bank = 0; bank < 4; ++bank) {
+        source.write8(0x4000, bank);
+        source.write8(0xA000, static_cast<std::uint8_t>(0x40u + bank));
+        source.write8(0xA123, static_cast<std::uint8_t>(0x80u + bank));
+        source.write8(0xBFFF, static_cast<std::uint8_t>(0xC0u + bank));
+    }
+
+    if (!source.sram_dirty() || !save_sram_file(source, save_path) || source.sram_dirty()) {
+        std::cout << "M6_SRAM_FAIL initial_save\n";
+        return 60;
+    }
+
+    Memory restored{};
+    load_full_rom_image(restored);
+    if (!load_sram_file(restored, save_path) || restored.sram_dirty()) {
+        std::cout << "M6_SRAM_FAIL reload\n";
+        return 61;
+    }
+    restored.write8(0x0000, 0x0A);
+
+    for (std::uint8_t bank = 0; bank < 4; ++bank) {
+        restored.write8(0x4000, bank);
+        if (restored.read8(0xA000) != static_cast<std::uint8_t>(0x40u + bank) ||
+            restored.read8(0xA123) != static_cast<std::uint8_t>(0x80u + bank) ||
+            restored.read8(0xBFFF) != static_cast<std::uint8_t>(0xC0u + bank)) {
+            std::cout << "M6_SRAM_FAIL bank=" << static_cast<unsigned>(bank) << "\n";
+            return 62;
+        }
+    }
+
+    restored.write8(0x4000, 2);
+    restored.write8(0xA321, 0xE7);
+    if (!restored.sram_dirty() || !save_sram_file(restored, save_path)) {
+        std::cout << "M6_SRAM_FAIL update_save\n";
+        return 63;
+    }
+
+    Memory verified{};
+    load_full_rom_image(verified);
+    if (!load_sram_file(verified, save_path)) {
+        std::cout << "M6_SRAM_FAIL second_reload\n";
+        return 64;
+    }
+    verified.write8(0x0000, 0x0A);
+    verified.write8(0x4000, 2);
+    if (verified.read8(0xA321) != 0xE7) {
+        std::cout << "M6_SRAM_FAIL updated_byte\n";
+        return 65;
+    }
+
+    std::cout << "M6_SRAM_PASS bytes=" << Memory::SramSize
+              << " bank2_A321=0x" << std::hex
+              << static_cast<unsigned>(verified.read8(0xA321))
+              << std::dec << " path=" << save_path.string() << "\n";
+    return 0;
+}
 } // namespace dwm2t
