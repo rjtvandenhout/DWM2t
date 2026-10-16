@@ -1764,6 +1764,129 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     sram_hash(
                                         approach->memory());
 
+                                if (candidate == 4) {
+                                    struct PortalActivator {
+                                        std::uint8_t buttons;
+                                        const char* name;
+                                    };
+                                    constexpr std::array<
+                                        PortalActivator, 6>
+                                        portal_activators = {{
+                                            {JoyStart, "start"},
+                                            {JoySelect, "select"},
+                                            {JoyA, "a"},
+                                            {JoyB, "b"},
+                                            {static_cast<std::uint8_t>(
+                                                 JoyStart | JoySelect),
+                                             "start_select"},
+                                            {static_cast<std::uint8_t>(
+                                                 JoyA | JoyB),
+                                             "a_b"}
+                                        }};
+
+                                    for (const PortalActivator& pa :
+                                         portal_activators) {
+                                        auto portal_test =
+                                            std::make_unique<Runtime>(
+                                                *approach);
+                                        const std::uint64_t
+                                            portal_wram_before =
+                                                wram_hash(
+                                                    portal_test
+                                                        ->memory());
+                                        const std::uint64_t
+                                            portal_sram_before =
+                                                sram_hash(
+                                                    portal_test
+                                                        ->memory());
+
+                                        for (unsigned f = 0;
+                                             f < 96; ++f) {
+                                            const std::uint8_t
+                                                buttons =
+                                                    f < 2
+                                                        ? pa.buttons
+                                                        : 0;
+                                            const StepResult result =
+                                                advance_search_frame(
+                                                    *portal_test,
+                                                    buttons);
+                                            if (result ==
+                                                StepResult::MissingBank) {
+                                                std::cout
+                                                    << "M7_SEARCH_PORTAL_ACTIVATOR_MISSING_BANK name="
+                                                    << pa.name
+                                                    << " bank="
+                                                    << portal_test
+                                                           ->cpu()
+                                                           .missing_bank
+                                                    << " pc=0x"
+                                                    << std::hex
+                                                    << portal_test
+                                                           ->cpu().pc
+                                                    << std::dec
+                                                    << std::endl;
+                                                return 127;
+                                            }
+                                            if (result !=
+                                                StepResult::Continue) {
+                                                break;
+                                            }
+                                        }
+
+                                        vault_door_renderer.render(
+                                            portal_test->memory(),
+                                            true);
+                                        vault_door_renderer.write_bmp(
+                                            output_dir /
+                                            (std::string(
+                                                 "search_portal_activator_") +
+                                             pa.name + ".bmp"));
+
+                                        std::cout
+                                            << "M7_SEARCH_PORTAL_ACTIVATOR name="
+                                            << pa.name
+                                            << " screen=0x"
+                                            << std::hex
+                                            << vault_door_renderer
+                                                   .hash()
+                                            << " bg=0x"
+                                            << background_hash(
+                                                   portal_test
+                                                       ->memory())
+                                            << " map=0x"
+                                            << tilemap_hash(
+                                                   portal_test
+                                                       ->memory())
+                                            << " wram_before=0x"
+                                            << portal_wram_before
+                                            << " wram_after=0x"
+                                            << wram_hash(
+                                                   portal_test
+                                                       ->memory())
+                                            << " sram_before=0x"
+                                            << portal_sram_before
+                                            << " sram_after=0x"
+                                            << sram_hash(
+                                                   portal_test
+                                                       ->memory())
+                                            << std::dec
+                                            << " C5DB="
+                                            << static_cast<unsigned>(
+                                                   portal_test
+                                                       ->memory()
+                                                       .read8(
+                                                           0xC5DB))
+                                            << " C5DC="
+                                            << static_cast<unsigned>(
+                                                   portal_test
+                                                       ->memory()
+                                                       .read8(
+                                                           0xC5DC))
+                                            << std::endl;
+                                    }
+                                }
+
                                 bool interaction_seen =
                                     false;
                                 bool interaction_closed =
