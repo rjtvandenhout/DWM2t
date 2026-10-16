@@ -2359,6 +2359,21 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << std::dec
                                 << std::endl;
 
+                            std::cout
+                                << "M7_VAULT_ROUTE_TRACE_COMPLETE"
+                                << " C920=0x" << std::hex
+                                << static_cast<unsigned>(
+                                       island_story->memory().read8(0xC920))
+                                << " C923=0x"
+                                << static_cast<unsigned>(
+                                       island_story->memory().read8(0xC923))
+                                << " CBEB=0x"
+                                << static_cast<unsigned>(
+                                       island_story->memory().read8(0xCBEB))
+                                << std::dec << std::endl;
+                            return 0;
+
+
                             auto island_control =
                                 std::make_unique<Runtime>(
                                     island_story_control_seed);
