@@ -456,7 +456,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
     }
 
     constexpr std::uint64_t frames_per_trial = 6000;
-    constexpr std::uint32_t trial_count = 8;
+    constexpr std::uint32_t trial_count = 2;
 
     for (std::uint32_t seed = 0; seed < trial_count; ++seed) {
         auto trial_owner = std::make_unique<Runtime>(base);
@@ -719,6 +719,26 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 const std::uint8_t after_submode =
                                     story_runtime.memory().read8(0xC5DC);
                                 if (after_submode != 0) saw_dialog = true;
+
+                                if (story == 0 && saw_dialog &&
+                                    (dialog_frames == 30 || dialog_frames == 90 ||
+                                     dialog_frames == 150 || dialog_frames == 240 ||
+                                     dialog_frames == 360 || dialog_frames == 480)) {
+                                    Renderer clue_renderer{};
+                                    clue_renderer.render(story_runtime.memory(), true);
+                                    clue_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_story_dialog_" +
+                                         std::to_string(dialog_frames) + ".bmp"));
+                                    std::cout << "M7_SEARCH_STORY_DIALOG_CAPTURE frame="
+                                              << dialog_frames
+                                              << " C5DC="
+                                              << static_cast<unsigned>(after_submode)
+                                              << " screen=0x" << std::hex
+                                              << clue_renderer.hash() << std::dec
+                                              << std::endl;
+                                }
+
                                 if (saw_dialog && after_submode == 0) {
                                     dialog_closed = true;
                                     break;
