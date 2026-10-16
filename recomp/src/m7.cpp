@@ -3255,6 +3255,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         auto child =
                                             std::make_unique<Runtime>(
                                                 *node.runtime);
+                                        const std::uint8_t parent_cc44 =
+                                            node.runtime->memory().read8(0xCC44);
+                                        const std::uint8_t parent_cc45 =
+                                            node.runtime->memory().read8(0xCC45);
                                         const StepResult nav_result =
                                             apply_navigation(
                                                 *child, action);
@@ -3316,12 +3320,16 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             (255u -
                                              static_cast<unsigned>(x)) *
                                             1'000'000ull;
-                                        if (last_navigation_transition) {
+                                        const bool location_changed =
+                                            cc44 != parent_cc44 ||
+                                            cc45 != parent_cc45;
+                                        if (location_changed ||
+                                            last_navigation_transition) {
                                             score +=
                                                 1'000'000'000'000ull;
                                             if (exit_screens.insert(
                                                     screen).second &&
-                                                exit_capture < 16) {
+                                                exit_capture < 24) {
                                                 exit_renderer.write_bmp(
                                                     output_dir /
                                                     ("search_true_exit_" +
@@ -3349,7 +3357,17 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                     << " CC45=0x"
                                                     << static_cast<unsigned>(
                                                            cc45)
-                                                    << std::dec;
+                                                    << " parent_CC44=0x"
+                                                    << static_cast<unsigned>(
+                                                           parent_cc44)
+                                                    << " parent_CC45=0x"
+                                                    << static_cast<unsigned>(
+                                                           parent_cc45)
+                                                    << std::dec
+                                                    << " location_changed="
+                                                    << (location_changed ? 1 : 0)
+                                                    << " lcd_transition="
+                                                    << (last_navigation_transition ? 1 : 0);
                                                 print_search_path(path);
                                                 std::cout << std::endl;
                                                 ++exit_capture;
