@@ -1096,7 +1096,166 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                        vault_door->memory().read8(
                                            0xC5DC))
                                 << std::endl;
-                            return 138;
+
+                            const std::uint64_t npc_sram_before =
+                                sram_hash(vault_door->memory());
+                            bool npc_dialog_seen = false;
+                            bool npc_dialog_closed = false;
+                            constexpr std::array<std::uint64_t, 7>
+                                npc_capture_frames = {
+                                    30, 90, 150, 240, 360, 480, 600
+                                };
+
+                            for (std::uint64_t frame = 0;
+                                 frame < 1400; ++frame) {
+                                const std::uint8_t before_submode =
+                                    vault_door->memory().read8(0xC5DC);
+                                if (npc_dialog_seen &&
+                                    before_submode == 0) {
+                                    npc_dialog_closed = true;
+                                    break;
+                                }
+
+                                std::uint8_t buttons = 0;
+                                if (!npc_dialog_seen) {
+                                    if (frame < 2 ||
+                                        (frame >= 120 &&
+                                         (frame % 120u) < 2u)) {
+                                        buttons = JoyA;
+                                    }
+                                } else if ((frame % 60u) < 2u) {
+                                    buttons = JoyA;
+                                }
+
+                                const StepResult result =
+                                    advance_search_frame(
+                                        *vault_door, buttons);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    vault_door_renderer.render(
+                                        vault_door->memory(), true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        "search_vault_npc_missing.bmp");
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_NPC_MISSING_BANK frame="
+                                        << frame
+                                        << " bank="
+                                        << vault_door->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << vault_door->cpu().pc
+                                        << " screen=0x"
+                                        << vault_door_renderer.hash()
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result == StepResult::Trapped ||
+                                    result == StepResult::Stopped ||
+                                    result == StepResult::StepLimit) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_NPC_ABORT frame="
+                                        << frame
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 139;
+                                }
+
+                                const std::uint8_t mode =
+                                    vault_door->memory().read8(0xC5DB);
+                                const std::uint8_t submode =
+                                    vault_door->memory().read8(0xC5DC);
+                                if (submode != 0) {
+                                    npc_dialog_seen = true;
+                                }
+
+                                if (npc_dialog_seen &&
+                                    std::find(
+                                        npc_capture_frames.begin(),
+                                        npc_capture_frames.end(),
+                                        frame) !=
+                                        npc_capture_frames.end()) {
+                                    vault_door_renderer.render(
+                                        vault_door->memory(), true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_vault_npc_text_" +
+                                         std::to_string(frame) +
+                                         ".bmp"));
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_NPC_TEXT frame="
+                                        << frame
+                                        << " C5DB="
+                                        << static_cast<unsigned>(mode)
+                                        << " C5DC="
+                                        << static_cast<unsigned>(submode)
+                                        << " screen=0x" << std::hex
+                                        << vault_door_renderer.hash()
+                                        << std::dec << std::endl;
+                                }
+
+                                if (mode != 1) {
+                                    vault_door_renderer.render(
+                                        vault_door->memory(), true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        "search_vault_npc_mode.bmp");
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_NPC_MODE_CHANGE frame="
+                                        << frame
+                                        << " C5DB="
+                                        << static_cast<unsigned>(mode)
+                                        << " C5DC="
+                                        << static_cast<unsigned>(submode)
+                                        << " screen=0x" << std::hex
+                                        << vault_door_renderer.hash()
+                                        << " sram=0x"
+                                        << sram_hash(
+                                               vault_door->memory())
+                                        << std::dec << std::endl;
+                                    return 0;
+                                }
+
+                                if (npc_dialog_seen &&
+                                    submode == 0) {
+                                    npc_dialog_closed = true;
+                                    break;
+                                }
+                            }
+
+                            vault_door->memory().set_joypad_state(0);
+                            vault_door_renderer.render(
+                                vault_door->memory(), true);
+                            vault_door_renderer.write_bmp(
+                                output_dir /
+                                "search_vault_npc_after.bmp");
+                            const std::uint64_t npc_sram_after =
+                                sram_hash(vault_door->memory());
+                            std::cout
+                                << "M7_SEARCH_VAULT_NPC_COMPLETE seen="
+                                << (npc_dialog_seen ? 1 : 0)
+                                << " closed="
+                                << (npc_dialog_closed ? 1 : 0)
+                                << " screen=0x" << std::hex
+                                << vault_door_renderer.hash()
+                                << " sram_before=0x"
+                                << npc_sram_before
+                                << " sram_after=0x"
+                                << npc_sram_after
+                                << std::dec
+                                << " sram_changed="
+                                << (npc_sram_before !=
+                                    npc_sram_after ? 1 : 0)
+                                << " C5DB="
+                                << static_cast<unsigned>(
+                                       vault_door->memory().read8(
+                                           0xC5DB))
+                                << " C5DC="
+                                << static_cast<unsigned>(
+                                       vault_door->memory().read8(
+                                           0xC5DC))
+                                << std::endl;
+                            return 139;
 
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
