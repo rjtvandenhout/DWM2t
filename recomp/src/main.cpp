@@ -1,5 +1,6 @@
 #include "recomp/bank0.hpp"
 #include "recomp/lr35902_exec.hpp"
+#include "recomp/m6.hpp"
 #include "recomp/renderer.hpp"
 #include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
@@ -606,6 +607,14 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--m6-probe") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m6-probe <output-dir>\\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_m6_probe(argv[2]);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--title-test") {
         if (argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --title-test <bmp-path>\\n";

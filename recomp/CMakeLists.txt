@@ -108,6 +108,7 @@ add_custom_command(
 
 add_executable(DWM2tRecomp
     src/main.cpp
+    src/m6.cpp
     src/memory.cpp
     src/runtime.cpp
     src/hram_exec.cpp

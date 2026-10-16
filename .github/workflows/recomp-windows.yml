@@ -43,12 +43,16 @@ jobs:
       - name: Run M5 original title-screen regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp/build/m5_title_screen.bmp
 
+      - name: Run M6 input/flow exploration probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
+
       - name: Upload Windows executable and milestone images
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M5-Windows-x64
+          name: DWM2tRecomp-M6-Probe-Windows-x64
           path: |
             recomp/build/Release/DWM2tRecomp.exe
             recomp/build/m4_renderer_test.bmp
             recomp/build/m5_title_screen.bmp
+            recomp/build/m6_probe/**
           if-no-files-found: error
