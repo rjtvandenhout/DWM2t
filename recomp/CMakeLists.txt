@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 4 7 10 15 16 17 18 19 20 22 23 31 40 52 53 95 96 105 127 132 133 135 161)
+set(NATIVE_ROMX_BANKS 1 2 4 7 10 15 16 17 18 19 20 22 23 31 37 40 52 53 95 96 105 127 132 133 135 161)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 set(BANK_FILE_4 "bank_004.asm")
@@ -69,6 +69,7 @@ set(BANK_FILE_20 "bank_020.asm")
 set(BANK_FILE_22 "bank_022.asm")
 set(BANK_FILE_23 "bank_023.asm")
 set(BANK_FILE_31 "bank_031.asm")
+set(BANK_FILE_37 "bank_037.asm")
 set(BANK_FILE_40 "bank_040.asm")
 set(BANK_FILE_52 "bank_052.asm")
 set(BANK_FILE_53 "bank_053.asm")
