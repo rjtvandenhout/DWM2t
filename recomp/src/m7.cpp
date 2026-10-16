@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <unordered_set>
 #include <vector>
@@ -351,7 +352,8 @@ void print_search_path(const std::vector<std::uint8_t>& path) {
 
 int run_m7_route_search(const std::filesystem::path& output_dir) {
     std::filesystem::create_directories(output_dir);
-    Runtime base{};
+    auto base_owner = std::make_unique<Runtime>();
+    Runtime& base = *base_owner;
     Renderer renderer{};
 
     std::uint64_t observed_frame = base.memory().frame_counter();
@@ -457,7 +459,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
     constexpr std::uint32_t trial_count = 8;
 
     for (std::uint32_t seed = 0; seed < trial_count; ++seed) {
-        Runtime trial = base;
+        auto trial_owner = std::make_unique<Runtime>(base);
+        Runtime& trial = *trial_owner;
         Renderer trial_renderer{};
         std::uint64_t last_save = sram_hash(trial.memory());
 
@@ -558,9 +561,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                 {{{JoyUp, 100}, {JoyA, 24}, {JoyLeft, 100}, {JoyA, 24}, {JoyUp, 40}}},
             }};
 
-            const Runtime focus_base = trial;
+            auto focus_base_owner = std::make_unique<Runtime>(trial);
+            const Runtime& focus_base = *focus_base_owner;
             for (std::size_t strategy = 0; strategy < strategies.size(); ++strategy) {
-                Runtime focused = focus_base;
+                auto focused_owner = std::make_unique<Runtime>(focus_base);
+                Runtime& focused = *focused_owner;
                 bool abort = false;
                 for (const FocusLeg& leg : strategies[strategy]) {
                     for (std::uint64_t f = 0; f < leg.frames; ++f) {
