@@ -1727,7 +1727,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             // "Go to the Vault" / "The Vault is west".
                             // Leave this building through the south exit, then
                             // probe the west route with pure D-pad input.
-                            constexpr unsigned guide_exit_steps = 12;
+                            constexpr unsigned guide_exit_steps = 8;
                             for (unsigned step = 0;
                                  step < guide_exit_steps; ++step) {
                                 const StepResult result =
@@ -1795,6 +1795,199 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     return 0;
                                 }
                             }
+
+                            // The guide explicitly says "The Vault is west".
+                            // Step 7 is the first stable outdoor frame. Search a
+                            // small deterministic set of west-biased pure-D-pad
+                            // routes from that exact game-owned state. Do not
+                            // continue south to the hay island.
+                            const Runtime guide_outdoor_seed = *vault_door;
+                            const std::uint64_t guide_outdoor_bg =
+                                background_hash(guide_outdoor_seed.memory());
+                            vault_door_renderer.render(
+                                guide_outdoor_seed.memory(), true);
+                            const std::uint64_t guide_outdoor_screen =
+                                vault_door_renderer.hash();
+                            vault_door_renderer.write_bmp(
+                                output_dir / "search_guide_outdoor_seed.bmp");
+                            std::cout
+                                << "M7_SEARCH_GUIDE_OUTDOOR seed_screen=0x"
+                                << std::hex << guide_outdoor_screen
+                                << " bg=0x" << guide_outdoor_bg
+                                << " map=0x"
+                                << tilemap_hash(guide_outdoor_seed.memory())
+                                << std::dec << std::endl;
+
+                            struct WestLeg {
+                                std::uint8_t direction;
+                                unsigned count;
+                            };
+                            struct WestRoute {
+                                std::array<WestLeg, 4> legs;
+                                unsigned count;
+                            };
+                            constexpr std::array<WestRoute, 7> west_routes = {{
+                                {{{{1,16},{0,0},{0,0},{0,0}}},1},
+                                {{{{3,4},{1,16},{0,0},{0,0}}},2},
+                                {{{{2,4},{1,16},{0,0},{0,0}}},2},
+                                {{{{1,8},{3,4},{1,10},{0,0}}},3},
+                                {{{{1,8},{2,4},{1,10},{0,0}}},3},
+                                {{{{3,7},{1,18},{2,3},{1,6}}},4},
+                                {{{{2,7},{1,18},{3,3},{1,6}}},4}
+                            }};
+
+                            bool west_found_transition = false;
+                            for (std::size_t route_index = 0;
+                                 route_index < west_routes.size();
+                                 ++route_index) {
+                                auto west = std::make_unique<Runtime>(
+                                    guide_outdoor_seed);
+                                const auto& route = west_routes[route_index];
+                                bool abort = false;
+                                unsigned macro_index = 0;
+                                for (unsigned leg = 0;
+                                     leg < route.count && !abort; ++leg) {
+                                    for (unsigned n = 0;
+                                         n < route.legs[leg].count; ++n) {
+                                        const StepResult result =
+                                            apply_navigation(
+                                                *west,
+                                                route.legs[leg].direction);
+                                        ++macro_index;
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            vault_door_renderer.render(
+                                                west->memory(), true);
+                                            vault_door_renderer.write_bmp(
+                                                output_dir /
+                                                ("search_west_missing_" +
+                                                 std::to_string(route_index) +
+                                                 ".bmp"));
+                                            std::cout
+                                                << "M7_SEARCH_WEST_MISSING_BANK route="
+                                                << route_index
+                                                << " macro="
+                                                << macro_index
+                                                << " bank="
+                                                << west->cpu().missing_bank
+                                                << " pc=0x" << std::hex
+                                                << west->cpu().pc
+                                                << " screen=0x"
+                                                << vault_door_renderer.hash()
+                                                << std::dec << std::endl;
+                                            return 127;
+                                        }
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            std::cout
+                                                << "M7_SEARCH_WEST_ABORT route="
+                                                << route_index
+                                                << " macro="
+                                                << macro_index
+                                                << " result="
+                                                << static_cast<unsigned>(
+                                                       result)
+                                                << std::endl;
+                                            abort = true;
+                                            break;
+                                        }
+
+                                        const std::uint8_t mode =
+                                            west->memory().read8(0xC5DB);
+                                        const std::uint64_t bg =
+                                            background_hash(
+                                                west->memory());
+                                        if (mode != 1) {
+                                            vault_door_renderer.render(
+                                                west->memory(), true);
+                                            vault_door_renderer.write_bmp(
+                                                output_dir /
+                                                "search_west_mode_change.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_WEST_MODE_CHANGE route="
+                                                << route_index
+                                                << " macro="
+                                                << macro_index
+                                                << " C5DB="
+                                                << static_cast<unsigned>(
+                                                       mode)
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       west->memory()
+                                                           .read8(0xC5DC))
+                                                << " screen=0x"
+                                                << std::hex
+                                                << vault_door_renderer.hash()
+                                                << " bg=0x" << bg
+                                                << std::dec << std::endl;
+                                            return 0;
+                                        }
+                                        if (bg != guide_outdoor_bg) {
+                                            west_found_transition = true;
+                                            vault_door_renderer.render(
+                                                west->memory(), true);
+                                            vault_door_renderer.write_bmp(
+                                                output_dir /
+                                                ("search_west_transition_" +
+                                                 std::to_string(route_index) +
+                                                 "_" +
+                                                 std::to_string(macro_index) +
+                                                 ".bmp"));
+                                            std::cout
+                                                << "M7_SEARCH_WEST_TRANSITION route="
+                                                << route_index
+                                                << " macro="
+                                                << macro_index
+                                                << " screen=0x" << std::hex
+                                                << vault_door_renderer.hash()
+                                                << " bg_before=0x"
+                                                << guide_outdoor_bg
+                                                << " bg_after=0x" << bg
+                                                << " map=0x"
+                                                << tilemap_hash(
+                                                       west->memory())
+                                                << std::dec
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       west->memory()
+                                                           .read8(0xC5DC))
+                                                << std::endl;
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                vault_door_renderer.render(
+                                    west->memory(), true);
+                                vault_door_renderer.write_bmp(
+                                    output_dir /
+                                    ("search_west_route_" +
+                                     std::to_string(route_index) +
+                                     "_final.bmp"));
+                                std::cout
+                                    << "M7_SEARCH_WEST_ROUTE route="
+                                    << route_index
+                                    << " screen=0x" << std::hex
+                                    << vault_door_renderer.hash()
+                                    << " bg=0x"
+                                    << background_hash(west->memory())
+                                    << " map=0x"
+                                    << tilemap_hash(west->memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           west->memory().read8(0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           west->memory().read8(0xC5DC))
+                                    << std::endl;
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_WEST_COMPLETE transition="
+                                << (west_found_transition ? 1 : 0)
+                                << std::endl;
+                            return 145;
 
                             // The south exit reaches a compact island with
                             // a circular hatch/stone feature in the middle.
