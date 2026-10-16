@@ -682,12 +682,50 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         auto story_owner = std::make_unique<Runtime>(story_base);
                         Runtime& story_runtime = *story_owner;
                         const StoryApproach approach = approaches[story];
+                        std::uint8_t last_story_c923 =
+                            story_runtime.memory().read8(0xC923);
+                        if (story == 0) {
+                            std::cout
+                                << "M7_C923_ROUTE_START value=0x"
+                                << std::hex
+                                << static_cast<unsigned>(last_story_c923)
+                                << " C552=0x"
+                                << static_cast<unsigned>(story_runtime.memory().read8(0xC552))
+                                << " bank=" << std::dec
+                                << story_runtime.memory().current_rom_bank()
+                                << " pc=0x" << std::hex
+                                << story_runtime.cpu().pc
+                                << std::dec << std::endl;
+                        }
 
                         auto run_leg = [&](std::uint8_t buttons,
                                            std::uint64_t frames) -> StepResult {
                             for (std::uint64_t f = 0; f < frames; ++f) {
                                 const StepResult result =
                                     advance_search_frame(story_runtime, buttons);
+                                if (story == 0) {
+                                    const std::uint8_t now_c923 =
+                                        story_runtime.memory().read8(0xC923);
+                                    if (now_c923 != last_story_c923) {
+                                        std::cout
+                                            << "M7_C923_ROUTE_CHANGE phase=approach"
+                                            << " frame=" << f
+                                            << " before=0x" << std::hex
+                                            << static_cast<unsigned>(last_story_c923)
+                                            << " after=0x"
+                                            << static_cast<unsigned>(now_c923)
+                                            << " C552=0x"
+                                            << static_cast<unsigned>(story_runtime.memory().read8(0xC552))
+                                            << " CBEB=0x"
+                                            << static_cast<unsigned>(story_runtime.memory().read8(0xCBEB))
+                                            << " bank=" << std::dec
+                                            << story_runtime.memory().current_rom_bank()
+                                            << " pc=0x" << std::hex
+                                            << story_runtime.cpu().pc
+                                            << std::dec << std::endl;
+                                        last_story_c923 = now_c923;
+                                    }
+                                }
                                 if (result != StepResult::Continue) return result;
                             }
                             return StepResult::Continue;
@@ -727,6 +765,29 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                 story_result =
                                     advance_search_frame(story_runtime, buttons);
+                                if (story == 0) {
+                                    const std::uint8_t now_c923 =
+                                        story_runtime.memory().read8(0xC923);
+                                    if (now_c923 != last_story_c923) {
+                                        std::cout
+                                            << "M7_C923_ROUTE_CHANGE phase=dialog"
+                                            << " frame=" << dialog_frames
+                                            << " before=0x" << std::hex
+                                            << static_cast<unsigned>(last_story_c923)
+                                            << " after=0x"
+                                            << static_cast<unsigned>(now_c923)
+                                            << " C552=0x"
+                                            << static_cast<unsigned>(story_runtime.memory().read8(0xC552))
+                                            << " CBEB=0x"
+                                            << static_cast<unsigned>(story_runtime.memory().read8(0xCBEB))
+                                            << " bank=" << std::dec
+                                            << story_runtime.memory().current_rom_bank()
+                                            << " pc=0x" << std::hex
+                                            << story_runtime.cpu().pc
+                                            << std::dec << std::endl;
+                                        last_story_c923 = now_c923;
+                                    }
+                                }
                                 if (story_result != StepResult::Continue) break;
 
                                 const std::uint8_t after_submode =
