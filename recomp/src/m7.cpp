@@ -972,7 +972,164 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             << std::dec << std::endl;
                                         ++post_dialogs;
                                     }
+                                    const bool post_dialog_closed =
+                                        previous_post_submode != 0 && submode == 0;
                                     previous_post_submode = submode;
+
+                                    if (post_seed == 0 &&
+                                        post_dialog_closed &&
+                                        post_dialogs >= 8) {
+                                        // The in-ROM quest text says:
+                                        // "The Vault is west of the Farm."
+                                        // Dialogue #7 is the Farm-side NPC in
+                                        // this deterministic route. Branch only
+                                        // from that legitimate post-dialogue
+                                        // state and try short P1-only paths
+                                        // west toward the Vault entrance.
+                                        struct VaultLeg {
+                                            std::uint8_t buttons;
+                                            std::uint64_t frames;
+                                        };
+                                        constexpr std::array<
+                                            std::array<VaultLeg, 5>, 6>
+                                            vault_routes = {{
+                                            {{{JoyLeft, 180}, {0, 12}, {JoyA, 60}, {0, 20}, {JoyLeft, 80}}},
+                                            {{{JoyLeft, 180}, {JoyUp, 60}, {JoyLeft, 80}, {JoyA, 60}, {0, 20}}},
+                                            {{{JoyLeft, 180}, {JoyDown, 60}, {JoyLeft, 80}, {JoyA, 60}, {0, 20}}},
+                                            {{{JoyLeft, 280}, {0, 16}, {JoyA, 90}, {JoyUp, 48}, {JoyA, 60}}},
+                                            {{{JoyLeft, 140}, {JoyUp, 96}, {JoyLeft, 140}, {JoyDown, 48}, {JoyA, 60}}},
+                                            {{{JoyLeft, 140}, {JoyDown, 96}, {JoyLeft, 140}, {JoyUp, 48}, {JoyA, 60}}},
+                                        }};
+
+                                        auto vault_base_owner =
+                                            std::make_unique<Runtime>(post);
+                                        const Runtime& vault_base =
+                                            *vault_base_owner;
+
+                                        for (std::size_t route = 0;
+                                             route < vault_routes.size();
+                                             ++route) {
+                                            auto vault_owner =
+                                                std::make_unique<Runtime>(
+                                                    vault_base);
+                                            Runtime& vault = *vault_owner;
+                                            bool vault_abort = false;
+
+                                            for (const VaultLeg& leg :
+                                                 vault_routes[route]) {
+                                                for (std::uint64_t f = 0;
+                                                     f < leg.frames; ++f) {
+                                                    std::uint8_t vault_buttons =
+                                                        leg.buttons;
+                                                    if (leg.buttons == JoyA) {
+                                                        vault_buttons =
+                                                            (f % 48u) < 2u
+                                                                ? JoyA : 0;
+                                                    }
+
+                                                    const StepResult vr =
+                                                        advance_search_frame(
+                                                            vault,
+                                                            vault_buttons);
+                                                    if (vr ==
+                                                        StepResult::MissingBank) {
+                                                        Renderer rr{};
+                                                        rr.render(
+                                                            vault.memory(), true);
+                                                        rr.write_bmp(
+                                                            output_dir /
+                                                            ("search_vault_missing_" +
+                                                             std::to_string(route) +
+                                                             ".bmp"));
+                                                        std::cout
+                                                            << "M7_SEARCH_VAULT_MISSING_BANK route="
+                                                            << route
+                                                            << " bank="
+                                                            << vault.cpu().missing_bank
+                                                            << " pc=0x"
+                                                            << std::hex
+                                                            << vault.cpu().pc
+                                                            << " screen=0x"
+                                                            << rr.hash()
+                                                            << std::dec
+                                                            << std::endl;
+                                                        return 127;
+                                                    }
+                                                    if (vr !=
+                                                        StepResult::Continue) {
+                                                        vault_abort = true;
+                                                        break;
+                                                    }
+
+                                                    if (vault.memory().read8(
+                                                            0xC5DB) != 1) {
+                                                        Renderer rr{};
+                                                        rr.render(
+                                                            vault.memory(), true);
+                                                        rr.write_bmp(
+                                                            output_dir /
+                                                            ("search_vault_mode_" +
+                                                             std::to_string(route) +
+                                                             ".bmp"));
+                                                        std::cout
+                                                            << "M7_SEARCH_VAULT_MODE_CHANGE route="
+                                                            << route
+                                                            << " C5DB="
+                                                            << static_cast<unsigned>(
+                                                                   vault.memory().read8(
+                                                                       0xC5DB))
+                                                            << " C5DC="
+                                                            << static_cast<unsigned>(
+                                                                   vault.memory().read8(
+                                                                       0xC5DC))
+                                                            << " screen=0x"
+                                                            << std::hex
+                                                            << rr.hash()
+                                                            << " map=0x"
+                                                            << tilemap_hash(
+                                                                   vault.memory())
+                                                            << std::dec
+                                                            << std::endl;
+                                                        return 0;
+                                                    }
+                                                }
+                                                if (vault_abort) break;
+                                            }
+
+                                            Renderer rr{};
+                                            rr.render(vault.memory(), true);
+                                            rr.write_bmp(
+                                                output_dir /
+                                                ("search_vault_route_" +
+                                                 std::to_string(route) +
+                                                 ".bmp"));
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_ROUTE route="
+                                                << route
+                                                << " abort="
+                                                << (vault_abort ? 1 : 0)
+                                                << " screen=0x" << std::hex
+                                                << rr.hash()
+                                                << " map=0x"
+                                                << tilemap_hash(vault.memory())
+                                                << " wram=0x"
+                                                << wram_hash(vault.memory())
+                                                << std::dec
+                                                << " C5DB="
+                                                << static_cast<unsigned>(
+                                                       vault.memory().read8(
+                                                           0xC5DB))
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       vault.memory().read8(
+                                                           0xC5DC))
+                                                << std::endl;
+                                        }
+
+                                        // One Vault probe per deterministic
+                                        // post-story trial is sufficient.
+                                        post_dialogs = 0xFFu;
+                                    }
 
                                     if (mode != 1) {
                                         post_renderer.render(post.memory(), true);
