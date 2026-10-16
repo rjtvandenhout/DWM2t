@@ -1835,14 +1835,18 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             auto story_signature = [](const Memory& memory) {
                                 std::uint64_t h = 1469598103934665603ull;
-                                // Only stable quest/progression bytes.
-                                // Exclude C916/C920 command selectors and the
-                                // CDxx/DCxx/DDxx frame/runtime scratch values:
-                                // those change constantly and are not story
-                                // progress.
-                                constexpr std::array<std::uint16_t, 7> addrs = {
-                                    0xC552, 0xC923, 0xC836,
-                                    0xCB86, 0xCB88, 0xCB8D, 0xCBEB
+                                // Bank 0 $181B is the cartridge's
+                                // event-flag checker. It addresses flags as
+                                // 0xCBD7 + flag/8 and masks bit flag&7.
+                                // Hash the exact bytes covering the M7 flags
+                                // found by the ROM scan instead of volatile
+                                // gameplay/selector fields.
+                                constexpr std::array<std::uint16_t, 5> addrs = {
+                                    0xCBDB, // flags 0x20..0x27
+                                    0xCBEB, // flags 0xA0..0xA7
+                                    0xCBFC, // flags 0x128..0x12F
+                                    0xCC07, // flags 0x180..0x187
+                                    0xCC08  // flags 0x188..0x18F
                                 };
                                 for (const std::uint16_t addr : addrs) {
                                     h ^= memory.read8(addr);
@@ -1902,6 +1906,17 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     }
                                 }
                                 return StepResult::Continue;
+                            };
+
+                            auto event_flag = [](const Memory& memory,
+                                                        std::uint16_t flag) {
+                                const std::uint16_t address =
+                                    static_cast<std::uint16_t>(
+                                        0xCBD7u + (flag >> 3));
+                                const std::uint8_t mask =
+                                    static_cast<std::uint8_t>(
+                                        1u << (flag & 7u));
+                                return (memory.read8(address) & mask) != 0;
                             };
 
                             Renderer quest_renderer{};
@@ -2019,7 +2034,15 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << screen
                                                 << " bg=0x" << bg
                                                 << " story=0x" << story_sig
-                                                << std::dec;
+                                                << std::dec
+                                                << " f21=" << event_flag(child->memory(), 0x21)
+                                                << " f22=" << event_flag(child->memory(), 0x22)
+                                                << " f23=" << event_flag(child->memory(), 0x23)
+                                                << " f24=" << event_flag(child->memory(), 0x24)
+                                                << " f25=" << event_flag(child->memory(), 0x25)
+                                                << " f26=" << event_flag(child->memory(), 0x26)
+                                                << " fA6=" << event_flag(child->memory(), 0xA6)
+                                                << " fA7=" << event_flag(child->memory(), 0xA7);
                                             print_search_path(path);
                                             std::cout << std::endl;
                                             return 0;
@@ -2094,7 +2117,15 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << " bg=0x" << bg
                                                 << " story=0x"
                                                 << story_sig
-                                                << std::dec;
+                                                << std::dec
+                                                << " f21=" << event_flag(child->memory(), 0x21)
+                                                << " f22=" << event_flag(child->memory(), 0x22)
+                                                << " f23=" << event_flag(child->memory(), 0x23)
+                                                << " f24=" << event_flag(child->memory(), 0x24)
+                                                << " f25=" << event_flag(child->memory(), 0x25)
+                                                << " f26=" << event_flag(child->memory(), 0x26)
+                                                << " fA6=" << event_flag(child->memory(), 0xA6)
+                                                << " fA7=" << event_flag(child->memory(), 0xA7);
                                             print_search_path(path);
                                             std::cout << std::endl;
                                             ++quest_capture;
