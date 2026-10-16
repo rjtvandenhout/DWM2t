@@ -807,6 +807,39 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         }
 
                         if (story == 0 && dialog_closed) {
+                            const std::uint8_t story_flags_before =
+                                story_runtime.memory().read8(0xCBDB);
+                            auto post_dialog_idle =
+                                std::make_unique<Runtime>(story_runtime);
+                            StepResult idle_result = StepResult::Continue;
+                            for (std::uint64_t idle = 0; idle < 600; ++idle) {
+                                idle_result =
+                                    advance_search_frame(*post_dialog_idle, 0);
+                                if (idle_result != StepResult::Continue) break;
+                            }
+                            const std::uint8_t story_flags_after =
+                                post_dialog_idle->memory().read8(0xCBDB);
+                            std::cout
+                                << "M7_SEARCH_POST_DIALOG_FLAGS before=0x"
+                                << std::hex
+                                << static_cast<unsigned>(story_flags_before)
+                                << " after=0x"
+                                << static_cast<unsigned>(story_flags_after)
+                                << std::dec
+                                << " flag21="
+                                << ((story_flags_after & 0x02u) ? 1 : 0)
+                                << " flag22="
+                                << ((story_flags_after & 0x04u) ? 1 : 0)
+                                << " flag23="
+                                << ((story_flags_after & 0x08u) ? 1 : 0)
+                                << " flag24="
+                                << ((story_flags_after & 0x10u) ? 1 : 0)
+                                << " flag25="
+                                << ((story_flags_after & 0x20u) ? 1 : 0)
+                                << " idle_result="
+                                << static_cast<unsigned>(idle_result)
+                                << std::endl;
+
                             // Pinned pure-D-pad path discovered by the physical
                             // navigation search. It exits the bedroom/house and
                             // reaches the outdoor area without any A presses.
