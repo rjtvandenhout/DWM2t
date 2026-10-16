@@ -626,14 +626,18 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         std::uint64_t frames;
                     };
                     constexpr std::array<std::array<StoryLeg, 6>, 8> story_routes = {{
-                        {{{JoyUp, 72}, {JoyLeft, 40}, {JoyA, 72}, {0, 24}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyLeft, 56}, {JoyUp, 80}, {JoyA, 72}, {0, 24}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyUp, 96}, {JoyA, 72}, {JoyLeft, 48}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyLeft, 32}, {JoyUp, 104}, {JoyRight, 24}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyUp, 64}, {JoyLeft, 72}, {JoyA, 72}, {JoyUp, 40}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyLeft, 88}, {JoyUp, 56}, {JoyRight, 40}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyUp, 120}, {JoyLeft, 24}, {JoyA, 72}, {JoyB, 24}, {JoyA, 240}, {0, 30}}},
-                        {{{JoyLeft, 40}, {JoyUp, 72}, {JoyA, 120}, {JoyDown, 24}, {JoyA, 240}, {0, 30}}},
+                        // The focus screenshot places the NPC roughly three
+                        // tiles left and one tile up. These short P1-only
+                        // approaches deliberately avoid the beds/vault objects
+                        // that the earlier over-long paths were inspecting.
+                        {{{JoyLeft, 42}, {JoyUp, 14}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyLeft, 48}, {JoyUp, 16}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyLeft, 54}, {JoyUp, 18}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyLeft, 42}, {JoyUp, 22}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyLeft, 48}, {JoyUp, 24}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyLeft, 54}, {JoyUp, 26}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyUp, 16}, {JoyLeft, 48}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                        {{{JoyUp, 22}, {JoyLeft, 48}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
                     }};
 
                     auto story_base_owner = std::make_unique<Runtime>(focused);
