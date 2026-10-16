@@ -1835,12 +1835,14 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             auto story_signature = [](const Memory& memory) {
                                 std::uint64_t h = 1469598103934665603ull;
-                                constexpr std::array<std::uint16_t, 18> addrs = {
-                                    0xC552, 0xC916, 0xC920, 0xC923,
-                                    0xC836, 0xCB86, 0xCB88, 0xCB8D,
-                                    0xCBEB, 0xCD03, 0xCD04,
-                                    0xDC06, 0xDC08, 0xDC09,
-                                    0xDD0E, 0xDD10, 0xCC44, 0xCC45
+                                // Only stable quest/progression bytes.
+                                // Exclude C916/C920 command selectors and the
+                                // CDxx/DCxx/DDxx frame/runtime scratch values:
+                                // those change constantly and are not story
+                                // progress.
+                                constexpr std::array<std::uint16_t, 7> addrs = {
+                                    0xC552, 0xC923, 0xC836,
+                                    0xCB86, 0xCB88, 0xCB8D, 0xCBEB
                                 };
                                 for (const std::uint16_t addr : addrs) {
                                     h ^= memory.read8(addr);
