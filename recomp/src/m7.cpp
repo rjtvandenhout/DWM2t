@@ -1690,6 +1690,236 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << "M7_SEARCH_VAULT_HATCH_NO_TRIGGER candidates="
                                 << vault_approaches.size()
                                 << std::endl;
+
+                            struct IslandNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t screen = 0;
+                                std::uint64_t ram = 0;
+                            };
+
+                            std::vector<IslandNode> island_frontier;
+                            {
+                                auto root =
+                                    std::make_unique<Runtime>(
+                                        island_seed);
+                                vault_door_renderer.render(
+                                    root->memory(), true);
+                                island_frontier.push_back({
+                                    std::move(root),
+                                    {},
+                                    vault_door_renderer.hash(),
+                                    wram_hash(
+                                        island_seed.memory())
+                                });
+                            }
+
+                            std::unordered_set<std::uint64_t>
+                                island_seen;
+                            constexpr std::size_t
+                                island_beam_width = 40;
+                            constexpr std::size_t
+                                island_depth = 28;
+                            constexpr std::array<
+                                std::uint8_t, 4>
+                                island_actions = {
+                                    0, 1, 2, 3
+                                };
+
+                            for (std::size_t depth = 0;
+                                 depth < island_depth &&
+                                 !island_frontier.empty();
+                                 ++depth) {
+                                std::vector<IslandNode> next;
+                                next.reserve(
+                                    island_frontier.size() *
+                                    island_actions.size());
+
+                                for (const IslandNode& node :
+                                     island_frontier) {
+                                    for (const std::uint8_t
+                                             action :
+                                         island_actions) {
+                                        auto child =
+                                            std::make_unique<
+                                                Runtime>(
+                                                *node.runtime);
+                                        const StepResult result =
+                                            apply_navigation(
+                                                *child,
+                                                action);
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_ISLAND_MISSING_BANK depth="
+                                                << depth
+                                                << " bank="
+                                                << child->cpu()
+                                                       .missing_bank
+                                                << " pc=0x"
+                                                << std::hex
+                                                << child->cpu().pc
+                                                << std::dec;
+                                            std::vector<
+                                                std::uint8_t>
+                                                path =
+                                                    node.path;
+                                            path.push_back(
+                                                action);
+                                            print_search_path(
+                                                path);
+                                            std::cout
+                                                << std::endl;
+                                            return 127;
+                                        }
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        vault_door_renderer
+                                            .render(
+                                                child->memory(),
+                                                true);
+                                        const std::uint64_t
+                                            screen =
+                                                vault_door_renderer
+                                                    .hash();
+                                        const std::uint64_t bg =
+                                            background_hash(
+                                                child->memory());
+                                        const std::uint64_t ram =
+                                            wram_hash(
+                                                child->memory());
+
+                                        std::vector<
+                                            std::uint8_t>
+                                            path = node.path;
+                                        path.push_back(action);
+
+                                        if (child->memory()
+                                                .read8(0xC5DB) !=
+                                            1) {
+                                            vault_door_renderer
+                                                .write_bmp(
+                                                    output_dir /
+                                                    "search_vault_island_mode.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_ISLAND_MODE_CHANGE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<
+                                                       unsigned>(
+                                                       child
+                                                           ->memory()
+                                                           .read8(
+                                                               0xC5DB))
+                                                << " C5DC="
+                                                << static_cast<
+                                                       unsigned>(
+                                                       child
+                                                           ->memory()
+                                                           .read8(
+                                                               0xC5DC))
+                                                << " screen=0x"
+                                                << std::hex
+                                                << screen
+                                                << " bg=0x"
+                                                << bg
+                                                << std::dec;
+                                            print_search_path(
+                                                path);
+                                            std::cout
+                                                << std::endl;
+                                            return 0;
+                                        }
+
+                                        if (bg != island_bg &&
+                                            screen !=
+                                                0xb423319be6530b83ull) {
+                                            vault_door_renderer
+                                                .write_bmp(
+                                                    output_dir /
+                                                    "search_vault_island_exit.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_VAULT_ISLAND_EXIT depth="
+                                                << depth
+                                                << " screen=0x"
+                                                << std::hex
+                                                << screen
+                                                << " bg=0x"
+                                                << bg
+                                                << " map=0x"
+                                                << tilemap_hash(
+                                                       child
+                                                           ->memory())
+                                                << std::dec;
+                                            print_search_path(
+                                                path);
+                                            std::cout
+                                                << std::endl;
+                                            return 142;
+                                        }
+
+                                        std::uint64_t sig =
+                                            screen;
+                                        sig ^= ram +
+                                            0x9E3779B97F4A7C15ull +
+                                            (sig << 6) +
+                                            (sig >> 2);
+                                        if (!island_seen
+                                                 .insert(sig)
+                                                 .second) {
+                                            continue;
+                                        }
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            screen,
+                                            ram
+                                        });
+                                    }
+                                }
+
+                                std::stable_sort(
+                                    next.begin(),
+                                    next.end(),
+                                    [](const IslandNode& a,
+                                       const IslandNode& b) {
+                                        if (a.ram != b.ram) {
+                                            return a.ram <
+                                                   b.ram;
+                                        }
+                                        return a.screen <
+                                               b.screen;
+                                    });
+                                if (next.size() >
+                                    island_beam_width) {
+                                    next.resize(
+                                        island_beam_width);
+                                }
+
+                                if (!next.empty() &&
+                                    (depth % 6u) == 0u) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_ISLAND depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size();
+                                    print_search_path(
+                                        next.front().path);
+                                    std::cout
+                                        << std::endl;
+                                }
+                                island_frontier =
+                                    std::move(next);
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_VAULT_ISLAND_NO_EXIT depth="
+                                << island_depth
+                                << std::endl;
                             return 141;
 
                             auto oam_hash = [](const Memory& memory) {
