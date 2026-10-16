@@ -2,7 +2,8 @@
 #include "recomp/memory.hpp"
 #include "recomp/renderer.hpp"
 #include "recomp/runtime.hpp"
-#include <array>\n#include <cstddef>
+#include <array>
+#include <cstddef>
 #include <cstdint>
 #include <filesystem>
 #include <iomanip>
