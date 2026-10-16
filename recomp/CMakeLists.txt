@@ -40,7 +40,7 @@ add_custom_command(
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 4 7 20 31 52 127)
+set(NATIVE_ROMX_BANKS 1 2 4 7 20 31 52 53 127)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 set(BANK_FILE_4 "bank_004.asm")
@@ -48,6 +48,7 @@ set(BANK_FILE_7 "bank_007.asm")
 set(BANK_FILE_20 "bank_020.asm")
 set(BANK_FILE_31 "bank_031.asm")
 set(BANK_FILE_52 "bank_052.asm")
+set(BANK_FILE_53 "bank_053.asm")
 set(BANK_FILE_127 "bank_127.asm")
 
 set(ROMX_CPP)
