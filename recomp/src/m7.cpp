@@ -1334,95 +1334,363 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 }
                             }
 
-                            constexpr unsigned vault_west_steps = 28;
-                            for (unsigned step = 0;
-                                 step < vault_west_steps; ++step) {
-                                const StepResult result =
-                                    apply_navigation(*vault_door, 1);
-                                if (result ==
-                                    StepResult::MissingBank) {
-                                    vault_door_renderer.render(
-                                        vault_door->memory(), true);
-                                    vault_door_renderer.write_bmp(
-                                        output_dir /
-                                        "search_vault_west_missing.bmp");
-                                    std::cout
-                                        << "M7_SEARCH_VAULT_WEST_MISSING_BANK step="
-                                        << step
-                                        << " bank="
-                                        << vault_door->cpu().missing_bank
-                                        << " pc=0x" << std::hex
-                                        << vault_door->cpu().pc
-                                        << " screen=0x"
-                                        << vault_door_renderer.hash()
-                                        << std::dec << std::endl;
-                                    return 127;
+                            // The south exit reaches a compact island with
+                            // a circular hatch/stone feature in the middle.
+                            // Direct west movement is blocked by the surrounding
+                            // trees, so try a small deterministic set of
+                            // P1-only approaches around the ring and interact
+                            // only after reaching the feature.
+                            struct VaultApproach {
+                                std::array<std::uint8_t, 10> moves;
+                                std::size_t count;
+                            };
+                            constexpr std::array<VaultApproach, 8>
+                                vault_approaches = {{
+                                    {{{3,3,1,1,3,3,0,0,2,0}}, 9},
+                                    {{{3,3,0,0,3,3,1,1,2,0}}, 9},
+                                    {{{1,1,3,3,3,0,0,2,0,0}}, 8},
+                                    {{{0,0,3,3,3,1,1,2,0,0}}, 8},
+                                    {{{3,1,1,3,3,0,0,3,2,0}}, 9},
+                                    {{{3,0,0,3,3,1,1,3,2,0}}, 9},
+                                    {{{1,3,3,0,0,3,1,2,0,0}}, 8},
+                                    {{{0,3,3,1,1,3,0,2,0,0}}, 8}
+                                }};
+
+                            const Runtime island_seed = *vault_door;
+                            const std::uint64_t island_bg =
+                                background_hash(
+                                    island_seed.memory());
+                            std::cout
+                                << "M7_SEARCH_VAULT_ISLAND seed_bg=0x"
+                                << std::hex << island_bg
+                                << " screen=0x"
+                                << vault_door_renderer.hash()
+                                << std::dec << std::endl;
+
+                            for (std::size_t candidate = 0;
+                                 candidate <
+                                     vault_approaches.size();
+                                 ++candidate) {
+                                auto approach =
+                                    std::make_unique<Runtime>(
+                                        island_seed);
+                                bool abort_candidate = false;
+
+                                for (std::size_t move = 0;
+                                     move <
+                                         vault_approaches[
+                                             candidate].count;
+                                     ++move) {
+                                    const StepResult result =
+                                        apply_navigation(
+                                            *approach,
+                                            vault_approaches[
+                                                candidate]
+                                                .moves[move]);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_HATCH_MISSING_BANK candidate="
+                                            << candidate
+                                            << " move=" << move
+                                            << " bank="
+                                            << approach->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << approach->cpu().pc
+                                            << std::dec
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (result !=
+                                        StepResult::Continue) {
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_HATCH_ABORT candidate="
+                                            << candidate
+                                            << " move=" << move
+                                            << " result="
+                                            << static_cast<unsigned>(
+                                                   result)
+                                            << std::endl;
+                                        abort_candidate =
+                                            true;
+                                        break;
+                                    }
+                                    if (approach->memory()
+                                            .read8(0xC5DB) !=
+                                        1) {
+                                        vault_door_renderer
+                                            .render(
+                                                approach
+                                                    ->memory(),
+                                                true);
+                                        vault_door_renderer
+                                            .write_bmp(
+                                                output_dir /
+                                                ("search_vault_hatch_mode_" +
+                                                 std::to_string(
+                                                     candidate) +
+                                                 ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_HATCH_MODE_CHANGE candidate="
+                                            << candidate
+                                            << " move=" << move
+                                            << " C5DB="
+                                            << static_cast<
+                                                   unsigned>(
+                                                   approach
+                                                       ->memory()
+                                                       .read8(
+                                                           0xC5DB))
+                                            << " C5DC="
+                                            << static_cast<
+                                                   unsigned>(
+                                                   approach
+                                                       ->memory()
+                                                       .read8(
+                                                           0xC5DC))
+                                            << std::endl;
+                                        return 0;
+                                    }
                                 }
-                                if (result !=
-                                    StepResult::Continue) {
-                                    std::cout
-                                        << "M7_SEARCH_VAULT_WEST_ABORT step="
-                                        << step
-                                        << " result="
-                                        << static_cast<unsigned>(result)
-                                        << std::endl;
-                                    return 140;
+                                if (abort_candidate) {
+                                    continue;
                                 }
+
                                 vault_door_renderer.render(
-                                    vault_door->memory(), true);
-                                if (step < 6 ||
-                                    (step % 3u) == 2u ||
-                                    step + 1 ==
-                                        vault_west_steps) {
-                                    vault_door_renderer.write_bmp(
+                                    approach->memory(), true);
+                                vault_door_renderer
+                                    .write_bmp(
                                         output_dir /
-                                        ("search_vault_west_" +
-                                         std::to_string(step) +
+                                        ("search_vault_hatch_pos_" +
+                                         std::to_string(
+                                             candidate) +
                                          ".bmp"));
+                                const std::uint64_t before =
+                                    sram_hash(
+                                        approach->memory());
+
+                                bool interaction_seen =
+                                    false;
+                                bool interaction_closed =
+                                    false;
+                                for (std::uint64_t frame = 0;
+                                     frame < 900; ++frame) {
+                                    const std::uint8_t
+                                        before_submode =
+                                            approach->memory()
+                                                .read8(
+                                                    0xC5DC);
+                                    if (interaction_seen &&
+                                        before_submode == 0) {
+                                        interaction_closed =
+                                            true;
+                                        break;
+                                    }
+
+                                    std::uint8_t buttons =
+                                        0;
+                                    if (!interaction_seen) {
+                                        if (frame < 2 ||
+                                            (frame >= 120 &&
+                                             (frame %
+                                                  120u) <
+                                                 2u)) {
+                                            buttons = JoyA;
+                                        }
+                                    } else if (
+                                        (frame % 60u) <
+                                        2u) {
+                                        buttons = JoyA;
+                                    }
+
+                                    const StepResult result =
+                                        advance_search_frame(
+                                            *approach,
+                                            buttons);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        vault_door_renderer
+                                            .render(
+                                                approach
+                                                    ->memory(),
+                                                true);
+                                        vault_door_renderer
+                                            .write_bmp(
+                                                output_dir /
+                                                "search_vault_hatch_missing.bmp");
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_HATCH_MISSING_BANK candidate="
+                                            << candidate
+                                            << " frame="
+                                            << frame
+                                            << " bank="
+                                            << approach->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << approach->cpu().pc
+                                            << " screen=0x"
+                                            << vault_door_renderer
+                                                   .hash()
+                                            << std::dec
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (result ==
+                                            StepResult::Trapped ||
+                                        result ==
+                                            StepResult::Stopped ||
+                                        result ==
+                                            StepResult::StepLimit) {
+                                        break;
+                                    }
+
+                                    const std::uint8_t mode =
+                                        approach->memory()
+                                            .read8(0xC5DB);
+                                    const std::uint8_t
+                                        submode =
+                                            approach->memory()
+                                                .read8(
+                                                    0xC5DC);
+                                    if (submode != 0) {
+                                        interaction_seen =
+                                            true;
+                                    }
+
+                                    if (interaction_seen &&
+                                        (frame == 30 ||
+                                         frame == 90 ||
+                                         frame == 150 ||
+                                         frame == 240)) {
+                                        vault_door_renderer
+                                            .render(
+                                                approach
+                                                    ->memory(),
+                                                true);
+                                        vault_door_renderer
+                                            .write_bmp(
+                                                output_dir /
+                                                ("search_vault_hatch_text_" +
+                                                 std::to_string(
+                                                     candidate) +
+                                                 "_" +
+                                                 std::to_string(
+                                                     frame) +
+                                                 ".bmp"));
+                                    }
+
+                                    if (mode != 1) {
+                                        vault_door_renderer
+                                            .render(
+                                                approach
+                                                    ->memory(),
+                                                true);
+                                        vault_door_renderer
+                                            .write_bmp(
+                                                output_dir /
+                                                ("search_vault_hatch_mode_" +
+                                                 std::to_string(
+                                                     candidate) +
+                                                 ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_HATCH_MODE_CHANGE candidate="
+                                            << candidate
+                                            << " frame="
+                                            << frame
+                                            << " C5DB="
+                                            << static_cast<
+                                                   unsigned>(
+                                                   mode)
+                                            << " C5DC="
+                                            << static_cast<
+                                                   unsigned>(
+                                                   submode)
+                                            << " screen=0x"
+                                            << std::hex
+                                            << vault_door_renderer
+                                                   .hash()
+                                            << " sram=0x"
+                                            << sram_hash(
+                                                   approach
+                                                       ->memory())
+                                            << std::dec
+                                            << std::endl;
+                                        return 0;
+                                    }
+
+                                    if (interaction_seen &&
+                                        submode == 0) {
+                                        interaction_closed =
+                                            true;
+                                        break;
+                                    }
                                 }
+
+                                approach->memory()
+                                    .set_joypad_state(0);
+                                vault_door_renderer.render(
+                                    approach->memory(), true);
+                                vault_door_renderer
+                                    .write_bmp(
+                                        output_dir /
+                                        ("search_vault_hatch_after_" +
+                                         std::to_string(
+                                             candidate) +
+                                         ".bmp"));
+                                const std::uint64_t after =
+                                    sram_hash(
+                                        approach->memory());
                                 std::cout
-                                    << "M7_SEARCH_VAULT_WEST step="
-                                    << step
-                                    << " screen=0x" << std::hex
-                                    << vault_door_renderer.hash()
+                                    << "M7_SEARCH_VAULT_HATCH candidate="
+                                    << candidate
+                                    << " seen="
+                                    << (interaction_seen
+                                            ? 1
+                                            : 0)
+                                    << " closed="
+                                    << (interaction_closed
+                                            ? 1
+                                            : 0)
+                                    << " screen=0x"
+                                    << std::hex
+                                    << vault_door_renderer
+                                           .hash()
                                     << " bg=0x"
                                     << background_hash(
-                                           vault_door->memory())
-                                    << " map=0x"
-                                    << tilemap_hash(
-                                           vault_door->memory())
+                                           approach
+                                               ->memory())
+                                    << " sram_before=0x"
+                                    << before
+                                    << " sram_after=0x"
+                                    << after
                                     << std::dec
+                                    << " changed="
+                                    << (before != after
+                                            ? 1
+                                            : 0)
                                     << " C5DB="
-                                    << static_cast<unsigned>(
-                                           vault_door->memory().read8(
-                                               0xC5DB))
+                                    << static_cast<
+                                           unsigned>(
+                                           approach
+                                               ->memory()
+                                               .read8(0xC5DB))
                                     << " C5DC="
-                                    << static_cast<unsigned>(
-                                           vault_door->memory().read8(
-                                               0xC5DC))
+                                    << static_cast<
+                                           unsigned>(
+                                           approach
+                                               ->memory()
+                                               .read8(0xC5DC))
                                     << std::endl;
-
-                                if (vault_door->memory().read8(
-                                        0xC5DB) != 1) {
-                                    std::cout
-                                        << "M7_SEARCH_VAULT_WEST_MODE_CHANGE step="
-                                        << step << std::endl;
-                                    return 0;
-                                }
                             }
 
-                            vault_door_renderer.write_bmp(
-                                output_dir /
-                                "search_vault_west_final.bmp");
                             std::cout
-                                << "M7_SEARCH_VAULT_WEST_COMPLETE screen=0x"
-                                << std::hex
-                                << vault_door_renderer.hash()
-                                << " bg=0x"
-                                << background_hash(
-                                       vault_door->memory())
-                                << std::dec << std::endl;
-                            return 140;
+                                << "M7_SEARCH_VAULT_HATCH_NO_TRIGGER candidates="
+                                << vault_approaches.size()
+                                << std::endl;
+                            return 141;
 
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
