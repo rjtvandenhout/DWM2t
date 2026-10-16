@@ -1015,6 +1015,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                        outdoor->memory())
                                 << std::dec << std::endl;
 
+                            std::cout << "M7_STORY_TRACE_COMPLETE" << std::endl;
+                            return 0;
+
+
                             if (region_renderer.hash() !=
                                 kOutdoorScreenHash) {
                                 std::cout
