@@ -180,5 +180,5 @@ target_link_libraries(DWM2tRecomp PRIVATE
 )
 
 if(WIN32)
-    target_link_libraries(DWM2tRecomp PRIVATE user32 gdi32)
+    target_link_libraries(DWM2tRecomp PRIVATE user32 gdi32 winmm)
 endif()
