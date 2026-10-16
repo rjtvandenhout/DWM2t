@@ -7,14 +7,119 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <mmsystem.h>
 
+#include <algorithm>
+#include <array>
 #include <chrono>
 #include <cstdint>
 #include <iostream>
 #include <thread>
+#include <vector>
 
 namespace dwm2t {
 namespace {
+
+
+class WaveOutSink {
+public:
+    WaveOutSink() {
+        WAVEFORMATEX format{};
+        format.wFormatTag = WAVE_FORMAT_PCM;
+        format.nChannels = 2;
+        format.nSamplesPerSec = Apu::SampleRate;
+        format.wBitsPerSample = 16;
+        format.nBlockAlign = 4;
+        format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
+        if (waveOutOpen(&handle_, WAVE_MAPPER, &format, 0, 0, CALLBACK_NULL) == MMSYSERR_NOERROR) {
+            ready_ = true;
+        }
+    }
+
+    ~WaveOutSink() {
+        if (handle_ == nullptr) return;
+        waveOutReset(handle_);
+        for (auto& slot : slots_) {
+            if (slot.prepared) {
+                waveOutUnprepareHeader(handle_, &slot.header, sizeof(slot.header));
+                slot.prepared = false;
+            }
+        }
+        waveOutClose(handle_);
+    }
+
+    [[nodiscard]] bool ready() const { return ready_; }
+
+    void submit(std::vector<std::int16_t> samples) {
+        if (!ready_ || samples.empty()) return;
+
+        std::size_t offset = 0;
+        while (offset < samples.size()) {
+            Slot* slot = find_free_slot();
+            if (slot == nullptr) {
+                // Host buffering must never stall emulated CPU/APU timing.
+                // If Windows falls behind, discard only host presentation
+                // samples; the emulated APU state continues uninterrupted.
+                return;
+            }
+
+            const std::size_t count =
+                std::min<std::size_t>(slot->data.size(), samples.size() - offset);
+            std::copy_n(samples.data() + offset, count, slot->data.data());
+            offset += count;
+
+            slot->header = {};
+            slot->header.lpData = reinterpret_cast<LPSTR>(slot->data.data());
+            slot->header.dwBufferLength =
+                static_cast<DWORD>(count * sizeof(std::int16_t));
+
+            if (waveOutPrepareHeader(handle_, &slot->header, sizeof(slot->header)) !=
+                MMSYSERR_NOERROR) {
+                ready_ = false;
+                return;
+            }
+            slot->prepared = true;
+
+            if (waveOutWrite(handle_, &slot->header, sizeof(slot->header)) !=
+                MMSYSERR_NOERROR) {
+                waveOutUnprepareHeader(handle_, &slot->header, sizeof(slot->header));
+                slot->prepared = false;
+                ready_ = false;
+                return;
+            }
+        }
+    }
+
+private:
+    static constexpr std::size_t SlotCount = 8;
+    static constexpr std::size_t ValuesPerSlot = 4096;
+
+    struct Slot {
+        WAVEHDR header{};
+        std::array<std::int16_t, ValuesPerSlot> data{};
+        bool prepared = false;
+    };
+
+    Slot* find_free_slot() {
+        for (std::size_t attempt = 0; attempt < SlotCount; ++attempt) {
+            Slot& slot = slots_[next_slot_];
+            next_slot_ = (next_slot_ + 1u) % SlotCount;
+
+            if (slot.prepared) {
+                if ((slot.header.dwFlags & WHDR_DONE) == 0) continue;
+                waveOutUnprepareHeader(handle_, &slot.header, sizeof(slot.header));
+                slot.prepared = false;
+            }
+            return &slot;
+        }
+        return nullptr;
+    }
+
+    HWAVEOUT handle_ = nullptr;
+    std::array<Slot, SlotCount> slots_{};
+    std::size_t next_slot_ = 0;
+    bool ready_ = false;
+};
 
 const Renderer::Framebuffer* g_framebuffer = nullptr;
 std::uint8_t g_host_buttons = 0;
@@ -156,6 +261,12 @@ int run_live_window(
         return 1;
     }
 
+    WaveOutSink audio;
+    if (!audio.ready()) {
+        std::cerr << "M7 live audio warning: no WinMM playback device available; "
+                     "emulated APU timing remains active.\n";
+    }
+
     using Clock = std::chrono::steady_clock;
     constexpr auto frame_period = std::chrono::microseconds(16742);
     auto next_frame = Clock::now();
@@ -210,6 +321,8 @@ int run_live_window(
             exit_code = 6;
             break;
         }
+
+        audio.submit(memory.apu().take_samples());
 
         renderer.render(memory, true);
         g_framebuffer = &renderer.framebuffer();
