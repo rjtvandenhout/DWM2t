@@ -456,7 +456,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
     }
 
     constexpr std::uint64_t frames_per_trial = 6000;
-    constexpr std::uint32_t trial_count = 8;
+    constexpr std::uint32_t trial_count = 2;
 
     for (std::uint32_t seed = 0; seed < trial_count; ++seed) {
         auto trial_owner = std::make_unique<Runtime>(base);
@@ -621,95 +621,149 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                 }
 
                 if (seed == 1 && strategy == 4) {
-                    struct StoryLeg {
-                        std::uint8_t buttons;
-                        std::uint64_t frames;
+                    struct StoryApproach {
+                        std::uint8_t first_button;
+                        std::uint64_t first_frames;
+                        std::uint8_t second_button;
+                        std::uint64_t second_frames;
                     };
-                    constexpr std::array<std::array<StoryLeg, 6>, 8> story_routes = {{
-                        // The focus screenshot places the NPC roughly three
-                        // tiles left and one tile up. These short P1-only
-                        // approaches deliberately avoid the beds/vault objects
-                        // that the earlier over-long paths were inspecting.
-                        {{{JoyLeft, 42}, {JoyUp, 14}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyLeft, 48}, {JoyUp, 16}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyLeft, 54}, {JoyUp, 18}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyLeft, 42}, {JoyUp, 22}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyLeft, 48}, {JoyUp, 24}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyLeft, 54}, {JoyUp, 26}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyUp, 16}, {JoyLeft, 48}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
-                        {{{JoyUp, 22}, {JoyLeft, 48}, {JoyA, 72}, {0, 18}, {JoyA, 300}, {0, 36}}},
+                    constexpr std::array<StoryApproach, 8> approaches = {{
+                        {JoyLeft, 42, JoyUp, 14},
+                        {JoyLeft, 48, JoyUp, 16},
+                        {JoyLeft, 54, JoyUp, 18},
+                        {JoyLeft, 42, JoyUp, 22},
+                        {JoyLeft, 48, JoyUp, 24},
+                        {JoyLeft, 54, JoyUp, 26},
+                        {JoyUp, 16, JoyLeft, 48},
+                        {JoyUp, 22, JoyLeft, 48},
                     }};
 
                     auto story_base_owner = std::make_unique<Runtime>(focused);
                     const Runtime& story_base = *story_base_owner;
-                    for (std::size_t story = 0; story < story_routes.size(); ++story) {
+                    const std::uint64_t base_save_hash =
+                        sram_hash(story_base.memory());
+
+                    for (std::size_t story = 0; story < approaches.size(); ++story) {
                         auto story_owner = std::make_unique<Runtime>(story_base);
                         Runtime& story_runtime = *story_owner;
-                        bool story_abort = false;
-                        for (const StoryLeg& leg : story_routes[story]) {
-                            for (std::uint64_t f = 0; f < leg.frames; ++f) {
-                                std::uint8_t buttons = leg.buttons;
-                                if (leg.buttons == JoyA) {
-                                    buttons = (f % 18u) < 2u ? JoyA : 0;
-                                } else if (leg.buttons == JoyB) {
-                                    buttons = f < 2u ? JoyB : 0;
-                                }
+                        const StoryApproach approach = approaches[story];
+
+                        auto run_leg = [&](std::uint8_t buttons,
+                                           std::uint64_t frames) -> StepResult {
+                            for (std::uint64_t f = 0; f < frames; ++f) {
                                 const StepResult result =
                                     advance_search_frame(story_runtime, buttons);
-                                if (result == StepResult::MissingBank) {
-                                    Renderer sr{};
-                                    sr.render(story_runtime.memory(), true);
-                                    sr.write_bmp(output_dir /
-                                        ("search_story_missing_" +
-                                         std::to_string(story) + ".bmp"));
-                                    std::cout << "M7_SEARCH_STORY_MISSING_BANK route="
-                                              << story
-                                              << " bank="
-                                              << story_runtime.cpu().missing_bank
-                                              << " pc=0x" << std::hex
-                                              << story_runtime.cpu().pc
-                                              << " screen=0x" << sr.hash()
-                                              << std::dec << std::endl;
-                                    return 127;
-                                }
-                                if (result == StepResult::Trapped ||
-                                    result == StepResult::Stopped ||
-                                    result == StepResult::StepLimit) {
-                                    story_abort = true;
+                                if (result != StepResult::Continue) return result;
+                            }
+                            return StepResult::Continue;
+                        };
+
+                        StepResult story_result =
+                            run_leg(approach.first_button, approach.first_frames);
+                        if (story_result == StepResult::Continue) {
+                            story_result =
+                                run_leg(approach.second_button, approach.second_frames);
+                        }
+
+                        bool saw_dialog = false;
+                        bool dialog_closed = false;
+                        std::uint64_t dialog_frames = 0;
+
+                        if (story_result == StepResult::Continue) {
+                            // Speak exactly once. Once C5DC indicates that the
+                            // text system is active, pulse A only while it stays
+                            // active and stop immediately after it closes. This
+                            // avoids reopening the NPC forever.
+                            constexpr std::uint64_t max_dialog_frames = 1200;
+                            for (; dialog_frames < max_dialog_frames; ++dialog_frames) {
+                                const std::uint8_t before_submode =
+                                    story_runtime.memory().read8(0xC5DC);
+                                if (saw_dialog && before_submode == 0) {
+                                    dialog_closed = true;
                                     break;
                                 }
-                                if (story_runtime.memory().read8(0xC5DB) != 1) {
-                                    Renderer sr{};
-                                    sr.render(story_runtime.memory(), true);
-                                    sr.write_bmp(output_dir /
-                                        ("search_story_mode_" +
-                                         std::to_string(story) + ".bmp"));
-                                    std::cout << "M7_SEARCH_STORY_MODE_CHANGE route="
-                                              << story
-                                              << " C5DB="
-                                              << static_cast<unsigned>(
-                                                     story_runtime.memory().read8(0xC5DB))
-                                              << " C5DC="
-                                              << static_cast<unsigned>(
-                                                     story_runtime.memory().read8(0xC5DC))
-                                              << " screen=0x" << std::hex
-                                              << sr.hash()
-                                              << " map=0x"
-                                              << tilemap_hash(story_runtime.memory())
-                                              << std::dec << std::endl;
-                                    return 0;
+
+                                std::uint8_t buttons = 0;
+                                if (!saw_dialog) {
+                                    if (dialog_frames < 2) buttons = JoyA;
+                                } else if ((dialog_frames % 60u) < 2u) {
+                                    buttons = JoyA;
+                                }
+
+                                story_result =
+                                    advance_search_frame(story_runtime, buttons);
+                                if (story_result != StepResult::Continue) break;
+
+                                const std::uint8_t after_submode =
+                                    story_runtime.memory().read8(0xC5DC);
+                                if (after_submode != 0) saw_dialog = true;
+                                if (saw_dialog && after_submode == 0) {
+                                    dialog_closed = true;
+                                    break;
                                 }
                             }
-                            if (story_abort) break;
                         }
+
+                        if (story_result == StepResult::MissingBank) {
+                            Renderer sr{};
+                            sr.render(story_runtime.memory(), true);
+                            sr.write_bmp(output_dir /
+                                ("search_story_missing_" +
+                                 std::to_string(story) + ".bmp"));
+                            std::cout << "M7_SEARCH_STORY_MISSING_BANK route="
+                                      << story
+                                      << " bank=" << story_runtime.cpu().missing_bank
+                                      << " pc=0x" << std::hex
+                                      << story_runtime.cpu().pc
+                                      << " screen=0x" << sr.hash()
+                                      << std::dec << std::endl;
+                            return 127;
+                        }
+                        if (story_result == StepResult::Trapped ||
+                            story_result == StepResult::Stopped ||
+                            story_result == StepResult::StepLimit) {
+                            std::cout << "M7_SEARCH_STORY_ABORT route=" << story
+                                      << " result="
+                                      << static_cast<unsigned>(story_result)
+                                      << std::endl;
+                            continue;
+                        }
+                        if (story_runtime.memory().read8(0xC5DB) != 1) {
+                            Renderer sr{};
+                            sr.render(story_runtime.memory(), true);
+                            sr.write_bmp(output_dir /
+                                ("search_story_mode_" +
+                                 std::to_string(story) + ".bmp"));
+                            std::cout << "M7_SEARCH_STORY_MODE_CHANGE route="
+                                      << story
+                                      << " C5DB="
+                                      << static_cast<unsigned>(
+                                             story_runtime.memory().read8(0xC5DB))
+                                      << " C5DC="
+                                      << static_cast<unsigned>(
+                                             story_runtime.memory().read8(0xC5DC))
+                                      << " screen=0x" << std::hex << sr.hash()
+                                      << " map=0x"
+                                      << tilemap_hash(story_runtime.memory())
+                                      << std::dec << std::endl;
+                            return 0;
+                        }
+
                         Renderer sr{};
                         sr.render(story_runtime.memory(), true);
                         sr.write_bmp(output_dir /
                             ("search_story_" + std::to_string(story) + ".bmp"));
+                        const std::uint64_t save_hash =
+                            sram_hash(story_runtime.memory());
                         std::cout << "M7_SEARCH_STORY_COMPLETE route=" << story
+                                  << " saw_dialog=" << (saw_dialog ? 1 : 0)
+                                  << " dialog_closed=" << (dialog_closed ? 1 : 0)
+                                  << " dialog_frames=" << dialog_frames
                                   << " screen=0x" << std::hex << sr.hash()
                                   << " map=0x" << tilemap_hash(story_runtime.memory())
-                                  << " sram=0x" << sram_hash(story_runtime.memory())
+                                  << " sram=0x" << save_hash
+                                  << " sram_changed="
+                                  << (save_hash != base_save_hash ? 1 : 0)
                                   << std::dec
                                   << " C5DB="
                                   << static_cast<unsigned>(
