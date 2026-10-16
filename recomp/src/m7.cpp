@@ -243,4 +243,75 @@ int run_m7_discovery(const std::filesystem::path& output_dir) {
     return 0;
 }
 
+int run_m7_audio_probe() {
+    Runtime runtime{};
+    Renderer renderer{};
+    auto& memory = runtime.memory();
+
+    std::uint64_t observed_frame = memory.frame_counter();
+    unsigned stable_title = 0;
+    constexpr std::size_t max_steps = 80'000'000;
+
+    for (std::size_t step = 0; step < max_steps; ++step) {
+        const StepResult result = runtime.step();
+        if (result != StepResult::Continue) {
+            std::cout << "M7_AUDIO_FAIL runtime_result="
+                      << static_cast<unsigned>(result)
+                      << " bank=" << runtime.cpu().missing_bank
+                      << " pc=0x" << std::hex << runtime.cpu().pc << std::dec << "\n";
+            return 100;
+        }
+        if (memory.frame_counter() == observed_frame) continue;
+        observed_frame = memory.frame_counter();
+        renderer.render(memory, true);
+        if (renderer.hash() == kM5TitleHash &&
+            memory.read8(0xC5DB) == 5 &&
+            memory.read8(0xC5DC) == 0) {
+            ++stable_title;
+        } else {
+            stable_title = 0;
+        }
+        if (stable_title >= 30) break;
+    }
+
+    if (stable_title < 30) {
+        std::cout << "M7_AUDIO_FAIL retained_title\n";
+        return 101;
+    }
+
+    const auto samples = memory.apu().take_samples();
+    std::uint64_t hash = 1469598103934665603ull;
+    std::uint64_t nonzero = 0;
+    int peak = 0;
+    for (const std::int16_t sample : samples) {
+        const std::uint16_t bits = static_cast<std::uint16_t>(sample);
+        hash ^= static_cast<std::uint8_t>(bits & 0xFFu);
+        hash *= 1099511628211ull;
+        hash ^= static_cast<std::uint8_t>(bits >> 8);
+        hash *= 1099511628211ull;
+        if (sample != 0) ++nonzero;
+        const int magnitude =
+            sample < 0 ? -static_cast<int>(sample) : static_cast<int>(sample);
+        if (magnitude > peak) peak = magnitude;
+    }
+
+    std::cout << "M7_AUDIO_RESULT sample_values=" << samples.size()
+              << " stereo_frames=" << (samples.size() / 2)
+              << " nonzero=" << nonzero
+              << " peak=" << peak
+              << " hash=0x" << std::hex << hash
+              << " NR50=0x" << static_cast<unsigned>(memory.read8(0xFF24))
+              << " NR51=0x" << static_cast<unsigned>(memory.read8(0xFF25))
+              << " NR52=0x" << static_cast<unsigned>(memory.read8(0xFF26))
+              << std::dec << "\n";
+
+    if (samples.size() < 10000 || nonzero == 0 || peak == 0) {
+        std::cout << "M7_AUDIO_FAIL silent_or_short\n";
+        return 102;
+    }
+
+    std::cout << "M7_AUDIO_PASS original_game_apu_writes_produced_pcm\n";
+    return 0;
+}
+
 } // namespace dwm2t

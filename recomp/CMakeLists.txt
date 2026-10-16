@@ -63,7 +63,6 @@ set(BANK_FILE_10 "bank_010.asm")
 set(BANK_FILE_15 "bank_015.asm")
 set(BANK_FILE_16 "bank_016.asm")
 set(BANK_FILE_17 "bank_017.asm")
-set(BANK_FILE_17 "bank_017.asm")
 set(BANK_FILE_18 "bank_018.asm")
 set(BANK_FILE_19 "bank_019.asm")
 set(BANK_FILE_20 "bank_020.asm")
@@ -160,6 +159,7 @@ add_library(dwm2t_rom_image STATIC "${ROM_IMAGE_CPP}")
 configure_native_target(dwm2t_rom_image)
 
 add_executable(DWM2tRecomp
+    src/apu.cpp
     src/main.cpp
     src/m6.cpp
     src/m7.cpp

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "recomp/apu.hpp"
+
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -73,6 +75,8 @@ public:
     [[nodiscard]] std::uint16_t ppu_dot() const { return ppu_dot_; }
     [[nodiscard]] std::uint8_t ly() const { return io_[0x44]; }
     [[nodiscard]] std::uint64_t frame_counter() const { return frame_counter_; }
+    [[nodiscard]] Apu& apu() { return apu_; }
+    [[nodiscard]] const Apu& apu() const { return apu_; }
 
     [[nodiscard]] const std::array<std::uint8_t, 0x40>& bg_palette_ram() const {
         return bg_palette_;
@@ -122,6 +126,7 @@ private:
     std::uint16_t ppu_dot_ = 0;
     std::uint64_t frame_counter_ = 0;
     bool stat_irq_line_ = false;
+    Apu apu_{};
 };
 
 void load_full_rom_image(Memory& memory);

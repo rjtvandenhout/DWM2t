@@ -105,6 +105,9 @@ jobs:
       - name: Run M6 live Win32 window smoke test
         run: .\recomp\build\Release\DWM2tRecomp.exe --m6-window-smoke recomp/build/m6_test.sav
 
+      - name: Run M7 original-game audio probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-audio-probe
+
       - name: Run M7 original-game discovery probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-discovery recomp/build/m7_discovery
 

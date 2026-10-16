@@ -66,6 +66,7 @@ void Memory::clear() {
     ppu_dot_ = 0;
     frame_counter_ = 0;
     stat_irq_line_ = false;
+    apu_.reset();
 
     io_[io_index(kAddrP1)] = 0xCF;
     io_[io_index(kAddrIF)] = 0x00;
@@ -178,6 +179,7 @@ std::uint8_t Memory::read8(std::uint16_t address) const {
         return 0xFF;
     }
     if (address < 0xFF80) {
+        if (address >= 0xFF10 && address <= 0xFF3F) return apu_.read(address);
         switch (address) {
             case kAddrP1:   return read_joypad();
             case kAddrDIV:  return static_cast<std::uint8_t>(div_counter_ >> 8);
@@ -261,6 +263,10 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
         return;
     }
     if (address < 0xFF80) {
+        if (address >= 0xFF10 && address <= 0xFF3F) {
+            apu_.write(address, value);
+            return;
+        }
         const std::uint8_t idx = static_cast<std::uint8_t>(address - 0xFF00u);
         switch (address) {
             case kAddrP1: {
@@ -475,6 +481,7 @@ void Memory::tick_one_tcycle() {
     }
 
     tick_ppu_one_tcycle();
+    apu_.tick_tcycle();
     ++total_tcycles_;
 }
 
