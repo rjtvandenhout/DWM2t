@@ -854,10 +854,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             auto outdoor =
                                 std::make_unique<Runtime>(story_runtime);
 
+                            bool last_navigation_transition = false;
                             auto apply_navigation =
                                 [&](Runtime& runtime,
                                     std::uint8_t direction)
                                     -> StepResult {
+                                last_navigation_transition = false;
                                 constexpr std::uint64_t macro_frames =
                                     24;
                                 constexpr std::array<std::uint8_t, 4>
@@ -895,6 +897,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 if (saw_lcd_off ||
                                     (runtime.memory().read8(
                                          0xFF40) & 0x80u) == 0) {
+                                    last_navigation_transition = true;
                                     bool lcd_back_on = false;
                                     for (std::uint64_t settle = 0;
                                          settle < 240; ++settle) {
@@ -3216,6 +3219,165 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << interaction_capture
                                 << std::endl;
                             return 141;
+
+                            // Diagnostic M7 exit search: from the
+                            // proven farm-yard state, keep only true cartridge
+                            // movement and record destinations that actually
+                            // cycle LCDC off/on. This separates real room/map
+                            // exits from ordinary camera scrolling.
+                            struct ExitNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                            };
+                            std::vector<ExitNode> exit_frontier;
+                            exit_frontier.push_back({
+                                std::make_unique<Runtime>(*outdoor), {}, 0
+                            });
+                            std::unordered_set<std::uint64_t> exit_seen;
+                            std::unordered_set<std::uint64_t> exit_screens;
+                            unsigned exit_capture = 0;
+                            constexpr std::array<std::uint8_t, 4>
+                                exit_actions = {1, 2, 3, 0};
+                            constexpr std::size_t exit_width = 32;
+                            constexpr std::size_t exit_depth = 36;
+
+                            for (std::size_t depth = 0;
+                                 depth < exit_depth &&
+                                 !exit_frontier.empty(); ++depth) {
+                                std::vector<ExitNode> next;
+                                next.reserve(
+                                    exit_frontier.size() *
+                                    exit_actions.size());
+                                for (const ExitNode& node :
+                                     exit_frontier) {
+                                    for (std::uint8_t action :
+                                         exit_actions) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const StepResult nav_result =
+                                            apply_navigation(
+                                                *child, action);
+                                        if (nav_result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_EXIT_MISSING_BANK depth="
+                                                << depth
+                                                << " bank="
+                                                << child->cpu()
+                                                       .missing_bank
+                                                << " pc=0x" << std::hex
+                                                << child->cpu().pc
+                                                << std::dec << std::endl;
+                                            return 127;
+                                        }
+                                        if (nav_result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        std::vector<std::uint8_t> path =
+                                            node.path;
+                                        path.push_back(action);
+                                        Renderer exit_renderer{};
+                                        exit_renderer.render(
+                                            child->memory(), true);
+                                        const std::uint64_t screen =
+                                            exit_renderer.hash();
+                                        const std::uint8_t x =
+                                            child->memory().read8(0xFF8E);
+                                        const std::uint8_t y =
+                                            child->memory().read8(0xFF91);
+                                        const std::uint8_t cc44 =
+                                            child->memory().read8(0xCC44);
+                                        const std::uint8_t cc45 =
+                                            child->memory().read8(0xCC45);
+                                        std::uint64_t signature =
+                                            background_hash(
+                                                child->memory());
+                                        signature ^=
+                                            static_cast<std::uint64_t>(x)
+                                            << 8;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(y)
+                                            << 16;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(cc44)
+                                            << 24;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(cc45)
+                                            << 32;
+                                        if (!exit_seen.insert(
+                                                 signature).second) {
+                                            continue;
+                                        }
+
+                                        std::uint64_t score =
+                                            (255u -
+                                             static_cast<unsigned>(x)) *
+                                            1'000'000ull;
+                                        if (last_navigation_transition) {
+                                            score +=
+                                                1'000'000'000'000ull;
+                                            if (exit_screens.insert(
+                                                    screen).second &&
+                                                exit_capture < 16) {
+                                                exit_renderer.write_bmp(
+                                                    output_dir /
+                                                    ("search_true_exit_" +
+                                                     std::to_string(
+                                                         exit_capture) +
+                                                     ".bmp"));
+                                                std::cout
+                                                    << "M7_TRUE_EXIT capture="
+                                                    << exit_capture
+                                                    << " depth=" << depth
+                                                    << " screen=0x"
+                                                    << std::hex << screen
+                                                    << " bg=0x"
+                                                    << background_hash(
+                                                           child->memory())
+                                                    << std::dec
+                                                    << " x="
+                                                    << static_cast<unsigned>(x)
+                                                    << " y="
+                                                    << static_cast<unsigned>(y)
+                                                    << " CC44=0x"
+                                                    << std::hex
+                                                    << static_cast<unsigned>(
+                                                           cc44)
+                                                    << " CC45=0x"
+                                                    << static_cast<unsigned>(
+                                                           cc45)
+                                                    << std::dec;
+                                                print_search_path(path);
+                                                std::cout << std::endl;
+                                                ++exit_capture;
+                                            }
+                                        }
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score
+                                        });
+                                    }
+                                }
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const ExitNode& a,
+                                       const ExitNode& b) {
+                                        return a.score > b.score;
+                                    });
+                                if (next.size() > exit_width) {
+                                    next.resize(exit_width);
+                                }
+                                exit_frontier = std::move(next);
+                            }
+                            std::cout
+                                << "M7_TRUE_EXIT_SEARCH_COMPLETE captures="
+                                << exit_capture << std::endl;
+                            return 151;
 
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
