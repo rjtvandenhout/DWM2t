@@ -1255,7 +1255,174 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                        vault_door->memory().read8(
                                            0xC5DC))
                                 << std::endl;
-                            return 139;
+
+                            if (!npc_dialog_seen ||
+                                !npc_dialog_closed) {
+                                return 139;
+                            }
+
+                            // The in-ROM guide has now explicitly said:
+                            // "Go to the Vault" / "The Vault is west".
+                            // Leave this building through the south exit, then
+                            // probe the west route with pure D-pad input.
+                            constexpr unsigned guide_exit_steps = 12;
+                            for (unsigned step = 0;
+                                 step < guide_exit_steps; ++step) {
+                                const StepResult result =
+                                    apply_navigation(*vault_door, 3);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_GUIDE_EXIT_MISSING_BANK step="
+                                        << step
+                                        << " bank="
+                                        << vault_door->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << vault_door->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result !=
+                                    StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_GUIDE_EXIT_ABORT step="
+                                        << step
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 140;
+                                }
+                                vault_door_renderer.render(
+                                    vault_door->memory(), true);
+                                if (step < 4 ||
+                                    step + 1 ==
+                                        guide_exit_steps ||
+                                    (step % 2u) == 1u) {
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_guide_exit_" +
+                                         std::to_string(step) +
+                                         ".bmp"));
+                                }
+                                std::cout
+                                    << "M7_SEARCH_GUIDE_EXIT step="
+                                    << step
+                                    << " screen=0x" << std::hex
+                                    << vault_door_renderer.hash()
+                                    << " bg=0x"
+                                    << background_hash(
+                                           vault_door->memory())
+                                    << " map=0x"
+                                    << tilemap_hash(
+                                           vault_door->memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DC))
+                                    << std::endl;
+                                if (vault_door->memory().read8(
+                                        0xC5DB) != 1) {
+                                    std::cout
+                                        << "M7_SEARCH_GUIDE_EXIT_MODE_CHANGE"
+                                        << std::endl;
+                                    return 0;
+                                }
+                            }
+
+                            constexpr unsigned vault_west_steps = 28;
+                            for (unsigned step = 0;
+                                 step < vault_west_steps; ++step) {
+                                const StepResult result =
+                                    apply_navigation(*vault_door, 1);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    vault_door_renderer.render(
+                                        vault_door->memory(), true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        "search_vault_west_missing.bmp");
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_WEST_MISSING_BANK step="
+                                        << step
+                                        << " bank="
+                                        << vault_door->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << vault_door->cpu().pc
+                                        << " screen=0x"
+                                        << vault_door_renderer.hash()
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result !=
+                                    StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_WEST_ABORT step="
+                                        << step
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 140;
+                                }
+                                vault_door_renderer.render(
+                                    vault_door->memory(), true);
+                                if (step < 6 ||
+                                    (step % 3u) == 2u ||
+                                    step + 1 ==
+                                        vault_west_steps) {
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_vault_west_" +
+                                         std::to_string(step) +
+                                         ".bmp"));
+                                }
+                                std::cout
+                                    << "M7_SEARCH_VAULT_WEST step="
+                                    << step
+                                    << " screen=0x" << std::hex
+                                    << vault_door_renderer.hash()
+                                    << " bg=0x"
+                                    << background_hash(
+                                           vault_door->memory())
+                                    << " map=0x"
+                                    << tilemap_hash(
+                                           vault_door->memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DC))
+                                    << std::endl;
+
+                                if (vault_door->memory().read8(
+                                        0xC5DB) != 1) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_WEST_MODE_CHANGE step="
+                                        << step << std::endl;
+                                    return 0;
+                                }
+                            }
+
+                            vault_door_renderer.write_bmp(
+                                output_dir /
+                                "search_vault_west_final.bmp");
+                            std::cout
+                                << "M7_SEARCH_VAULT_WEST_COMPLETE screen=0x"
+                                << std::hex
+                                << vault_door_renderer.hash()
+                                << " bg=0x"
+                                << background_hash(
+                                       vault_door->memory())
+                                << std::dec << std::endl;
+                            return 140;
 
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
