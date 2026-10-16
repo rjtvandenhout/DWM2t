@@ -1834,6 +1834,17 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             return 0;
                                         }
 
+                                        constexpr std::uint64_t
+                                            kGuideExteriorBg =
+                                                0x2c4791b344ab1745ull;
+                                        if (bg ==
+                                            kGuideExteriorBg) {
+                                            // U,U is the known route back to
+                                            // the guide's building. Do not let
+                                            // the beam escape into already
+                                            // explored territory.
+                                            continue;
+                                        }
                                         if (bg != island_bg &&
                                             screen !=
                                                 0xb423319be6530b83ull) {
