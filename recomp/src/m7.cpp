@@ -1987,6 +1987,293 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << "M7_SEARCH_WEST_COMPLETE transition="
                                 << (west_found_transition ? 1 : 0)
                                 << std::endl;
+
+                            struct OutdoorNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                            };
+                            std::vector<OutdoorNode> outdoor_frontier;
+                            outdoor_frontier.push_back({
+                                std::make_unique<Runtime>(
+                                    guide_outdoor_seed),
+                                {},
+                                0
+                            });
+                            std::unordered_set<std::uint64_t>
+                                outdoor_seen;
+                            std::unordered_set<std::uint64_t>
+                                outdoor_destinations;
+
+                            const std::uint8_t seed_x =
+                                guide_outdoor_seed.memory()
+                                    .read8(0xFF8E);
+                            const std::uint8_t seed_y =
+                                guide_outdoor_seed.memory()
+                                    .read8(0xFF91);
+                            const std::uint8_t seed_cc44 =
+                                guide_outdoor_seed.memory()
+                                    .read8(0xCC44);
+                            const std::uint8_t seed_cc45 =
+                                guide_outdoor_seed.memory()
+                                    .read8(0xCC45);
+                            std::cout
+                                << "M7_SEARCH_PHYSICAL_SEED x="
+                                << static_cast<unsigned>(seed_x)
+                                << " y="
+                                << static_cast<unsigned>(seed_y)
+                                << " CC44=0x" << std::hex
+                                << static_cast<unsigned>(seed_cc44)
+                                << " CC45=0x"
+                                << static_cast<unsigned>(seed_cc45)
+                                << std::dec << std::endl;
+
+                            constexpr std::array<std::uint8_t, 4>
+                                physical_actions = {1, 3, 2, 0};
+                            constexpr std::size_t physical_width = 40;
+                            constexpr std::size_t physical_depth = 30;
+                            unsigned destination_capture = 0;
+
+                            for (std::size_t depth = 0;
+                                 depth < physical_depth &&
+                                 !outdoor_frontier.empty();
+                                 ++depth) {
+                                std::vector<OutdoorNode> next;
+                                next.reserve(
+                                    outdoor_frontier.size() *
+                                    physical_actions.size());
+
+                                for (const OutdoorNode& node :
+                                     outdoor_frontier) {
+                                    for (const std::uint8_t action :
+                                         physical_actions) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const std::uint8_t parent_cc44 =
+                                            node.runtime->memory()
+                                                .read8(0xCC44);
+                                        const std::uint8_t parent_cc45 =
+                                            node.runtime->memory()
+                                                .read8(0xCC45);
+                                        const StepResult result =
+                                            apply_navigation(
+                                                *child, action);
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_SEARCH_PHYSICAL_MISSING_BANK depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(
+                                                       action)
+                                                << " bank="
+                                                << child->cpu()
+                                                       .missing_bank
+                                                << " pc=0x" << std::hex
+                                                << child->cpu().pc
+                                                << std::dec;
+                                            print_search_path(
+                                                node.path);
+                                            std::cout << std::endl;
+                                            return 127;
+                                        }
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        std::vector<std::uint8_t>
+                                            path = node.path;
+                                        path.push_back(action);
+
+                                        const std::uint8_t mode =
+                                            child->memory()
+                                                .read8(0xC5DB);
+                                        if (mode != 1) {
+                                            Renderer rr{};
+                                            rr.render(
+                                                child->memory(), true);
+                                            rr.write_bmp(
+                                                output_dir /
+                                                "search_physical_mode.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_PHYSICAL_MODE_CHANGE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<unsigned>(
+                                                       mode)
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       child->memory()
+                                                           .read8(0xC5DC))
+                                                << " screen=0x"
+                                                << std::hex
+                                                << rr.hash()
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 0;
+                                        }
+
+                                        const std::uint8_t x =
+                                            child->memory()
+                                                .read8(0xFF8E);
+                                        const std::uint8_t y =
+                                            child->memory()
+                                                .read8(0xFF91);
+                                        const std::uint8_t cc44 =
+                                            child->memory()
+                                                .read8(0xCC44);
+                                        const std::uint8_t cc45 =
+                                            child->memory()
+                                                .read8(0xCC45);
+                                        const std::uint64_t bg =
+                                            background_hash(
+                                                child->memory());
+
+                                        std::uint64_t signature =
+                                            bg;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(x)
+                                            << 8;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(y)
+                                            << 16;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(
+                                                cc44) << 24;
+                                        signature ^=
+                                            static_cast<std::uint64_t>(
+                                                cc45) << 32;
+                                        if (!outdoor_seen.insert(
+                                                 signature).second) {
+                                            continue;
+                                        }
+
+                                        const bool location_changed =
+                                            cc44 != parent_cc44 ||
+                                            cc45 != parent_cc45;
+                                        if (location_changed ||
+                                            last_navigation_transition) {
+                                            std::uint64_t destination =
+                                                static_cast<
+                                                    std::uint64_t>(
+                                                    cc44);
+                                            destination |=
+                                                static_cast<
+                                                    std::uint64_t>(
+                                                    cc45) << 8;
+                                            destination ^= bg;
+
+                                            if (outdoor_destinations
+                                                    .insert(destination)
+                                                    .second &&
+                                                destination_capture < 16) {
+                                                Renderer rr{};
+                                                rr.render(
+                                                    child->memory(), true);
+                                                rr.write_bmp(
+                                                    output_dir /
+                                                    ("search_physical_exit_" +
+                                                     std::to_string(
+                                                         destination_capture) +
+                                                     ".bmp"));
+                                                std::cout
+                                                    << "M7_SEARCH_PHYSICAL_EXIT capture="
+                                                    << destination_capture
+                                                    << " depth=" << depth
+                                                    << " action="
+                                                    << search_action_name(
+                                                           action)
+                                                    << " x="
+                                                    << static_cast<unsigned>(
+                                                           x)
+                                                    << " y="
+                                                    << static_cast<unsigned>(
+                                                           y)
+                                                    << " CC44=0x"
+                                                    << std::hex
+                                                    << static_cast<unsigned>(
+                                                           cc44)
+                                                    << " CC45=0x"
+                                                    << static_cast<unsigned>(
+                                                           cc45)
+                                                    << " parent_CC44=0x"
+                                                    << static_cast<unsigned>(
+                                                           parent_cc44)
+                                                    << " parent_CC45=0x"
+                                                    << static_cast<unsigned>(
+                                                           parent_cc45)
+                                                    << " bg=0x" << bg
+                                                    << " screen=0x"
+                                                    << rr.hash()
+                                                    << std::dec
+                                                    << " lcd="
+                                                    << (last_navigation_transition
+                                                            ? 1 : 0);
+                                                print_search_path(path);
+                                                std::cout << std::endl;
+                                                ++destination_capture;
+                                            }
+                                        }
+
+                                        std::uint64_t score =
+                                            static_cast<std::uint64_t>(
+                                                255u - x) *
+                                            10'000'000ull;
+                                        if (location_changed ||
+                                            last_navigation_transition) {
+                                            score +=
+                                                1'000'000'000'000ull;
+                                        }
+                                        if (action == 1) {
+                                            score +=
+                                                20'000'000ull;
+                                        }
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score
+                                        });
+                                    }
+                                }
+
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const OutdoorNode& a,
+                                       const OutdoorNode& b) {
+                                        return a.score > b.score;
+                                    });
+                                if (next.size() >
+                                    physical_width) {
+                                    next.resize(
+                                        physical_width);
+                                }
+                                if (!next.empty() &&
+                                    (depth % 5u) == 0u) {
+                                    std::cout
+                                        << "M7_SEARCH_PHYSICAL depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size()
+                                        << " exits="
+                                        << destination_capture;
+                                    print_search_path(
+                                        next.front().path);
+                                    std::cout << std::endl;
+                                }
+                                outdoor_frontier =
+                                    std::move(next);
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_PHYSICAL_COMPLETE exits="
+                                << destination_capture
+                                << " states="
+                                << outdoor_seen.size()
+                                << std::endl;
                             return 145;
 
                             // The south exit reaches a compact island with
