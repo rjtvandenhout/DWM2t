@@ -456,13 +456,15 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
     }
 
     constexpr std::uint64_t frames_per_trial = 6000;
-    constexpr std::uint32_t trial_count = 2;
+    constexpr std::uint32_t trial_count = 8;
 
     for (std::uint32_t seed = 0; seed < trial_count; ++seed) {
         auto trial_owner = std::make_unique<Runtime>(base);
         Runtime& trial = *trial_owner;
         Renderer trial_renderer{};
         std::uint64_t last_save = sram_hash(trial.memory());
+        std::uint8_t previous_submode = trial.memory().read8(0xC5DC);
+        unsigned dialog_capture = 0;
 
         for (std::uint64_t relative = 0; relative < frames_per_trial; ++relative) {
             constexpr std::uint64_t segment_frames = 20;
@@ -508,6 +510,26 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
             const std::uint8_t mode = trial.memory().read8(0xC5DB);
             const std::uint8_t submode = trial.memory().read8(0xC5DC);
+
+            if (previous_submode == 0 && submode != 0 && dialog_capture < 24) {
+                trial_renderer.render(trial.memory(), true);
+                const std::string dialog_name =
+                    "search_dialog_seed_" + std::to_string(seed) + "_" +
+                    std::to_string(dialog_capture) + ".bmp";
+                trial_renderer.write_bmp(output_dir / dialog_name);
+                std::cout << "M7_SEARCH_DIALOG seed=" << seed
+                          << " capture=" << dialog_capture
+                          << " relative=" << relative
+                          << " C5DB=" << static_cast<unsigned>(mode)
+                          << " C5DC=" << static_cast<unsigned>(submode)
+                          << " screen=0x" << std::hex << trial_renderer.hash()
+                          << " map=0x" << tilemap_hash(trial.memory())
+                          << " sram=0x" << sram_hash(trial.memory())
+                          << std::dec << std::endl;
+                ++dialog_capture;
+            }
+            previous_submode = submode;
+
             if (mode != 1) {
                 trial_renderer.render(trial.memory(), true);
                 trial_renderer.write_bmp(
