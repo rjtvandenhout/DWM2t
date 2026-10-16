@@ -16,4 +16,10 @@ int run_live_window(
     const std::filesystem::path& sav_path,
     int scale = 4);
 
+int run_live_window_smoke(
+    Runtime& runtime,
+    Renderer& renderer,
+    const std::filesystem::path& sav_path,
+    int scale = 2);
+
 } // namespace dwm2t

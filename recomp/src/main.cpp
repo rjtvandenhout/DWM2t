@@ -607,6 +607,16 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--m6-window-smoke") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m6-window-smoke <save-path>\\n";
+            return EXIT_FAILURE;
+        }
+        dwm2t::Runtime runtime{};
+        dwm2t::Renderer renderer{};
+        return dwm2t::run_live_window_smoke(runtime, renderer, argv[2], 2);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--play") {
         if (argc != 2 && argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --play [save-path]\\n";

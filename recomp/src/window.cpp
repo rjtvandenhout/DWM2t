@@ -242,6 +242,94 @@ int run_live_window(
     return exit_code;
 }
 
+int run_live_window_smoke(
+    Runtime& runtime,
+    Renderer& renderer,
+    const std::filesystem::path& sav_path,
+    int scale) {
+
+    if (!load_sram_file(runtime.memory(), sav_path)) {
+        std::cerr << "M6_WINDOW_SMOKE_FAIL invalid_sram\n";
+        return 80;
+    }
+
+    renderer.render(runtime.memory(), true);
+    g_framebuffer = &renderer.framebuffer();
+    g_host_buttons = 0;
+
+    HWND hwnd = create_window(scale);
+    if (hwnd == nullptr) {
+        g_framebuffer = nullptr;
+        std::cerr << "M6_WINDOW_SMOKE_FAIL create_window\n";
+        return 81;
+    }
+
+    auto pump_messages = []() {
+        MSG msg{};
+        while (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            if (msg.message == WM_QUIT) continue;
+            TranslateMessage(&msg);
+            DispatchMessageW(&msg);
+        }
+    };
+
+    PostMessageW(hwnd, WM_KEYDOWN, VK_RIGHT, 0);
+    pump_messages();
+    const bool keydown_ok = (g_host_buttons & JoyRight) != 0;
+
+    constexpr unsigned smoke_frames = 4;
+    for (unsigned frame_index = 0; frame_index < smoke_frames; ++frame_index) {
+        auto& memory = runtime.memory();
+        memory.set_joypad_state(g_host_buttons);
+        const std::uint64_t start_frame = memory.frame_counter();
+
+        StepResult result = StepResult::Continue;
+        std::size_t steps = 0;
+        constexpr std::size_t max_steps_per_frame = 2'000'000;
+        while (memory.frame_counter() == start_frame && steps < max_steps_per_frame) {
+            result = runtime.step();
+            ++steps;
+            if (result != StepResult::Continue) break;
+        }
+        if (result != StepResult::Continue || steps >= max_steps_per_frame) {
+            DestroyWindow(hwnd);
+            g_framebuffer = nullptr;
+            g_host_buttons = 0;
+            std::cerr << "M6_WINDOW_SMOKE_FAIL runtime frame="
+                      << frame_index << "\n";
+            return 82;
+        }
+
+        renderer.render(memory, true);
+        g_framebuffer = &renderer.framebuffer();
+        InvalidateRect(hwnd, nullptr, FALSE);
+        UpdateWindow(hwnd);
+        pump_messages();
+    }
+
+    PostMessageW(hwnd, WM_KEYUP, VK_RIGHT, 0);
+    pump_messages();
+    const bool keyup_ok = (g_host_buttons & JoyRight) == 0;
+
+    runtime.memory().set_joypad_state(0);
+    if (IsWindow(hwnd)) DestroyWindow(hwnd);
+    pump_messages();
+    g_framebuffer = nullptr;
+    g_host_buttons = 0;
+
+    if (!keydown_ok || !keyup_ok) {
+        std::cerr << "M6_WINDOW_SMOKE_FAIL keyboard_mapping"
+                  << " down=" << keydown_ok
+                  << " up=" << keyup_ok << "\n";
+        return 83;
+    }
+
+    std::cout << "M6_WINDOW_SMOKE_PASS frames=" << smoke_frames
+              << " keydown=1 keyup=1 framebuffer_hash=0x"
+              << std::hex << renderer.hash() << std::dec << "\n";
+    return 0;
+}
+
 } // namespace dwm2t
 
 #else
@@ -249,5 +337,6 @@ int run_live_window(
 namespace dwm2t {
 int run_native_window(const Renderer::Framebuffer&, int) { return 1; }
 int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }
+int run_live_window_smoke(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }
 } // namespace dwm2t
 #endif
