@@ -1016,12 +1016,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     std::make_unique<Runtime>(seed);
                                 bool saw_dispatch = false;
                                 bool saw_setter = false;
-                                constexpr std::uint64_t probe_frames = 420;
+                                constexpr std::uint64_t probe_frames = 48;
 
                                 for (std::uint64_t frame = 0;
                                      frame < probe_frames; ++frame) {
                                     const std::uint8_t buttons =
-                                        (frame % 72u) < 2u ? JoyA : 0;
+                                        frame < 2u ? JoyA : 0;
                                     probe->memory().set_joypad_state(buttons);
                                     const std::uint64_t start_frame =
                                         probe->memory().frame_counter();
@@ -1130,8 +1130,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 a6_seen;
                             constexpr std::array<std::uint8_t, 4>
                                 a6_actions = {1, 3, 2, 0};
-                            constexpr std::size_t a6_width = 56;
-                            constexpr std::size_t a6_depth = 44;
+                            constexpr std::size_t a6_width = 40;
+                            constexpr std::size_t a6_depth = 36;
                             bool a6_found = false;
 
                             for (std::size_t depth = 0;
