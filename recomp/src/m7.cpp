@@ -3218,7 +3218,6 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << " interactions="
                                 << interaction_capture
                                 << std::endl;
-                            return 141;
 
                             // Diagnostic M7 exit search: from the
                             // proven farm-yard state, keep only true cartridge
