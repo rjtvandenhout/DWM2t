@@ -996,6 +996,280 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return 134;
                             }
 
+                            // Locate the exact scripted event that owns the
+                            // A6 setter. ROM analysis proves that bank 16:$4D86
+                            // far-calls bank 15:$56CD, whose state 2 sets A6.
+                            // Search only by normal D-pad movement and a normal
+                            // A interaction from each reached game-owned state.
+                            struct A6Node {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                            };
+
+                            auto try_a6_interaction =
+                                [&](const Runtime& seed,
+                                    const std::vector<std::uint8_t>& path,
+                                    std::size_t depth)
+                                    -> int {
+                                auto probe =
+                                    std::make_unique<Runtime>(seed);
+                                bool saw_dispatch = false;
+                                bool saw_setter = false;
+                                constexpr std::uint64_t probe_frames = 420;
+
+                                for (std::uint64_t frame = 0;
+                                     frame < probe_frames; ++frame) {
+                                    const std::uint8_t buttons =
+                                        (frame % 72u) < 2u ? JoyA : 0;
+                                    probe->memory().set_joypad_state(buttons);
+                                    const std::uint64_t start_frame =
+                                        probe->memory().frame_counter();
+                                    constexpr std::size_t max_steps =
+                                        2'000'000;
+
+                                    for (std::size_t step = 0;
+                                         step < max_steps; ++step) {
+                                        const std::uint16_t bank =
+                                            probe->memory()
+                                                .current_rom_bank();
+                                        const std::uint16_t pc =
+                                            probe->cpu().pc;
+                                        if (bank == 16 &&
+                                            pc == 0x4D86) {
+                                            saw_dispatch = true;
+                                        }
+                                        if (bank == 15 &&
+                                            (pc == 0x56CD ||
+                                             pc == 0x56F3)) {
+                                            saw_setter = true;
+                                        }
+
+                                        const StepResult result =
+                                            probe->step();
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_A6_MISSING_BANK depth="
+                                                << depth
+                                                << " frame=" << frame
+                                                << " bank="
+                                                << probe->cpu()
+                                                       .missing_bank
+                                                << " pc=0x"
+                                                << std::hex
+                                                << probe->cpu().pc
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 127;
+                                        }
+                                        if (result ==
+                                                StepResult::Trapped ||
+                                            result ==
+                                                StepResult::Stopped) {
+                                            return 0;
+                                        }
+                                        if (probe->memory()
+                                                .frame_counter() !=
+                                            start_frame) {
+                                            break;
+                                        }
+                                    }
+
+                                    const std::uint8_t flags =
+                                        probe->memory().read8(0xCBEB);
+                                    if (saw_dispatch || saw_setter ||
+                                        (flags & 0x40u) != 0) {
+                                        Renderer hit_renderer{};
+                                        hit_renderer.render(
+                                            probe->memory(), true);
+                                        hit_renderer.write_bmp(
+                                            output_dir /
+                                            "search_a6_event_hit.bmp");
+                                        std::cout
+                                            << "M7_A6_EVENT_HIT depth="
+                                            << depth
+                                            << " frame=" << frame
+                                            << " dispatch="
+                                            << (saw_dispatch ? 1 : 0)
+                                            << " setter="
+                                            << (saw_setter ? 1 : 0)
+                                            << " A6="
+                                            << ((flags & 0x40u)
+                                                    ? 1 : 0)
+                                            << " A7="
+                                            << ((flags & 0x80u)
+                                                    ? 1 : 0)
+                                            << " C923=0x"
+                                            << std::hex
+                                            << static_cast<unsigned>(
+                                                   probe->memory()
+                                                       .read8(0xC923))
+                                            << " screen=0x"
+                                            << hit_renderer.hash()
+                                            << " bg=0x"
+                                            << background_hash(
+                                                   probe->memory())
+                                            << std::dec;
+                                        print_search_path(path);
+                                        std::cout << std::endl;
+                                        return 1;
+                                    }
+                                }
+                                return 0;
+                            };
+
+                            std::vector<A6Node> a6_frontier;
+                            a6_frontier.push_back({
+                                std::make_unique<Runtime>(*outdoor),
+                                {},
+                                0
+                            });
+                            std::unordered_set<std::uint64_t>
+                                a6_seen;
+                            constexpr std::array<std::uint8_t, 4>
+                                a6_actions = {1, 3, 2, 0};
+                            constexpr std::size_t a6_width = 56;
+                            constexpr std::size_t a6_depth = 44;
+                            bool a6_found = false;
+
+                            for (std::size_t depth = 0;
+                                 depth < a6_depth &&
+                                 !a6_frontier.empty() &&
+                                 !a6_found; ++depth) {
+                                std::vector<A6Node> next;
+                                next.reserve(
+                                    a6_frontier.size() *
+                                    a6_actions.size());
+
+                                for (const A6Node& node :
+                                     a6_frontier) {
+                                    const int interaction =
+                                        try_a6_interaction(
+                                            *node.runtime,
+                                            node.path,
+                                            depth);
+                                    if (interaction == 127) {
+                                        return 127;
+                                    }
+                                    if (interaction == 1) {
+                                        a6_found = true;
+                                        break;
+                                    }
+
+                                    for (std::uint8_t action :
+                                         a6_actions) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const StepResult result =
+                                            apply_navigation(
+                                                *child, action);
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_A6_NAV_MISSING_BANK depth="
+                                                << depth
+                                                << " bank="
+                                                << child->cpu()
+                                                       .missing_bank
+                                                << " pc=0x"
+                                                << std::hex
+                                                << child->cpu().pc
+                                                << std::dec
+                                                << std::endl;
+                                            return 127;
+                                        }
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        std::vector<std::uint8_t>
+                                            path = node.path;
+                                        path.push_back(action);
+
+                                        std::uint64_t sig =
+                                            background_hash(
+                                                child->memory());
+                                        sig ^= tilemap_hash(
+                                                   child->memory()) +
+                                            0x9E3779B97F4A7C15ull +
+                                            (sig << 6) +
+                                            (sig >> 2);
+                                        sig ^=
+                                            static_cast<std::uint64_t>(
+                                                child->memory()
+                                                    .read8(0xFF8E))
+                                            << 8;
+                                        sig ^=
+                                            static_cast<std::uint64_t>(
+                                                child->memory()
+                                                    .read8(0xFF91))
+                                            << 16;
+                                        if (!a6_seen.insert(
+                                                 sig).second) {
+                                            continue;
+                                        }
+
+                                        std::uint64_t score = 0;
+                                        if (action == 1) {
+                                            score += 40'000'000ull;
+                                        } else if (action == 3) {
+                                            score += 12'000'000ull;
+                                        }
+                                        score +=
+                                            static_cast<std::uint64_t>(
+                                                255u -
+                                                child->memory()
+                                                    .read8(0xFF8E))
+                                            * 1000ull;
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score
+                                        });
+                                    }
+                                }
+
+                                if (a6_found) break;
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const A6Node& a,
+                                       const A6Node& b) {
+                                        return a.score > b.score;
+                                    });
+                                if (next.size() > a6_width) {
+                                    next.resize(a6_width);
+                                }
+                                if ((depth % 4u) == 0u) {
+                                    std::cout
+                                        << "M7_A6_SEARCH depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size()
+                                        << " states="
+                                        << a6_seen.size()
+                                        << std::endl;
+                                }
+                                a6_frontier =
+                                    std::move(next);
+                            }
+
+                            if (a6_found) {
+                                std::cout
+                                    << "M7_A6_SEARCH_PASS"
+                                    << std::endl;
+                                return 0;
+                            }
+                            std::cout
+                                << "M7_A6_SEARCH_NO_HIT states="
+                                << a6_seen.size()
+                                << std::endl;
+                            return 153;
+
                             // The earlier physical-navigation artifact shows a
                             // second building west of the farm with Tara/Cobi
                             // aligned directly below its doorway. Probe that
