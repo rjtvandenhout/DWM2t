@@ -1449,6 +1449,13 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     0xC555, 0xC556, 0xC5D7, 0xC5E7,
                                     0xC5E8, 0xC5F0
                                 };
+                            constexpr std::array<std::uint16_t, 10>
+                                island_persistent_candidates = {
+                                    0xCB86, 0xCB88, 0xCB8D,
+                                    0xCD03, 0xCD04,
+                                    0xDC06, 0xDC08, 0xDC09,
+                                    0xDD0E, 0xDD10
+                                };
                             std::array<std::uint8_t,
                                        island_watch_addresses.size()>
                                 island_watch_values{};
@@ -1537,6 +1544,16 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 trace_memory.read8(
                                                     island_watch_addresses[watch]);
                                         }
+                                        std::array<std::uint8_t,
+                                                   island_persistent_candidates.size()>
+                                            persistent_before{};
+                                        for (std::size_t watch = 0;
+                                             watch < island_persistent_candidates.size();
+                                             ++watch) {
+                                            persistent_before[watch] =
+                                                trace_memory.read8(
+                                                    island_persistent_candidates[watch]);
+                                        }
 
                                         result =
                                             island_story->step();
@@ -1559,6 +1576,33 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                     << " before=0x"
                                                     << static_cast<unsigned>(
                                                            watch_before[watch])
+                                                    << " after=0x"
+                                                    << static_cast<unsigned>(after)
+                                                    << std::dec
+                                                    << " sp=0x" << std::hex
+                                                    << island_story->cpu().sp
+                                                    << std::dec
+                                                    << std::endl;
+                                            }
+                                        }
+                                        for (std::size_t watch = 0;
+                                             watch < island_persistent_candidates.size();
+                                             ++watch) {
+                                            const std::uint8_t after =
+                                                trace_memory.read8(
+                                                    island_persistent_candidates[watch]);
+                                            if (after != persistent_before[watch]) {
+                                                std::cout
+                                                    << "M7_SEARCH_ISLAND_PERSIST_WRITE step="
+                                                    << trace_step
+                                                    << " bank=" << before_bank
+                                                    << " pc=0x" << std::hex
+                                                    << before_pc
+                                                    << " addr=0x"
+                                                    << island_persistent_candidates[watch]
+                                                    << " before=0x"
+                                                    << static_cast<unsigned>(
+                                                           persistent_before[watch])
                                                     << " after=0x"
                                                     << static_cast<unsigned>(after)
                                                     << std::dec
@@ -1634,10 +1678,70 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 : 0)
                                         << std::endl;
                                 } else {
-                                    result =
-                                        advance_search_frame(
-                                            *island_story,
-                                            buttons);
+                                    auto& trace_memory =
+                                        island_story->memory();
+                                    trace_memory.set_joypad_state(buttons);
+                                    const std::uint64_t start_frame =
+                                        trace_memory.frame_counter();
+                                    constexpr std::size_t
+                                        max_steps_per_traced_frame = 2'000'000;
+                                    for (std::size_t trace_step = 0;
+                                         trace_step < max_steps_per_traced_frame;
+                                         ++trace_step) {
+                                        const std::uint16_t before_pc =
+                                            island_story->cpu().pc;
+                                        const std::uint16_t before_bank =
+                                            trace_memory.current_rom_bank();
+                                        std::array<std::uint8_t,
+                                                   island_persistent_candidates.size()>
+                                            persistent_before{};
+                                        for (std::size_t watch = 0;
+                                             watch < island_persistent_candidates.size();
+                                             ++watch) {
+                                            persistent_before[watch] =
+                                                trace_memory.read8(
+                                                    island_persistent_candidates[watch]);
+                                        }
+
+                                        result = island_story->step();
+
+                                        for (std::size_t watch = 0;
+                                             watch < island_persistent_candidates.size();
+                                             ++watch) {
+                                            const std::uint8_t after =
+                                                trace_memory.read8(
+                                                    island_persistent_candidates[watch]);
+                                            if (after != persistent_before[watch]) {
+                                                std::cout
+                                                    << "M7_SEARCH_ISLAND_PERSIST_WRITE frame="
+                                                    << frame
+                                                    << " step=" << trace_step
+                                                    << " bank=" << before_bank
+                                                    << " pc=0x" << std::hex
+                                                    << before_pc
+                                                    << " addr=0x"
+                                                    << island_persistent_candidates[watch]
+                                                    << " before=0x"
+                                                    << static_cast<unsigned>(
+                                                           persistent_before[watch])
+                                                    << " after=0x"
+                                                    << static_cast<unsigned>(after)
+                                                    << std::dec
+                                                    << std::endl;
+                                            }
+                                        }
+
+                                        if (result == StepResult::MissingBank ||
+                                            result == StepResult::Trapped ||
+                                            result == StepResult::Stopped) {
+                                            break;
+                                        }
+                                        if (trace_memory.frame_counter() !=
+                                            start_frame) {
+                                            result = StepResult::Continue;
+                                            break;
+                                        }
+                                    }
                                 }
                                 if (result ==
                                     StepResult::MissingBank) {
