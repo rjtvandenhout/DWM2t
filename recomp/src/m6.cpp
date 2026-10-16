@@ -25,7 +25,9 @@ FrameResult advance_frame(Runtime& runtime, Renderer& renderer, std::uint8_t but
     constexpr std::size_t max_steps_per_frame = 2'000'000;
     for (std::size_t step = 0; step < max_steps_per_frame; ++step) {
         const StepResult result = runtime.step();
-        if (result != StepResult::Continue) {
+        if (result == StepResult::MissingBank ||
+            result == StepResult::Trapped ||
+            result == StepResult::Stopped) {
             return {result, memory.frame_counter(), 0};
         }
         if (memory.frame_counter() != start_frame) {
@@ -89,7 +91,11 @@ int run_m6_probe(const std::filesystem::path& output_dir) {
     constexpr std::size_t boot_step_limit = 80'000'000;
     for (std::size_t step = 0; step < boot_step_limit; ++step) {
         const StepResult result = runtime.step();
-        if (result != StepResult::Continue) return report_failure(runtime, result, 0);
+        if (result == StepResult::MissingBank ||
+            result == StepResult::Trapped ||
+            result == StepResult::Stopped) {
+            return report_failure(runtime, result, 0);
+        }
         if (memory.frame_counter() == observed_frame) continue;
         observed_frame = memory.frame_counter();
         renderer.render(memory, true);
