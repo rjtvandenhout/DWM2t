@@ -156,6 +156,7 @@ configure_native_target(dwm2t_rom_image)
 add_executable(DWM2tRecomp
     src/main.cpp
     src/m6.cpp
+    src/m7.cpp
     src/memory.cpp
     src/runtime.cpp
     src/hram_exec.cpp

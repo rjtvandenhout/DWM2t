@@ -70,11 +70,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M6-Probe-Windows-x64
+          name: DWM2tRecomp-M7-Discovery-Windows-x64
           path: |
             recomp/build/Release/DWM2tRecomp.exe
             recomp/build/m4_renderer_test.bmp
             recomp/build/m5_title_screen.bmp
             recomp/build/m6_probe/**
             recomp/build/m6_test.sav
+            recomp/build/m7_discovery/**
           if-no-files-found: error
