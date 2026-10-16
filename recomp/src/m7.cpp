@@ -421,126 +421,110 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
         return 126;
     }
 
-    constexpr std::size_t beam_width = 10;
-    constexpr std::size_t max_depth = 36;
-    std::vector<SearchNode> beam;
-    const std::uint64_t initial_screen = renderer.hash();
-    const std::uint64_t initial_map = tilemap_hash(base.memory());
-    const std::uint64_t initial_save = sram_hash(base.memory());
-    SearchNode initial{
-        std::move(base), {}, 0, initial_screen, initial_map, initial_save
-    };
-    beam.push_back(std::move(initial));
+    constexpr std::uint64_t frames_per_trial = 6000;
+    constexpr std::uint32_t trial_count = 8;
 
-    std::unordered_set<std::uint64_t> seen;
-    seen.insert(beam.front().map_hash ^ (beam.front().save_hash << 1));
+    for (std::uint32_t seed = 0; seed < trial_count; ++seed) {
+        Runtime trial = base;
+        Renderer trial_renderer{};
+        std::uint64_t last_save = sram_hash(trial.memory());
 
-    for (std::size_t depth = 0; depth < max_depth; ++depth) {
-        std::vector<SearchNode> candidates;
-        candidates.reserve(beam_width * 6);
+        for (std::uint64_t relative = 0; relative < frames_per_trial; ++relative) {
+            constexpr std::uint64_t segment_frames = 20;
+            const std::uint64_t segment = relative / segment_frames;
+            const std::uint64_t phase = relative % segment_frames;
+            const std::uint32_t salt =
+                seed * 0xA511E9B3u + static_cast<std::uint32_t>(segment);
+            const std::uint32_t mixed = mix_segment(salt);
+            constexpr std::array<std::uint8_t, 4> directions = {
+                JoyRight, JoyLeft, JoyUp, JoyDown
+            };
 
-        for (const SearchNode& parent : beam) {
-            for (std::uint8_t action = 0; action < 6; ++action) {
-                SearchNode child{
-                    parent.runtime, parent.path, 0, 0, 0, 0
-                };
-                child.path.push_back(action);
+            std::uint8_t buttons = 0;
+            if (phase < 13) buttons = directions[mixed & 3u];
+            if (phase >= 14 && phase < 16) buttons = JoyA;
+            if ((segment + seed * 7u) % 43u == 0u &&
+                phase >= 17 && phase < 19) {
+                buttons = JoyB;
+            }
 
-                const StepResult result = apply_search_action(child.runtime, action);
-                Renderer child_renderer{};
-                child_renderer.render(child.runtime.memory(), true);
+            const StepResult result = advance_search_frame(trial, buttons);
+            if (result == StepResult::MissingBank) {
+                trial_renderer.render(trial.memory(), true);
+                trial_renderer.write_bmp(
+                    output_dir / ("search_missing_seed_" + std::to_string(seed) + ".bmp"));
+                std::cout << "M7_SEARCH_MISSING_BANK seed=" << seed
+                          << " relative=" << relative
+                          << " bank=" << trial.cpu().missing_bank
+                          << " pc=0x" << std::hex << trial.cpu().pc
+                          << " screen=0x" << trial_renderer.hash()
+                          << std::dec << std::endl;
+                return 127;
+            }
+            if (result == StepResult::Trapped ||
+                result == StepResult::Stopped ||
+                result == StepResult::StepLimit) {
+                std::cout << "M7_SEARCH_TRIAL_ABORT seed=" << seed
+                          << " relative=" << relative
+                          << " result=" << static_cast<unsigned>(result)
+                          << std::endl;
+                break;
+            }
 
-                if (result == StepResult::MissingBank) {
-                    child_renderer.write_bmp(output_dir / "search_missing_bank.bmp");
-                    std::cout << "M7_SEARCH_MISSING_BANK bank="
-                              << child.runtime.cpu().missing_bank
-                              << " pc=0x" << std::hex << child.runtime.cpu().pc
-                              << " screen=0x" << child_renderer.hash() << std::dec
-                              << " depth=" << (depth + 1);
-                    print_search_path(child.path);
-                    std::cout << "\n";
-                    return 127;
+            const std::uint8_t mode = trial.memory().read8(0xC5DB);
+            const std::uint8_t submode = trial.memory().read8(0xC5DC);
+            if (mode != 1) {
+                trial_renderer.render(trial.memory(), true);
+                trial_renderer.write_bmp(
+                    output_dir / ("search_mode_seed_" + std::to_string(seed) + ".bmp"));
+                std::cout << "M7_SEARCH_MODE_CHANGE seed=" << seed
+                          << " relative=" << relative
+                          << " C5DB=" << static_cast<unsigned>(mode)
+                          << " C5DC=" << static_cast<unsigned>(submode)
+                          << " screen=0x" << std::hex << trial_renderer.hash()
+                          << " map=0x" << tilemap_hash(trial.memory())
+                          << " sram=0x" << sram_hash(trial.memory())
+                          << std::dec << std::endl;
+                return 0;
+            }
+
+            if ((relative % 24u) == 0u) {
+                const std::uint64_t save = sram_hash(trial.memory());
+                if (save != last_save) {
+                    trial_renderer.render(trial.memory(), true);
+                    std::cout << "M7_SEARCH_SRAM_CHANGE seed=" << seed
+                              << " relative=" << relative
+                              << " before=0x" << std::hex << last_save
+                              << " after=0x" << save
+                              << " screen=0x" << trial_renderer.hash()
+                              << std::dec << std::endl;
+                    last_save = save;
                 }
-                if (result == StepResult::Trapped ||
-                    result == StepResult::Stopped ||
-                    result == StepResult::StepLimit) {
-                    continue;
-                }
+            }
 
-                const std::uint8_t mode = child.runtime.memory().read8(0xC5DB);
-                const std::uint8_t submode = child.runtime.memory().read8(0xC5DC);
-                child.screen_hash = child_renderer.hash();
-                child.map_hash = tilemap_hash(child.runtime.memory());
-                child.save_hash = sram_hash(child.runtime.memory());
-
-                if (mode != 1) {
-                    child_renderer.write_bmp(output_dir / "search_mode_change.bmp");
-                    std::cout << "M7_SEARCH_MODE_CHANGE C5DB="
-                              << static_cast<unsigned>(mode)
-                              << " C5DC=" << static_cast<unsigned>(submode)
-                              << " screen=0x" << std::hex << child.screen_hash
-                              << " map=0x" << child.map_hash
-                              << " sram=0x" << child.save_hash << std::dec
-                              << " depth=" << (depth + 1);
-                    print_search_path(child.path);
-                    std::cout << "\n";
-                    return 0;
-                }
-
-                const bool save_changed = child.save_hash != parent.save_hash;
-                const bool map_changed = child.map_hash != parent.map_hash;
-                const bool screen_changed = child.screen_hash != parent.screen_hash;
-                const std::uint64_t signature =
-                    child.map_hash ^ (child.save_hash << 1) ^
-                    (child.screen_hash * 0x9E3779B185EBCA87ull) ^
-                    (static_cast<std::uint64_t>(submode) << 56);
-                const bool novel = seen.insert(signature).second;
-
-                child.score =
-                    (save_changed ? 1000000ull : 0ull) +
-                    (map_changed ? 10000ull : 0ull) +
-                    (submode != 0 ? 1000ull : 0ull) +
-                    (novel ? 100ull : 0ull) +
-                    (screen_changed ? 10ull : 0ull) +
-                    static_cast<std::uint64_t>(depth);
-
-                if (novel || save_changed || map_changed ||
-                    screen_changed || submode != 0) {
-                    candidates.push_back(std::move(child));
-                }
+            if ((relative % 240u) == 0u) {
+                (void)trial.memory().apu().take_samples();
             }
         }
 
-        if (candidates.empty()) {
-            std::cout << "M7_SEARCH_FAIL exhausted depth=" << depth << "\n";
-            return 128;
-        }
-
-        std::stable_sort(candidates.begin(), candidates.end(),
-            [](const SearchNode& lhs, const SearchNode& rhs) {
-                return lhs.score > rhs.score;
-            });
-        if (candidates.size() > beam_width) candidates.resize(beam_width);
-
-        std::cout << "M7_SEARCH_DEPTH depth=" << (depth + 1)
-                  << " candidates=" << candidates.size()
-                  << " best_score=" << candidates.front().score
-                  << " best_map=0x" << std::hex << candidates.front().map_hash
-                  << " best_sram=0x" << candidates.front().save_hash << std::dec
+        (void)trial.memory().apu().take_samples();
+        trial_renderer.render(trial.memory(), true);
+        trial_renderer.write_bmp(
+            output_dir / ("search_seed_" + std::to_string(seed) + "_final.bmp"));
+        std::cout << "M7_SEARCH_TRIAL_COMPLETE seed=" << seed
+                  << " screen=0x" << std::hex << trial_renderer.hash()
+                  << " map=0x" << tilemap_hash(trial.memory())
+                  << " sram=0x" << sram_hash(trial.memory())
+                  << std::dec
+                  << " C5DB="
+                  << static_cast<unsigned>(trial.memory().read8(0xC5DB))
                   << " C5DC="
-                  << static_cast<unsigned>(
-                         candidates.front().runtime.memory().read8(0xC5DC))
-                  << "\n";
-
-        beam = std::move(candidates);
+                  << static_cast<unsigned>(trial.memory().read8(0xC5DC))
+                  << std::endl;
     }
 
-    Renderer best_renderer{};
-    best_renderer.render(beam.front().runtime.memory(), true);
-    best_renderer.write_bmp(output_dir / "search_best.bmp");
-    std::cout << "M7_SEARCH_NO_MODE_CHANGE depth=" << max_depth;
-    print_search_path(beam.front().path);
-    std::cout << "\n";
+    std::cout << "M7_SEARCH_NO_MODE_CHANGE trials=" << trial_count
+              << " frames_per_trial=" << frames_per_trial << std::endl;
     return 129;
 }
 
