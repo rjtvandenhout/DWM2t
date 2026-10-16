@@ -1919,17 +1919,88 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return (memory.read8(address) & mask) != 0;
                             };
 
+                            // Pin the deterministic path discovered
+                            // by the event-flag beam to the populated farm
+                            // area. This keeps subsequent interaction search
+                            // local to the NPC/monster cluster instead of
+                            // spending most of its budget re-navigating town.
+                            constexpr std::array<std::uint8_t, 25>
+                                farm_prefix = {
+                                    2,3,0,4,4,4,1,2,4,4,4,4,4,
+                                    4,4,0,0,4,1,0,0,0,0,0,3
+                                };
+                            constexpr std::uint64_t kFarmSeedScreen =
+                                0x131b9ff9d44e6661ull;
+
+                            auto farm_seed =
+                                std::make_unique<Runtime>(
+                                    guide_outdoor_seed);
+                            for (std::size_t i = 0;
+                                 i < farm_prefix.size(); ++i) {
+                                const StepResult result =
+                                    apply_quest_action(
+                                        *farm_seed,
+                                        farm_prefix[i]);
+                                if (result == StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_FARM_MISSING_BANK index="
+                                        << i
+                                        << " bank="
+                                        << farm_seed->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << farm_seed->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result != StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_FARM_ABORT index="
+                                        << i
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 151;
+                                }
+                            }
+
                             Renderer quest_renderer{};
                             quest_renderer.render(
-                                guide_outdoor_seed.memory(), true);
+                                farm_seed->memory(), true);
                             const std::uint64_t quest_start_bg =
-                                background_hash(guide_outdoor_seed.memory());
+                                background_hash(farm_seed->memory());
                             const std::uint64_t quest_start_story =
-                                story_signature(guide_outdoor_seed.memory());
+                                story_signature(farm_seed->memory());
+
+                            std::cout
+                                << "M7_SEARCH_FARM_SEED screen=0x"
+                                << std::hex << quest_renderer.hash()
+                                << " expected=0x" << kFarmSeedScreen
+                                << " bg=0x" << quest_start_bg
+                                << " story=0x" << quest_start_story
+                                << std::dec
+                                << " f21=" << event_flag(farm_seed->memory(), 0x21)
+                                << " f22=" << event_flag(farm_seed->memory(), 0x22)
+                                << " f23=" << event_flag(farm_seed->memory(), 0x23)
+                                << " f24=" << event_flag(farm_seed->memory(), 0x24)
+                                << " f25=" << event_flag(farm_seed->memory(), 0x25)
+                                << " f26=" << event_flag(farm_seed->memory(), 0x26)
+                                << " fA6=" << event_flag(farm_seed->memory(), 0xA6)
+                                << " fA7=" << event_flag(farm_seed->memory(), 0xA7)
+                                << std::endl;
+
+                            quest_renderer.write_bmp(
+                                output_dir / "search_farm_seed.bmp");
+                            if (quest_renderer.hash() !=
+                                kFarmSeedScreen) {
+                                std::cout
+                                    << "M7_SEARCH_FARM_FAIL deterministic_hash"
+                                    << std::endl;
+                                return 152;
+                            }
 
                             std::vector<QuestNode> quest_frontier;
                             quest_frontier.push_back({
-                                std::make_unique<Runtime>(guide_outdoor_seed),
+                                std::move(farm_seed),
                                 {},
                                 0,
                                 quest_start_bg,
@@ -1944,9 +2015,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             quest_stories.insert(quest_start_story);
 
                             constexpr std::array<std::uint8_t, 5>
-                                quest_actions = {1, 3, 2, 0, 4};
-                            constexpr std::size_t quest_width = 32;
-                            constexpr std::size_t quest_depth = 32;
+                                quest_actions = {2, 4, 1, 0, 3};
+                            constexpr std::size_t quest_width = 24;
+                            constexpr std::size_t quest_depth = 18;
                             unsigned quest_capture = 0;
 
                             for (std::size_t depth = 0;
@@ -2070,6 +2141,37 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         const bool new_story =
                                             quest_stories.insert(
                                                 story_sig).second;
+
+                                        if (new_story &&
+                                            story_sig != quest_start_story) {
+                                            quest_renderer.write_bmp(
+                                                output_dir /
+                                                "search_quest_flag_change.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_QUEST_FLAG_CHANGE depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " screen=0x" << std::hex
+                                                << screen
+                                                << " bg=0x" << bg
+                                                << " before=0x"
+                                                << quest_start_story
+                                                << " after=0x"
+                                                << story_sig
+                                                << std::dec
+                                                << " f21=" << event_flag(child->memory(), 0x21)
+                                                << " f22=" << event_flag(child->memory(), 0x22)
+                                                << " f23=" << event_flag(child->memory(), 0x23)
+                                                << " f24=" << event_flag(child->memory(), 0x24)
+                                                << " f25=" << event_flag(child->memory(), 0x25)
+                                                << " f26=" << event_flag(child->memory(), 0x26)
+                                                << " fA6=" << event_flag(child->memory(), 0xA6)
+                                                << " fA7=" << event_flag(child->memory(), 0xA7);
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 153;
+                                        }
 
                                         std::uint64_t score = 0;
                                         if (new_story) {
