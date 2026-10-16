@@ -108,6 +108,9 @@ jobs:
       - name: Run M7 original-game audio probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-audio-probe
 
+      - name: Run M7 P1 route search
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-route-search recomp/build/m7_search
+
       - name: Run M7 original-game discovery probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-discovery recomp/build/m7_discovery
 
@@ -123,4 +126,5 @@ jobs:
             recomp/build/m6_probe/**
             recomp/build/m6_test.sav
             recomp/build/m7_discovery/**
+            recomp/build/m7_search/**
           if-no-files-found: error
