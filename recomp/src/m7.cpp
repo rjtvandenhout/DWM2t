@@ -2371,8 +2371,6 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << static_cast<unsigned>(
                                        island_story->memory().read8(0xCBEB))
                                 << std::dec << std::endl;
-                            return 0;
-
 
                             auto island_control =
                                 std::make_unique<Runtime>(
