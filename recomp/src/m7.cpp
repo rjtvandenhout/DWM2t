@@ -378,17 +378,38 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
         }
         if (stable_title >= 30) break;
     }
-    if (stable_title < 30) return 121;
+    if (stable_title < 30) {
+        std::cout << "M7_SEARCH_FAIL title_not_reached frame="
+                  << base.memory().frame_counter()
+                  << " pc=0x" << std::hex << base.cpu().pc << std::dec << std::endl;
+        return 121;
+    }
 
     for (std::uint64_t relative = 0; relative < 1800; ++relative) {
         const StepResult result =
             advance_search_frame(base, m6_story_buttons(relative));
-        if (result != StepResult::Continue) return 122;
+        if (result != StepResult::Continue) {
+            std::cout << "M7_SEARCH_FAIL story result="
+                      << static_cast<unsigned>(result)
+                      << " relative=" << relative
+                      << " frame=" << base.memory().frame_counter()
+                      << " bank=" << base.memory().current_rom_bank()
+                      << " pc=0x" << std::hex << base.cpu().pc << std::dec << std::endl;
+            return 122;
+        }
     }
     for (std::uint64_t i = 0; i < 36; ++i) {
         const StepResult result =
             advance_search_frame(base, i < 24 ? JoyRight : 0);
-        if (result != StepResult::Continue) return 123;
+        if (result != StepResult::Continue) {
+            std::cout << "M7_SEARCH_FAIL ship_move result="
+                      << static_cast<unsigned>(result)
+                      << " relative=" << i
+                      << " frame=" << base.memory().frame_counter()
+                      << " bank=" << base.memory().current_rom_bank()
+                      << " pc=0x" << std::hex << base.cpu().pc << std::dec << std::endl;
+            return 123;
+        }
     }
 
     constexpr std::uint64_t town_prefix_frames = 12600;
@@ -401,7 +422,18 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                       << base.cpu().pc << std::dec << "\n";
             return 124;
         }
-        if (result != StepResult::Continue) return 125;
+        if (result != StepResult::Continue) {
+            std::cout << "M7_SEARCH_FAIL prefix result="
+                      << static_cast<unsigned>(result)
+                      << " relative=" << relative
+                      << " frame=" << base.memory().frame_counter()
+                      << " bank=" << base.memory().current_rom_bank()
+                      << " pc=0x" << std::hex << base.cpu().pc << std::dec
+                      << " C5DB=" << static_cast<unsigned>(base.memory().read8(0xC5DB))
+                      << " C5DC=" << static_cast<unsigned>(base.memory().read8(0xC5DC))
+                      << std::endl;
+            return 125;
+        }
     }
 
     (void)base.memory().apu().take_samples();
