@@ -721,9 +721,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 if (after_submode != 0) saw_dialog = true;
 
                                 if (story == 0 && saw_dialog &&
-                                    (dialog_frames == 30 || dialog_frames == 90 ||
-                                     dialog_frames == 150 || dialog_frames == 240 ||
-                                     dialog_frames == 360 || dialog_frames == 480)) {
+                                    (dialog_frames == 55 || dialog_frames == 115 ||
+                                     dialog_frames == 175 || dialog_frames == 235 ||
+                                     dialog_frames == 295 || dialog_frames == 355 ||
+                                     dialog_frames == 415 || dialog_frames == 475 ||
+                                     dialog_frames == 535)) {
                                     Renderer clue_renderer{};
                                     clue_renderer.render(story_runtime.memory(), true);
                                     clue_renderer.write_bmp(
@@ -796,8 +798,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             // The parent has just asked Tara to collect Grandma's
                             // delivery, so keep every trial rooted in this exact
                             // game-owned state and use only P1 input.
-                            constexpr std::uint32_t post_trial_count = 3;
-                            constexpr std::uint64_t post_trial_frames = 12000;
+                            constexpr std::uint32_t post_trial_count = 1;
+                            constexpr std::uint64_t post_trial_frames = 7000;
 
                             for (std::uint32_t post_seed = 0;
                                  post_seed < post_trial_count; ++post_seed) {
@@ -868,9 +870,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                                         if (post_seed == 0 &&
                                             active_dialog_capture < 8 &&
-                                            (active_dialog_frames == 25u ||
-                                             active_dialog_frames == 85u ||
-                                             active_dialog_frames == 145u)) {
+                                            (active_dialog_frames == 55u ||
+                                             active_dialog_frames == 115u ||
+                                             active_dialog_frames == 175u)) {
                                             Renderer text_renderer{};
                                             text_renderer.render(post.memory(), true);
                                             text_renderer.write_bmp(
