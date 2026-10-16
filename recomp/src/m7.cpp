@@ -1835,21 +1835,15 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             auto story_signature = [](const Memory& memory) {
                                 std::uint64_t h = 1469598103934665603ull;
-                                // Bank 0 $181B is the cartridge's
-                                // event-flag checker. It addresses flags as
-                                // 0xCBD7 + flag/8 and masks bit flag&7.
-                                // Hash the exact bytes covering the M7 flags
-                                // found by the ROM scan instead of volatile
-                                // gameplay/selector fields.
-                                constexpr std::array<std::uint16_t, 5> addrs = {
-                                    0xCBDB, // flags 0x20..0x27
-                                    0xCBEB, // flags 0xA0..0xA7
-                                    0xCBFC, // flags 0x128..0x12F
-                                    0xCC07, // flags 0x180..0x187
-                                    0xCC08  // flags 0x188..0x18F
-                                };
-                                for (const std::uint16_t addr : addrs) {
-                                    h ^= memory.read8(addr);
+                                // Bank 0 $181B proves the event table starts
+                                // at $CBD7 and stores one bit per flag. Cover
+                                // the complete 0x000..0x1FF range so discovery
+                                // cannot miss a progression flag simply because
+                                // its numeric id was not guessed in advance.
+                                for (std::uint16_t i = 0; i < 64; ++i) {
+                                    h ^= memory.read8(
+                                        static_cast<std::uint16_t>(
+                                            0xCBD7u + i));
                                     h *= 1099511628211ull;
                                 }
                                 return h;
@@ -1970,6 +1964,14 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 background_hash(farm_seed->memory());
                             const std::uint64_t quest_start_story =
                                 story_signature(farm_seed->memory());
+                            std::array<std::uint8_t, 64>
+                                quest_start_flag_bytes{};
+                            for (std::uint16_t i = 0; i < 64; ++i) {
+                                quest_start_flag_bytes[i] =
+                                    farm_seed->memory().read8(
+                                        static_cast<std::uint16_t>(
+                                            0xCBD7u + i));
+                            }
 
                             std::cout
                                 << "M7_SEARCH_FARM_SEED screen=0x"
@@ -2170,6 +2172,37 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << " fA7=" << event_flag(child->memory(), 0xA7);
                                             print_search_path(path);
                                             std::cout << std::endl;
+                                            for (std::uint16_t byte = 0;
+                                                 byte < 64; ++byte) {
+                                                const std::uint8_t before =
+                                                    quest_start_flag_bytes[byte];
+                                                const std::uint8_t after =
+                                                    child->memory().read8(
+                                                        static_cast<std::uint16_t>(
+                                                            0xCBD7u + byte));
+                                                const std::uint8_t changed =
+                                                    static_cast<std::uint8_t>(
+                                                        before ^ after);
+                                                for (unsigned bit = 0;
+                                                     bit < 8; ++bit) {
+                                                    if ((changed &
+                                                         (1u << bit)) == 0) {
+                                                        continue;
+                                                    }
+                                                    const std::uint16_t flag =
+                                                        static_cast<std::uint16_t>(
+                                                            byte * 8u + bit);
+                                                    std::cout
+                                                        << "M7_SEARCH_QUEST_FLAG_BIT flag=0x"
+                                                        << std::hex << flag
+                                                        << " before="
+                                                        << ((before >> bit) & 1u)
+                                                        << " after="
+                                                        << ((after >> bit) & 1u)
+                                                        << std::dec
+                                                        << std::endl;
+                                                }
+                                            }
                                             return 153;
                                         }
 
