@@ -1905,7 +1905,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             {
                                 auto root =
                                     std::make_unique<Runtime>(
-                                        island_seed);
+                                        island_progress_seed);
                                 vault_door_renderer.render(
                                     root->memory(), true);
                                 island_frontier.push_back({
@@ -1913,7 +1913,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     {},
                                     vault_door_renderer.hash(),
                                     tilemap_hash(
-                                        island_seed.memory()),
+                                        island_progress_seed.memory()),
                                     island_oam_hash(
                                         island_progress_seed.memory())
                                 });
