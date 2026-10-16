@@ -1489,10 +1489,117 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     buttons = JoyA;
                                 }
 
-                                const StepResult result =
-                                    advance_search_frame(
-                                        *island_story,
+                                StepResult result =
+                                    StepResult::Continue;
+
+                                if (!island_dialog_seen &&
+                                    frame == 0 &&
+                                    buttons == JoyA) {
+                                    // Trace the first real interaction edge at
+                                    // instruction granularity before the script
+                                    // settles into HALT. Keep only ROMX PCs and
+                                    // deduplicate them so CI output remains
+                                    // compact.
+                                    auto& trace_memory =
+                                        island_story->memory();
+                                    trace_memory.set_joypad_state(
                                         buttons);
+                                    const std::uint64_t
+                                        trace_start_frame =
+                                            trace_memory.frame_counter();
+                                    std::unordered_set<std::uint64_t>
+                                        trace_seen;
+                                    unsigned trace_lines = 0;
+                                    constexpr std::size_t
+                                        trace_step_limit = 2'000'000;
+
+                                    for (std::size_t trace_step = 0;
+                                         trace_step <
+                                             trace_step_limit;
+                                         ++trace_step) {
+                                        const std::uint16_t
+                                            before_pc =
+                                                island_story->cpu().pc;
+                                        const std::uint16_t
+                                            before_bank =
+                                                trace_memory
+                                                    .current_rom_bank();
+                                        const bool before_halted =
+                                            island_story->cpu().halted;
+
+                                        result =
+                                            island_story->step();
+
+                                        if (!before_halted &&
+                                            before_pc >= 0x4000 &&
+                                            before_pc < 0x8000) {
+                                            const std::uint64_t key =
+                                                (static_cast<
+                                                     std::uint64_t>(
+                                                     before_bank)
+                                                 << 16) |
+                                                before_pc;
+                                            if (trace_seen.insert(
+                                                    key).second &&
+                                                trace_lines < 256) {
+                                                std::cout
+                                                    << "M7_SEARCH_ISLAND_ROMX_TRACE step="
+                                                    << trace_step
+                                                    << " bank="
+                                                    << before_bank
+                                                    << " pc=0x"
+                                                    << std::hex
+                                                    << before_pc
+                                                    << std::dec
+                                                    << " sp=0x"
+                                                    << std::hex
+                                                    << island_story
+                                                           ->cpu().sp
+                                                    << std::dec
+                                                    << std::endl;
+                                                ++trace_lines;
+                                            }
+                                        }
+
+                                        if (result ==
+                                                StepResult::MissingBank ||
+                                            result ==
+                                                StepResult::Trapped ||
+                                            result ==
+                                                StepResult::Stopped) {
+                                            break;
+                                        }
+                                        if (trace_memory.frame_counter() !=
+                                            trace_start_frame) {
+                                            result =
+                                                StepResult::Continue;
+                                            break;
+                                        }
+                                    }
+
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_ROMX_TRACE_COMPLETE unique="
+                                        << trace_seen.size()
+                                        << " printed="
+                                        << trace_lines
+                                        << " end_bank="
+                                        << trace_memory
+                                               .current_rom_bank()
+                                        << " end_pc=0x"
+                                        << std::hex
+                                        << island_story->cpu().pc
+                                        << std::dec
+                                        << " halted="
+                                        << (island_story->cpu().halted
+                                                ? 1
+                                                : 0)
+                                        << std::endl;
+                                } else {
+                                    result =
+                                        advance_search_frame(
+                                            *island_story,
+                                            buttons);
+                                }
                                 if (result ==
                                     StepResult::MissingBank) {
                                     std::cout
