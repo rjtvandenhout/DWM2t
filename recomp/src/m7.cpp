@@ -492,6 +492,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                 const bool screen_changed = child.screen_hash != parent.screen_hash;
                 const std::uint64_t signature =
                     child.map_hash ^ (child.save_hash << 1) ^
+                    (child.screen_hash * 0x9E3779B185EBCA87ull) ^
                     (static_cast<std::uint64_t>(submode) << 56);
                 const bool novel = seen.insert(signature).second;
 
@@ -503,7 +504,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                     (screen_changed ? 10ull : 0ull) +
                     static_cast<std::uint64_t>(depth);
 
-                if (novel || save_changed || map_changed || submode != 0) {
+                if (novel || save_changed || map_changed ||
+                    screen_changed || submode != 0) {
                     candidates.push_back(std::move(child));
                 }
             }
