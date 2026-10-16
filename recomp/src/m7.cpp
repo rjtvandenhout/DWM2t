@@ -1527,8 +1527,47 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         const bool before_halted =
                                             island_story->cpu().halted;
 
+                                        std::array<std::uint8_t,
+                                                   island_watch_addresses.size()>
+                                            watch_before{};
+                                        for (std::size_t watch = 0;
+                                             watch < island_watch_addresses.size();
+                                             ++watch) {
+                                            watch_before[watch] =
+                                                trace_memory.read8(
+                                                    island_watch_addresses[watch]);
+                                        }
+
                                         result =
                                             island_story->step();
+
+                                        for (std::size_t watch = 0;
+                                             watch < island_watch_addresses.size();
+                                             ++watch) {
+                                            const std::uint8_t after =
+                                                trace_memory.read8(
+                                                    island_watch_addresses[watch]);
+                                            if (after != watch_before[watch]) {
+                                                std::cout
+                                                    << "M7_SEARCH_ISLAND_INSTR_WRITE step="
+                                                    << trace_step
+                                                    << " bank=" << before_bank
+                                                    << " pc=0x" << std::hex
+                                                    << before_pc
+                                                    << " addr=0x"
+                                                    << island_watch_addresses[watch]
+                                                    << " before=0x"
+                                                    << static_cast<unsigned>(
+                                                           watch_before[watch])
+                                                    << " after=0x"
+                                                    << static_cast<unsigned>(after)
+                                                    << std::dec
+                                                    << " sp=0x" << std::hex
+                                                    << island_story->cpu().sp
+                                                    << std::dec
+                                                    << std::endl;
+                                            }
+                                        }
 
                                         if (!before_halted &&
                                             before_pc >= 0x4000 &&
