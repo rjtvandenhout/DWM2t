@@ -960,6 +960,144 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return 134;
                             }
 
+                            // The earlier physical-navigation artifact shows a
+                            // second building west of the farm with Tara/Cobi
+                            // aligned directly below its doorway. Probe that
+                            // exact path first instead of spending minutes on
+                            // a wide map search.
+                            constexpr std::array<std::uint8_t, 11>
+                                vault_building_path = {
+                                    2,1,1,1,1,1,3,1,3,3,2
+                                };
+                            auto vault_door =
+                                std::make_unique<Runtime>(*outdoor);
+                            for (std::size_t i = 0;
+                                 i < vault_building_path.size(); ++i) {
+                                const StepResult result =
+                                    apply_navigation(
+                                        *vault_door,
+                                        vault_building_path[i]);
+                                if (result == StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_DOOR_MISSING_BANK prefix="
+                                        << i
+                                        << " bank="
+                                        << vault_door->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << vault_door->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result != StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_DOOR_ABORT prefix="
+                                        << i
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 138;
+                                }
+                            }
+
+                            Renderer vault_door_renderer{};
+                            for (unsigned up_step = 0;
+                                 up_step < 10; ++up_step) {
+                                vault_door_renderer.render(
+                                    vault_door->memory(), true);
+                                vault_door_renderer.write_bmp(
+                                    output_dir /
+                                    ("search_vault_door_" +
+                                     std::to_string(up_step) + ".bmp"));
+                                std::cout
+                                    << "M7_SEARCH_VAULT_DOOR step="
+                                    << up_step
+                                    << " screen=0x" << std::hex
+                                    << vault_door_renderer.hash()
+                                    << " bg=0x"
+                                    << background_hash(
+                                           vault_door->memory())
+                                    << " scrollmap=0x"
+                                    << tilemap_hash(
+                                           vault_door->memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xC5DC))
+                                    << " LCDC=0x" << std::hex
+                                    << static_cast<unsigned>(
+                                           vault_door->memory().read8(
+                                               0xFF40))
+                                    << std::dec << std::endl;
+
+                                if (vault_door->memory().read8(
+                                        0xC5DB) != 1) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_DOOR_MODE_CHANGE step="
+                                        << up_step << std::endl;
+                                    return 0;
+                                }
+
+                                const StepResult result =
+                                    apply_navigation(
+                                        *vault_door, 2);
+                                if (result == StepResult::MissingBank) {
+                                    vault_door_renderer.render(
+                                        vault_door->memory(), true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        "search_vault_door_missing.bmp");
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_DOOR_MISSING_BANK step="
+                                        << up_step
+                                        << " bank="
+                                        << vault_door->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << vault_door->cpu().pc
+                                        << " screen=0x"
+                                        << vault_door_renderer.hash()
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result != StepResult::Continue) {
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_DOOR_ABORT step="
+                                        << up_step
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 138;
+                                }
+                            }
+
+                            vault_door_renderer.render(
+                                vault_door->memory(), true);
+                            vault_door_renderer.write_bmp(
+                                output_dir /
+                                "search_vault_door_final.bmp");
+                            std::cout
+                                << "M7_SEARCH_VAULT_DOOR_PROBE_COMPLETE screen=0x"
+                                << std::hex
+                                << vault_door_renderer.hash()
+                                << " bg=0x"
+                                << background_hash(
+                                       vault_door->memory())
+                                << std::dec
+                                << " C5DB="
+                                << static_cast<unsigned>(
+                                       vault_door->memory().read8(
+                                           0xC5DB))
+                                << " C5DC="
+                                << static_cast<unsigned>(
+                                       vault_door->memory().read8(
+                                           0xC5DC))
+                                << std::endl;
+                            return 138;
+
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
                                     1469598103934665603ull;
