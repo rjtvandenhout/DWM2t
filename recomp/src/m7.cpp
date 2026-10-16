@@ -636,7 +636,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         {{{JoyLeft, 40}, {JoyUp, 72}, {JoyA, 120}, {JoyDown, 24}, {JoyA, 240}, {0, 30}}},
                     }};
 
-                    const Runtime story_base = focused;
+                    auto story_base_owner = std::make_unique<Runtime>(focused);
+                    const Runtime& story_base = *story_base_owner;
                     for (std::size_t story = 0; story < story_routes.size(); ++story) {
                         auto story_owner = std::make_unique<Runtime>(story_base);
                         Runtime& story_runtime = *story_owner;
