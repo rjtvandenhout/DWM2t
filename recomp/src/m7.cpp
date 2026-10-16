@@ -1635,6 +1635,37 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 ++island_wram_change_count;
                             }
 
+                            unsigned island_high_wram_change_count = 0;
+                            for (std::size_t i = 0x400;
+                                 i < island_visible_wram_before.size();
+                                 ++i) {
+                                const std::uint16_t address =
+                                    static_cast<std::uint16_t>(
+                                        0xC000u + i);
+                                const std::uint8_t interaction =
+                                    island_story->memory().read8(
+                                        address);
+                                const std::uint8_t control =
+                                    island_control->memory().read8(
+                                        address);
+                                if (interaction == control) {
+                                    continue;
+                                }
+                                if (island_high_wram_change_count < 96) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_HIGH_WRAM_CHANGE addr=0x"
+                                        << std::hex << address
+                                        << " control=0x"
+                                        << static_cast<unsigned>(
+                                               control)
+                                        << " interaction=0x"
+                                        << static_cast<unsigned>(
+                                               interaction)
+                                        << std::dec << std::endl;
+                                }
+                                ++island_high_wram_change_count;
+                            }
+
                             unsigned island_hram_change_count = 0;
                             for (std::size_t i = 0;
                                  i < island_hram_before.size();
@@ -1675,6 +1706,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << island_dialog_elapsed_frames
                                 << " wram_changes="
                                 << island_wram_change_count
+                                << " high_wram_changes="
+                                << island_high_wram_change_count
                                 << " hram_changes="
                                 << island_hram_change_count
                                 << " interaction_sram=0x"
