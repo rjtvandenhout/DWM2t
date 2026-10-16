@@ -1442,6 +1442,24 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 *island_story;
                             std::uint64_t island_dialog_elapsed_frames = 0;
 
+                            constexpr std::array<std::uint16_t, 14>
+                                island_watch_addresses = {
+                                    0xC529, 0xC531, 0xC533, 0xC534,
+                                    0xC537, 0xC538, 0xC54F, 0xC554,
+                                    0xC555, 0xC556, 0xC5D7, 0xC5E7,
+                                    0xC5E8, 0xC5F0
+                                };
+                            std::array<std::uint8_t,
+                                       island_watch_addresses.size()>
+                                island_watch_values{};
+                            for (std::size_t i = 0;
+                                 i < island_watch_addresses.size();
+                                 ++i) {
+                                island_watch_values[i] =
+                                    island_story->memory().read8(
+                                        island_watch_addresses[i]);
+                            }
+
                             bool island_dialog_seen = false;
                             bool island_dialog_closed = false;
                             unsigned island_dialog_page = 0;
@@ -1497,6 +1515,40 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     result ==
                                         StepResult::StepLimit) {
                                     break;
+                                }
+
+                                for (std::size_t watch = 0;
+                                     watch < island_watch_addresses.size();
+                                     ++watch) {
+                                    const std::uint8_t value =
+                                        island_story->memory().read8(
+                                            island_watch_addresses[watch]);
+                                    if (value !=
+                                        island_watch_values[watch]) {
+                                        std::cout
+                                            << "M7_SEARCH_ISLAND_WATCH frame="
+                                            << frame
+                                            << " addr=0x" << std::hex
+                                            << island_watch_addresses[watch]
+                                            << " before=0x"
+                                            << static_cast<unsigned>(
+                                                   island_watch_values[watch])
+                                            << " after=0x"
+                                            << static_cast<unsigned>(value)
+                                            << " pc=0x"
+                                            << island_story->cpu().pc
+                                            << std::dec
+                                            << " bank="
+                                            << island_story->memory()
+                                                   .current_rom_bank()
+                                            << " C5DC="
+                                            << static_cast<unsigned>(
+                                                   island_story->memory()
+                                                       .read8(0xC5DC))
+                                            << std::endl;
+                                        island_watch_values[watch] =
+                                            value;
+                                    }
                                 }
 
                                 const std::uint8_t submode =
