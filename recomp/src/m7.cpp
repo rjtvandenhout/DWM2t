@@ -1418,9 +1418,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         island_story->memory());
                             bool island_dialog_seen = false;
                             bool island_dialog_closed = false;
+                            unsigned island_dialog_page = 0;
+                            std::uint64_t next_page_press = 96;
 
                             for (std::uint64_t frame = 0;
-                                 frame < 900; ++frame) {
+                                 frame < 1200; ++frame) {
                                 const std::uint8_t
                                     before_submode =
                                         island_story->memory()
@@ -1437,8 +1439,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     if (frame < 2) {
                                         buttons = JoyA;
                                     }
-                                } else if (
-                                    (frame % 60u) < 2u) {
+                                } else if (frame ==
+                                           next_page_press) {
                                     buttons = JoyA;
                                 }
 
@@ -1473,29 +1475,30 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 const std::uint8_t submode =
                                     island_story->memory()
                                         .read8(0xC5DC);
-                                if (submode != 0) {
-                                    island_dialog_seen =
-                                        true;
+                                if (submode != 0 &&
+                                    !island_dialog_seen) {
+                                    island_dialog_seen = true;
+                                    next_page_press =
+                                        frame + 96;
                                 }
 
                                 if (island_dialog_seen &&
-                                    (frame == 30 ||
-                                     frame == 90 ||
-                                     frame == 150 ||
-                                     frame == 240 ||
-                                     frame == 360 ||
-                                     frame == 480)) {
+                                    submode != 0 &&
+                                    frame + 1 ==
+                                        next_page_press) {
                                     vault_door_renderer.render(
                                         island_story->memory(),
                                         true);
                                     vault_door_renderer.write_bmp(
                                         output_dir /
-                                        ("search_island_npc_text_" +
-                                         std::to_string(frame) +
+                                        ("search_island_npc_page_" +
+                                         std::to_string(
+                                             island_dialog_page) +
                                          ".bmp"));
                                     std::cout
-                                        << "M7_SEARCH_ISLAND_NPC_TEXT frame="
-                                        << frame
+                                        << "M7_SEARCH_ISLAND_NPC_PAGE page="
+                                        << island_dialog_page
+                                        << " frame=" << frame
                                         << " screen=0x"
                                         << std::hex
                                         << vault_door_renderer.hash()
@@ -1504,6 +1507,13 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         << static_cast<unsigned>(
                                                submode)
                                         << std::endl;
+                                    ++island_dialog_page;
+                                }
+
+                                if (buttons == JoyA &&
+                                    island_dialog_seen) {
+                                    next_page_press =
+                                        frame + 96;
                                 }
                             }
 
