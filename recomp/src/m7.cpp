@@ -794,393 +794,224 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         }
 
                         if (story == 0 && dialog_closed) {
-                            // Continue from the real post-dialogue story state.
-                            // The parent has just asked Tara to collect Grandma's
-                            // delivery, so keep every trial rooted in this exact
-                            // game-owned state and use only P1 input.
-                            constexpr std::uint32_t post_trial_count = 1;
-                            constexpr std::uint64_t post_trial_frames = 7000;
+                            // Search from the exact game-owned post-dialogue
+                            // state using only P1 macros. Keep a bounded beam of
+                            // visually/map-distinct states instead of relying on
+                            // a random walk to find the next story exit.
+                            struct BeamNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                                std::uint64_t screen_hash = 0;
+                                std::uint64_t map_hash = 0;
+                            };
 
-                            for (std::uint32_t post_seed = 0;
-                                 post_seed < post_trial_count; ++post_seed) {
-                                auto post_owner =
-                                    std::make_unique<Runtime>(story_runtime);
-                                Runtime& post = *post_owner;
-                                Renderer post_renderer{};
+                            Renderer beam_renderer{};
+                            beam_renderer.render(story_runtime.memory(), true);
+                            const std::uint64_t start_screen = beam_renderer.hash();
+                            const std::uint64_t start_map =
+                                tilemap_hash(story_runtime.memory());
 
-                                // First bias movement toward the room exit.
-                                const std::uint64_t down_frames =
-                                    80u + static_cast<std::uint64_t>(post_seed) * 12u;
-                                for (std::uint64_t f = 0; f < down_frames; ++f) {
-                                    const StepResult result =
-                                        advance_search_frame(post, JoyDown);
-                                    if (result == StepResult::MissingBank) {
-                                        post_renderer.render(post.memory(), true);
-                                        post_renderer.write_bmp(
-                                            output_dir /
-                                            ("search_post_missing_" +
-                                             std::to_string(post_seed) + ".bmp"));
-                                        std::cout
-                                            << "M7_SEARCH_POST_MISSING_BANK seed="
-                                            << post_seed
-                                            << " bank=" << post.cpu().missing_bank
-                                            << " pc=0x" << std::hex << post.cpu().pc
-                                            << " screen=0x" << post_renderer.hash()
-                                            << std::dec << std::endl;
-                                        return 127;
-                                    }
-                                    if (result != StepResult::Continue) break;
-                                }
+                            std::vector<BeamNode> frontier;
+                            frontier.push_back({
+                                std::make_unique<Runtime>(story_runtime),
+                                {},
+                                0,
+                                start_screen,
+                                start_map
+                            });
 
-                                std::uint8_t previous_post_submode =
-                                    post.memory().read8(0xC5DC);
-                                unsigned post_dialogs = 0;
-                                bool vault_probe_done = false;
-                                std::uint64_t active_dialog_frames = 0;
-                                unsigned active_dialog_capture = 0;
+                            std::unordered_set<std::uint64_t> seen_states;
+                            std::unordered_set<std::uint64_t> seen_screens;
+                            std::unordered_set<std::uint64_t> seen_maps;
+                            seen_screens.insert(start_screen);
+                            seen_maps.insert(start_map);
 
-                                for (std::uint64_t relative = 0;
-                                     relative < post_trial_frames; ++relative) {
-                                    constexpr std::uint64_t segment_frames = 20;
-                                    const std::uint64_t segment =
-                                        relative / segment_frames;
-                                    const std::uint64_t phase =
-                                        relative % segment_frames;
-                                    const std::uint32_t salt =
-                                        0x51A7u +
-                                        post_seed * 0x9E3779B9u +
-                                        static_cast<std::uint32_t>(segment);
-                                    const std::uint32_t mixed = mix_segment(salt);
-                                    constexpr std::array<std::uint8_t, 4>
-                                        directions = {
-                                            JoyRight, JoyLeft, JoyUp, JoyDown
-                                        };
+                            constexpr std::array<std::uint8_t, 6> beam_actions = {
+                                0, 1, 2, 3, 4, 5
+                            };
+                            constexpr std::size_t beam_width = 32;
+                            constexpr std::size_t beam_depth = 48;
 
-                                    const std::uint8_t before_submode =
-                                        post.memory().read8(0xC5DC);
-                                    std::uint8_t buttons = 0;
+                            for (std::size_t depth = 0;
+                                 depth < beam_depth && !frontier.empty(); ++depth) {
+                                std::vector<BeamNode> next;
+                                next.reserve(frontier.size() * beam_actions.size());
 
-                                    if (before_submode != 0) {
-                                        // While the game's text system owns
-                                        // input, stop overworld movement and
-                                        // advance the real dialogue with
-                                        // controlled A pulses.
-                                        if ((active_dialog_frames % 60u) < 2u) {
-                                            buttons = JoyA;
-                                        }
+                                for (const BeamNode& node : frontier) {
+                                    for (const std::uint8_t action : beam_actions) {
+                                        auto child =
+                                            std::make_unique<Runtime>(*node.runtime);
+                                        const StepResult result =
+                                            apply_search_action(*child, action);
 
-                                        if (post_seed == 0 &&
-                                            active_dialog_capture < 8 &&
-                                            (active_dialog_frames == 55u ||
-                                             active_dialog_frames == 115u ||
-                                             active_dialog_frames == 175u)) {
-                                            Renderer text_renderer{};
-                                            text_renderer.render(post.memory(), true);
-                                            text_renderer.write_bmp(
+                                        if (result == StepResult::MissingBank) {
+                                            beam_renderer.render(
+                                                child->memory(), true);
+                                            beam_renderer.write_bmp(
                                                 output_dir /
-                                                ("search_post_text_" +
-                                                 std::to_string(active_dialog_capture) +
-                                                 "_" +
-                                                 std::to_string(active_dialog_frames) +
-                                                 ".bmp"));
+                                                ("search_beam_missing_d" +
+                                                 std::to_string(depth) + ".bmp"));
                                             std::cout
-                                                << "M7_SEARCH_POST_TEXT seed="
-                                                << post_seed
-                                                << " dialog="
-                                                << active_dialog_capture
-                                                << " active_frame="
-                                                << active_dialog_frames
-                                                << " screen=0x" << std::hex
-                                                << text_renderer.hash()
-                                                << std::dec << std::endl;
+                                                << "M7_SEARCH_BEAM_MISSING_BANK depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " bank="
+                                                << child->cpu().missing_bank
+                                                << " pc=0x" << std::hex
+                                                << child->cpu().pc
+                                                << " screen=0x"
+                                                << beam_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(node.path);
+                                            std::cout << std::endl;
+                                            return 127;
                                         }
-                                        ++active_dialog_frames;
-                                    } else {
-                                        active_dialog_frames = 0;
-                                        if (phase < 13) {
-                                            buttons = directions[mixed & 3u];
+                                        if (result == StepResult::Trapped ||
+                                            result == StepResult::Stopped ||
+                                            result == StepResult::StepLimit) {
+                                            continue;
                                         }
-                                        if (phase >= 14 && phase < 16) {
-                                            buttons = JoyA;
-                                        }
-                                        if ((segment + post_seed * 11u) % 47u == 0u &&
-                                            phase >= 17 && phase < 19) {
-                                            buttons = JoyB;
-                                        }
-                                    }
 
-                                    const StepResult result =
-                                        advance_search_frame(post, buttons);
-                                    if (result == StepResult::MissingBank) {
-                                        post_renderer.render(post.memory(), true);
-                                        post_renderer.write_bmp(
-                                            output_dir /
-                                            ("search_post_missing_" +
-                                             std::to_string(post_seed) + ".bmp"));
-                                        std::cout
-                                            << "M7_SEARCH_POST_MISSING_BANK seed="
-                                            << post_seed
-                                            << " relative=" << relative
-                                            << " bank=" << post.cpu().missing_bank
-                                            << " pc=0x" << std::hex << post.cpu().pc
-                                            << " screen=0x" << post_renderer.hash()
-                                            << std::dec << std::endl;
-                                        return 127;
-                                    }
-                                    if (result == StepResult::Trapped ||
-                                        result == StepResult::Stopped ||
-                                        result == StepResult::StepLimit) {
-                                        std::cout
-                                            << "M7_SEARCH_POST_ABORT seed="
-                                            << post_seed
-                                            << " relative=" << relative
-                                            << " result="
-                                            << static_cast<unsigned>(result)
-                                            << std::endl;
-                                        break;
-                                    }
+                                        const std::uint8_t mode =
+                                            child->memory().read8(0xC5DB);
+                                        const std::uint8_t submode =
+                                            child->memory().read8(0xC5DC);
+                                        beam_renderer.render(child->memory(), true);
+                                        const std::uint64_t screen =
+                                            beam_renderer.hash();
+                                        const std::uint64_t map =
+                                            tilemap_hash(child->memory());
+                                        const std::uint64_t ram =
+                                            wram_hash(child->memory());
 
-                                    const std::uint8_t mode =
-                                        post.memory().read8(0xC5DB);
-                                    const std::uint8_t submode =
-                                        post.memory().read8(0xC5DC);
+                                        std::vector<std::uint8_t> path =
+                                            node.path;
+                                        path.push_back(action);
 
-                                    if (previous_post_submode == 0 &&
-                                        submode != 0 && post_dialogs < 12) {
-                                        active_dialog_frames = 0;
-                                        active_dialog_capture = post_dialogs;
-                                        post_renderer.render(post.memory(), true);
-                                        post_renderer.write_bmp(
-                                            output_dir /
-                                            ("search_post_dialog_" +
-                                             std::to_string(post_seed) + "_" +
-                                             std::to_string(post_dialogs) + ".bmp"));
-                                        std::cout
-                                            << "M7_SEARCH_POST_DIALOG seed="
-                                            << post_seed
-                                            << " capture=" << post_dialogs
-                                            << " relative=" << relative
-                                            << " C5DB="
-                                            << static_cast<unsigned>(mode)
-                                            << " C5DC="
-                                            << static_cast<unsigned>(submode)
-                                            << " screen=0x" << std::hex
-                                            << post_renderer.hash()
-                                            << " map=0x"
-                                            << tilemap_hash(post.memory())
-                                            << " sram=0x"
-                                            << sram_hash(post.memory())
-                                            << std::dec << std::endl;
-                                        ++post_dialogs;
-                                    }
-                                    const bool post_dialog_closed =
-                                        previous_post_submode != 0 && submode == 0;
-                                    previous_post_submode = submode;
-
-                                    if (post_seed == 0 &&
-                                        !vault_probe_done &&
-                                        post_dialog_closed &&
-                                        post_dialogs >= 8) {
-                                        vault_probe_done = true;
-                                        // The in-ROM quest text says:
-                                        // "The Vault is west of the Farm."
-                                        // Dialogue #7 is the Farm-side NPC in
-                                        // this deterministic route. Branch only
-                                        // from that legitimate post-dialogue
-                                        // state and try short P1-only paths
-                                        // west toward the Vault entrance.
-                                        struct VaultLeg {
-                                            std::uint8_t buttons;
-                                            std::uint64_t frames;
-                                        };
-                                        constexpr std::array<
-                                            std::array<VaultLeg, 5>, 6>
-                                            vault_routes = {{
-                                            // Leave Farm through its northern
-                                            // bridge/stairs, then head west.
-                                            {{{0, 30}, {JoyRight, 48}, {JoyUp, 96}, {JoyLeft, 200}, {JoyA, 60}}},
-                                            {{{0, 30}, {JoyRight, 64}, {JoyUp, 112}, {JoyLeft, 240}, {JoyA, 60}}},
-                                            {{{0, 30}, {JoyRight, 80}, {JoyUp, 112}, {JoyLeft, 240}, {JoyA, 60}}},
-                                            {{{0, 30}, {JoyRight, 64}, {JoyUp, 140}, {JoyLeft, 300}, {JoyA, 60}}},
-                                            {{{0, 30}, {JoyRight, 48}, {JoyUp, 128}, {JoyLeft, 160}, {JoyDown, 64}}},
-                                            {{{0, 30}, {JoyRight, 80}, {JoyUp, 128}, {JoyLeft, 180}, {JoyUp, 64}}},
-                                        }};
-
-                                        auto vault_base_owner =
-                                            std::make_unique<Runtime>(post);
-                                        const Runtime& vault_base =
-                                            *vault_base_owner;
-
-                                        for (std::size_t route = 0;
-                                             route < vault_routes.size();
-                                             ++route) {
-                                            auto vault_owner =
-                                                std::make_unique<Runtime>(
-                                                    vault_base);
-                                            Runtime& vault = *vault_owner;
-                                            bool vault_abort = false;
-
-                                            for (const VaultLeg& leg :
-                                                 vault_routes[route]) {
-                                                for (std::uint64_t f = 0;
-                                                     f < leg.frames; ++f) {
-                                                    std::uint8_t vault_buttons =
-                                                        leg.buttons;
-                                                    if (leg.buttons == JoyA) {
-                                                        vault_buttons =
-                                                            (f % 48u) < 2u
-                                                                ? JoyA : 0;
-                                                    }
-
-                                                    const StepResult vr =
-                                                        advance_search_frame(
-                                                            vault,
-                                                            vault_buttons);
-                                                    if (vr ==
-                                                        StepResult::MissingBank) {
-                                                        Renderer rr{};
-                                                        rr.render(
-                                                            vault.memory(), true);
-                                                        rr.write_bmp(
-                                                            output_dir /
-                                                            ("search_vault_missing_" +
-                                                             std::to_string(route) +
-                                                             ".bmp"));
-                                                        std::cout
-                                                            << "M7_SEARCH_VAULT_MISSING_BANK route="
-                                                            << route
-                                                            << " bank="
-                                                            << vault.cpu().missing_bank
-                                                            << " pc=0x"
-                                                            << std::hex
-                                                            << vault.cpu().pc
-                                                            << " screen=0x"
-                                                            << rr.hash()
-                                                            << std::dec
-                                                            << std::endl;
-                                                        return 127;
-                                                    }
-                                                    if (vr !=
-                                                        StepResult::Continue) {
-                                                        vault_abort = true;
-                                                        break;
-                                                    }
-
-                                                    if (vault.memory().read8(
-                                                            0xC5DB) != 1) {
-                                                        Renderer rr{};
-                                                        rr.render(
-                                                            vault.memory(), true);
-                                                        rr.write_bmp(
-                                                            output_dir /
-                                                            ("search_vault_mode_" +
-                                                             std::to_string(route) +
-                                                             ".bmp"));
-                                                        std::cout
-                                                            << "M7_SEARCH_VAULT_MODE_CHANGE route="
-                                                            << route
-                                                            << " C5DB="
-                                                            << static_cast<unsigned>(
-                                                                   vault.memory().read8(
-                                                                       0xC5DB))
-                                                            << " C5DC="
-                                                            << static_cast<unsigned>(
-                                                                   vault.memory().read8(
-                                                                       0xC5DC))
-                                                            << " screen=0x"
-                                                            << std::hex
-                                                            << rr.hash()
-                                                            << " map=0x"
-                                                            << tilemap_hash(
-                                                                   vault.memory())
-                                                            << std::dec
-                                                            << std::endl;
-                                                        return 0;
-                                                    }
-                                                }
-                                                if (vault_abort) break;
-                                            }
-
-                                            Renderer rr{};
-                                            rr.render(vault.memory(), true);
-                                            rr.write_bmp(
+                                        if (mode != 1) {
+                                            beam_renderer.write_bmp(
                                                 output_dir /
-                                                ("search_vault_route_" +
-                                                 std::to_string(route) +
-                                                 ".bmp"));
+                                                "search_beam_mode_change.bmp");
                                             std::cout
-                                                << "M7_SEARCH_VAULT_ROUTE route="
-                                                << route
-                                                << " abort="
-                                                << (vault_abort ? 1 : 0)
-                                                << " screen=0x" << std::hex
-                                                << rr.hash()
-                                                << " map=0x"
-                                                << tilemap_hash(vault.memory())
-                                                << " wram=0x"
-                                                << wram_hash(vault.memory())
-                                                << std::dec
+                                                << "M7_SEARCH_BEAM_MODE_CHANGE depth="
+                                                << depth
                                                 << " C5DB="
-                                                << static_cast<unsigned>(
-                                                       vault.memory().read8(
-                                                           0xC5DB))
+                                                << static_cast<unsigned>(mode)
                                                 << " C5DC="
-                                                << static_cast<unsigned>(
-                                                       vault.memory().read8(
-                                                           0xC5DC))
-                                                << std::endl;
+                                                << static_cast<unsigned>(submode)
+                                                << " screen=0x" << std::hex
+                                                << screen
+                                                << " map=0x" << map
+                                                << " wram=0x" << ram
+                                                << " sram=0x"
+                                                << sram_hash(child->memory())
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 0;
                                         }
 
-                                        // One Vault probe per deterministic
-                                        // post-story trial is sufficient.
-                                    }
+                                        std::uint64_t signature = screen;
+                                        signature ^= map +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        signature ^= ram +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        signature ^=
+                                            static_cast<std::uint64_t>(submode)
+                                            << 56;
 
-                                    if (mode != 1) {
-                                        post_renderer.render(post.memory(), true);
-                                        post_renderer.write_bmp(
-                                            output_dir /
-                                            ("search_post_mode_" +
-                                             std::to_string(post_seed) + ".bmp"));
-                                        std::cout
-                                            << "M7_SEARCH_POST_MODE_CHANGE seed="
-                                            << post_seed
-                                            << " relative=" << relative
-                                            << " C5DB="
-                                            << static_cast<unsigned>(mode)
-                                            << " C5DC="
-                                            << static_cast<unsigned>(submode)
-                                            << " screen=0x" << std::hex
-                                            << post_renderer.hash()
-                                            << " map=0x"
-                                            << tilemap_hash(post.memory())
-                                            << " sram=0x"
-                                            << sram_hash(post.memory())
-                                            << std::dec << std::endl;
-                                        return 0;
+                                        if (!seen_states.insert(signature).second) {
+                                            continue;
+                                        }
+
+                                        const bool new_map =
+                                            seen_maps.insert(map).second;
+                                        const bool new_screen =
+                                            seen_screens.insert(screen).second;
+
+                                        std::uint64_t score = 0;
+                                        if (new_map) score +=
+                                            1'000'000'000'000ull;
+                                        if (new_screen) score +=
+                                            1'000'000'000ull;
+                                        if (submode != 0) score +=
+                                            100'000'000ull;
+                                        score +=
+                                            static_cast<std::uint64_t>(
+                                                child->memory().current_rom_bank())
+                                            << 16;
+                                        score +=
+                                            static_cast<std::uint64_t>(
+                                                action == 4 ? 0x8000u : 0u);
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score,
+                                            screen,
+                                            map
+                                        });
                                     }
                                 }
 
-                                post_renderer.render(post.memory(), true);
-                                post_renderer.write_bmp(
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const BeamNode& a, const BeamNode& b) {
+                                        if (a.score != b.score) {
+                                            return a.score > b.score;
+                                        }
+                                        if (a.map_hash != b.map_hash) {
+                                            return a.map_hash < b.map_hash;
+                                        }
+                                        return a.screen_hash < b.screen_hash;
+                                    });
+
+                                if (next.size() > beam_width) {
+                                    next.resize(beam_width);
+                                }
+
+                                if (!next.empty() &&
+                                    (depth % 8u) == 0u) {
+                                    std::cout
+                                        << "M7_SEARCH_BEAM depth=" << depth
+                                        << " frontier=" << next.size()
+                                        << " maps=" << seen_maps.size()
+                                        << " screens=" << seen_screens.size()
+                                        << " best_screen=0x" << std::hex
+                                        << next.front().screen_hash
+                                        << " best_map=0x"
+                                        << next.front().map_hash
+                                        << std::dec;
+                                    print_search_path(next.front().path);
+                                    std::cout << std::endl;
+                                }
+
+                                frontier = std::move(next);
+                            }
+
+                            for (std::size_t i = 0;
+                                 i < frontier.size() && i < 8; ++i) {
+                                beam_renderer.render(
+                                    frontier[i].runtime->memory(), true);
+                                beam_renderer.write_bmp(
                                     output_dir /
-                                    ("search_post_" +
-                                     std::to_string(post_seed) + "_final.bmp"));
+                                    ("search_beam_final_" +
+                                     std::to_string(i) + ".bmp"));
                                 std::cout
-                                    << "M7_SEARCH_POST_COMPLETE seed=" << post_seed
+                                    << "M7_SEARCH_BEAM_FINAL index=" << i
                                     << " screen=0x" << std::hex
-                                    << post_renderer.hash()
+                                    << frontier[i].screen_hash
                                     << " map=0x"
-                                    << tilemap_hash(post.memory())
-                                    << " sram=0x"
-                                    << sram_hash(post.memory())
-                                    << std::dec
-                                    << " C5DB="
-                                    << static_cast<unsigned>(
-                                           post.memory().read8(0xC5DB))
-                                    << " C5DC="
-                                    << static_cast<unsigned>(
-                                           post.memory().read8(0xC5DC))
-                                    << std::endl;
+                                    << frontier[i].map_hash
+                                    << std::dec;
+                                print_search_path(frontier[i].path);
+                                std::cout << std::endl;
                             }
                         }
 
