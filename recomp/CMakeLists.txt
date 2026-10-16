@@ -134,7 +134,7 @@ target_include_directories(DWM2tRecomp PRIVATE
 )
 
 if(MSVC)
-    target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive- /O1 /bigobj)
+    target_compile_options(DWM2tRecomp PRIVATE /W4 /permissive- /O1 /bigobj /MP4)
 else()
     target_compile_options(DWM2tRecomp PRIVATE -Wall -Wextra -Wpedantic -O1)
 endif()
