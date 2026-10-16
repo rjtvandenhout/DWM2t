@@ -791,6 +791,189 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             return 0;
                         }
 
+                        if (story == 0 && dialog_closed) {
+                            // Continue from the real post-dialogue story state.
+                            // The parent has just asked Tara to collect Grandma's
+                            // delivery, so keep every trial rooted in this exact
+                            // game-owned state and use only P1 input.
+                            constexpr std::uint32_t post_trial_count = 6;
+                            constexpr std::uint64_t post_trial_frames = 9000;
+
+                            for (std::uint32_t post_seed = 0;
+                                 post_seed < post_trial_count; ++post_seed) {
+                                auto post_owner =
+                                    std::make_unique<Runtime>(story_runtime);
+                                Runtime& post = *post_owner;
+                                Renderer post_renderer{};
+
+                                // First bias movement toward the room exit.
+                                const std::uint64_t down_frames =
+                                    80u + static_cast<std::uint64_t>(post_seed) * 12u;
+                                for (std::uint64_t f = 0; f < down_frames; ++f) {
+                                    const StepResult result =
+                                        advance_search_frame(post, JoyDown);
+                                    if (result == StepResult::MissingBank) {
+                                        post_renderer.render(post.memory(), true);
+                                        post_renderer.write_bmp(
+                                            output_dir /
+                                            ("search_post_missing_" +
+                                             std::to_string(post_seed) + ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_POST_MISSING_BANK seed="
+                                            << post_seed
+                                            << " bank=" << post.cpu().missing_bank
+                                            << " pc=0x" << std::hex << post.cpu().pc
+                                            << " screen=0x" << post_renderer.hash()
+                                            << std::dec << std::endl;
+                                        return 127;
+                                    }
+                                    if (result != StepResult::Continue) break;
+                                }
+
+                                std::uint8_t previous_post_submode =
+                                    post.memory().read8(0xC5DC);
+                                unsigned post_dialogs = 0;
+
+                                for (std::uint64_t relative = 0;
+                                     relative < post_trial_frames; ++relative) {
+                                    constexpr std::uint64_t segment_frames = 20;
+                                    const std::uint64_t segment =
+                                        relative / segment_frames;
+                                    const std::uint64_t phase =
+                                        relative % segment_frames;
+                                    const std::uint32_t salt =
+                                        0x51A7u +
+                                        post_seed * 0x9E3779B9u +
+                                        static_cast<std::uint32_t>(segment);
+                                    const std::uint32_t mixed = mix_segment(salt);
+                                    constexpr std::array<std::uint8_t, 4>
+                                        directions = {
+                                            JoyRight, JoyLeft, JoyUp, JoyDown
+                                        };
+
+                                    std::uint8_t buttons = 0;
+                                    if (phase < 13) {
+                                        buttons = directions[mixed & 3u];
+                                    }
+                                    if (phase >= 14 && phase < 16) buttons = JoyA;
+                                    if ((segment + post_seed * 11u) % 47u == 0u &&
+                                        phase >= 17 && phase < 19) {
+                                        buttons = JoyB;
+                                    }
+
+                                    const StepResult result =
+                                        advance_search_frame(post, buttons);
+                                    if (result == StepResult::MissingBank) {
+                                        post_renderer.render(post.memory(), true);
+                                        post_renderer.write_bmp(
+                                            output_dir /
+                                            ("search_post_missing_" +
+                                             std::to_string(post_seed) + ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_POST_MISSING_BANK seed="
+                                            << post_seed
+                                            << " relative=" << relative
+                                            << " bank=" << post.cpu().missing_bank
+                                            << " pc=0x" << std::hex << post.cpu().pc
+                                            << " screen=0x" << post_renderer.hash()
+                                            << std::dec << std::endl;
+                                        return 127;
+                                    }
+                                    if (result == StepResult::Trapped ||
+                                        result == StepResult::Stopped ||
+                                        result == StepResult::StepLimit) {
+                                        std::cout
+                                            << "M7_SEARCH_POST_ABORT seed="
+                                            << post_seed
+                                            << " relative=" << relative
+                                            << " result="
+                                            << static_cast<unsigned>(result)
+                                            << std::endl;
+                                        break;
+                                    }
+
+                                    const std::uint8_t mode =
+                                        post.memory().read8(0xC5DB);
+                                    const std::uint8_t submode =
+                                        post.memory().read8(0xC5DC);
+
+                                    if (previous_post_submode == 0 &&
+                                        submode != 0 && post_dialogs < 12) {
+                                        post_renderer.render(post.memory(), true);
+                                        post_renderer.write_bmp(
+                                            output_dir /
+                                            ("search_post_dialog_" +
+                                             std::to_string(post_seed) + "_" +
+                                             std::to_string(post_dialogs) + ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_POST_DIALOG seed="
+                                            << post_seed
+                                            << " capture=" << post_dialogs
+                                            << " relative=" << relative
+                                            << " C5DB="
+                                            << static_cast<unsigned>(mode)
+                                            << " C5DC="
+                                            << static_cast<unsigned>(submode)
+                                            << " screen=0x" << std::hex
+                                            << post_renderer.hash()
+                                            << " map=0x"
+                                            << tilemap_hash(post.memory())
+                                            << " sram=0x"
+                                            << sram_hash(post.memory())
+                                            << std::dec << std::endl;
+                                        ++post_dialogs;
+                                    }
+                                    previous_post_submode = submode;
+
+                                    if (mode != 1) {
+                                        post_renderer.render(post.memory(), true);
+                                        post_renderer.write_bmp(
+                                            output_dir /
+                                            ("search_post_mode_" +
+                                             std::to_string(post_seed) + ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_POST_MODE_CHANGE seed="
+                                            << post_seed
+                                            << " relative=" << relative
+                                            << " C5DB="
+                                            << static_cast<unsigned>(mode)
+                                            << " C5DC="
+                                            << static_cast<unsigned>(submode)
+                                            << " screen=0x" << std::hex
+                                            << post_renderer.hash()
+                                            << " map=0x"
+                                            << tilemap_hash(post.memory())
+                                            << " sram=0x"
+                                            << sram_hash(post.memory())
+                                            << std::dec << std::endl;
+                                        return 0;
+                                    }
+                                }
+
+                                post_renderer.render(post.memory(), true);
+                                post_renderer.write_bmp(
+                                    output_dir /
+                                    ("search_post_" +
+                                     std::to_string(post_seed) + "_final.bmp"));
+                                std::cout
+                                    << "M7_SEARCH_POST_COMPLETE seed=" << post_seed
+                                    << " screen=0x" << std::hex
+                                    << post_renderer.hash()
+                                    << " map=0x"
+                                    << tilemap_hash(post.memory())
+                                    << " sram=0x"
+                                    << sram_hash(post.memory())
+                                    << std::dec
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           post.memory().read8(0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           post.memory().read8(0xC5DC))
+                                    << std::endl;
+                            }
+                        }
+
                         Renderer sr{};
                         sr.render(story_runtime.memory(), true);
                         sr.write_bmp(output_dir /
