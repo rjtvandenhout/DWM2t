@@ -1449,8 +1449,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     0xC555, 0xC556, 0xC5D7, 0xC5E7,
                                     0xC5E8, 0xC5F0
                                 };
-                            constexpr std::array<std::uint16_t, 10>
+                            constexpr std::array<std::uint16_t, 12>
                                 island_persistent_candidates = {
+                                    0xC836, 0xCBEB,
                                     0xCB86, 0xCB88, 0xCB8D,
                                     0xCD03, 0xCD04,
                                     0xDC06, 0xDC08, 0xDC09,
@@ -1862,6 +1863,20 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 island_story_sram_after =
                                     sram_hash(
                                         island_story->memory());
+
+                            const std::uint8_t event_a6a7 =
+                                island_story->memory().read8(0xCBEB);
+                            std::cout
+                                << "M7_SEARCH_VAULT_FLAGS A6="
+                                << ((event_a6a7 & 0x40u) ? 1 : 0)
+                                << " A7="
+                                << ((event_a6a7 & 0x80u) ? 1 : 0)
+                                << " CBEB=0x" << std::hex
+                                << static_cast<unsigned>(event_a6a7)
+                                << " C836=0x"
+                                << static_cast<unsigned>(
+                                       island_story->memory().read8(0xC836))
+                                << std::dec << std::endl;
 
                             std::cout
                                 << "M7_SEARCH_ISLAND_NPC_COMPLETE seen="
