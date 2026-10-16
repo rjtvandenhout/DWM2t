@@ -61,6 +61,7 @@ jobs:
         run: .\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
 
       - name: Upload Windows executable and milestone images
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: DWM2tRecomp-M6-Probe-Windows-x64
