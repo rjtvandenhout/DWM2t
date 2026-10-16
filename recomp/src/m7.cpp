@@ -86,23 +86,34 @@ std::uint8_t m6_story_buttons(std::uint64_t relative_frame) {
     return 0;
 }
 
-std::uint8_t exploration_buttons(std::uint64_t frame) {
-    // Deterministic P1-only exploration. Short A pulses interact with NPCs and
-    // doors while the D-pad sweeps the small opening maps in a repeatable path.
-    const std::uint64_t cycle = frame % 384;
-    std::uint8_t buttons = 0;
-    if (cycle < 72) buttons = JoyRight;
-    else if (cycle < 96) buttons = 0;
-    else if (cycle < 168) buttons = JoyUp;
-    else if (cycle < 192) buttons = 0;
-    else if (cycle < 264) buttons = JoyLeft;
-    else if (cycle < 288) buttons = 0;
-    else if (cycle < 360) buttons = JoyDown;
-    else buttons = 0;
+std::uint32_t mix_segment(std::uint64_t segment) {
+    std::uint32_t x = static_cast<std::uint32_t>(segment) ^ 0x6D2B79F5u;
+    x ^= x >> 16;
+    x *= 0x7FEB352Du;
+    x ^= x >> 15;
+    x *= 0x846CA68Bu;
+    x ^= x >> 16;
+    return x;
+}
 
-    if ((frame % 48) < 2) buttons = static_cast<std::uint8_t>(buttons | JoyA);
-    if ((frame % 768) >= 744 && (frame % 768) < 746) buttons = JoyB;
-    return buttons;
+std::uint8_t exploration_buttons(std::uint64_t frame) {
+    // Deterministic P1-only random walk at roughly one-tile cadence. Every
+    // movement attempt is followed by a short A pulse so reachable NPCs,
+    // doors, stairs and map objects are exercised without host state edits.
+    constexpr std::uint64_t segment_frames = 24;
+    const std::uint64_t segment = frame / segment_frames;
+    const std::uint64_t phase = frame % segment_frames;
+    const std::uint32_t mixed = mix_segment(segment);
+
+    constexpr std::array<std::uint8_t, 4> directions = {
+        JoyRight, JoyLeft, JoyUp, JoyDown
+    };
+    const std::uint8_t direction = directions[mixed & 3u];
+
+    if (phase < 15) return direction;
+    if (phase >= 17 && phase < 19) return JoyA;
+    if ((segment % 31u) == 0u && phase >= 20 && phase < 22) return JoyB;
+    return 0;
 }
 
 std::uint64_t wram_hash(const Memory& memory) {
@@ -180,7 +191,7 @@ int run_m7_discovery(const std::filesystem::path& output_dir) {
     std::uint64_t last_hash = renderer.hash();
     std::uint8_t last_state = memory.read8(0xC5DB);
     std::uint8_t last_substate = memory.read8(0xC5DC);
-    constexpr std::uint64_t explore_frames = 7200;
+    constexpr std::uint64_t explore_frames = 30000;
 
     for (std::uint64_t relative = 0; relative < explore_frames; ++relative) {
         const std::uint8_t buttons = exploration_buttons(relative);
@@ -195,7 +206,7 @@ int run_m7_discovery(const std::filesystem::path& output_dir) {
         const bool state_changed = state != last_state || substate != last_substate;
         const bool screen_changed = frame.hash != last_hash;
 
-        if (relative % 240 == 0 || state_changed) {
+        if (relative % 480 == 0 || state_changed) {
             const std::string name =
                 "checkpoint_" + std::to_string(relative) +
                 "_s" + std::to_string(state) + "_" + std::to_string(substate) +
