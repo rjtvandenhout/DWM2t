@@ -424,11 +424,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
     constexpr std::size_t beam_width = 10;
     constexpr std::size_t max_depth = 36;
     std::vector<SearchNode> beam;
-    SearchNode initial{};
-    initial.runtime = std::move(base);
-    initial.screen_hash = renderer.hash();
-    initial.map_hash = tilemap_hash(initial.runtime.memory());
-    initial.save_hash = sram_hash(initial.runtime.memory());
+    const std::uint64_t initial_screen = renderer.hash();
+    const std::uint64_t initial_map = tilemap_hash(base.memory());
+    const std::uint64_t initial_save = sram_hash(base.memory());
+    SearchNode initial{
+        std::move(base), {}, 0, initial_screen, initial_map, initial_save
+    };
     beam.push_back(std::move(initial));
 
     std::unordered_set<std::uint64_t> seen;
@@ -440,9 +441,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
         for (const SearchNode& parent : beam) {
             for (std::uint8_t action = 0; action < 6; ++action) {
-                SearchNode child{};
-                child.runtime = parent.runtime;
-                child.path = parent.path;
+                SearchNode child{
+                    parent.runtime, parent.path, 0, 0, 0, 0
+                };
                 child.path.push_back(action);
 
                 const StepResult result = apply_search_action(child.runtime, action);
