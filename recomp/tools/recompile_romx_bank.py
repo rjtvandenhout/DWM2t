@@ -27,6 +27,18 @@ CPU_BASE = 0x4000
 CHUNK_SIZE = 0x1000
 CHUNK_COUNT = 4
 
+def write_text_if_changed(path: Path, text: str) -> bool:
+    """Preserve mtime when generated content is already identical."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return True
+
+
 
 def load_bank(path: Path) -> bytes:
     out = bytearray()
@@ -207,19 +219,20 @@ def main() -> int:
     bank = load_bank(args.bank)
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    (args.out_dir / f"romx_bank_{args.bank_number}_master.cpp").write_text(
-        emit_master(args.bank_number), encoding="utf-8", newline="\n"
+    changed = 0
+    changed += write_text_if_changed(
+        args.out_dir / f"romx_bank_{args.bank_number}_master.cpp",
+        emit_master(args.bank_number),
     )
     for chunk in range(CHUNK_COUNT):
-        (args.out_dir / f"romx_bank_{args.bank_number}_chunk_{chunk}.cpp").write_text(
+        changed += write_text_if_changed(
+            args.out_dir / f"romx_bank_{args.bank_number}_chunk_{chunk}.cpp",
             emit_chunk(bank, args.bank_number, chunk),
-            encoding="utf-8",
-            newline="\n",
         )
 
     print(
         f"generated ROMX bank {args.bank_number}: "
-        f"{BANK_SIZE} translated entry addresses"
+        f"{BANK_SIZE} translated entry addresses; {changed} files changed"
     )
     return 0
 

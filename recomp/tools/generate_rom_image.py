@@ -21,6 +21,18 @@ BANK_SIZE = 0x4000
 BANK_COUNT = 256
 EXPECTED_SHA256 = "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e"
 
+def write_text_if_changed(path: Path, text: str) -> bool:
+    """Preserve mtime when generated content is already identical."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return True
+
+
 
 def parse_bank(path: Path) -> bytes:
     out = bytearray()
@@ -120,8 +132,9 @@ void load_full_rom_image(Memory& memory) {{
 '''
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(cpp, encoding="utf-8", newline="\n")
+    changed = write_text_if_changed(args.out, cpp)
     print(f"generated embedded ROM source: {args.out}")
+    print("embedded ROM source changed:", "yes" if changed else "no")
     print(f"ROM SHA-256: {digest}")
     print(f"Base64 characters: {len(encoded)}")
     return 0
