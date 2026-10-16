@@ -608,6 +608,14 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--m7-route-search") {
+        if (argc != 3) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m7-route-search <output-dir>\\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_m7_route_search(argv[2]);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--m7-audio-probe") {
         if (argc != 2) {
             std::cerr << "Usage: DWM2tRecomp.exe --m7-audio-probe\\n";
