@@ -2219,6 +2219,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     bool interaction_closed =
                                         false;
                                     bool probe_abort = false;
+                                    bool interaction_page_captured =
+                                        false;
+                                    std::uint64_t interaction_page_hash =
+                                        0;
 
                                     for (std::uint64_t frame = 0;
                                          frame <
@@ -2302,6 +2306,53 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         if (submode != 0) {
                                             interaction_seen =
                                                 true;
+                                            if (!interaction_page_captured) {
+                                                // Capture the first active
+                                                // text/object page before the
+                                                // automatic A pulses close it.
+                                                for (unsigned settle = 0;
+                                                     settle < 24;
+                                                     ++settle) {
+                                                    const StepResult settle_result =
+                                                        advance_search_frame(
+                                                            *probe, 0);
+                                                    if (settle_result !=
+                                                        StepResult::Continue) {
+                                                        break;
+                                                    }
+                                                }
+                                                vault_door_renderer.render(
+                                                    probe->memory(), true);
+                                                interaction_page_hash =
+                                                    vault_door_renderer.hash();
+                                                if (interaction_capture < 32) {
+                                                    vault_door_renderer
+                                                        .write_bmp(
+                                                            output_dir /
+                                                            ("search_vault_interact_page_" +
+                                                             std::to_string(
+                                                                 interaction_capture) +
+                                                             ".bmp"));
+                                                }
+                                                std::cout
+                                                    << "M7_SEARCH_VAULT_INTERACT_PAGE depth="
+                                                    << depth
+                                                    << " capture="
+                                                    << interaction_capture
+                                                    << " screen=0x"
+                                                    << std::hex
+                                                    << interaction_page_hash
+                                                    << " bg=0x"
+                                                    << background_hash(
+                                                           probe->memory())
+                                                    << std::dec;
+                                                print_search_path(
+                                                    node.path);
+                                                std::cout
+                                                    << std::endl;
+                                                interaction_page_captured =
+                                                    true;
+                                            }
                                         }
 
                                         if (mode != 1) {
@@ -2439,6 +2490,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 << probe_wram_before
                                                 << " wram_after=0x"
                                                 << probe_wram_after
+                                                << " page=0x"
+                                                << interaction_page_hash
                                                 << std::dec;
                                             print_search_path(
                                                 node.path);
