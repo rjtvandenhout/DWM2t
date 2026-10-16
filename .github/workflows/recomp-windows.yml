@@ -25,6 +25,14 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Restore native recomp build cache
+        uses: actions/cache/restore@v4
+        with:
+          path: recomp/build
+          key: m6-native-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            m6-native-${{ runner.os }}-
+
       - name: Validate complete LR35902 frontend
         run: python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
 
@@ -36,6 +44,12 @@ jobs:
 
       - name: Build DWM2tRecomp.exe
         run: cmake --build recomp/build --config Release --parallel 4
+
+      - name: Save native recomp build cache
+        uses: actions/cache/save@v4
+        with:
+          path: recomp/build
+          key: m6-native-${{ runner.os }}-${{ github.sha }}
 
       - name: Run M4 renderer regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
