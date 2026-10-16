@@ -2,7 +2,7 @@
 #include "recomp/memory.hpp"
 #include "recomp/renderer.hpp"
 #include "recomp/runtime.hpp"
-#include <cstddef>
+#include <array>\n#include <cstddef>
 #include <cstdint>
 #include <filesystem>
 #include <iomanip>
@@ -159,6 +159,64 @@ int run_m6_probe(const std::filesystem::path& output_dir) {
 
     memory.set_joypad_state(0);
     renderer.write_bmp(output_dir / "probe_final.bmp");
+
+    // M6 movement proof: once the scripted new-game flow has reached the real
+    // ship map, drive Right only through the Game Boy P1 path. Capture both
+    // sides and log observable game-owned state rather than patching WRAM.
+    renderer.write_bmp(output_dir / "overworld_before_move.bmp");
+    const std::uint64_t before_hash = renderer.hash();
+    const std::uint8_t before_scx = memory.read8(0xFF43);
+    const std::uint8_t before_scy = memory.read8(0xFF42);
+    std::array<std::uint8_t, 0x2000> before_wram{};
+    for (std::size_t i = 0; i < before_wram.size(); ++i) {
+        before_wram[i] = memory.read8(static_cast<std::uint16_t>(0xC000u + i));
+    }
+
+    for (std::uint64_t i = 0; i < 24; ++i) {
+        const FrameResult moved = advance_frame(runtime, renderer, JoyRight);
+        if (moved.result != StepResult::Continue) {
+            renderer.write_bmp(output_dir / "movement_failure.bmp");
+            return report_failure(runtime, moved.result, probe_frames + i);
+        }
+    }
+    for (std::uint64_t i = 0; i < 12; ++i) {
+        const FrameResult released = advance_frame(runtime, renderer, 0);
+        if (released.result != StepResult::Continue) {
+            renderer.write_bmp(output_dir / "movement_failure.bmp");
+            return report_failure(runtime, released.result, probe_frames + 24 + i);
+        }
+    }
+
+    renderer.write_bmp(output_dir / "overworld_after_move.bmp");
+    const std::uint64_t after_hash = renderer.hash();
+    const std::uint8_t after_scx = memory.read8(0xFF43);
+    const std::uint8_t after_scy = memory.read8(0xFF42);
+    std::size_t wram_changes = 0;
+    std::cout << "M6_MOVE_WRAM";
+    for (std::size_t i = 0; i < before_wram.size(); ++i) {
+        const std::uint8_t after = memory.read8(static_cast<std::uint16_t>(0xC000u + i));
+        if (after == before_wram[i]) continue;
+        ++wram_changes;
+        if (wram_changes <= 16) {
+            std::cout << " " << std::hex << (0xC000u + i)
+                      << ":" << static_cast<unsigned>(before_wram[i])
+                      << "->" << static_cast<unsigned>(after) << std::dec;
+        }
+    }
+    std::cout << "\nM6_MOVE_RESULT before_hash=0x" << std::hex << before_hash
+              << " after_hash=0x" << after_hash << std::dec
+              << " SCX=" << static_cast<unsigned>(before_scx)
+              << "->" << static_cast<unsigned>(after_scx)
+              << " SCY=" << static_cast<unsigned>(before_scy)
+              << "->" << static_cast<unsigned>(after_scy)
+              << " wram_changes=" << wram_changes
+              << " frame=" << memory.frame_counter() << "\n";
+
+    if (before_hash == after_hash || wram_changes == 0) {
+        std::cout << "M6_MOVE_FAIL no observable original-game movement response\n";
+        return 55;
+    }
+
     std::cout << "M6_PROBE_COMPLETE frame=" << memory.frame_counter()
               << " C5DB=" << static_cast<unsigned>(memory.read8(0xC5DB))
               << " C5DC=" << static_cast<unsigned>(memory.read8(0xC5DC))
