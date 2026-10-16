@@ -1818,6 +1818,349 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << tilemap_hash(guide_outdoor_seed.memory())
                                 << std::dec << std::endl;
 
+                            // M7 quest beam: search the real game-owned
+                            // progression graph from the guide's outdoor state.
+                            // Movement actions are pure D-pad macros. The fifth
+                            // action is a normal A interaction which, if it
+                            // opens dialogue, advances it with ordinary A pulses
+                            // until the cartridge returns to overworld.
+                            struct QuestNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                                std::uint64_t bg = 0;
+                                std::uint64_t screen = 0;
+                                std::uint64_t story = 0;
+                            };
+
+                            auto story_signature = [](const Memory& memory) {
+                                std::uint64_t h = 1469598103934665603ull;
+                                constexpr std::array<std::uint16_t, 18> addrs = {
+                                    0xC552, 0xC916, 0xC920, 0xC923,
+                                    0xC836, 0xCB86, 0xCB88, 0xCB8D,
+                                    0xCBEB, 0xCD03, 0xCD04,
+                                    0xDC06, 0xDC08, 0xDC09,
+                                    0xDD0E, 0xDD10, 0xCC44, 0xCC45
+                                };
+                                for (const std::uint16_t addr : addrs) {
+                                    h ^= memory.read8(addr);
+                                    h *= 1099511628211ull;
+                                }
+                                return h;
+                            };
+
+                            auto apply_quest_action =
+                                [&](Runtime& runtime,
+                                    std::uint8_t action)
+                                    -> StepResult {
+                                if (action < 4) {
+                                    return apply_navigation(runtime, action);
+                                }
+
+                                bool opened = false;
+                                constexpr std::uint64_t frame_budget = 1200;
+                                for (std::uint64_t frame = 0;
+                                     frame < frame_budget; ++frame) {
+                                    const std::uint8_t submode =
+                                        runtime.memory().read8(0xC5DC);
+                                    if (opened && submode == 0) {
+                                        runtime.memory().set_joypad_state(0);
+                                        (void)runtime.memory().apu().take_samples();
+                                        return StepResult::Continue;
+                                    }
+
+                                    std::uint8_t buttons = 0;
+                                    if (!opened) {
+                                        if (frame < 2 ||
+                                            (frame >= 120 && frame % 120u < 2u)) {
+                                            buttons = JoyA;
+                                        }
+                                    } else if ((frame % 96u) < 2u) {
+                                        buttons = JoyA;
+                                    }
+
+                                    const StepResult result =
+                                        advance_search_frame(runtime, buttons);
+                                    if (result != StepResult::Continue) {
+                                        return result;
+                                    }
+
+                                    if (runtime.memory().read8(0xC5DB) != 1) {
+                                        return StepResult::Continue;
+                                    }
+                                    if (runtime.memory().read8(0xC5DC) != 0) {
+                                        opened = true;
+                                    }
+
+                                    // No interaction after several A attempts.
+                                    if (!opened && frame >= 360) {
+                                        runtime.memory().set_joypad_state(0);
+                                        (void)runtime.memory().apu().take_samples();
+                                        return StepResult::Continue;
+                                    }
+                                }
+                                return StepResult::Continue;
+                            };
+
+                            Renderer quest_renderer{};
+                            quest_renderer.render(
+                                guide_outdoor_seed.memory(), true);
+                            const std::uint64_t quest_start_bg =
+                                background_hash(guide_outdoor_seed.memory());
+                            const std::uint64_t quest_start_story =
+                                story_signature(guide_outdoor_seed.memory());
+
+                            std::vector<QuestNode> quest_frontier;
+                            quest_frontier.push_back({
+                                std::make_unique<Runtime>(guide_outdoor_seed),
+                                {},
+                                0,
+                                quest_start_bg,
+                                quest_renderer.hash(),
+                                quest_start_story
+                            });
+
+                            std::unordered_set<std::uint64_t> quest_seen;
+                            std::unordered_set<std::uint64_t> quest_bgs;
+                            std::unordered_set<std::uint64_t> quest_stories;
+                            quest_bgs.insert(quest_start_bg);
+                            quest_stories.insert(quest_start_story);
+
+                            constexpr std::array<std::uint8_t, 5>
+                                quest_actions = {1, 3, 2, 0, 4};
+                            constexpr std::size_t quest_width = 64;
+                            constexpr std::size_t quest_depth = 56;
+                            unsigned quest_capture = 0;
+
+                            for (std::size_t depth = 0;
+                                 depth < quest_depth &&
+                                 !quest_frontier.empty(); ++depth) {
+                                std::vector<QuestNode> next;
+                                next.reserve(
+                                    quest_frontier.size() *
+                                    quest_actions.size());
+
+                                for (const QuestNode& node :
+                                     quest_frontier) {
+                                    for (const std::uint8_t action :
+                                         quest_actions) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const StepResult result =
+                                            apply_quest_action(
+                                                *child, action);
+
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            quest_renderer.render(
+                                                child->memory(), true);
+                                            quest_renderer.write_bmp(
+                                                output_dir /
+                                                "search_quest_missing.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_QUEST_MISSING_BANK depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " bank="
+                                                << child->cpu().missing_bank
+                                                << " pc=0x" << std::hex
+                                                << child->cpu().pc
+                                                << " screen=0x"
+                                                << quest_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(node.path);
+                                            std::cout << std::endl;
+                                            return 127;
+                                        }
+                                        if (result ==
+                                                StepResult::Trapped ||
+                                            result ==
+                                                StepResult::Stopped ||
+                                            result ==
+                                                StepResult::StepLimit) {
+                                            continue;
+                                        }
+
+                                        std::vector<std::uint8_t> path =
+                                            node.path;
+                                        path.push_back(action);
+
+                                        const std::uint8_t mode =
+                                            child->memory().read8(0xC5DB);
+                                        const std::uint8_t submode =
+                                            child->memory().read8(0xC5DC);
+                                        quest_renderer.render(
+                                            child->memory(), true);
+                                        const std::uint64_t screen =
+                                            quest_renderer.hash();
+                                        const std::uint64_t bg =
+                                            background_hash(child->memory());
+                                        const std::uint64_t story_sig =
+                                            story_signature(child->memory());
+
+                                        if (mode != 1) {
+                                            quest_renderer.write_bmp(
+                                                output_dir /
+                                                "search_quest_mode_change.bmp");
+                                            std::cout
+                                                << "M7_SEARCH_QUEST_MODE_CHANGE depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " C5DB="
+                                                << static_cast<unsigned>(mode)
+                                                << " C5DC="
+                                                << static_cast<unsigned>(submode)
+                                                << " screen=0x" << std::hex
+                                                << screen
+                                                << " bg=0x" << bg
+                                                << " story=0x" << story_sig
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 0;
+                                        }
+
+                                        std::uint64_t signature = screen;
+                                        signature ^= bg +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        signature ^= story_sig +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        signature ^=
+                                            static_cast<std::uint64_t>(
+                                                submode) << 56;
+                                        if (!quest_seen.insert(
+                                                 signature).second) {
+                                            continue;
+                                        }
+
+                                        const bool new_bg =
+                                            quest_bgs.insert(bg).second;
+                                        const bool new_story =
+                                            quest_stories.insert(
+                                                story_sig).second;
+
+                                        std::uint64_t score = 0;
+                                        if (new_story) {
+                                            score +=
+                                                10'000'000'000'000ull;
+                                        }
+                                        if (new_bg) {
+                                            score +=
+                                                1'000'000'000'000ull;
+                                        }
+                                        if (action == 4) {
+                                            score +=
+                                                200'000'000ull;
+                                        }
+                                        if (action == 1) {
+                                            score +=
+                                                50'000'000ull;
+                                        }
+                                        score +=
+                                            static_cast<std::uint64_t>(
+                                                child->memory()
+                                                    .current_rom_bank())
+                                            << 12;
+
+                                        if ((new_story || new_bg) &&
+                                            quest_capture < 40) {
+                                            quest_renderer.write_bmp(
+                                                output_dir /
+                                                ("search_quest_" +
+                                                 std::to_string(
+                                                     quest_capture) +
+                                                 ".bmp"));
+                                            std::cout
+                                                << "M7_SEARCH_QUEST_NEW capture="
+                                                << quest_capture
+                                                << " depth=" << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " new_bg="
+                                                << (new_bg ? 1 : 0)
+                                                << " new_story="
+                                                << (new_story ? 1 : 0)
+                                                << " screen=0x" << std::hex
+                                                << screen
+                                                << " bg=0x" << bg
+                                                << " story=0x"
+                                                << story_sig
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            ++quest_capture;
+                                        }
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score,
+                                            bg,
+                                            screen,
+                                            story_sig
+                                        });
+                                    }
+                                }
+
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const QuestNode& a,
+                                       const QuestNode& b) {
+                                        if (a.score != b.score) {
+                                            return a.score > b.score;
+                                        }
+                                        if (a.story != b.story) {
+                                            return a.story < b.story;
+                                        }
+                                        if (a.bg != b.bg) {
+                                            return a.bg < b.bg;
+                                        }
+                                        return a.screen < b.screen;
+                                    });
+                                if (next.size() > quest_width) {
+                                    next.resize(quest_width);
+                                }
+                                if (!next.empty() &&
+                                    (depth % 7u) == 0u) {
+                                    std::cout
+                                        << "M7_SEARCH_QUEST depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size()
+                                        << " bgs="
+                                        << quest_bgs.size()
+                                        << " stories="
+                                        << quest_stories.size()
+                                        << " best_bg=0x"
+                                        << std::hex
+                                        << next.front().bg
+                                        << " best_story=0x"
+                                        << next.front().story
+                                        << std::dec;
+                                    print_search_path(
+                                        next.front().path);
+                                    std::cout << std::endl;
+                                }
+
+                                quest_frontier =
+                                    std::move(next);
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_QUEST_COMPLETE states="
+                                << quest_seen.size()
+                                << " bgs=" << quest_bgs.size()
+                                << " stories="
+                                << quest_stories.size()
+                                << std::endl;
+
                             struct WestLeg {
                                 std::uint8_t direction;
                                 unsigned count;
