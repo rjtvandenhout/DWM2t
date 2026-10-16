@@ -1367,13 +1367,197 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << vault_door_renderer.hash()
                                 << std::dec << std::endl;
 
+                            // The exhaustive probe found the shortest real
+                            // island interaction at D,L,D. Preserve the
+                            // resulting post-dialogue game state instead of
+                            // discarding it: this NPC may gate the central
+                            // Vault object through WRAM story state.
+                            auto island_story =
+                                std::make_unique<Runtime>(
+                                    island_seed);
+                            constexpr std::array<
+                                std::uint8_t, 3>
+                                island_story_path = {
+                                    3, 1, 3
+                                };
+                            for (std::size_t i = 0;
+                                 i < island_story_path.size();
+                                 ++i) {
+                                const StepResult result =
+                                    apply_navigation(
+                                        *island_story,
+                                        island_story_path[i]);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_NPC_MISSING_BANK move="
+                                        << i
+                                        << " bank="
+                                        << island_story->cpu()
+                                               .missing_bank
+                                        << " pc=0x"
+                                        << std::hex
+                                        << island_story->cpu().pc
+                                        << std::dec
+                                        << std::endl;
+                                    return 127;
+                                }
+                                if (result !=
+                                    StepResult::Continue) {
+                                    return 143;
+                                }
+                            }
+
+                            const std::uint64_t
+                                island_story_wram_before =
+                                    wram_hash(
+                                        island_story->memory());
+                            const std::uint64_t
+                                island_story_sram_before =
+                                    sram_hash(
+                                        island_story->memory());
+                            bool island_dialog_seen = false;
+                            bool island_dialog_closed = false;
+
+                            for (std::uint64_t frame = 0;
+                                 frame < 900; ++frame) {
+                                const std::uint8_t
+                                    before_submode =
+                                        island_story->memory()
+                                            .read8(0xC5DC);
+                                if (island_dialog_seen &&
+                                    before_submode == 0) {
+                                    island_dialog_closed =
+                                        true;
+                                    break;
+                                }
+
+                                std::uint8_t buttons = 0;
+                                if (!island_dialog_seen) {
+                                    if (frame < 2) {
+                                        buttons = JoyA;
+                                    }
+                                } else if (
+                                    (frame % 60u) < 2u) {
+                                    buttons = JoyA;
+                                }
+
+                                const StepResult result =
+                                    advance_search_frame(
+                                        *island_story,
+                                        buttons);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_NPC_MISSING_BANK frame="
+                                        << frame
+                                        << " bank="
+                                        << island_story->cpu()
+                                               .missing_bank
+                                        << " pc=0x"
+                                        << std::hex
+                                        << island_story->cpu().pc
+                                        << std::dec
+                                        << std::endl;
+                                    return 127;
+                                }
+                                if (result ==
+                                        StepResult::Trapped ||
+                                    result ==
+                                        StepResult::Stopped ||
+                                    result ==
+                                        StepResult::StepLimit) {
+                                    break;
+                                }
+
+                                const std::uint8_t submode =
+                                    island_story->memory()
+                                        .read8(0xC5DC);
+                                if (submode != 0) {
+                                    island_dialog_seen =
+                                        true;
+                                }
+
+                                if (island_dialog_seen &&
+                                    (frame == 30 ||
+                                     frame == 90 ||
+                                     frame == 150 ||
+                                     frame == 240 ||
+                                     frame == 360 ||
+                                     frame == 480)) {
+                                    vault_door_renderer.render(
+                                        island_story->memory(),
+                                        true);
+                                    vault_door_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_island_npc_text_" +
+                                         std::to_string(frame) +
+                                         ".bmp"));
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_NPC_TEXT frame="
+                                        << frame
+                                        << " screen=0x"
+                                        << std::hex
+                                        << vault_door_renderer.hash()
+                                        << std::dec
+                                        << " C5DC="
+                                        << static_cast<unsigned>(
+                                               submode)
+                                        << std::endl;
+                                }
+                            }
+
+                            island_story->memory()
+                                .set_joypad_state(0);
+                            vault_door_renderer.render(
+                                island_story->memory(), true);
+                            vault_door_renderer.write_bmp(
+                                output_dir /
+                                "search_island_npc_after.bmp");
+
+                            const std::uint64_t
+                                island_story_wram_after =
+                                    wram_hash(
+                                        island_story->memory());
+                            const std::uint64_t
+                                island_story_sram_after =
+                                    sram_hash(
+                                        island_story->memory());
+
+                            std::cout
+                                << "M7_SEARCH_ISLAND_NPC_COMPLETE seen="
+                                << (island_dialog_seen ? 1 : 0)
+                                << " closed="
+                                << (island_dialog_closed ? 1 : 0)
+                                << " wram_before=0x"
+                                << std::hex
+                                << island_story_wram_before
+                                << " wram_after=0x"
+                                << island_story_wram_after
+                                << " sram_before=0x"
+                                << island_story_sram_before
+                                << " sram_after=0x"
+                                << island_story_sram_after
+                                << " screen=0x"
+                                << vault_door_renderer.hash()
+                                << std::dec
+                                << std::endl;
+
+                            if (!island_dialog_seen ||
+                                !island_dialog_closed) {
+                                return 144;
+                            }
+
+                            const Runtime island_progress_seed =
+                                *island_story;
+
                             for (std::size_t candidate = 0;
                                  candidate <
                                      vault_approaches.size();
                                  ++candidate) {
                                 auto approach =
                                     std::make_unique<Runtime>(
-                                        island_seed);
+                                        island_progress_seed);
                                 bool abort_candidate = false;
 
                                 for (std::size_t move = 0;
@@ -1731,7 +1915,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     tilemap_hash(
                                         island_seed.memory()),
                                     island_oam_hash(
-                                        island_seed.memory())
+                                        island_progress_seed.memory())
                                 });
                             }
 
