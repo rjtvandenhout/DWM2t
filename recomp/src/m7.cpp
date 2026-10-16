@@ -807,6 +807,19 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                         }
 
                         if (story == 0 && dialog_closed) {
+                            std::cout
+                                << "M7_STORY_STATE post_parent"
+                                << " C923=0x" << std::hex
+                                << static_cast<unsigned>(story_runtime.memory().read8(0xC923))
+                                << " C552=0x"
+                                << static_cast<unsigned>(story_runtime.memory().read8(0xC552))
+                                << " CBEB=0x"
+                                << static_cast<unsigned>(story_runtime.memory().read8(0xCBEB))
+                                << std::dec
+                                << " A5=" << ((story_runtime.memory().read8(0xCBEB) & 0x20u) ? 1 : 0)
+                                << " A6=" << ((story_runtime.memory().read8(0xCBEB) & 0x40u) ? 1 : 0)
+                                << " A7=" << ((story_runtime.memory().read8(0xCBEB) & 0x80u) ? 1 : 0)
+                                << std::endl;
                             const std::uint8_t story_flags_before =
                                 story_runtime.memory().read8(0xCBDB);
                             auto post_dialog_idle =
@@ -976,6 +989,20 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 background_hash(outdoor->memory());
 
                             std::cout
+                                << "M7_STORY_STATE outdoor"
+                                << " C923=0x" << std::hex
+                                << static_cast<unsigned>(outdoor->memory().read8(0xC923))
+                                << " C552=0x"
+                                << static_cast<unsigned>(outdoor->memory().read8(0xC552))
+                                << " CBEB=0x"
+                                << static_cast<unsigned>(outdoor->memory().read8(0xCBEB))
+                                << std::dec
+                                << " A5=" << ((outdoor->memory().read8(0xCBEB) & 0x20u) ? 1 : 0)
+                                << " A6=" << ((outdoor->memory().read8(0xCBEB) & 0x40u) ? 1 : 0)
+                                << " A7=" << ((outdoor->memory().read8(0xCBEB) & 0x80u) ? 1 : 0)
+                                << std::endl;
+
+                            std::cout
                                 << "M7_SEARCH_OUTDOOR screen=0x"
                                 << std::hex
                                 << region_renderer.hash()
@@ -1077,8 +1104,26 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         }
                                     }
 
+                                    const std::uint8_t c923 =
+                                        probe->memory().read8(0xC923);
                                     const std::uint8_t flags =
                                         probe->memory().read8(0xCBEB);
+                                    if (c923 == 2u || c923 != seed.memory().read8(0xC923)) {
+                                        std::cout
+                                            << "M7_C923_HIT depth=" << depth
+                                            << " frame=" << frame
+                                            << " before=0x" << std::hex
+                                            << static_cast<unsigned>(seed.memory().read8(0xC923))
+                                            << " after=0x"
+                                            << static_cast<unsigned>(c923)
+                                            << " C552=0x"
+                                            << static_cast<unsigned>(probe->memory().read8(0xC552))
+                                            << " CBEB=0x"
+                                            << static_cast<unsigned>(flags)
+                                            << std::dec;
+                                        print_search_path(path);
+                                        std::cout << std::endl;
+                                    }
                                     if (saw_dispatch || saw_setter ||
                                         (flags & 0x40u) != 0) {
                                         Renderer hit_renderer{};

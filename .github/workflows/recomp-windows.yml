@@ -26,7 +26,6 @@ jobs:
         run: python recomp/tools/scan_c916.py --banks-dir src/banks
 
   windows-x64:
-    if: false
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
