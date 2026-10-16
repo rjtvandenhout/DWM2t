@@ -1893,7 +1893,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     }
 
                                     // No interaction after several A attempts.
-                                    if (!opened && frame >= 360) {
+                                    if (!opened && frame >= 48) {
                                         runtime.memory().set_joypad_state(0);
                                         (void)runtime.memory().apu().take_samples();
                                         return StepResult::Continue;
@@ -1928,8 +1928,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             constexpr std::array<std::uint8_t, 5>
                                 quest_actions = {1, 3, 2, 0, 4};
-                            constexpr std::size_t quest_width = 64;
-                            constexpr std::size_t quest_depth = 56;
+                            constexpr std::size_t quest_width = 32;
+                            constexpr std::size_t quest_depth = 32;
                             unsigned quest_capture = 0;
 
                             for (std::size_t depth = 0;
