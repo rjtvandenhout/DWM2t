@@ -1013,6 +1013,315 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 print_search_path(frontier[i].path);
                                 std::cout << std::endl;
                             }
+
+                            // The deterministic first beam consistently reaches
+                            // the in-ROM navigation hint "The Vault is west" in
+                            // finalist 5. Continue from that exact P1-reached
+                            // state, close the text box normally, and search
+                            // deeper with a westward bias.
+                            if (frontier.size() > 5) {
+                                auto vault_seed =
+                                    std::make_unique<Runtime>(
+                                        *frontier[5].runtime);
+
+                                for (std::uint64_t frame = 0;
+                                     frame < 900 &&
+                                     vault_seed->memory().read8(0xC5DC) != 0;
+                                     ++frame) {
+                                    const std::uint8_t buttons =
+                                        (frame % 60u) < 2u ? JoyA : 0;
+                                    const StepResult result =
+                                        advance_search_frame(
+                                            *vault_seed, buttons);
+                                    if (result == StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_SEARCH_VAULT_MISSING_BANK_CLOSE bank="
+                                            << vault_seed->cpu().missing_bank
+                                            << " pc=0x" << std::hex
+                                            << vault_seed->cpu().pc
+                                            << std::dec << std::endl;
+                                        return 127;
+                                    }
+                                    if (result == StepResult::Trapped ||
+                                        result == StepResult::Stopped ||
+                                        result == StepResult::StepLimit) {
+                                        break;
+                                    }
+                                }
+
+                                Renderer vault_renderer{};
+                                vault_renderer.render(
+                                    vault_seed->memory(), true);
+                                std::cout
+                                    << "M7_SEARCH_VAULT_SEED C5DB="
+                                    << static_cast<unsigned>(
+                                           vault_seed->memory().read8(0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           vault_seed->memory().read8(0xC5DC))
+                                    << " screen=0x" << std::hex
+                                    << vault_renderer.hash()
+                                    << " map=0x"
+                                    << tilemap_hash(vault_seed->memory())
+                                    << std::dec << std::endl;
+
+                                struct VaultNode {
+                                    std::unique_ptr<Runtime> runtime;
+                                    std::vector<std::uint8_t> path;
+                                    std::uint64_t score = 0;
+                                    std::uint64_t screen_hash = 0;
+                                    std::uint64_t map_hash = 0;
+                                };
+
+                                constexpr std::array<std::uint8_t, 6>
+                                    vault_actions = {1, 3, 4, 2, 0, 5};
+                                constexpr std::size_t vault_width = 24;
+                                constexpr std::size_t vault_depth = 64;
+
+                                std::vector<VaultNode> vault_frontier;
+                                vault_frontier.push_back({
+                                    std::move(vault_seed),
+                                    {},
+                                    0,
+                                    vault_renderer.hash(),
+                                    tilemap_hash(frontier[5].runtime->memory())
+                                });
+
+                                std::unordered_set<std::uint64_t>
+                                    vault_seen_states;
+                                std::unordered_set<std::uint64_t>
+                                    vault_seen_maps;
+                                std::unordered_set<std::uint64_t>
+                                    vault_seen_screens;
+                                vault_seen_maps.insert(
+                                    vault_frontier.front().map_hash);
+                                vault_seen_screens.insert(
+                                    vault_frontier.front().screen_hash);
+
+                                for (std::size_t depth = 0;
+                                     depth < vault_depth &&
+                                     !vault_frontier.empty();
+                                     ++depth) {
+                                    std::vector<VaultNode> next;
+                                    next.reserve(
+                                        vault_frontier.size() *
+                                        vault_actions.size());
+
+                                    for (const VaultNode& node :
+                                         vault_frontier) {
+                                        for (const std::uint8_t action :
+                                             vault_actions) {
+                                            auto child =
+                                                std::make_unique<Runtime>(
+                                                    *node.runtime);
+                                            const StepResult result =
+                                                apply_search_action(
+                                                    *child, action);
+
+                                            if (result ==
+                                                StepResult::MissingBank) {
+                                                vault_renderer.render(
+                                                    child->memory(), true);
+                                                vault_renderer.write_bmp(
+                                                    output_dir /
+                                                    "search_vault_missing.bmp");
+                                                std::cout
+                                                    << "M7_SEARCH_VAULT_MISSING_BANK depth="
+                                                    << depth
+                                                    << " action="
+                                                    << search_action_name(action)
+                                                    << " bank="
+                                                    << child->cpu().missing_bank
+                                                    << " pc=0x" << std::hex
+                                                    << child->cpu().pc
+                                                    << " screen=0x"
+                                                    << vault_renderer.hash()
+                                                    << std::dec;
+                                                print_search_path(node.path);
+                                                std::cout << std::endl;
+                                                return 127;
+                                            }
+                                            if (result ==
+                                                    StepResult::Trapped ||
+                                                result ==
+                                                    StepResult::Stopped ||
+                                                result ==
+                                                    StepResult::StepLimit) {
+                                                continue;
+                                            }
+
+                                            const std::uint8_t mode =
+                                                child->memory().read8(
+                                                    0xC5DB);
+                                            const std::uint8_t submode =
+                                                child->memory().read8(
+                                                    0xC5DC);
+                                            vault_renderer.render(
+                                                child->memory(), true);
+                                            const std::uint64_t screen =
+                                                vault_renderer.hash();
+                                            const std::uint64_t map =
+                                                tilemap_hash(
+                                                    child->memory());
+                                            const std::uint64_t ram =
+                                                wram_hash(child->memory());
+
+                                            std::vector<std::uint8_t> path =
+                                                node.path;
+                                            path.push_back(action);
+
+                                            if (mode != 1) {
+                                                vault_renderer.write_bmp(
+                                                    output_dir /
+                                                    "search_vault_mode_change.bmp");
+                                                std::cout
+                                                    << "M7_SEARCH_VAULT_MODE_CHANGE depth="
+                                                    << depth
+                                                    << " C5DB="
+                                                    << static_cast<unsigned>(
+                                                           mode)
+                                                    << " C5DC="
+                                                    << static_cast<unsigned>(
+                                                           submode)
+                                                    << " screen=0x"
+                                                    << std::hex << screen
+                                                    << " map=0x" << map
+                                                    << " wram=0x" << ram
+                                                    << " sram=0x"
+                                                    << sram_hash(
+                                                           child->memory())
+                                                    << std::dec;
+                                                print_search_path(path);
+                                                std::cout << std::endl;
+                                                return 0;
+                                            }
+
+                                            std::uint64_t signature =
+                                                screen;
+                                            signature ^= map +
+                                                0x9E3779B97F4A7C15ull +
+                                                (signature << 6) +
+                                                (signature >> 2);
+                                            signature ^= ram +
+                                                0x9E3779B97F4A7C15ull +
+                                                (signature << 6) +
+                                                (signature >> 2);
+                                            signature ^=
+                                                static_cast<std::uint64_t>(
+                                                    submode)
+                                                << 56;
+                                            if (!vault_seen_states.insert(
+                                                     signature).second) {
+                                                continue;
+                                            }
+
+                                            const bool new_map =
+                                                vault_seen_maps.insert(
+                                                    map).second;
+                                            const bool new_screen =
+                                                vault_seen_screens.insert(
+                                                    screen).second;
+                                            std::uint64_t score = 0;
+                                            if (new_map) {
+                                                score +=
+                                                    1'000'000'000'000ull;
+                                            }
+                                            if (new_screen) {
+                                                score +=
+                                                    1'000'000'000ull;
+                                            }
+                                            if (submode != 0) {
+                                                score +=
+                                                    100'000'000ull;
+                                            }
+                                            if (action == 1) {
+                                                score += 20'000'000ull;
+                                            }
+                                            if (action == 3) {
+                                                score += 5'000'000ull;
+                                            }
+                                            if (action == 4) {
+                                                score += 2'000'000ull;
+                                            }
+
+                                            next.push_back({
+                                                std::move(child),
+                                                std::move(path),
+                                                score,
+                                                screen,
+                                                map
+                                            });
+                                        }
+                                    }
+
+                                    std::stable_sort(
+                                        next.begin(), next.end(),
+                                        [](const VaultNode& a,
+                                           const VaultNode& b) {
+                                            if (a.score != b.score) {
+                                                return a.score > b.score;
+                                            }
+                                            if (a.map_hash != b.map_hash) {
+                                                return a.map_hash <
+                                                       b.map_hash;
+                                            }
+                                            return a.screen_hash <
+                                                   b.screen_hash;
+                                        });
+                                    if (next.size() > vault_width) {
+                                        next.resize(vault_width);
+                                    }
+
+                                    if (!next.empty() &&
+                                        (depth % 8u) == 0u) {
+                                        std::cout
+                                            << "M7_SEARCH_VAULT depth="
+                                            << depth
+                                            << " frontier="
+                                            << next.size()
+                                            << " maps="
+                                            << vault_seen_maps.size()
+                                            << " screens="
+                                            << vault_seen_screens.size()
+                                            << " best_screen=0x"
+                                            << std::hex
+                                            << next.front().screen_hash
+                                            << " best_map=0x"
+                                            << next.front().map_hash
+                                            << std::dec;
+                                        print_search_path(
+                                            next.front().path);
+                                        std::cout << std::endl;
+                                    }
+
+                                    vault_frontier =
+                                        std::move(next);
+                                }
+
+                                for (std::size_t i = 0;
+                                     i < vault_frontier.size() &&
+                                     i < 8; ++i) {
+                                    vault_renderer.render(
+                                        vault_frontier[i]
+                                            .runtime->memory(),
+                                        true);
+                                    vault_renderer.write_bmp(
+                                        output_dir /
+                                        ("search_vault_final_" +
+                                         std::to_string(i) + ".bmp"));
+                                    std::cout
+                                        << "M7_SEARCH_VAULT_FINAL index="
+                                        << i
+                                        << " screen=0x" << std::hex
+                                        << vault_frontier[i].screen_hash
+                                        << " map=0x"
+                                        << vault_frontier[i].map_hash
+                                        << std::dec;
+                                    print_search_path(
+                                        vault_frontier[i].path);
+                                    std::cout << std::endl;
+                                }
+                            }
                         }
 
                         Renderer sr{};
