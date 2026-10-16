@@ -53,6 +53,7 @@ set(BANK_FILE_31 "bank_031.asm")
 set(BANK_FILE_52 "bank_052.asm")
 set(BANK_FILE_53 "bank_053.asm")
 set(BANK_FILE_96 "bank_096.asm")
+set(BANK_FILE_96 "bank_096.asm")
 set(BANK_FILE_127 "bank_127.asm")
 set(BANK_FILE_132 "bank_132.asm")
 
