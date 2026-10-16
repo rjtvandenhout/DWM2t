@@ -620,6 +620,102 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                     if (abort) break;
                 }
 
+                if (seed == 1 && strategy == 4) {
+                    struct StoryLeg {
+                        std::uint8_t buttons;
+                        std::uint64_t frames;
+                    };
+                    constexpr std::array<std::array<StoryLeg, 6>, 8> story_routes = {{
+                        {{{JoyUp, 72}, {JoyLeft, 40}, {JoyA, 72}, {0, 24}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyLeft, 56}, {JoyUp, 80}, {JoyA, 72}, {0, 24}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyUp, 96}, {JoyA, 72}, {JoyLeft, 48}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyLeft, 32}, {JoyUp, 104}, {JoyRight, 24}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyUp, 64}, {JoyLeft, 72}, {JoyA, 72}, {JoyUp, 40}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyLeft, 88}, {JoyUp, 56}, {JoyRight, 40}, {JoyA, 72}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyUp, 120}, {JoyLeft, 24}, {JoyA, 72}, {JoyB, 24}, {JoyA, 240}, {0, 30}}},
+                        {{{JoyLeft, 40}, {JoyUp, 72}, {JoyA, 120}, {JoyDown, 24}, {JoyA, 240}, {0, 30}}},
+                    }};
+
+                    const Runtime story_base = focused;
+                    for (std::size_t story = 0; story < story_routes.size(); ++story) {
+                        auto story_owner = std::make_unique<Runtime>(story_base);
+                        Runtime& story_runtime = *story_owner;
+                        bool story_abort = false;
+                        for (const StoryLeg& leg : story_routes[story]) {
+                            for (std::uint64_t f = 0; f < leg.frames; ++f) {
+                                std::uint8_t buttons = leg.buttons;
+                                if (leg.buttons == JoyA) {
+                                    buttons = (f % 18u) < 2u ? JoyA : 0;
+                                } else if (leg.buttons == JoyB) {
+                                    buttons = f < 2u ? JoyB : 0;
+                                }
+                                const StepResult result =
+                                    advance_search_frame(story_runtime, buttons);
+                                if (result == StepResult::MissingBank) {
+                                    Renderer sr{};
+                                    sr.render(story_runtime.memory(), true);
+                                    sr.write_bmp(output_dir /
+                                        ("search_story_missing_" +
+                                         std::to_string(story) + ".bmp"));
+                                    std::cout << "M7_SEARCH_STORY_MISSING_BANK route="
+                                              << story
+                                              << " bank="
+                                              << story_runtime.cpu().missing_bank
+                                              << " pc=0x" << std::hex
+                                              << story_runtime.cpu().pc
+                                              << " screen=0x" << sr.hash()
+                                              << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result == StepResult::Trapped ||
+                                    result == StepResult::Stopped ||
+                                    result == StepResult::StepLimit) {
+                                    story_abort = true;
+                                    break;
+                                }
+                                if (story_runtime.memory().read8(0xC5DB) != 1) {
+                                    Renderer sr{};
+                                    sr.render(story_runtime.memory(), true);
+                                    sr.write_bmp(output_dir /
+                                        ("search_story_mode_" +
+                                         std::to_string(story) + ".bmp"));
+                                    std::cout << "M7_SEARCH_STORY_MODE_CHANGE route="
+                                              << story
+                                              << " C5DB="
+                                              << static_cast<unsigned>(
+                                                     story_runtime.memory().read8(0xC5DB))
+                                              << " C5DC="
+                                              << static_cast<unsigned>(
+                                                     story_runtime.memory().read8(0xC5DC))
+                                              << " screen=0x" << std::hex
+                                              << sr.hash()
+                                              << " map=0x"
+                                              << tilemap_hash(story_runtime.memory())
+                                              << std::dec << std::endl;
+                                    return 0;
+                                }
+                            }
+                            if (story_abort) break;
+                        }
+                        Renderer sr{};
+                        sr.render(story_runtime.memory(), true);
+                        sr.write_bmp(output_dir /
+                            ("search_story_" + std::to_string(story) + ".bmp"));
+                        std::cout << "M7_SEARCH_STORY_COMPLETE route=" << story
+                                  << " screen=0x" << std::hex << sr.hash()
+                                  << " map=0x" << tilemap_hash(story_runtime.memory())
+                                  << " sram=0x" << sram_hash(story_runtime.memory())
+                                  << std::dec
+                                  << " C5DB="
+                                  << static_cast<unsigned>(
+                                         story_runtime.memory().read8(0xC5DB))
+                                  << " C5DC="
+                                  << static_cast<unsigned>(
+                                         story_runtime.memory().read8(0xC5DC))
+                                  << std::endl;
+                    }
+                }
+
                 Renderer rr{};
                 rr.render(focused.memory(), true);
                 rr.write_bmp(output_dir /
