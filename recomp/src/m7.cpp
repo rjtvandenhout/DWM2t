@@ -1416,6 +1416,28 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 island_story_sram_before =
                                     sram_hash(
                                         island_story->memory());
+
+                            std::array<std::uint8_t, 0x2000>
+                                island_visible_wram_before{};
+                            for (std::size_t i = 0;
+                                 i < island_visible_wram_before.size();
+                                 ++i) {
+                                island_visible_wram_before[i] =
+                                    island_story->memory().read8(
+                                        static_cast<std::uint16_t>(
+                                            0xC000u + i));
+                            }
+                            std::array<std::uint8_t, 0x7F>
+                                island_hram_before{};
+                            for (std::size_t i = 0;
+                                 i < island_hram_before.size();
+                                 ++i) {
+                                island_hram_before[i] =
+                                    island_story->memory().read8(
+                                        static_cast<std::uint16_t>(
+                                            0xFF80u + i));
+                            }
+
                             bool island_dialog_seen = false;
                             bool island_dialog_closed = false;
                             unsigned island_dialog_page = 0;
@@ -1551,6 +1573,66 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << " screen=0x"
                                 << vault_door_renderer.hash()
                                 << std::dec
+                                << std::endl;
+
+                            unsigned island_wram_change_count = 0;
+                            for (std::size_t i = 0;
+                                 i < island_visible_wram_before.size();
+                                 ++i) {
+                                const std::uint8_t after =
+                                    island_story->memory().read8(
+                                        static_cast<std::uint16_t>(
+                                            0xC000u + i));
+                                if (after ==
+                                    island_visible_wram_before[i]) {
+                                    continue;
+                                }
+                                if (island_wram_change_count < 96) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_WRAM_CHANGE addr=0x"
+                                        << std::hex
+                                        << (0xC000u + i)
+                                        << " before=0x"
+                                        << static_cast<unsigned>(
+                                               island_visible_wram_before[i])
+                                        << " after=0x"
+                                        << static_cast<unsigned>(after)
+                                        << std::dec << std::endl;
+                                }
+                                ++island_wram_change_count;
+                            }
+
+                            unsigned island_hram_change_count = 0;
+                            for (std::size_t i = 0;
+                                 i < island_hram_before.size();
+                                 ++i) {
+                                const std::uint8_t after =
+                                    island_story->memory().read8(
+                                        static_cast<std::uint16_t>(
+                                            0xFF80u + i));
+                                if (after == island_hram_before[i]) {
+                                    continue;
+                                }
+                                if (island_hram_change_count < 32) {
+                                    std::cout
+                                        << "M7_SEARCH_ISLAND_HRAM_CHANGE addr=0x"
+                                        << std::hex
+                                        << (0xFF80u + i)
+                                        << " before=0x"
+                                        << static_cast<unsigned>(
+                                               island_hram_before[i])
+                                        << " after=0x"
+                                        << static_cast<unsigned>(after)
+                                        << std::dec << std::endl;
+                                }
+                                ++island_hram_change_count;
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_ISLAND_STATE_DIFF wram_changes="
+                                << island_wram_change_count
+                                << " hram_changes="
+                                << island_hram_change_count
                                 << std::endl;
 
                             if (!island_dialog_seen ||
