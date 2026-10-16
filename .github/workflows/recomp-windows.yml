@@ -43,7 +43,83 @@ jobs:
         run: cmake -S recomp -B recomp/build -A x64
 
       - name: Build native recomp and required AOT dependencies
-        run: cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4
+        shell: pwsh
+        run: |
+          $cmakeText = Get-Content recomp/CMakeLists.txt -Raw
+          $match = [regex]::Match($cmakeText, 'set\(NATIVE_ROMX_BANKS\s+([^)]+)\)')
+          if (-not $match.Success) { throw 'Could not parse NATIVE_ROMX_BANKS' }
+          $banks = $match.Groups[1].Value -split '\s+' | Where-Object { $_ -match '^\d+
+      - name: Save native recomp build cache
+        uses: actions/cache/save@v4
+        with:
+          path: recomp/build
+          key: m6-native-${{ runner.os }}-${{ github.sha }}
+
+      - name: Run M4 renderer regression
+        run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
+
+      - name: Run M5 original title-screen regression
+        run: .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp/build/m5_title_screen.bmp
+
+      - name: Run M6 input/flow exploration probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
+
+      - name: Run M6 SRAM persistence regression
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-sram-test recomp/build/m6_test.sav
+
+      - name: Run M6 live Win32 window smoke test
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-window-smoke recomp/build/m6_test.sav
+
+      - name: Run M7 original-game discovery probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-discovery recomp/build/m7_discovery
+
+      - name: Upload Windows executable and milestone images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2tRecomp-M7-Discovery-Windows-x64
+          path: |
+            recomp/build/Release/DWM2tRecomp.exe
+            recomp/build/m4_renderer_test.bmp
+            recomp/build/m5_title_screen.bmp
+            recomp/build/m6_probe/**
+            recomp/build/m6_test.sav
+            recomp/build/m7_discovery/**
+          if-no-files-found: error
+ }
+
+          $missing = @()
+          if (-not (Test-Path 'recomp/build/Release/dwm2t_bank0.lib')) {
+            $missing += 'dwm2t_bank0'
+          }
+          if (-not (Test-Path 'recomp/build/Release/dwm2t_rom_image.lib')) {
+            $missing += 'dwm2t_rom_image'
+          }
+          foreach ($bank in $banks) {
+            if (-not (Test-Path "recomp/build/Release/dwm2t_romx_bank_$bank.lib")) {
+              $missing += "dwm2t_romx_bank_$bank"
+            }
+          }
+
+          if ($missing.Count -gt 4) {
+            Write-Host "Cold/incomplete cache: building full dependency graph ($($missing.Count) libraries missing)."
+            cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } else {
+            foreach ($target in $missing) {
+              Write-Host "Building missing cached dependency: $target"
+              cmake --build recomp/build --config Release --target $target --parallel 4
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            }
+
+            Write-Host 'Relinking executable from verified cached AOT libraries.'
+            cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4 -- /p:BuildProjectReferences=false
+            if ($LASTEXITCODE -ne 0) {
+              Write-Host 'Fast relink failed; falling back to the full dependency graph.'
+              cmake --build recomp/build --config Release --target DWM2tRecomp --parallel 4
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            }
+          }
 
       - name: Save native recomp build cache
         uses: actions/cache/save@v4
