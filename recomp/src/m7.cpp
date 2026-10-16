@@ -2274,6 +2274,297 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << " states="
                                 << outdoor_seen.size()
                                 << std::endl;
+
+                            // Pure movement cannot leave this outdoor area.
+                            // Probe nearby game-owned interactions with shallow
+                            // P1-only movement, then capture any real dialogue.
+                            struct OutdoorInteractRoute {
+                                std::array<std::uint8_t, 4> moves;
+                                unsigned count;
+                                const char* name;
+                            };
+                            constexpr std::array<OutdoorInteractRoute, 13>
+                                interact_routes = {{
+                                    {{{0,0,0,0}},0,"here"},
+                                    {{{2,0,0,0}},1,"u1"},
+                                    {{{2,2,0,0}},2,"u2"},
+                                    {{{2,2,2,0}},3,"u3"},
+                                    {{{1,0,0,0}},1,"l1"},
+                                    {{{1,1,0,0}},2,"l2"},
+                                    {{{0,0,0,0}},1,"r1"},
+                                    {{{0,0,0,0}},2,"r2"},
+                                    {{{3,0,0,0}},1,"d1"},
+                                    {{{3,3,0,0}},2,"d2"},
+                                    {{{1,2,0,0}},2,"l1u1"},
+                                    {{{0,2,0,0}},2,"r1u1"},
+                                    {{{2,1,0,0}},2,"u1l1"}
+                                }};
+
+                            unsigned outdoor_dialogs = 0;
+                            for (const auto& route :
+                                 interact_routes) {
+                                auto candidate =
+                                    std::make_unique<Runtime>(
+                                        guide_outdoor_seed);
+                                bool abort = false;
+                                for (unsigned i = 0;
+                                     i < route.count; ++i) {
+                                    const StepResult move_result =
+                                        apply_navigation(
+                                            *candidate,
+                                            route.moves[i]);
+                                    if (move_result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_SEARCH_OUTDOOR_INTERACT_MISSING_BANK route="
+                                            << route.name
+                                            << " phase=move"
+                                            << " bank="
+                                            << candidate->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << candidate->cpu().pc
+                                            << std::dec
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (move_result !=
+                                        StepResult::Continue) {
+                                        abort = true;
+                                        break;
+                                    }
+                                }
+                                if (abort) continue;
+
+                                Renderer ir{};
+                                ir.render(
+                                    candidate->memory(), true);
+                                const std::uint64_t before_screen =
+                                    ir.hash();
+                                const std::uint64_t before_wram =
+                                    wram_hash(
+                                        candidate->memory());
+                                const std::uint64_t before_sram =
+                                    sram_hash(
+                                        candidate->memory());
+                                const std::uint8_t before_cc44 =
+                                    candidate->memory()
+                                        .read8(0xCC44);
+                                const std::uint8_t before_cc45 =
+                                    candidate->memory()
+                                        .read8(0xCC45);
+
+                                bool seen = false;
+                                bool closed = false;
+                                unsigned pages = 0;
+                                std::uint64_t next_press = 0;
+                                for (std::uint64_t frame = 0;
+                                     frame < 900; ++frame) {
+                                    const std::uint8_t sub_before =
+                                        candidate->memory()
+                                            .read8(0xC5DC);
+                                    if (seen &&
+                                        sub_before == 0) {
+                                        closed = true;
+                                        break;
+                                    }
+
+                                    std::uint8_t buttons = 0;
+                                    if (!seen) {
+                                        if (frame < 2 ||
+                                            (frame >= 120 &&
+                                             frame % 120u < 2u)) {
+                                            buttons = JoyA;
+                                        }
+                                    } else if (
+                                        frame == next_press) {
+                                        buttons = JoyA;
+                                    }
+
+                                    const StepResult result =
+                                        advance_search_frame(
+                                            *candidate,
+                                            buttons);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_SEARCH_OUTDOOR_INTERACT_MISSING_BANK route="
+                                            << route.name
+                                            << " phase=dialog"
+                                            << " bank="
+                                            << candidate->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << candidate->cpu().pc
+                                            << std::dec
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (result !=
+                                        StepResult::Continue) {
+                                        break;
+                                    }
+
+                                    const std::uint8_t mode =
+                                        candidate->memory()
+                                            .read8(0xC5DB);
+                                    const std::uint8_t submode =
+                                        candidate->memory()
+                                            .read8(0xC5DC);
+                                    if (mode != 1) {
+                                        ir.render(
+                                            candidate->memory(),
+                                            true);
+                                        ir.write_bmp(
+                                            output_dir /
+                                            (std::string(
+                                                "search_outdoor_interact_mode_") +
+                                             route.name + ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_OUTDOOR_INTERACT_MODE_CHANGE route="
+                                            << route.name
+                                            << " frame="
+                                            << frame
+                                            << " C5DB="
+                                            << static_cast<unsigned>(
+                                                   mode)
+                                            << " C5DC="
+                                            << static_cast<unsigned>(
+                                                   submode)
+                                            << " screen=0x"
+                                            << std::hex
+                                            << ir.hash()
+                                            << std::dec
+                                            << std::endl;
+                                        return 0;
+                                    }
+
+                                    if (submode != 0 &&
+                                        !seen) {
+                                        seen = true;
+                                        next_press =
+                                            frame + 96;
+                                        ir.render(
+                                            candidate->memory(),
+                                            true);
+                                        ir.write_bmp(
+                                            output_dir /
+                                            (std::string(
+                                                "search_outdoor_interact_") +
+                                             route.name +
+                                             "_start.bmp"));
+                                    }
+
+                                    if (seen &&
+                                        submode != 0 &&
+                                        (frame + 1 ==
+                                         next_press) &&
+                                        pages < 6) {
+                                        ir.render(
+                                            candidate->memory(),
+                                            true);
+                                        ir.write_bmp(
+                                            output_dir /
+                                            (std::string(
+                                                "search_outdoor_interact_") +
+                                             route.name +
+                                             "_page_" +
+                                             std::to_string(
+                                                 pages) +
+                                             ".bmp"));
+                                        std::cout
+                                            << "M7_SEARCH_OUTDOOR_INTERACT_PAGE route="
+                                            << route.name
+                                            << " page="
+                                            << pages
+                                            << " frame="
+                                            << frame
+                                            << " screen=0x"
+                                            << std::hex
+                                            << ir.hash()
+                                            << std::dec
+                                            << std::endl;
+                                        ++pages;
+                                    }
+
+                                    if (buttons == JoyA &&
+                                        seen) {
+                                        next_press =
+                                            frame + 96;
+                                    }
+                                }
+
+                                candidate->memory()
+                                    .set_joypad_state(0);
+                                ir.render(
+                                    candidate->memory(), true);
+                                const std::uint64_t after_wram =
+                                    wram_hash(
+                                        candidate->memory());
+                                const std::uint64_t after_sram =
+                                    sram_hash(
+                                        candidate->memory());
+                                const std::uint8_t after_cc44 =
+                                    candidate->memory()
+                                        .read8(0xCC44);
+                                const std::uint8_t after_cc45 =
+                                    candidate->memory()
+                                        .read8(0xCC45);
+
+                                if (seen) {
+                                    ++outdoor_dialogs;
+                                    ir.write_bmp(
+                                        output_dir /
+                                        (std::string(
+                                            "search_outdoor_interact_") +
+                                         route.name +
+                                         "_after.bmp"));
+                                }
+
+                                std::cout
+                                    << "M7_SEARCH_OUTDOOR_INTERACT route="
+                                    << route.name
+                                    << " seen="
+                                    << (seen ? 1 : 0)
+                                    << " closed="
+                                    << (closed ? 1 : 0)
+                                    << " pages="
+                                    << pages
+                                    << " screen_before=0x"
+                                    << std::hex
+                                    << before_screen
+                                    << " screen_after=0x"
+                                    << ir.hash()
+                                    << " wram_before=0x"
+                                    << before_wram
+                                    << " wram_after=0x"
+                                    << after_wram
+                                    << " sram_before=0x"
+                                    << before_sram
+                                    << " sram_after=0x"
+                                    << after_sram
+                                    << " CC44="
+                                    << static_cast<unsigned>(
+                                           before_cc44)
+                                    << "->"
+                                    << static_cast<unsigned>(
+                                           after_cc44)
+                                    << " CC45="
+                                    << static_cast<unsigned>(
+                                           before_cc45)
+                                    << "->"
+                                    << static_cast<unsigned>(
+                                           after_cc45)
+                                    << std::dec
+                                    << std::endl;
+                            }
+
+                            std::cout
+                                << "M7_SEARCH_OUTDOOR_INTERACT_COMPLETE dialogs="
+                                << outdoor_dialogs
+                                << std::endl;
                             return 145;
 
                             // The south exit reaches a compact island with
