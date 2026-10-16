@@ -307,12 +307,18 @@ int run_m7_audio_probe() {
               << " NR52=0x" << static_cast<unsigned>(memory.read8(0xFF26))
               << std::dec << "\n";
 
-    if (samples.size() < 10000 || nonzero == 0 || peak == 0) {
-        std::cout << "M7_AUDIO_FAIL silent_or_short\n";
+    constexpr std::uint64_t kExpectedAudioHash = 0x03b50ed7ed79bda0ull;
+    if (samples.size() != 2138926u ||
+        nonzero != 1074861u ||
+        peak != 19200 ||
+        hash != kExpectedAudioHash) {
+        std::cout << "M7_AUDIO_FAIL deterministic_pcm_mismatch"
+                  << " expected_hash=0x" << std::hex << kExpectedAudioHash
+                  << std::dec << "\n";
         return 102;
     }
 
-    std::cout << "M7_AUDIO_PASS original_game_apu_writes_produced_pcm\n";
+    std::cout << "M7_AUDIO_PASS original_game_apu_writes_produced_deterministic_pcm\n";
     return 0;
 }
 
