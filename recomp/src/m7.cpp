@@ -382,6 +382,330 @@ void print_search_path(const std::vector<std::uint8_t>& path) {
 
 } // namespace
 
+
+int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
+    std::filesystem::create_directories(output_dir);
+    Runtime runtime{};
+    Renderer renderer{};
+
+    auto frame_step = [&](std::uint8_t buttons) -> StepResult {
+        return advance_search_frame(runtime, buttons);
+    };
+
+    auto pure_nav = [&](std::uint8_t direction) -> StepResult {
+        constexpr std::array<std::uint8_t, 4> directions = {
+            JoyRight, JoyLeft, JoyUp, JoyDown
+        };
+        bool saw_lcd_off = false;
+        for (std::uint64_t phase = 0; phase < 24; ++phase) {
+            const std::uint8_t buttons =
+                phase < 15 ? directions[direction & 3u] : 0;
+            const StepResult result = frame_step(buttons);
+            if (result != StepResult::Continue) return result;
+            if ((runtime.memory().read8(0xFF40) & 0x80u) == 0) {
+                saw_lcd_off = true;
+            }
+        }
+        if (saw_lcd_off ||
+            (runtime.memory().read8(0xFF40) & 0x80u) == 0) {
+            bool back = false;
+            for (std::uint64_t settle = 0; settle < 240; ++settle) {
+                const StepResult result = frame_step(0);
+                if (result != StepResult::Continue) return result;
+                if ((runtime.memory().read8(0xFF40) & 0x80u) != 0) {
+                    back = true;
+                    for (unsigned idle = 0; idle < 12; ++idle) {
+                        const StepResult idle_result = frame_step(0);
+                        if (idle_result != StepResult::Continue) {
+                            return idle_result;
+                        }
+                    }
+                    break;
+                }
+            }
+            if (!back) return StepResult::StepLimit;
+        }
+        runtime.memory().set_joypad_state(0);
+        (void)runtime.memory().apu().take_samples();
+        return StepResult::Continue;
+    };
+
+    auto fail = [&](const char* phase, StepResult result) -> int {
+        std::cout << "M7_FAST_FAIL phase=" << phase
+                  << " result=" << static_cast<unsigned>(result)
+                  << " bank=" << runtime.memory().current_rom_bank()
+                  << " missing=" << runtime.cpu().missing_bank
+                  << " pc=0x" << std::hex << runtime.cpu().pc << std::dec
+                  << " frame=" << runtime.memory().frame_counter()
+                  << " C5DB="
+                  << static_cast<unsigned>(runtime.memory().read8(0xC5DB))
+                  << " C5DC="
+                  << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
+                  << std::endl;
+        return result == StepResult::MissingBank ? 127 : 170;
+    };
+
+    // Retained original-title checkpoint.
+    std::uint64_t observed = runtime.memory().frame_counter();
+    unsigned stable = 0;
+    constexpr std::size_t boot_limit = 80'000'000;
+    for (std::size_t step = 0; step < boot_limit; ++step) {
+        const StepResult result = runtime.step();
+        if (result == StepResult::MissingBank ||
+            result == StepResult::Trapped ||
+            result == StepResult::Stopped) {
+            return fail("boot", result);
+        }
+        if (runtime.memory().frame_counter() == observed) continue;
+        observed = runtime.memory().frame_counter();
+        renderer.render(runtime.memory(), true);
+        if (renderer.hash() == kM5TitleHash &&
+            runtime.memory().read8(0xC5DB) == 5 &&
+            runtime.memory().read8(0xC5DC) == 0) {
+            ++stable;
+        } else {
+            stable = 0;
+        }
+        if (stable >= 30) break;
+    }
+    if (stable < 30) {
+        std::cout << "M7_FAST_FAIL phase=title_not_reached" << std::endl;
+        return 171;
+    }
+
+    for (std::uint64_t relative = 0; relative < 1800; ++relative) {
+        const StepResult result =
+            frame_step(m6_story_buttons(relative));
+        if (result != StepResult::Continue) {
+            return fail("m6_story", result);
+        }
+    }
+    for (std::uint64_t i = 0; i < 36; ++i) {
+        const StepResult result = frame_step(i < 24 ? JoyRight : 0);
+        if (result != StepResult::Continue) {
+            return fail("ship_move", result);
+        }
+    }
+
+    // Exact deterministic prefix used by accepted M7 discovery.
+    for (std::uint64_t relative = 0; relative < 12600; ++relative) {
+        const StepResult result =
+            frame_step(exploration_buttons(relative));
+        if (result != StepResult::Continue) {
+            return fail("town_prefix", result);
+        }
+    }
+
+    // Replay only seed 1 from the old search. This is the seed from which
+    // strategy 4 reached the parent/story interaction.
+    for (std::uint64_t relative = 0; relative < 6000; ++relative) {
+        constexpr std::uint64_t segment_frames = 20;
+        const std::uint64_t segment = relative / segment_frames;
+        const std::uint64_t phase = relative % segment_frames;
+        const std::uint32_t salt =
+            0xA511E9B3u + static_cast<std::uint32_t>(segment);
+        const std::uint32_t mixed = mix_segment(salt);
+        constexpr std::array<std::uint8_t, 4> directions = {
+            JoyRight, JoyLeft, JoyUp, JoyDown
+        };
+        std::uint8_t buttons = 0;
+        if (phase < 13) buttons = directions[mixed & 3u];
+        if (phase >= 14 && phase < 16) buttons = JoyA;
+        if ((segment + 7u) % 43u == 0u &&
+            phase >= 17 && phase < 19) {
+            buttons = JoyB;
+        }
+        const StepResult result = frame_step(buttons);
+        if (result != StepResult::Continue) {
+            return fail("seed1", result);
+        }
+    }
+
+    struct Leg {
+        std::uint8_t buttons;
+        std::uint64_t frames;
+    };
+    constexpr std::array<Leg, 5> strategy4 = {{
+        {JoyLeft, 80},
+        {JoyUp, 160},
+        {JoyRight, 40},
+        {JoyA, 24},
+        {0, 8},
+    }};
+    for (const Leg& leg : strategy4) {
+        for (std::uint64_t f = 0; f < leg.frames; ++f) {
+            std::uint8_t buttons = leg.buttons;
+            if (leg.buttons == JoyA) {
+                buttons = (f % 12u) < 2u ? JoyA : 0;
+            }
+            const StepResult result = frame_step(buttons);
+            if (result != StepResult::Continue) {
+                return fail("strategy4", result);
+            }
+        }
+    }
+
+    // Pinned story approach route 0.
+    for (std::uint64_t f = 0; f < 42; ++f) {
+        const StepResult result = frame_step(JoyLeft);
+        if (result != StepResult::Continue) return fail("parent_left", result);
+    }
+    for (std::uint64_t f = 0; f < 14; ++f) {
+        const StepResult result = frame_step(JoyUp);
+        if (result != StepResult::Continue) return fail("parent_up", result);
+    }
+
+    bool parent_seen = false;
+    bool parent_closed = false;
+    for (std::uint64_t frame = 0; frame < 1200; ++frame) {
+        const std::uint8_t before =
+            runtime.memory().read8(0xC5DC);
+        if (parent_seen && before == 0) {
+            parent_closed = true;
+            break;
+        }
+        std::uint8_t buttons = 0;
+        if (!parent_seen) {
+            if (frame < 2) buttons = JoyA;
+        } else if ((frame % 60u) < 2u) {
+            buttons = JoyA;
+        }
+        const StepResult result = frame_step(buttons);
+        if (result != StepResult::Continue) {
+            return fail("parent_dialog", result);
+        }
+        if (runtime.memory().read8(0xC5DC) != 0) parent_seen = true;
+    }
+    if (!parent_seen || !parent_closed) {
+        std::cout << "M7_FAST_FAIL phase=parent_dialog_closed"
+                  << " seen=" << parent_seen
+                  << " closed=" << parent_closed << std::endl;
+        return 172;
+    }
+
+    constexpr std::array<std::uint8_t, 18> outdoor_actions = {
+        3,3,3,3,3,3,3,3,0,0,3,3,0,0,3,0,0,3
+    };
+    for (std::uint8_t action : outdoor_actions) {
+        const StepResult result = pure_nav(action);
+        if (result != StepResult::Continue) {
+            return fail("outdoor_prefix", result);
+        }
+    }
+
+    renderer.render(runtime.memory(), true);
+    constexpr std::uint64_t kOutdoorScreenHash =
+        0x7e0ce91b1463de95ull;
+    std::cout << "M7_FAST_OUTDOOR screen=0x" << std::hex
+              << renderer.hash() << " expected=0x"
+              << kOutdoorScreenHash << " bg=0x"
+              << background_hash(runtime.memory()) << std::dec
+              << std::endl;
+    if (renderer.hash() != kOutdoorScreenHash) {
+        return 173;
+    }
+
+    constexpr std::array<std::uint8_t, 11> guide_building_path = {
+        2,1,1,1,1,1,3,1,3,3,2
+    };
+    for (std::uint8_t action : guide_building_path) {
+        const StepResult result = pure_nav(action);
+        if (result != StepResult::Continue) {
+            return fail("guide_path", result);
+        }
+    }
+    for (unsigned i = 0; i < 10; ++i) {
+        const StepResult result = pure_nav(2);
+        if (result != StepResult::Continue) {
+            return fail("guide_up", result);
+        }
+    }
+
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_guide_before.bmp");
+    std::cout << "M7_FAST_GUIDE_BEFORE screen=0x" << std::hex
+              << renderer.hash() << " bg=0x"
+              << background_hash(runtime.memory()) << std::dec
+              << " C5DB="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DB))
+              << " C5DC="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
+              << std::endl;
+
+    bool guide_seen = false;
+    bool guide_closed = false;
+    std::uint8_t last_opcode = 0xFF;
+    std::uint16_t last_ptr = 0xFFFF;
+    std::uint8_t last_bank = 0xFF;
+    for (std::uint64_t frame = 0; frame < 1400; ++frame) {
+        const std::uint8_t submode =
+            runtime.memory().read8(0xC5DC);
+        if (guide_seen && submode == 0) {
+            guide_closed = true;
+            break;
+        }
+        std::uint8_t buttons = 0;
+        if (!guide_seen) {
+            if (frame < 2 || (frame >= 120 && (frame % 120u) < 2u)) {
+                buttons = JoyA;
+            }
+        } else if ((frame % 60u) < 2u) {
+            buttons = JoyA;
+        }
+        const StepResult result = frame_step(buttons);
+        if (result != StepResult::Continue) {
+            return fail("guide_dialog", result);
+        }
+
+        if (runtime.memory().read8(0xC5DC) != 0) guide_seen = true;
+        const std::uint8_t opcode =
+            runtime.memory().read8(0xC920);
+        const std::uint16_t ptr =
+            static_cast<std::uint16_t>(
+                runtime.memory().read8(0xC91A) |
+                (runtime.memory().read8(0xC91B) << 8));
+        const std::uint8_t bank =
+            runtime.memory().read8(0xD7FE);
+        if (guide_seen &&
+            (opcode != last_opcode ||
+             ptr != last_ptr ||
+             bank != last_bank)) {
+            std::cout << "M7_FAST_SCRIPT frame=" << frame
+                      << " C920=0x" << std::hex
+                      << static_cast<unsigned>(opcode)
+                      << " ptr=0x" << ptr
+                      << " D7FD=0x"
+                      << static_cast<unsigned>(
+                             runtime.memory().read8(0xD7FD))
+                      << " D7FE=0x"
+                      << static_cast<unsigned>(bank)
+                      << " C5DC=0x"
+                      << static_cast<unsigned>(
+                             runtime.memory().read8(0xC5DC))
+                      << std::dec << std::endl;
+            last_opcode = opcode;
+            last_ptr = ptr;
+            last_bank = bank;
+        }
+    }
+    if (!guide_seen || !guide_closed) {
+        std::cout << "M7_FAST_FAIL phase=guide_dialog_closed"
+                  << " seen=" << guide_seen
+                  << " closed=" << guide_closed << std::endl;
+        return 174;
+    }
+
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_guide_after.bmp");
+    std::cout << "M7_FAST_GUIDE_PASS screen=0x" << std::hex
+              << renderer.hash() << " sram=0x"
+              << sram_hash(runtime.memory()) << std::dec
+              << " frame=" << runtime.memory().frame_counter()
+              << std::endl;
+
+    return 0;
+}
+
 int run_m7_route_search(const std::filesystem::path& output_dir) {
     std::filesystem::create_directories(output_dir);
     auto base_owner = std::make_unique<Runtime>();
