@@ -736,16 +736,10 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     // down at the hay. A two-frame Up pulse changes facing while the NPC blocks
     // movement, so the subsequent A press targets the NPC rather than the hay
     // pile. No host state is edited.
-    for (unsigned frame = 0; frame < 2; ++frame) {
-        const StepResult result = frame_step(JoyUp);
+    {
+        const StepResult result = pure_nav(2);
         if (result != StepResult::Continue) {
             return fail("island_face_npc", result);
-        }
-    }
-    for (unsigned frame = 0; frame < 4; ++frame) {
-        const StepResult result = frame_step(0);
-        if (result != StepResult::Continue) {
-            return fail("island_face_idle", result);
         }
     }
 
