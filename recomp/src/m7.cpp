@@ -703,6 +703,146 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
               << " frame=" << runtime.memory().frame_counter()
               << std::endl;
 
+    // Follow the guide's in-ROM instruction ("The Vault is west") along the
+    // already proven physical exit. Twelve south macros reach the island
+    // checkpoint used by the earlier diagnostics.
+    for (unsigned step = 0; step < 12; ++step) {
+        const StepResult result = pure_nav(3);
+        if (result != StepResult::Continue) {
+            return fail("guide_exit_to_island", result);
+        }
+    }
+
+    renderer.render(runtime.memory(), true);
+    const std::uint64_t island_bg = background_hash(runtime.memory());
+    renderer.write_bmp(output_dir / "fast_island_arrival.bmp");
+    std::cout << "M7_FAST_ISLAND_ARRIVAL screen=0x" << std::hex
+              << renderer.hash() << " bg=0x" << island_bg
+              << " expected_bg=0x8f79ba88f5c1628b"
+              << " C923=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xC923))
+              << " C552=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xC552))
+              << " CBEB=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
+              << std::dec << std::endl;
+
+    if (island_bg != 0x8f79ba88f5c1628bull) {
+        std::cout << "M7_FAST_FAIL phase=island_hash" << std::endl;
+        return 175;
+    }
+
+    // At arrival Cobi stands immediately to the right of the gray NPC but is
+    // facing down at the hay. A two-frame Left pulse changes facing while the
+    // NPC blocks movement, so the subsequent A press targets the NPC rather
+    // than the hay pile. No host state is edited.
+    for (unsigned frame = 0; frame < 2; ++frame) {
+        const StepResult result = frame_step(JoyLeft);
+        if (result != StepResult::Continue) {
+            return fail("island_face_npc", result);
+        }
+    }
+    for (unsigned frame = 0; frame < 4; ++frame) {
+        const StepResult result = frame_step(0);
+        if (result != StepResult::Continue) {
+            return fail("island_face_idle", result);
+        }
+    }
+
+    const std::uint64_t island_sram_before = sram_hash(runtime.memory());
+    const std::uint64_t island_wram_before = wram_hash(runtime.memory());
+    bool island_npc_seen = false;
+    bool island_npc_closed = false;
+    unsigned island_pages = 0;
+    constexpr std::array<std::uint64_t, 6> island_capture_frames = {
+        30, 90, 150, 240, 360, 480
+    };
+
+    for (std::uint64_t frame = 0; frame < 1400; ++frame) {
+        const std::uint8_t submode = runtime.memory().read8(0xC5DC);
+        if (island_npc_seen && submode == 0) {
+            island_npc_closed = true;
+            break;
+        }
+
+        std::uint8_t buttons = 0;
+        if (!island_npc_seen) {
+            if (frame < 2 || (frame >= 120 && (frame % 120u) < 2u)) {
+                buttons = JoyA;
+            }
+        } else if ((frame % 96u) < 2u) {
+            buttons = JoyA;
+        }
+
+        const StepResult result = frame_step(buttons);
+        if (result != StepResult::Continue) {
+            return fail("island_npc_dialog", result);
+        }
+
+        const std::uint8_t mode = runtime.memory().read8(0xC5DB);
+        const std::uint8_t after_submode = runtime.memory().read8(0xC5DC);
+        if (after_submode != 0) island_npc_seen = true;
+
+        if (island_npc_seen &&
+            std::find(island_capture_frames.begin(),
+                      island_capture_frames.end(), frame) !=
+                island_capture_frames.end()) {
+            renderer.render(runtime.memory(), true);
+            renderer.write_bmp(
+                output_dir /
+                ("fast_island_npc_" + std::to_string(frame) + ".bmp"));
+            std::cout << "M7_FAST_ISLAND_NPC_TEXT frame=" << frame
+                      << " C5DB=" << static_cast<unsigned>(mode)
+                      << " C5DC=" << static_cast<unsigned>(after_submode)
+                      << " C920=0x" << std::hex
+                      << static_cast<unsigned>(runtime.memory().read8(0xC920))
+                      << " C923=0x"
+                      << static_cast<unsigned>(runtime.memory().read8(0xC923))
+                      << " C552=0x"
+                      << static_cast<unsigned>(runtime.memory().read8(0xC552))
+                      << " CBEB=0x"
+                      << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
+                      << " screen=0x" << renderer.hash()
+                      << std::dec << std::endl;
+            ++island_pages;
+        }
+
+        if (mode != 1) {
+            renderer.render(runtime.memory(), true);
+            renderer.write_bmp(output_dir / "fast_island_mode_change.bmp");
+            std::cout << "M7_FAST_ISLAND_MODE_CHANGE frame=" << frame
+                      << " C5DB=" << static_cast<unsigned>(mode)
+                      << " C5DC=" << static_cast<unsigned>(after_submode)
+                      << " screen=0x" << std::hex << renderer.hash()
+                      << std::dec << std::endl;
+            return 0;
+        }
+    }
+
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_island_npc_after.bmp");
+    std::cout << "M7_FAST_ISLAND_NPC_RESULT seen="
+              << (island_npc_seen ? 1 : 0)
+              << " closed=" << (island_npc_closed ? 1 : 0)
+              << " pages=" << island_pages
+              << " screen=0x" << std::hex << renderer.hash()
+              << " wram_before=0x" << island_wram_before
+              << " wram_after=0x" << wram_hash(runtime.memory())
+              << " sram_before=0x" << island_sram_before
+              << " sram_after=0x" << sram_hash(runtime.memory())
+              << " C923=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xC923))
+              << " C552=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xC552))
+              << " CBEB=0x"
+              << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
+              << std::dec << std::endl;
+
+    if (!island_npc_seen || !island_npc_closed) {
+        std::cout << "M7_FAST_FAIL phase=island_npc_dialog_closed" << std::endl;
+        return 176;
+    }
+
     return 0;
 }
 
