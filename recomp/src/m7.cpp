@@ -732,120 +732,39 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 175;
     }
 
-    // The gray NPC is mobile, so do not idle after changing facing. Probe a
-    // tiny set of immediate Up->A / Up+A P1 sequences from the identical
-    // arrival state and keep the first sequence that opens a cartridge dialog.
-    const Runtime island_arrival_seed = runtime;
-    struct FaceProbe {
-        unsigned up_frames;
-        unsigned combo_frames;
-        unsigned a_frames;
-        const char* name;
-    };
-    constexpr std::array<FaceProbe, 10> face_probes = {{
-        {1,0,2,"u1_a2"},
-        {2,0,2,"u2_a2"},
-        {3,0,2,"u3_a2"},
-        {4,0,2,"u4_a2"},
-        {5,0,2,"u5_a2"},
-        {0,2,0,"ua2"},
-        {0,3,0,"ua3"},
-        {1,2,0,"u1_ua2"},
-        {2,2,0,"u2_ua2"},
-        {3,2,0,"u3_ua2"},
-    }};
-
-    bool island_face_found = false;
-    const char* island_face_name = "none";
-
-    for (const FaceProbe& probe : face_probes) {
-        Runtime candidate = island_arrival_seed;
-        bool abort = false;
-
-        for (unsigned frame = 0; frame < probe.up_frames; ++frame) {
-            const StepResult result = advance_search_frame(candidate, JoyUp);
-            if (result != StepResult::Continue) {
-                abort = true;
-                break;
-            }
-        }
-        if (abort) continue;
-
-        for (unsigned frame = 0; frame < probe.combo_frames; ++frame) {
-            const StepResult result =
-                advance_search_frame(candidate,
-                                     static_cast<std::uint8_t>(JoyUp | JoyA));
-            if (result != StepResult::Continue) {
-                abort = true;
-                break;
-            }
-        }
-        if (abort) continue;
-
-        for (unsigned frame = 0; frame < probe.a_frames; ++frame) {
-            const StepResult result = advance_search_frame(candidate, JoyA);
-            if (result != StepResult::Continue) {
-                abort = true;
-                break;
-            }
-        }
-        if (abort) continue;
-
-        bool opened = candidate.memory().read8(0xC5DC) != 0;
-        for (unsigned frame = 0; frame < 24 && !opened; ++frame) {
-            const StepResult result = advance_search_frame(candidate, 0);
-            if (result != StepResult::Continue) {
-                abort = true;
-                break;
-            }
-            opened = candidate.memory().read8(0xC5DC) != 0;
-        }
-        if (abort) continue;
-
-        renderer.render(candidate.memory(), true);
-        std::cout << "M7_FAST_ISLAND_FACE name=" << probe.name
-                  << " opened=" << (opened ? 1 : 0)
-                  << " screen=0x" << std::hex << renderer.hash()
-                  << " C5DB=0x"
-                  << static_cast<unsigned>(candidate.memory().read8(0xC5DB))
-                  << " C5DC=0x"
-                  << static_cast<unsigned>(candidate.memory().read8(0xC5DC))
-                  << std::dec << std::endl;
-
-        if (opened) {
-            runtime = candidate;
-            island_face_found = true;
-            island_face_name = probe.name;
-            break;
+    // The cartridge-proven island progression is the hay interaction at the
+    // short D,L,D route. Earlier diagnostics reached this using only P1 input
+    // and observed a game-owned event-selector transition. Reproduce that
+    // exact route here rather than guessing from sprite appearance.
+    constexpr std::array<std::uint8_t, 3> hay_route = {3, 1, 3};
+    for (std::size_t i = 0; i < hay_route.size(); ++i) {
+        const StepResult result = pure_nav(hay_route[i]);
+        if (result != StepResult::Continue) {
+            return fail("island_hay_route", result);
         }
     }
 
-    if (!island_face_found) {
-        std::cout << "M7_FAST_FAIL phase=island_face_probe" << std::endl;
-        return 176;
-    }
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_hay_before.bmp");
+    const std::uint64_t hay_wram_before = wram_hash(runtime.memory());
+    const std::uint64_t hay_sram_before = sram_hash(runtime.memory());
+    const std::uint8_t hay_c916_before = runtime.memory().read8(0xC916);
+    const std::uint8_t hay_cb86_before = runtime.memory().read8(0xCB86);
+    const std::uint8_t hay_cb88_before = runtime.memory().read8(0xCB88);
+    const std::uint8_t hay_cb8d_before = runtime.memory().read8(0xCB8D);
 
-    std::cout << "M7_FAST_ISLAND_FACE_PASS name="
-              << island_face_name << std::endl;
-
-    const std::uint64_t island_sram_before = sram_hash(runtime.memory());
-    const std::uint64_t island_wram_before = wram_hash(runtime.memory());
-    bool island_npc_seen = runtime.memory().read8(0xC5DC) != 0;
-    bool island_npc_closed = false;
-    unsigned island_pages = 0;
-    constexpr std::array<std::uint64_t, 6> island_capture_frames = {
-        30, 90, 150, 240, 360, 480
-    };
-
-    for (std::uint64_t frame = 0; frame < 1400; ++frame) {
+    bool hay_seen = false;
+    bool hay_closed = false;
+    unsigned hay_pages = 0;
+    for (std::uint64_t frame = 0; frame < 900; ++frame) {
         const std::uint8_t submode = runtime.memory().read8(0xC5DC);
-        if (island_npc_seen && submode == 0) {
-            island_npc_closed = true;
+        if (hay_seen && submode == 0) {
+            hay_closed = true;
             break;
         }
 
         std::uint8_t buttons = 0;
-        if (!island_npc_seen) {
+        if (!hay_seen) {
             if (frame < 2 || (frame >= 120 && (frame % 120u) < 2u)) {
                 buttons = JoyA;
             }
@@ -855,73 +774,371 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
 
         const StepResult result = frame_step(buttons);
         if (result != StepResult::Continue) {
-            return fail("island_npc_dialog", result);
+            return fail("island_hay_dialog", result);
         }
 
         const std::uint8_t mode = runtime.memory().read8(0xC5DB);
         const std::uint8_t after_submode = runtime.memory().read8(0xC5DC);
-        if (after_submode != 0) island_npc_seen = true;
-
-        if (island_npc_seen &&
-            std::find(island_capture_frames.begin(),
-                      island_capture_frames.end(), frame) !=
-                island_capture_frames.end()) {
+        if (after_submode != 0 && !hay_seen) {
+            hay_seen = true;
             renderer.render(runtime.memory(), true);
-            renderer.write_bmp(
-                output_dir /
-                ("fast_island_npc_" + std::to_string(frame) + ".bmp"));
-            std::cout << "M7_FAST_ISLAND_NPC_TEXT frame=" << frame
-                      << " C5DB=" << static_cast<unsigned>(mode)
-                      << " C5DC=" << static_cast<unsigned>(after_submode)
-                      << " C920=0x" << std::hex
-                      << static_cast<unsigned>(runtime.memory().read8(0xC920))
-                      << " C923=0x"
-                      << static_cast<unsigned>(runtime.memory().read8(0xC923))
-                      << " C552=0x"
-                      << static_cast<unsigned>(runtime.memory().read8(0xC552))
-                      << " CBEB=0x"
-                      << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
-                      << " screen=0x" << renderer.hash()
-                      << std::dec << std::endl;
-            ++island_pages;
+            renderer.write_bmp(output_dir / "fast_hay_dialog.bmp");
+            ++hay_pages;
         }
 
+        if (mode == 2) {
+            std::cout << "M7_FAST_BATTLE_EARLY phase=hay_dialog frame="
+                      << frame << std::endl;
+            break;
+        }
         if (mode != 1) {
-            renderer.render(runtime.memory(), true);
-            renderer.write_bmp(output_dir / "fast_island_mode_change.bmp");
-            std::cout << "M7_FAST_ISLAND_MODE_CHANGE frame=" << frame
-                      << " C5DB=" << static_cast<unsigned>(mode)
-                      << " C5DC=" << static_cast<unsigned>(after_submode)
-                      << " screen=0x" << std::hex << renderer.hash()
-                      << std::dec << std::endl;
-            return 0;
+            std::cout << "M7_FAST_FAIL phase=hay_unexpected_mode C5DB="
+                      << static_cast<unsigned>(mode) << std::endl;
+            return 176;
         }
     }
 
     renderer.render(runtime.memory(), true);
-    renderer.write_bmp(output_dir / "fast_island_npc_after.bmp");
-    std::cout << "M7_FAST_ISLAND_NPC_RESULT seen="
-              << (island_npc_seen ? 1 : 0)
-              << " closed=" << (island_npc_closed ? 1 : 0)
-              << " pages=" << island_pages
+    renderer.write_bmp(output_dir / "fast_hay_after.bmp");
+    std::cout << "M7_FAST_HAY_PASS seen=" << (hay_seen ? 1 : 0)
+              << " closed=" << (hay_closed ? 1 : 0)
+              << " pages=" << hay_pages
               << " screen=0x" << std::hex << renderer.hash()
-              << " wram_before=0x" << island_wram_before
+              << " wram_before=0x" << hay_wram_before
               << " wram_after=0x" << wram_hash(runtime.memory())
-              << " sram_before=0x" << island_sram_before
+              << " sram_before=0x" << hay_sram_before
               << " sram_after=0x" << sram_hash(runtime.memory())
-              << " C923=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xC923))
-              << " C552=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xC552))
-              << " CBEB=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
+              << " C916=0x" << static_cast<unsigned>(hay_c916_before)
+              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xC916))
+              << " CB86=0x" << static_cast<unsigned>(hay_cb86_before)
+              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB86))
+              << " CB88=0x" << static_cast<unsigned>(hay_cb88_before)
+              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB88))
+              << " CB8D=0x" << static_cast<unsigned>(hay_cb8d_before)
+              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB8D))
               << std::dec << std::endl;
 
-    if (!island_npc_seen || !island_npc_closed) {
-        std::cout << "M7_FAST_FAIL phase=island_npc_dialog_closed" << std::endl;
-        return 176;
+    if (!hay_seen || !hay_closed) {
+        std::cout << "M7_FAST_FAIL phase=hay_dialog_closed" << std::endl;
+        return 177;
     }
 
+    // Bound the search to game-owned states after the accepted hay event.
+    // Movement macros never press A. The A macro presses A, waits for any
+    // original dialogue to open, then advances it using ordinary P1 input.
+    // No RAM, map, party or battle state is injected by the host.
+    auto search_move = [&](Runtime& candidate,
+                           std::uint8_t direction) -> StepResult {
+        constexpr std::array<std::uint8_t, 4> directions = {
+            JoyRight, JoyLeft, JoyUp, JoyDown
+        };
+        for (unsigned phase = 0; phase < 24; ++phase) {
+            const std::uint8_t buttons =
+                phase < 15 ? directions[direction & 3u] : 0;
+            const StepResult result =
+                advance_search_frame(candidate, buttons);
+            if (result != StepResult::Continue) return result;
+            if (candidate.memory().read8(0xC5DB) == 2) {
+                return StepResult::Continue;
+            }
+        }
+        candidate.memory().set_joypad_state(0);
+        (void)candidate.memory().apu().take_samples();
+        return StepResult::Continue;
+    };
+
+    auto search_interact = [&](Runtime& candidate) -> StepResult {
+        bool seen = false;
+        for (unsigned frame = 0; frame < 600; ++frame) {
+            const std::uint8_t before_submode =
+                candidate.memory().read8(0xC5DC);
+            if (seen && before_submode == 0) break;
+
+            std::uint8_t buttons = 0;
+            if (!seen) {
+                if (frame < 2) buttons = JoyA;
+            } else if ((frame % 72u) < 2u) {
+                buttons = JoyA;
+            }
+
+            const StepResult result =
+                advance_search_frame(candidate, buttons);
+            if (result != StepResult::Continue) return result;
+
+            const std::uint8_t mode = candidate.memory().read8(0xC5DB);
+            if (mode == 2) return StepResult::Continue;
+            if (mode != 1) return StepResult::Stopped;
+
+            if (candidate.memory().read8(0xC5DC) != 0) seen = true;
+            if (!seen && frame >= 40) break;
+        }
+        candidate.memory().set_joypad_state(0);
+        (void)candidate.memory().apu().take_samples();
+        return StepResult::Continue;
+    };
+
+    auto state_signature = [&](const Memory& memory) {
+        std::uint64_t h = background_hash(memory);
+        auto mix = [&](std::uint64_t value) {
+            h ^= value + 0x9e3779b97f4a7c15ull + (h << 6) + (h >> 2);
+        };
+        mix(tilemap_hash(memory));
+        constexpr std::array<std::uint16_t, 12> state_bytes = {
+            0xC5D7, 0xC5E7, 0xC5E8, 0xC5F0,
+            0xC916, 0xC917, 0xC920, 0xC923,
+            0xC552, 0xCBEB, 0xCB86, 0xCB8D
+        };
+        for (const std::uint16_t address : state_bytes) {
+            mix(static_cast<std::uint64_t>(memory.read8(address)) |
+                (static_cast<std::uint64_t>(address) << 8));
+        }
+        return h;
+    };
+
+    auto print_path = [&](const std::vector<std::uint8_t>& path) {
+        std::cout << " path=";
+        if (path.empty()) {
+            std::cout << "(root)";
+            return;
+        }
+        for (std::size_t i = 0; i < path.size(); ++i) {
+            if (i) std::cout << ",";
+            std::cout << search_action_name(path[i]);
+        }
+    };
+
+    auto verify_battle_command =
+        [&](Runtime battle,
+            const std::vector<std::uint8_t>& path) -> int {
+        // Let both branches settle identically into the battle UI first.
+        for (unsigned frame = 0; frame < 120; ++frame) {
+            const StepResult result = advance_search_frame(battle, 0);
+            if (result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_MISSING_BANK bank="
+                          << battle.cpu().missing_bank
+                          << " pc=0x" << std::hex << battle.cpu().pc
+                          << std::dec << std::endl;
+                return 180;
+            }
+            if (result != StepResult::Continue) return 181;
+        }
+
+        if (battle.memory().read8(0xC5DB) != 2) {
+            std::cout << "M7_BATTLE_FAIL phase=settle_left_battle mode="
+                      << static_cast<unsigned>(
+                             battle.memory().read8(0xC5DB))
+                      << std::endl;
+            return 182;
+        }
+
+        Renderer before_renderer{};
+        before_renderer.render(battle.memory(), true);
+        before_renderer.write_bmp(output_dir / "m7_battle_before.bmp");
+        const std::uint64_t before_screen = before_renderer.hash();
+        const std::uint64_t before_wram = wram_hash(battle.memory());
+        const std::uint8_t before_submode = battle.memory().read8(0xC5DC);
+
+        Runtime control = battle;
+        Runtime command = battle;
+        for (unsigned frame = 0; frame < 480; ++frame) {
+            StepResult control_result =
+                advance_search_frame(control, 0);
+            if (control_result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_CONTROL_MISSING_BANK bank="
+                          << control.cpu().missing_bank << " pc=0x"
+                          << std::hex << control.cpu().pc << std::dec
+                          << std::endl;
+                return 180;
+            }
+            if (control_result != StepResult::Continue) return 183;
+
+            // Confirm the currently selected legal/default battle command and
+            // subsequent default selections/messages with sparse A pulses.
+            const unsigned phase = frame % 96u;
+            const std::uint8_t buttons =
+                phase < 2u ? JoyA : 0;
+            StepResult command_result =
+                advance_search_frame(command, buttons);
+            if (command_result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_COMMAND_MISSING_BANK bank="
+                          << command.cpu().missing_bank << " pc=0x"
+                          << std::hex << command.cpu().pc << std::dec
+                          << std::endl;
+                return 180;
+            }
+            if (command_result != StepResult::Continue) return 184;
+        }
+
+        Renderer control_renderer{};
+        Renderer command_renderer{};
+        control_renderer.render(control.memory(), true);
+        command_renderer.render(command.memory(), true);
+        control_renderer.write_bmp(output_dir / "m7_battle_control.bmp");
+        command_renderer.write_bmp(output_dir / "m7_battle_after.bmp");
+
+        const std::uint64_t control_screen = control_renderer.hash();
+        const std::uint64_t command_screen = command_renderer.hash();
+        const std::uint64_t control_wram = wram_hash(control.memory());
+        const std::uint64_t command_wram = wram_hash(command.memory());
+        const std::uint8_t control_submode =
+            control.memory().read8(0xC5DC);
+        const std::uint8_t command_submode =
+            command.memory().read8(0xC5DC);
+
+        std::cout << "M7_BATTLE_RESULT before_screen=0x" << std::hex
+                  << before_screen << " control_screen=0x" << control_screen
+                  << " command_screen=0x" << command_screen
+                  << " before_wram=0x" << before_wram
+                  << " control_wram=0x" << control_wram
+                  << " command_wram=0x" << command_wram
+                  << std::dec
+                  << " C5DC=" << static_cast<unsigned>(before_submode)
+                  << "->control:" << static_cast<unsigned>(control_submode)
+                  << " command:" << static_cast<unsigned>(command_submode)
+                  << " command_mode="
+                  << static_cast<unsigned>(command.memory().read8(0xC5DB));
+        print_path(path);
+        std::cout << std::endl;
+
+        const bool diverged =
+            command_screen != control_screen ||
+            command_wram != control_wram ||
+            command_submode != control_submode;
+        if (!diverged) {
+            std::cout << "M7_BATTLE_FAIL phase=command_no_effect"
+                      << std::endl;
+            return 185;
+        }
+
+        std::cout << "M7_BATTLE_PASS original_game_battle_reached_and_p1_command_advanced_state";
+        print_path(path);
+        std::cout << std::endl;
+        return 0;
+    };
+
+    struct BattleNode {
+        std::unique_ptr<Runtime> runtime;
+        std::vector<std::uint8_t> path;
+        std::uint64_t score = 0;
+    };
+
+    (void)runtime.memory().apu().take_samples();
+    std::vector<BattleNode> frontier;
+    frontier.push_back({
+        std::make_unique<Runtime>(runtime), {}, 0
+    });
+
+    std::unordered_set<std::uint64_t> seen;
+    seen.insert(state_signature(runtime.memory()));
+    constexpr std::size_t search_width = 40;
+    constexpr std::size_t search_depth = 18;
+    constexpr std::array<std::uint8_t, 5> actions = {0, 1, 2, 3, 4};
+
+    for (std::size_t depth = 0;
+         depth < search_depth && !frontier.empty(); ++depth) {
+        std::vector<BattleNode> next;
+        next.reserve(frontier.size() * actions.size());
+
+        for (const BattleNode& node : frontier) {
+            for (const std::uint8_t action : actions) {
+                auto child =
+                    std::make_unique<Runtime>(*node.runtime);
+                StepResult result = StepResult::Continue;
+                if (action < 4) {
+                    result = search_move(*child, action);
+                } else {
+                    result = search_interact(*child);
+                }
+
+                std::vector<std::uint8_t> path = node.path;
+                path.push_back(action);
+
+                if (result == StepResult::MissingBank) {
+                    std::cout << "M7_BATTLE_SEARCH_MISSING_BANK depth="
+                              << depth << " bank="
+                              << child->cpu().missing_bank
+                              << " pc=0x" << std::hex << child->cpu().pc
+                              << std::dec;
+                    print_path(path);
+                    std::cout << std::endl;
+                    return 180;
+                }
+                if (result != StepResult::Continue) continue;
+
+                if (child->memory().read8(0xC5DB) == 2) {
+                    renderer.render(child->memory(), true);
+                    renderer.write_bmp(
+                        output_dir / "m7_battle_entry.bmp");
+                    std::cout << "M7_BATTLE_ENTRY depth=" << depth
+                              << " C5DC="
+                              << static_cast<unsigned>(
+                                     child->memory().read8(0xC5DC))
+                              << " screen=0x" << std::hex
+                              << renderer.hash() << std::dec;
+                    print_path(path);
+                    std::cout << std::endl;
+                    return verify_battle_command(*child, path);
+                }
+
+                const std::uint64_t sig =
+                    state_signature(child->memory());
+                if (!seen.insert(sig).second) continue;
+
+                std::uint64_t score = 0;
+                // Prefer states whose game-owned event selector/story bytes
+                // differ from the parent, then favor actual interactions.
+                if (child->memory().read8(0xC916) !=
+                    node.runtime->memory().read8(0xC916)) {
+                    score += 1'000'000'000'000ull;
+                }
+                if (child->memory().read8(0xC923) !=
+                    node.runtime->memory().read8(0xC923)) {
+                    score += 500'000'000'000ull;
+                }
+                if (child->memory().read8(0xCB86) !=
+                        node.runtime->memory().read8(0xCB86) ||
+                    child->memory().read8(0xCB8D) !=
+                        node.runtime->memory().read8(0xCB8D)) {
+                    score += 250'000'000'000ull;
+                }
+                if (action == 4) score += 10'000'000ull;
+                score += static_cast<std::uint64_t>(
+                    child->memory().current_rom_bank()) << 16;
+
+                next.push_back({
+                    std::move(child), std::move(path), score
+                });
+            }
+        }
+
+        std::stable_sort(
+            next.begin(), next.end(),
+            [](const BattleNode& a, const BattleNode& b) {
+                return a.score > b.score;
+            });
+        if (next.size() > search_width) next.resize(search_width);
+
+        if (!next.empty()) {
+            std::cout << "M7_BATTLE_SEARCH depth=" << depth
+                      << " frontier=" << next.size()
+                      << " states=" << seen.size()
+                      << " best_C916=0x" << std::hex
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xC916))
+                      << " best_C923=0x"
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xC923))
+                      << std::dec;
+            print_path(next.front().path);
+            std::cout << std::endl;
+        }
+
+        frontier = std::move(next);
+    }
+
+    std::cout << "M7_BATTLE_SEARCH_EXHAUSTED states=" << seen.size()
+              << " depth=" << search_depth << std::endl;
+    return 186;
     return 0;
 }
 
