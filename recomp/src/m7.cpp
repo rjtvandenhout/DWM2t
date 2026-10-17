@@ -8016,4 +8016,326 @@ int run_m7_audio_probe() {
     return 0;
 }
 
+int run_m7_save_continue_test(
+    const std::filesystem::path& save_path,
+    const std::filesystem::path& output_dir) {
+
+    std::filesystem::create_directories(output_dir);
+    std::error_code ec;
+    std::filesystem::remove(save_path, ec);
+
+    auto boot_title = [&](Runtime& runtime, Renderer& renderer) -> bool {
+        std::uint64_t observed = runtime.memory().frame_counter();
+        unsigned stable = 0;
+        constexpr std::size_t step_limit = 80'000'000;
+        for (std::size_t step = 0; step < step_limit; ++step) {
+            const StepResult result = runtime.step();
+            if (result == StepResult::MissingBank ||
+                result == StepResult::Trapped ||
+                result == StepResult::Stopped) {
+                std::cout << "M7_SAVE_BOOT_FAIL result="
+                          << static_cast<unsigned>(result)
+                          << " bank=" << runtime.cpu().missing_bank
+                          << " pc=0x" << std::hex << runtime.cpu().pc
+                          << std::dec << std::endl;
+                return false;
+            }
+            if (runtime.memory().frame_counter() == observed) continue;
+            observed = runtime.memory().frame_counter();
+            renderer.render(runtime.memory(), true);
+            if (renderer.hash() == kM5TitleHash &&
+                runtime.memory().read8(0xC5DB) == 5 &&
+                runtime.memory().read8(0xC5DC) == 0) {
+                ++stable;
+            } else {
+                stable = 0;
+            }
+            if (stable >= 30) return true;
+        }
+        return false;
+    };
+
+    auto pulse = [&](Runtime& runtime,
+                     std::uint8_t button,
+                     unsigned hold_frames,
+                     unsigned release_frames) -> StepResult {
+        for (unsigned i = 0; i < hold_frames; ++i) {
+            const StepResult r = advance_search_frame(runtime, button);
+            if (r != StepResult::Continue) return r;
+        }
+        for (unsigned i = 0; i < release_frames; ++i) {
+            const StepResult r = advance_search_frame(runtime, 0);
+            if (r != StepResult::Continue) return r;
+        }
+        return StepResult::Continue;
+    };
+
+    Runtime source{};
+    Renderer source_renderer{};
+    if (!boot_title(source, source_renderer)) return 190;
+
+    // Reuse the accepted original New Game route, then settle on the real ship.
+    for (std::uint64_t relative = 0; relative < 1800; ++relative) {
+        const StepResult r =
+            advance_search_frame(source, m6_story_buttons(relative));
+        if (r != StepResult::Continue) {
+            std::cout << "M7_SAVE_FAIL phase=story result="
+                      << static_cast<unsigned>(r) << std::endl;
+            return r == StepResult::MissingBank ? 180 : 191;
+        }
+    }
+    for (std::uint64_t i = 0; i < 36; ++i) {
+        const StepResult r =
+            advance_search_frame(source, i < 24 ? JoyRight : 0);
+        if (r != StepResult::Continue) {
+            std::cout << "M7_SAVE_FAIL phase=ship result="
+                      << static_cast<unsigned>(r) << std::endl;
+            return r == StepResult::MissingBank ? 180 : 192;
+        }
+    }
+
+    source.memory().set_joypad_state(0);
+    source_renderer.render(source.memory(), true);
+    const std::uint64_t saved_world_screen = source_renderer.hash();
+    const std::uint64_t saved_world_bg = background_hash(source.memory());
+    const std::uint64_t sram_before_menu = sram_hash(source.memory());
+    source_renderer.write_bmp(output_dir / "save_world_before_menu.bmp");
+    std::cout << "M7_SAVE_WORLD screen=0x" << std::hex
+              << saved_world_screen << " bg=0x" << saved_world_bg
+              << " sram=0x" << sram_before_menu << std::dec
+              << " C5DB=" << static_cast<unsigned>(
+                     source.memory().read8(0xC5DB))
+              << " C5DC=" << static_cast<unsigned>(
+                     source.memory().read8(0xC5DC))
+              << std::endl;
+
+    if (source.memory().read8(0xC5DB) != 1) return 193;
+
+    Runtime menu_seed = source;
+    if (pulse(menu_seed, JoyStart, 2, 36) != StepResult::Continue) {
+        return 194;
+    }
+    source_renderer.render(menu_seed.memory(), true);
+    source_renderer.write_bmp(output_dir / "save_menu_open.bmp");
+    std::cout << "M7_SAVE_MENU_OPEN screen=0x" << std::hex
+              << source_renderer.hash() << " bg=0x"
+              << background_hash(menu_seed.memory()) << std::dec
+              << " C5DC=" << static_cast<unsigned>(
+                     menu_seed.memory().read8(0xC5DC))
+              << " sram=0x" << std::hex
+              << sram_hash(menu_seed.memory()) << std::dec
+              << std::endl;
+
+    struct Candidate {
+        unsigned down = 0;
+        unsigned confirm = 0;
+    };
+    std::vector<Candidate> candidates;
+    for (unsigned down = 0; down < 8; ++down) {
+        for (unsigned confirm = 1; confirm <= 3; ++confirm) {
+            candidates.push_back({down, confirm});
+        }
+    }
+
+    bool found_save = false;
+    Runtime saved_runtime{};
+    unsigned saved_down = 0;
+    unsigned saved_confirm = 0;
+    std::uint64_t saved_sram_hash = 0;
+
+    for (const Candidate candidate : candidates) {
+        Runtime trial = menu_seed;
+        bool abort = false;
+        for (unsigned i = 0; i < candidate.down; ++i) {
+            const StepResult r = pulse(trial, JoyDown, 2, 10);
+            if (r != StepResult::Continue) {
+                abort = true;
+                break;
+            }
+        }
+        if (abort) continue;
+
+        for (unsigned i = 0; i < candidate.confirm; ++i) {
+            const StepResult r = pulse(trial, JoyA, 2, 72);
+            if (r != StepResult::Continue) {
+                abort = true;
+                break;
+            }
+        }
+        if (abort) continue;
+
+        for (unsigned settle = 0; settle < 180; ++settle) {
+            const StepResult r = advance_search_frame(trial, 0);
+            if (r != StepResult::Continue) {
+                abort = true;
+                break;
+            }
+        }
+        if (abort) continue;
+
+        const std::uint64_t trial_sram = sram_hash(trial.memory());
+        source_renderer.render(trial.memory(), true);
+        const std::uint64_t trial_screen = source_renderer.hash();
+        std::cout << "M7_SAVE_CANDIDATE down=" << candidate.down
+                  << " confirm=" << candidate.confirm
+                  << " sram=0x" << std::hex << trial_sram
+                  << " screen=0x" << trial_screen << std::dec
+                  << " C5DB=" << static_cast<unsigned>(
+                         trial.memory().read8(0xC5DB))
+                  << " C5DC=" << static_cast<unsigned>(
+                         trial.memory().read8(0xC5DC))
+                  << std::endl;
+
+        if (trial_sram != sram_before_menu) {
+            found_save = true;
+            saved_runtime = trial;
+            saved_down = candidate.down;
+            saved_confirm = candidate.confirm;
+            saved_sram_hash = trial_sram;
+            source_renderer.write_bmp(
+                output_dir / "save_menu_accepted.bmp");
+            break;
+        }
+    }
+
+    if (!found_save) {
+        std::cout << "M7_SAVE_FAIL no_menu_candidate_changed_sram"
+                  << std::endl;
+        return 195;
+    }
+
+    if (!save_sram_file(saved_runtime.memory(), save_path)) {
+        std::cout << "M7_SAVE_FAIL persist_file" << std::endl;
+        return 196;
+    }
+    std::cout << "M7_SAVE_ACCEPTED down=" << saved_down
+              << " confirm=" << saved_confirm
+              << " sram_before=0x" << std::hex << sram_before_menu
+              << " sram_after=0x" << saved_sram_hash << std::dec
+              << " path=" << save_path.string() << std::endl;
+
+    // Fresh process-equivalent Runtime: constructor resets all CPU/WRAM/PPU/APU
+    // state. Only the exact 32 KiB SRAM file is carried across.
+    Runtime fresh{};
+    Renderer fresh_renderer{};
+    if (!load_sram_file(fresh.memory(), save_path)) {
+        std::cout << "M7_CONTINUE_FAIL load_sram" << std::endl;
+        return 197;
+    }
+    const std::uint64_t loaded_sram = sram_hash(fresh.memory());
+    if (loaded_sram != saved_sram_hash) {
+        std::cout << "M7_CONTINUE_FAIL sram_hash expected=0x"
+                  << std::hex << saved_sram_hash << " got=0x"
+                  << loaded_sram << std::dec << std::endl;
+        return 198;
+    }
+    if (!boot_title(fresh, fresh_renderer)) return 199;
+    fresh_renderer.write_bmp(output_dir / "continue_title.bmp");
+
+    struct ContinueCandidate {
+        int vertical = 0;  // negative=Up, positive=Down
+        bool use_start = false;
+    };
+    constexpr std::array<ContinueCandidate, 7> continue_candidates = {{
+        {0,true}, {0,false}, {1,false}, {-1,false},
+        {2,false}, {-2,false}, {1,true}
+    }};
+
+    for (std::size_t index = 0;
+         index < continue_candidates.size(); ++index) {
+        Runtime trial = fresh;
+        const ContinueCandidate candidate = continue_candidates[index];
+        bool abort = false;
+
+        if (candidate.vertical != 0) {
+            const std::uint8_t dir =
+                candidate.vertical > 0 ? JoyDown : JoyUp;
+            for (int i = 0; i < std::abs(candidate.vertical); ++i) {
+                if (pulse(trial, dir, 2, 12) != StepResult::Continue) {
+                    abort = true;
+                    break;
+                }
+            }
+        }
+        if (abort) continue;
+
+        const std::uint8_t accept_button =
+            candidate.use_start ? JoyStart : JoyA;
+        if (pulse(trial, accept_button, 2, 12) != StepResult::Continue) {
+            continue;
+        }
+
+        for (unsigned frame = 0; frame < 1800; ++frame) {
+            std::uint8_t buttons = 0;
+            if ((frame % 90u) < 2u &&
+                trial.memory().read8(0xC5DC) != 0) {
+                buttons = JoyA;
+            }
+            const StepResult r = advance_search_frame(trial, buttons);
+            if (r == StepResult::MissingBank) {
+                std::cout << "M7_CONTINUE_MISSING_BANK candidate="
+                          << index << " bank=" << trial.cpu().missing_bank
+                          << " pc=0x" << std::hex << trial.cpu().pc
+                          << std::dec << std::endl;
+                return 180;
+            }
+            if (r != StepResult::Continue) {
+                abort = true;
+                break;
+            }
+
+            if (trial.memory().read8(0xC5DB) == 1 &&
+                trial.memory().read8(0xC5DC) == 0) {
+                for (unsigned settle = 0; settle < 60; ++settle) {
+                    const StepResult settle_result =
+                        advance_search_frame(trial, 0);
+                    if (settle_result != StepResult::Continue) {
+                        abort = true;
+                        break;
+                    }
+                }
+                if (abort) break;
+
+                fresh_renderer.render(trial.memory(), true);
+                const std::uint64_t resumed_screen =
+                    fresh_renderer.hash();
+                const std::uint64_t resumed_bg =
+                    background_hash(trial.memory());
+                fresh_renderer.write_bmp(
+                    output_dir /
+                    ("continue_candidate_" +
+                     std::to_string(index) + ".bmp"));
+                std::cout << "M7_CONTINUE_CANDIDATE index=" << index
+                          << " vertical=" << candidate.vertical
+                          << " button="
+                          << (candidate.use_start ? "Start" : "A")
+                          << " screen=0x" << std::hex << resumed_screen
+                          << " bg=0x" << resumed_bg
+                          << " sram=0x" << sram_hash(trial.memory())
+                          << std::dec << " frame="
+                          << trial.memory().frame_counter()
+                          << std::endl;
+
+                if (resumed_bg == saved_world_bg ||
+                    resumed_screen == saved_world_screen) {
+                    std::cout
+                        << "M7_SAVE_CONTINUE_PASS original_menu_save_and_fresh_runtime_continue"
+                        << " save_down=" << saved_down
+                        << " save_confirm=" << saved_confirm
+                        << " continue_candidate=" << index
+                        << " sram=0x" << std::hex << saved_sram_hash
+                        << " resumed_bg=0x" << resumed_bg
+                        << std::dec << std::endl;
+                    return 0;
+                }
+                break;
+            }
+        }
+    }
+
+    std::cout << "M7_CONTINUE_FAIL no_candidate_resumed_saved_world"
+              << std::endl;
+    return 200;
+}
+
 } // namespace dwm2t

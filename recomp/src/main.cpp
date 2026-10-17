@@ -608,6 +608,14 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc >= 2 && std::string_view(argv[1]) == "--m7-save-continue-test") {
+        if (argc != 4) {
+            std::cerr << "Usage: DWM2tRecomp.exe --m7-save-continue-test <save-path> <output-dir>\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_m7_save_continue_test(argv[2], argv[3]);
+    }
+
     if (argc >= 2 && std::string_view(argv[1]) == "--m7-fast-route") {
         if (argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --m7-fast-route <output-dir>\n";
