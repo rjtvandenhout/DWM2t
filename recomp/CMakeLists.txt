@@ -190,3 +190,11 @@ if(MSVC)
     # without changing any emulated game state or cartridge execution.
     target_link_options(DWM2tRecomp PRIVATE /STACK:8388608)
 endif()
+
+
+if(MSVC)
+    # M7 contains a large diagnostic/acceptance harness. Keep the cartridge
+    # runtime and generated AOT banks optimized, but compile this orchestration
+    # TU without optimizer work so iterative Windows CI stays practical.
+    set_source_files_properties(src/m7.cpp PROPERTIES COMPILE_OPTIONS "/Od;/Ob0")
+endif()
