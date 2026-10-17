@@ -1047,6 +1047,138 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 selector08_battle_reached = true;
                 break;
             }
+
+            if (mode == 1 && after_c916 == 0x08) {
+                renderer.write_bmp(
+                    output_dir / "fast_selector08_before_dialog.bmp");
+                Runtime selector_dialog = runtime;
+                bool dialog_seen = false;
+                bool dialog_closed = false;
+                unsigned dialog_pages = 0;
+                std::uint64_t next_press = 96;
+
+                for (std::uint64_t frame = 0; frame < 1200; ++frame) {
+                    const std::uint8_t sub_before =
+                        selector_dialog.memory().read8(0xC5DC);
+                    if (dialog_seen && sub_before == 0) {
+                        dialog_closed = true;
+                        break;
+                    }
+
+                    std::uint8_t buttons = 0;
+                    if (!dialog_seen) {
+                        if (frame < 2) buttons = JoyA;
+                    } else if (frame == next_press) {
+                        buttons = JoyA;
+                    }
+
+                    const StepResult dialog_result =
+                        advance_search_frame(selector_dialog, buttons);
+                    if (dialog_result == StepResult::MissingBank) {
+                        std::cout
+                            << "M7_FAST_SELECTOR08_DIALOG_MISSING_BANK bank="
+                            << selector_dialog.cpu().missing_bank
+                            << " pc=0x" << std::hex
+                            << selector_dialog.cpu().pc
+                            << std::dec << std::endl;
+                        return 180;
+                    }
+                    if (dialog_result != StepResult::Continue) {
+                        return fail("selector08_dialog", dialog_result);
+                    }
+
+                    const std::uint8_t dialog_mode =
+                        selector_dialog.memory().read8(0xC5DB);
+                    const std::uint8_t dialog_sub =
+                        selector_dialog.memory().read8(0xC5DC);
+
+                    if (dialog_mode == 2) {
+                        runtime = selector_dialog;
+                        selector08_battle_reached = true;
+                        renderer.render(runtime.memory(), true);
+                        renderer.write_bmp(
+                            output_dir / "fast_selector08_dialog_battle.bmp");
+                        std::cout
+                            << "M7_FAST_SELECTOR08_DIALOG_BATTLE frame="
+                            << frame << std::endl;
+                        break;
+                    }
+                    if (dialog_mode != 1) {
+                        std::cout
+                            << "M7_FAST_FAIL phase=selector08_dialog_mode"
+                            << " C5DB="
+                            << static_cast<unsigned>(dialog_mode)
+                            << std::endl;
+                        return 181;
+                    }
+
+                    if (!dialog_seen && dialog_sub != 0) {
+                        dialog_seen = true;
+                        next_press = frame + 96;
+                    }
+
+                    if (dialog_seen && dialog_sub != 0 &&
+                        frame + 1 == next_press &&
+                        dialog_pages < 8) {
+                        Renderer page_renderer{};
+                        page_renderer.render(
+                            selector_dialog.memory(), true);
+                        page_renderer.write_bmp(
+                            output_dir /
+                            ("fast_selector08_page_" +
+                             std::to_string(dialog_pages) + ".bmp"));
+                        std::cout
+                            << "M7_FAST_SELECTOR08_PAGE page="
+                            << dialog_pages
+                            << " frame=" << frame
+                            << " screen=0x" << std::hex
+                            << page_renderer.hash()
+                            << " C916=0x"
+                            << static_cast<unsigned>(
+                                   selector_dialog.memory().read8(0xC916))
+                            << " C923=0x"
+                            << static_cast<unsigned>(
+                                   selector_dialog.memory().read8(0xC923))
+                            << std::dec << std::endl;
+                        ++dialog_pages;
+                    }
+
+                    if (buttons == JoyA && dialog_seen) {
+                        next_press = frame + 96;
+                    }
+                }
+
+                if (selector08_battle_reached) break;
+
+                runtime = selector_dialog;
+                renderer.render(runtime.memory(), true);
+                renderer.write_bmp(
+                    output_dir / "fast_selector08_after_dialog.bmp");
+                std::cout
+                    << "M7_FAST_SELECTOR08_DIALOG_PASS seen="
+                    << (dialog_seen ? 1 : 0)
+                    << " closed=" << (dialog_closed ? 1 : 0)
+                    << " pages=" << dialog_pages
+                    << " C916=0x" << std::hex
+                    << static_cast<unsigned>(
+                           runtime.memory().read8(0xC916))
+                    << " C923=0x"
+                    << static_cast<unsigned>(
+                           runtime.memory().read8(0xC923))
+                    << " CB86=0x"
+                    << static_cast<unsigned>(
+                           runtime.memory().read8(0xCB86))
+                    << " CB8D=0x"
+                    << static_cast<unsigned>(
+                           runtime.memory().read8(0xCB8D))
+                    << " screen=0x" << renderer.hash()
+                    << std::dec << std::endl;
+
+                if (dialog_seen && dialog_closed) {
+                    break;
+                }
+            }
+
             if (mode != 1) {
                 std::cout
                     << "M7_FAST_FAIL phase=selector08_unexpected_mode"
