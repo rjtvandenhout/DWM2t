@@ -1484,6 +1484,12 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << "M7_WEST_SEARCH_EXHAUSTED states="
                                 << west_seen.size()
                                 << std::endl;
+                            // Discovery checkpoint: stop here instead of
+                            // falling into older broad searches. Once a
+                            // deterministic battle route is pinned this
+                            // diagnostic return is replaced by the M7
+                            // battle regression.
+                            return 164;
 
                             // Locate the exact scripted event that owns the
                             // A6 setter. ROM analysis proves that bank 16:$4D86
