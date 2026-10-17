@@ -1290,6 +1290,162 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return StepResult::Continue;
     };
 
+    // Pin the furthest deterministic selector-changing route observed by the
+    // bounded original-input search. This is diagnostic only: every element is
+    // replayed through the same P1 movement/dialogue macros as the search.
+    constexpr std::array<std::uint8_t, 37> selector_a3_path = {
+        3,0,0,0,0,0,4,3,3,3,3,2,0,0,0,3,2,0,3,
+        0,0,2,1,3,4,0,2,2,1,1,4,3,3,2,0,3,4
+    };
+    {
+        Runtime pinned = runtime;
+        Renderer pinned_renderer{};
+        std::uint8_t previous_selector =
+            pinned.memory().read8(0xC916);
+
+        for (std::size_t i = 0; i < selector_a3_path.size(); ++i) {
+            const std::uint8_t action = selector_a3_path[i];
+            Runtime before_action = pinned;
+            StepResult result = StepResult::Continue;
+            if (action < 4) {
+                result = search_move(pinned, action);
+            } else {
+                result = search_interact(pinned);
+            }
+
+            if (result == StepResult::MissingBank) {
+                std::cout << "M7_SELECTOR_A3_MISSING_BANK index=" << i
+                          << " bank=" << pinned.cpu().missing_bank
+                          << " pc=0x" << std::hex << pinned.cpu().pc
+                          << std::dec << std::endl;
+                return 180;
+            }
+            if (result != StepResult::Continue) {
+                std::cout << "M7_SELECTOR_A3_ABORT index=" << i
+                          << " result=" << static_cast<unsigned>(result)
+                          << std::endl;
+                return 186;
+            }
+
+            const std::uint8_t selector =
+                pinned.memory().read8(0xC916);
+            const std::uint8_t mode =
+                pinned.memory().read8(0xC5DB);
+
+            if (mode == 2) {
+                pinned_renderer.render(pinned.memory(), true);
+                pinned_renderer.write_bmp(
+                    output_dir / "m7_selector_a3_battle_entry.bmp");
+                std::cout << "M7_SELECTOR_A3_BATTLE index=" << i
+                          << " screen=0x" << std::hex
+                          << pinned_renderer.hash() << std::dec
+                          << std::endl;
+                const std::vector<std::uint8_t> path(
+                    selector_a3_path.begin(),
+                    selector_a3_path.begin() + i + 1);
+                return verify_battle_command(pinned, path);
+            }
+
+            if (selector != previous_selector) {
+                pinned_renderer.render(pinned.memory(), true);
+                pinned_renderer.write_bmp(
+                    output_dir /
+                    ("m7_selector_change_" + std::to_string(i) +
+                     "_to_" + std::to_string(selector) + ".bmp"));
+                std::cout << "M7_SELECTOR_CHANGE index=" << i
+                          << " action=" << search_action_name(action)
+                          << " C916=0x" << std::hex
+                          << static_cast<unsigned>(previous_selector)
+                          << "->0x" << static_cast<unsigned>(selector)
+                          << " C923=0x"
+                          << static_cast<unsigned>(
+                                 pinned.memory().read8(0xC923))
+                          << " screen=0x" << pinned_renderer.hash()
+                          << " bg=0x"
+                          << background_hash(pinned.memory())
+                          << std::dec << std::endl;
+
+                if (action == 4) {
+                    Runtime dialogue = before_action;
+                    bool seen_dialog = false;
+                    unsigned page = 0;
+                    std::uint64_t next_press = 96;
+                    for (std::uint64_t frame = 0; frame < 900; ++frame) {
+                        const std::uint8_t sub_before =
+                            dialogue.memory().read8(0xC5DC);
+                        if (seen_dialog && sub_before == 0) break;
+
+                        std::uint8_t buttons = 0;
+                        if (!seen_dialog) {
+                            if (frame < 2) buttons = JoyA;
+                        } else if (frame == next_press) {
+                            buttons = JoyA;
+                        }
+
+                        const StepResult dialog_result =
+                            advance_search_frame(dialogue, buttons);
+                        if (dialog_result == StepResult::MissingBank) {
+                            std::cout
+                                << "M7_SELECTOR_DIALOG_MISSING_BANK index="
+                                << i << " bank="
+                                << dialogue.cpu().missing_bank
+                                << " pc=0x" << std::hex
+                                << dialogue.cpu().pc << std::dec
+                                << std::endl;
+                            return 180;
+                        }
+                        if (dialog_result != StepResult::Continue) break;
+
+                        const std::uint8_t sub =
+                            dialogue.memory().read8(0xC5DC);
+                        if (!seen_dialog && sub != 0) {
+                            seen_dialog = true;
+                            next_press = frame + 96;
+                        }
+                        if (seen_dialog && sub != 0 &&
+                            frame + 1 == next_press && page < 8) {
+                            pinned_renderer.render(
+                                dialogue.memory(), true);
+                            pinned_renderer.write_bmp(
+                                output_dir /
+                                ("m7_selector_dialog_" +
+                                 std::to_string(i) + "_page_" +
+                                 std::to_string(page) + ".bmp"));
+                            std::cout
+                                << "M7_SELECTOR_DIALOG_PAGE index=" << i
+                                << " page=" << page
+                                << " frame=" << frame
+                                << " screen=0x" << std::hex
+                                << pinned_renderer.hash()
+                                << std::dec << std::endl;
+                            ++page;
+                        }
+                        if (buttons == JoyA && seen_dialog) {
+                            next_press = frame + 96;
+                        }
+                    }
+                }
+
+                previous_selector = selector;
+            }
+        }
+
+        pinned_renderer.render(pinned.memory(), true);
+        pinned_renderer.write_bmp(
+            output_dir / "m7_selector_a3_final.bmp");
+        std::cout << "M7_SELECTOR_A3_COMPLETE C916=0x" << std::hex
+                  << static_cast<unsigned>(
+                         pinned.memory().read8(0xC916))
+                  << " C923=0x"
+                  << static_cast<unsigned>(
+                         pinned.memory().read8(0xC923))
+                  << " screen=0x" << pinned_renderer.hash()
+                  << " bg=0x"
+                  << background_hash(pinned.memory())
+                  << std::dec << std::endl;
+        return 187;
+    }
+
     auto state_signature = [&](const Memory& memory) {
         std::uint64_t h = background_hash(memory);
         auto mix = [&](std::uint64_t value) {
