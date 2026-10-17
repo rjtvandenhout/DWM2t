@@ -2000,15 +2000,100 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return 152;
                             }
 
+                            // Pin the first authoritative quest progression
+                            // discovered by the event-table beam. The route uses
+                            // only normal P1 actions and must flip cartridge
+                            // event flag $0004 from 0 to 1.
+                            constexpr std::array<std::uint8_t, 10>
+                                quest_trigger_path = {
+                                    2,2,4,4,4,4,4,1,4,4
+                                };
+
+                            auto quest_trigger =
+                                std::make_unique<Runtime>(*farm_seed);
+                            const bool flag4_before =
+                                event_flag(quest_trigger->memory(), 0x04);
+                            for (std::size_t i = 0;
+                                 i < quest_trigger_path.size(); ++i) {
+                                const StepResult result =
+                                    apply_quest_action(
+                                        *quest_trigger,
+                                        quest_trigger_path[i]);
+                                if (result == StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_QUEST_TRIGGER_MISSING_BANK index="
+                                        << i
+                                        << " bank="
+                                        << quest_trigger->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << quest_trigger->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result != StepResult::Continue) {
+                                    std::cout
+                                        << "M7_QUEST_TRIGGER_ABORT index="
+                                        << i
+                                        << " result="
+                                        << static_cast<unsigned>(result)
+                                        << std::endl;
+                                    return 154;
+                                }
+                            }
+
+                            const bool flag4_after =
+                                event_flag(quest_trigger->memory(), 0x04);
+                            quest_renderer.render(
+                                quest_trigger->memory(), true);
+                            quest_renderer.write_bmp(
+                                output_dir /
+                                "m7_quest_flag4_triggered.bmp");
+                            std::cout
+                                << "M7_QUEST_TRIGGER_PASS flag=0x4 before="
+                                << (flag4_before ? 1 : 0)
+                                << " after=" << (flag4_after ? 1 : 0)
+                                << " screen=0x" << std::hex
+                                << quest_renderer.hash()
+                                << " bg=0x"
+                                << background_hash(
+                                       quest_trigger->memory())
+                                << " story=0x"
+                                << story_signature(
+                                       quest_trigger->memory())
+                                << std::dec << std::endl;
+
+                            if (flag4_before || !flag4_after) {
+                                std::cout
+                                    << "M7_QUEST_TRIGGER_FAIL flag4"
+                                    << std::endl;
+                                return 155;
+                            }
+
+                            // Continue only from the newly accepted game-owned
+                            // story state. A bounded beam explores physical
+                            // movement and normal A interactions. Any mode
+                            // change is captured immediately so the next run can
+                            // classify the exact battle transition.
                             std::vector<QuestNode> quest_frontier;
                             quest_frontier.push_back({
-                                std::move(farm_seed),
+                                std::move(quest_trigger),
                                 {},
                                 0,
-                                quest_start_bg,
+                                background_hash(
+                                    quest_renderer.hash() != 0
+                                        ? farm_seed->memory()
+                                        : farm_seed->memory()),
                                 quest_renderer.hash(),
-                                quest_start_story
+                                0
                             });
+                            quest_frontier.front().bg =
+                                background_hash(
+                                    quest_frontier.front()
+                                        .runtime->memory());
+                            quest_frontier.front().story =
+                                story_signature(
+                                    quest_frontier.front()
+                                        .runtime->memory());
 
                             std::unordered_set<std::uint64_t> quest_seen;
                             std::unordered_set<std::uint64_t> quest_bgs;
@@ -2203,7 +2288,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                         << std::endl;
                                                 }
                                             }
-                                            return 153;
+                                            std::cout
+                                                << "M7_SEARCH_QUEST_PROGRESS_CONTINUE"
+                                                << std::endl;
                                         }
 
                                         std::uint64_t score = 0;
