@@ -1388,19 +1388,22 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
 
         // Physical player position/location fields established by the earlier
         // P1 exit enumerator. These remain stable across textbox animation.
-        mix(memory.read8(0xFF8E));
-        mix(static_cast<std::uint64_t>(memory.read8(0xFF91)) << 8);
-        mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 16);
-        mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
+        mix(memory.read8(0xFF8C));
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF8E)) << 8);
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF91)) << 16);
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF92)) << 24);
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF98)) << 32);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 40);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 48);
 
         // Persistent/story-relevant bytes observed along the original route,
         // plus the live guards used by the bank-2 battle-entry routines.
         // Without these guard bytes, physically identical states with different
         // battle eligibility collapsed to one signature and were pruned.
-        constexpr std::array<std::uint16_t, 15> story_bytes = {
+        constexpr std::array<std::uint16_t, 16> story_bytes = {
             0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
             0xC552, 0xCBEB, 0xCB86, 0xCB8D,
-            0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC193
+            0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC8CD, 0xC193
         };
         for (const std::uint16_t address : story_bytes) {
             mix(static_cast<std::uint64_t>(memory.read8(address)) |
@@ -1978,7 +1981,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 std::uint64_t score =
                     static_cast<std::uint64_t>(battle_trace.rank) *
                     20'000'000'000ull;
-                if (battle_trace.rank >= 650) {
+                if (battle_trace.rank >= 900) {
                     std::cout << "M7_BATTLE_TRACE depth=" << depth
                               << " rank=" << battle_trace.rank
                               << " bank=" << battle_trace.bank
