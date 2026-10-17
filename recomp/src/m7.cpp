@@ -1436,6 +1436,12 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         std::cout << "M7_SELECTOR_A3_COMPLETE C916=0x" << std::hex
                   << static_cast<unsigned>(
                          pinned.memory().read8(0xC916))
+                  << " C920=0x"
+                  << static_cast<unsigned>(
+                         pinned.memory().read8(0xC920))
+                  << " C921=0x"
+                  << static_cast<unsigned>(
+                         pinned.memory().read8(0xC921))
                   << " C923=0x"
                   << static_cast<unsigned>(
                          pinned.memory().read8(0xC923))
@@ -1443,7 +1449,9 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                   << " bg=0x"
                   << background_hash(pinned.memory())
                   << std::dec << std::endl;
-        return 187;
+
+        runtime = pinned;
+        std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
     }
 
     auto state_signature = [&](const Memory& memory) {
@@ -1460,8 +1468,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
 
         // Persistent/story-relevant bytes observed along the original route.
-        constexpr std::array<std::uint16_t, 8> story_bytes = {
-            0xC916, 0xC917, 0xC920, 0xC923,
+        constexpr std::array<std::uint16_t, 9> story_bytes = {
+            0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
             0xC552, 0xCBEB, 0xCB86, 0xCB8D
         };
         for (const std::uint16_t address : story_bytes) {
@@ -1668,6 +1676,73 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     print_path(path);
                     std::cout << std::endl;
                     return verify_battle_command(*child, path);
+                }
+
+                if (action == 4) {
+                    const std::uint8_t idle_start_c921 =
+                        child->memory().read8(0xC921);
+                    const std::uint8_t idle_start_c920 =
+                        child->memory().read8(0xC920);
+                    constexpr unsigned kPostInteractionIdleFrames = 180;
+                    for (unsigned idle = 0;
+                         idle < kPostInteractionIdleFrames; ++idle) {
+                        const StepResult idle_result =
+                            advance_search_frame(*child, 0);
+                        if (idle_result == StepResult::MissingBank) {
+                            std::cout
+                                << "M7_BATTLE_IDLE_MISSING_BANK depth="
+                                << depth
+                                << " idle=" << idle
+                                << " bank=" << child->cpu().missing_bank
+                                << " pc=0x" << std::hex
+                                << child->cpu().pc << std::dec;
+                            print_path(path);
+                            std::cout << std::endl;
+                            return 180;
+                        }
+                        if (idle_result != StepResult::Continue) break;
+
+                        if (child->memory().read8(0xC5DB) == 2) {
+                            renderer.render(child->memory(), true);
+                            renderer.write_bmp(
+                                output_dir / "m7_battle_idle_entry.bmp");
+                            std::cout
+                                << "M7_BATTLE_IDLE_ENTRY depth=" << depth
+                                << " idle=" << idle
+                                << " C920=0x" << std::hex
+                                << static_cast<unsigned>(
+                                       child->memory().read8(0xC920))
+                                << " C921=0x"
+                                << static_cast<unsigned>(
+                                       child->memory().read8(0xC921))
+                                << " screen=0x" << renderer.hash()
+                                << std::dec;
+                            print_path(path);
+                            std::cout << std::endl;
+                            return verify_battle_command(*child, path);
+                        }
+                    }
+
+                    const std::uint8_t idle_end_c921 =
+                        child->memory().read8(0xC921);
+                    const std::uint8_t idle_end_c920 =
+                        child->memory().read8(0xC920);
+                    if (idle_start_c921 != idle_end_c921 ||
+                        idle_start_c920 != idle_end_c920) {
+                        std::cout
+                            << "M7_BATTLE_IDLE_PROGRESS depth=" << depth
+                            << " C920=0x" << std::hex
+                            << static_cast<unsigned>(idle_start_c920)
+                            << "->0x"
+                            << static_cast<unsigned>(idle_end_c920)
+                            << " C921=0x"
+                            << static_cast<unsigned>(idle_start_c921)
+                            << "->0x"
+                            << static_cast<unsigned>(idle_end_c921)
+                            << std::dec;
+                        print_path(path);
+                        std::cout << std::endl;
+                    }
                 }
 
                 const std::uint64_t sig =
