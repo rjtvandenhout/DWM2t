@@ -786,7 +786,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     };
     // R=0, L=1, U=2, D=3. The NPC visible west/northwest of the
     // checkpoint sits farther away than the previous l1/l2 probes reached.
-    constexpr std::array<WestNpcRoute, 14> west_npc_routes = {{
+    constexpr std::array<WestNpcRoute, 15> west_npc_routes = {{
+        {{{0,0,0,0,0,0}},0,"HERE"},
         {{{1,1,2,0,0,0}},3,"LLU"},
         {{{1,1,1,2,0,0}},4,"LLLU"},
         {{{1,1,2,2,0,0}},4,"LLUU"},
