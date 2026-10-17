@@ -2043,6 +2043,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         << " D7FD=0x"
                                         << static_cast<unsigned>(
                                                vault_door->memory().read8(0xD7FD))
+                                        << " D7FE=0x"
+                                        << static_cast<unsigned>(
+                                               vault_door->memory().read8(0xD7FE))
                                         << " screen=0x"
                                         << vault_door_renderer.hash()
                                         << std::setfill(' ')
