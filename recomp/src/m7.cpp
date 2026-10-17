@@ -987,6 +987,89 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
               << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
               << std::endl;
 
+    // Run 218 proved that the accepted LLU+Left+A Vault interaction
+    // (page hash below) has a short original-input continuation that changes
+    // the game-owned event selector to C916=0x08. Replay that exact P1 macro
+    // sequence before the generic battle search so the latter starts from the
+    // furthest known cartridge story checkpoint.
+    constexpr std::uint64_t kVaultTriggerPage =
+        0x7116f5af7c59cb3aull;
+    if (accepted_page_hash == kVaultTriggerPage &&
+        runtime.memory().read8(0xC5DB) == 1) {
+        constexpr std::array<std::uint8_t, 11> selector08_path = {
+            0,0,0,0,0,0,2,1,4,0,4
+        };
+        for (std::size_t i = 0; i < selector08_path.size(); ++i) {
+            const std::uint8_t before_c916 =
+                runtime.memory().read8(0xC916);
+            const StepResult result =
+                apply_search_action(runtime, selector08_path[i]);
+            if (result == StepResult::MissingBank) {
+                std::cout
+                    << "M7_FAST_SELECTOR08_MISSING_BANK index=" << i
+                    << " action=" << search_action_name(selector08_path[i])
+                    << " bank=" << runtime.cpu().missing_bank
+                    << " pc=0x" << std::hex << runtime.cpu().pc
+                    << std::dec << std::endl;
+                return 180;
+            }
+            if (result != StepResult::Continue) {
+                return fail("selector08_path", result);
+            }
+
+            renderer.render(runtime.memory(), true);
+            const std::uint8_t mode =
+                runtime.memory().read8(0xC5DB);
+            const std::uint8_t after_c916 =
+                runtime.memory().read8(0xC916);
+            std::cout
+                << "M7_FAST_SELECTOR08 index=" << i
+                << " action=" << search_action_name(selector08_path[i])
+                << " C916=0x" << std::hex
+                << static_cast<unsigned>(before_c916)
+                << "->0x" << static_cast<unsigned>(after_c916)
+                << " screen=0x" << renderer.hash()
+                << " bg=0x" << background_hash(runtime.memory())
+                << std::dec
+                << " C5DB=" << static_cast<unsigned>(mode)
+                << " C5DC="
+                << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
+                << std::endl;
+
+            if (mode == 2) {
+                renderer.write_bmp(
+                    output_dir / "fast_selector08_battle.bmp");
+                std::cout
+                    << "M7_FAST_SELECTOR08_BATTLE index=" << i
+                    << std::endl;
+                return verify_battle_command(
+                    runtime,
+                    output_dir / "battle_selector08");
+            }
+            if (mode != 1) {
+                std::cout
+                    << "M7_FAST_FAIL phase=selector08_unexpected_mode"
+                    << " C5DB=" << static_cast<unsigned>(mode)
+                    << std::endl;
+                return 181;
+            }
+        }
+
+        renderer.render(runtime.memory(), true);
+        renderer.write_bmp(output_dir / "fast_selector08_after.bmp");
+        std::cout << "M7_FAST_SELECTOR08_PASS C916=0x"
+                  << std::hex
+                  << static_cast<unsigned>(
+                         runtime.memory().read8(0xC916))
+                  << " screen=0x" << renderer.hash()
+                  << " bg=0x" << background_hash(runtime.memory())
+                  << std::dec
+                  << " C5DC="
+                  << static_cast<unsigned>(
+                         runtime.memory().read8(0xC5DC))
+                  << std::endl;
+    }
+
     // Bound the search to game-owned states after the accepted westward Vault interaction.
     // Movement macros never press A. The A macro presses A, waits for any
     // original dialogue to open, then advances it using ordinary P1 input.
