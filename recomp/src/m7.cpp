@@ -1102,6 +1102,386 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return 134;
                             }
 
+                            // A previous physical-only P1 search
+                            // reached a distinct west island through this exact
+                            // macro path. Recheck it directly now that ROM
+                            // analysis identifies script opcode $78 as a
+                            // battle-mode command (C5DB=2).
+                            constexpr std::array<std::uint8_t, 10>
+                                west_island_path = {
+                                    2, 1, 1, 1, 1, 1, 3, 1, 3, 3
+                                };
+                            constexpr std::uint64_t
+                                kWestIslandRegion =
+                                    0x8f79ba88f5c1628bull;
+
+                            auto west_island =
+                                std::make_unique<Runtime>(*outdoor);
+                            for (std::size_t i = 0;
+                                 i < west_island_path.size(); ++i) {
+                                const StepResult result =
+                                    apply_navigation(
+                                        *west_island,
+                                        west_island_path[i]);
+                                if (result ==
+                                    StepResult::MissingBank) {
+                                    std::cout
+                                        << "M7_WEST_ISLAND_MISSING_BANK index="
+                                        << i
+                                        << " bank="
+                                        << west_island->cpu().missing_bank
+                                        << " pc=0x" << std::hex
+                                        << west_island->cpu().pc
+                                        << std::dec << std::endl;
+                                    return 127;
+                                }
+                                if (result !=
+                                    StepResult::Continue) {
+                                    std::cout
+                                        << "M7_WEST_ISLAND_ABORT index="
+                                        << i
+                                        << " result="
+                                        << static_cast<unsigned>(
+                                               result)
+                                        << std::endl;
+                                    return 161;
+                                }
+                            }
+
+                            Renderer west_renderer{};
+                            west_renderer.render(
+                                west_island->memory(), true);
+                            const std::uint64_t west_region =
+                                background_hash(
+                                    west_island->memory());
+                            west_renderer.write_bmp(
+                                output_dir /
+                                "m7_west_island_seed.bmp");
+                            std::cout
+                                << "M7_WEST_ISLAND_SEED screen=0x"
+                                << std::hex
+                                << west_renderer.hash()
+                                << " region=0x" << west_region
+                                << " expected_region=0x"
+                                << kWestIslandRegion
+                                << " C920=0x"
+                                << static_cast<unsigned>(
+                                       west_island->memory()
+                                           .read8(0xC920))
+                                << std::dec << std::endl;
+
+                            if (west_region !=
+                                kWestIslandRegion) {
+                                std::cout
+                                    << "M7_WEST_ISLAND_FAIL deterministic_region"
+                                    << std::endl;
+                                return 162;
+                            }
+
+                            struct WestNode {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                            };
+
+                            auto probe_west_interaction =
+                                [&](const Runtime& seed,
+                                    const std::vector<std::uint8_t>& path)
+                                    -> int {
+                                auto probe =
+                                    std::make_unique<Runtime>(seed);
+                                bool opened = false;
+                                constexpr std::uint64_t frames =
+                                    900;
+                                for (std::uint64_t frame = 0;
+                                     frame < frames; ++frame) {
+                                    const std::uint8_t mode_before =
+                                        probe->memory().read8(
+                                            0xC5DB);
+                                    const std::uint8_t opcode =
+                                        probe->memory().read8(
+                                            0xC920);
+                                    if (mode_before == 2 ||
+                                        opcode == 0x78u) {
+                                        west_renderer.render(
+                                            probe->memory(), true);
+                                        west_renderer.write_bmp(
+                                            output_dir /
+                                            "m7_west_battle_trigger.bmp");
+                                        std::cout
+                                            << "M7_WEST_BATTLE_TRIGGER frame="
+                                            << frame
+                                            << " C5DB="
+                                            << static_cast<unsigned>(
+                                                   mode_before)
+                                            << " C5DC="
+                                            << static_cast<unsigned>(
+                                                   probe->memory()
+                                                       .read8(0xC5DC))
+                                            << " C920=0x"
+                                            << std::hex
+                                            << static_cast<unsigned>(
+                                                   opcode)
+                                            << " screen=0x"
+                                            << west_renderer.hash()
+                                            << std::dec;
+                                        print_search_path(path);
+                                        std::cout
+                                            << std::endl;
+                                        return 1;
+                                    }
+
+                                    const std::uint8_t submode =
+                                        probe->memory().read8(
+                                            0xC5DC);
+                                    if (submode != 0) {
+                                        opened = true;
+                                    }
+
+                                    std::uint8_t buttons = 0;
+                                    if (!opened) {
+                                        if (frame < 2 ||
+                                            (frame >= 120 &&
+                                             (frame % 120u) < 2u)) {
+                                            buttons = JoyA;
+                                        }
+                                    } else if ((frame % 72u) < 2u) {
+                                        buttons = JoyA;
+                                    }
+
+                                    const StepResult result =
+                                        advance_search_frame(
+                                            *probe, buttons);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_WEST_INTERACT_MISSING_BANK bank="
+                                            << probe->cpu()
+                                                   .missing_bank
+                                            << " pc=0x"
+                                            << std::hex
+                                            << probe->cpu().pc
+                                            << std::dec;
+                                        print_search_path(path);
+                                        std::cout
+                                            << std::endl;
+                                        return 127;
+                                    }
+                                    if (result ==
+                                            StepResult::Trapped ||
+                                        result ==
+                                            StepResult::Stopped ||
+                                        result ==
+                                            StepResult::StepLimit) {
+                                        return 0;
+                                    }
+
+                                    if (probe->memory()
+                                            .read8(0xC5DB) == 2) {
+                                        west_renderer.render(
+                                            probe->memory(), true);
+                                        west_renderer.write_bmp(
+                                            output_dir /
+                                            "m7_west_battle_mode.bmp");
+                                        std::cout
+                                            << "M7_WEST_BATTLE_MODE frame="
+                                            << frame
+                                            << " C5DC="
+                                            << static_cast<unsigned>(
+                                                   probe->memory()
+                                                       .read8(0xC5DC))
+                                            << " C920=0x"
+                                            << std::hex
+                                            << static_cast<unsigned>(
+                                                   probe->memory()
+                                                       .read8(0xC920))
+                                            << " screen=0x"
+                                            << west_renderer.hash()
+                                            << std::dec;
+                                        print_search_path(path);
+                                        std::cout
+                                            << std::endl;
+                                        return 1;
+                                    }
+
+                                    if (opened &&
+                                        probe->memory()
+                                            .read8(0xC5DC) == 0 &&
+                                        frame > 24) {
+                                        break;
+                                    }
+                                }
+                                return 0;
+                            };
+
+                            std::vector<WestNode> west_frontier;
+                            west_frontier.push_back({
+                                std::move(west_island),
+                                {},
+                                0
+                            });
+                            std::unordered_set<std::uint64_t>
+                                west_seen;
+                            constexpr std::array<std::uint8_t, 4>
+                                west_moves = {0, 1, 2, 3};
+                            constexpr std::size_t west_width = 24;
+                            constexpr std::size_t west_depth = 18;
+
+                            for (std::size_t depth = 0;
+                                 depth < west_depth &&
+                                 !west_frontier.empty();
+                                 ++depth) {
+                                std::vector<WestNode> next;
+                                next.reserve(
+                                    west_frontier.size() *
+                                    west_moves.size());
+
+                                for (const WestNode& node :
+                                     west_frontier) {
+                                    const int interaction =
+                                        probe_west_interaction(
+                                            *node.runtime,
+                                            node.path);
+                                    if (interaction == 127) {
+                                        return 127;
+                                    }
+                                    if (interaction == 1) {
+                                        return 163;
+                                    }
+
+                                    for (const std::uint8_t move :
+                                         west_moves) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const StepResult result =
+                                            apply_navigation(
+                                                *child, move);
+                                        if (result ==
+                                            StepResult::MissingBank) {
+                                            std::cout
+                                                << "M7_WEST_NAV_MISSING_BANK depth="
+                                                << depth
+                                                << " bank="
+                                                << child->cpu()
+                                                       .missing_bank
+                                                << " pc=0x"
+                                                << std::hex
+                                                << child->cpu().pc
+                                                << std::dec
+                                                << std::endl;
+                                            return 127;
+                                        }
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        std::vector<std::uint8_t>
+                                            path = node.path;
+                                        path.push_back(move);
+
+                                        if (child->memory()
+                                                .read8(0xC5DB) == 2 ||
+                                            child->memory()
+                                                .read8(0xC920) == 0x78u) {
+                                            west_renderer.render(
+                                                child->memory(), true);
+                                            west_renderer.write_bmp(
+                                                output_dir /
+                                                "m7_west_move_battle.bmp");
+                                            std::cout
+                                                << "M7_WEST_MOVE_BATTLE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<unsigned>(
+                                                       child->memory()
+                                                           .read8(0xC5DB))
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       child->memory()
+                                                           .read8(0xC5DC))
+                                                << " C920=0x"
+                                                << std::hex
+                                                << static_cast<unsigned>(
+                                                       child->memory()
+                                                           .read8(0xC920))
+                                                << " screen=0x"
+                                                << west_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout
+                                                << std::endl;
+                                            return 163;
+                                        }
+
+                                        west_renderer.render(
+                                            child->memory(), true);
+                                        std::uint64_t sig =
+                                            west_renderer.hash();
+                                        sig ^= background_hash(
+                                                   child->memory()) +
+                                            0x9E3779B97F4A7C15ull +
+                                            (sig << 6) +
+                                            (sig >> 2);
+                                        sig ^= tilemap_hash(
+                                                   child->memory()) +
+                                            0x9E3779B97F4A7C15ull +
+                                            (sig << 6) +
+                                            (sig >> 2);
+                                        if (!west_seen.insert(
+                                                 sig).second) {
+                                            continue;
+                                        }
+
+                                        std::uint64_t score = 0;
+                                        if (background_hash(
+                                                child->memory()) !=
+                                            kWestIslandRegion) {
+                                            score +=
+                                                1'000'000'000ull;
+                                        }
+                                        if (move == 1) {
+                                            score +=
+                                                20'000'000ull;
+                                        }
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score
+                                        });
+                                    }
+                                }
+
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const WestNode& a,
+                                       const WestNode& b) {
+                                        return a.score >
+                                               b.score;
+                                    });
+                                if (next.size() > west_width) {
+                                    next.resize(west_width);
+                                }
+                                if ((depth % 4u) == 0u) {
+                                    std::cout
+                                        << "M7_WEST_SEARCH depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size()
+                                        << " states="
+                                        << west_seen.size()
+                                        << std::endl;
+                                }
+                                west_frontier =
+                                    std::move(next);
+                            }
+
+                            std::cout
+                                << "M7_WEST_SEARCH_EXHAUSTED states="
+                                << west_seen.size()
+                                << std::endl;
+
                             // Locate the exact scripted event that owns the
                             // A6 setter. ROM analysis proves that bank 16:$4D86
                             // far-calls bank 15:$56CD, whose state 2 sets A6.
