@@ -1290,6 +1290,152 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return StepResult::Continue;
     };
 
+    auto state_signature = [&](const Memory& memory) {
+        std::uint64_t h = background_hash(memory);
+        auto mix = [&](std::uint64_t value) {
+            h ^= value + 0x9e3779b97f4a7c15ull + (h << 6) + (h >> 2);
+        };
+
+        // Physical player position/location fields established by the earlier
+        // P1 exit enumerator. These remain stable across textbox animation.
+        mix(memory.read8(0xFF8E));
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF91)) << 8);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 16);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
+
+        // Persistent/story-relevant bytes observed along the original route.
+        constexpr std::array<std::uint16_t, 9> story_bytes = {
+            0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
+            0xC552, 0xCBEB, 0xCB86, 0xCB8D
+        };
+        for (const std::uint16_t address : story_bytes) {
+            mix(static_cast<std::uint64_t>(memory.read8(address)) |
+                (static_cast<std::uint64_t>(address) << 8));
+        }
+        return h;
+    };
+
+    auto print_path = [&](const std::vector<std::uint8_t>& path) {
+        std::cout << " path=";
+        if (path.empty()) {
+            std::cout << "(root)";
+            return;
+        }
+        for (std::size_t i = 0; i < path.size(); ++i) {
+            if (i) std::cout << ",";
+            std::cout << search_action_name(path[i]);
+        }
+    };
+
+    auto verify_battle_command =
+        [&](Runtime battle,
+            const std::vector<std::uint8_t>& path) -> int {
+        // Let both branches settle identically into the battle UI first.
+        for (unsigned frame = 0; frame < 120; ++frame) {
+            const StepResult result = advance_search_frame(battle, 0);
+            if (result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_MISSING_BANK bank="
+                          << battle.cpu().missing_bank
+                          << " pc=0x" << std::hex << battle.cpu().pc
+                          << std::dec << std::endl;
+                return 180;
+            }
+            if (result != StepResult::Continue) return 181;
+        }
+
+        if (battle.memory().read8(0xC5DB) != 2) {
+            std::cout << "M7_BATTLE_FAIL phase=settle_left_battle mode="
+                      << static_cast<unsigned>(
+                             battle.memory().read8(0xC5DB))
+                      << std::endl;
+            return 182;
+        }
+
+        Renderer before_renderer{};
+        before_renderer.render(battle.memory(), true);
+        before_renderer.write_bmp(output_dir / "m7_battle_before.bmp");
+        const std::uint64_t before_screen = before_renderer.hash();
+        const std::uint64_t before_wram = wram_hash(battle.memory());
+        const std::uint8_t before_submode = battle.memory().read8(0xC5DC);
+
+        Runtime control = battle;
+        Runtime command = battle;
+        for (unsigned frame = 0; frame < 480; ++frame) {
+            StepResult control_result =
+                advance_search_frame(control, 0);
+            if (control_result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_CONTROL_MISSING_BANK bank="
+                          << control.cpu().missing_bank << " pc=0x"
+                          << std::hex << control.cpu().pc << std::dec
+                          << std::endl;
+                return 180;
+            }
+            if (control_result != StepResult::Continue) return 183;
+
+            // Confirm the currently selected legal/default battle command and
+            // subsequent default selections/messages with sparse A pulses.
+            const unsigned phase = frame % 96u;
+            const std::uint8_t buttons =
+                phase < 2u ? JoyA : 0;
+            StepResult command_result =
+                advance_search_frame(command, buttons);
+            if (command_result == StepResult::MissingBank) {
+                std::cout << "M7_BATTLE_COMMAND_MISSING_BANK bank="
+                          << command.cpu().missing_bank << " pc=0x"
+                          << std::hex << command.cpu().pc << std::dec
+                          << std::endl;
+                return 180;
+            }
+            if (command_result != StepResult::Continue) return 184;
+        }
+
+        Renderer control_renderer{};
+        Renderer command_renderer{};
+        control_renderer.render(control.memory(), true);
+        command_renderer.render(command.memory(), true);
+        control_renderer.write_bmp(output_dir / "m7_battle_control.bmp");
+        command_renderer.write_bmp(output_dir / "m7_battle_after.bmp");
+
+        const std::uint64_t control_screen = control_renderer.hash();
+        const std::uint64_t command_screen = command_renderer.hash();
+        const std::uint64_t control_wram = wram_hash(control.memory());
+        const std::uint64_t command_wram = wram_hash(command.memory());
+        const std::uint8_t control_submode =
+            control.memory().read8(0xC5DC);
+        const std::uint8_t command_submode =
+            command.memory().read8(0xC5DC);
+
+        std::cout << "M7_BATTLE_RESULT before_screen=0x" << std::hex
+                  << before_screen << " control_screen=0x" << control_screen
+                  << " command_screen=0x" << command_screen
+                  << " before_wram=0x" << before_wram
+                  << " control_wram=0x" << control_wram
+                  << " command_wram=0x" << command_wram
+                  << std::dec
+                  << " C5DC=" << static_cast<unsigned>(before_submode)
+                  << "->control:" << static_cast<unsigned>(control_submode)
+                  << " command:" << static_cast<unsigned>(command_submode)
+                  << " command_mode="
+                  << static_cast<unsigned>(command.memory().read8(0xC5DB));
+        print_path(path);
+        std::cout << std::endl;
+
+        const bool diverged =
+            command_screen != control_screen ||
+            command_wram != control_wram ||
+            command_submode != control_submode;
+        if (!diverged) {
+            std::cout << "M7_BATTLE_FAIL phase=command_no_effect"
+                      << std::endl;
+            return 185;
+        }
+
+        std::cout << "M7_BATTLE_PASS original_game_battle_reached_and_p1_command_advanced_state";
+        print_path(path);
+        std::cout << std::endl;
+        return 0;
+    };
+
     // Pin the furthest deterministic selector-changing route observed by the
     // bounded original-input search. This is diagnostic only: every element is
     // replayed through the same P1 movement/dialogue macros as the search.
@@ -1454,151 +1600,6 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
     }
 
-    auto state_signature = [&](const Memory& memory) {
-        std::uint64_t h = background_hash(memory);
-        auto mix = [&](std::uint64_t value) {
-            h ^= value + 0x9e3779b97f4a7c15ull + (h << 6) + (h >> 2);
-        };
-
-        // Physical player position/location fields established by the earlier
-        // P1 exit enumerator. These remain stable across textbox animation.
-        mix(memory.read8(0xFF8E));
-        mix(static_cast<std::uint64_t>(memory.read8(0xFF91)) << 8);
-        mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 16);
-        mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
-
-        // Persistent/story-relevant bytes observed along the original route.
-        constexpr std::array<std::uint16_t, 9> story_bytes = {
-            0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
-            0xC552, 0xCBEB, 0xCB86, 0xCB8D
-        };
-        for (const std::uint16_t address : story_bytes) {
-            mix(static_cast<std::uint64_t>(memory.read8(address)) |
-                (static_cast<std::uint64_t>(address) << 8));
-        }
-        return h;
-    };
-
-    auto print_path = [&](const std::vector<std::uint8_t>& path) {
-        std::cout << " path=";
-        if (path.empty()) {
-            std::cout << "(root)";
-            return;
-        }
-        for (std::size_t i = 0; i < path.size(); ++i) {
-            if (i) std::cout << ",";
-            std::cout << search_action_name(path[i]);
-        }
-    };
-
-    auto verify_battle_command =
-        [&](Runtime battle,
-            const std::vector<std::uint8_t>& path) -> int {
-        // Let both branches settle identically into the battle UI first.
-        for (unsigned frame = 0; frame < 120; ++frame) {
-            const StepResult result = advance_search_frame(battle, 0);
-            if (result == StepResult::MissingBank) {
-                std::cout << "M7_BATTLE_MISSING_BANK bank="
-                          << battle.cpu().missing_bank
-                          << " pc=0x" << std::hex << battle.cpu().pc
-                          << std::dec << std::endl;
-                return 180;
-            }
-            if (result != StepResult::Continue) return 181;
-        }
-
-        if (battle.memory().read8(0xC5DB) != 2) {
-            std::cout << "M7_BATTLE_FAIL phase=settle_left_battle mode="
-                      << static_cast<unsigned>(
-                             battle.memory().read8(0xC5DB))
-                      << std::endl;
-            return 182;
-        }
-
-        Renderer before_renderer{};
-        before_renderer.render(battle.memory(), true);
-        before_renderer.write_bmp(output_dir / "m7_battle_before.bmp");
-        const std::uint64_t before_screen = before_renderer.hash();
-        const std::uint64_t before_wram = wram_hash(battle.memory());
-        const std::uint8_t before_submode = battle.memory().read8(0xC5DC);
-
-        Runtime control = battle;
-        Runtime command = battle;
-        for (unsigned frame = 0; frame < 480; ++frame) {
-            StepResult control_result =
-                advance_search_frame(control, 0);
-            if (control_result == StepResult::MissingBank) {
-                std::cout << "M7_BATTLE_CONTROL_MISSING_BANK bank="
-                          << control.cpu().missing_bank << " pc=0x"
-                          << std::hex << control.cpu().pc << std::dec
-                          << std::endl;
-                return 180;
-            }
-            if (control_result != StepResult::Continue) return 183;
-
-            // Confirm the currently selected legal/default battle command and
-            // subsequent default selections/messages with sparse A pulses.
-            const unsigned phase = frame % 96u;
-            const std::uint8_t buttons =
-                phase < 2u ? JoyA : 0;
-            StepResult command_result =
-                advance_search_frame(command, buttons);
-            if (command_result == StepResult::MissingBank) {
-                std::cout << "M7_BATTLE_COMMAND_MISSING_BANK bank="
-                          << command.cpu().missing_bank << " pc=0x"
-                          << std::hex << command.cpu().pc << std::dec
-                          << std::endl;
-                return 180;
-            }
-            if (command_result != StepResult::Continue) return 184;
-        }
-
-        Renderer control_renderer{};
-        Renderer command_renderer{};
-        control_renderer.render(control.memory(), true);
-        command_renderer.render(command.memory(), true);
-        control_renderer.write_bmp(output_dir / "m7_battle_control.bmp");
-        command_renderer.write_bmp(output_dir / "m7_battle_after.bmp");
-
-        const std::uint64_t control_screen = control_renderer.hash();
-        const std::uint64_t command_screen = command_renderer.hash();
-        const std::uint64_t control_wram = wram_hash(control.memory());
-        const std::uint64_t command_wram = wram_hash(command.memory());
-        const std::uint8_t control_submode =
-            control.memory().read8(0xC5DC);
-        const std::uint8_t command_submode =
-            command.memory().read8(0xC5DC);
-
-        std::cout << "M7_BATTLE_RESULT before_screen=0x" << std::hex
-                  << before_screen << " control_screen=0x" << control_screen
-                  << " command_screen=0x" << command_screen
-                  << " before_wram=0x" << before_wram
-                  << " control_wram=0x" << control_wram
-                  << " command_wram=0x" << command_wram
-                  << std::dec
-                  << " C5DC=" << static_cast<unsigned>(before_submode)
-                  << "->control:" << static_cast<unsigned>(control_submode)
-                  << " command:" << static_cast<unsigned>(command_submode)
-                  << " command_mode="
-                  << static_cast<unsigned>(command.memory().read8(0xC5DB));
-        print_path(path);
-        std::cout << std::endl;
-
-        const bool diverged =
-            command_screen != control_screen ||
-            command_wram != control_wram ||
-            command_submode != control_submode;
-        if (!diverged) {
-            std::cout << "M7_BATTLE_FAIL phase=command_no_effect"
-                      << std::endl;
-            return 185;
-        }
-
-        std::cout << "M7_BATTLE_PASS original_game_battle_reached_and_p1_command_advanced_state";
-        print_path(path);
-        std::cout << std::endl;
-        return 0;
-    };
 
     if (selector08_battle_reached) {
         const std::vector<std::uint8_t> selector08_acceptance_path = {
