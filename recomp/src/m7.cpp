@@ -1304,6 +1304,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         return 1;
                                     }
 
+                                    if (!opened && frame >= 60) {
+                                        break;
+                                    }
                                     if (opened &&
                                         probe->memory()
                                             .read8(0xC5DC) == 0 &&
@@ -1324,8 +1327,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 west_seen;
                             constexpr std::array<std::uint8_t, 4>
                                 west_moves = {0, 1, 2, 3};
-                            constexpr std::size_t west_width = 24;
-                            constexpr std::size_t west_depth = 18;
+                            constexpr std::size_t west_width = 16;
+                            constexpr std::size_t west_depth = 12;
 
                             for (std::size_t depth = 0;
                                  depth < west_depth &&
