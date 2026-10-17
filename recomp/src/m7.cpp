@@ -732,62 +732,78 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 175;
     }
 
-    // At arrival Cobi stands immediately below the gray NPC and starts
-    // facing down. Two frames did not reach the movement/facing update, while a
-    // full movement macro walked past the NPC. Probe a tiny bounded set of
-    // normal Up pulse lengths from the identical game-owned arrival state and
-    // keep the first one whose subsequent A press opens a real dialogue.
+    // The gray NPC is mobile, so do not idle after changing facing. Probe a
+    // tiny set of immediate Up->A / Up+A P1 sequences from the identical
+    // arrival state and keep the first sequence that opens a cartridge dialog.
     const Runtime island_arrival_seed = runtime;
-    bool island_face_found = false;
-    unsigned island_face_frames = 0;
-    constexpr std::array<unsigned, 8> face_pulses = {
-        3, 4, 5, 6, 7, 8, 9, 10
+    struct FaceProbe {
+        unsigned up_frames;
+        unsigned combo_frames;
+        unsigned a_frames;
+        const char* name;
     };
+    constexpr std::array<FaceProbe, 10> face_probes = {{
+        {1,0,2,"u1_a2"},
+        {2,0,2,"u2_a2"},
+        {3,0,2,"u3_a2"},
+        {4,0,2,"u4_a2"},
+        {5,0,2,"u5_a2"},
+        {0,2,0,"ua2"},
+        {0,3,0,"ua3"},
+        {1,2,0,"u1_ua2"},
+        {2,2,0,"u2_ua2"},
+        {3,2,0,"u3_ua2"},
+    }};
 
-    for (const unsigned pulse : face_pulses) {
+    bool island_face_found = false;
+    const char* island_face_name = "none";
+
+    for (const FaceProbe& probe : face_probes) {
         Runtime candidate = island_arrival_seed;
-        bool candidate_abort = false;
+        bool abort = false;
 
-        for (unsigned frame = 0; frame < pulse; ++frame) {
-            const StepResult result =
-                advance_search_frame(candidate, JoyUp);
+        for (unsigned frame = 0; frame < probe.up_frames; ++frame) {
+            const StepResult result = advance_search_frame(candidate, JoyUp);
             if (result != StepResult::Continue) {
-                candidate_abort = true;
+                abort = true;
                 break;
             }
         }
-        if (candidate_abort) continue;
+        if (abort) continue;
 
-        for (unsigned frame = 0; frame < 4; ++frame) {
+        for (unsigned frame = 0; frame < probe.combo_frames; ++frame) {
             const StepResult result =
-                advance_search_frame(candidate, 0);
+                advance_search_frame(candidate,
+                                     static_cast<std::uint8_t>(JoyUp | JoyA));
             if (result != StepResult::Continue) {
-                candidate_abort = true;
+                abort = true;
                 break;
             }
         }
-        if (candidate_abort) continue;
+        if (abort) continue;
 
-        bool opened = false;
-        for (unsigned frame = 0; frame < 180; ++frame) {
-            const std::uint8_t buttons =
-                (!opened && (frame < 2 ||
-                 (frame >= 90 && frame % 90u < 2u))) ? JoyA : 0;
-            const StepResult result =
-                advance_search_frame(candidate, buttons);
+        for (unsigned frame = 0; frame < probe.a_frames; ++frame) {
+            const StepResult result = advance_search_frame(candidate, JoyA);
             if (result != StepResult::Continue) {
-                candidate_abort = true;
-                break;
-            }
-            if (candidate.memory().read8(0xC5DC) != 0) {
-                opened = true;
+                abort = true;
                 break;
             }
         }
-        if (candidate_abort) continue;
+        if (abort) continue;
+
+        bool opened = candidate.memory().read8(0xC5DC) != 0;
+        for (unsigned frame = 0; frame < 24 && !opened; ++frame) {
+            const StepResult result = advance_search_frame(candidate, 0);
+            if (result != StepResult::Continue) {
+                abort = true;
+                break;
+            }
+            opened = candidate.memory().read8(0xC5DC) != 0;
+        }
+        if (abort) continue;
 
         renderer.render(candidate.memory(), true);
-        std::cout << "M7_FAST_ISLAND_FACE pulse=" << pulse
+        std::cout << "M7_FAST_ISLAND_FACE name=" << probe.name
                   << " opened=" << (opened ? 1 : 0)
                   << " screen=0x" << std::hex << renderer.hash()
                   << " C5DB=0x"
@@ -799,7 +815,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         if (opened) {
             runtime = candidate;
             island_face_found = true;
-            island_face_frames = pulse;
+            island_face_name = probe.name;
             break;
         }
     }
@@ -809,8 +825,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 176;
     }
 
-    std::cout << "M7_FAST_ISLAND_FACE_PASS pulse="
-              << island_face_frames << std::endl;
+    std::cout << "M7_FAST_ISLAND_FACE_PASS name="
+              << island_face_name << std::endl;
 
     const std::uint64_t island_sram_before = sram_hash(runtime.memory());
     const std::uint64_t island_wram_before = wram_hash(runtime.memory());
