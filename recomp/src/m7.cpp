@@ -832,6 +832,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         constexpr std::array<std::uint8_t, 4> directions = {
             JoyRight, JoyLeft, JoyUp, JoyDown
         };
+        bool saw_lcd_off = false;
         for (unsigned phase = 0; phase < 24; ++phase) {
             const std::uint8_t buttons =
                 phase < 15 ? directions[direction & 3u] : 0;
@@ -841,7 +842,39 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             if (candidate.memory().read8(0xC5DB) == 2) {
                 return StepResult::Continue;
             }
+            if ((candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+                saw_lcd_off = true;
+            }
         }
+
+        if (saw_lcd_off ||
+            (candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+            bool restored = false;
+            for (unsigned settle = 0; settle < 240; ++settle) {
+                const StepResult result =
+                    advance_search_frame(candidate, 0);
+                if (result != StepResult::Continue) return result;
+                if (candidate.memory().read8(0xC5DB) == 2) {
+                    return StepResult::Continue;
+                }
+                if ((candidate.memory().read8(0xFF40) & 0x80u) != 0) {
+                    restored = true;
+                    for (unsigned idle = 0; idle < 12; ++idle) {
+                        const StepResult idle_result =
+                            advance_search_frame(candidate, 0);
+                        if (idle_result != StepResult::Continue) {
+                            return idle_result;
+                        }
+                        if (candidate.memory().read8(0xC5DB) == 2) {
+                            return StepResult::Continue;
+                        }
+                    }
+                    break;
+                }
+            }
+            if (!restored) return StepResult::StepLimit;
+        }
+
         candidate.memory().set_joypad_state(0);
         (void)candidate.memory().apu().take_samples();
         return StepResult::Continue;
@@ -882,13 +915,20 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         auto mix = [&](std::uint64_t value) {
             h ^= value + 0x9e3779b97f4a7c15ull + (h << 6) + (h >> 2);
         };
-        mix(tilemap_hash(memory));
-        constexpr std::array<std::uint16_t, 12> state_bytes = {
-            0xC5D7, 0xC5E7, 0xC5E8, 0xC5F0,
+
+        // Physical player position/location fields established by the earlier
+        // P1 exit enumerator. These remain stable across textbox animation.
+        mix(memory.read8(0xFF8E));
+        mix(static_cast<std::uint64_t>(memory.read8(0xFF91)) << 8);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 16);
+        mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
+
+        // Persistent/story-relevant bytes observed along the original route.
+        constexpr std::array<std::uint16_t, 8> story_bytes = {
             0xC916, 0xC917, 0xC920, 0xC923,
             0xC552, 0xCBEB, 0xCB86, 0xCB8D
         };
-        for (const std::uint16_t address : state_bytes) {
+        for (const std::uint16_t address : story_bytes) {
             mix(static_cast<std::uint64_t>(memory.read8(address)) |
                 (static_cast<std::uint64_t>(address) << 8));
         }
@@ -1029,9 +1069,15 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     });
 
     std::unordered_set<std::uint64_t> seen;
+    std::unordered_set<std::uint64_t> seen_backgrounds;
+    std::unordered_set<std::uint16_t> seen_locations;
     seen.insert(state_signature(runtime.memory()));
-    constexpr std::size_t search_width = 40;
-    constexpr std::size_t search_depth = 18;
+    seen_backgrounds.insert(background_hash(runtime.memory()));
+    seen_locations.insert(static_cast<std::uint16_t>(
+        runtime.memory().read8(0xCC44) |
+        (static_cast<std::uint16_t>(runtime.memory().read8(0xCC45)) << 8)));
+    constexpr std::size_t search_width = 64;
+    constexpr std::size_t search_depth = 48;
     constexpr std::array<std::uint8_t, 5> actions = {0, 1, 2, 3, 4};
 
     for (std::size_t depth = 0;
@@ -1084,24 +1130,54 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     state_signature(child->memory());
                 if (!seen.insert(sig).second) continue;
 
+                const std::uint64_t child_bg =
+                    background_hash(child->memory());
+                const std::uint16_t child_location =
+                    static_cast<std::uint16_t>(
+                        child->memory().read8(0xCC44) |
+                        (static_cast<std::uint16_t>(
+                             child->memory().read8(0xCC45)) << 8));
+                const std::uint64_t parent_bg =
+                    background_hash(node.runtime->memory());
+                const std::uint16_t parent_location =
+                    static_cast<std::uint16_t>(
+                        node.runtime->memory().read8(0xCC44) |
+                        (static_cast<std::uint16_t>(
+                             node.runtime->memory().read8(0xCC45)) << 8));
+
+                const bool globally_new_bg =
+                    seen_backgrounds.insert(child_bg).second;
+                const bool globally_new_location =
+                    seen_locations.insert(child_location).second;
+                const bool local_region_change =
+                    child_bg != parent_bg ||
+                    child_location != parent_location;
+
+                bool story_change = false;
+                constexpr std::array<std::uint16_t, 6> scored_story = {
+                    0xC916, 0xC923, 0xC552, 0xCBEB, 0xCB86, 0xCB8D
+                };
+                for (const std::uint16_t address : scored_story) {
+                    if (child->memory().read8(address) !=
+                        node.runtime->memory().read8(address)) {
+                        story_change = true;
+                        break;
+                    }
+                }
+
                 std::uint64_t score = 0;
-                // Prefer states whose game-owned event selector/story bytes
-                // differ from the parent, then favor actual interactions.
-                if (child->memory().read8(0xC916) !=
-                    node.runtime->memory().read8(0xC916)) {
-                    score += 1'000'000'000'000ull;
-                }
-                if (child->memory().read8(0xC923) !=
-                    node.runtime->memory().read8(0xC923)) {
-                    score += 500'000'000'000ull;
-                }
-                if (child->memory().read8(0xCB86) !=
-                        node.runtime->memory().read8(0xCB86) ||
-                    child->memory().read8(0xCB8D) !=
-                        node.runtime->memory().read8(0xCB8D)) {
-                    score += 250'000'000'000ull;
-                }
-                if (action == 4) score += 10'000'000ull;
+                if (globally_new_location) score +=
+                    4'000'000'000'000ull;
+                if (globally_new_bg) score +=
+                    2'000'000'000'000ull;
+                if (local_region_change) score +=
+                    1'000'000'000'000ull;
+                if (story_change) score +=
+                    500'000'000'000ull;
+                if (action == 4 && story_change) score +=
+                    50'000'000'000ull;
+                if (action == 4 && !story_change) score /=
+                    4u;
                 score += static_cast<std::uint64_t>(
                     child->memory().current_rom_bank()) << 16;
 
@@ -1122,6 +1198,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             std::cout << "M7_BATTLE_SEARCH depth=" << depth
                       << " frontier=" << next.size()
                       << " states=" << seen.size()
+                      << " backgrounds=" << seen_backgrounds.size()
+                      << " locations=" << seen_locations.size()
                       << " best_C916=0x" << std::hex
                       << static_cast<unsigned>(
                              next.front().runtime->memory().read8(0xC916))
