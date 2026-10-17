@@ -732,111 +732,240 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 175;
     }
 
-    // The accepted ROM artifact proves that A at the exact island-arrival
-    // state talks to the gray Vault NPC directly. Do not move first: the later
-    // facing/hay experiments walked away from this valid cartridge interaction.
-    renderer.write_bmp(output_dir / "fast_island_npc_before.bmp");
-    const std::uint64_t npc_wram_before = wram_hash(runtime.memory());
-    const std::uint64_t npc_sram_before = sram_hash(runtime.memory());
-    const std::uint8_t npc_c916_before = runtime.memory().read8(0xC916);
-    const std::uint8_t npc_c923_before = runtime.memory().read8(0xC923);
-    const std::uint8_t npc_cb86_before = runtime.memory().read8(0xCB86);
-    const std::uint8_t npc_cb88_before = runtime.memory().read8(0xCB88);
-    const std::uint8_t npc_cb8d_before = runtime.memory().read8(0xCB8D);
+    // The cartridge-proven island progression is the hay interaction at the
+    // short D,L,D route. Earlier diagnostics reached this using only P1 input
+    // and observed a game-owned event-selector transition. Reproduce that
+    // exact route here rather than guessing from sprite appearance.
+    constexpr std::array<std::uint8_t, 3> hay_route = {3, 1, 3};
+    for (std::size_t i = 0; i < hay_route.size(); ++i) {
+        const StepResult result = pure_nav(hay_route[i]);
+        if (result != StepResult::Continue) {
+            return fail("island_hay_route", result);
+        }
+    }
 
-    bool npc_seen = false;
-    bool npc_closed = false;
-    unsigned npc_pages = 0;
-    std::uint64_t next_npc_press = 96;
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_hay_before.bmp");
+    const std::uint64_t hay_wram_before = wram_hash(runtime.memory());
+    const std::uint64_t hay_sram_before = sram_hash(runtime.memory());
+    const std::uint8_t hay_c916_before = runtime.memory().read8(0xC916);
+    const std::uint8_t hay_cb86_before = runtime.memory().read8(0xCB86);
+    const std::uint8_t hay_cb88_before = runtime.memory().read8(0xCB88);
+    const std::uint8_t hay_cb8d_before = runtime.memory().read8(0xCB8D);
 
-    for (std::uint64_t frame = 0; frame < 1200; ++frame) {
+    bool hay_seen = false;
+    std::uint64_t hay_dialog_hash = 0;
+    bool hay_closed = false;
+    unsigned hay_pages = 0;
+    for (std::uint64_t frame = 0; frame < 900; ++frame) {
         const std::uint8_t submode = runtime.memory().read8(0xC5DC);
-        if (npc_seen && submode == 0) {
-            npc_closed = true;
+        if (hay_seen && submode == 0) {
+            hay_closed = true;
             break;
         }
 
         std::uint8_t buttons = 0;
-        if (!npc_seen) {
-            if (frame < 2) buttons = JoyA;
-        } else if (frame == next_npc_press) {
+        if (!hay_seen) {
+            if (frame < 2 || (frame >= 120 && (frame % 120u) < 2u)) {
+                buttons = JoyA;
+            }
+        } else if ((frame % 96u) < 2u) {
             buttons = JoyA;
         }
 
         const StepResult result = frame_step(buttons);
         if (result != StepResult::Continue) {
-            return fail("island_npc_dialog", result);
+            return fail("island_hay_dialog", result);
         }
 
         const std::uint8_t mode = runtime.memory().read8(0xC5DB);
         const std::uint8_t after_submode = runtime.memory().read8(0xC5DC);
+        if (after_submode != 0 && !hay_seen) {
+            hay_seen = true;
+            renderer.render(runtime.memory(), true);
+            renderer.write_bmp(output_dir / "fast_hay_dialog.bmp");
+            hay_dialog_hash = renderer.hash();
+            ++hay_pages;
+        }
+
         if (mode == 2) {
-            std::cout << "M7_FAST_BATTLE_EARLY phase=island_npc frame="
+            std::cout << "M7_FAST_BATTLE_EARLY phase=hay_dialog frame="
                       << frame << std::endl;
             break;
         }
         if (mode != 1) {
-            std::cout << "M7_FAST_FAIL phase=island_npc_unexpected_mode C5DB="
+            std::cout << "M7_FAST_FAIL phase=hay_unexpected_mode C5DB="
                       << static_cast<unsigned>(mode) << std::endl;
             return 176;
         }
-
-        if (after_submode != 0 && !npc_seen) {
-            npc_seen = true;
-            next_npc_press = frame + 96;
-        }
-
-        if (npc_seen && after_submode != 0 &&
-            frame + 1 == next_npc_press && npc_pages < 6) {
-            renderer.render(runtime.memory(), true);
-            renderer.write_bmp(
-                output_dir /
-                ("fast_island_npc_page_" + std::to_string(npc_pages) + ".bmp"));
-            std::cout << "M7_FAST_ISLAND_NPC_PAGE page=" << npc_pages
-                      << " frame=" << frame
-                      << " screen=0x" << std::hex << renderer.hash()
-                      << " C916=0x"
-                      << static_cast<unsigned>(runtime.memory().read8(0xC916))
-                      << " C923=0x"
-                      << static_cast<unsigned>(runtime.memory().read8(0xC923))
-                      << std::dec << std::endl;
-            ++npc_pages;
-        }
-
-        if (buttons == JoyA && npc_seen) {
-            next_npc_press = frame + 96;
-        }
     }
 
-    runtime.memory().set_joypad_state(0);
     renderer.render(runtime.memory(), true);
-    renderer.write_bmp(output_dir / "fast_island_npc_after.bmp");
-    std::cout << "M7_FAST_ISLAND_NPC_PASS seen=" << (npc_seen ? 1 : 0)
-              << " closed=" << (npc_closed ? 1 : 0)
-              << " pages=" << npc_pages
+    renderer.write_bmp(output_dir / "fast_hay_after.bmp");
+    std::cout << "M7_FAST_HAY_PASS seen=" << (hay_seen ? 1 : 0)
+              << " closed=" << (hay_closed ? 1 : 0)
+              << " pages=" << hay_pages
               << " screen=0x" << std::hex << renderer.hash()
-              << " wram_before=0x" << npc_wram_before
+              << " wram_before=0x" << hay_wram_before
               << " wram_after=0x" << wram_hash(runtime.memory())
-              << " sram_before=0x" << npc_sram_before
+              << " sram_before=0x" << hay_sram_before
               << " sram_after=0x" << sram_hash(runtime.memory())
-              << " C916=0x" << static_cast<unsigned>(npc_c916_before)
+              << " C916=0x" << static_cast<unsigned>(hay_c916_before)
               << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xC916))
-              << " C923=0x" << static_cast<unsigned>(npc_c923_before)
-              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xC923))
-              << " CB86=0x" << static_cast<unsigned>(npc_cb86_before)
+              << " CB86=0x" << static_cast<unsigned>(hay_cb86_before)
               << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB86))
-              << " CB88=0x" << static_cast<unsigned>(npc_cb88_before)
+              << " CB88=0x" << static_cast<unsigned>(hay_cb88_before)
               << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB88))
-              << " CB8D=0x" << static_cast<unsigned>(npc_cb8d_before)
+              << " CB8D=0x" << static_cast<unsigned>(hay_cb8d_before)
               << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB8D))
               << std::dec << std::endl;
 
-    if (!npc_seen || !npc_closed) {
-        std::cout << "M7_FAST_FAIL phase=island_npc_dialog_closed" << std::endl;
+    if (!hay_seen || !hay_closed) {
+        std::cout << "M7_FAST_FAIL phase=hay_dialog_closed" << std::endl;
         return 177;
     }
 
-    // Bound the search to game-owned states after the accepted Vault-NPC event.
+
+    // The accepted post-hay frame places Cobi immediately beside the moving
+    // gray NPC. Full 15-frame movement macros can walk past that sprite, so
+    // probe only tiny normal P1 direction pulses followed immediately by A.
+    // Keep the first dialogue whose rendered first page differs from the hay
+    // object's page; no WRAM/SRAM values are injected or patched.
+    const Runtime post_hay_seed = runtime;
+    bool micro_dialog_found = false;
+    constexpr std::array<std::uint8_t, 4> micro_dirs = {
+        JoyRight, JoyUp, JoyLeft, JoyDown
+    };
+    constexpr std::array<const char*, 4> micro_names = {
+        "R", "U", "L", "D"
+    };
+
+    for (std::size_t dir_index = 0;
+         dir_index < micro_dirs.size() && !micro_dialog_found; ++dir_index) {
+        for (unsigned pulse = 1; pulse <= 8 && !micro_dialog_found; ++pulse) {
+            Runtime candidate = post_hay_seed;
+            bool abort = false;
+            for (unsigned frame = 0; frame < pulse; ++frame) {
+                const StepResult result =
+                    advance_search_frame(candidate, micro_dirs[dir_index]);
+                if (result != StepResult::Continue) {
+                    if (result == StepResult::MissingBank) {
+                        std::cout << "M7_FAST_MICRO_MISSING_BANK dir="
+                                  << micro_names[dir_index]
+                                  << " pulse=" << pulse
+                                  << " bank=" << candidate.cpu().missing_bank
+                                  << " pc=0x" << std::hex << candidate.cpu().pc
+                                  << std::dec << std::endl;
+                        return 180;
+                    }
+                    abort = true;
+                    break;
+                }
+            }
+            if (abort) continue;
+
+            bool opened = false;
+            bool closed = false;
+            std::uint64_t page_hash = 0;
+            std::uint64_t next_press = 96;
+            for (std::uint64_t frame = 0; frame < 700; ++frame) {
+                const std::uint8_t sub_before =
+                    candidate.memory().read8(0xC5DC);
+                if (opened && sub_before == 0) {
+                    closed = true;
+                    break;
+                }
+
+                std::uint8_t buttons = 0;
+                if (!opened) {
+                    if (frame < 2) buttons = JoyA;
+                } else if (frame == next_press) {
+                    buttons = JoyA;
+                }
+
+                const StepResult result =
+                    advance_search_frame(candidate, buttons);
+                if (result == StepResult::MissingBank) {
+                    std::cout << "M7_FAST_MICRO_MISSING_BANK dir="
+                              << micro_names[dir_index]
+                              << " pulse=" << pulse
+                              << " phase=dialog bank="
+                              << candidate.cpu().missing_bank
+                              << " pc=0x" << std::hex << candidate.cpu().pc
+                              << std::dec << std::endl;
+                    return 180;
+                }
+                if (result != StepResult::Continue) {
+                    abort = true;
+                    break;
+                }
+
+                if (candidate.memory().read8(0xC5DB) == 2) {
+                    opened = true;
+                    closed = true;
+                    break;
+                }
+                if (candidate.memory().read8(0xC5DB) != 1) {
+                    abort = true;
+                    break;
+                }
+
+                if (!opened && candidate.memory().read8(0xC5DC) != 0) {
+                    opened = true;
+                    Renderer probe_renderer{};
+                    probe_renderer.render(candidate.memory(), true);
+                    page_hash = probe_renderer.hash();
+                    probe_renderer.write_bmp(
+                        output_dir /
+                        (std::string("fast_micro_") +
+                         micro_names[dir_index] + "_" +
+                         std::to_string(pulse) + ".bmp"));
+                    next_press = frame + 96;
+                }
+                if (buttons == JoyA && opened) {
+                    next_press = frame + 96;
+                }
+            }
+            if (abort) continue;
+
+            std::cout << "M7_FAST_MICRO dir=" << micro_names[dir_index]
+                      << " pulse=" << pulse
+                      << " opened=" << (opened ? 1 : 0)
+                      << " closed=" << (closed ? 1 : 0)
+                      << " page_hash=0x" << std::hex << page_hash
+                      << " hay_hash=0x" << hay_dialog_hash
+                      << " C916=0x"
+                      << static_cast<unsigned>(candidate.memory().read8(0xC916))
+                      << " C923=0x"
+                      << static_cast<unsigned>(candidate.memory().read8(0xC923))
+                      << " CB86=0x"
+                      << static_cast<unsigned>(candidate.memory().read8(0xCB86))
+                      << " CB8D=0x"
+                      << static_cast<unsigned>(candidate.memory().read8(0xCB8D))
+                      << std::dec << std::endl;
+
+            if (candidate.memory().read8(0xC5DB) == 2 ||
+                (opened && closed && page_hash != 0 &&
+                 page_hash != hay_dialog_hash)) {
+                runtime = candidate;
+                micro_dialog_found = true;
+                std::cout << "M7_FAST_MICRO_PASS dir="
+                          << micro_names[dir_index]
+                          << " pulse=" << pulse
+                          << " mode="
+                          << static_cast<unsigned>(
+                                 runtime.memory().read8(0xC5DB))
+                          << std::endl;
+            }
+        }
+    }
+
+    if (!micro_dialog_found) {
+        runtime = post_hay_seed;
+        std::cout << "M7_FAST_MICRO_NO_DISTINCT_DIALOG" << std::endl;
+    }
+
+    // Bound the search to game-owned states after the accepted hay/NPC event.
     // Movement macros never press A. The A macro presses A, waits for any
     // original dialogue to open, then advances it using ordinary P1 input.
     // No RAM, map, party or battle state is injected by the host.
