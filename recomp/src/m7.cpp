@@ -286,6 +286,70 @@ StepResult advance_search_frame(Runtime& runtime, std::uint8_t buttons) {
     return StepResult::StepLimit;
 }
 
+struct BattleExecutionTrace {
+    unsigned rank = 0;
+    bool writer_seen = false;
+    std::uint16_t bank = 0;
+    std::uint16_t pc = 0;
+};
+
+unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
+    if ((bank == 2 && (pc == 0x4FD4 || pc == 0x5060 || pc == 0x63C8)) ||
+        (bank == 15 && pc == 0x4158) ||
+        (bank == 133 && pc == 0x4732)) {
+        return 1000;
+    }
+    if ((bank == 16 && (pc == 0x4EAC || pc == 0x4DFD)) ||
+        (bank == 133 && pc == 0x4725) ||
+        (bank == 15 && pc == 0x40E9)) {
+        return 900;
+    }
+    if ((bank == 2 &&
+         ((pc >= 0x4F80 && pc <= 0x5080) ||
+          (pc >= 0x5E70 && pc <= 0x60A0) ||
+          (pc >= 0x63A0 && pc <= 0x63E0))) ||
+        (bank == 133 && pc >= 0x4700 && pc <= 0x4740) ||
+        (bank == 15 && pc >= 0x40D0 && pc <= 0x4170)) {
+        return 800;
+    }
+    if (bank == 16 && pc >= 0x4D00 && pc <= 0x4F00) return 650;
+    if (bank == 133) return 250;
+    if (bank == 15) return 225;
+    if (bank == 2) return 200;
+    return 0;
+}
+
+StepResult advance_battle_search_frame(
+    Runtime& runtime,
+    std::uint8_t buttons,
+    BattleExecutionTrace& trace) {
+
+    auto& memory = runtime.memory();
+    memory.set_joypad_state(buttons);
+    const std::uint64_t start_frame = memory.frame_counter();
+    constexpr std::size_t max_steps_per_frame = 2'000'000;
+    for (std::size_t step = 0; step < max_steps_per_frame; ++step) {
+        const std::uint16_t bank = memory.current_rom_bank();
+        const std::uint16_t pc = runtime.cpu().pc;
+        const unsigned rank = battle_execution_rank(bank, pc);
+        if (rank > trace.rank) {
+            trace.rank = rank;
+            trace.bank = bank;
+            trace.pc = pc;
+        }
+        if (rank == 1000) trace.writer_seen = true;
+
+        const StepResult result = runtime.step();
+        if (result == StepResult::MissingBank ||
+            result == StepResult::Trapped ||
+            result == StepResult::Stopped) {
+            return result;
+        }
+        if (memory.frame_counter() != start_frame) return StepResult::Continue;
+    }
+    return StepResult::StepLimit;
+}
+
 std::uint64_t tilemap_hash(const Memory& memory) {
     std::uint64_t hash = 1469598103934665603ull;
     for (unsigned bank = 0; bank < 2; ++bank) {
@@ -1609,6 +1673,86 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             runtime, selector08_acceptance_path);
     }
 
+    auto traced_battle_move =
+        [&](Runtime& candidate,
+            std::uint8_t direction,
+            BattleExecutionTrace& trace) -> StepResult {
+            constexpr std::array<std::uint8_t, 4> directions = {
+                JoyRight, JoyLeft, JoyUp, JoyDown
+            };
+            bool saw_lcd_off = false;
+            for (unsigned phase = 0; phase < 24; ++phase) {
+                const std::uint8_t buttons =
+                    phase < 15 ? directions[direction & 3u] : 0;
+                const StepResult result =
+                    advance_battle_search_frame(candidate, buttons, trace);
+                if (result != StepResult::Continue) return result;
+                if (candidate.memory().read8(0xC5DB) == 2) {
+                    return StepResult::Continue;
+                }
+                if ((candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+                    saw_lcd_off = true;
+                }
+            }
+            if (saw_lcd_off ||
+                (candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+                bool restored = false;
+                for (unsigned settle = 0; settle < 180; ++settle) {
+                    const StepResult result =
+                        advance_battle_search_frame(candidate, 0, trace);
+                    if (result != StepResult::Continue) return result;
+                    if (candidate.memory().read8(0xC5DB) == 2) {
+                        return StepResult::Continue;
+                    }
+                    if ((candidate.memory().read8(0xFF40) & 0x80u) != 0) {
+                        restored = true;
+                        for (unsigned idle = 0; idle < 8; ++idle) {
+                            const StepResult idle_result =
+                                advance_battle_search_frame(candidate, 0, trace);
+                            if (idle_result != StepResult::Continue) {
+                                return idle_result;
+                            }
+                        }
+                        break;
+                    }
+                }
+                if (!restored) return StepResult::StepLimit;
+            }
+            candidate.memory().set_joypad_state(0);
+            (void)candidate.memory().apu().take_samples();
+            return StepResult::Continue;
+        };
+
+    auto traced_battle_interact =
+        [&](Runtime& candidate,
+            BattleExecutionTrace& trace) -> StepResult {
+            bool seen = false;
+            for (unsigned frame = 0; frame < 360; ++frame) {
+                const std::uint8_t before_submode =
+                    candidate.memory().read8(0xC5DC);
+                if (seen && before_submode == 0) break;
+
+                std::uint8_t buttons = 0;
+                if (!seen) {
+                    if (frame < 2) buttons = JoyA;
+                } else if ((frame % 72u) < 2u) {
+                    buttons = JoyA;
+                }
+
+                const StepResult result =
+                    advance_battle_search_frame(candidate, buttons, trace);
+                if (result != StepResult::Continue) return result;
+                const std::uint8_t mode = candidate.memory().read8(0xC5DB);
+                if (mode == 2) return StepResult::Continue;
+                if (mode != 1) return StepResult::Stopped;
+                if (candidate.memory().read8(0xC5DC) != 0) seen = true;
+                if (!seen && frame >= 40) break;
+            }
+            candidate.memory().set_joypad_state(0);
+            (void)candidate.memory().apu().take_samples();
+            return StepResult::Continue;
+        };
+
     struct BattleNode {
         std::unique_ptr<Runtime> runtime;
         std::vector<std::uint8_t> path;
@@ -1629,8 +1773,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     seen_locations.insert(static_cast<std::uint16_t>(
         runtime.memory().read8(0xCC44) |
         (static_cast<std::uint16_t>(runtime.memory().read8(0xCC45)) << 8)));
-    constexpr std::size_t search_width = 64;
-    constexpr std::size_t search_depth = 48;
+    constexpr std::size_t search_width = 24;
+    constexpr std::size_t search_depth = 24;
     constexpr std::array<std::uint8_t, 5> actions = {0, 1, 2, 3, 4};
 
     for (std::size_t depth = 0;
@@ -1643,10 +1787,13 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 auto child =
                     std::make_unique<Runtime>(*node.runtime);
                 StepResult result = StepResult::Continue;
+                BattleExecutionTrace battle_trace{};
                 if (action < 4) {
-                    result = search_move(*child, action);
+                    result = traced_battle_move(
+                        *child, action, battle_trace);
                 } else {
-                    result = search_interact(*child);
+                    result = traced_battle_interact(
+                        *child, battle_trace);
                 }
 
                 std::vector<std::uint8_t> path = node.path;
@@ -1684,9 +1831,19 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                         child->memory().read8(0xC921);
                     const std::uint8_t idle_start_c920 =
                         child->memory().read8(0xC920);
-                    constexpr unsigned kPostInteractionIdleFrames = 180;
+                    const bool event_changed =
+                        child->memory().read8(0xC916) !=
+                            node.runtime->memory().read8(0xC916) ||
+                        child->memory().read8(0xC920) !=
+                            node.runtime->memory().read8(0xC920) ||
+                        child->memory().read8(0xC921) !=
+                            node.runtime->memory().read8(0xC921) ||
+                        child->memory().read8(0xC923) !=
+                            node.runtime->memory().read8(0xC923);
+                    const unsigned post_interaction_idle_frames =
+                        event_changed ? 240u : 24u;
                     for (unsigned idle = 0;
-                         idle < kPostInteractionIdleFrames; ++idle) {
+                         idle < post_interaction_idle_frames; ++idle) {
                         const StepResult idle_result =
                             advance_search_frame(*child, 0);
                         if (idle_result == StepResult::MissingBank) {
@@ -1785,7 +1942,18 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     }
                 }
 
-                std::uint64_t score = 0;
+                std::uint64_t score =
+                    static_cast<std::uint64_t>(battle_trace.rank) *
+                    20'000'000'000ull;
+                if (battle_trace.rank >= 650) {
+                    std::cout << "M7_BATTLE_TRACE depth=" << depth
+                              << " rank=" << battle_trace.rank
+                              << " bank=" << battle_trace.bank
+                              << " pc=0x" << std::hex << battle_trace.pc
+                              << std::dec;
+                    print_path(path);
+                    std::cout << std::endl;
+                }
                 if (globally_new_location) score +=
                     4'000'000'000'000ull;
                 if (globally_new_bg) score +=
