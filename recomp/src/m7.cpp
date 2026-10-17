@@ -1393,10 +1393,14 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         mix(static_cast<std::uint64_t>(memory.read8(0xCC44)) << 16);
         mix(static_cast<std::uint64_t>(memory.read8(0xCC45)) << 24);
 
-        // Persistent/story-relevant bytes observed along the original route.
-        constexpr std::array<std::uint16_t, 9> story_bytes = {
+        // Persistent/story-relevant bytes observed along the original route,
+        // plus the live guards used by the bank-2 battle-entry routines.
+        // Without these guard bytes, physically identical states with different
+        // battle eligibility collapsed to one signature and were pruned.
+        constexpr std::array<std::uint16_t, 15> story_bytes = {
             0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
-            0xC552, 0xCBEB, 0xCB86, 0xCB8D
+            0xC552, 0xCBEB, 0xCB86, 0xCB8D,
+            0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC193
         };
         for (const std::uint16_t address : story_bytes) {
             mix(static_cast<std::uint64_t>(memory.read8(address)) |
