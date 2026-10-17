@@ -732,12 +732,12 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 175;
     }
 
-    // At arrival Cobi stands immediately to the right of the gray NPC but is
-    // facing down at the hay. A two-frame Left pulse changes facing while the
-    // NPC blocks movement, so the subsequent A press targets the NPC rather
-    // than the hay pile. No host state is edited.
+    // At arrival Cobi stands immediately below the gray NPC and is facing
+    // down at the hay. A two-frame Up pulse changes facing while the NPC blocks
+    // movement, so the subsequent A press targets the NPC rather than the hay
+    // pile. No host state is edited.
     for (unsigned frame = 0; frame < 2; ++frame) {
-        const StepResult result = frame_step(JoyLeft);
+        const StepResult result = frame_step(JoyUp);
         if (result != StepResult::Continue) {
             return fail("island_face_npc", result);
         }
