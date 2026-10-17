@@ -703,172 +703,175 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
               << " frame=" << runtime.memory().frame_counter()
               << std::endl;
 
-    // Follow the guide's in-ROM instruction ("The Vault is west") along the
-    // already proven physical exit. Twelve south macros reach the island
-    // checkpoint used by the earlier diagnostics.
-    for (unsigned step = 0; step < 12; ++step) {
+    // The in-ROM guide explicitly says "The Vault is west". Stop at the
+    // first stable outdoor frame instead of continuing south to the hay island.
+    // The older search proved that eight Down navigation macros leave the
+    // guide building and produce this outdoor checkpoint.
+    for (unsigned step = 0; step < 8; ++step) {
         const StepResult result = pure_nav(3);
         if (result != StepResult::Continue) {
-            return fail("guide_exit_to_island", result);
+            return fail("guide_exit_to_outdoor", result);
         }
     }
 
     renderer.render(runtime.memory(), true);
-    const std::uint64_t island_bg = background_hash(runtime.memory());
-    renderer.write_bmp(output_dir / "fast_island_arrival.bmp");
-    std::cout << "M7_FAST_ISLAND_ARRIVAL screen=0x" << std::hex
-              << renderer.hash() << " bg=0x" << island_bg
-              << " expected_bg=0x8f79ba88f5c1628b"
-              << " C923=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xC923))
-              << " C552=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xC552))
-              << " CBEB=0x"
-              << static_cast<unsigned>(runtime.memory().read8(0xCBEB))
-              << std::dec << std::endl;
+    renderer.write_bmp(output_dir / "fast_guide_outdoor.bmp");
+    const std::uint64_t guide_outdoor_bg = background_hash(runtime.memory());
+    std::cout << "M7_FAST_GUIDE_OUTDOOR screen=0x" << std::hex
+              << renderer.hash() << " bg=0x" << guide_outdoor_bg
+              << " map=0x" << tilemap_hash(runtime.memory())
+              << std::dec << " C5DB="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DB))
+              << " C5DC="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
+              << std::endl;
 
-    if (island_bg != 0x8f79ba88f5c1628bull) {
-        std::cout << "M7_FAST_FAIL phase=island_hash" << std::endl;
+    constexpr std::uint64_t kGuideOutdoorBg = 0x2c4791b344ab1745ull;
+    if (guide_outdoor_bg != kGuideOutdoorBg) {
+        std::cout << "M7_FAST_FAIL phase=guide_outdoor_hash" << std::endl;
         return 175;
     }
 
-    // The cartridge-proven island progression is the hay interaction at the
-    // short D,L,D route. Earlier diagnostics reached this using only P1 input
-    // and observed a game-owned event-selector transition. Reproduce that
-    // exact route here rather than guessing from sprite appearance.
-    constexpr std::array<std::uint8_t, 3> hay_route = {3, 1, 3};
-    for (std::size_t i = 0; i < hay_route.size(); ++i) {
-        const StepResult result = pure_nav(hay_route[i]);
-        if (result != StepResult::Continue) {
-            return fail("island_hay_route", result);
-        }
-    }
+    const Runtime guide_outdoor_seed = runtime;
 
-    renderer.render(runtime.memory(), true);
-    renderer.write_bmp(output_dir / "fast_hay_before.bmp");
-    const std::uint64_t hay_wram_before = wram_hash(runtime.memory());
-    const std::uint64_t hay_sram_before = sram_hash(runtime.memory());
-    const std::uint8_t hay_c916_before = runtime.memory().read8(0xC916);
-    const std::uint8_t hay_cb86_before = runtime.memory().read8(0xCB86);
-    const std::uint8_t hay_cb88_before = runtime.memory().read8(0xCB88);
-    const std::uint8_t hay_cb8d_before = runtime.memory().read8(0xCB8D);
-
-    bool hay_seen = false;
-    std::uint64_t hay_dialog_hash = 0;
-    bool hay_closed = false;
-    unsigned hay_pages = 0;
-    for (std::uint64_t frame = 0; frame < 900; ++frame) {
-        const std::uint8_t submode = runtime.memory().read8(0xC5DC);
-        if (hay_seen && submode == 0) {
-            hay_closed = true;
-            break;
-        }
-
-        std::uint8_t buttons = 0;
-        if (!hay_seen) {
-            if (frame < 2 || (frame >= 120 && (frame % 120u) < 2u)) {
-                buttons = JoyA;
+    auto candidate_nav = [&](Runtime& candidate,
+                             std::uint8_t direction) -> StepResult {
+        constexpr std::array<std::uint8_t, 4> directions = {
+            JoyRight, JoyLeft, JoyUp, JoyDown
+        };
+        bool saw_lcd_off = false;
+        for (unsigned phase = 0; phase < 24; ++phase) {
+            const std::uint8_t buttons =
+                phase < 15 ? directions[direction & 3u] : 0;
+            const StepResult result =
+                advance_search_frame(candidate, buttons);
+            if (result != StepResult::Continue) return result;
+            if (candidate.memory().read8(0xC5DB) == 2) {
+                return StepResult::Continue;
             }
-        } else if ((frame % 96u) < 2u) {
-            buttons = JoyA;
+            if ((candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+                saw_lcd_off = true;
+            }
         }
-
-        const StepResult result = frame_step(buttons);
-        if (result != StepResult::Continue) {
-            return fail("island_hay_dialog", result);
-        }
-
-        const std::uint8_t mode = runtime.memory().read8(0xC5DB);
-        const std::uint8_t after_submode = runtime.memory().read8(0xC5DC);
-        if (after_submode != 0 && !hay_seen) {
-            hay_seen = true;
-            renderer.render(runtime.memory(), true);
-            renderer.write_bmp(output_dir / "fast_hay_dialog.bmp");
-            hay_dialog_hash = renderer.hash();
-            ++hay_pages;
-        }
-
-        if (mode == 2) {
-            std::cout << "M7_FAST_BATTLE_EARLY phase=hay_dialog frame="
-                      << frame << std::endl;
-            break;
-        }
-        if (mode != 1) {
-            std::cout << "M7_FAST_FAIL phase=hay_unexpected_mode C5DB="
-                      << static_cast<unsigned>(mode) << std::endl;
-            return 176;
-        }
-    }
-
-    renderer.render(runtime.memory(), true);
-    renderer.write_bmp(output_dir / "fast_hay_after.bmp");
-    std::cout << "M7_FAST_HAY_PASS seen=" << (hay_seen ? 1 : 0)
-              << " closed=" << (hay_closed ? 1 : 0)
-              << " pages=" << hay_pages
-              << " screen=0x" << std::hex << renderer.hash()
-              << " wram_before=0x" << hay_wram_before
-              << " wram_after=0x" << wram_hash(runtime.memory())
-              << " sram_before=0x" << hay_sram_before
-              << " sram_after=0x" << sram_hash(runtime.memory())
-              << " C916=0x" << static_cast<unsigned>(hay_c916_before)
-              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xC916))
-              << " CB86=0x" << static_cast<unsigned>(hay_cb86_before)
-              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB86))
-              << " CB88=0x" << static_cast<unsigned>(hay_cb88_before)
-              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB88))
-              << " CB8D=0x" << static_cast<unsigned>(hay_cb8d_before)
-              << "->0x" << static_cast<unsigned>(runtime.memory().read8(0xCB8D))
-              << std::dec << std::endl;
-
-    if (!hay_seen || !hay_closed) {
-        std::cout << "M7_FAST_FAIL phase=hay_dialog_closed" << std::endl;
-        return 177;
-    }
-
-
-    // The accepted post-hay frame places Cobi immediately beside the moving
-    // gray NPC. Full 15-frame movement macros can walk past that sprite, so
-    // probe only tiny normal P1 direction pulses followed immediately by A.
-    // Keep the first dialogue whose rendered first page differs from the hay
-    // object's page; no WRAM/SRAM values are injected or patched.
-    const Runtime post_hay_seed = runtime;
-    bool micro_dialog_found = false;
-    constexpr std::array<std::uint8_t, 4> micro_dirs = {
-        JoyRight, JoyUp, JoyLeft, JoyDown
-    };
-    constexpr std::array<const char*, 4> micro_names = {
-        "R", "U", "L", "D"
-    };
-
-    for (std::size_t dir_index = 0;
-         dir_index < micro_dirs.size() && !micro_dialog_found; ++dir_index) {
-        for (unsigned pulse = 1; pulse <= 8 && !micro_dialog_found; ++pulse) {
-            Runtime candidate = post_hay_seed;
-            bool abort = false;
-            for (unsigned frame = 0; frame < pulse; ++frame) {
+        if (saw_lcd_off ||
+            (candidate.memory().read8(0xFF40) & 0x80u) == 0) {
+            for (unsigned settle = 0; settle < 240; ++settle) {
                 const StepResult result =
-                    advance_search_frame(candidate, micro_dirs[dir_index]);
-                if (result != StepResult::Continue) {
-                    if (result == StepResult::MissingBank) {
-                        std::cout << "M7_FAST_MICRO_MISSING_BANK dir="
-                                  << micro_names[dir_index]
-                                  << " pulse=" << pulse
-                                  << " bank=" << candidate.cpu().missing_bank
-                                  << " pc=0x" << std::hex << candidate.cpu().pc
-                                  << std::dec << std::endl;
-                        return 180;
+                    advance_search_frame(candidate, 0);
+                if (result != StepResult::Continue) return result;
+                if (candidate.memory().read8(0xC5DB) == 2) {
+                    return StepResult::Continue;
+                }
+                if ((candidate.memory().read8(0xFF40) & 0x80u) != 0) {
+                    for (unsigned idle = 0; idle < 12; ++idle) {
+                        const StepResult idle_result =
+                            advance_search_frame(candidate, 0);
+                        if (idle_result != StepResult::Continue) {
+                            return idle_result;
+                        }
                     }
-                    abort = true;
                     break;
                 }
             }
-            if (abort) continue;
+        }
+        candidate.memory().set_joypad_state(0);
+        (void)candidate.memory().apu().take_samples();
+        return StepResult::Continue;
+    };
+
+    struct WestNpcRoute {
+        std::array<std::uint8_t, 6> moves;
+        unsigned count;
+        const char* name;
+    };
+    // R=0, L=1, U=2, D=3. The NPC visible west/northwest of the
+    // checkpoint sits farther away than the previous l1/l2 probes reached.
+    constexpr std::array<WestNpcRoute, 14> west_npc_routes = {{
+        {{{1,1,2,0,0,0}},3,"LLU"},
+        {{{1,1,1,2,0,0}},4,"LLLU"},
+        {{{1,1,2,2,0,0}},4,"LLUU"},
+        {{{1,1,1,2,2,0}},5,"LLLUU"},
+        {{{1,1,1,1,2,0}},5,"LLLLU"},
+        {{{1,1,1,1,2,2}},6,"LLLLUU"},
+        {{{2,1,1,0,0,0}},3,"ULL"},
+        {{{2,1,1,1,0,0}},4,"ULLL"},
+        {{{2,2,1,1,0,0}},4,"UULL"},
+        {{{1,2,1,0,0,0}},3,"LUL"},
+        {{{1,2,1,2,0,0}},4,"LULU"},
+        {{{1,1,2,1,0,0}},4,"LLUL"},
+        {{{1,1,1,0,0,0}},3,"LLL"},
+        {{{1,1,1,1,0,0}},4,"LLLL"},
+    }};
+
+    constexpr std::array<std::uint8_t, 5> face_buttons = {
+        0, JoyRight, JoyUp, JoyLeft, JoyDown
+    };
+    constexpr std::array<const char*, 5> face_names = {
+        "A", "RA", "UA", "LA", "DA"
+    };
+    constexpr std::uint64_t kHayBarrelPage0 = 0xf5fdabce7227b783ull;
+    constexpr std::uint64_t kHayBarrelPage1 = 0x567e2b65d1c9738full;
+
+    bool west_target_found = false;
+    std::uint64_t accepted_page_hash = 0;
+
+    for (const auto& route : west_npc_routes) {
+        if (west_target_found) break;
+        Runtime positioned = guide_outdoor_seed;
+        bool abort_route = false;
+
+        for (unsigned i = 0; i < route.count; ++i) {
+            const StepResult result =
+                candidate_nav(positioned, route.moves[i]);
+            if (result == StepResult::MissingBank) {
+                std::cout << "M7_FAST_WEST_MISSING_BANK route="
+                          << route.name << " move=" << i
+                          << " bank=" << positioned.cpu().missing_bank
+                          << " pc=0x" << std::hex << positioned.cpu().pc
+                          << std::dec << std::endl;
+                return 180;
+            }
+            if (result != StepResult::Continue) {
+                abort_route = true;
+                break;
+            }
+            if (positioned.memory().read8(0xC5DB) == 2) {
+                runtime = positioned;
+                west_target_found = true;
+                std::cout << "M7_FAST_WEST_BATTLE route="
+                          << route.name << " move=" << i << std::endl;
+                break;
+            }
+        }
+        if (abort_route || west_target_found) continue;
+
+        for (std::size_t face = 0;
+             face < face_buttons.size() && !west_target_found; ++face) {
+            Runtime candidate = positioned;
+
+            if (face_buttons[face] != 0) {
+                // A single-frame direction pulse changes facing without the
+                // long walk used by the older macro search.
+                const StepResult face_result =
+                    advance_search_frame(candidate, face_buttons[face]);
+                if (face_result == StepResult::MissingBank) {
+                    std::cout << "M7_FAST_WEST_MISSING_BANK route="
+                              << route.name << " face=" << face_names[face]
+                              << " bank=" << candidate.cpu().missing_bank
+                              << " pc=0x" << std::hex << candidate.cpu().pc
+                              << std::dec << std::endl;
+                    return 180;
+                }
+                if (face_result != StepResult::Continue) continue;
+            }
 
             bool opened = false;
             bool closed = false;
             std::uint64_t page_hash = 0;
+            std::uint8_t open_submode = 0;
             std::uint64_t next_press = 96;
-            for (std::uint64_t frame = 0; frame < 700; ++frame) {
+
+            for (std::uint64_t frame = 0; frame < 800; ++frame) {
                 const std::uint8_t sub_before =
                     candidate.memory().read8(0xC5DC);
                 if (opened && sub_before == 0) {
@@ -886,54 +889,56 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 const StepResult result =
                     advance_search_frame(candidate, buttons);
                 if (result == StepResult::MissingBank) {
-                    std::cout << "M7_FAST_MICRO_MISSING_BANK dir="
-                              << micro_names[dir_index]
-                              << " pulse=" << pulse
+                    std::cout << "M7_FAST_WEST_MISSING_BANK route="
+                              << route.name << " face=" << face_names[face]
                               << " phase=dialog bank="
                               << candidate.cpu().missing_bank
                               << " pc=0x" << std::hex << candidate.cpu().pc
                               << std::dec << std::endl;
                     return 180;
                 }
-                if (result != StepResult::Continue) {
-                    abort = true;
-                    break;
-                }
+                if (result != StepResult::Continue) break;
 
-                if (candidate.memory().read8(0xC5DB) == 2) {
-                    opened = true;
-                    closed = true;
-                    break;
-                }
-                if (candidate.memory().read8(0xC5DB) != 1) {
-                    abort = true;
-                    break;
-                }
+                const std::uint8_t mode =
+                    candidate.memory().read8(0xC5DB);
+                const std::uint8_t submode =
+                    candidate.memory().read8(0xC5DC);
 
-                if (!opened && candidate.memory().read8(0xC5DC) != 0) {
+                if (mode == 2) {
+                    runtime = candidate;
+                    west_target_found = true;
+                    std::cout << "M7_FAST_WEST_BATTLE route="
+                              << route.name << " face=" << face_names[face]
+                              << " frame=" << frame << std::endl;
+                    break;
+                }
+                if (mode != 1) break;
+
+                if (!opened && submode != 0) {
                     opened = true;
-                    Renderer probe_renderer{};
-                    probe_renderer.render(candidate.memory(), true);
-                    page_hash = probe_renderer.hash();
-                    probe_renderer.write_bmp(
+                    open_submode = submode;
+                    Renderer west_renderer{};
+                    west_renderer.render(candidate.memory(), true);
+                    page_hash = west_renderer.hash();
+                    west_renderer.write_bmp(
                         output_dir /
-                        (std::string("fast_micro_") +
-                         micro_names[dir_index] + "_" +
-                         std::to_string(pulse) + ".bmp"));
+                        (std::string("fast_west_") + route.name + "_" +
+                         face_names[face] + ".bmp"));
                     next_press = frame + 96;
                 }
+
                 if (buttons == JoyA && opened) {
                     next_press = frame + 96;
                 }
             }
-            if (abort) continue;
 
-            std::cout << "M7_FAST_MICRO dir=" << micro_names[dir_index]
-                      << " pulse=" << pulse
+            std::cout << "M7_FAST_WEST_PROBE route=" << route.name
+                      << " face=" << face_names[face]
                       << " opened=" << (opened ? 1 : 0)
                       << " closed=" << (closed ? 1 : 0)
-                      << " page_hash=0x" << std::hex << page_hash
-                      << " hay_hash=0x" << hay_dialog_hash
+                      << " submode=" << static_cast<unsigned>(open_submode)
+                      << " page=0x" << std::hex << page_hash
+                      << " bg=0x" << background_hash(candidate.memory())
                       << " C916=0x"
                       << static_cast<unsigned>(candidate.memory().read8(0xC916))
                       << " C923=0x"
@@ -944,28 +949,44 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                       << static_cast<unsigned>(candidate.memory().read8(0xCB8D))
                       << std::dec << std::endl;
 
-            if (candidate.memory().read8(0xC5DB) == 2 ||
-                (opened && closed && page_hash != 0 &&
-                 page_hash != hay_dialog_hash)) {
+            // Submode 1 is the text/script path. Explicitly exclude the known
+            // dried-hay barrel pages from the earlier artifact.
+            if (opened && closed && open_submode == 1 &&
+                page_hash != 0 &&
+                page_hash != kHayBarrelPage0 &&
+                page_hash != kHayBarrelPage1) {
                 runtime = candidate;
-                micro_dialog_found = true;
-                std::cout << "M7_FAST_MICRO_PASS dir="
-                          << micro_names[dir_index]
-                          << " pulse=" << pulse
-                          << " mode="
-                          << static_cast<unsigned>(
-                                 runtime.memory().read8(0xC5DB))
-                          << std::endl;
+                accepted_page_hash = page_hash;
+                west_target_found = true;
+                std::cout << "M7_FAST_WEST_TARGET route=" << route.name
+                          << " face=" << face_names[face]
+                          << " page=0x" << std::hex << page_hash
+                          << std::dec << std::endl;
             }
         }
     }
 
-    if (!micro_dialog_found) {
-        runtime = post_hay_seed;
-        std::cout << "M7_FAST_MICRO_NO_DISTINCT_DIALOG" << std::endl;
+    if (!west_target_found) {
+        renderer.render(guide_outdoor_seed.memory(), true);
+        renderer.write_bmp(output_dir / "fast_west_target_not_found.bmp");
+        std::cout << "M7_FAST_FAIL phase=west_target_not_found" << std::endl;
+        return 177;
     }
 
-    // Bound the search to game-owned states after the accepted hay/NPC event.
+    renderer.render(runtime.memory(), true);
+    renderer.write_bmp(output_dir / "fast_west_target_after.bmp");
+    std::cout << "M7_FAST_WEST_PASS page=0x" << std::hex
+              << accepted_page_hash
+              << " screen=0x" << renderer.hash()
+              << " bg=0x" << background_hash(runtime.memory())
+              << std::dec
+              << " C5DB="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DB))
+              << " C5DC="
+              << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
+              << std::endl;
+
+    // Bound the search to game-owned states after the accepted westward Vault interaction.
     // Movement macros never press A. The A macro presses A, waits for any
     // original dialogue to open, then advances it using ordinary P1 input.
     // No RAM, map, party or battle state is injected by the host.
