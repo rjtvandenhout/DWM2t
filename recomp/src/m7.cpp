@@ -987,6 +987,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
               << static_cast<unsigned>(runtime.memory().read8(0xC5DC))
               << std::endl;
 
+    bool selector08_battle_reached = false;
+
     // Run 218 proved that the accepted LLU+Left+A Vault interaction
     // (page hash below) has a short original-input continuation that changes
     // the game-owned event selector to C916=0x08. Replay that exact P1 macro
@@ -1042,9 +1044,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 std::cout
                     << "M7_FAST_SELECTOR08_BATTLE index=" << i
                     << std::endl;
-                return verify_battle_command(
-                    runtime,
-                    output_dir / "battle_selector08");
+                selector08_battle_reached = true;
+                break;
             }
             if (mode != 1) {
                 std::cout
@@ -1302,6 +1303,14 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         std::cout << std::endl;
         return 0;
     };
+
+    if (selector08_battle_reached) {
+        const std::vector<std::uint8_t> selector08_acceptance_path = {
+            0,0,0,0,0,0,2,1,4,0,4
+        };
+        return verify_battle_command(
+            runtime, selector08_acceptance_path);
+    }
 
     struct BattleNode {
         std::unique_ptr<Runtime> runtime;
