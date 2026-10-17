@@ -1913,6 +1913,307 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return (memory.read8(address) & mask) != 0;
                             };
 
+                            // Before following side-NPC interactions, search
+                            // directly for the event handler identified from the
+                            // ROM: event flag $000C is set only by bank 115.
+                            // Bank 115 is deliberately NOT in the AOT set yet.
+                            // Therefore a normal P1 interaction that reaches the
+                            // required event must surface as MissingBank 115.
+                            struct Bank115Node {
+                                std::unique_ptr<Runtime> runtime;
+                                std::vector<std::uint8_t> path;
+                                std::uint64_t score = 0;
+                                std::uint64_t screen = 0;
+                                std::uint64_t bg = 0;
+                            };
+
+                            Renderer bank115_renderer{};
+                            bank115_renderer.render(
+                                guide_outdoor_seed.memory(), true);
+                            std::vector<Bank115Node> bank115_frontier;
+                            bank115_frontier.push_back({
+                                std::make_unique<Runtime>(
+                                    guide_outdoor_seed),
+                                {},
+                                0,
+                                bank115_renderer.hash(),
+                                background_hash(
+                                    guide_outdoor_seed.memory())
+                            });
+
+                            std::unordered_set<std::uint64_t>
+                                bank115_seen;
+                            std::unordered_set<std::uint64_t>
+                                bank115_screens;
+                            std::unordered_set<std::uint64_t>
+                                bank115_bgs;
+                            bank115_screens.insert(
+                                bank115_frontier.front().screen);
+                            bank115_bgs.insert(
+                                bank115_frontier.front().bg);
+
+                            constexpr std::array<std::uint8_t, 4>
+                                bank115_moves = {1, 3, 2, 0};
+                            constexpr std::size_t bank115_width = 32;
+                            constexpr std::size_t bank115_depth = 40;
+
+                            for (std::size_t depth = 0;
+                                 depth < bank115_depth &&
+                                 !bank115_frontier.empty();
+                                 ++depth) {
+                                std::vector<Bank115Node> next;
+                                next.reserve(
+                                    bank115_frontier.size() *
+                                    bank115_moves.size());
+
+                                for (const Bank115Node& node :
+                                     bank115_frontier) {
+                                    for (const std::uint8_t move :
+                                         bank115_moves) {
+                                        auto child =
+                                            std::make_unique<Runtime>(
+                                                *node.runtime);
+                                        const StepResult move_result =
+                                            apply_navigation(
+                                                *child, move);
+
+                                        std::vector<std::uint8_t> path =
+                                            node.path;
+                                        path.push_back(move);
+
+                                        if (move_result ==
+                                            StepResult::MissingBank) {
+                                            bank115_renderer.render(
+                                                child->memory(), true);
+                                            std::cout
+                                                << "M7_BANK115_MOVE_MISSING depth="
+                                                << depth
+                                                << " bank="
+                                                << child->cpu().missing_bank
+                                                << " pc=0x" << std::hex
+                                                << child->cpu().pc
+                                                << " screen=0x"
+                                                << bank115_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            if (child->cpu().missing_bank ==
+                                                115) {
+                                                bank115_renderer.write_bmp(
+                                                    output_dir /
+                                                    "m7_bank115_route.bmp");
+                                                return 159;
+                                            }
+                                            return 127;
+                                        }
+                                        if (move_result !=
+                                            StepResult::Continue) {
+                                            continue;
+                                        }
+
+                                        const std::uint8_t mode =
+                                            child->memory().read8(0xC5DB);
+                                        if (mode != 1) {
+                                            bank115_renderer.render(
+                                                child->memory(), true);
+                                            bank115_renderer.write_bmp(
+                                                output_dir /
+                                                "m7_pre115_mode_change.bmp");
+                                            std::cout
+                                                << "M7_PRE115_MODE_CHANGE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<unsigned>(mode)
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       child->memory()
+                                                           .read8(0xC5DC))
+                                                << " screen=0x" << std::hex
+                                                << bank115_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 0;
+                                        }
+
+                                        // Probe exactly one normal interaction
+                                        // from this physically reached state.
+                                        auto interacted =
+                                            std::make_unique<Runtime>(
+                                                *child);
+                                        const StepResult a_result =
+                                            apply_quest_action(
+                                                *interacted, 4);
+                                        std::vector<std::uint8_t> a_path =
+                                            path;
+                                        a_path.push_back(4);
+
+                                        if (a_result ==
+                                            StepResult::MissingBank) {
+                                            bank115_renderer.render(
+                                                interacted->memory(), true);
+                                            std::cout
+                                                << "M7_BANK115_INTERACT_MISSING depth="
+                                                << depth
+                                                << " bank="
+                                                << interacted->cpu()
+                                                       .missing_bank
+                                                << " pc=0x" << std::hex
+                                                << interacted->cpu().pc
+                                                << " screen=0x"
+                                                << bank115_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(a_path);
+                                            std::cout << std::endl;
+                                            if (interacted->cpu()
+                                                    .missing_bank == 115) {
+                                                bank115_renderer.write_bmp(
+                                                    output_dir /
+                                                    "m7_bank115_route.bmp");
+                                                std::cout
+                                                    << "M7_BANK115_ROUTE_FOUND"
+                                                    << std::endl;
+                                                return 159;
+                                            }
+                                            return 127;
+                                        }
+                                        if (a_result ==
+                                                StepResult::Continue &&
+                                            interacted->memory()
+                                                    .read8(0xC5DB) != 1) {
+                                            bank115_renderer.render(
+                                                interacted->memory(), true);
+                                            bank115_renderer.write_bmp(
+                                                output_dir /
+                                                "m7_interaction_mode_change.bmp");
+                                            std::cout
+                                                << "M7_INTERACTION_MODE_CHANGE depth="
+                                                << depth
+                                                << " C5DB="
+                                                << static_cast<unsigned>(
+                                                       interacted->memory()
+                                                           .read8(0xC5DB))
+                                                << " C5DC="
+                                                << static_cast<unsigned>(
+                                                       interacted->memory()
+                                                           .read8(0xC5DC))
+                                                << " screen=0x" << std::hex
+                                                << bank115_renderer.hash()
+                                                << std::dec;
+                                            print_search_path(a_path);
+                                            std::cout << std::endl;
+                                            return 0;
+                                        }
+
+                                        bank115_renderer.render(
+                                            child->memory(), true);
+                                        const std::uint64_t screen =
+                                            bank115_renderer.hash();
+                                        const std::uint64_t bg =
+                                            background_hash(
+                                                child->memory());
+                                        const std::uint64_t pos =
+                                            tilemap_hash(
+                                                child->memory());
+
+                                        std::uint64_t signature = screen;
+                                        signature ^= bg +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        signature ^= pos +
+                                            0x9E3779B97F4A7C15ull +
+                                            (signature << 6) +
+                                            (signature >> 2);
+                                        if (!bank115_seen.insert(
+                                                 signature).second) {
+                                            continue;
+                                        }
+
+                                        const bool new_screen =
+                                            bank115_screens.insert(
+                                                screen).second;
+                                        const bool new_bg =
+                                            bank115_bgs.insert(bg).second;
+                                        std::uint64_t score = 0;
+                                        if (new_bg) {
+                                            score +=
+                                                1'000'000'000'000ull;
+                                        }
+                                        if (new_screen) {
+                                            score +=
+                                                1'000'000'000ull;
+                                        }
+                                        // ROM guide: "The Vault is west".
+                                        if (move == 1) {
+                                            score +=
+                                                100'000'000ull;
+                                        } else if (move == 3) {
+                                            score +=
+                                                20'000'000ull;
+                                        }
+
+                                        next.push_back({
+                                            std::move(child),
+                                            std::move(path),
+                                            score,
+                                            screen,
+                                            bg
+                                        });
+                                    }
+                                }
+
+                                std::stable_sort(
+                                    next.begin(), next.end(),
+                                    [](const Bank115Node& a,
+                                       const Bank115Node& b) {
+                                        if (a.score != b.score) {
+                                            return a.score > b.score;
+                                        }
+                                        if (a.bg != b.bg) {
+                                            return a.bg < b.bg;
+                                        }
+                                        return a.screen < b.screen;
+                                    });
+                                if (next.size() > bank115_width) {
+                                    next.resize(bank115_width);
+                                }
+                                if (!next.empty() &&
+                                    (depth % 5u) == 0u) {
+                                    std::cout
+                                        << "M7_BANK115_SEARCH depth="
+                                        << depth
+                                        << " frontier="
+                                        << next.size()
+                                        << " states="
+                                        << bank115_seen.size()
+                                        << " bgs="
+                                        << bank115_bgs.size()
+                                        << " screens="
+                                        << bank115_screens.size()
+                                        << " best_bg=0x" << std::hex
+                                        << next.front().bg
+                                        << " best_screen=0x"
+                                        << next.front().screen
+                                        << std::dec;
+                                    print_search_path(
+                                        next.front().path);
+                                    std::cout << std::endl;
+                                }
+
+                                bank115_frontier =
+                                    std::move(next);
+                            }
+
+                            std::cout
+                                << "M7_BANK115_SEARCH_EXHAUSTED states="
+                                << bank115_seen.size()
+                                << " bgs=" << bank115_bgs.size()
+                                << " screens="
+                                << bank115_screens.size()
+                                << std::endl;
+                            return 158;
+
                             // Pin the deterministic path discovered
                             // by the event-flag beam to the populated farm
                             // area. This keeps subsequent interaction search
