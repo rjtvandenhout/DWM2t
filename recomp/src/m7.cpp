@@ -732,20 +732,89 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 175;
     }
 
-    // At arrival Cobi stands immediately below the gray NPC and is facing
-    // down at the hay. A two-frame Up pulse changes facing while the NPC blocks
-    // movement, so the subsequent A press targets the NPC rather than the hay
-    // pile. No host state is edited.
-    {
-        const StepResult result = pure_nav(2);
-        if (result != StepResult::Continue) {
-            return fail("island_face_npc", result);
+    // At arrival Cobi stands immediately below the gray NPC and starts
+    // facing down. Two frames did not reach the movement/facing update, while a
+    // full movement macro walked past the NPC. Probe a tiny bounded set of
+    // normal Up pulse lengths from the identical game-owned arrival state and
+    // keep the first one whose subsequent A press opens a real dialogue.
+    const Runtime island_arrival_seed = runtime;
+    bool island_face_found = false;
+    unsigned island_face_frames = 0;
+    constexpr std::array<unsigned, 8> face_pulses = {
+        3, 4, 5, 6, 7, 8, 9, 10
+    };
+
+    for (const unsigned pulse : face_pulses) {
+        Runtime candidate = island_arrival_seed;
+        bool candidate_abort = false;
+
+        for (unsigned frame = 0; frame < pulse; ++frame) {
+            const StepResult result =
+                advance_search_frame(candidate, JoyUp);
+            if (result != StepResult::Continue) {
+                candidate_abort = true;
+                break;
+            }
+        }
+        if (candidate_abort) continue;
+
+        for (unsigned frame = 0; frame < 4; ++frame) {
+            const StepResult result =
+                advance_search_frame(candidate, 0);
+            if (result != StepResult::Continue) {
+                candidate_abort = true;
+                break;
+            }
+        }
+        if (candidate_abort) continue;
+
+        bool opened = false;
+        for (unsigned frame = 0; frame < 180; ++frame) {
+            const std::uint8_t buttons =
+                (!opened && (frame < 2 ||
+                 (frame >= 90 && frame % 90u < 2u))) ? JoyA : 0;
+            const StepResult result =
+                advance_search_frame(candidate, buttons);
+            if (result != StepResult::Continue) {
+                candidate_abort = true;
+                break;
+            }
+            if (candidate.memory().read8(0xC5DC) != 0) {
+                opened = true;
+                break;
+            }
+        }
+        if (candidate_abort) continue;
+
+        renderer.render(candidate.memory(), true);
+        std::cout << "M7_FAST_ISLAND_FACE pulse=" << pulse
+                  << " opened=" << (opened ? 1 : 0)
+                  << " screen=0x" << std::hex << renderer.hash()
+                  << " C5DB=0x"
+                  << static_cast<unsigned>(candidate.memory().read8(0xC5DB))
+                  << " C5DC=0x"
+                  << static_cast<unsigned>(candidate.memory().read8(0xC5DC))
+                  << std::dec << std::endl;
+
+        if (opened) {
+            runtime = candidate;
+            island_face_found = true;
+            island_face_frames = pulse;
+            break;
         }
     }
 
+    if (!island_face_found) {
+        std::cout << "M7_FAST_FAIL phase=island_face_probe" << std::endl;
+        return 176;
+    }
+
+    std::cout << "M7_FAST_ISLAND_FACE_PASS pulse="
+              << island_face_frames << std::endl;
+
     const std::uint64_t island_sram_before = sram_hash(runtime.memory());
     const std::uint64_t island_wram_before = wram_hash(runtime.memory());
-    bool island_npc_seen = false;
+    bool island_npc_seen = runtime.memory().read8(0xC5DC) != 0;
     bool island_npc_closed = false;
     unsigned island_pages = 0;
     constexpr std::array<std::uint64_t, 6> island_capture_frames = {
