@@ -2031,8 +2031,21 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         << static_cast<unsigned>(mode)
                                         << " C5DC="
                                         << static_cast<unsigned>(submode)
-                                        << " screen=0x" << std::hex
+                                        << " C920=0x" << std::hex
+                                        << static_cast<unsigned>(
+                                               vault_door->memory().read8(0xC920))
+                                        << " script_ptr=0x"
+                                        << static_cast<unsigned>(
+                                               vault_door->memory().read8(0xC91B))
+                                        << std::setw(2) << std::setfill('0')
+                                        << static_cast<unsigned>(
+                                               vault_door->memory().read8(0xC91A))
+                                        << " D7FD=0x"
+                                        << static_cast<unsigned>(
+                                               vault_door->memory().read8(0xD7FD))
+                                        << " screen=0x"
                                         << vault_door_renderer.hash()
+                                        << std::setfill(' ')
                                         << std::dec << std::endl;
                                 }
 
