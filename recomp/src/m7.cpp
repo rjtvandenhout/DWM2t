@@ -2069,6 +2069,155 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 return 155;
                             }
 
+                            // Re-run only the pinned trigger path to capture the
+                            // original cartridge dialogue and identify exactly
+                            // which P1 interaction flips event flag $0004.
+                            auto quest_text_probe =
+                                std::make_unique<Runtime>(*farm_seed);
+                            Renderer quest_text_renderer{};
+                            unsigned quest_text_capture = 0;
+                            for (std::size_t path_index = 0;
+                                 path_index < quest_trigger_path.size();
+                                 ++path_index) {
+                                const std::uint8_t action =
+                                    quest_trigger_path[path_index];
+                                const bool before =
+                                    event_flag(
+                                        quest_text_probe->memory(), 0x04);
+
+                                if (action < 4) {
+                                    const StepResult result =
+                                        apply_navigation(
+                                            *quest_text_probe, action);
+                                    if (result != StepResult::Continue) {
+                                        std::cout
+                                            << "M7_QUEST_TEXT_ABORT index="
+                                            << path_index
+                                            << " result="
+                                            << static_cast<unsigned>(
+                                                   result)
+                                            << std::endl;
+                                        return result ==
+                                            StepResult::MissingBank
+                                            ? 127 : 156;
+                                    }
+                                } else {
+                                    bool opened = false;
+                                    std::uint64_t active_frames = 0;
+                                    for (std::uint64_t frame = 0;
+                                         frame < 1200; ++frame) {
+                                        const std::uint8_t submode =
+                                            quest_text_probe->memory()
+                                                .read8(0xC5DC);
+                                        if (opened && submode == 0) {
+                                            break;
+                                        }
+
+                                        std::uint8_t buttons = 0;
+                                        if (!opened) {
+                                            if (frame < 2 ||
+                                                (frame >= 120 &&
+                                                 frame % 120u < 2u)) {
+                                                buttons = JoyA;
+                                            }
+                                        } else if ((frame % 96u) < 2u) {
+                                            buttons = JoyA;
+                                        }
+
+                                        const StepResult result =
+                                            advance_search_frame(
+                                                *quest_text_probe,
+                                                buttons);
+                                        if (result !=
+                                            StepResult::Continue) {
+                                            std::cout
+                                                << "M7_QUEST_TEXT_ABORT index="
+                                                << path_index
+                                                << " frame=" << frame
+                                                << " result="
+                                                << static_cast<unsigned>(
+                                                       result)
+                                                << std::endl;
+                                            return result ==
+                                                StepResult::MissingBank
+                                                ? 127 : 157;
+                                        }
+
+                                        if (quest_text_probe->memory()
+                                                .read8(0xC5DC) != 0) {
+                                            opened = true;
+                                            ++active_frames;
+                                            if (active_frames == 30 ||
+                                                active_frames == 90 ||
+                                                active_frames == 150 ||
+                                                active_frames == 240 ||
+                                                active_frames == 360) {
+                                                quest_text_renderer.render(
+                                                    quest_text_probe->memory(),
+                                                    true);
+                                                quest_text_renderer.write_bmp(
+                                                    output_dir /
+                                                    ("quest_flag4_text_" +
+                                                     std::to_string(
+                                                         quest_text_capture) +
+                                                     "_action_" +
+                                                     std::to_string(
+                                                         path_index) +
+                                                     "_frame_" +
+                                                     std::to_string(
+                                                         active_frames) +
+                                                     ".bmp"));
+                                                std::cout
+                                                    << "M7_QUEST_TEXT_CAPTURE capture="
+                                                    << quest_text_capture
+                                                    << " action_index="
+                                                    << path_index
+                                                    << " active_frame="
+                                                    << active_frames
+                                                    << " screen=0x"
+                                                    << std::hex
+                                                    << quest_text_renderer
+                                                           .hash()
+                                                    << std::dec
+                                                    << std::endl;
+                                                ++quest_text_capture;
+                                            }
+                                        }
+
+                                        if (quest_text_probe->memory()
+                                                .read8(0xC5DB) != 1) {
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                const bool after =
+                                    event_flag(
+                                        quest_text_probe->memory(), 0x04);
+                                quest_text_renderer.render(
+                                    quest_text_probe->memory(), true);
+                                std::cout
+                                    << "M7_QUEST_TEXT_ACTION index="
+                                    << path_index
+                                    << " action="
+                                    << search_action_name(action)
+                                    << " flag4_before="
+                                    << (before ? 1 : 0)
+                                    << " flag4_after="
+                                    << (after ? 1 : 0)
+                                    << " C5DB="
+                                    << static_cast<unsigned>(
+                                           quest_text_probe->memory()
+                                               .read8(0xC5DB))
+                                    << " C5DC="
+                                    << static_cast<unsigned>(
+                                           quest_text_probe->memory()
+                                               .read8(0xC5DC))
+                                    << " screen=0x" << std::hex
+                                    << quest_text_renderer.hash()
+                                    << std::dec << std::endl;
+                            }
+
                             // Continue only from the newly accepted game-owned
                             // story state. A bounded beam explores physical
                             // movement and normal A interactions. Any mode
