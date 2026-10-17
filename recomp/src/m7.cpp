@@ -1928,18 +1928,68 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             };
 
                             Renderer bank115_renderer{};
+
+                            // An earlier deterministic P1 probe already reached
+                            // the fenced NPC/monster field from the guide's
+                            // outdoor state. Pin that physical route and search
+                            // locally around the likely quest interaction.
+                            auto bank115_seed =
+                                std::make_unique<Runtime>(
+                                    guide_outdoor_seed);
+                            constexpr std::array<std::pair<std::uint8_t, unsigned>, 3>
+                                bank115_field_route = {{
+                                    {1, 8}, {3, 4}, {1, 10}
+                                }};
+                            for (const auto& [direction, count] :
+                                 bank115_field_route) {
+                                for (unsigned n = 0; n < count; ++n) {
+                                    const StepResult result =
+                                        apply_navigation(
+                                            *bank115_seed, direction);
+                                    if (result ==
+                                        StepResult::MissingBank) {
+                                        std::cout
+                                            << "M7_BANK115_FIELD_MISSING bank="
+                                            << bank115_seed->cpu()
+                                                   .missing_bank
+                                            << " pc=0x" << std::hex
+                                            << bank115_seed->cpu().pc
+                                            << std::dec << std::endl;
+                                        return 127;
+                                    }
+                                    if (result !=
+                                        StepResult::Continue) {
+                                        return 160;
+                                    }
+                                }
+                            }
+
                             bank115_renderer.render(
-                                guide_outdoor_seed.memory(), true);
+                                bank115_seed->memory(), true);
+                            bank115_renderer.write_bmp(
+                                output_dir /
+                                "m7_bank115_field_seed.bmp");
+                            std::cout
+                                << "M7_BANK115_FIELD_SEED screen=0x"
+                                << std::hex
+                                << bank115_renderer.hash()
+                                << " bg=0x"
+                                << background_hash(
+                                       bank115_seed->memory())
+                                << std::dec << std::endl;
+
                             std::vector<Bank115Node> bank115_frontier;
                             bank115_frontier.push_back({
-                                std::make_unique<Runtime>(
-                                    guide_outdoor_seed),
+                                std::move(bank115_seed),
                                 {},
                                 0,
                                 bank115_renderer.hash(),
-                                background_hash(
-                                    guide_outdoor_seed.memory())
+                                0
                             });
+                            bank115_frontier.front().bg =
+                                background_hash(
+                                    bank115_frontier.front()
+                                        .runtime->memory());
 
                             std::unordered_set<std::uint64_t>
                                 bank115_seen;
@@ -1954,8 +2004,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             constexpr std::array<std::uint8_t, 4>
                                 bank115_moves = {1, 3, 2, 0};
-                            constexpr std::size_t bank115_width = 32;
-                            constexpr std::size_t bank115_depth = 40;
+                            constexpr std::size_t bank115_width = 16;
+                            constexpr std::size_t bank115_depth = 16;
 
                             for (std::size_t depth = 0;
                                  depth < bank115_depth &&
