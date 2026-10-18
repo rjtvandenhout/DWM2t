@@ -901,6 +901,142 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return StepResult::Continue;
     };
 
+    std::unique_ptr<Runtime> flag4_battle_seed;
+
+    auto event_flag = [](const Memory& memory, std::uint16_t flag) {
+        const std::uint16_t address =
+            static_cast<std::uint16_t>(0xCBD7u + (flag >> 3));
+        const std::uint8_t mask =
+            static_cast<std::uint8_t>(1u << (flag & 7u));
+        return (memory.read8(address) & mask) != 0;
+    };
+
+    auto quest_interact = [&](Runtime& candidate) -> StepResult {
+        bool opened = false;
+        constexpr std::uint64_t frame_budget = 1200;
+        for (std::uint64_t frame = 0; frame < frame_budget; ++frame) {
+            const std::uint8_t submode =
+                candidate.memory().read8(0xC5DC);
+            if (opened && submode == 0) {
+                candidate.memory().set_joypad_state(0);
+                (void)candidate.memory().apu().take_samples();
+                return StepResult::Continue;
+            }
+
+            std::uint8_t buttons = 0;
+            if (!opened) {
+                if (frame < 2 ||
+                    (frame >= 120 && (frame % 120u) < 2u)) {
+                    buttons = JoyA;
+                }
+            } else if ((frame % 96u) < 2u) {
+                buttons = JoyA;
+            }
+
+            const StepResult result =
+                advance_search_frame(candidate, buttons);
+            if (result != StepResult::Continue) return result;
+            if (candidate.memory().read8(0xC5DB) == 2) {
+                return StepResult::Continue;
+            }
+            if (candidate.memory().read8(0xC5DB) != 1) {
+                return StepResult::Continue;
+            }
+            if (candidate.memory().read8(0xC5DC) != 0) opened = true;
+            if (!opened && frame >= 48) {
+                candidate.memory().set_joypad_state(0);
+                (void)candidate.memory().apu().take_samples();
+                return StepResult::Continue;
+            }
+        }
+        return StepResult::Continue;
+    };
+
+    auto quest_action =
+        [&](Runtime& candidate, std::uint8_t action) -> StepResult {
+            if (action < 4) return candidate_nav(candidate, action);
+            return quest_interact(candidate);
+        };
+
+    // Reuse the previously proven P1-only quest route. This route was already
+    // shown to flip cartridge event flag $0004 and is therefore a stronger
+    // battle-search seed than selector-only pump/NPC interactions.
+    {
+        constexpr std::array<std::uint8_t, 25> farm_prefix = {
+            2,3,0,4,4,4,1,2,4,4,4,4,4,
+            4,4,0,0,4,1,0,0,0,0,0,3
+        };
+        constexpr std::array<std::uint8_t, 10> quest_trigger_path = {
+            2,2,4,4,4,4,4,1,4,4
+        };
+        constexpr std::uint64_t kFarmSeedScreen =
+            0x131b9ff9d44e6661ull;
+
+        Runtime farm = guide_outdoor_seed;
+        bool route_ok = true;
+        for (std::size_t i = 0; i < farm_prefix.size(); ++i) {
+            const StepResult result = quest_action(farm, farm_prefix[i]);
+            if (result != StepResult::Continue) {
+                route_ok = false;
+                std::cout
+                    << "M7_FLAG4_SEED_ABORT phase=farm index=" << i
+                    << " result=" << static_cast<unsigned>(result)
+                    << std::endl;
+                break;
+            }
+        }
+
+        if (route_ok) {
+            Renderer farm_renderer{};
+            farm_renderer.render(farm.memory(), true);
+            std::cout
+                << "M7_FLAG4_FARM screen=0x" << std::hex
+                << farm_renderer.hash()
+                << " expected=0x" << kFarmSeedScreen
+                << " C923=0x"
+                << static_cast<unsigned>(farm.memory().read8(0xC923))
+                << " flags=0x"
+                << static_cast<unsigned>(farm.memory().read8(0xCBD7))
+                << std::dec << std::endl;
+
+            Runtime quest = farm;
+            const bool flag4_before = event_flag(quest.memory(), 0x04);
+            for (std::size_t i = 0;
+                 i < quest_trigger_path.size() && route_ok; ++i) {
+                const StepResult result =
+                    quest_action(quest, quest_trigger_path[i]);
+                if (result != StepResult::Continue) {
+                    route_ok = false;
+                    std::cout
+                        << "M7_FLAG4_SEED_ABORT phase=trigger index="
+                        << i << " result="
+                        << static_cast<unsigned>(result)
+                        << std::endl;
+                }
+            }
+
+            const bool flag4_after = event_flag(quest.memory(), 0x04);
+            std::cout
+                << "M7_FLAG4_SEED_RESULT before="
+                << (flag4_before ? 1 : 0)
+                << " after=" << (flag4_after ? 1 : 0)
+                << " flag2=" << (event_flag(quest.memory(), 0x02) ? 1 : 0)
+                << " C920=0x" << std::hex
+                << static_cast<unsigned>(quest.memory().read8(0xC920))
+                << " C923=0x"
+                << static_cast<unsigned>(quest.memory().read8(0xC923))
+                << " flags=0x"
+                << static_cast<unsigned>(quest.memory().read8(0xCBD7))
+                << std::dec << std::endl;
+
+            if (route_ok && !flag4_before && flag4_after &&
+                quest.memory().read8(0xC5DB) == 1) {
+                flag4_battle_seed =
+                    std::make_unique<Runtime>(quest);
+            }
+        }
+    }
+
     struct WestNpcRoute {
         std::array<std::uint8_t, 6> moves;
         unsigned count;
@@ -1432,11 +1568,11 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         // plus the live guards used by the bank-2 battle-entry routines.
         // Without these guard bytes, physically identical states with different
         // battle eligibility collapsed to one signature and were pruned.
-        constexpr std::array<std::uint16_t, 17> story_bytes = {
+        constexpr std::array<std::uint16_t, 18> story_bytes = {
             0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
             0xC552, 0xCBEB, 0xCB86, 0xCB8D,
             0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC8CD, 0xC193,
-            0xD067
+            0xD067, 0xCBD7
         };
         for (const std::uint16_t address : story_bytes) {
             mix(static_cast<std::uint64_t>(memory.read8(address)) |
@@ -1739,6 +1875,17 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             runtime, selector08_acceptance_path);
     }
 
+    if (flag4_battle_seed) {
+        runtime = *flag4_battle_seed;
+        std::cout
+            << "M7_BATTLE_SEED source=flag4_quest"
+            << " C923=0x" << std::hex
+            << static_cast<unsigned>(runtime.memory().read8(0xC923))
+            << " flags=0x"
+            << static_cast<unsigned>(runtime.memory().read8(0xCBD7))
+            << std::dec << std::endl;
+    }
+
     auto traced_battle_move =
         [&](Runtime& candidate,
             std::uint8_t direction,
@@ -2000,8 +2147,9 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     child_location != parent_location;
 
                 bool story_change = false;
-                constexpr std::array<std::uint16_t, 6> scored_story = {
-                    0xC916, 0xC923, 0xC552, 0xCBEB, 0xCB86, 0xCB8D
+                constexpr std::array<std::uint16_t, 7> scored_story = {
+                    0xC916, 0xC923, 0xC552, 0xCBEB, 0xCB86, 0xCB8D,
+                    0xCBD7
                 };
                 for (const std::uint16_t address : scored_story) {
                     if (child->memory().read8(address) !=
@@ -2049,6 +2197,12 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 if ((child->memory().read8(0xC562) & 0x01u) != 0) {
                     score += 10'000'000'000'000ull;
                 }
+                // Event flag #2 is the hard prerequisite checked by 02:4FE8.
+                // If cartridge execution sets it, preserve that state above
+                // ordinary screen/background novelty.
+                if ((child->memory().read8(0xCBD7) & 0x04u) != 0) {
+                    score += 20'000'000'000'000ull;
+                }
                 // D067==0 is already true for the A3 seed and most
                 // explored states, so it is a prerequisite rather than a
                 // useful beam-ranking signal. Do not let it dominate physical
@@ -2091,6 +2245,9 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                       << " C8CD=0x"
                       << static_cast<unsigned>(
                              next.front().runtime->memory().read8(0xC8CD))
+                      << " flags=0x"
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xCBD7))
                       << std::dec;
             print_path(next.front().path);
             std::cout << std::endl;
