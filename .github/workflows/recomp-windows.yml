@@ -124,6 +124,9 @@ jobs:
       - name: Run M7 original-game audio probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-audio-probe
 
+      - name: Run M7 flag2 quest route probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-route-search recomp/build/m7_flag2_route
+
       - name: Run M7 pinned P1 route probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-fast-route recomp/build/m7_search
 
