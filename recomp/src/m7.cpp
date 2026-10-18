@@ -363,7 +363,7 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
     return 0;
 }
 
-StepResult advance_battle_search_frameStepResult advance_battle_search_frame(
+StepResult advance_battle_search_frame(
     Runtime& runtime,
     std::uint8_t buttons,
     BattleExecutionTrace& trace) {
