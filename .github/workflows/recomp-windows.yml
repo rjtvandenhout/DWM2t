@@ -106,46 +106,18 @@ jobs:
           path: recomp/build
           key: m7-native-${{ runner.os }}-${{ github.sha }}
 
-      - name: Run M4 renderer regression
-        run: .\recomp\build\Release\DWM2tRecomp.exe --self-test --bmp recomp/build/m4_renderer_test.bmp
-
-      - name: Run M5 original title-screen regression
-        run: .\recomp\build\Release\DWM2tRecomp.exe --title-test recomp/build/m5_title_screen.bmp
-
-      - name: Run M6 input/flow exploration probe
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
-
-      - name: Run M6 SRAM persistence regression
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-sram-test recomp/build/m6_test.sav
-
-      - name: Run M6 live Win32 window smoke test
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m6-window-smoke recomp/build/m6_test.sav
-
-      - name: Run M7 original-game audio probe
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-audio-probe
-
-      - name: Run M7 pinned P1 route probe
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-fast-route recomp/build/m7_search
-
-      - name: Run M7 real save and fresh-runtime Continue regression
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-save-continue-test recomp/build/m7_real.sav recomp/build/m7_save_continue
-
-      - name: Run M7 original-game discovery probe
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-discovery recomp/build/m7_discovery
+      # Keep hosted validation identical to the offline Windows runner.
+      # Legacy bounded discovery searches are not milestone acceptance gates.
+      - name: Run all local-equivalent M1-M7 acceptance gates
+        run: ctest --test-dir recomp/build -C Release --parallel 4 --output-on-failure --stop-on-failure
 
       - name: Upload Windows executable and milestone images
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2tRecomp-M7-Discovery-Windows-x64
+          name: DWM2tRecomp-M7-Windows-x64
           path: |
             recomp/build/Release/DWM2tRecomp.exe
-            recomp/build/m4_renderer_test.bmp
-            recomp/build/m5_title_screen.bmp
-            recomp/build/m6_probe/**
-            recomp/build/m6_test.sav
-            recomp/build/m7_discovery/**
-            recomp/build/m7_search/**
-            recomp/build/m7_real.sav
-            recomp/build/m7_save_continue/**
+            recomp/build/local-validation/**
+            recomp/build/Testing/Temporary/LastTest.log
           if-no-files-found: error

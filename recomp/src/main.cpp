@@ -608,6 +608,28 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc == 4 && std::string_view(argv[1]) == "--m7-continue-probe") {
+        dwm2t::Runtime runtime{};
+        if (!dwm2t::load_sram_file(runtime.memory(), argv[2])) return 214;
+        const int result = dwm2t::replay_m7_p1(runtime, "recomp/tests/m7_continue_p1.txt");
+        if (result != 0) return result;
+        return dwm2t::run_m7_p1_session(runtime, argv[3]);
+    }
+    if (argc == 4 && std::string_view(argv[1]) == "--m7-p1-probe") {
+        dwm2t::Runtime runtime{};
+        const int result = dwm2t::replay_m7_p1(runtime, argv[2]);
+        if (result != 0) return result;
+        return dwm2t::run_m7_p1_session(runtime, argv[3]);
+    }
+    if (argc == 4 && std::string_view(argv[1]) == "--m7-replay-p1") {
+        return dwm2t::run_m7_p1_replay(argv[2], argv[3]);
+    }
+    if (argc == 3 && std::string_view(argv[1]) == "--m7-p1-probe") {
+        return dwm2t::run_m7_p1_session(argv[2]);
+    }
+    if (argc == 3 && std::string_view(argv[1]) == "--m7-p1-route") {
+        return dwm2t::run_m7_fast_route_probe(argv[2], true);
+    }
     if (argc >= 2 && std::string_view(argv[1]) == "--m7-save-continue-test") {
         if (argc != 4) {
             std::cerr << "Usage: DWM2tRecomp.exe --m7-save-continue-test <save-path> <output-dir>\n";
@@ -616,12 +638,13 @@ int main(int argc, char** argv) {
         return dwm2t::run_m7_save_continue_test(argv[2], argv[3]);
     }
 
-    if (argc >= 2 && std::string_view(argv[1]) == "--m7-fast-route") {
+    if (argc >= 2 && (std::string_view(argv[1]) == "--m7-battle-test" ||
+                      std::string_view(argv[1]) == "--m7-fast-route")) {
         if (argc != 3) {
             std::cerr << "Usage: DWM2tRecomp.exe --m7-fast-route <output-dir>\n";
             return EXIT_FAILURE;
         }
-        return dwm2t::run_m7_fast_route_probe(argv[2]);
+        return dwm2t::run_m7_real_battle_test(argv[2]);
     }
 
     if (argc >= 2 && std::string_view(argv[1]) == "--m7-route-search") {

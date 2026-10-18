@@ -1,0 +1,45 @@
+# Continue from m7_party_p1.txt. Original Magic Door/Oasis Key and encounter.
+# Discovery checkpoints were deliberately removed; this is P1 input only.
+L 48 24
+D 96 96
+D 16 24
+U 16 24
+R 176 60
+U 16 24
+R 16 24
+U 64 60
+U 32 96
+U 96 24
+D 16 24
+L 192 60
+L 192 60
+L 192 60
+R 16 24
+U 96 60
+U 32 24
+U 16 24
+R 120 60
+R 64 24
+D 16 24
+R 96 60
+R 80 24
+U 16 60
+R 16 60
+D 96 60
+L 16 24
+U 32 24
+L 192 60
+L 192 60
+R 48 24
+D 16 96
+U 16 24
+A 6 96
+D 6 24
+A 6 96
+A 6 300
+talk
+D 96 60
+L 96 60
+D 96 60
+R 96 60
+expect C5DB 04

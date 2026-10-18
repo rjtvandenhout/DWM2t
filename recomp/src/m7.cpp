@@ -540,7 +540,7 @@ void print_search_path(const std::vector<std::uint8_t>& path) {
 } // namespace
 
 
-int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
+int run_m7_fast_route_probe(const std::filesystem::path& output_dir, bool interactive) {
     std::filesystem::create_directories(output_dir);
     Runtime runtime{};
     Renderer renderer{};
@@ -1800,6 +1800,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return verify_battle_command(
             runtime, selector08_acceptance_path);
     }
+
+    if (interactive) return run_m7_p1_session(runtime, output_dir);
 
     auto traced_battle_move =
         [&](Runtime& candidate,
@@ -8469,7 +8471,8 @@ int run_m7_audio_probe() {
     return 0;
 }
 
-int run_m7_save_continue_test(
+// Historical discovery probe. Not an acceptance gate (Start did not open Save).
+int run_m7_legacy_save_continue_probe(
     const std::filesystem::path& save_path,
     const std::filesystem::path& output_dir) {
 

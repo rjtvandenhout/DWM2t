@@ -54,11 +54,17 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 4 7 10 15 16 17 18 19 20 22 23 31 37 38 40 52 53 95 96 105 127 132 133 135 161)
+set(NATIVE_ROMX_BANKS 1 2 3 4 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 29 31 37 38 40 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 161 163)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
+# Reached at 3:$4015 by an original field-menu command after Slash joined.
+set(BANK_FILE_3 "bank_003.asm")
 set(BANK_FILE_4 "bank_004.asm")
 set(BANK_FILE_7 "bank_007.asm")
+# Reached at 8:$4001 by the original Magic Door Use command.
+set(BANK_FILE_8 "bank_008.asm")
+# Reached at 9:$400F while the original PLAN menu initializes.
+set(BANK_FILE_9 "bank_009.asm")
 set(BANK_FILE_10 "bank_010.asm")
 set(BANK_FILE_15 "bank_015.asm")
 set(BANK_FILE_16 "bank_016.asm")
@@ -66,22 +72,50 @@ set(BANK_FILE_17 "bank_017.asm")
 set(BANK_FILE_18 "bank_018.asm")
 set(BANK_FILE_19 "bank_019.asm")
 set(BANK_FILE_20 "bank_020.asm")
+# Reached at 21:$63B8 by original PLAN > Journal.
+set(BANK_FILE_21 "bank_021.asm")
 set(BANK_FILE_22 "bank_022.asm")
 set(BANK_FILE_23 "bank_023.asm")
+# Unconditional battle initialization target 25:$4001 from reached 49:$4001.
+set(BANK_FILE_25 "bank_025.asm")
+# Reached at 26:$7276 during original Oasis battle initialization.
+set(BANK_FILE_26 "bank_026.asm")
+# Unconditional RST $10 target 29:$6973 from reached Journal entry 21:$63B8.
+set(BANK_FILE_29 "bank_029.asm")
 set(BANK_FILE_31 "bank_031.asm")
 set(BANK_FILE_37 "bank_037.asm")
 set(BANK_FILE_38 "bank_038.asm")
 set(BANK_FILE_40 "bank_040.asm")
+# Reached at 47:$4001 during original Oasis encounter presentation.
+set(BANK_FILE_47 "bank_047.asm")
+# Reached at 48:$4001 by the genuine battle Fight command through P1.
+set(BANK_FILE_48 "bank_048.asm")
+# Real original encounter reached via P1 in Oasis: C5DB=4, 49:$4001.
+set(BANK_FILE_49 "bank_049.asm")
+# Original action path: 49:$43D8 -> 58:$6157 -> 50:$4ADC / 54:$4001.
+set(BANK_FILE_50 "bank_050.asm")
+# Reached at 51:$4001 by the original PLAN menu after Slash joined.
+set(BANK_FILE_51 "bank_051.asm")
 set(BANK_FILE_52 "bank_052.asm")
 set(BANK_FILE_53 "bank_053.asm")
+set(BANK_FILE_54 "bank_054.asm")
+# Reached at 55:$4001 by original Journal save dialogue.
+set(BANK_FILE_55 "bank_055.asm")
+# Reached at 57:$4001 after original battle Fight confirmation.
+set(BANK_FILE_57 "bank_057.asm")
+set(BANK_FILE_58 "bank_058.asm")
 set(BANK_FILE_95 "bank_095.asm")
 set(BANK_FILE_96 "bank_096.asm")
 set(BANK_FILE_105 "bank_105.asm")
+# Reached at 115:$77CC by the original town-arrival quest scene via P1.
+set(BANK_FILE_115 "bank_115.asm")
 set(BANK_FILE_127 "bank_127.asm")
 set(BANK_FILE_132 "bank_132.asm")
 set(BANK_FILE_133 "bank_133.asm")
 set(BANK_FILE_135 "bank_135.asm")
 set(BANK_FILE_161 "bank_161.asm")
+# Reached at 163:$4187 after genuine battle Fight confirmation.
+set(BANK_FILE_163 "bank_163.asm")
 
 set(ROMX_CPP)
 set(ROMX_TARGETS)
@@ -163,6 +197,8 @@ add_executable(DWM2tRecomp
     src/main.cpp
     src/m6.cpp
     src/m7.cpp
+    src/m7_p1.cpp
+    src/m7_acceptance.cpp
     src/memory.cpp
     src/runtime.cpp
     src/hram_exec.cpp
@@ -197,4 +233,37 @@ if(MSVC)
     # runtime and generated AOT banks optimized, but compile this orchestration
     # TU without optimizer work so iterative Windows CI stays practical.
     set_source_files_properties(src/m7.cpp PROPERTIES COMPILE_OPTIONS "/Od;/Ob0")
+endif()
+
+# The same acceptance gates can run locally when hosted Actions quota is
+# exhausted. A diagnostic route replay is not a substitute for battle/save.
+include(CTest)
+if(BUILD_TESTING)
+    set(LOCAL_VALIDATION_DIR "${CMAKE_CURRENT_BINARY_DIR}/local-validation")
+    file(MAKE_DIRECTORY "${LOCAL_VALIDATION_DIR}")
+    add_test(NAME M1_decoder COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_lr35902.py" --bank0 "${BANK0_SOURCE}")
+    add_test(NAME M2_bank0_audit COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/recompile_bank0.py" --bank "${BANK0_SOURCE}" --audit-only)
+    add_test(NAME M4_renderer COMMAND DWM2tRecomp --self-test --bmp "${LOCAL_VALIDATION_DIR}/m4.bmp")
+    add_test(NAME M5_title COMMAND DWM2tRecomp --title-test "${LOCAL_VALIDATION_DIR}/m5.bmp")
+    add_test(NAME M6_movement COMMAND DWM2tRecomp --m6-probe "${LOCAL_VALIDATION_DIR}/m6")
+    add_test(NAME M6_sram COMMAND DWM2tRecomp --m6-sram-test "${LOCAL_VALIDATION_DIR}/m6.sav")
+    add_test(NAME M6_window COMMAND DWM2tRecomp --m6-window-smoke "${LOCAL_VALIDATION_DIR}/m6_window.sav")
+    add_test(NAME M7_audio COMMAND DWM2tRecomp --m7-audio-probe)
+    add_test(NAME M7_intro_p1 COMMAND DWM2tRecomp --m7-replay-p1
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/m7_intro_p1.txt" "${LOCAL_VALIDATION_DIR}/intro")
+    add_test(NAME M7_party_p1 COMMAND DWM2tRecomp --m7-replay-p1
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/m7_party_p1.txt" "${LOCAL_VALIDATION_DIR}/party")
+    add_test(NAME M7_battle COMMAND DWM2tRecomp --m7-battle-test "${LOCAL_VALIDATION_DIR}/battle")
+    add_test(NAME M7_save_continue COMMAND DWM2tRecomp --m7-save-continue-test
+        "${LOCAL_VALIDATION_DIR}/m7_original.sav" "${LOCAL_VALIDATION_DIR}/save_continue")
+    get_property(LOCAL_TESTS DIRECTORY PROPERTY TESTS)
+    set_tests_properties(${LOCAL_TESTS} PROPERTIES WORKING_DIRECTORY "${REPO_ROOT}" TIMEOUT 600)
+    # Headless gates have isolated Runtime instances/files and may run together.
+    # Keep the one real desktop-window test exclusive.
+    set_tests_properties(M6_window PROPERTIES RUN_SERIAL TRUE)
+    add_custom_target(check-m7
+        COMMAND "${CMAKE_CTEST_COMMAND}" --parallel 4 --output-on-failure --stop-on-failure -C "$<CONFIG>"
+        DEPENDS DWM2tRecomp WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" USES_TERMINAL)
 endif()
