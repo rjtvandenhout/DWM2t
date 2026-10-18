@@ -1881,6 +1881,69 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             return StepResult::Continue;
         };
 
+    // The selector-1A checkpoint places Cobi beside the visible orange
+    // monster in the accepted artifact. Probe each adjacent facing explicitly
+    // before falling back to the broader beam search.
+    constexpr std::array<std::uint8_t, 4> adjacent_probe_directions = {
+        0, 1, 2, 3
+    };
+    for (const std::uint8_t direction : adjacent_probe_directions) {
+        Runtime adjacent = runtime;
+        BattleExecutionTrace trace{};
+
+        StepResult result =
+            traced_battle_move(adjacent, direction, trace);
+        if (result == StepResult::MissingBank) {
+            std::cout << "M7_ADJACENT_MONSTER_MISSING_BANK direction="
+                      << search_action_name(direction)
+                      << " bank=" << adjacent.cpu().missing_bank
+                      << " pc=0x" << std::hex << adjacent.cpu().pc
+                      << std::dec << std::endl;
+            return 180;
+        }
+        if (result != StepResult::Continue) continue;
+
+        if (adjacent.memory().read8(0xC5DB) == 2) {
+            const std::vector<std::uint8_t> path = {direction};
+            std::cout << "M7_ADJACENT_MONSTER_BATTLE phase=move direction="
+                      << search_action_name(direction) << std::endl;
+            return verify_battle_command(adjacent, path);
+        }
+
+        result = traced_battle_interact(adjacent, trace);
+        std::cout << "M7_ADJACENT_MONSTER_PROBE direction="
+                  << search_action_name(direction)
+                  << " rank=" << trace.rank
+                  << " bank=" << trace.bank
+                  << " pc=0x" << std::hex << trace.pc
+                  << " trace_C193=0x"
+                  << static_cast<unsigned>(trace.c193)
+                  << " live_C193=0x"
+                  << static_cast<unsigned>(
+                         adjacent.memory().read8(0xC193))
+                  << " C562=0x"
+                  << static_cast<unsigned>(
+                         adjacent.memory().read8(0xC562))
+                  << std::dec << std::endl;
+
+        if (result == StepResult::MissingBank) {
+            std::cout << "M7_ADJACENT_MONSTER_MISSING_BANK direction="
+                      << search_action_name(direction)
+                      << " bank=" << adjacent.cpu().missing_bank
+                      << " pc=0x" << std::hex << adjacent.cpu().pc
+                      << std::dec << std::endl;
+            return 180;
+        }
+        if (result != StepResult::Continue) continue;
+
+        if (adjacent.memory().read8(0xC5DB) == 2) {
+            const std::vector<std::uint8_t> path = {direction, 4};
+            std::cout << "M7_ADJACENT_MONSTER_BATTLE phase=interact direction="
+                      << search_action_name(direction) << std::endl;
+            return verify_battle_command(adjacent, path);
+        }
+    }
+
     struct BattleNode {
         std::unique_ptr<Runtime> runtime;
         std::vector<std::uint8_t> path;
