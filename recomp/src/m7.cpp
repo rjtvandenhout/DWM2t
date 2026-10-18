@@ -297,6 +297,9 @@ struct BattleExecutionTrace {
     std::uint8_t c468 = 0;
     std::uint8_t ff8c = 0;
     std::uint8_t c562 = 0;
+    std::uint8_t c920 = 0;
+    std::uint8_t c923 = 0;
+    std::uint8_t cbd7 = 0;
 };
 
 unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
@@ -324,6 +327,18 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
         if (pc == 0x4FF4) return 990; // C193/181B eligibility passed.
         if (pc == 0x4FE8) return 600; // routine entry only.
     }
+
+    // Script opcode $1D is the cartridge-owned quest command that can set
+    // event flag $0002, the first hard guard in 02:4FE8. 44CA starts the
+    // command and resets C923 to zero; 4C2F dispatches it into bank 15.
+    // The later bank-15 checkpoints show progress through that command toward
+    // the sole flag-$0002 setter at 78B0.
+    if (bank == 15 && pc == 0x78B0) return 989;
+    if (bank == 15 && pc == 0x789B) return 988;
+    if (bank == 15 && pc == 0x78B7) return 987;
+    if (bank == 15 && pc == 0x786F) return 986;
+    if (bank == 16 && pc == 0x4C2F) return 985;
+    if (bank == 16 && pc == 0x44CA) return 984;
 
     // The 02:4F4C route is a second mode-2 entry path. Reaching its entry is
     // only useful when cartridge code has already armed C562 bit 0; the
@@ -394,6 +409,9 @@ StepResult advance_battle_search_frame(
             trace.c468 = memory.read8(0xC468);
             trace.ff8c = memory.read8(0xFF8C);
             trace.c562 = memory.read8(0xC562);
+            trace.c920 = memory.read8(0xC920);
+            trace.c923 = memory.read8(0xC923);
+            trace.cbd7 = memory.read8(0xCBD7);
         }
         if (rank == 1000) trace.writer_seen = true;
 
@@ -2014,7 +2032,9 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 std::uint64_t score =
                     static_cast<std::uint64_t>(battle_trace.rank) *
                     20'000'000'000ull;
-                if (battle_trace.rank >= 900) {
+                if (battle_trace.rank >= 984 ||
+                    (battle_trace.bank == 2 &&
+                     battle_trace.pc == 0x4FE8)) {
                     std::cout << "M7_BATTLE_TRACE depth=" << depth
                               << " rank=" << battle_trace.rank
                               << " bank=" << battle_trace.bank
@@ -2025,6 +2045,9 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                               << " C468=0x" << static_cast<unsigned>(battle_trace.c468)
                               << " FF8C=0x" << static_cast<unsigned>(battle_trace.ff8c)
                               << " C562=0x" << static_cast<unsigned>(battle_trace.c562)
+                              << " C920=0x" << static_cast<unsigned>(battle_trace.c920)
+                              << " C923=0x" << static_cast<unsigned>(battle_trace.c923)
+                              << " flags=0x" << static_cast<unsigned>(battle_trace.cbd7)
                               << std::dec;
                     print_path(path);
                     std::cout << std::endl;
