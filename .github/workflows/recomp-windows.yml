@@ -124,11 +124,11 @@ jobs:
       - name: Run M7 original-game audio probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-audio-probe
 
-      - name: Run M7 pinned P1 route probe
-        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-fast-route recomp/build/m7_search
-
       - name: Run M7 real save and fresh-runtime Continue regression
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-save-continue-test recomp/build/m7_real.sav recomp/build/m7_save_continue
+
+      - name: Run M7 pinned P1 route probe
+        run: .\recomp\build\Release\DWM2tRecomp.exe --m7-fast-route recomp/build/m7_search
 
       - name: Run M7 original-game discovery probe
         run: .\recomp\build\Release\DWM2tRecomp.exe --m7-discovery recomp/build/m7_discovery
