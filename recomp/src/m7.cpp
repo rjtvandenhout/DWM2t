@@ -1881,9 +1881,18 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
             return StepResult::Continue;
         };
 
+    struct AdjacentBattleSeed {
+        Runtime runtime;
+        std::vector<std::uint8_t> path;
+        unsigned rank = 0;
+    };
+    std::vector<AdjacentBattleSeed> adjacent_seeds;
+
     // The selector-1A checkpoint places Cobi beside the visible orange
     // monster in the accepted artifact. Probe each adjacent facing explicitly
-    // before falling back to the broader beam search.
+    // before falling back to the broader beam search. Preserve any useful
+    // cartridge-owned progress so the beam continues from it instead of
+    // restarting from the pre-interaction state.
     constexpr std::array<std::uint8_t, 4> adjacent_probe_directions = {
         0, 1, 2, 3
     };
@@ -1942,6 +1951,26 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                       << search_action_name(direction) << std::endl;
             return verify_battle_command(adjacent, path);
         }
+
+        const bool useful_progress =
+            direction == 0 ||
+            trace.rank >= 983 ||
+            adjacent.memory().read8(0xC193) != 0 ||
+            (adjacent.memory().read8(0xC562) & 0x01u) != 0;
+        if (useful_progress) {
+            adjacent_seeds.push_back(
+                {adjacent, {direction, 4}, trace.rank});
+            std::cout << "M7_ADJACENT_MONSTER_SEED direction="
+                      << search_action_name(direction)
+                      << " rank=" << trace.rank
+                      << " C193=0x" << std::hex
+                      << static_cast<unsigned>(
+                             adjacent.memory().read8(0xC193))
+                      << " C562=0x"
+                      << static_cast<unsigned>(
+                             adjacent.memory().read8(0xC562))
+                      << std::dec << std::endl;
+        }
     }
 
     struct BattleNode {
@@ -1955,6 +1984,13 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     frontier.push_back({
         std::make_unique<Runtime>(runtime), {}, 0
     });
+    for (const AdjacentBattleSeed& seed : adjacent_seeds) {
+        frontier.push_back({
+            std::make_unique<Runtime>(seed.runtime),
+            seed.path,
+            static_cast<std::uint64_t>(seed.rank) * 20'000'000'000ull
+        });
+    }
 
     std::unordered_set<std::uint64_t> seen;
     std::unordered_set<std::uint64_t> seen_backgrounds;
@@ -1964,6 +2000,14 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     seen_locations.insert(static_cast<std::uint16_t>(
         runtime.memory().read8(0xCC44) |
         (static_cast<std::uint16_t>(runtime.memory().read8(0xCC45)) << 8)));
+    for (const AdjacentBattleSeed& seed : adjacent_seeds) {
+        seen.insert(state_signature(seed.runtime.memory()));
+        seen_backgrounds.insert(background_hash(seed.runtime.memory()));
+        seen_locations.insert(static_cast<std::uint16_t>(
+            seed.runtime.memory().read8(0xCC44) |
+            (static_cast<std::uint16_t>(
+                 seed.runtime.memory().read8(0xCC45)) << 8)));
+    }
     // Keep the beam bounded, but wide/deep enough to follow a cartridge
     // event chain after the selector-A3 checkpoint. Exact call-chain ranks
     // above keep this substantially more focused than a blind expansion.
