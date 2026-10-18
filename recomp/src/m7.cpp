@@ -1575,6 +1575,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     };
     {
         Runtime pinned = runtime;
+        std::unique_ptr<Runtime> pump_battle_seed;
         Renderer pinned_renderer{};
         std::uint8_t previous_selector =
             pinned.memory().read8(0xC916);
@@ -1704,6 +1705,30 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
 
                 previous_selector = selector;
             }
+
+            // Selector A3 is the pump beside a tight NPC/monster cluster.
+            // Preserve the exact post-dialogue state before the remaining
+            // diagnostic path walks away from those nearby interactables.
+            if (i == 30 && action == 4 && selector == 0xA3 && mode == 1) {
+                pump_battle_seed = std::make_unique<Runtime>(pinned);
+                std::cout
+                    << "M7_PUMP_BATTLE_SEED C193=0x" << std::hex
+                    << static_cast<unsigned>(
+                           pinned.memory().read8(0xC193))
+                    << " C562=0x"
+                    << static_cast<unsigned>(
+                           pinned.memory().read8(0xC562))
+                    << " FF8E=0x"
+                    << static_cast<unsigned>(
+                           pinned.memory().read8(0xFF8E))
+                    << " FF91=0x"
+                    << static_cast<unsigned>(
+                           pinned.memory().read8(0xFF91))
+                    << " FF98=0x"
+                    << static_cast<unsigned>(
+                           pinned.memory().read8(0xFF98))
+                    << std::dec << std::endl;
+            }
         }
 
         pinned_renderer.render(pinned.memory(), true);
@@ -1726,8 +1751,13 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                   << background_hash(pinned.memory())
                   << std::dec << std::endl;
 
-        runtime = pinned;
-        std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
+        runtime = pump_battle_seed
+            ? *pump_battle_seed
+            : pinned;
+        std::cout
+            << "M7_SELECTOR_A3_SEED battle_search=1 source="
+            << (pump_battle_seed ? "post_pump" : "fallback_final")
+            << std::endl;
     }
 
 
