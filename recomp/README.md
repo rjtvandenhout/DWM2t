@@ -12,7 +12,26 @@ The project does not load an external ROM file in the native build. The exact
 4 MiB matching image is generated from `src/banks/` and embedded for original
 game-data reads and hardware mapping.
 
-## Current milestone: M6
+## Current milestone: M7 complete; M8 next
+
+M7 adds genuine original P1 battles and player-attack damage, deterministic
+game audio with live WinMM output, original PLAN > Journal Save, and Continue
+in a new runtime carrying only the exact 32 KiB save file. All twelve local
+Windows gates passed twice. Hosted Actions' quota is exhausted; local acceptance
+was explicitly authorized, and the hosted workflow now runs the same CTest set.
+
+Run the offline build/validation cycle from the repository root:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File recomp/tools/check_m7_local.ps1
+```
+
+See `milestones/M7_RESULT.md`, `handoff/M7_LOCAL_WINDOWS.md`, and
+`handoff/M7_NEXT.md`. Recovery: `restore/recomp-m7`. Full-game playability is
+still the final M8 milestone. Ordinary menu mode C5DB=2 is not battle proof;
+the accepted real battle mode is C5DB=4.
+
+## Retained M6 interactive baseline
 
 M6 turns the M5 title-screen proof into the first interactive slice of the
 original game.
@@ -128,7 +147,7 @@ matching RGBDS banks
 5. **M4** CGB renderer and native window. ✅
 6. **M5** original title screen from recompiled game code. ✅
 7. **M6** live input, title/menu transition, real map movement and save RAM. ✅
-8. **M7** real battles, audio and original in-game save/continue.
+8. **M7** real battles, audio and original in-game save/continue. ✅
 9. **M8** fully playable native PC release and optional enhanced patches.
 
 ## Project rules

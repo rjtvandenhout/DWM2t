@@ -9,7 +9,7 @@
 | M4 | PPU/OAM compatibility renderer and native window | ✅ complete |
 | M5 | Original title screen through recompiled code | ✅ complete |
 | M6 | Live input + real map movement + save RAM | ✅ complete |
-| M7 | Battles + audio + original save/continue | ⏳ next |
+| M7 | Battles + audio + original save/continue | ✅ complete (local Windows acceptance) |
 | M8 | Fully playable native release | ⏳ |
 
 Restore branches live under `restore/recomp-mN`.
@@ -17,7 +17,7 @@ Continuation notes live under `recomp/handoff/`.
 
 Repository-history and CI-baseline notes live in
 `recomp/HISTORY_AUDIT.md`. Historical restore snapshots remain immutable; the
-files on `recomp/native-pc` are the current source of truth.
+active `work/recomp-m7` contains the accepted M7 implementation and handoff.
 
 ## M5 retained acceptance evidence
 
@@ -65,3 +65,22 @@ Accepted AOT ROMX set:
 Restore point: `restore/recomp-m6`.
 
 M7 instructions: `recomp/handoff/M6_NEXT.md`.
+
+## M7 acceptance evidence
+
+All twelve local CTest gates passed twice (2026-10-18). The user explicitly
+authorized local Windows acceptance because GitHub Actions' monthly quota is
+exhausted; hosted CI is not claimed as passing.
+
+- Genuine original P1 battle: C5DB=4, not the incorrect menu-mode-2 heuristic.
+- Player attack: enemy HP 9->6, Slash HP 25->20, 282 frames; equal-time
+  no-input control HP remains 9 and 25. Exact framebuffer values are pinned.
+- Original PLAN > Journal Save: 317 SRAM bytes changed; 32768-byte file.
+- Fresh-runtime Continue: 304 party/inventory bytes and eleven quest/location
+  fields restored; SRAM FNV `0x81daa8e19c019ce4`.
+- Original timed audio and all retained M4-M6 regressions remain green.
+- Native ROMX set expanded to 45 required banks; missing code still fails
+  explicitly and no generic interpreter was introduced.
+
+Result: `recomp/milestones/M7_RESULT.md`. Restore: `restore/recomp-m7`.
+Next: `recomp/handoff/M7_NEXT.md` for M8, the final fully playable release.

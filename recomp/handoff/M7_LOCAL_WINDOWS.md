@@ -1,8 +1,11 @@
 # M7 local Windows workflow
 
 This document records the repeatable local cycle for the native recompilation
-track. GitHub remains the commit and final-validation surface; local Windows
-execution is the primary development loop.
+track. GitHub remains the commit surface; local Windows execution is the
+primary development and acceptance loop. The user confirmed that the monthly
+Actions quota is exhausted and explicitly requested local validation instead.
+Hosted CI should run the same gates again when available; quota exhaustion
+itself is neither a test failure nor a passing result.
 
 ## Local tools
 
@@ -35,7 +38,17 @@ The executable is `recomp/build/DWM2tRecomp.exe`.
 
 ## Local validation order
 
-Run the cheap source/runtime checks first, then the M7 probes:
+The offline runner finds the installed CMake and Visual Studio C++ toolchain,
+configures a fresh NMake Release build when needed, builds incrementally, and
+runs all twelve CTest gates. No GitHub runner, ROM download, or network is used:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File recomp/tools/check_m7_local.ps1
+```
+
+Logs are under `recomp/build/Testing/Temporary/LastTest.log`; screenshots and
+save evidence are under `recomp/build/local-validation/`. A nonzero exit means
+M7 is not accepted. For individual diagnostics:
 
 ```powershell
 python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
@@ -46,24 +59,37 @@ recomp/build/DWM2tRecomp.exe --m6-probe recomp/build/m6_probe
 recomp/build/DWM2tRecomp.exe --m6-sram-test recomp/build/m6_test.sav
 recomp/build/DWM2tRecomp.exe --m6-window-smoke recomp/build/m6_test.sav
 recomp/build/DWM2tRecomp.exe --m7-audio-probe
-recomp/build/DWM2tRecomp.exe --m7-fast-route recomp/build/m7_search
+recomp/build/DWM2tRecomp.exe --m7-battle-test recomp/build/m7_battle
 recomp/build/DWM2tRecomp.exe --m7-save-continue-test recomp/build/m7_real.sav recomp/build/m7_save_continue
 ```
 
-`--m7-fast-route` must produce a real P1 battle with `C5DB=2` and prove a
-command effect by comparing original-game control and command runs. The save
+The battle gate must produce a genuine P1-entered battle and prove an original
+battle action/turn effect. **C5DB=2 is not battle evidence**: actual P1 play
+showed that both PLAN and Magic Door key selection use that mode. The user
+explicitly approved replacing that mistaken condition with proven real battle
+entry, the measured battle mode, and command/turn evidence. The save
 probe must prove an original in-game save, a 32 KiB SRAM image, and Continue
 from a fresh runtime. No host-side RAM or battle state may be injected.
 
 ## Current local result
 
 - Python/LR35902, M4, M5, M6 movement/SRAM/window, and original-game audio pass.
-- The pinned P1 route reaches the original selector/dialogue checkpoints.
-- The current battle search still exhausts without `C5DB=2`; `C193` and
-  `C562` remain zero at the selector-1A checkpoint and the tested adjacent
-  movement/interactions do not load a target.
-- The save/Continue probe still finds no real in-game save candidate.
-- Therefore `restore/recomp-m7` must not be created yet.
+- Strict, finite P1 fixtures now replay the introductory quest and original
+  Slash party introduction from a fresh runtime, without host RAM writes,
+  checkpoint restores, or fabricated party/quest state.
+- The real PLAN > Journal and Magic Door > Oasis Key paths have been reached.
+- Original Journal Save and fresh-runtime Continue pass automatically: 317
+  SRAM bytes changed, exact 32768-byte file, all 304 party/inventory bytes and
+  eleven quest/location fields restored. SRAM FNV: `0x81daa8e19c019ce4`.
+- A genuine original Oasis encounter sets C5DB=4 and reaches 49:$4001. The
+  P1 Fight command resolves an actual Slash attack: enemy HP 9->6, Slash HP
+  25->20, while the equal-time no-input control stays unchanged. Exact
+  framebuffer and 282-frame action regression values are pinned.
+- All twelve gates passed twice locally: 156.85 seconds initially and
+  131.65 seconds for the final pinned acceptance run.
+- Legacy route-search probes are discovery tools, not acceptance evidence;
+  the old `C5DB=2` heuristic must not certify M7.
+- M7 is accepted; see `../milestones/M7_RESULT.md` and `M7_NEXT.md` for M8.
 
 ## Acceptance and handoff rule
 
