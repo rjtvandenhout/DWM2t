@@ -11,20 +11,21 @@ These branches are immutable recovery points for accepted native-recomp mileston
 | `restore/recomp-m4` | `29c4c8249f5a77a17ea8194d624d20af52da3e6b` | deterministic CGB renderer + Win32 presentation |
 | `restore/recomp-m5` | `9d0b9830ea6542def717a8cde726691cd0421cc2` | original DWM2 title screen through native recompiled game code |
 | `restore/recomp-m6` | `70628e9a6f210f494ace326c51d1ac295a36c023` | live P1 input, real ship-map movement, Win32 loop and 32 KiB SRAM persistence |
+| `restore/recomp-m7` | `3bb1e18170fc928f372f9cc72cc433d85c0666ca` | real P1 battle/player attack, original timed audio, Journal Save and fresh-runtime Continue; all twelve gates pass locally |
 
 ## Recovery procedure
 
-Inspect M6 without modifying it:
+Inspect the latest accepted milestone without modifying it:
 
 ```bash
 git fetch origin
-git switch restore/recomp-m6
+git switch restore/recomp-m7
 ```
 
 Start new recovery work from it:
 
 ```bash
-git switch -c recovery/my-work restore/recomp-m6
+git switch -c recovery/my-work restore/recomp-m7
 ```
 
 Never force-push a restore branch. Later milestones receive a new
