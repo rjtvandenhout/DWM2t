@@ -8346,81 +8346,102 @@ int run_m7_save_continue_test(
               << sram_hash(menu_seed.memory()) << std::dec
               << std::endl;
 
-    struct Candidate {
-        unsigned down = 0;
-        unsigned confirm = 0;
+    struct MenuNode {
+        Runtime runtime{};
+        std::vector<std::uint8_t> path{};
     };
-    std::vector<Candidate> candidates;
-    for (unsigned down = 0; down < 8; ++down) {
-        for (unsigned confirm = 1; confirm <= 3; ++confirm) {
-            candidates.push_back({down, confirm});
-        }
-    }
 
     bool found_save = false;
     Runtime saved_runtime{};
-    unsigned saved_down = 0;
+    std::vector<std::uint8_t> saved_menu_path{};
     unsigned saved_confirm = 0;
     std::uint64_t saved_sram_hash = 0;
 
-    for (const Candidate candidate : candidates) {
-        Runtime trial = menu_seed;
-        bool abort = false;
-        for (unsigned i = 0; i < candidate.down; ++i) {
-            const StepResult r = pulse(trial, JoyDown, 2, 10);
-            if (r != StepResult::Continue) {
-                abort = true;
-                break;
+    auto menu_state_key = [&](Runtime& runtime) -> std::uint64_t {
+        source_renderer.render(runtime.memory(), true);
+        std::uint64_t key = source_renderer.hash();
+        key ^= static_cast<std::uint64_t>(runtime.memory().read8(0xC5DB)) << 56;
+        key ^= static_cast<std::uint64_t>(runtime.memory().read8(0xC5DC)) << 48;
+        return key;
+    };
+
+    constexpr std::array<std::uint8_t, 4> menu_directions = {
+        JoyDown, JoyUp, JoyLeft, JoyRight
+    };
+    constexpr unsigned kMenuSearchDepth = 5;
+    constexpr std::size_t kMenuSearchWidth = 64;
+
+    std::vector<MenuNode> menu_frontier;
+    menu_frontier.push_back({menu_seed, {}});
+    std::unordered_set<std::uint64_t> seen_menu_states;
+    seen_menu_states.insert(menu_state_key(menu_seed));
+
+    for (unsigned depth = 0;
+         depth <= kMenuSearchDepth && !menu_frontier.empty() && !found_save;
+         ++depth) {
+        std::vector<MenuNode> next;
+
+        for (const MenuNode& node : menu_frontier) {
+            // At each unique cursor/menu state, try the normal A confirmation
+            // path. Multiple A presses cover a possible "Save? Yes/No"
+            // confirmation without inventing any host-side game state.
+            Runtime confirm_trial = node.runtime;
+            for (unsigned confirm = 1; confirm <= 4; ++confirm) {
+                const StepResult r = pulse(confirm_trial, JoyA, 2, 72);
+                if (r != StepResult::Continue) break;
+
+                const std::uint64_t trial_sram =
+                    sram_hash(confirm_trial.memory());
+                source_renderer.render(confirm_trial.memory(), true);
+                std::cout << "M7_SAVE_MENU_SEARCH depth=" << depth
+                          << " confirm=" << confirm
+                          << " path=";
+                for (const std::uint8_t button : node.path) {
+                    if (button == JoyDown) std::cout << "D";
+                    else if (button == JoyUp) std::cout << "U";
+                    else if (button == JoyLeft) std::cout << "L";
+                    else if (button == JoyRight) std::cout << "R";
+                    else std::cout << "?";
+                }
+                std::cout << " sram=0x" << std::hex << trial_sram
+                          << " screen=0x" << source_renderer.hash()
+                          << std::dec << std::endl;
+
+                if (trial_sram != sram_before_menu) {
+                    found_save = true;
+                    saved_runtime = confirm_trial;
+                    saved_menu_path = node.path;
+                    saved_confirm = confirm;
+                    saved_sram_hash = trial_sram;
+                    source_renderer.write_bmp(
+                        output_dir / "save_menu_accepted.bmp");
+                    break;
+                }
             }
-        }
-        if (abort) continue;
+            if (found_save || depth == kMenuSearchDepth) break;
 
-        for (unsigned i = 0; i < candidate.confirm; ++i) {
-            const StepResult r = pulse(trial, JoyA, 2, 72);
-            if (r != StepResult::Continue) {
-                abort = true;
-                break;
+            for (const std::uint8_t direction : menu_directions) {
+                Runtime child = node.runtime;
+                const StepResult r = pulse(child, direction, 2, 10);
+                if (r != StepResult::Continue) continue;
+
+                const std::uint64_t key = menu_state_key(child);
+                if (!seen_menu_states.insert(key).second) continue;
+
+                auto path = node.path;
+                path.push_back(direction);
+                next.push_back({std::move(child), std::move(path)});
+                if (next.size() >= kMenuSearchWidth) break;
             }
+            if (next.size() >= kMenuSearchWidth) break;
         }
-        if (abort) continue;
 
-        for (unsigned settle = 0; settle < 180; ++settle) {
-            const StepResult r = advance_search_frame(trial, 0);
-            if (r != StepResult::Continue) {
-                abort = true;
-                break;
-            }
-        }
-        if (abort) continue;
-
-        const std::uint64_t trial_sram = sram_hash(trial.memory());
-        source_renderer.render(trial.memory(), true);
-        const std::uint64_t trial_screen = source_renderer.hash();
-        std::cout << "M7_SAVE_CANDIDATE down=" << candidate.down
-                  << " confirm=" << candidate.confirm
-                  << " sram=0x" << std::hex << trial_sram
-                  << " screen=0x" << trial_screen << std::dec
-                  << " C5DB=" << static_cast<unsigned>(
-                         trial.memory().read8(0xC5DB))
-                  << " C5DC=" << static_cast<unsigned>(
-                         trial.memory().read8(0xC5DC))
-                  << std::endl;
-
-        if (trial_sram != sram_before_menu) {
-            found_save = true;
-            saved_runtime = trial;
-            saved_down = candidate.down;
-            saved_confirm = candidate.confirm;
-            saved_sram_hash = trial_sram;
-            source_renderer.write_bmp(
-                output_dir / "save_menu_accepted.bmp");
-            break;
-        }
+        menu_frontier = std::move(next);
     }
 
     if (!found_save) {
-        std::cout << "M7_SAVE_FAIL no_menu_candidate_changed_sram"
-                  << std::endl;
+        std::cout << "M7_SAVE_FAIL no_menu_path_changed_sram states="
+                  << seen_menu_states.size() << std::endl;
         return 195;
     }
 
@@ -8428,11 +8449,19 @@ int run_m7_save_continue_test(
         std::cout << "M7_SAVE_FAIL persist_file" << std::endl;
         return 196;
     }
-    std::cout << "M7_SAVE_ACCEPTED down=" << saved_down
-              << " confirm=" << saved_confirm
+    std::cout << "M7_SAVE_ACCEPTED path=";
+    for (const std::uint8_t button : saved_menu_path) {
+        if (button == JoyDown) std::cout << "D";
+        else if (button == JoyUp) std::cout << "U";
+        else if (button == JoyLeft) std::cout << "L";
+        else if (button == JoyRight) std::cout << "R";
+        else std::cout << "?";
+    }
+    std::cout << " confirm=" << saved_confirm
               << " sram_before=0x" << std::hex << sram_before_menu
               << " sram_after=0x" << saved_sram_hash << std::dec
-              << " path=" << save_path.string() << std::endl;
+              << " path_file=" << save_path.string() << std::endl;
+
 
     // Fresh process-equivalent Runtime: constructor resets all CPU/WRAM/PPU/APU
     // state. Only the exact 32 KiB SRAM file is carried across.
@@ -8540,7 +8569,7 @@ int run_m7_save_continue_test(
                     resumed_screen == saved_world_screen) {
                     std::cout
                         << "M7_SAVE_CONTINUE_PASS original_menu_save_and_fresh_runtime_continue"
-                        << " save_down=" << saved_down
+                        << " menu_path_len=" << saved_menu_path.size()
                         << " save_confirm=" << saved_confirm
                         << " continue_candidate=" << index
                         << " sram=0x" << std::hex << saved_sram_hash
