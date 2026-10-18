@@ -304,10 +304,15 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
     // Immediate writer dispatch / guard entries. In bank 2 these consume
     // C562 bit 0 before entering the battle setup path.
     if (bank == 2 &&
-        (pc == 0x4F4C || pc == 0x4FE8 ||
+        (pc == 0x4F4C ||
          (pc >= 0x63A0 && pc <= 0x63D0))) {
         return 995;
     }
+
+    // 4FE8 starts the routine immediately after the 4FD4 mode writer.
+    // It is commonly reached when the battle gate rejects the encounter, so
+    // rewarding it caused the beam to cluster on non-battle interactions.
+    if (bank == 2 && pc == 0x4FE8) return 300;
 
     // The overworld encounter handler that sets C562 bit 0 when D067==0.
     if (bank == 2 &&
