@@ -4754,8 +4754,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             constexpr std::array<std::uint8_t, 5>
                                 quest_actions = {2, 4, 1, 0, 3};
-                            constexpr std::size_t quest_width = 24;
-                            constexpr std::size_t quest_depth = 18;
+                            constexpr std::size_t quest_width = 48;
+                            constexpr std::size_t quest_depth = 36;
                             unsigned quest_capture = 0;
 
                             for (std::size_t depth = 0;
@@ -4825,6 +4825,33 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                             background_hash(child->memory());
                                         const std::uint64_t story_sig =
                                             story_signature(child->memory());
+
+                                        if (event_flag(child->memory(), 0x02)) {
+                                            quest_renderer.write_bmp(
+                                                output_dir /
+                                                "m7_flag2_route_found.bmp");
+                                            std::cout
+                                                << "M7_FLAG2_ROUTE_FOUND depth="
+                                                << depth
+                                                << " action="
+                                                << search_action_name(action)
+                                                << " C916=0x" << std::hex
+                                                << static_cast<unsigned>(
+                                                       child->memory().read8(0xC916))
+                                                << " C920=0x"
+                                                << static_cast<unsigned>(
+                                                       child->memory().read8(0xC920))
+                                                << " C923=0x"
+                                                << static_cast<unsigned>(
+                                                       child->memory().read8(0xC923))
+                                                << " flags=0x"
+                                                << static_cast<unsigned>(
+                                                       child->memory().read8(0xCBD7))
+                                                << std::dec;
+                                            print_search_path(path);
+                                            std::cout << std::endl;
+                                            return 0;
+                                        }
 
                                         if (mode != 1) {
                                             quest_renderer.write_bmp(
@@ -4945,6 +4972,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                         }
 
                                         std::uint64_t score = 0;
+                                        if ((child->memory().read8(0xCBD7) &
+                                             0x04u) != 0) {
+                                            score +=
+                                                50'000'000'000'000ull;
+                                        }
                                         if (new_story) {
                                             score +=
                                                 10'000'000'000'000ull;
