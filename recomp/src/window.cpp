@@ -1,4 +1,5 @@
 #include "recomp/window.hpp"
+#include "recomp/audio_device.hpp"
 
 #include "recomp/memory.hpp"
 #include "recomp/runtime.hpp"
@@ -23,7 +24,7 @@ namespace {
 
 class WaveOutSink {
 public:
-    WaveOutSink() {
+    explicit WaveOutSink(int preferred = -1) {
         WAVEFORMATEX format{};
         format.wFormatTag = WAVE_FORMAT_PCM;
         format.nChannels = 2;
@@ -31,8 +32,28 @@ public:
         format.wBitsPerSample = 16;
         format.nBlockAlign = 4;
         format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
-        if (waveOutOpen(&handle_, WAVE_MAPPER, &format, 0, 0, CALLBACK_NULL) == MMSYSERR_NOERROR) {
-            ready_ = true;
+        const auto selected = select_audio_device(waveOutGetNumDevs(), preferred, [&](int device) {
+            HWAVEOUT candidate = nullptr;
+            const auto result = waveOutOpen(&candidate, device < 0 ? WAVE_MAPPER : UINT(device),
+                                           &format, 0, 0, CALLBACK_NULL);
+            if (result == MMSYSERR_NOERROR) handle_ = candidate;
+            return unsigned(result);
+        });
+        ready_ = selected.ready;
+        if (ready_) {
+            std::cout << "AUDIO_OUTPUT_READY device=" << selected.device
+                      << " rate=" << Apu::SampleRate
+                      << " mapper_error=" << selected.mapper_error << '\n';
+            if (selected.mapper_error)
+                std::cerr << "Audio: Windows default mapper failed (error " << selected.mapper_error
+                          << "); using explicit playback device " << selected.device
+                          << ". Use --audio-devices and --audio-device N to choose another output.\n";
+        } else {
+            char message[MAXERRORLENGTH]{};
+            waveOutGetErrorTextA(selected.error, message, MAXERRORLENGTH);
+            std::cerr << "Audio output unavailable: WinMM error=" << selected.error
+                      << " (" << message << "), enumerated_devices=" << waveOutGetNumDevs()
+                      << ". Check the output device; original APU timing remains active.\n";
         }
     }
 
@@ -50,8 +71,8 @@ public:
 
     [[nodiscard]] bool ready() const { return ready_; }
 
-    void submit(std::vector<std::int16_t> samples) {
-        if (!ready_ || samples.empty()) return;
+    std::size_t submit(std::vector<std::int16_t> samples) {
+        if (!ready_ || samples.empty()) return 0;
 
         std::size_t offset = 0;
         while (offset < samples.size()) {
@@ -60,13 +81,12 @@ public:
                 // Host buffering must never stall emulated CPU/APU timing.
                 // If Windows falls behind, discard only host presentation
                 // samples; the emulated APU state continues uninterrupted.
-                return;
+                return offset;
             }
 
             const std::size_t count =
                 std::min<std::size_t>(slot->data.size(), samples.size() - offset);
             std::copy_n(samples.data() + offset, count, slot->data.data());
-            offset += count;
 
             slot->header = {};
             slot->header.lpData = reinterpret_cast<LPSTR>(slot->data.data());
@@ -76,7 +96,8 @@ public:
             if (waveOutPrepareHeader(handle_, &slot->header, sizeof(slot->header)) !=
                 MMSYSERR_NOERROR) {
                 ready_ = false;
-                return;
+                std::cerr << "Audio output failed while preparing a playback buffer.\n";
+                return offset;
             }
             slot->prepared = true;
 
@@ -85,9 +106,20 @@ public:
                 waveOutUnprepareHeader(handle_, &slot->header, sizeof(slot->header));
                 slot->prepared = false;
                 ready_ = false;
-                return;
+                std::cerr << "Audio output failed while submitting a playback buffer.\n";
+                return offset;
             }
+            offset += count;
         }
+        return offset;
+    }
+
+    [[nodiscard]] unsigned played_frames() const {
+        if (!handle_) return 0;
+        MMTIME position{}; position.wType = TIME_SAMPLES;
+        if (waveOutGetPosition(handle_, &position, sizeof(position)) != MMSYSERR_NOERROR ||
+            position.wType != TIME_SAMPLES) return 0;
+        return position.u.sample;
     }
 
 private:
@@ -219,6 +251,53 @@ HWND create_window(int scale) {
 
 } // namespace
 
+int list_audio_devices() {
+    const unsigned count = waveOutGetNumDevs();
+    std::cout << "WinMM playback devices: " << count << " (automatic/default = -1)\n";
+    for (unsigned device = 0; device < count; ++device) {
+        WAVEOUTCAPSA caps{};
+        if (waveOutGetDevCapsA(device, &caps, sizeof(caps)) == MMSYSERR_NOERROR)
+            std::cout << device << ": " << caps.szPname << '\n';
+    }
+    return 0;
+}
+
+int run_audio_playback_test(int device) {
+    WaveOutSink audio(device);
+    if (!audio.ready()) return 77; // Environmental absence is not an APU failure.
+    Runtime runtime{};
+    auto& memory = runtime.memory();
+    std::vector<std::int16_t> pcm;
+    std::uint64_t observed = 0;
+    for (unsigned step = 0; step < 80'000'000 && pcm.size() < 16384; ++step) {
+        const auto result = runtime.step();
+        if (is_fatal_step(result)) {
+            std::cerr << "AUDIO_PLAYBACK_FAIL original_runtime\n"; return 140;
+        }
+        if (memory.frame_counter() == observed) continue;
+        observed = memory.frame_counter();
+        const auto samples = memory.apu().take_samples();
+        if (observed >= 1800) pcm.insert(pcm.end(), samples.begin(), samples.end());
+    }
+    const auto nonzero = std::count_if(pcm.begin(), pcm.end(), [](auto s) { return s != 0; });
+    if (pcm.size() < 16384 || !nonzero) {
+        std::cerr << "AUDIO_PLAYBACK_FAIL original_pcm\n"; return 141;
+    }
+    const auto submitted = audio.submit(pcm);
+    const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+    while (audio.played_frames() < submitted / 2 && std::chrono::steady_clock::now() < deadline)
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    const auto played = audio.played_frames();
+    if (submitted != pcm.size() || played < submitted / 2) {
+        std::cerr << "AUDIO_PLAYBACK_FAIL submitted=" << submitted << " played_frames=" << played << '\n';
+        return 142;
+    }
+    std::cout << "AUDIO_PLAYBACK_PASS original_pcm_values=" << pcm.size()
+              << " nonzero=" << nonzero << " submitted=" << submitted
+              << " played_frames=" << played << " subjective_hearing=not_assessed\n";
+    return 0;
+}
+
 int run_native_window(const Renderer::Framebuffer& framebuffer, int scale) {
     g_framebuffer = &framebuffer;
     g_host_buttons = 0;
@@ -244,7 +323,8 @@ int run_live_window(
     Runtime& runtime,
     Renderer& renderer,
     const std::filesystem::path& sav_path,
-    int scale) {
+    int scale,
+    int audio_device) {
 
     if (!load_sram_file(runtime.memory(), sav_path)) {
         std::cerr << "M6 live FAIL: invalid SRAM file " << sav_path.string() << "\n";
@@ -261,11 +341,7 @@ int run_live_window(
         return 1;
     }
 
-    WaveOutSink audio;
-    if (!audio.ready()) {
-        std::cerr << "M7 live audio warning: no WinMM playback device available; "
-                     "emulated APU timing remains active.\n";
-    }
+    WaveOutSink audio(audio_device);
 
     using Clock = std::chrono::steady_clock;
     constexpr auto frame_period = std::chrono::microseconds(16742);
@@ -471,7 +547,9 @@ int run_live_window_smoke(
 
 namespace dwm2t {
 int run_native_window(const Renderer::Framebuffer&, int) { return 1; }
-int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }
+int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int, int) { return 1; }
+int list_audio_devices() { return 1; }
+int run_audio_playback_test(int) { return 77; }
 int run_live_window_smoke(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }
 } // namespace dwm2t
 #endif

@@ -7,7 +7,9 @@
 #include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
 #include "recomp/window.hpp"
+#include "recomp/audio_device.hpp"
 
+#include <charconv>
 #include <cstdint>
 #include <cstdlib>
 #include <filesystem>
@@ -609,6 +611,25 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    const auto parse_audio_device = [](std::string_view text, int& device) {
+        const auto parsed = std::from_chars(text.data(), text.data() + text.size(), device);
+        return parsed.ec == std::errc{} && parsed.ptr == text.data() + text.size() && device >= -1;
+    };
+    if (argc == 2 && std::string_view(argv[1]) == "--audio-selection-test") {
+        if (!dwm2t::audio_device_contracts()) return EXIT_FAILURE;
+        std::cout << "AUDIO_SELECTION_CONTRACT_PASS cases=6\n";
+        return 0;
+    }
+    if (argc == 2 && std::string_view(argv[1]) == "--audio-devices")
+        return dwm2t::list_audio_devices();
+    if (argc >= 2 && std::string_view(argv[1]) == "--audio-playback-test") {
+        int device = -1;
+        if (argc > 3 || (argc == 3 && !parse_audio_device(argv[2], device))) {
+            std::cerr << "Usage: DWM2tRecomp.exe --audio-playback-test [device-id]\n";
+            return EXIT_FAILURE;
+        }
+        return dwm2t::run_audio_playback_test(device);
+    }
     if (argc == 4 && std::string_view(argv[1]) == "--m8-probe") {
         return dwm2t::run_m8_session(argv[2], argv[3]);
     }
@@ -701,15 +722,24 @@ int main(int argc, char** argv) {
     }
 
     if (argc >= 2 && std::string_view(argv[1]) == "--play") {
-        if (argc != 2 && argc != 3) {
-            std::cerr << "Usage: DWM2tRecomp.exe --play [save-path]\\n";
+        std::filesystem::path save_path = "DWM2t.sav";
+        int audio_device = -1;
+        bool have_save = false, valid = true;
+        for (int i = 2; i < argc && valid; ++i) {
+            const std::string_view option = argv[i];
+            if (option == "--audio-device") {
+                valid = ++i < argc && parse_audio_device(argv[i], audio_device);
+            } else if (!have_save && !option.starts_with("--")) {
+                save_path = argv[i]; have_save = true;
+            } else valid = false;
+        }
+        if (!valid) {
+            std::cerr << "Usage: DWM2tRecomp.exe --play [save-path] [--audio-device N]\n";
             return EXIT_FAILURE;
         }
-        const std::filesystem::path save_path =
-            argc == 3 ? std::filesystem::path(argv[2]) : std::filesystem::path("DWM2t.sav");
         dwm2t::Runtime runtime{};
         dwm2t::Renderer renderer{};
-        return dwm2t::run_live_window(runtime, renderer, save_path, 4);
+        return dwm2t::run_live_window(runtime, renderer, save_path, 4, audio_device);
     }
 
     if (argc >= 2 && std::string_view(argv[1]) == "--m6-sram-test") {

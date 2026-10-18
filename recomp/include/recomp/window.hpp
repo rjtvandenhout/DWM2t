@@ -14,7 +14,11 @@ int run_live_window(
     Runtime& runtime,
     Renderer& renderer,
     const std::filesystem::path& sav_path,
-    int scale = 4);
+    int scale = 4,
+    int audio_device = -1);
+
+int list_audio_devices();
+int run_audio_playback_test(int device = -1);
 
 int run_live_window_smoke(
     Runtime& runtime,

@@ -11,8 +11,11 @@ def main():
     parser.add_argument("--route", type=Path, required=True)
     parser.add_argument("--inn-route", type=Path, required=True)
     parser.add_argument("--checkpoint-route", type=Path, action="append", default=[])
+    parser.add_argument("--feeding-route", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.feeding_route and len(args.checkpoint_route) < 5:
+        parser.error("feeding side branch requires the five original story checkpoints")
     args.output.mkdir(parents=True, exist_ok=True)
     output = Path(tempfile.mkdtemp(prefix="oasis-", dir=args.output.resolve()))
     result = subprocess.run([str(args.exe.resolve()), "--m8-oasis-test",
@@ -30,6 +33,14 @@ def main():
         result = subprocess.run([str(args.exe.resolve()), "--m8-checkpoint-test",
                                  str(seed), str(route.resolve()), str(checkpoint)])
         seed = checkpoint / "checkpoint.sav"
+        if result.returncode == 0 and index == 5 and args.feeding_route:
+            # Side branch from the original thieves-report Journal: do not
+            # replace the main story seed with the food-test detour's save.
+            result = subprocess.run([str(args.exe.resolve()), "--m8-checkpoint-test",
+                                     str(seed), str(args.feeding_route.resolve()),
+                                     str(output / "enemy-feeding")])
+            if result.returncode == 0:
+                print("M8_ENEMY_FEEDING_BRANCH_PASS original_item_consumption_and_bonus", flush=True)
     return result.returncode
 
 if __name__ == "__main__":

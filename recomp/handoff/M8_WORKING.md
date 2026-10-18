@@ -456,3 +456,74 @@ to continue immediately or stop for now. Wait for the user's explicit answer.
 M8 remains incomplete: later worlds and ending/credits still require proof.
 Do not create restore/recomp-m8 or M8_RESULT.md. The immutable M7 restore
 remains `3bb1e18170fc928f372f9cc72cc433d85c0666ca`.
+
+## Approved resume: reported audio and enemy-feeding failures (2026-10-19)
+
+After first stopping at Oasis, the user explicitly approved resuming M8,
+fixing the playback warning, missing bank 61 and enemy meat feeding, retaining
+all regressions, and providing a revised test build before later-world work.
+The earlier stop is lifted. The next completed world/important boss still
+requires an explicit continue/stop decision. Keep everything new in English.
+
+The user's modified testing SRAM is preserved separately at
+`work/M8-user-save-preserved-20261019-01/user-current-test.sav` (workspace-relative,
+outside this repository), SHA256
+`2255D149CD66E597EBDCDC79BF063B551D05ACD9FE47F1EFBEFF6F22FE3993A2`.
+The original accepted Oasis Journal remains byte-identical. A fresh Continue
+of the user's file succeeds at the same home checkpoint. Do not overwrite
+the user's current testing copy or the earlier output packages.
+
+### Reproduced host-audio cause and correction
+
+Local Windows reports 11 WinMM playback devices and running audio services.
+WAVE_MAPPER fails with MMSYSERR_BADDEVICEID (2), even at 32768, 44100 and
+48000 Hz. All eleven explicitly enumerated devices open successfully at
+the original APU rate, 32768 Hz. Therefore "no playback device" was an
+incorrect diagnosis: the default mapper fails, not the actual outputs.
+No Windows system audio settings have been changed.
+
+The production WaveOut sink now tries explicit devices after a failed
+default mapper, logs the actual error/device, and supports an explicit
+`--play [save] --audio-device N` override. `--audio-devices` lists outputs.
+Six pure host-selection contracts cover mapper success, fallback to first
+or second available device, no devices, all-open failure and explicit-device
+failure without silently switching to a different output.
+
+`--audio-playback-test` generates PCM from original cartridge execution,
+submits nonzero samples through the production sink, and checks the Windows
+playback position. Automatic fallback to device 0 (Sonar Gaming) and explicit
+device 9 (Arctis Nova 7 headphones) both pass: 16458 nonzero sample values
+submitted, 8229 stereo frames played. This is real output-device/queue
+evidence, NOT a subjective hearing claim. Logs:
+`recomp/build/m8-audio-fallback-playback-01.log` and
+`recomp/build/m8-audio-headphones-playback-01.log`.
+No APU generation/timing or M7 audio acceptance constants were changed.
+
+### Reproduced enemy feeding and native bank fix
+
+The preserved pre-fix EXE `recomp/build/DWM2tRecomp-2c37720-diagnostic.exe`
+replays an original purchase of BeefJerky from the thieves-report Journal.
+Actual battle ITEM > BeefJerky > Enemy reproduces exactly the user's failure:
+`m8_meat01`, frame 17008, missing bank 61:$4001, original action D801=2C.
+Bank 61 is now statically compiled; no runtime interpreter is introduced.
+
+`m8_meat02` replays only the safe P1 prefix to frame 16886, executes the
+original throw animation, consumes item 19 and increases the original
+feeding/recruitment value D89F:D8A0 from 10 to 20. Original bank 59:$4934
+looks up item 19's +10 value at $4949 and adds it at $4953. This is not a
+guaranteed-recruitment modification. The original battle then finishes.
+Returning to Asiya and using original Journal produces
+`recomp/build/m8_meat02/enemy_meat_verified.sav` (32768 bytes, 90 changed,
+FNV `eea0f1d399fac8f8`), with passing fresh Continue.
+
+`tests/m8_enemy_meat_p1.txt` retains 19508 controller frames, before/after
+inventory and feeding-value assertions, exact original audio hashes, and
+the final Journal. The development driver now runs this as an isolated side
+branch after the thieves-report checkpoint (story-05), leaving the main
+Oasis completion chain unchanged. Independent replay and the new 16-check
+full suite are being verified; do not claim those results prematurely.
+
+Ongoing later-world discovery uses a separate diagnostic copy of the EXE
+and accepted Oasis Journal, not the user's testing save. In world 5 the
+actual exit corridor is east: region 2,0 at 80,0, not the chest/rock graphics
+in the western chamber. `m8_home_next02` records all discovery P1 input.

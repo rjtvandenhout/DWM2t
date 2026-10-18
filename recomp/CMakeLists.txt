@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
+set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 61 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
@@ -120,6 +120,8 @@ set(BANK_FILE_57 "bank_057.asm")
 set(BANK_FILE_58 "bank_058.asm")
 # M8: reached at 59:$40CD in the original Mirage Lake hideout battle.
 set(BANK_FILE_59 "bank_059.asm")
+# M8: reproduced at 61:$4001 by original battle ITEM > BeefJerky > Enemy.
+set(BANK_FILE_61 "bank_061.asm")
 set(BANK_FILE_95 "bank_095.asm")
 set(BANK_FILE_96 "bank_096.asm")
 set(BANK_FILE_105 "bank_105.asm")
@@ -297,6 +299,12 @@ if(BUILD_TESTING)
     add_test(NAME M8_trace_contract COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_trace.py"
         --exe "$<TARGET_FILE:DWM2tRecomp>" --output "${LOCAL_VALIDATION_DIR}/m8_tools")
+    add_test(NAME M8_audio_selection COMMAND DWM2tRecomp --audio-selection-test)
+    if(WIN32)
+        add_test(NAME M8_audio_playback COMMAND DWM2tRecomp --audio-playback-test)
+        set_tests_properties(M8_audio_playback PROPERTIES
+            RUN_SERIAL TRUE TIMEOUT 60 SKIP_RETURN_CODE 77)
+    endif()
     add_test(NAME M8_oasis_checkpoint COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_oasis.py"
         --exe "$<TARGET_FILE:DWM2tRecomp>" --seed "${LOCAL_VALIDATION_DIR}/m7_original.sav"
@@ -309,6 +317,7 @@ if(BUILD_TESTING)
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_thieves_report_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_watercall_exchange_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_curselamp_victory_p1.txt"
+        --feeding-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_enemy_meat_p1.txt"
         --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
     set_tests_properties(M7_save_continue PROPERTIES FIXTURES_SETUP M7_original_save)
     set_tests_properties(M8_oasis_checkpoint PROPERTIES FIXTURES_REQUIRED M7_original_save)
