@@ -401,6 +401,13 @@ StepResult advance_battle_search_frame(
             memory.read8(0xC193) == 0) {
             rank = 150;
         }
+        // 02:4FE8 returns immediately when no cartridge target was loaded.
+        // Treat that dead entry as ordinary bank-2 traffic so it cannot
+        // crowd map exits and target-loading states out of the beam.
+        if (bank == 2 && pc == 0x4FE8 &&
+            memory.read8(0xC193) == 0) {
+            rank = 200;
+        }
         // 02:4F4C is a guard, not progress by itself. It returns before the
         // battle dispatch when C562 bit 0 is clear, which is the common
         // overworld path. Only reward it after cartridge code has armed the
