@@ -354,7 +354,15 @@ StepResult advance_battle_search_frame(
     for (std::size_t step = 0; step < max_steps_per_frame; ++step) {
         const std::uint16_t bank = memory.current_rom_bank();
         const std::uint16_t pc = runtime.cpu().pc;
-        const unsigned rank = battle_execution_rank(bank, pc);
+        unsigned rank = battle_execution_rank(bank, pc);
+        // 02:4F4C is a guard, not progress by itself. It returns before the
+        // battle dispatch when C562 bit 0 is clear, which is the common
+        // overworld path. Only reward it after cartridge code has armed the
+        // encounter through 02:48E1.
+        if (bank == 2 && pc == 0x4F4C &&
+            (memory.read8(0xC562) & 0x01u) == 0) {
+            rank = 200;
+        }
         if (rank > trace.rank) {
             trace.rank = rank;
             trace.bank = bank;
