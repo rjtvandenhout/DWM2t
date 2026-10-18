@@ -31,6 +31,8 @@ jobs:
         run: python recomp/tools/scan_game_modes.py --banks-dir src/banks
       - name: Trace banked callers of battle-mode writers
         run: python recomp/tools/scan_battle_callers.py --banks-dir src/banks
+      - name: Trace exact callers of battle gate routines
+        run: python recomp/tools/scan_battle_gate_callers.py --banks-dir src/banks
 
   windows-x64:
     runs-on: windows-latest
