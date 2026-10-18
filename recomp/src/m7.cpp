@@ -1128,6 +1128,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
               << std::endl;
 
     bool selector08_battle_reached = false;
+    std::unique_ptr<Runtime> slash_battle_seed;
 
     // Run 218 proved that the accepted LLU+Left+A Vault interaction
     // (page hash below) has a short original-input continuation that changes
@@ -1315,6 +1316,22 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     << std::dec << std::endl;
 
                 if (dialog_seen && dialog_closed) {
+                    slash_battle_seed =
+                        std::make_unique<Runtime>(runtime);
+                    std::cout
+                        << "M7_SLASH_BATTLE_SEED flags=0x" << std::hex
+                        << static_cast<unsigned>(
+                               runtime.memory().read8(0xCBD7))
+                        << " C920=0x"
+                        << static_cast<unsigned>(
+                               runtime.memory().read8(0xC920))
+                        << " C923=0x"
+                        << static_cast<unsigned>(
+                               runtime.memory().read8(0xC923))
+                        << " C193=0x"
+                        << static_cast<unsigned>(
+                               runtime.memory().read8(0xC193))
+                        << std::dec << std::endl;
                     break;
                 }
             }
@@ -1591,7 +1608,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         3,0,0,0,0,0,4,3,3,3,3,2,0,0,0,3,2,0,3,
         0,0,2,1,3,4,0,2,2,1,1,4,3,3,2,0,3,4
     };
-    {
+    if (!slash_battle_seed) {
         Runtime pinned = runtime;
         Renderer pinned_renderer{};
         std::uint8_t previous_selector =
@@ -1748,6 +1765,18 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
     }
 
+    if (slash_battle_seed) {
+        runtime = *slash_battle_seed;
+        std::cout
+            << "M7_BATTLE_SEED source=post_slash flags=0x"
+            << std::hex
+            << static_cast<unsigned>(runtime.memory().read8(0xCBD7))
+            << " C920=0x"
+            << static_cast<unsigned>(runtime.memory().read8(0xC920))
+            << " C923=0x"
+            << static_cast<unsigned>(runtime.memory().read8(0xC923))
+            << std::dec << std::endl;
+    }
 
     if (selector08_battle_reached) {
         const std::vector<std::uint8_t> selector08_acceptance_path = {
