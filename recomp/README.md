@@ -31,9 +31,11 @@ See `milestones/M7_RESULT.md`, `handoff/M7_LOCAL_WINDOWS.md`, and
 still the final M8 milestone. Ordinary menu mode C5DB=2 is not battle proof;
 the accepted real battle mode is C5DB=4.
 
-M8 currently adds controller-only trace/replay tools, a deterministic first
-Oasis-town checkpoint with original recruitment and fresh Continue, and native
-inn dialogue/healing paths. This does **not** prove the ending or complete M8.
+M8 now proves the original Oasis quest through the dam boss, WaterCall,
+Mirage Lake's CurseLamp battle, recruitment/farm handling and the original
+aftermath/return home. Nine chained controller-only routes retain original
+Journal saves and fresh Continue checks, including battle HP and audio
+assertions. This does **not** prove later worlds, the ending or complete M8.
 English development notes and exact current evidence are in
 `handoff/M8_WORKING.md`. The active branch is `work/recomp-m8`; the M7 restore
 remains immutable. The M7 validator and current packaging messages are English;

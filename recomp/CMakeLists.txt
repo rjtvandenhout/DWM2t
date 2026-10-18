@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 37 38 40 41 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
+set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
@@ -89,11 +89,17 @@ set(BANK_FILE_29 "bank_029.asm")
 # M8: reached at 30:$7163 by original recruitment > send to farm > Info.
 set(BANK_FILE_30 "bank_030.asm")
 set(BANK_FILE_31 "bank_031.asm")
+# M8: reached at 36:$60DB by the original Asiya church service menu.
+set(BANK_FILE_36 "bank_036.asm")
 set(BANK_FILE_37 "bank_037.asm")
 set(BANK_FILE_38 "bank_038.asm")
+# M8: reached at 39:$4001 after the original CurseLamp recruitment name offer.
+set(BANK_FILE_39 "bank_039.asm")
 set(BANK_FILE_40 "bank_040.asm")
 # M8: reached at 41:$4001 by P1 conversation with the Oasis town innkeeper.
 set(BANK_FILE_41 "bank_041.asm")
+# M8: reached at 42:$4001 when facing Warubou after the Oasis return.
+set(BANK_FILE_42 "bank_042.asm")
 # Reached at 47:$4001 during original Oasis encounter presentation.
 set(BANK_FILE_47 "bank_047.asm")
 # Reached at 48:$4001 by the genuine battle Fight command through P1.
@@ -112,6 +118,8 @@ set(BANK_FILE_55 "bank_055.asm")
 # Reached at 57:$4001 after original battle Fight confirmation.
 set(BANK_FILE_57 "bank_057.asm")
 set(BANK_FILE_58 "bank_058.asm")
+# M8: reached at 59:$40CD in the original Mirage Lake hideout battle.
+set(BANK_FILE_59 "bank_059.asm")
 set(BANK_FILE_95 "bank_095.asm")
 set(BANK_FILE_96 "bank_096.asm")
 set(BANK_FILE_105 "bank_105.asm")
@@ -298,6 +306,9 @@ if(BUILD_TESTING)
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_king_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_kalka_canal_preparation_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_dam_boss_victory_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_thieves_report_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_watercall_exchange_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_curselamp_victory_p1.txt"
         --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
     set_tests_properties(M7_save_continue PROPERTIES FIXTURES_SETUP M7_original_save)
     set_tests_properties(M8_oasis_checkpoint PROPERTIES FIXTURES_REQUIRED M7_original_save)

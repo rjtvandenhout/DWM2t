@@ -332,3 +332,127 @@ to continue immediately or stop for now. Wait for the user's explicit answer.
 Remaining scope: the rest of Oasis, later worlds, ending/credits, later saves,
 all regressions/final release. Do not create restore/recomp-m8 or M8_RESULT.md
 or describe M8 as complete. M7 restore stays 3bb1e18170fc928f372f9cc72cc433d85c0666ca.
+
+## Approved continuation after the dam milestone (2026-10-19)
+
+The user explicitly chose "Continue immediately" in the milestone dialog.
+The pause above is therefore satisfied. Continue from commit `9a3e86a` and
+the original dam-victory Journal, preserving both and all earlier saves.
+Pause again at the next completed world or fully working important boss.
+First follow the king's original invitation; no later story outcome is
+claimed until its gameplay and original Save/fresh Continue are verified.
+
+### Asiya thieves report and original WaterCall exchange (2026-10-19)
+
+From the dam-victory Journal, original travel, king dialogue and Journal
+produce `m8_after_dam01/asiya_thieves_report.sav` (32768 bytes, FNV
+`25b3f7391031727c`, SHA256
+`BEA17C3F71AC891AC8F07B9067D942C69885CD72D1765A6A502B5BBDB259320E`).
+The king's expedition changes CBE1 from 18 to 78. The pinned 12,869-frame
+fixture `m8_asiya_thieves_report_p1.txt` independently reproduces that save
+and fresh Continue with zero mismatches.
+
+The prison stairs work through original movement. No-food dialogue correctly
+refuses the exchange. The Asiya item shop (selector 12, town region 0,1,
+128,32) sells BeefJerky for 10 gold; the purchase reduces 30 gold to 20.
+The church is selector 17, NOT the item shop: use actual game screens to
+resolve service identity rather than assumptions from adjacent text IDs.
+The original church menu reached 36:$60DB; bank 36 is statically compiled.
+
+Giving the purchased food to the starving prisoner grants WaterCall and
+sets quest flag 57 (CBE1 78->F8). Original town Journal produces
+`m8_mirage02/watercall_original.sav`, exactly 32768 bytes, FNV
+`5fe465082e40e700`, SHA256
+`E66FB1B2FBE7FAA5E68922CEBDE80A02284770BE2C455D353E67821A531EAE5E`.
+Its 20,511-frame fixture `m8_watercall_exchange_p1.txt` independently
+replays from the thieves-report save and passes fresh Continue, checking
+304 party bytes, 56 quest bytes, 5 location fields and 66 creature bytes.
+
+M8 snapshots now retain cumulative original APU sample count, nonzero count,
+peak and PCM FNV. `expect_audio` validates exact replay without changing
+cartridge state or the existing sample drain point. All 17 trace contracts
+pass; the WaterCall fixture includes its final audio hash.
+
+All 14 local CTest gates, including all unchanged M1-M7 checks and the complete
+eight-route M8 checkpoint chain, pass in 448.12 seconds
+(`recomp/build/m8-watercall-all-14-checks-01.log`). This is local evidence,
+not hosted CI. The M6/M7 original saves were copied to the unique directory
+`recomp/build/preserved-before-watercall-validation-01` before that run.
+
+Ongoing `m8_lake01`: follow the original mountain pass to the east/south of
+Oasis, enter Mirage Lake (world 47). WaterCall Use at a wrong position
+correctly says nothing happened. At world 47 region 0,1, 80,64 facing Up,
+normal Use consumes WaterCall, sets quest flag 58, and reveals the hideout.
+Do not confuse the lake water with an entrance: the hideout is northeast,
+world 47 region 1,0, 64,48. Normal movement reaches world 40 region 0,1.
+The hideout conversation (selector 3C) enters a real battle and reaches
+missing native bank 59:$40CD at frame 15221. No victory is yet claimed.
+Bank 59 is being compiled; replay only the safe P1 prefix ending at frame
+14089 (`recomp/build/m8_lake_prefix14089.txt`) from the WaterCall Journal.
+No CPU or WRAM state is restored. The next proven important fight still
+requires the user's milestone pause before further story progression.
+
+## Latest milestone: Oasis completed; user decision required (2026-10-19)
+
+This supersedes the earlier ongoing lake notes, not their historical evidence.
+Banks 59 (battle path) and 39 (original recruitment naming) compile statically.
+The original CurseLamp fight is proven in `m8_lake02`: frame 15491,
+world 40 region 0,1 at 64,32, mode 4, enemy HP 220 and party HP 48/35/30.
+Normal Fight turns reduce enemy HP 220->194->164->124->105->75->30->0.
+At frame 19818 every ally survives with HP 3/35/7.
+
+The original APU emits 4,747,802 sample values between the pinned entry and
+zero-HP checkpoints, of which 4,632,796 are nonzero. Both exact cumulative
+audio hashes are asserted. This proves deterministic original digital audio
+activity, not a subjective listening assessment. The M7 audio gate remains
+unchanged.
+
+Original naming supplies the automatic nickname Phes for the recruited
+CurseLamp; original No/Send to Farm preserves the three active monsters and
+stores the recruit at record 4. Existing farm creatures are not deleted.
+The original defeat dialogue and quest aftermath complete automatically,
+set CBE2 to 07 (flags 58/59/5A), and return the party to the Navel chamber
+(world 5 region 1,0 at 80,48). The original scene heals HP to 60/40/32.
+No next world or later boss has been started.
+
+The first attempted Journal was incorrectly facing Warubou. It stopped
+safely at newly reached bank 42:$4001, before any save was claimed. Bank 42
+is now compiled. The successful route replays only the safe P1 prefix before
+that interaction and faces an empty tile instead; it does not continue
+Warubou's next objective or load any CPU/WRAM state.
+
+The successful original Journal is
+`recomp/build/m8_lake04/oasis_curselamp_victory.sav`: 32768 bytes,
+201 changed bytes, FNV `dd87953eae7f0643`, SHA256
+`BD09E51673BE26BD0B21BE7AC78FFD86F621F6D4D8361CD3A60D8F17832DFBB9`.
+Fresh Continue passes 304 party bytes, 56 quest bytes, 5 location fields and
+66 active-creature bytes. An additional read-only comparison verifies all
+110 persistent bytes (55..6A) across all five occupied creature records,
+including the two farm creatures. Continue changes four original name-cache
+padding bytes in record 4 (15..18), not those persistent creature fields.
+
+`tests/m8_oasis_curselamp_victory_p1.txt` retains 30,639 P1 frames and the
+actual battle-entry/zero-HP/audio assertions, final quest/location/Journal
+hashes and final PCM hash. The independent checkpoint replay passes and
+reproduces the byte-identical original Journal, plus another fresh Continue
+(`recomp/build/m8-oasis-victory-independent-01.log`). The final full CTest
+run passes all 14 checks in 507.86 seconds, including the complete nine-route
+chain in 390.34 seconds (`recomp/build/m8-oasis-complete-all-14-checks-02.log`).
+Its final Journal is byte-identical to discovery and independent replay.
+The chain retains 213,962 recorded controller frames from the accepted M7
+Journal. No external game information or fabricated game state was used.
+
+A separate package is in `outputs/M8-Oasis-complete-checkpoint`: copied
+Windows-x64 EXE, untouched evidence save and separate M8-test.sav, English
+launcher/instructions/test report. The copied EXE passes M3/M4 self-tests
+and independently replays the full boss route plus fresh Continue, again
+reproducing the byte-identical save. EXE SHA256
+`06E47C07A43D3C01FF1429A7299868BACDC9F4E0D058DD0BDA75A589C67EDE04`,
+274321408 bytes, PE machine 8664. No hosted CI pass is claimed.
+
+STOP at this fully working major boss and completed world. Finish only
+milestone verification, packaging and evidence/commit work, then ask whether
+to continue immediately or stop for now. Wait for the user's explicit answer.
+M8 remains incomplete: later worlds and ending/credits still require proof.
+Do not create restore/recomp-m8 or M8_RESULT.md. The immutable M7 restore
+remains `3bb1e18170fc928f372f9cc72cc433d85c0666ca`.

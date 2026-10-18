@@ -23,6 +23,9 @@ def main():
             "reject_state_mismatch": ("expect C6FD FF\n", 230, "replay assertion failed"),
             "reject_sram_mismatch": ("expect_sram 0\n", 230, "hash assertion failed"),
             "reject_screen_mismatch": ("expect_screen 0\n", 230, "hash assertion failed"),
+            "audio_initial": ("expect_audio 0 0 0 cbf29ce484222325\n", 0, "M8_TRACE_REPLAY_PASS"),
+            "reject_audio_mismatch": ("expect_audio 0 0 0 0\n", 230, "audio assertion failed"),
+            "reject_invalid_audio": ("expect_audio 0 1 0 0\n", 230, "invalid recorded audio assertion"),
             "reject_frame_budget": ("A 30001 0\n", 230, "input frame budget exceeded"),
             "reject_partial_failure": ("runtime_failure 3 99 16385\n", 230, "M8_REPLAY_FAIL"),
         }
@@ -45,6 +48,12 @@ def main():
         if hashlib.sha256(protected.read_bytes()).digest() != before:
             raise AssertionError("existing evidence was changed")
         print("M8_TRACE_CONTRACT_PASS existing_evidence_protected")
+        result = subprocess.run([str(exe), "--m8-replay", "-", str(protected),
+                                 str(root / "recorded_audio_replay")],
+                                capture_output=True, text=True, timeout=30)
+        if result.returncode != 0 or "M8_TRACE_REPLAY_PASS" not in result.stdout:
+            raise AssertionError(f"recorded audio roundtrip failed: {result.stdout}{result.stderr}")
+        print("M8_TRACE_CONTRACT_PASS recorded_audio_roundtrip")
         short_save = root / "invalid.sav"
         short_save.write_bytes(b"\x00")
         result = subprocess.run([str(exe), "--m8-replay", str(short_save), str(trace),
@@ -58,7 +67,7 @@ def main():
         if result.returncode != 230 or "return to idle field" not in result.stderr:
             raise AssertionError("unsaved non-field checkpoint was not rejected")
         print("M8_TRACE_CONTRACT_PASS reject_unsaved_checkpoint")
-    print("M8_TRACE_CONTRACT_PASS total=13 full_game_acceptance=NOT_CLAIMED")
+    print("M8_TRACE_CONTRACT_PASS total=17 full_game_acceptance=NOT_CLAIMED")
     return 0
 
 if __name__ == "__main__":

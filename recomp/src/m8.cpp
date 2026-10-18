@@ -80,7 +80,19 @@ public:
                 throw std::runtime_error("original execution failed closed");
             }
             if (runtime_.memory().frame_counter() != initial) {
-                (void)runtime_.memory().apu().take_samples();
+                // Observe the original APU output at the same drain point as
+                // before. These host counters never alter cartridge state.
+                for (const std::int16_t sample : runtime_.memory().apu().take_samples()) {
+                    ++audio_samples_;
+                    if (sample != 0) ++audio_nonzero_;
+                    const int magnitude = sample < 0 ? -int(sample) : int(sample);
+                    if (magnitude > audio_peak_) audio_peak_ = magnitude;
+                    const auto bits = static_cast<std::uint16_t>(sample);
+                    audio_hash_ ^= std::uint8_t(bits & 0xFFu);
+                    audio_hash_ *= 1099511628211ull;
+                    audio_hash_ ^= std::uint8_t(bits >> 8);
+                    audio_hash_ *= 1099511628211ull;
+                }
                 if (run_length_ && (run_button_ != button || run_length_ == 30000)) flush();
                 run_button_ = button; ++run_length_;
                 return;
@@ -121,6 +133,11 @@ public:
                   << " sram=0x" << sram_hash(memory)
                   << " screen=0x" << renderer.hash() << std::dec
                   << " image=" << stem << ".bmp" << std::endl;
+        std::cout << "M8_AUDIO frame=" << memory.frame_counter()
+                  << " sample_values=" << audio_samples_
+                  << " stereo_frames=" << audio_samples_ / 2
+                  << " nonzero=" << audio_nonzero_ << " peak=" << audio_peak_
+                  << " hash=0x" << std::hex << audio_hash_ << std::dec << std::endl;
         // Read-only assertions make the generated trace independently replayable.
         for (auto address : {0xC5DB,0xC5DC,0xC6FD,0xFF90,0xFF8F,0xFF92,0xFF8E,0xFF91})
             trace_ << "expect " << std::hex << address << ' '
@@ -130,6 +147,8 @@ public:
                    << unsigned(memory.read8(std::uint16_t(address))) << std::dec << '\n';
         trace_ << "expect_sram " << std::hex << sram_hash(memory) << '\n'
                << "expect_screen " << renderer.hash() << std::dec << '\n';
+        trace_ << "expect_audio " << audio_samples_ << ' ' << audio_nonzero_
+               << ' ' << audio_peak_ << ' ' << std::hex << audio_hash_ << std::dec << '\n';
         trace_.flush();
     }
 
@@ -165,6 +184,17 @@ public:
             }
             std::istringstream input(line); std::string command; input >> command;
             if (command.empty() || command[0] == '#') continue;
+            if (command == "expect_audio") {
+                std::uint64_t samples = 0, nonzero = 0, hash = 0;
+                unsigned peak = 0;
+                if (!(input >> samples >> nonzero >> peak >> std::hex >> hash) ||
+                    nonzero > samples || peak > 32768)
+                    throw std::runtime_error("invalid recorded audio assertion");
+                if (samples != audio_samples_ || nonzero != audio_nonzero_ ||
+                    peak != unsigned(audio_peak_) || hash != audio_hash_)
+                    throw std::runtime_error("recorded audio assertion failed");
+                flush(); trace_ << line << '\n'; continue;
+            }
             if (command == "expect_sram" || command == "expect_screen") {
                 std::uint64_t expected = 0, actual = 0;
                 if (!(input >> std::hex >> expected)) throw std::runtime_error("invalid hash assertion");
@@ -410,6 +440,9 @@ private:
     std::ofstream trace_;
     std::uint8_t run_button_ = 0;
     unsigned run_length_ = 0, capture_ = 0;
+    std::uint64_t audio_samples_ = 0, audio_nonzero_ = 0;
+    std::uint64_t audio_hash_ = 14695981039346656037ull;
+    int audio_peak_ = 0;
 };
 }
 
