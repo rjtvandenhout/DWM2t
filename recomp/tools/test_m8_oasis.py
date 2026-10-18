@@ -1,4 +1,4 @@
-"""Revalidate the original early-Oasis checkpoint; not final M8 acceptance."""
+"""Revalidate original Oasis/Asiya Journal routes; not final M8 acceptance."""
 import argparse
 from pathlib import Path
 import subprocess
@@ -10,6 +10,7 @@ def main():
     parser.add_argument("--seed", type=Path, required=True)
     parser.add_argument("--route", type=Path, required=True)
     parser.add_argument("--inn-route", type=Path, required=True)
+    parser.add_argument("--checkpoint-route", type=Path, action="append", default=[])
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -21,6 +22,14 @@ def main():
         result = subprocess.run([str(args.exe.resolve()), "--m8-inn-test",
                                  str(output / "oasis_original_journal.sav"),
                                  str(args.inn_route.resolve()), str(output / "inn")])
+    seed = output / "inn" / "inn_original_journal.sav"
+    for index, route in enumerate(args.checkpoint_route, start=1):
+        if result.returncode != 0:
+            break
+        checkpoint = output / f"story-{index:02}"
+        result = subprocess.run([str(args.exe.resolve()), "--m8-checkpoint-test",
+                                 str(seed), str(route.resolve()), str(checkpoint)])
+        seed = checkpoint / "checkpoint.sav"
     return result.returncode
 
 if __name__ == "__main__":

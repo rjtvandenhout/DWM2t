@@ -52,7 +52,13 @@ def main():
         if result.returncode != 230 or "exact 32 KiB" not in result.stderr:
             raise AssertionError("non-32-KiB save was not rejected")
         print("M8_TRACE_CONTRACT_PASS exact_save_size_required")
-    print("M8_TRACE_CONTRACT_PASS total=12 full_game_acceptance=NOT_CLAIMED")
+        result = subprocess.run([str(exe), "--m8-checkpoint-test", "-", str(trace),
+                                 str(root / "unsaved_checkpoint")],
+                                capture_output=True, text=True, timeout=30)
+        if result.returncode != 230 or "return to idle field" not in result.stderr:
+            raise AssertionError("unsaved non-field checkpoint was not rejected")
+        print("M8_TRACE_CONTRACT_PASS reject_unsaved_checkpoint")
+    print("M8_TRACE_CONTRACT_PASS total=13 full_game_acceptance=NOT_CLAIMED")
     return 0
 
 if __name__ == "__main__":

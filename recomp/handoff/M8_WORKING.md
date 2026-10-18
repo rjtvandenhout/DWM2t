@@ -15,6 +15,12 @@ inform implementation. No fabricated game state or runtime interpreter.
 
 ## Work sequence
 
+User-approved continuation rule: after completing a world or proving that an
+important boss fight fully works, summarize the evidence and ask whether to
+continue immediately or stop for now. Wait for the user's explicit decision
+before progressing beyond that milestone. Smaller tooling/build checkpoints
+do not require a pause. Keep all further project-authored text in English.
+
 1. Extend finite P1-only route support for complete battles and later Continue
    without assuming the introductory quest flags are still unchanged.
 2. Extend original play through Oasis and subsequent worlds/systems, retaining
@@ -177,3 +183,152 @@ The M7 English validator cleanup is commit `890f5f1`; M7 restore remains
 Full M8 is still incomplete. No ending/credits proof, `M8_RESULT.md`, or
 `restore/recomp-m8` exists. Do not describe these 14 partial development tests
 as final M8 acceptance or as a successful hosted GitHub Actions run.
+
+### Asiya/canal development evidence (ongoing)
+
+The original king's request, the town well complaint (selector 0F), the report
+to the king, the canal-manager scene in world 42 and walking into the canal
+(world 43) all executed. New original Journal checkpoints passed fresh
+Continue for 304 party bytes, 56 quest-flag bytes and five location fields:
+
+- `m8_asiya05/asiya_king_request.sav`: FNV `3b7c45f1713eb77e`,
+  SHA256 `2CA33149B19F9CF0B2CAFD8A139B7A1B75CFFCC33C63C5F6E0663F0B6A76224A`.
+- `m8_asiya06/asiya_water_reported.sav`: FNV `e5873b72c24a1e6a`,
+  SHA256 `C6FAE888C6100528C5408C67B259E28F2F1B550BF3FA66F227D07631748270EB`.
+- `m8_asiya06/kalka_canal_preparation.sav`: FNV `3de20fbe8f08b6c3`,
+  SHA256 `BFD205B39C77C7B21BDDD0DB310ED6BF36F8969D833E7514A17FF736A80F6E5F`.
+  Original inn healing restored all three monsters to 33/33, 21/21, 17/17.
+
+The dam creature is at world 43, region 1,2, position 48,96 (selector 37).
+Original confrontation produces a real mode-4 battle with enemy HP 98.
+Its Fight command reached 226:$5426, which directly calls 5:$772B; both
+native banks were added. `m8_dam01` replayed all 28,353 entry-route frames
+and proved enemy HP 98->85->76->68->56->52 and party damage. The underprepared
+party lost and the original defeat return executed. This is NOT a passing
+boss milestone. Subsequent retry/flee experiments do not claim victory.
+
+All 14 combined local development tests passed in 188.21 seconds after banks
+5/137/149/226 and the 56-byte quest check (`m8-development-dam-14-checks-01.log`).
+Existing M6/M7 acceptance saves retained their exact hashes. This result
+predates bank 30 and the later checkpoint/creature-stat test extensions.
+
+`m8_training01` earns normal battle experience near the Kalka canal entrance,
+returns to the inn before the weakest member dies, and uses original Journal
+after each cycle. Three separate 32768-byte saves and fresh Continue passed:
+`training_cycle_01.sav`, `_02.sav`, `_03.sav` (last FNV `e3ed777cd9f7c95d`).
+Further combat raised Slash and the second monster to level 3 and produced
+another original recruitment offer. The original send-to-farm > Info menu
+reached 30:$7163 at frame 39569. Bank 30 was added; `m8_training02` replays
+the complete 39,568-frame prefix before trying Info again. No farm exchange
+has yet been confirmed. No world or important boss has passed yet, so the
+user's milestone pause has not been triggered.
+
+Three finite P1 fixtures now pin inn->Asiya, recruitment/castle/king Journal,
+and water-report/canal-preparation Journal (7194/26188/15883 frames). The M8
+CTest driver chains these after its retained Oasis and inn proofs using
+`--m8-checkpoint-test`. Fresh Continue additionally checks each active
+monster's persistent status/level/experience/HP/MP/stats (22 bytes per member).
+The expanded 14-check run is in progress in
+`m8-development-asiya-chain-14-checks-02.log`; do not claim it passed yet.
+
+## Continuation from tested 0e2b236
+
+The executable and original inn save hashes matched the tested baseline before
+new work. `m8_next01` follows original village dialogue south through Oasis to
+Asiya (world 36) and its inn (world 35). The original Journal there produced
+32768 bytes; fresh Continue matched the checked party/quest/location fields.
+Save: `recomp/build/m8_next01/asiya_arrival.sav`, SHA256
+`E1366BBCCBB10F563B5F1E5779905A37D689B04605B7395257775742BB5903D1`.
+This is another early-game checkpoint, not world completion.
+
+Original NPC dispatch 4:$63ED requires three healthy party monsters before
+the circus route can progress; the current party contains two. Original text
+and map/NPC tables are being used to find that route, not an external guide.
+An actual information-menu execution reached 149:$4650 (`m8_next01`, frame
+8780), so that native bank is being added. No missing-bank failure is counted
+as a pass, and no host-written party/quest state is used to bypass the gate.
+
+### Three-monster party and castle entry
+
+Bank 149 compiled and linked. From the Asiya Journal seed, `m8_asiya03`
+records two real field encounters. The second produced an original recruitment
+offer; A/name, Start/END, A and Yes completed it. Party count changed 2->3 at
+frame 9672, without host-written party state. The returning party's original
+Journal changed 127 SRAM bytes and produced `m8_asiya03/asiya_party_three.sav`
+(32768 bytes, FNV `2b63a58fb2c71006`, SHA256
+`A9B92496C5C73F94566FADA517BF89EF42DD002C3CAB523BA762DB4C49818A8E`).
+Fresh Continue passed; a read-only comparison also found no differences in
+the full 56-byte quest-flag block. M8 Continue verification now explicitly
+checks those 56 bytes plus five location fields and 304 party bytes. M7's
+acceptance implementation and fixtures are unchanged.
+
+The original circus gate accepted the living three-monster party, transferred
+it into castle world 37, and original walking reached the throne room (38).
+Talking to the king reached missing native bank 137:$4001 at frame 22821.
+That bank was compiled and linked. This is not boss/world completion.
+The first replay-extraction attempt accidentally omitted B holds and correctly
+failed its screen assertion. The corrected prefix retains all P1 buttons,
+ends at frame 22621 before the failed story command, and is being replayed in
+`m8_asiya05`. No failed trace is presented as a passing result.
+
+## Latest stopping point: dam-boss victory (milestone decision required)
+
+This section supersedes the earlier ongoing-work notes above. The king's
+canal/dam creature has now been defeated through original P1 gameplay.
+Training and the original recruitment/farm exchange produced a stronger
+party. The existing level-6 CactiBall was sent to the original farm, not
+deleted; the new recruit joined the active party. Bank 30's Info path passed.
+`m8_training02` reconstructs all earlier training by P1 replay from the
+preserved canal-preparation Journal save, not from CPU/WRAM snapshots.
+
+Scripted battle: frame 52036, world 43, region 1,2, position 32,96,
+selector 37, mode 4, party HP 30/24/24, boss HP 98. Normal Fight turns
+reduced boss HP 98->78->50->33->13->0 by frame 55037. All three members
+survived (9/16/24 HP). Original rewards/level-ups and post-fight dialogue
+completed; CBE1 changed 00->18 (quest flags 0x53 and 0x54). No subsequent story
+objective was started. Returning to Kalka included one normal field battle,
+original inn healing and PLAN > Journal.
+
+Victory save: `recomp/build/m8_training02/dam_boss_victory.sav`, exactly
+32768 bytes, original Journal changed 52 bytes, FNV `51c23bf4c4399ebc`, SHA256
+`400DF427C538F0776C1F9066813EC90005E20D78EB8FF2C11AACBC13D3DA29CE`.
+Original route ends at frame 66305, Kalka inn (world 34, region 0,0, 80,80).
+Fresh Runtime Continue passed with zero mismatches in 304 party bytes,
+56 quest-flag bytes, five location fields and 66 persistent creature bytes.
+The active party is healed; all older saves remain separate.
+
+`tests/m8_dam_boss_victory_p1.txt` retains all 66,305 controller frames and
+asserts battle-entry HP 98, boss HP zero with every member alive, and the
+final flags/Journal/screen hashes. Independent `--m8-checkpoint-test` replay
+passed in `recomp/build/m8_boss_regression01`, reproducing the byte-identical
+victory save and another fresh Continue. This route is now chained after
+the three Asiya/canal fixtures in the development CTest driver.
+
+All 14 development gates including the three Asiya/canal fixtures and the
+66-byte creature comparison passed in 279.90 seconds before adding the final
+boss fixture (`m8-development-asiya-chain-14-checks-02.log`). The final retained
+suite rerun passed all 14 checks in 292.99 seconds
+(`m8-development-dam-victory-14-checks-03.log`). This run used the earlier
+three-story-route test list: the initial terminal reconfiguration lacked the
+Visual Studio environment, was corrected, and the independent new boss gate
+passed. The final registered four-story-route M8 CTest chain passed separately:
+both M8 tests passed in 287.94 seconds (`m8-complete-dam-chain-checks-04.log`).
+It regenerates every seed from the accepted M7 Journal and retains 149,943
+recorded P1 frames across all six M8 routes, plus separate fresh Continue
+verification. The final victory save is byte-identical to discovery and
+the independent boss replay. Do not describe
+the 292.99-second run as already including the newly registered boss route.
+No result here is a hosted GitHub Actions pass or full M8 acceptance.
+
+A separate Windows-x64 development package is in
+`outputs/M8-dam-boss-checkpoint`, with an independent M8-test.sav, untouched
+evidence/original-journal.sav, English launcher/instructions and evidence.
+EXE SHA256 `4AEBA6723D4C4D47D7AD4135C2B3CB5D7AAE54C1E62FB31A8D47529660CC172B`;
+255736832 bytes; PE machine 8664. The packaged binary passed M3/M4 self-tests.
+Do not replace the user's earlier output packages or saves.
+
+STOP gameplay at this fully working important boss milestone and ask whether
+to continue immediately or stop for now. Wait for the user's explicit answer.
+Remaining scope: the rest of Oasis, later worlds, ending/credits, later saves,
+all regressions/final release. Do not create restore/recomp-m8 or M8_RESULT.md
+or describe M8 as complete. M7 restore stays 3bb1e18170fc928f372f9cc72cc433d85c0666ca.

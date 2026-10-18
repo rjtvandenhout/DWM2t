@@ -284,6 +284,7 @@ public:
             throw std::runtime_error("fresh-runtime SRAM isolation failed");
         fresh.boot_continue(true);
         unsigned mismatches = 0;
+        unsigned creature_bytes = 0;
         std::ofstream evidence(output / "continue_evidence.txt");
         evidence << "Original Journal Save; new Runtime; exact 32768-byte SRAM file only\n";
         for (unsigned address = 0xC6FD; address < 0xC82D; ++address) {
@@ -295,18 +296,49 @@ public:
                 ++mismatches;
             }
         }
-        for (auto address : {0xCBD7,0xCBD8,0xCBD9,0xCBDA,0xCBDB,
-                             0xFF90,0xFF8F,0xFF92,0xFF8E,0xFF91}) {
+        // Later worlds use flags beyond the introductory five bytes. Compare
+        // the entire cartridge quest-flag block, not just the M7-era prefix.
+        for (unsigned address = 0xCBD7; address < 0xCC0F; ++address) {
             const auto expected = runtime_.memory().read8(std::uint16_t(address));
             const auto actual = fresh.runtime_.memory().read8(std::uint16_t(address));
             evidence << std::hex << address << ' ' << unsigned(expected)
                      << " -> " << unsigned(actual) << '\n';
             if (expected != actual) ++mismatches;
         }
-        evidence << std::dec << "party_bytes=304 fields=10 mismatches=" << mismatches << '\n';
+        for (auto address : {0xFF90,0xFF8F,0xFF92,0xFF8E,0xFF91}) {
+            const auto expected = runtime_.memory().read8(std::uint16_t(address));
+            const auto actual = fresh.runtime_.memory().read8(std::uint16_t(address));
+            evidence << std::hex << address << ' ' << unsigned(expected)
+                     << " -> " << unsigned(actual) << '\n';
+            if (expected != actual) ++mismatches;
+        }
+        const auto party_count = runtime_.memory().read8(0xC6FD);
+        if (party_count > 3) throw std::runtime_error("invalid saved party count");
+        for (unsigned slot = 0; slot < party_count; ++slot) {
+            const auto monster = runtime_.memory().read8(std::uint16_t(0xC6FE + slot));
+            const unsigned record = unsigned(monster) * 0xA5;
+            if (record + 0x6B > Memory::SramSize)
+                throw std::runtime_error("saved monster record exceeds SRAM");
+            // Original record: status, level/cap, experience, HP/MP and stats.
+            // Compare only persistent fields; travel fatigue is cartridge-owned.
+            for (unsigned field = 0x55; field < 0x6B; ++field) {
+                const auto expected = runtime_.memory().sram()[record + field];
+                const auto actual = fresh.runtime_.memory().sram()[record + field];
+                ++creature_bytes;
+                if (expected != actual) {
+                    evidence << "monster mismatch " << unsigned(monster) << ' '
+                             << std::hex << field << ' ' << unsigned(expected)
+                             << " -> " << unsigned(actual) << '\n';
+                    ++mismatches;
+                }
+            }
+        }
+        evidence << std::dec << "party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes="
+                 << creature_bytes << " mismatches=" << mismatches << '\n';
         if (mismatches) throw std::runtime_error("fresh Continue differs from saved party/quest/location");
         fresh.flush();
-        std::cout << "M8_FRESH_CONTINUE_PASS party_bytes=304 fields=10 source="
+        std::cout << "M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes="
+                  << creature_bytes << " source="
                   << save.string() << std::endl;
     }
 
@@ -405,6 +437,33 @@ int run_m8_replay(const std::filesystem::path& save, const std::filesystem::path
         return 0;
     } catch (const std::exception& error) {
         std::cerr << "M8_REPLAY_FAIL " << error.what() << std::endl; return 230;
+    }
+}
+
+int run_m8_checkpoint_test(const std::filesystem::path& seed,
+                           const std::filesystem::path& route,
+                           const std::filesystem::path& output) {
+    try {
+        Session session(seed, output);
+        auto& memory = session.runtime().memory();
+        const auto initial_sram = sram_hash(memory);
+        session.replay_trace(route);
+        // A pinned, asserted P1 route must perform the original Journal. Only
+        // cartridge-owned SRAM changes cross into the fresh Continue check.
+        if (sram_hash(memory) == initial_sram || memory.read8(0xC5DB) != 1 ||
+            memory.read8(0xC5DC) != 0)
+            throw std::runtime_error("checkpoint route did not change SRAM and return to idle field");
+        const auto save = output / "checkpoint.sav";
+        if (std::filesystem::exists(save) || !save_sram_file(memory, save) ||
+            std::filesystem::file_size(save) != Memory::SramSize)
+            throw std::runtime_error("cannot persist original checkpoint SRAM");
+        session.verify_continue(save, output / "fresh_continue");
+        std::cout << "M8_CHECKPOINT_PASS source=" << route.string()
+                  << " ending_credits=NOT_YET_PROVEN" << std::endl;
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "M8_CHECKPOINT_FAIL " << error.what() << std::endl;
+        return 230;
     }
 }
 

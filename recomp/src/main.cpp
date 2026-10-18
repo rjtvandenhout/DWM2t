@@ -618,6 +618,9 @@ int main(int argc, char** argv) {
     if (argc == 5 && std::string_view(argv[1]) == "--m8-replay") {
         return dwm2t::run_m8_replay(argv[2], argv[3], argv[4]);
     }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-checkpoint-test") {
+        return dwm2t::run_m8_checkpoint_test(argv[2], argv[3], argv[4]);
+    }
     if (argc == 5 && std::string_view(argv[1]) == "--m8-oasis-test") {
         return dwm2t::run_m8_oasis_test(argv[2], argv[3], argv[4]);
     }

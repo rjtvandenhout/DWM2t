@@ -54,12 +54,14 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 31 37 38 40 41 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 151 161 163 240)
+set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 37 38 40 41 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
 set(BANK_FILE_3 "bank_003.asm")
 set(BANK_FILE_4 "bank_004.asm")
+# M8: direct unconditional target 5:$772B from reached dam boss code 226:$5426.
+set(BANK_FILE_5 "bank_005.asm")
 set(BANK_FILE_7 "bank_007.asm")
 # Reached at 8:$4001 by the original Magic Door Use command.
 set(BANK_FILE_8 "bank_008.asm")
@@ -84,6 +86,8 @@ set(BANK_FILE_26 "bank_026.asm")
 set(BANK_FILE_28 "bank_028.asm")
 # Unconditional RST $10 target 29:$6973 from reached Journal entry 21:$63B8.
 set(BANK_FILE_29 "bank_029.asm")
+# M8: reached at 30:$7163 by original recruitment > send to farm > Info.
+set(BANK_FILE_30 "bank_030.asm")
 set(BANK_FILE_31 "bank_031.asm")
 set(BANK_FILE_37 "bank_037.asm")
 set(BANK_FILE_38 "bank_038.asm")
@@ -117,12 +121,18 @@ set(BANK_FILE_127 "bank_127.asm")
 set(BANK_FILE_132 "bank_132.asm")
 set(BANK_FILE_133 "bank_133.asm")
 set(BANK_FILE_135 "bank_135.asm")
+# M8: reached at 137:$4001 during the original Asiya king/circus story scene.
+set(BANK_FILE_137 "bank_137.asm")
+# M8: reached at 149:$4650 by the original party information menu in Asiya.
+set(BANK_FILE_149 "bank_149.asm")
 # M8: reached at 151:$4026 by the original Oasis inn dialogue via 41:$4008.
 set(BANK_FILE_151 "bank_151.asm")
 set(BANK_FILE_161 "bank_161.asm")
 # Reached at 163:$4187 after genuine battle Fight confirmation.
 set(BANK_FILE_163 "bank_163.asm")
 # M8: reached at 240:$4001 inside the original inn party-selection menu.
+# M8: reached at 226:$5426 by the original dam-creature boss Fight command.
+set(BANK_FILE_226 "bank_226.asm")
 set(BANK_FILE_240 "bank_240.asm")
 
 set(ROMX_CPP)
@@ -284,6 +294,10 @@ if(BUILD_TESTING)
         --exe "$<TARGET_FILE:DWM2tRecomp>" --seed "${LOCAL_VALIDATION_DIR}/m7_original.sav"
         --route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_town_p1.txt"
         --inn-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_inn_heal_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_arrival_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_king_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_kalka_canal_preparation_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_dam_boss_victory_p1.txt"
         --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
     set_tests_properties(M7_save_continue PROPERTIES FIXTURES_SETUP M7_original_save)
     set_tests_properties(M8_oasis_checkpoint PROPERTIES FIXTURES_REQUIRED M7_original_save)
