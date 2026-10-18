@@ -3381,12 +3381,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << "M7_WEST_SEARCH_EXHAUSTED states="
                                 << west_seen.size()
                                 << std::endl;
-                            // Discovery checkpoint: stop here instead of
-                            // falling into older broad searches. Once a
-                            // deterministic battle route is pinned this
-                            // diagnostic return is replaced by the M7
-                            // battle regression.
-                            return 164;
+                            // Continue into the quest/event probes below. The
+                            // west-island search is diagnostic only; it must
+                            // not prevent the later game-owned quest route
+                            // from running.
 
                             // Locate the exact scripted event that owns the
                             // A6 setter. ROM analysis proves that bank 16:$4D86
@@ -4564,7 +4562,6 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << " screens="
                                 << bank115_screens.size()
                                 << std::endl;
-                            return 158;
 
                             // Pin the deterministic path discovered
                             // by the event-flag beam to the populated farm
@@ -4870,6 +4867,13 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                     << quest_text_renderer.hash()
                                     << std::dec << std::endl;
                             }
+
+                            // Preserve the accepted post-quest state before the
+                            // beam takes ownership of its first node. Later
+                            // physical probes must retain the original flag-4
+                            // progression instead of silently reverting to the
+                            // pre-quest guide seed.
+                            const Runtime quest_progress_seed = *quest_trigger;
 
                             // Continue only from the newly accepted game-owned
                             // story state. A bounded beam explores physical
@@ -5218,11 +5222,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << quest_stories.size()
                                 << std::endl;
 
-                            // During route discovery this quest beam is the
-                            // authoritative probe. Do not fall through into the
-                            // older exploratory hay/island searches after it
-                            // exhausts without leaving overworld.
-                            return 150;
+                            // Continue with the physical exit and interaction
+                            // probes after the quest beam has exhausted. This
+                            // keeps later game-owned route discovery reachable.
 
                             struct WestLeg {
                                 std::uint8_t direction;
@@ -5247,7 +5249,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                  route_index < west_routes.size();
                                  ++route_index) {
                                 auto west = std::make_unique<Runtime>(
-                                    guide_outdoor_seed);
+                                    quest_progress_seed);
                                 const auto& route = west_routes[route_index];
                                 bool abort = false;
                                 unsigned macro_index = 0;
@@ -5401,8 +5403,8 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             };
                             std::vector<OutdoorNode> outdoor_frontier;
                             outdoor_frontier.push_back({
-                                std::make_unique<Runtime>(
-                                    guide_outdoor_seed),
+                                    std::make_unique<Runtime>(
+                                    quest_progress_seed),
                                 {},
                                 0
                             });
@@ -5412,16 +5414,16 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 outdoor_destinations;
 
                             const std::uint8_t seed_x =
-                                guide_outdoor_seed.memory()
+                                    quest_progress_seed.memory()
                                     .read8(0xFF8E);
                             const std::uint8_t seed_y =
-                                guide_outdoor_seed.memory()
+                                    quest_progress_seed.memory()
                                     .read8(0xFF91);
                             const std::uint8_t seed_cc44 =
-                                guide_outdoor_seed.memory()
+                                    quest_progress_seed.memory()
                                     .read8(0xCC44);
                             const std::uint8_t seed_cc45 =
-                                guide_outdoor_seed.memory()
+                                    quest_progress_seed.memory()
                                     .read8(0xCC45);
                             std::cout
                                 << "M7_SEARCH_PHYSICAL_SEED x="
@@ -5711,7 +5713,7 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                  interact_routes) {
                                 auto candidate =
                                     std::make_unique<Runtime>(
-                                        guide_outdoor_seed);
+                                        quest_progress_seed);
                                 bool abort = false;
                                 for (unsigned i = 0;
                                      i < route.count; ++i) {
@@ -5971,7 +5973,11 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                 << "M7_SEARCH_OUTDOOR_INTERACT_COMPLETE dialogs="
                                 << outdoor_dialogs
                                 << std::endl;
-                            return 145;
+                            // Continue into the vault/island probes. The
+                            // outdoor interaction diagnostics are useful, but
+                            // they are not an acceptance boundary and must not
+                            // prevent the original route search from reaching
+                            // the next game-owned transition.
 
                             // The south exit reaches a compact island with
                             // a circular hatch/stone feature in the middle.
@@ -6694,7 +6700,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
 
                             if (!island_dialog_seen ||
                                 !island_dialog_closed) {
-                                return 144;
+                                std::cout
+                                    << "M7_SEARCH_ISLAND_NPC_NOT_REACHED_CONTINUE"
+                                    << std::endl;
                             }
 
                             const Runtime island_progress_seed =
@@ -7776,7 +7784,10 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                                                 path);
                                             std::cout
                                                 << std::endl;
-                                            return 142;
+                                            // Keep exploring from the
+                                            // discovered island transition;
+                                            // this is a route candidate, not
+                                            // yet the M7 acceptance state.
                                         }
 
                                         std::uint64_t sig =
@@ -8010,7 +8021,9 @@ int run_m7_route_search(const std::filesystem::path& output_dir) {
                             std::cout
                                 << "M7_TRUE_EXIT_SEARCH_COMPLETE captures="
                                 << exit_capture << std::endl;
-                            return 151;
+                            // Continue into the broader region search. The
+                            // true-exit diagnostics above do not constitute
+                            // a completed battle route.
 
                             auto oam_hash = [](const Memory& memory) {
                                 std::uint64_t hash =
