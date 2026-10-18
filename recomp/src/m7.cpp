@@ -1566,6 +1566,154 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         return 0;
     };
 
+    // Selector 08 is Slash and sets persistent event flag $0004. In bank 19
+    // selector 09 is the immediately adjacent quest handler and explicitly
+    // branches on battle prerequisite flag $0002. Search for that concrete
+    // cartridge object instead of treating arbitrary selector changes as
+    // progress.
+    std::unique_ptr<Runtime> selector09_seed;
+    {
+        struct SelectorNode {
+            std::unique_ptr<Runtime> runtime;
+            std::vector<std::uint8_t> path;
+            std::uint64_t score = 0;
+        };
+
+        std::vector<SelectorNode> frontier;
+        frontier.push_back({
+            std::make_unique<Runtime>(runtime), {}, 0
+        });
+        std::unordered_set<std::uint64_t> selector_seen;
+        selector_seen.insert(state_signature(runtime.memory()));
+
+        constexpr std::array<std::uint8_t, 5> selector_actions = {
+            0, 1, 2, 3, 4
+        };
+        constexpr std::size_t selector_width = 48;
+        constexpr std::size_t selector_depth = 24;
+
+        for (std::size_t depth = 0;
+             depth < selector_depth &&
+             !frontier.empty() &&
+             !selector09_seed; ++depth) {
+            std::vector<SelectorNode> next;
+            next.reserve(frontier.size() * selector_actions.size());
+
+            for (const SelectorNode& node : frontier) {
+                for (const std::uint8_t action : selector_actions) {
+                    auto child =
+                        std::make_unique<Runtime>(*node.runtime);
+                    StepResult result = StepResult::Continue;
+                    if (action < 4) {
+                        result = search_move(*child, action);
+                    } else {
+                        result = search_interact(*child);
+                    }
+                    if (result != StepResult::Continue) continue;
+
+                    auto path = node.path;
+                    path.push_back(action);
+
+                    if (child->memory().read8(0xC5DB) == 2) {
+                        renderer.render(child->memory(), true);
+                        renderer.write_bmp(
+                            output_dir / "m7_selector09_battle_entry.bmp");
+                        std::cout
+                            << "M7_SELECTOR09_BATTLE depth=" << depth;
+                        print_path(path);
+                        std::cout << std::endl;
+                        return verify_battle_command(*child, path);
+                    }
+
+                    const std::uint8_t selector =
+                        child->memory().read8(0xC916);
+                    if (selector == 0x09) {
+                        selector09_seed =
+                            std::make_unique<Runtime>(*child);
+                        renderer.render(child->memory(), true);
+                        renderer.write_bmp(
+                            output_dir / "m7_selector09_found.bmp");
+                        std::cout
+                            << "M7_SELECTOR09_FOUND depth=" << depth
+                            << " screen=0x" << std::hex
+                            << renderer.hash()
+                            << " C920=0x"
+                            << static_cast<unsigned>(
+                                   child->memory().read8(0xC920))
+                            << " C923=0x"
+                            << static_cast<unsigned>(
+                                   child->memory().read8(0xC923))
+                            << " flags=0x"
+                            << static_cast<unsigned>(
+                                   child->memory().read8(0xCBD7))
+                            << std::dec;
+                        print_path(path);
+                        std::cout << std::endl;
+                        break;
+                    }
+
+                    const std::uint64_t sig =
+                        state_signature(child->memory());
+                    if (!selector_seen.insert(sig).second) continue;
+
+                    const bool selector_changed =
+                        selector != node.runtime->memory().read8(0xC916);
+                    const bool bg_changed =
+                        background_hash(child->memory()) !=
+                        background_hash(node.runtime->memory());
+                    std::uint64_t score = 0;
+                    if (selector_changed) score +=
+                        2'000'000'000'000ull;
+                    if (bg_changed) score +=
+                        1'000'000'000'000ull;
+                    if (action == 4) score +=
+                        100'000'000'000ull;
+                    // Keep states with Slash's flag-4 progression.
+                    if ((child->memory().read8(0xCBD7) & 0x10u) != 0) {
+                        score += 500'000'000'000ull;
+                    }
+
+                    next.push_back({
+                        std::move(child), std::move(path), score
+                    });
+                }
+                if (selector09_seed) break;
+            }
+
+            if (selector09_seed) break;
+            std::stable_sort(
+                next.begin(), next.end(),
+                [](const SelectorNode& a, const SelectorNode& b) {
+                    return a.score > b.score;
+                });
+            if (next.size() > selector_width) {
+                next.resize(selector_width);
+            }
+            if (!next.empty()) {
+                std::cout
+                    << "M7_SELECTOR09_SEARCH depth=" << depth
+                    << " frontier=" << next.size()
+                    << " states=" << selector_seen.size()
+                    << " best_C916=0x" << std::hex
+                    << static_cast<unsigned>(
+                           next.front().runtime->memory().read8(0xC916))
+                    << " flags=0x"
+                    << static_cast<unsigned>(
+                           next.front().runtime->memory().read8(0xCBD7))
+                    << std::dec;
+                print_path(next.front().path);
+                std::cout << std::endl;
+            }
+            frontier = std::move(next);
+        }
+
+        if (!selector09_seed) {
+            std::cout
+                << "M7_SELECTOR09_NOT_FOUND states="
+                << selector_seen.size() << std::endl;
+        }
+    }
+
     // Pin the furthest deterministic selector-changing route observed by the
     // bounded original-input search. This is diagnostic only: every element is
     // replayed through the same P1 movement/dialogue macros as the search.
@@ -1573,7 +1721,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         3,0,0,0,0,0,4,3,3,3,3,2,0,0,0,3,2,0,3,
         0,0,2,1,3,4,0,2,2,1,1,4,3,3,2,0,3,4
     };
-    {
+    if (!selector09_seed) {
         Runtime pinned = runtime;
         Renderer pinned_renderer{};
         std::uint8_t previous_selector =
@@ -1730,6 +1878,16 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
     }
 
+    if (selector09_seed) {
+        runtime = *selector09_seed;
+        std::cout
+            << "M7_SELECTOR09_SEED battle_search=1 flags=0x"
+            << std::hex
+            << static_cast<unsigned>(runtime.memory().read8(0xCBD7))
+            << " C923=0x"
+            << static_cast<unsigned>(runtime.memory().read8(0xC923))
+            << std::dec << std::endl;
+    }
 
     if (selector08_battle_reached) {
         const std::vector<std::uint8_t> selector08_acceptance_path = {
