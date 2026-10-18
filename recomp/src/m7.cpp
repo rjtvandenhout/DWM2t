@@ -301,6 +301,13 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
         return 1000;
     }
 
+    // The encounter-preparation gate at 02:48DC sets C562 bit 0 when
+    // D067 is zero. Reaching this is one step closer to the mode-2 writer
+    // than the generic battle helpers below.
+    if (bank == 2 && (pc == 0x48DC || pc == 0x48E1)) {
+        return 985;
+    }
+
     // Direct cartridge routines reached by known battle callers. These are
     // much stronger evidence than merely executing somewhere inside the
     // broad bank-2 gameplay region (the previous search repeatedly parked
@@ -1400,10 +1407,11 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
         // plus the live guards used by the bank-2 battle-entry routines.
         // Without these guard bytes, physically identical states with different
         // battle eligibility collapsed to one signature and were pruned.
-        constexpr std::array<std::uint16_t, 16> story_bytes = {
+        constexpr std::array<std::uint16_t, 17> story_bytes = {
             0xC916, 0xC917, 0xC920, 0xC921, 0xC923,
             0xC552, 0xCBEB, 0xCB86, 0xCB8D,
-            0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC8CD, 0xC193
+            0xC56C, 0xC562, 0xC468, 0xC46B, 0xC8CB, 0xC8CD, 0xC193,
+            0xD067
         };
         for (const std::uint16_t address : story_bytes) {
             mix(static_cast<std::uint64_t>(memory.read8(address)) |
@@ -2002,6 +2010,18 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     50'000'000'000ull;
                 if (action == 4 && !story_change) score /=
                     4u;
+
+                // Preserve states that satisfy the exact bank-2 battle gate.
+                // C562 bit 0 is consumed by the 4F47 dispatch that reaches the
+                // mode-2 writers; D067==0 is the condition that allows 48DC
+                // to set that bit through original cartridge execution.
+                if ((child->memory().read8(0xC562) & 0x01u) != 0) {
+                    score += 10'000'000'000'000ull;
+                }
+                if (child->memory().read8(0xD067) == 0) {
+                    score += 500'000'000'000ull;
+                }
+
                 score += static_cast<std::uint64_t>(
                     child->memory().current_rom_bank()) << 16;
 
@@ -2030,6 +2050,15 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                       << " best_C923=0x"
                       << static_cast<unsigned>(
                              next.front().runtime->memory().read8(0xC923))
+                      << " C562=0x"
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xC562))
+                      << " D067=0x"
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xD067))
+                      << " C8CD=0x"
+                      << static_cast<unsigned>(
+                             next.front().runtime->memory().read8(0xC8CD))
                       << std::dec;
             print_path(next.front().path);
             std::cout << std::endl;
