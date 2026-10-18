@@ -15,16 +15,16 @@ $m7Cmake = if ($m7CmakeCommand) { $m7CmakeCommand.Source } else {
     Join-Path ([Environment]::GetFolderPath('ApplicationData')) 'Python/Python314/Scripts/cmake.exe'
 }
 if (-not (Test-Path -LiteralPath $m7Cmake -PathType Leaf)) {
-    throw 'CMake ontbreekt. Installeer CMake en voeg het toe aan PATH.'
+    throw 'CMake is missing. Install CMake and add it to PATH.'
 }
 $m7Vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio/Installer/vswhere.exe'
 $m7VsInstallation = if (Test-Path -LiteralPath $m7Vswhere) {
     & $m7Vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
 }
-if (-not $m7VsInstallation) { throw 'Visual Studio C++ Build Tools ontbreken.' }
+if (-not $m7VsInstallation) { throw 'Visual Studio C++ Build Tools are missing.' }
 $m7DeveloperPrompt = Join-Path $m7VsInstallation 'Common7/Tools/VsDevCmd.bat'
 foreach ($m7Path in @($m7Cmake, $m7Source, $BuildDirectory, $m7DeveloperPrompt)) {
-    if ($m7Path -match '["%\r\n]') { throw 'Niet-ondersteund teken in buildpad.' }
+    if ($m7Path -match '["%\r\n]') { throw 'Unsupported character in build path.' }
 }
 $m7Configure = ''
 if (-not (Test-Path -LiteralPath (Join-Path $BuildDirectory 'CMakeCache.txt'))) {
@@ -32,8 +32,8 @@ if (-not (Test-Path -LiteralPath (Join-Path $BuildDirectory 'CMakeCache.txt'))) 
 }
 $m7Command = 'call "' + $m7DeveloperPrompt + '" -arch=x64 && ' + $m7Configure +
     '"' + $m7Cmake + '" --build "' + $BuildDirectory + '" --config Release --target check-m7'
-Write-Host 'Lokale M7-validatie: bouwen en alle twaalf controles uitvoeren.'
-Write-Host ('Bewijs/logs: ' + (Join-Path $BuildDirectory 'Testing/Temporary/LastTest.log'))
+Write-Host 'Local M7 validation: build and run all twelve checks.'
+Write-Host ('Evidence/logs: ' + (Join-Path $BuildDirectory 'Testing/Temporary/LastTest.log'))
 & $env:ComSpec /d /c $m7Command
-if ($LASTEXITCODE -ne 0) { throw "M7 niet geaccepteerd: lokale validatie faalde (exit $LASTEXITCODE)." }
-Write-Host 'Alle lokale M7-gates zijn geslaagd.'
+if ($LASTEXITCODE -ne 0) { throw "M7 not accepted: local validation failed (exit $LASTEXITCODE)." }
+Write-Host 'All local M7 gates passed.'
