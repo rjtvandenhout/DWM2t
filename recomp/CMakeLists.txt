@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 29 31 37 38 40 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 161 163)
+set(NATIVE_ROMX_BANKS 1 2 3 4 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 31 37 38 40 41 47 48 49 50 51 52 53 54 55 57 58 95 96 105 115 127 132 133 135 151 161 163 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
@@ -80,12 +80,16 @@ set(BANK_FILE_23 "bank_023.asm")
 set(BANK_FILE_25 "bank_025.asm")
 # Reached at 26:$7276 during original Oasis battle initialization.
 set(BANK_FILE_26 "bank_026.asm")
+# M8: reached at 28:$4075 after the original inn welcome dialogue.
+set(BANK_FILE_28 "bank_028.asm")
 # Unconditional RST $10 target 29:$6973 from reached Journal entry 21:$63B8.
 set(BANK_FILE_29 "bank_029.asm")
 set(BANK_FILE_31 "bank_031.asm")
 set(BANK_FILE_37 "bank_037.asm")
 set(BANK_FILE_38 "bank_038.asm")
 set(BANK_FILE_40 "bank_040.asm")
+# M8: reached at 41:$4001 by P1 conversation with the Oasis town innkeeper.
+set(BANK_FILE_41 "bank_041.asm")
 # Reached at 47:$4001 during original Oasis encounter presentation.
 set(BANK_FILE_47 "bank_047.asm")
 # Reached at 48:$4001 by the genuine battle Fight command through P1.
@@ -113,9 +117,13 @@ set(BANK_FILE_127 "bank_127.asm")
 set(BANK_FILE_132 "bank_132.asm")
 set(BANK_FILE_133 "bank_133.asm")
 set(BANK_FILE_135 "bank_135.asm")
+# M8: reached at 151:$4026 by the original Oasis inn dialogue via 41:$4008.
+set(BANK_FILE_151 "bank_151.asm")
 set(BANK_FILE_161 "bank_161.asm")
 # Reached at 163:$4187 after genuine battle Fight confirmation.
 set(BANK_FILE_163 "bank_163.asm")
+# M8: reached at 240:$4001 inside the original inn party-selection menu.
+set(BANK_FILE_240 "bank_240.asm")
 
 set(ROMX_CPP)
 set(ROMX_TARGETS)
@@ -199,6 +207,7 @@ add_executable(DWM2tRecomp
     src/m7.cpp
     src/m7_p1.cpp
     src/m7_acceptance.cpp
+    src/m8.cpp
     src/memory.cpp
     src/runtime.cpp
     src/hram_exec.cpp
@@ -264,6 +273,23 @@ if(BUILD_TESTING)
     # Keep the one real desktop-window test exclusive.
     set_tests_properties(M6_window PROPERTIES RUN_SERIAL TRUE)
     add_custom_target(check-m7
+        COMMAND "${CMAKE_CTEST_COMMAND}" -R "^M[1-7]_" --parallel 4 --output-on-failure --stop-on-failure -C "$<CONFIG>"
+        DEPENDS DWM2tRecomp WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" USES_TERMINAL)
+    # Development checks only: the original ending/credits are not covered yet.
+    add_test(NAME M8_trace_contract COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_trace.py"
+        --exe "$<TARGET_FILE:DWM2tRecomp>" --output "${LOCAL_VALIDATION_DIR}/m8_tools")
+    add_test(NAME M8_oasis_checkpoint COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_oasis.py"
+        --exe "$<TARGET_FILE:DWM2tRecomp>" --seed "${LOCAL_VALIDATION_DIR}/m7_original.sav"
+        --route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_town_p1.txt"
+        --inn-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_inn_heal_p1.txt"
+        --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
+    set_tests_properties(M7_save_continue PROPERTIES FIXTURES_SETUP M7_original_save)
+    set_tests_properties(M8_oasis_checkpoint PROPERTIES FIXTURES_REQUIRED M7_original_save)
+    set_tests_properties(M8_trace_contract M8_oasis_checkpoint PROPERTIES
+        WORKING_DIRECTORY "${REPO_ROOT}" TIMEOUT 600)
+    add_custom_target(check-m8-development
         COMMAND "${CMAKE_CTEST_COMMAND}" --parallel 4 --output-on-failure --stop-on-failure -C "$<CONFIG>"
         DEPENDS DWM2tRecomp WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" USES_TERMINAL)
 endif()

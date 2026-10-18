@@ -2,6 +2,7 @@
 #include "recomp/lr35902_exec.hpp"
 #include "recomp/m6.hpp"
 #include "recomp/m7.hpp"
+#include "recomp/m8.hpp"
 #include "recomp/renderer.hpp"
 #include "recomp/romx.hpp"
 #include "recomp/runtime.hpp"
@@ -608,6 +609,21 @@ int run_self_tests(const std::filesystem::path* bmp_path) {
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc == 4 && std::string_view(argv[1]) == "--m8-probe") {
+        return dwm2t::run_m8_session(argv[2], argv[3]);
+    }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-resume") {
+        return dwm2t::run_m8_session(argv[2], argv[4], argv[3]);
+    }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-replay") {
+        return dwm2t::run_m8_replay(argv[2], argv[3], argv[4]);
+    }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-oasis-test") {
+        return dwm2t::run_m8_oasis_test(argv[2], argv[3], argv[4]);
+    }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-inn-test") {
+        return dwm2t::run_m8_inn_test(argv[2], argv[3], argv[4]);
+    }
     if (argc == 4 && std::string_view(argv[1]) == "--m7-continue-probe") {
         dwm2t::Runtime runtime{};
         if (!dwm2t::load_sram_file(runtime.memory(), argv[2])) return 214;

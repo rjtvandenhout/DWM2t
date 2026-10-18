@@ -10,14 +10,15 @@
 | M5 | Original title screen through recompiled code | ✅ complete |
 | M6 | Live input + real map movement + save RAM | ✅ complete |
 | M7 | Battles + audio + original save/continue | ✅ complete (local Windows acceptance) |
-| M8 | Fully playable native release | ⏳ |
+| M8 | Fully playable native release | ⏳ in progress; ending/credits unproven |
 
 Restore branches live under `restore/recomp-mN`.
 Continuation notes live under `recomp/handoff/`.
 
 Repository-history and CI-baseline notes live in
 `recomp/HISTORY_AUDIT.md`. Historical restore snapshots remain immutable; the
-active `work/recomp-m7` contains the accepted M7 implementation and handoff.
+`work/recomp-m7` contains the accepted M7 implementation and handoff; active
+development continues on `work/recomp-m8` without moving the M7 restore.
 
 ## M5 retained acceptance evidence
 
@@ -84,3 +85,20 @@ exhausted; hosted CI is not claimed as passing.
 
 Result: `recomp/milestones/M7_RESULT.md`. Restore: `restore/recomp-m7`.
 Next: `recomp/handoff/M7_NEXT.md` for M8, the final fully playable release.
+
+## M8 development evidence (not final acceptance)
+
+English-language M7 tooling cleanup is complete; original game text and quoted
+historical evidence are unchanged. The controller-only M8 trace driver rejects
+host-state/checkpoint commands, wrong seed saves and mismatched state/hashes.
+The pinned 29,449-frame early-Oasis route recruits an original second monster,
+reaches a town, performs original Journal Save and verifies fresh Continue.
+Original inn dialogue/healing now raises Slash HP 18->25/25, and a second
+original Journal checkpoint inside the inn also restores correctly.
+
+These are early-game development proofs, not a complete original playthrough.
+All 14 combined local development checks, including original inn healing and
+both original Journal/fresh-Continue checkpoints, passed in 260.97 seconds.
+`handoff/M8_WORKING.md` records exact evidence and the remaining scope. No
+`restore/recomp-m8` or final M8 completion result exists yet. The expanded
+development tests are distinct from full-game/ending acceptance.

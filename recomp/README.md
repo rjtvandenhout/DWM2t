@@ -12,7 +12,7 @@ The project does not load an external ROM file in the native build. The exact
 4 MiB matching image is generated from `src/banks/` and embedded for original
 game-data reads and hardware mapping.
 
-## Current milestone: M7 complete; M8 next
+## Current milestone: M7 complete; M8 in progress
 
 M7 adds genuine original P1 battles and player-attack damage, deterministic
 game audio with live WinMM output, original PLAN > Journal Save, and Continue
@@ -30,6 +30,24 @@ See `milestones/M7_RESULT.md`, `handoff/M7_LOCAL_WINDOWS.md`, and
 `handoff/M7_NEXT.md`. Recovery: `restore/recomp-m7`. Full-game playability is
 still the final M8 milestone. Ordinary menu mode C5DB=2 is not battle proof;
 the accepted real battle mode is C5DB=4.
+
+M8 currently adds controller-only trace/replay tools, a deterministic first
+Oasis-town checkpoint with original recruitment and fresh Continue, and native
+inn dialogue/healing paths. This does **not** prove the ending or complete M8.
+English development notes and exact current evidence are in
+`handoff/M8_WORKING.md`. The active branch is `work/recomp-m8`; the M7 restore
+remains immutable. The M7 validator and current packaging messages are English;
+quoted historical test evidence and original game text are retained unchanged.
+
+After building, run the expanded development checks from the repository root:
+
+```powershell
+ctest --test-dir recomp/build --parallel 4 --output-on-failure
+```
+
+Or build the `check-m8-development` target from the developer prompt. All-green
+development checks are necessary but not sufficient for final M8 acceptance:
+the full original playthrough/ending and later-game checks are still required.
 
 ## Retained M6 interactive baseline
 
