@@ -328,6 +328,12 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
         if (pc == 0x4FE8) return 600; // routine entry only.
     }
 
+    // Bank 0 target/object loaders populate C190-C193. 1BF6 and 1C70
+    // are the first PCs after the C193 write. A non-zero C193 is the first
+    // prerequisite checked by 02:4FE8, so these are useful search checkpoints
+    // only when cartridge code actually loaded a target.
+    if (bank == 0 && (pc == 0x1BF6 || pc == 0x1C70)) return 983;
+
     // Script opcode $1D is the cartridge-owned quest command that can set
     // event flag $0002, the first hard guard in 02:4FE8. 44CA starts the
     // command and resets C923 to zero; 4C2F dispatches it into bank 15.
@@ -391,6 +397,10 @@ StepResult advance_battle_search_frame(
         const std::uint16_t bank = memory.current_rom_bank();
         const std::uint16_t pc = runtime.cpu().pc;
         unsigned rank = battle_execution_rank(bank, pc);
+        if (bank == 0 && (pc == 0x1BF6 || pc == 0x1C70) &&
+            memory.read8(0xC193) == 0) {
+            rank = 150;
+        }
         // 02:4F4C is a guard, not progress by itself. It returns before the
         // battle dispatch when C562 bit 0 is clear, which is the common
         // overworld path. Only reward it after cartridge code has armed the
