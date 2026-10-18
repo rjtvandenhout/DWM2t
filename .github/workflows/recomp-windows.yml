@@ -33,6 +33,8 @@ jobs:
         run: python recomp/tools/scan_battle_callers.py --banks-dir src/banks
       - name: Trace exact callers of battle gate routines
         run: python recomp/tools/scan_battle_gate_callers.py --banks-dir src/banks
+      - name: Scan C193 battle prerequisite references
+        run: python recomp/tools/scan_c193.py --banks-dir src/banks
 
   windows-x64:
     runs-on: windows-latest
