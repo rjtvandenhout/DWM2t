@@ -2042,7 +2042,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 std::uint64_t score =
                     static_cast<std::uint64_t>(battle_trace.rank) *
                     20'000'000'000ull;
-                if (battle_trace.rank >= 984 ||
+                if (battle_trace.rank >= 983 ||
                     (battle_trace.bank == 2 &&
                      battle_trace.pc == 0x4FE8)) {
                     std::cout << "M7_BATTLE_TRACE depth=" << depth
