@@ -294,58 +294,43 @@ struct BattleExecutionTrace {
 };
 
 unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
-    // Rank the actual battle-mode writers highest.
+    // Actual mode-2 writers.
     if ((bank == 2 && (pc == 0x4FD4 || pc == 0x5060 || pc == 0x63C8)) ||
         (bank == 15 && pc == 0x4158) ||
         (bank == 133 && pc == 0x4732)) {
         return 1000;
     }
 
-    // The encounter-preparation gate at 02:48DC sets C562 bit 0 when
-    // D067 is zero. Reaching this is one step closer to the mode-2 writer
-    // than the generic battle helpers below.
-    if (bank == 2 && (pc == 0x48DC || pc == 0x48E1)) {
-        return 985;
-    }
-
-    // Direct cartridge routines reached by known battle callers. These are
-    // much stronger evidence than merely executing somewhere inside the
-    // broad bank-2 gameplay region (the previous search repeatedly parked
-    // at 02:5F59 and starved more useful states from the beam).
+    // Immediate writer dispatch / guard entries. In bank 2 these consume
+    // C562 bit 0 before entering the battle setup path.
     if (bank == 2 &&
-        (pc == 0x5B9E || pc == 0x5E82 || pc == 0x5E85 ||
-         pc == 0x5EEE || pc == 0x604B || pc == 0x6050)) {
-        return 960;
+        (pc == 0x4F4C || pc == 0x4FE8 ||
+         (pc >= 0x63A0 && pc <= 0x63D0))) {
+        return 995;
     }
 
-    // Call sites identified by scan_battle_callers.py from the matching ROM.
-    if ((bank == 0 && pc == 0x2A1A) ||
-        (bank == 2 &&
-         (pc == 0x4828 || pc == 0x4ECD || pc == 0x4F0C ||
-          pc == 0x4F45 || pc == 0x6511 || pc == 0x6E28)) ||
-        (bank == 3 && pc == 0x432F) ||
-        (bank == 10 &&
-         (pc == 0x44D3 || pc == 0x44F4 || pc == 0x480E)) ||
-        (bank == 15 &&
-         (pc == 0x46EF || pc == 0x54BF || pc == 0x54E6 ||
-          pc == 0x54EC || pc == 0x5D03))) {
-        return 930;
+    // The overworld encounter handler that sets C562 bit 0 when D067==0.
+    if (bank == 2 &&
+        (pc == 0x48C3 || pc == 0x48CA ||
+         pc == 0x48DC || pc == 0x48E1)) {
+        return 990;
     }
+
+    // 5EEE is used on accepted battle-setup paths, but is also reachable
+    // elsewhere, so keep it below the exact gates.
+    if (bank == 2 && pc == 0x5EEE) return 940;
 
     if ((bank == 16 && (pc == 0x4EAC || pc == 0x4DFD)) ||
         (bank == 133 && pc == 0x4725) ||
         (bank == 15 && pc == 0x40E9)) {
         return 900;
     }
-    if ((bank == 2 &&
-         ((pc >= 0x4F80 && pc <= 0x5080) ||
-          (pc >= 0x5E70 && pc <= 0x60A0) ||
-          (pc >= 0x63A0 && pc <= 0x63E0))) ||
-        (bank == 133 && pc >= 0x4700 && pc <= 0x4740) ||
-        (bank == 15 && pc >= 0x40D0 && pc <= 0x4170)) {
-        return 700;
-    }
-    if (bank == 16 && pc >= 0x4D00 && pc <= 0x4F00) return 650;
+
+    // 5B9E is deliberately NOT promoted: common callers at 4ECD/4F0C/4F45
+    // clear C562 immediately before invoking it. Earlier search versions
+    // therefore clustered around a path that actively moved away from the
+    // battle gate.
+    if (bank == 2 && pc == 0x5B9E) return 300;
     if (bank == 133) return 250;
     if (bank == 15) return 225;
     if (bank == 2) return 200;
@@ -2018,9 +2003,10 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                 if ((child->memory().read8(0xC562) & 0x01u) != 0) {
                     score += 10'000'000'000'000ull;
                 }
-                if (child->memory().read8(0xD067) == 0) {
-                    score += 500'000'000'000ull;
-                }
+                // D067==0 is already true for the A3 seed and most
+                // explored states, so it is a prerequisite rather than a
+                // useful beam-ranking signal. Do not let it dominate physical
+                // route discovery.
 
                 score += static_cast<std::uint64_t>(
                     child->memory().current_rom_bank()) << 16;
