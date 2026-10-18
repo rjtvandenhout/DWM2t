@@ -291,6 +291,12 @@ struct BattleExecutionTrace {
     bool writer_seen = false;
     std::uint16_t bank = 0;
     std::uint16_t pc = 0;
+    std::uint8_t c193 = 0;
+    std::uint8_t c56c = 0;
+    std::uint8_t c8cb = 0;
+    std::uint8_t c468 = 0;
+    std::uint8_t ff8c = 0;
+    std::uint8_t c562 = 0;
 };
 
 unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
@@ -301,29 +307,46 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
         return 1000;
     }
 
-    // Immediate writer dispatch / guard entries. In bank 2 these consume
-    // C562 bit 0 before entering the battle setup path.
+    // 02:4FE8 is a complete battle-entry routine ending at writer 02:5060.
+    // Rank checkpoints only after each earlier guard has been passed. This
+    // turns the trace into a monotonic measure of real progress instead of
+    // rewarding entry into a routine that may immediately return.
+    if (bank == 2) {
+        if (pc == 0x505E) return 999; // writer is the next instruction.
+        if (pc == 0x5054) return 998; // target monster matched.
+        if (pc == 0x504E) return 997; // coordinate/target lookup succeeded.
+        if (pc == 0x5037) return 996; // all generic guards + C562.0 passed.
+        if (pc == 0x5010) return 995; // C562.0 is armed.
+        if (pc == 0x500A) return 994; // input-lock guard passed.
+        if (pc == 0x5005) return 993; // C468 bit 7 guard passed.
+        if (pc == 0x4FFF) return 992; // C8CB low bits guard passed.
+        if (pc == 0x4FF9) return 991; // C56C guard passed.
+        if (pc == 0x4FF4) return 990; // C193/181B eligibility passed.
+        if (pc == 0x4FE8) return 600; // routine entry only.
+    }
+
+    // The 02:4F4C route is a second mode-2 entry path. Reaching its entry is
+    // only useful when cartridge code has already armed C562 bit 0; the
+    // state-aware clamp in advance_battle_search_frame enforces that.
     if (bank == 2 &&
         (pc == 0x4F4C ||
          (pc >= 0x63A0 && pc <= 0x63D0))) {
         return 995;
     }
 
-    // 4FE8 starts the routine immediately after the 4FD4 mode writer.
-    // It is commonly reached when the battle gate rejects the encounter, so
-    // rewarding it caused the beam to cluster on non-battle interactions.
-    if (bank == 2 && pc == 0x4FE8) return 300;
-
-    // The overworld encounter handler that sets C562 bit 0 when D067==0.
-    if (bank == 2 &&
-        (pc == 0x48C3 || pc == 0x48CA ||
-         pc == 0x48DC || pc == 0x48E1)) {
-        return 990;
+    // 02:48C3 contains the only direct SET 0 write to C562 in this ROM.
+    // Keep its deeper checkpoints visible, but below the proven 4FE8 route
+    // checkpoints because this dispatch can also be reached in other phases.
+    if (bank == 2) {
+        if (pc == 0x48E1) return 989;
+        if (pc == 0x48DC) return 988;
+        if (pc == 0x48CA) return 850;
+        if (pc == 0x48C3) return 700;
     }
 
     // 5EEE is used on accepted battle-setup paths, but is also reachable
-    // elsewhere, so keep it below the exact gates.
-    if (bank == 2 && pc == 0x5EEE) return 940;
+    // elsewhere, so keep it below exact gate progress.
+    if (bank == 2 && pc == 0x5EEE) return 800;
 
     if ((bank == 16 && (pc == 0x4EAC || pc == 0x4DFD)) ||
         (bank == 133 && pc == 0x4725) ||
@@ -332,9 +355,7 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
     }
 
     // 5B9E is deliberately NOT promoted: common callers at 4ECD/4F0C/4F45
-    // clear C562 immediately before invoking it. Earlier search versions
-    // therefore clustered around a path that actively moved away from the
-    // battle gate.
+    // clear C562 immediately before invoking it.
     if (bank == 2 && pc == 0x5B9E) return 300;
     if (bank == 133) return 250;
     if (bank == 15) return 225;
@@ -342,7 +363,7 @@ unsigned battle_execution_rank(std::uint16_t bank, std::uint16_t pc) {
     return 0;
 }
 
-StepResult advance_battle_search_frame(
+StepResult advance_battle_search_frameStepResult advance_battle_search_frame(
     Runtime& runtime,
     std::uint8_t buttons,
     BattleExecutionTrace& trace) {
@@ -367,6 +388,12 @@ StepResult advance_battle_search_frame(
             trace.rank = rank;
             trace.bank = bank;
             trace.pc = pc;
+            trace.c193 = memory.read8(0xC193);
+            trace.c56c = memory.read8(0xC56C);
+            trace.c8cb = memory.read8(0xC8CB);
+            trace.c468 = memory.read8(0xC468);
+            trace.ff8c = memory.read8(0xFF8C);
+            trace.c562 = memory.read8(0xC562);
         }
         if (rank == 1000) trace.writer_seen = true;
 
@@ -1992,6 +2019,12 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                               << " rank=" << battle_trace.rank
                               << " bank=" << battle_trace.bank
                               << " pc=0x" << std::hex << battle_trace.pc
+                              << " C193=0x" << static_cast<unsigned>(battle_trace.c193)
+                              << " C56C=0x" << static_cast<unsigned>(battle_trace.c56c)
+                              << " C8CB=0x" << static_cast<unsigned>(battle_trace.c8cb)
+                              << " C468=0x" << static_cast<unsigned>(battle_trace.c468)
+                              << " FF8C=0x" << static_cast<unsigned>(battle_trace.ff8c)
+                              << " C562=0x" << static_cast<unsigned>(battle_trace.c562)
                               << std::dec;
                     print_path(path);
                     std::cout << std::endl;
@@ -2010,7 +2043,7 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     4u;
 
                 // Preserve states that satisfy the exact bank-2 battle gate.
-                // C562 bit 0 is consumed by the 4F47 dispatch that reaches the
+                // C562 bit 0 is consumed by the 4F4C/4FE8 entries that reach the
                 // mode-2 writers; D067==0 is the condition that allows 48DC
                 // to set that bit through original cartridge execution.
                 if ((child->memory().read8(0xC562) & 0x01u) != 0) {
