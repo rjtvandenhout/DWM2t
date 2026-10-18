@@ -1610,6 +1610,8 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
     };
     {
         Runtime pinned = runtime;
+        Runtime selector1a_seed = runtime;
+        bool have_selector1a_seed = false;
         Renderer pinned_renderer{};
         std::uint8_t previous_selector =
             pinned.memory().read8(0xC916);
@@ -1737,6 +1739,20 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                     }
                 }
 
+                if (selector == 0x1Au) {
+                    selector1a_seed = pinned;
+                    have_selector1a_seed = true;
+                    std::cout
+                        << "M7_SELECTOR_1A_SEED captured=1"
+                        << " C193=0x" << std::hex
+                        << static_cast<unsigned>(
+                               selector1a_seed.memory().read8(0xC193))
+                        << " C562=0x"
+                        << static_cast<unsigned>(
+                               selector1a_seed.memory().read8(0xC562))
+                        << std::dec << std::endl;
+                }
+
                 previous_selector = selector;
             }
         }
@@ -1761,8 +1777,19 @@ int run_m7_fast_route_probe(const std::filesystem::path& output_dir) {
                   << background_hash(pinned.memory())
                   << std::dec << std::endl;
 
-        runtime = pinned;
-        std::cout << "M7_SELECTOR_A3_SEED battle_search=1" << std::endl;
+        if (have_selector1a_seed) {
+            runtime = selector1a_seed;
+            std::cout
+                << "M7_SELECTOR_1A_SEED battle_search=1"
+                << " reason=adjacent_monster_target"
+                << std::endl;
+        } else {
+            runtime = pinned;
+            std::cout
+                << "M7_SELECTOR_A3_SEED battle_search=1"
+                << " fallback=1"
+                << std::endl;
+        }
     }
 
 
