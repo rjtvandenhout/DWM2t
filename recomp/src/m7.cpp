@@ -8314,6 +8314,19 @@ int run_m7_save_continue_test(
         }
     }
 
+    // The first ship checkpoint is still inside the opening sequence and
+    // ignores Start. Advance through the same deterministic P1-only prefix
+    // already proven by the M7 fast route before testing the real game menu.
+    for (std::uint64_t relative = 0; relative < 12600; ++relative) {
+        const StepResult r =
+            advance_search_frame(source, exploration_buttons(relative));
+        if (r != StepResult::Continue) {
+            std::cout << "M7_SAVE_FAIL phase=free_roam_prefix result="
+                      << static_cast<unsigned>(r) << std::endl;
+            return r == StepResult::MissingBank ? 180 : 192;
+        }
+    }
+
     source.memory().set_joypad_state(0);
     source_renderer.render(source.memory(), true);
     const std::uint64_t saved_world_screen = source_renderer.hash();
