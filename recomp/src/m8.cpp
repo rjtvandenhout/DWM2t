@@ -456,7 +456,7 @@ public:
         std::cout << "M8_AUDIO_OUTPUT_RESULT premix_peak=" << premix_peak_
                   << " legacy_overflow_values=" << legacy_overflow_
                   << " output_peak=" << output_peak_ << " output_clipped=" << output_clipped_
-                  << " volume=25 smoothing=on" << std::endl;
+                  << " volume=5 smoothing=on" << std::endl;
         return legacy_overflow_ > 0 && output_peak_ > 0 && output_peak_ < 32767 && output_clipped_ == 0;
     }
 

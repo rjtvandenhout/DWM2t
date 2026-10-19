@@ -606,3 +606,58 @@ Original hub discovery confirms the tournament prize is PirateKey. The key
 shop (world 9) and bank (world 8) have been visited through ordinary P1 input;
 neither is a completed world or major boss. Discovery probes are not acceptance
 evidence for winning the tournament. Continue from the saved home event.
+
+Final clipping-corrected 60-bank EXE from commit `4a91cfb` passes all 17 local
+checks with zero skips in 751.16 seconds; M8 chain is 591.21 seconds. Evidence:
+`recomp/build/m8-audio-comfort-all-17-checks-02.log` and CTest LastTest.log.
+Full driver output `local-validation/m8_oasis/oasis-aq06bhf2` retains byte-identical
+home Journal SHA256 `4058A37D...577087713` and feeding Journal `7828354F...961B153CB`.
+M6/M7 validation-save hashes and M7 restore remain unchanged. This is local
+evidence, not hosted CI or final M8 acceptance. Updated separate package:
+`outputs/M8-quieter-audio-test`, EXE SHA256
+`D6F7610C8EC341242C0DCF285F1E35F5E670A9AFE461411730FF60EDE939EA5B`.
+Normal 25%, quieter 15% and raw-comparison launchers share only their own
+copy of the user's original testing save. Packaged direct-headset output passes.
+
+Hub navigation discovery `m8_tournament04` proves the southern forest path
+from world 1 region 0,2 at 64,128 exits into harbor world 2. Crossing its
+boardwalk east reaches the original farm district world 0. Taking the north
+forest exit returns to world 1 region 3,2 at 64,128. No story victory is claimed.
+The original castle-road NPC (selector 20 at world1/region1,1/80,32) currently
+blocks the single terrain connection to the upper hub. Its observed dialogue
+is "This leads to GreatLog Castle!". Investigate original movement/interaction
+instead of bypassing the NPC or fabricating access. No current save is lost.
+
+### Further listening feedback, streaming diagnosis and reference-only tooling
+
+The user reports that even 15% remains loud and distortion is only slightly
+reduced. Subjective audio quality is NOT resolved. Existing 4a91cfb package
+now has additional 5% and 1% amplitude launchers, with its EXE/save untouched.
+The next development build defaults to 5% and prebuffers 1638 stereo frames
+(about 50 ms) through WinMM Pause/Restart. It refills after a drained queue
+without stalling or altering the emulated CPU/APU clock.
+
+`m8-buffered-audio-stream-01.log` isolates the actual Windows stream using
+180 captured frames of original cartridge music. With injected 20 ms host
+jitter, the old immediate-start stream has two queue-empty events. Buffered
+playback has zero; all 98753 stereo frames are submitted and played in both.
+This diagnoses host-queue robustness, not subjective fidelity or physical
+speaker output. New `M8_audio_stream` is serial, has a 60-second limit and
+joins the expanded 18-check suite, currently running on DWM2tRecompDev3.exe.
+
+A separate PyBoy 2.8.1 diagnostic install exists only in task work/
+`m8-reference-tools`, not the repo, EXE, packaging or native runtime. The exact
+owned ROM was reconstructed by the repo's rebuild.py and matches SHA256
+`8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e`.
+Reference runs load only a copy of the original Journal through BytesIO,
+use controller buttons, record observations and stop without saving. No
+CPU/memory writes, save states or interpreter fallback are used in the game.
+Reference-gate01 is invalid (title mode was observed before intro completion).
+Reference-gate02/03 correctly restore the field and reproduce the same guard
+block with cardinal, Up+B and diagonal input. No native gate fix is justified.
+
+Warubou's original post-Oasis conversation says to find the next key first,
+in GreatLog. `m8_tournament06` uses the original lower-town shrine entrance
+to world 12, then its altar-side passage into world 4 region 2,0. Continue
+reading original hall dialogue rather than assuming the blocked castle road
+is the only route. These are technical/navigation checks, not major milestones.

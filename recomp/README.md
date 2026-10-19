@@ -116,14 +116,17 @@ Or choose an explicit save file:
 
 Controls:
 
-Live audio defaults to 25% playback volume with mild host-only smoothing.
+Live audio defaults to 5% linear-amplitude playback volume with mild host-only
+smoothing. These numbers are not perceived-loudness percentages; use 1% for
+an especially loud headset setup. Windows playback prebuffers about 50 ms
+of original PCM to tolerate scheduling jitter without changing game timing.
 The unclipped original mix is attenuated before conversion to Windows PCM;
 the retained APU regression capture and game timing remain unchanged.
 Use `--audio-volume 0` through `--audio-volume 100` to adjust loudness.
 `--audio-raw` disables smoothing, not volume control. For example:
 
 ```powershell
-.\recomp\build\Release\DWM2tRecomp.exe --play my-save.sav --audio-volume 15
+.\recomp\build\Release\DWM2tRecomp.exe --play my-save.sav --audio-volume 1
 ```
 
 `--audio-devices` lists local outputs. If the Windows default mapper fails,

@@ -628,6 +628,8 @@ int main(int argc, char** argv) {
     }
     if (argc == 2 && std::string_view(argv[1]) == "--audio-devices")
         return dwm2t::list_audio_devices();
+    if (argc == 2 && std::string_view(argv[1]) == "--audio-stream-test")
+        return dwm2t::run_audio_stream_test();
     if (argc >= 2 && std::string_view(argv[1]) == "--audio-playback-test") {
         int device = -1;
         if (argc > 3 || (argc == 3 && !parse_audio_device(argv[2], device))) {
@@ -732,7 +734,7 @@ int main(int argc, char** argv) {
     if (argc >= 2 && std::string_view(argv[1]) == "--play") {
         std::filesystem::path save_path = "DWM2t.sav";
         int audio_device = -1;
-        int audio_volume = 25;
+        int audio_volume = 5;
         bool audio_smooth = true;
         bool have_save = false, valid = true;
         for (int i = 2; i < argc && valid; ++i) {

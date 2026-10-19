@@ -9,7 +9,7 @@ namespace dwm2t {
 // State is continuous across Windows playback buffers.
 class AudioPresentation {
 public:
-    explicit constexpr AudioPresentation(int volume = 25, bool smooth = true)
+    explicit constexpr AudioPresentation(int volume = 5, bool smooth = true)
         : volume_(volume), smooth_(smooth) {}
 
     constexpr std::int16_t sample(std::int32_t input, unsigned channel) {
@@ -35,15 +35,15 @@ constexpr bool audio_presentation_contracts() {
         }
     }
     // An impulse must decay, and left-channel history must not leak right.
-    if (softened.sample(16000, 0) != 2000 || softened.sample(0, 1) != 0) return false;
-    if (softened.sample(0, 0) != 1000 || softened.sample(0, 0) != 500) return false;
+    if (softened.sample(16000, 0) != 400 || softened.sample(0, 1) != 0) return false;
+    if (softened.sample(0, 0) != 200 || softened.sample(0, 0) != 100) return false;
     // Pre-conversion gain must preserve a loud mix, not attenuate clipped PCM.
     if (quiet.sample(40000, 0) != 10000 || quiet.sample(-40000, 1) != -10000) return false;
     if (raw.sample(40000, 0) != 32767 || raw.sample(-40000, 1) != -32768) return false;
-    // Sustained maximum input stays bounded, with 12 dB playback headroom.
+    // Sustained maximum input stays bounded, with over 26 dB playback headroom.
     for (int i = 0; i < 64; ++i) {
         const int value = softened.sample(32767, 0);
-        if (value < 0 || value > 8191) return false;
+        if (value < 0 || value > 1638) return false;
     }
     return true;
 }

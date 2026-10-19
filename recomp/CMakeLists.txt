@@ -307,7 +307,8 @@ if(BUILD_TESTING)
     add_test(NAME M8_audio_presentation COMMAND DWM2tRecomp --audio-presentation-test)
     if(WIN32)
         add_test(NAME M8_audio_playback COMMAND DWM2tRecomp --audio-playback-test)
-        set_tests_properties(M8_audio_playback PROPERTIES
+        add_test(NAME M8_audio_stream COMMAND DWM2tRecomp --audio-stream-test)
+        set_tests_properties(M8_audio_playback M8_audio_stream PROPERTIES
             RUN_SERIAL TRUE TIMEOUT 60 SKIP_RETURN_CODE 77)
     endif()
     add_test(NAME M8_oasis_checkpoint COMMAND "${Python3_EXECUTABLE}"

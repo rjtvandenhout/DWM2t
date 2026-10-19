@@ -16,11 +16,12 @@ int run_live_window(
     const std::filesystem::path& sav_path,
     int scale = 4,
     int audio_device = -1,
-    int audio_volume = 25,
+    int audio_volume = 5,
     bool audio_smooth = true);
 
 int list_audio_devices();
 int run_audio_playback_test(int device = -1);
+int run_audio_stream_test();
 
 int run_live_window_smoke(
     Runtime& runtime,

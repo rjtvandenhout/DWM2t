@@ -25,8 +25,9 @@ namespace {
 
 class WaveOutSink {
 public:
-    explicit WaveOutSink(int preferred = -1, int volume = 25, bool smooth = true)
-        : presentation_(volume, smooth) {
+    explicit WaveOutSink(int preferred = -1, int volume = 5, bool smooth = true,
+                         unsigned prefill_frames = Apu::SampleRate / 20)
+        : presentation_(volume, smooth), prefill_frames_(prefill_frames) {
         WAVEFORMATEX format{};
         format.wFormatTag = WAVE_FORMAT_PCM;
         format.nChannels = 2;
@@ -42,12 +43,17 @@ public:
             return unsigned(result);
         });
         ready_ = selected.ready;
+        if (ready_ && prefill_frames_) {
+            buffering_ = waveOutPause(handle_) == MMSYSERR_NOERROR;
+            if (!buffering_) ready_ = false;
+        }
         if (ready_) {
             std::cout << "AUDIO_OUTPUT_READY device=" << selected.device
                       << " rate=" << Apu::SampleRate
                       << " mapper_error=" << selected.mapper_error << '\n';
             std::cout << "AUDIO_PRESENTATION volume=" << volume
-                      << " smoothing=" << (smooth ? "on" : "off") << '\n';
+                      << " smoothing=" << (smooth ? "on" : "off")
+                      << " prefill_frames=" << prefill_frames_ << '\n';
             if (selected.mapper_error)
                 std::cerr << "Audio: Windows default mapper failed (error " << selected.mapper_error
                           << "); using explicit playback device " << selected.device
@@ -74,9 +80,24 @@ public:
     }
 
     [[nodiscard]] bool ready() const { return ready_; }
+    [[nodiscard]] unsigned empty_events() const { return empty_events_; }
+    [[nodiscard]] std::size_t submitted_frames() const { return total_frames_; }
 
     std::size_t submit(std::vector<std::int32_t> samples) {
         if (!ready_ || samples.empty()) return 0;
+        if (!buffering_ && total_frames_) {
+            bool pending = false;
+            for (const auto& slot : slots_)
+                pending |= slot.prepared && !(slot.header.dwFlags & WHDR_DONE);
+            if (!pending) {
+                ++empty_events_;
+                if (prefill_frames_) {
+                    buffering_ = waveOutPause(handle_) == MMSYSERR_NOERROR;
+                    paused_frames_ = 0;
+                    if (!buffering_) { ready_ = false; return 0; }
+                }
+            }
+        }
 
         std::size_t offset = 0;
         while (offset < samples.size()) {
@@ -115,6 +136,16 @@ public:
                 return offset;
             }
             offset += count;
+            total_frames_ += count / 2;
+            paused_frames_ += unsigned(count / 2);
+            if (buffering_ && paused_frames_ >= prefill_frames_) {
+                if (waveOutRestart(handle_) != MMSYSERR_NOERROR) {
+                    ready_ = false;
+                    std::cerr << "Audio output failed while starting the buffered stream.\n";
+                    return offset;
+                }
+                buffering_ = false;
+            }
         }
         return offset;
     }
@@ -157,6 +188,9 @@ private:
     std::size_t next_slot_ = 0;
     bool ready_ = false;
     AudioPresentation presentation_;
+    unsigned prefill_frames_, paused_frames_ = 0, empty_events_ = 0;
+    std::size_t total_frames_ = 0;
+    bool buffering_ = false;
 };
 
 const Renderer::Framebuffer* g_framebuffer = nullptr;
@@ -308,6 +342,56 @@ int run_audio_playback_test(int device) {
               << " nonzero=" << nonzero << " submitted=" << submitted
               << " premix_peak=" << peak << " exceeds_legacy_pcm=" << clipped
               << " played_frames=" << played << " subjective_hearing=not_assessed\n";
+    return 0;
+}
+
+int run_audio_stream_test() {
+    // Original cartridge music only. Capture first, then isolate Windows
+    // streaming from CPU speed while introducing bounded host scheduling jitter.
+    Runtime runtime{};
+    auto& memory = runtime.memory();
+    std::vector<std::vector<std::int32_t>> chunks;
+    std::uint64_t observed = 0;
+    for (unsigned step = 0; step < 120'000'000 && chunks.size() < 180; ++step) {
+        const auto result = runtime.step();
+        if (is_fatal_step(result)) return 144;
+        if (memory.frame_counter() == observed) continue;
+        observed = memory.frame_counter();
+        auto samples = memory.apu().take_playback_samples();
+        if (observed >= 1800) chunks.push_back(std::move(samples));
+    }
+    if (chunks.size() != 180) return 145;
+    unsigned baseline_empty = 0;
+    for (const bool buffered : {false, true}) {
+        WaveOutSink audio(-1, 5, true, buffered ? Apu::SampleRate / 20 : 0);
+        if (!audio.ready()) return 77;
+        using Clock = std::chrono::steady_clock;
+        auto deadline = Clock::now();
+        for (std::size_t i = 0; i < chunks.size(); ++i) {
+            std::this_thread::sleep_until(deadline);
+            if (i % 17 == 5) std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            if (audio.submit(chunks[i]) != chunks[i].size()) {
+                std::cerr << "AUDIO_STREAM_FAIL dropped_or_failed_submission\n";
+                return 146;
+            }
+            deadline += std::chrono::microseconds(16742);
+        }
+        const auto finish = Clock::now() + std::chrono::seconds(2);
+        while (audio.played_frames() < audio.submitted_frames() && Clock::now() < finish)
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        const auto empty = audio.empty_events();
+        std::cout << "AUDIO_STREAM_RESULT buffered=" << buffered
+                  << " queued_frames=" << audio.submitted_frames()
+                  << " played_frames=" << audio.played_frames()
+                  << " queue_empty_events=" << empty << " injected_jitter_ms=20\n";
+        if (!buffered) baseline_empty = empty;
+        if (audio.played_frames() < audio.submitted_frames() || (buffered && empty)) {
+            std::cerr << "AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue\n";
+            return 147;
+        }
+    }
+    std::cout << "AUDIO_STREAM_PASS original_music baseline_queue_empty_events="
+              << baseline_empty << " buffered_queue_empty_events=0 subjective_quality=not_assessed\n";
     return 0;
 }
 
@@ -565,6 +649,7 @@ int run_native_window(const Renderer::Framebuffer&, int) { return 1; }
 int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int, int, int, bool) { return 1; }
 int list_audio_devices() { return 1; }
 int run_audio_playback_test(int) { return 77; }
+int run_audio_stream_test() { return 77; }
 int run_live_window_smoke(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }
 } // namespace dwm2t
 #endif
