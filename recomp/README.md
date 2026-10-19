@@ -36,6 +36,9 @@ Mirage Lake's CurseLamp battle, recruitment/farm handling and the original
 aftermath/return home. Nine chained controller-only routes retain original
 Journal saves and fresh Continue checks, including battle HP and audio
 assertions. This does **not** prove later worlds, the ending or complete M8.
+The Kids Class tournament has also been won through three original rounds;
+PirateKey is visible in the original key list, and its GreatLog Journal passes
+fresh Continue. The new finite route is retained alongside the earlier chain.
 English development notes and exact current evidence are in
 `handoff/M8_WORKING.md`. The active branch is `work/recomp-m8`; the M7 restore
 remains immutable. The M7 validator and current packaging messages are English;
@@ -101,6 +104,24 @@ From the repository root:
 cmake -S recomp -B recomp/build -A x64
 cmake --build recomp/build --config Release --parallel 4
 ```
+
+For later-game development, an optional complete AOT build translates all
+255 switchable banks, rather than only the banks already reached in tests.
+Use a separate build directory; this needs substantially more time, RAM and
+disk space. From an x64 Visual Studio developer prompt, with Ninja installed:
+
+```powershell
+cmake -S recomp -B recomp/build-all -G Ninja -DCMAKE_BUILD_TYPE=Release -DDWM2T_ALL_ROMX=ON -DDWM2T_OUTPUT_NAME=DWM2tRecompFull
+cmake --build recomp/build-all --parallel 4
+ctest --test-dir recomp/build-all --parallel 4 --output-on-failure
+```
+
+This remains ahead-of-time native code with no runtime instruction-interpreter
+fallback. Compiling every bank is not proof of full-game playability or M8
+completion; the original gameplay, ending and Save/Continue gates still apply.
+The extended Kids Class regression is enabled only with `DWM2T_ALL_ROMX=ON`.
+The smaller default build retains the proven earlier Oasis/home tests; it is
+not the build for later-game testing. CMake prints the selected coverage mode.
 
 Run the live game:
 

@@ -1,4 +1,5 @@
 build/
+recomp/build-all/
 baserom.gbc
 *.gbc
 *.gb

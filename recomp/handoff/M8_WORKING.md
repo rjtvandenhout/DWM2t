@@ -13,6 +13,12 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
+Latest story checkpoint: Kids Class won, PirateKey earned, original GreatLog
+Journal and fresh Continue verified. The 255-bank native EXE passes all 18
+combined local checks INCLUDING the new tournament replay. Story progression
+is stopped at this milestone pending the user's explicit continue/stop choice.
+See the final chronological section below; older stopping-point notes are history.
+
 ## Work sequence
 
 User-approved continuation rule: after completing a world or proving that an
@@ -27,6 +33,9 @@ do not require a pause. Keep all further project-authored text in English.
    checkpoints created by original Journal Save and replayable P1 transcripts.
 3. Add only reached or directly required native banks/fragments; verify every
    runtime fix against retained exact regressions.
+   An optional all-bank AOT build is now being tested to avoid repeated local
+   compile interruptions during later-game discovery. Its complete static
+   coverage does not replace original gameplay acceptance.
 4. Prove the original ending/credits and late-game fresh Continue. Run all
    retained and new gates together; package and create final restore only then.
 
@@ -661,3 +670,113 @@ in GreatLog. `m8_tournament06` uses the original lower-town shrine entrance
 to world 12, then its altar-side passage into world 4 region 2,0. Continue
 reading original hall dialogue rather than assuming the blocked castle road
 is the only route. These are technical/navigation checks, not major milestones.
+
+### Buffered audio accepted; hall discovery and complete static build
+
+The user tested the buffered `1f6a45a` package and confirms: "Better with both.
+The normal version is fine." Keep the normal 5% playback default, unclipped
+pre-conversion gain and 50 ms WinMM prebuffer. This is subjective comfort
+confirmation for the user's PC, not hardware-perfect sound certification.
+Its exact 60-bank EXE passes all 18 local checks, no skips, in 697.23 seconds;
+the original M8 checkpoint chain is 557.75 seconds. Evidence:
+`m8-buffered-audio-all-18-checks-01.log` and the preserved
+`m8-buffered-audio-60banks-LastTest-01.log` under `recomp/build/`.
+
+Original hall NPC selector 66 reaches 44:$4001, now statically compiled in
+`DWM2tRecompDev4.exe` (61 banks). All 18 local checks pass, no skips, in
+1115.52 seconds while another compilation runs; chain 574.28 seconds.
+EXE SHA256 `4ED5FD0BFBECFBA68E9BE0D7571AE2E1ABD772C9D07CAF8D77238A6D0C4E3891`.
+Logs: `m8-bank44-all-18-checks-01.log` and
+`m8-bank44-61banks-LastTest-01.log`. These are local results, not hosted CI.
+
+`m8_tournament07` reconstructs the post-Oasis home Journal by original P1
+replay. The southern room in world 12 enters world 4's right-hand hall. Its
+side exit reaches the ground floor of world 24; its central exit reaches a
+railed viewing platform instead. Ordinary NPC dialogue describes arena
+entry fees/classes, Magic Key prizes and appraisal. No tournament win or
+new major-boss/world milestone has been proven. Do not bypass castle-road
+NPCs or infer a native bug from a blocked route.
+
+`DWM2T_ALL_ROMX=ON` in a separate ignored `recomp/build-all` tree compiles
+all original ROMX banks 1..255 plus fixed bank 0. The current local Ninja
+build uses four jobs because of limited free RAM. This changes static code
+coverage only, not game rules, acceptance or runtime architecture. Build,
+link and regression results remain pending; do not claim complete coverage
+or publish its EXE until verified. Full M8 remains incomplete.
+
+### Complete AOT build and verified Kids Class milestone (2026-10-19)
+
+The complete static build has linked successfully: 255 ROMX banks plus fixed
+bank 0, no runtime instruction interpreter. `recomp/build-all/DWM2tRecompFull.exe`
+is 725316608 bytes, Windows x64; SHA256
+`907AE15F735C2F8FAE4A6156C5E145E840BB34EE4F3CD2B58119C4A018627066`.
+Use this build tree for subsequent M8 discovery rather than the frozen older
+61-bank development EXE. The initial all-bank run passes all 18 tests, no
+skips, in 636.41 seconds (M8 chain 493.93 seconds). Evidence:
+`recomp/build/m8-complete-aot-all-18-checks-01.log` and
+`recomp/build/m8-complete-aot-255banks-LastTest-01.log`.
+Regenerated home/feeding saves and retained M6/M7 save hashes are unchanged.
+
+The actual Arena enrollment counter is world 4 region 1,0, player 64,48
+facing north. NPC selector 65 welcomes the player and accepts Kids Class;
+the nearby ground-floor selector 61 gives class/opponent advice only.
+The earlier castle-road block was not bypassed and no game rule was patched.
+
+`m8_tournament10` starts from the exact post-Oasis home Journal and records
+three original mode-4 rounds in world 11. All three enemy HP values reach zero
+in each round. Final-round party HP is 25/4/0: CactiBall legitimately faints;
+the original Arena aftermath restores all three to 60/40/32. Do not describe
+the final battle as an all-members-survived win. Separate P1 reconstruction
+`m8_tournament11` records the original victory pages: "The winners are Master
+CobiA and the fun friends!" and "You've won the Kids' Class!". Arena class
+C82C changes 0->1. PLAN > Keys shows Pirate, described as the key to Sea World;
+the original rules explicitly name PirateKey as the prize. No Pirate-world
+entry, later tournament or subsequent story objective has been started.
+
+Original GreatLog Journal: `m8_tournament10/kids_class_victory.sav`, exactly
+32768 bytes, 25 changed, FNV `c13e0658b2e3cb22`, SHA256
+`A48FB7B52D6B5063F03725D205F96964174B44AFBB3600782892BA44CAEAA91A`.
+Final source frame 27075, world 1 region 2,2 at 64,80. Fresh Continue matches
+304 party/inventory bytes (including key state), 56 quest-flag bytes, five
+location fields and 66 persistent creature bytes, zero mismatches.
+
+`tests/m8_kids_class_victory_p1.txt` retains every one of the 27075 P1 frames,
+selected original battle HP/quest/screen/audio assertions, class/prize state,
+and the original Journal. Independent `--m8-checkpoint-test` passes in
+`m8_kids_regression01`, reproducing the byte-identical save and fresh Continue.
+Log: `recomp/build/m8-kids-independent-replay-01.log`.
+The route is appended as story-09 to the complete M8 CTest chain. The final
+combined 18-check run including it PASSES, zero skips, in 610.50 seconds;
+the extended M8 chain passes in 479.62 seconds. Evidence:
+`m8-complete-aot-kids-all-18-checks-02.log` and
+`m8-complete-aot-kids-255banks-LastTest-02.log` under `recomp/build/`.
+The regenerated story-09 Journal is byte-identical to the original victory
+save and independent replay. This chain contains eleven main Journal routes
+and the retained feeding/audio side branches. Do not confuse it with the
+earlier all-bank 18-check run that predates the new tournament route.
+
+The copied package EXE independently passes M3/M4 self-tests and fresh
+Continue from both the user's test-save copy and the tournament save. Its
+original PLAN > Keys menu also shows Pirate after the fresh boot. Earlier
+saves/packages and the M7 restore remain unchanged. A diagnostic replay on
+the older 61-bank EXE fails closed at 242:$6692; an experimental 62-bank
+diagnostic then reaches missing 12:$659F. These are NOT passing builds.
+The tested 255-bank EXE contains both and is the package/primary M8 build.
+The smaller default set remains at its proven 61-bank scope, with the earlier
+Oasis/home chain. The extended Kids Class route requires DWM2T_ALL_ROMX=ON;
+CMake explicitly prints which coverage is selected. This does not change
+the all-bank command/route list that passed the final 18-check run. Do not
+use the limited development EXEs for later-world manual testing.
+
+Final configuration audit compares the complete AOT checkpoint command's
+ordered arguments to the recorded passing LastTest command: identical. The
+limited configuration excludes the new route explicitly. A final Ninja build
+reports no work, and the full EXE retains SHA256 907AE15F...8627066. The local
+limited cache selects `DWM2tRecompLimited.exe`, a byte-identical copy of the
+previously validated 61-bank Dev4 EXE; all older named EXEs remain preserved.
+
+This is the next important tournament/boss checkpoint. Story progression is
+stopped here pending the user's explicit continue/stop decision. Remaining
+work is technical validation/packaging of this checkpoint only. M8 remains
+incomplete; later worlds and ending/credits are unproven. Keep the M7 restore
+immutable and do not create an M8 result or restore branch yet.

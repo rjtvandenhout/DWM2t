@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 61 95 96 105 115 127 132 133 135 137 149 151 152 161 163 226 240)
+set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 44 47 48 49 50 51 52 53 54 55 57 58 59 61 95 96 105 115 127 132 133 135 137 149 151 152 161 163 226 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
@@ -100,6 +100,8 @@ set(BANK_FILE_40 "bank_040.asm")
 set(BANK_FILE_41 "bank_041.asm")
 # M8: reached at 42:$4001 when facing Warubou after the Oasis return.
 set(BANK_FILE_42 "bank_042.asm")
+# M8: reached at 44:$4001 by original hall attendant selector 66.
+set(BANK_FILE_44 "bank_044.asm")
 # Reached at 47:$4001 during original Oasis encounter presentation.
 set(BANK_FILE_47 "bank_047.asm")
 # Reached at 48:$4001 by the genuine battle Fight command through P1.
@@ -146,6 +148,21 @@ set(BANK_FILE_163 "bank_163.asm")
 # M8: reached at 226:$5426 by the original dam-creature boss Fight command.
 set(BANK_FILE_226 "bank_226.asm")
 set(BANK_FILE_240 "bank_240.asm")
+
+option(DWM2T_ALL_ROMX "Ahead-of-time compile all original switchable ROM banks (larger build)" OFF)
+if(DWM2T_ALL_ROMX)
+    set(NATIVE_ROMX_BANKS)
+    foreach(BANK RANGE 1 255)
+        list(APPEND NATIVE_ROMX_BANKS ${BANK})
+        if(BANK LESS 10)
+            set(BANK_FILE_${BANK} "bank_00${BANK}.asm")
+        elseif(BANK LESS 100)
+            set(BANK_FILE_${BANK} "bank_0${BANK}.asm")
+        else()
+            set(BANK_FILE_${BANK} "bank_${BANK}.asm")
+        endif()
+    endforeach()
+endif()
 
 set(ROMX_CPP)
 set(ROMX_TARGETS)
@@ -311,6 +328,16 @@ if(BUILD_TESTING)
         set_tests_properties(M8_audio_playback M8_audio_stream PROPERTIES
             RUN_SERIAL TRUE TIMEOUT 60 SKIP_RETURN_CODE 77)
     endif()
+    # Later-game routes require complete AOT coverage. The smaller fast build
+    # retains its proven Oasis/home chain rather than claiming unbuilt coverage.
+    set(M8_LATER_CHECKPOINT_ARGS)
+    if(DWM2T_ALL_ROMX)
+        list(APPEND M8_LATER_CHECKPOINT_ARGS --checkpoint-route
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_kids_class_victory_p1.txt")
+        message(STATUS "M8 development coverage: Oasis/home and Kids Class (complete AOT)")
+    else()
+        message(STATUS "M8 development coverage: Oasis/home only; use DWM2T_ALL_ROMX=ON for Kids Class")
+    endif()
     add_test(NAME M8_oasis_checkpoint COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_oasis.py"
         --exe "$<TARGET_FILE:DWM2tRecomp>" --seed "${LOCAL_VALIDATION_DIR}/m7_original.sav"
@@ -324,6 +351,7 @@ if(BUILD_TESTING)
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_watercall_exchange_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_curselamp_victory_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_post_oasis_home_p1.txt"
+        ${M8_LATER_CHECKPOINT_ARGS}
         --feeding-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_enemy_meat_p1.txt"
         --audio-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_hub_audio_p1.txt"
         --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
