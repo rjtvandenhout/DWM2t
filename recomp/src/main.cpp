@@ -8,6 +8,7 @@
 #include "recomp/runtime.hpp"
 #include "recomp/window.hpp"
 #include "recomp/audio_device.hpp"
+#include "recomp/audio_presentation.hpp"
 
 #include <charconv>
 #include <cstdint>
@@ -620,6 +621,11 @@ int main(int argc, char** argv) {
         std::cout << "AUDIO_SELECTION_CONTRACT_PASS cases=6\n";
         return 0;
     }
+    if (argc == 2 && std::string_view(argv[1]) == "--audio-presentation-test") {
+        if (!dwm2t::audio_presentation_contracts()) return EXIT_FAILURE;
+        std::cout << "AUDIO_PRESENTATION_CONTRACT_PASS raw_exact quiet mute stereo decay bounded\n";
+        return 0;
+    }
     if (argc == 2 && std::string_view(argv[1]) == "--audio-devices")
         return dwm2t::list_audio_devices();
     if (argc >= 2 && std::string_view(argv[1]) == "--audio-playback-test") {
@@ -639,6 +645,8 @@ int main(int argc, char** argv) {
     if (argc == 5 && std::string_view(argv[1]) == "--m8-replay") {
         return dwm2t::run_m8_replay(argv[2], argv[3], argv[4]);
     }
+    if (argc == 5 && std::string_view(argv[1]) == "--m8-audio-output-test")
+        return dwm2t::run_m8_audio_output_test(argv[2], argv[3], argv[4]);
     if (argc == 5 && std::string_view(argv[1]) == "--m8-checkpoint-test") {
         return dwm2t::run_m8_checkpoint_test(argv[2], argv[3], argv[4]);
     }
@@ -724,22 +732,31 @@ int main(int argc, char** argv) {
     if (argc >= 2 && std::string_view(argv[1]) == "--play") {
         std::filesystem::path save_path = "DWM2t.sav";
         int audio_device = -1;
+        int audio_volume = 25;
+        bool audio_smooth = true;
         bool have_save = false, valid = true;
         for (int i = 2; i < argc && valid; ++i) {
             const std::string_view option = argv[i];
             if (option == "--audio-device") {
                 valid = ++i < argc && parse_audio_device(argv[i], audio_device);
+            } else if (option == "--audio-volume") {
+                valid = ++i < argc && parse_audio_device(argv[i], audio_volume) &&
+                        audio_volume >= 0 && audio_volume <= 100;
+            } else if (option == "--audio-raw") {
+                audio_smooth = false;
             } else if (!have_save && !option.starts_with("--")) {
                 save_path = argv[i]; have_save = true;
             } else valid = false;
         }
         if (!valid) {
-            std::cerr << "Usage: DWM2tRecomp.exe --play [save-path] [--audio-device N]\n";
+            std::cerr << "Usage: DWM2tRecomp.exe --play [save-path] [--audio-device N]"
+                         " [--audio-volume 0..100] [--audio-raw]\n";
             return EXIT_FAILURE;
         }
         dwm2t::Runtime runtime{};
         dwm2t::Renderer renderer{};
-        return dwm2t::run_live_window(runtime, renderer, save_path, 4, audio_device);
+        return dwm2t::run_live_window(runtime, renderer, save_path, 4,
+                                      audio_device, audio_volume, audio_smooth);
     }
 
     if (argc >= 2 && std::string_view(argv[1]) == "--m6-sram-test") {

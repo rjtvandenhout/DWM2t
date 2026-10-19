@@ -1,5 +1,6 @@
 #include "recomp/window.hpp"
 #include "recomp/audio_device.hpp"
+#include "recomp/audio_presentation.hpp"
 
 #include "recomp/memory.hpp"
 #include "recomp/runtime.hpp"
@@ -24,7 +25,8 @@ namespace {
 
 class WaveOutSink {
 public:
-    explicit WaveOutSink(int preferred = -1) {
+    explicit WaveOutSink(int preferred = -1, int volume = 25, bool smooth = true)
+        : presentation_(volume, smooth) {
         WAVEFORMATEX format{};
         format.wFormatTag = WAVE_FORMAT_PCM;
         format.nChannels = 2;
@@ -44,6 +46,8 @@ public:
             std::cout << "AUDIO_OUTPUT_READY device=" << selected.device
                       << " rate=" << Apu::SampleRate
                       << " mapper_error=" << selected.mapper_error << '\n';
+            std::cout << "AUDIO_PRESENTATION volume=" << volume
+                      << " smoothing=" << (smooth ? "on" : "off") << '\n';
             if (selected.mapper_error)
                 std::cerr << "Audio: Windows default mapper failed (error " << selected.mapper_error
                           << "); using explicit playback device " << selected.device
@@ -71,7 +75,7 @@ public:
 
     [[nodiscard]] bool ready() const { return ready_; }
 
-    std::size_t submit(std::vector<std::int16_t> samples) {
+    std::size_t submit(std::vector<std::int32_t> samples) {
         if (!ready_ || samples.empty()) return 0;
 
         std::size_t offset = 0;
@@ -86,7 +90,8 @@ public:
 
             const std::size_t count =
                 std::min<std::size_t>(slot->data.size(), samples.size() - offset);
-            std::copy_n(samples.data() + offset, count, slot->data.data());
+            for (std::size_t i = 0; i < count; ++i)
+                slot->data[i] = presentation_.sample(samples[offset + i], unsigned((offset + i) % 2));
 
             slot->header = {};
             slot->header.lpData = reinterpret_cast<LPSTR>(slot->data.data());
@@ -151,6 +156,7 @@ private:
     std::array<Slot, SlotCount> slots_{};
     std::size_t next_slot_ = 0;
     bool ready_ = false;
+    AudioPresentation presentation_;
 };
 
 const Renderer::Framebuffer* g_framebuffer = nullptr;
@@ -267,7 +273,7 @@ int run_audio_playback_test(int device) {
     if (!audio.ready()) return 77; // Environmental absence is not an APU failure.
     Runtime runtime{};
     auto& memory = runtime.memory();
-    std::vector<std::int16_t> pcm;
+    std::vector<std::int32_t> pcm;
     std::uint64_t observed = 0;
     for (unsigned step = 0; step < 80'000'000 && pcm.size() < 16384; ++step) {
         const auto result = runtime.step();
@@ -276,10 +282,16 @@ int run_audio_playback_test(int device) {
         }
         if (memory.frame_counter() == observed) continue;
         observed = memory.frame_counter();
-        const auto samples = memory.apu().take_samples();
+        const auto samples = memory.apu().take_playback_samples();
         if (observed >= 1800) pcm.insert(pcm.end(), samples.begin(), samples.end());
     }
     const auto nonzero = std::count_if(pcm.begin(), pcm.end(), [](auto s) { return s != 0; });
+    int peak = 0;
+    std::size_t clipped = 0;
+    for (const auto value : pcm) {
+        peak = (std::max)(peak, value < 0 ? -int(value) : int(value));
+        if (value < -32768 || value > 32767) ++clipped;
+    }
     if (pcm.size() < 16384 || !nonzero) {
         std::cerr << "AUDIO_PLAYBACK_FAIL original_pcm\n"; return 141;
     }
@@ -294,6 +306,7 @@ int run_audio_playback_test(int device) {
     }
     std::cout << "AUDIO_PLAYBACK_PASS original_pcm_values=" << pcm.size()
               << " nonzero=" << nonzero << " submitted=" << submitted
+              << " premix_peak=" << peak << " exceeds_legacy_pcm=" << clipped
               << " played_frames=" << played << " subjective_hearing=not_assessed\n";
     return 0;
 }
@@ -324,7 +337,9 @@ int run_live_window(
     Renderer& renderer,
     const std::filesystem::path& sav_path,
     int scale,
-    int audio_device) {
+    int audio_device,
+    int audio_volume,
+    bool audio_smooth) {
 
     if (!load_sram_file(runtime.memory(), sav_path)) {
         std::cerr << "M6 live FAIL: invalid SRAM file " << sav_path.string() << "\n";
@@ -341,7 +356,7 @@ int run_live_window(
         return 1;
     }
 
-    WaveOutSink audio(audio_device);
+    WaveOutSink audio(audio_device, audio_volume, audio_smooth);
 
     using Clock = std::chrono::steady_clock;
     constexpr auto frame_period = std::chrono::microseconds(16742);
@@ -398,7 +413,7 @@ int run_live_window(
             break;
         }
 
-        audio.submit(memory.apu().take_samples());
+        audio.submit(memory.apu().take_playback_samples());
 
         renderer.render(memory, true);
         g_framebuffer = &renderer.framebuffer();
@@ -547,7 +562,7 @@ int run_live_window_smoke(
 
 namespace dwm2t {
 int run_native_window(const Renderer::Framebuffer&, int) { return 1; }
-int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int, int) { return 1; }
+int run_live_window(Runtime&, Renderer&, const std::filesystem::path&, int, int, int, bool) { return 1; }
 int list_audio_devices() { return 1; }
 int run_audio_playback_test(int) { return 77; }
 int run_live_window_smoke(Runtime&, Renderer&, const std::filesystem::path&, int) { return 1; }

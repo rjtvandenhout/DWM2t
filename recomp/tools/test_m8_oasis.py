@@ -12,10 +12,13 @@ def main():
     parser.add_argument("--inn-route", type=Path, required=True)
     parser.add_argument("--checkpoint-route", type=Path, action="append", default=[])
     parser.add_argument("--feeding-route", type=Path)
+    parser.add_argument("--audio-route", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.feeding_route and len(args.checkpoint_route) < 5:
         parser.error("feeding side branch requires the five original story checkpoints")
+    if args.audio_route and len(args.checkpoint_route) < 8:
+        parser.error("audio side branch requires the post-Oasis home checkpoint")
     args.output.mkdir(parents=True, exist_ok=True)
     output = Path(tempfile.mkdtemp(prefix="oasis-", dir=args.output.resolve()))
     result = subprocess.run([str(args.exe.resolve()), "--m8-oasis-test",
@@ -41,6 +44,10 @@ def main():
                                      str(output / "enemy-feeding")])
             if result.returncode == 0:
                 print("M8_ENEMY_FEEDING_BRANCH_PASS original_item_consumption_and_bonus", flush=True)
+        if result.returncode == 0 and index == 8 and args.audio_route:
+            result = subprocess.run([str(args.exe.resolve()), "--m8-audio-output-test",
+                                     str(seed), str(args.audio_route.resolve()),
+                                     str(output / "hub-audio")])
     return result.returncode
 
 if __name__ == "__main__":

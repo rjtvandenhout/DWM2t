@@ -116,6 +116,22 @@ Or choose an explicit save file:
 
 Controls:
 
+Live audio defaults to 25% playback volume with mild host-only smoothing.
+The unclipped original mix is attenuated before conversion to Windows PCM;
+the retained APU regression capture and game timing remain unchanged.
+Use `--audio-volume 0` through `--audio-volume 100` to adjust loudness.
+`--audio-raw` disables smoothing, not volume control. For example:
+
+```powershell
+.\recomp\build\Release\DWM2tRecomp.exe --play my-save.sav --audio-volume 15
+```
+
+`--audio-devices` lists local outputs. If the Windows default mapper fails,
+the program tries enumerated devices; `--audio-device N` selects one explicitly.
+No Windows device, mixer or system-volume settings are changed.
+
+Keyboard controls:
+
 ```text
 Arrow keys  D-pad
 Z           A

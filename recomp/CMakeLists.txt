@@ -54,7 +54,7 @@ configure_native_target(dwm2t_bank0)
 
 # M5 starts with banks known to be on the CGB boot/title path. Missing-bank
 # instrumentation in Runtime is authoritative when this set needs to expand.
-set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 61 95 96 105 115 127 132 133 135 137 149 151 161 163 226 240)
+set(NATIVE_ROMX_BANKS 1 2 3 4 5 7 8 9 10 15 16 17 18 19 20 21 22 23 25 26 28 29 30 31 36 37 38 39 40 41 42 47 48 49 50 51 52 53 54 55 57 58 59 61 95 96 105 115 127 132 133 135 137 149 151 152 161 163 226 240)
 set(BANK_FILE_1 "bank_001.asm")
 set(BANK_FILE_2 "bank_002.asm")
 # Reached at 3:$4015 by an original field-menu command after Slash joined.
@@ -137,6 +137,8 @@ set(BANK_FILE_137 "bank_137.asm")
 set(BANK_FILE_149 "bank_149.asm")
 # M8: reached at 151:$4026 by the original Oasis inn dialogue via 41:$4008.
 set(BANK_FILE_151 "bank_151.asm")
+# M8: reached at 152:$404B in the original post-Oasis home-hub event.
+set(BANK_FILE_152 "bank_152.asm")
 set(BANK_FILE_161 "bank_161.asm")
 # Reached at 163:$4187 after genuine battle Fight confirmation.
 set(BANK_FILE_163 "bank_163.asm")
@@ -237,6 +239,8 @@ add_executable(DWM2tRecomp
 )
 
 configure_native_target(DWM2tRecomp)
+set(DWM2T_OUTPUT_NAME "DWM2tRecomp" CACHE STRING "Executable basename for isolated local development builds")
+set_target_properties(DWM2tRecomp PROPERTIES OUTPUT_NAME "${DWM2T_OUTPUT_NAME}")
 
 target_link_libraries(DWM2tRecomp PRIVATE
     dwm2t_bank0
@@ -300,6 +304,7 @@ if(BUILD_TESTING)
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/test_m8_trace.py"
         --exe "$<TARGET_FILE:DWM2tRecomp>" --output "${LOCAL_VALIDATION_DIR}/m8_tools")
     add_test(NAME M8_audio_selection COMMAND DWM2tRecomp --audio-selection-test)
+    add_test(NAME M8_audio_presentation COMMAND DWM2tRecomp --audio-presentation-test)
     if(WIN32)
         add_test(NAME M8_audio_playback COMMAND DWM2tRecomp --audio-playback-test)
         set_tests_properties(M8_audio_playback PROPERTIES
@@ -317,12 +322,17 @@ if(BUILD_TESTING)
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_asiya_thieves_report_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_watercall_exchange_p1.txt"
         --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_oasis_curselamp_victory_p1.txt"
+        --checkpoint-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_post_oasis_home_p1.txt"
         --feeding-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_enemy_meat_p1.txt"
+        --audio-route "${CMAKE_CURRENT_SOURCE_DIR}/tests/m8_hub_audio_p1.txt"
         --output "${LOCAL_VALIDATION_DIR}/m8_oasis")
     set_tests_properties(M7_save_continue PROPERTIES FIXTURES_SETUP M7_original_save)
     set_tests_properties(M8_oasis_checkpoint PROPERTIES FIXTURES_REQUIRED M7_original_save)
     set_tests_properties(M8_trace_contract M8_oasis_checkpoint PROPERTIES
         WORKING_DIRECTORY "${REPO_ROOT}" TIMEOUT 600)
+    # The extended original chain now includes the home event and two isolated
+    # side branches. Keep a finite budget without truncating valid longer runs.
+    set_tests_properties(M8_oasis_checkpoint PROPERTIES TIMEOUT 900)
     add_custom_target(check-m8-development
         COMMAND "${CMAKE_CTEST_COMMAND}" --parallel 4 --output-on-failure --stop-on-failure -C "$<CONFIG>"
         DEPENDS DWM2tRecomp WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" USES_TERMINAL)

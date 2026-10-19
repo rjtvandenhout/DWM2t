@@ -527,3 +527,82 @@ Ongoing later-world discovery uses a separate diagnostic copy of the EXE
 and accepted Oasis Journal, not the user's testing save. In world 5 the
 actual exit corridor is east: region 2,0 at 80,0, not the chest/rock graphics
 in the western chamber. `m8_home_next02` records all discovery P1 input.
+
+### Audio/meat correction fully validated and separately packaged
+
+Commit `65c7d7f23948ecd23778981ad4cb5e7b45545fa5` is pushed. Its unchanged
+59-bank EXE passes all 16 local checks (no skips) in 669.19 seconds.
+The complete original M8 chain including the feeding side branch passes in
+523.10 seconds. Log: `recomp/build/m8-audio-meat-all-16-checks-01.log`.
+The regenerated feeding Journal is byte-identical to discovery and the
+independent/packaged replay (SHA256
+`7828354F1A28E017B62959DEF2C5DB3144B93D71F3D1E4EE7C351C7961B153CB`).
+M6/M7 validation-save hashes and the M7 restore are unchanged.
+
+The separate `outputs/M8-audio-meat-fix` package and
+`outputs/DWM2t-M8-audio-meat-fix-65c7d7f.zip` contain the validated EXE,
+a copy of the user's current save, normal and direct-Arctis launchers,
+English report/source record and local evidence. EXE is 279242240 bytes,
+SHA256 `48892CA617819F61080F830127E909524D9A8C2C9C6A3BEFE68993AEB3850B99`.
+The copied EXE independently passes original meat use/Journal/fresh Continue
+and real headset output. No subjective hearing or hosted CI pass is claimed.
+
+Later M8 work is separate from that frozen 59-bank executable. The home-hub
+event reached bank 152:$404B, which is now statically compiled in the
+development EXE `recomp/build/DWM2tRecompNext.exe`. CMake supports optional
+`DWM2T_OUTPUT_NAME` (default DWM2tRecomp) to avoid replacing an EXE while a
+long regression run still uses it; the local cache currently selects
+DWM2tRecompNext. The original DWM2tRecomp.exe and packaged fix remain frozen.
+
+Original post-Oasis hub event completed and sets CC07 bit 7. The game's
+dialogue announces a royal tournament for child monster masters and invites
+the farmer's child; its prize is being read in a separate P1 dialogue replay.
+`m8_home_next03/post_oasis_home_event.sav` is a successful original Journal,
+32768 bytes, FNV `d5374bb11f3cdd70`, SHA256
+`4058A37DC9FBED49C07717AF8C465C4E3FD1FE64898588A59D562E3577087713`.
+The 9251-frame `tests/m8_post_oasis_home_p1.txt` independently replays and
+passes fresh Continue (`m8_home_regression01`). This route is appended to the
+working CMake chain but was NOT part of the frozen 65c7d7f 16-check run.
+It is a smaller technical checkpoint, not a completed later world/boss.
+Continue toward the tournament; do not pause merely because the fixes pass.
+
+### User listening feedback and unclipped, quieter host playback
+
+The user confirms that the normal 65c7d7f launcher is audible, but reports
+excessive volume and a "crispy" sound. No system settings were changed.
+Investigation of an original P1 key-shop visit finds actual legacy mixer
+saturation, not just device selection: premix peak 35328, 1768 sample values
+outside signed 16-bit range. Do not claim this explains every possible
+headset/driver artifact or establishes hardware-perfect sound.
+
+APU sample timing and channel state remain unchanged. Its existing private
+sample vector now retains the exact small integer mix before the old x96
+conversion; no class layout is changed. `take_samples()` performs the same
+legacy scale/clamp and retains the exact M7 and M8 capture hashes.
+`take_playback_samples()` exposes the unclipped x96 mix to host presentation.
+Live output applies adjustable gain before 16-bit conversion, default 25%,
+and a mild one-pole smoothing filter; `--audio-raw` disables smoothing.
+`--audio-volume 0..100` adjusts only this game's playback. At excessive user
+gain the final converter still saturates safely; default gain has headroom
+for the full possible original mix. No synthetic sound replaces game audio.
+
+`tests/m8_hub_audio_p1.txt` retains the original key-shop input and exact
+legacy audio hash `865ab37c80553b36`. `m8_hub_audio_range01` passes original
+P1/memory/screen/PCM assertions with output peak 8831 and zero output clipping.
+The new host contracts cover exact raw conversion, gain/mute, independent
+stereo history, filter decay, pre-conversion headroom and bounded saturation.
+The complete checkpoint driver now tests this as another isolated side branch
+from story-08 (the post-Oasis home Journal). Its finite timeout is 900 seconds
+to accommodate the longer chain; per-frame/P1 runtime guards are unchanged.
+
+The preliminary 17-check comfort build passes all checks, no skips, in
+604.60 seconds (chain 472.47 seconds). This is NOT the final pre-conversion
+build: `DWM2tRecompDev2.exe` is now undergoing the expanded 17-check suite
+including the real loud-music side branch. Log names end in `checks-01.log`
+for preliminary and `checks-02.log` for final; do not confuse these results.
+The original frozen 65c7d7f package and all saves remain untouched.
+
+Original hub discovery confirms the tournament prize is PirateKey. The key
+shop (world 9) and bank (world 8) have been visited through ordinary P1 input;
+neither is a completed world or major boss. Discovery probes are not acceptance
+evidence for winning the tournament. Continue from the saved home event.

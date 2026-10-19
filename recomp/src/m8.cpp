@@ -1,6 +1,7 @@
 #include "recomp/m8.hpp"
 #include "recomp/runtime.hpp"
 #include "recomp/renderer.hpp"
+#include "recomp/audio_presentation.hpp"
 #include <array>
 #include <chrono>
 #include <fstream>
@@ -32,8 +33,9 @@ const char* button_name(std::uint8_t button) {
 
 class Session {
 public:
-    Session(const std::filesystem::path& save, const std::filesystem::path& output)
-        : output_(output) {
+    Session(const std::filesystem::path& save, const std::filesystem::path& output,
+            bool observe_output = false)
+        : output_(output), observe_output_(observe_output) {
         std::filesystem::create_directories(output_);
         if (std::filesystem::exists(output_ / "trace_p1.txt"))
             throw std::runtime_error("output already contains a trace; refusing overwrite");
@@ -82,7 +84,7 @@ public:
             if (runtime_.memory().frame_counter() != initial) {
                 // Observe the original APU output at the same drain point as
                 // before. These host counters never alter cartridge state.
-                for (const std::int16_t sample : runtime_.memory().apu().take_samples()) {
+                const auto observe_legacy = [&](std::int16_t sample) {
                     ++audio_samples_;
                     if (sample != 0) ++audio_nonzero_;
                     const int magnitude = sample < 0 ? -int(sample) : int(sample);
@@ -92,6 +94,22 @@ public:
                     audio_hash_ *= 1099511628211ull;
                     audio_hash_ ^= std::uint8_t(bits >> 8);
                     audio_hash_ *= 1099511628211ull;
+                };
+                if (observe_output_) {
+                    unsigned channel = 0;
+                    for (const auto wide : runtime_.memory().apu().take_playback_samples()) {
+                        const int magnitude = wide < 0 ? -wide : wide;
+                        if (magnitude > premix_peak_) premix_peak_ = magnitude;
+                        if (wide < -32768 || wide > 32767) ++legacy_overflow_;
+                        const auto output = presentation_.sample(wide, channel);
+                        channel ^= 1u;
+                        const int peak = output < 0 ? -int(output) : int(output);
+                        if (peak > output_peak_) output_peak_ = peak;
+                        if (output == -32768 || output == 32767) ++output_clipped_;
+                        observe_legacy(static_cast<std::int16_t>(wide < -32768 ? -32768 : wide > 32767 ? 32767 : wide));
+                    }
+                } else {
+                    for (const auto sample : runtime_.memory().apu().take_samples()) observe_legacy(sample);
                 }
                 if (run_length_ && (run_button_ != button || run_length_ == 30000)) flush();
                 run_button_ = button; ++run_length_;
@@ -434,6 +452,14 @@ public:
 
     Runtime& runtime() { return runtime_; }
 
+    bool verify_output() const {
+        std::cout << "M8_AUDIO_OUTPUT_RESULT premix_peak=" << premix_peak_
+                  << " legacy_overflow_values=" << legacy_overflow_
+                  << " output_peak=" << output_peak_ << " output_clipped=" << output_clipped_
+                  << " volume=25 smoothing=on" << std::endl;
+        return legacy_overflow_ > 0 && output_peak_ > 0 && output_peak_ < 32767 && output_clipped_ == 0;
+    }
+
 private:
     Runtime runtime_{};
     std::filesystem::path output_;
@@ -443,6 +469,10 @@ private:
     std::uint64_t audio_samples_ = 0, audio_nonzero_ = 0;
     std::uint64_t audio_hash_ = 14695981039346656037ull;
     int audio_peak_ = 0;
+    bool observe_output_ = false;
+    AudioPresentation presentation_;
+    int premix_peak_ = 0, output_peak_ = 0;
+    std::uint64_t legacy_overflow_ = 0, output_clipped_ = 0;
 };
 }
 
@@ -470,6 +500,21 @@ int run_m8_replay(const std::filesystem::path& save, const std::filesystem::path
         return 0;
     } catch (const std::exception& error) {
         std::cerr << "M8_REPLAY_FAIL " << error.what() << std::endl; return 230;
+    }
+}
+
+int run_m8_audio_output_test(const std::filesystem::path& seed,
+                           const std::filesystem::path& route,
+                           const std::filesystem::path& output) {
+    try {
+        Session session(seed, output, true);
+        session.replay_trace(route);
+        if (!session.verify_output()) throw std::runtime_error("expected loud original mix with unclipped host output");
+        std::cout << "M8_AUDIO_OUTPUT_PASS original_P1_and_legacy_PCM_assertions_retained" << std::endl;
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "M8_AUDIO_OUTPUT_FAIL " << error.what() << std::endl;
+        return 230;
     }
 }
 

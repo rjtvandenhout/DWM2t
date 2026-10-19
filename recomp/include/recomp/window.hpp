@@ -15,7 +15,9 @@ int run_live_window(
     Renderer& renderer,
     const std::filesystem::path& sav_path,
     int scale = 4,
-    int audio_device = -1);
+    int audio_device = -1,
+    int audio_volume = 25,
+    bool audio_smooth = true);
 
 int list_audio_devices();
 int run_audio_playback_test(int device = -1);

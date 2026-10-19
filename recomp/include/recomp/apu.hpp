@@ -15,6 +15,9 @@ public:
     void tick_tcycle();
 
     [[nodiscard]] std::vector<std::int16_t> take_samples();
+    // The host applies gain before 16-bit conversion, retaining loud mixes
+    // without changing the legacy capture API or any APU timing/state.
+    [[nodiscard]] std::vector<std::int32_t> take_playback_samples();
     [[nodiscard]] std::uint64_t sample_frames() const { return sample_frames_; }
 
 private:

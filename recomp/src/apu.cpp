@@ -342,9 +342,11 @@ void Apu::emit_sample() {
         if (nr51 & (1u << i)) right += channels[i];
     }
 
-    constexpr int scale = 96;
-    samples_.push_back(clamp16(left * left_volume * scale));
-    samples_.push_back(clamp16(right * right_volume * scale));
+    // Store the exact pre-gain mix (at most 4 * 15 * 8 in magnitude).
+    // Legacy captures still scale/clamp identically in take_samples(); live
+    // playback can attenuate before conversion rather than after clipping.
+    samples_.push_back(static_cast<std::int16_t>(left * left_volume));
+    samples_.push_back(static_cast<std::int16_t>(right * right_volume));
     ++sample_frames_;
 }
 
@@ -400,6 +402,15 @@ void Apu::tick_tcycle() {
 std::vector<std::int16_t> Apu::take_samples() {
     std::vector<std::int16_t> out;
     out.swap(samples_);
+    for (auto& sample : out) sample = clamp16(int(sample) * 96);
+    return out;
+}
+
+std::vector<std::int32_t> Apu::take_playback_samples() {
+    std::vector<std::int32_t> out;
+    out.reserve(samples_.size());
+    for (const auto sample : samples_) out.push_back(int(sample) * 96);
+    samples_.clear();
     return out;
 }
 

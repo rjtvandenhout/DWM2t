@@ -10,6 +10,9 @@ int run_m8_replay(const std::filesystem::path& save,
 int run_m8_checkpoint_test(const std::filesystem::path& seed,
                            const std::filesystem::path& route,
                            const std::filesystem::path& output);
+int run_m8_audio_output_test(const std::filesystem::path& seed,
+                           const std::filesystem::path& route,
+                           const std::filesystem::path& output);
 int run_m8_oasis_test(const std::filesystem::path& seed,
                       const std::filesystem::path& route,
                       const std::filesystem::path& output);
