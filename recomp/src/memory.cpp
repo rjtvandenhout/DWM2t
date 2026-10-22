@@ -1,4 +1,5 @@
 #include "recomp/memory.hpp"
+#include "recomp/atomic_sram.hpp"
 
 #include <algorithm>
 #include <array>
@@ -515,27 +516,17 @@ bool load_sram_file(Memory& memory, const std::filesystem::path& path) {
 
     char extra = 0;
     if (input.read(&extra, 1)) return false;
+    if (input.bad() || !input.eof()) return false;
 
     memory.load_sram(data.data(), data.size());
     return true;
 }
 
 bool save_sram_file(Memory& memory, const std::filesystem::path& path) {
-    if (!path.parent_path().empty()) {
-        std::error_code ec;
-        std::filesystem::create_directories(path.parent_path(), ec);
-        if (ec) return false;
-    }
-
-    std::ofstream output(path, std::ios::binary | std::ios::trunc);
-    if (!output) return false;
-
     const auto& data = memory.sram();
-    output.write(reinterpret_cast<const char*>(data.data()),
-                 static_cast<std::streamsize>(data.size()));
-    output.flush();
-    if (!output) return false;
+    if (!save_io::write_sram_atomic(path, data.data(), data.size())) return false;
 
+    // Keep pending cartridge writes dirty until durable replacement succeeds.
     memory.clear_sram_dirty();
     return true;
 }
