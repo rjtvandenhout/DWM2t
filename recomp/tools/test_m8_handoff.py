@@ -253,7 +253,26 @@ class Contracts(unittest.TestCase):
         output, _, _ = self.good()
         other = self.root / "same-build.exe"; other.write_bytes(self.exe.read_bytes())
         self.exe.unlink()
-        self.assertEqual(self.verify(output, exe=other)[0], other)
+        verified = self.verify(output, exe=other)[0]
+        # Windows TEMP can use an 8.3 alias (RUNNER~1) while the verifier
+        # deliberately resolves the long path. Compare canonical identity.
+        self.assertEqual(verified, other.resolve(strict=True))
+        self.assertTrue(verified.samefile(other))
+
+    def test_noncanonical_identical_executable_is_allowed(self):
+        output, _, _ = self.good()
+        folder = self.root / "alias-parent"; folder.mkdir()
+        alias = folder / ".." / self.exe.name
+        verified = self.verify(output, exe=alias)[0]
+        self.assertEqual(verified, self.exe.resolve(strict=True))
+        self.assertTrue(verified.samefile(alias))
+
+    def test_relocated_different_executable_is_rejected(self):
+        output, _, _ = self.good()
+        other = self.root / "different-build.exe"
+        other.write_bytes(b"DIFFERENT SYNTHETIC EXECUTABLE; NEVER EXECUTED")
+        with self.assertRaises(handoff.HandoffError):
+            self.verify(output, exe=other)
 
     def test_final_save_cannot_point_to_side_branch(self):
         output, _, report = self.good()
