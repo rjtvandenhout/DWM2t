@@ -1,0 +1,53 @@
+name: Original Sea World validation on pinned Windows build
+
+on:
+  push:
+    branches: ['work/recomp-m8-pirate-validation-20261022']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  sea-world:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download the exact successful 255-bank native Windows build
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 39836316030
+          name: DWM2t-M8-development-Windows-x64-697647033b4ce6b00dd8e11759cb85e1ae469a65
+          path: ${{ runner.temp }}/native-player
+      - name: Download its original validated Kids Class Journal
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 39836316030
+          name: DWM2t-M8-development-evidence-39836316030-1
+          path: ${{ runner.temp }}/baseline-evidence
+      - name: Verify binary identity and replay original Sea World progression
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_pirate_pinned.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --evidence "$env:RUNNER_TEMP/baseline-evidence" `
+            --route recomp/tests/m8_pirate_battle_p1.txt `
+            --output "$env:RUNNER_TEMP/pirate-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve exact battle, save and fresh-Continue evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Sea-World-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pirate-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
