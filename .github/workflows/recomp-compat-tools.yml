@@ -1,0 +1,36 @@
+name: M8 isolated executable discovery tools
+
+# Temporary diagnostic dependencies only, never linked into the native game.
+on:
+  push:
+    branches: ['work/recomp-m8-world-validation']
+    paths: ['.github/workflows/recomp-compat-tools.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download signed Debian tools for an isolated Linux diagnostic host
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/compat-debs"
+          docker run --rm -v "$RUNNER_TEMP/compat-debs:/out" debian:trixie-slim bash -euc '
+            rm -f /etc/apt/apt.conf.d/docker-clean
+            apt-get update
+            apt-get install --download-only -y --no-install-recommends wine64 wine
+            cp /var/cache/apt/archives/*.deb /out/
+            cd /out
+            sha256sum *.deb > SHA256SUMS
+            for file in *.deb; do dpkg-deb --show "$file"; done > PACKAGES.txt
+          '
+      - name: Preserve dependency identity for offline discovery
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-isolated-compatibility-dependencies
+          path: ${{ runner.temp }}/compat-debs/*
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 1
