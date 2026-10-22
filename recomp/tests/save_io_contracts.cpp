@@ -100,8 +100,9 @@ int main(int argc, char** argv) {
 #endif
         bool unexpected_temporary = false;
         for (const auto& entry : fs::recursive_directory_iterator(root)) {
-            const auto name = entry.path().filename().string();
-            if (name.find(".tmp-") != std::string::npos && entry.path() != orphan)
+            // UTF-8 inspection must not narrow Unicode filenames through ACP.
+            const auto name = entry.path().filename().u8string();
+            if (name.find(u8".tmp-") != std::u8string::npos && entry.path() != orphan)
                 unexpected_temporary = true;
         }
         check(!unexpected_temporary, "no_new_temporary_files_left");
