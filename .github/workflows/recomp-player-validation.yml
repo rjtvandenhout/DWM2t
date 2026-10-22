@@ -1,0 +1,73 @@
+name: Native player and save protection validation
+
+on:
+  push:
+    branches: ['work/recomp-m8-recheck-20261022']
+    paths:
+      - 'recomp/**'
+      - '.github/workflows/recomp-player-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: native-player-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  player-windows:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build actual SRAM filesystem contracts
+        shell: pwsh
+        run: |
+          cmake -S recomp/tests/save-io -B "$env:RUNNER_TEMP/save-io-build" -A x64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build "$env:RUNNER_TEMP/save-io-build" --config Release --parallel 2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Check Windows save creation, replacement and failure preservation
+        shell: pwsh
+        run: |
+          ctest --test-dir "$env:RUNNER_TEMP/save-io-build" -C Release --output-on-failure --output-junit save-io.xml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build isolated complete-AOT production candidate
+        shell: pwsh
+        run: |
+          python recomp/tools/build_m8_candidate.py --jobs 2 `
+            --workspace "$env:RUNNER_TEMP/player-build" --output "$env:RUNNER_TEMP/player-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Exercise real production entry point and isolated Unicode profile
+        shell: pwsh
+        run: |
+          python recomp/tools/test_player_startup.py `
+            --exe "$env:RUNNER_TEMP/player-output/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --output "$env:RUNNER_TEMP/player-smoke" --source "${{ github.sha }}"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve real results without claiming full-game completion
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-player-validation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/save-io-build/save-io.xml
+            ${{ runner.temp }}/save-io-build/Testing/Temporary/LastTest.log
+            ${{ runner.temp }}/player-output/build-report.json
+            ${{ runner.temp }}/player-output/build-logs/**
+            ${{ runner.temp }}/player-smoke/**
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload startup-checked player candidate, not a final M8 release
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-player-candidate-${{ github.sha }}
+          path: ${{ runner.temp }}/player-output/*.zip
+          if-no-files-found: error
+          retention-days: 14
