@@ -102,6 +102,25 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Archive committed native sources for offline diagnostics
+        shell: bash
+        run: |
+          git archive --format=zip --output="$RUNNER_TEMP/recomp-source.zip" HEAD \
+            recomp src/banks LICENSE-NOTICE.md .github/workflows/recomp-windows.yml
+          git rev-parse HEAD > "$RUNNER_TEMP/recomp-source-commit.txt"
+          sha256sum "$RUNNER_TEMP/recomp-source.zip"
+
+      - name: Preserve exact source snapshot without saves or build caches
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-native-source-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/recomp-source.zip
+            ${{ runner.temp }}/recomp-source-commit.txt
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Run offline safe-resume contracts (not gameplay acceptance)
         run: python recomp/tools/test_m8_handoff.py
 
