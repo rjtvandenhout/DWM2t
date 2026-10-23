@@ -52,6 +52,17 @@ jobs:
             --route recomp/tests/m8_pirate_village_p1.txt `
             --output "$env:RUNNER_TEMP/village-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify original farm dancer pickup and fresh Continue
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_farm_dancer.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --seed "$env:RUNNER_TEMP/village-evidence/native/checkpoint.sav" `
+            --route recomp/tests/m8_farm_dancer_p1.txt `
+            --ready-route recomp/tests/m8_farm_dancer_ready_p1.txt `
+            --village-route recomp/tests/m8_sea_dancer_alive_p1.txt `
+            --output "$env:RUNNER_TEMP/farm-dancer-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Preserve original entry battle, save and fresh-Continue evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -66,5 +77,13 @@ jobs:
         with:
           name: DWM2t-Sea-Village-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/village-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Preserve farm dancer exchange and original Journal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Farm-Dancer-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/farm-dancer-evidence/**
           if-no-files-found: warn
           retention-days: 30

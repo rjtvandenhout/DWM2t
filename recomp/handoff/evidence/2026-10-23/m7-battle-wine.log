@@ -1,0 +1,4 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M7_BATTLE_RESULT original_P1_encounter mode=4 original_player_attack frames=282 party_hp=25->20 enemy_hp=9->6 control_hp_unchanged=1 before=0x8e2dcfe5df6d1e0 after=0xa220d333e6f055b0 control=0x8e2dcfe5df6d1e0
+M7_BATTLE_PASS original_player_attack_and_equal_time_control
