@@ -10,29 +10,54 @@
 | M5 | Original title screen through recompiled code | Complete |
 | M6 | Live input, original movement and SRAM persistence | Complete |
 | M7 | Genuine battles, audio, original Save/Continue | Accepted locally on Windows |
-| M8 | Fully playable native release | Candidate implementation prepared; final testing/ending proof deferred |
+| M8 | Fully playable native release | In progress: complete native build and later Sea World checkpoints verified; ending unproven |
 
 Active branch: `work/recomp-m8`. Historical recovery branches are immutable.
 M7 restore remains `3bb1e18170fc928f372f9cc72cc433d85c0666ca`.
 Do not create an accepted M8 result/restore before full-game validation.
 
-## Current implementation pass (2026-10-22)
+## Current verified evidence (2026-10-23)
 
-The user asked to finish implementation and leave testing for later.
-The new `recomp/player` target supplies a production-only Windows entry point,
-complete 255-bank AOT coverage, normal launch by default, Unicode save paths,
-profiles, native save locking/backups and read-only failure diagnostics.
-Original cartridge execution, CPU timing, renderer and APU logic are retained.
+Testing resumed after the user's earlier implementation-only request.
+Hosted runners now work; the old pre-run infrastructure failures are history.
 
-Host SRAM persistence now uses temporary-file write/flush/replacement instead
-of truncating the current file first. A build-only candidate script/manual
-workflow creates isolated source snapshots, complete native builds, manifests
-and English packages without running the game or any tests. Packages are
-explicitly UNTESTED and contain no user/acceptance saves.
+- Run `39836316030`, source `697647033b4ce6b00dd8e11759cb85e1ae469a65`:
+  complete 255-ROMX Windows development executable built; retained development
+  suite and handoff completed successfully. Device-dependent audio skips are
+  not physical-audio passes. Keep the actual native-results.xml report.
+- Run `39840204359`, source `bfc591146659964740f6958add5f8e8b8ed14d5f`:
+  actual Windows SRAM filesystem contracts, independent production-player
+  build and real CLI/Unicode-profile/window/save-lock startup checks passed.
+- Run `39846303155`: the exact tested development EXE passed original Sea
+  World arrival, a field battle/recruitment, Journal and fresh Continue.
+- Run `39876912500`, source `8fc6e64cca83fd63a99f8b3544e3992c304d25cd`:
+  both that unchanged route and a new 8299-frame village/inn route passed on
+  Windows. Enemy HP 19->0, farm recruitment, healing to 60/44/32 HP, exact
+  Journal and fresh Continue are asserted. All 154 checked persistent bytes
+  across seven occupied active/farm creature records survived loading.
 
-**This pass has not built the new Windows player or run tests.** It does not
-certify later worlds, every command, the ending or complete M8. Instructions:
-`RELEASE_CANDIDATE.md`; deferred checks: `handoff/M8_TEST_LATER.md`.
+The validated source branches are integrated without changing runtime code,
+ROM banks, old acceptance constants or original controller fixtures. See
+`handoff/M8_INTEGRATION_2026-10-23.md` for source/run boundaries and
+`handoff/M8_SEA_WORLD_2026-10-23.md` for reproducible later checkpoints.
+The latest Windows-verified village Journal is
+`acf128eeeb75c5cb130c58bf692f39eb20c2129306bcb647bde784e7a14a770a`.
+
+These results do not prove a Sea World boss, subsequent worlds or the ending.
+No full M8 acceptance or final release is claimed. The integration itself is
+source/test/document consolidation, not a new execution of the complete suite.
+
+## Production implementation
+
+`recomp/player` supplies a production-only Windows entry point, complete
+255-bank AOT coverage, normal launch, Unicode save paths, profiles, save
+locking/backups and read-only failure diagnostics. Original cartridge
+execution, CPU timing, rendering and APU logic are retained.
+Host SRAM uses temporary-file write/flush/replacement instead of truncating
+an existing save. The build-only candidate script creates isolated snapshots,
+complete builds, manifests and English packages. Candidate packages remain
+marked UNTESTED because full-game acceptance is still open; their startup
+validation above does not silently promote them to a finished release.
 
 ## Retained historical acceptance
 
@@ -43,26 +68,15 @@ M5: frame 1921, hash `0x49c67a53ef4f8a80`, 30 stable frames, mode 5:0.
 M6 movement: `0xd926fc62969f3bb4 -> 0xea72400372e2d1c5`, 69 WRAM changes;
 exact 32 KiB SRAM round trip and real Windows input/window checks passed.
 
-M7's twelve local gates passed twice on 2026-10-18. Hosted CI was unavailable;
-local Windows acceptance was explicitly authorized. A genuine battle is mode
-4, not menu mode 2. Original P1 attack: enemy HP 9->6, Slash HP 25->20 in 282
-frames; equal-time no-input control unchanged. Original Journal changed 317
-SRAM bytes; fresh Continue restored 304 party/inventory bytes and eleven
-quest/location fields. SRAM FNV: `0x81daa8e19c019ce4`. Timed original audio:
-2,138,926 sample values, hash `0x03b50ed7ed79bda0`. Full record:
-`milestones/M7_RESULT.md`. These old results are not new-source test results.
+M7's twelve local gates passed twice on 2026-10-18 under explicitly authorized
+local Windows validation. A genuine battle is mode 4, not menu mode 2.
+Original attack: enemy HP 9->6, Slash HP 25->20 in 282 frames; equal-time
+no-input control unchanged. Journal changed 317 SRAM bytes; fresh Continue
+restored 304 party/inventory bytes and eleven quest/location fields.
+SRAM FNV: `0x81daa8e19c019ce4`. Timed original audio: 2,138,926 sample values,
+hash `0x03b50ed7ed79bda0`. Full record: `milestones/M7_RESULT.md`.
 
-## Recorded M8 development progress
-
-The full chronological record is `handoff/M8_WORKING.md`. Original Oasis,
-dam/CurseLamp victories, recruitment/farm operations, Journal checkpoints,
-feeding and host-audio corrections were recorded there. Kids Class was won
-through its three original rounds and PirateKey was obtained. The 255-ROMX
-build at that checkpoint passed all 18 local development checks; no hosted
-CI/full-ending result was claimed. Later worlds/ending remain unproven.
-
-Safe-resume tooling was subsequently committed, with its local mocked-process
-checks and blocked hosted validation documented in
-`handoff/M8_SAFE_RESUME_VALIDATION_2026-10-22.md`. The source implementation
-pass above changes host/player/release code only; all existing gameplay
-fixtures, exact acceptance constants and restore points remain untouched.
+The historical M8 chronology is `handoff/M8_WORKING.md`: Oasis, dam/CurseLamp,
+recruitment/farm, feeding/audio and Kids Class/PirateKey. Earlier local passes
+and earlier blocked hosted attempts remain historical records, not statements
+about the newest test run. Current verified progress is summarized above.
