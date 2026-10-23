@@ -1,3 +1,5 @@
 # These pinned P1 transcripts are byte-hashed across Linux and Windows.
 # Preserve their committed LF bytes without changing any controller input.
 m8_pirate*_p1.txt text eol=lf
+m8_farm_dancer*_p1.txt text eol=lf
+m8_sea_dancer_alive_p1.txt text eol=lf

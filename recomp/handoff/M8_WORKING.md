@@ -1,5 +1,10 @@
 # M8 working record (not an acceptance/completion record)
 
+Current continuation (2026-10-23): the user requested M7 review and M8 work
+for the whole game. The historical stop/continue choice below is answered.
+See `M8_DANCER_2026-10-23.md` for the newly replayed farm exchange and living
+Sea World village Journal; remaining worlds and ending still need validation.
+
 Approved scope: finish the original game through ending/credits, retain every
 M1-M7 regression, verify later original Saves and fresh Continue, and package
 the final native Windows release. Only repository/original game output may

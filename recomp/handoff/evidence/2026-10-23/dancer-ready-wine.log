@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x9f467a7ccfef8b9d source=Z:/workspace/scratch/m8-review/dancer-chain-01/ready/seed-copy.sav
+M8_STATE frame=7275 mode=1:0 world=0 region=1,2 pos=112,48 party=3 selector=0x1c sram=0x8a282ecc3ebebc62 screen=0xd50ea4adb7d5436e image=m8_0.bmp
+M8_AUDIO frame=7275 sample_values=8071674 stereo_frames=4035837 nonzero=6793241 peak=29184 hash=0xb06a727ed8d52d9a
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_farm_dancer_ready_p1.txt
+M8_SEED sram=0x8a282ecc3ebebc62 source=Z:/workspace/scratch/m8-review/dancer-chain-01/ready/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=0 region=1,2 pos=112,48 party=3 selector=0x0 sram=0x8a282ecc3ebebc62 screen=0x4fc416891046ae06 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717166 stereo_frames=1358583 nonzero=1562611 peak=29184 hash=0x971c92ec40f70c62
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/dancer-chain-01/ready/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_farm_dancer_ready_p1.txt ending_credits=NOT_YET_PROVEN

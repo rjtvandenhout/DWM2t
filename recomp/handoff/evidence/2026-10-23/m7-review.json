@@ -1,0 +1,41 @@
+{
+  "baseline_tests": {
+    "name": "Win32-MSBuild",
+    "tests": "18",
+    "failures": "0",
+    "disabled": "0",
+    "skipped": "2",
+    "hostname": "runnervmuzpk7",
+    "time": "382",
+    "timestamp": "2026-10-22T19:37:49"
+  },
+  "m7": [
+    {
+      "name": "M7_audio",
+      "result": "run"
+    },
+    {
+      "name": "M7_intro_p1",
+      "result": "run"
+    },
+    {
+      "name": "M7_party_p1",
+      "result": "run"
+    },
+    {
+      "name": "M7_battle",
+      "result": "run"
+    },
+    {
+      "name": "M7_save_continue",
+      "result": "run"
+    }
+  ],
+  "local": {
+    "audio": 0,
+    "intro": 0,
+    "party": 0,
+    "battle": 0,
+    "save_continue": 0
+  }
+}

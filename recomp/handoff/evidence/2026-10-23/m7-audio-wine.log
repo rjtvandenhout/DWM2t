@@ -1,0 +1,4 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M7_AUDIO_RESULT sample_values=2138926 stereo_frames=1069463 nonzero=1074861 peak=19200 hash=0x3b50ed7ed79bda0 NR50=0x77 NR51=0x33 NR52=0xf3
+M7_AUDIO_PASS original_game_apu_writes_produced_deterministic_pcm
