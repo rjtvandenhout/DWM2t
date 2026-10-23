@@ -55,7 +55,7 @@ native-Windows report also confirms all twelve M1-M7 checks. New controller-only
 routes retrieve Eggplaton through original farm menus and return to the Sea
 World village with all three members alive, preserving seven owned records.
 All three new Journal/fresh-Continue checkpoints pass the complete local Wine
-chain. See `handoff/M8_DANCER_2026-10-23.md` for exact hashes and limitations.
+chain and native Windows run `39890528113` at commit `67d991e`. See `handoff/M8_DANCER_2026-10-23.md` for exact hashes and limitations.
 This does not complete the mermaid quest, Sea World, later worlds or the ending.
 
 ## Production implementation
