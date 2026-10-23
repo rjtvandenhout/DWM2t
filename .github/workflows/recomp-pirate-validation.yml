@@ -43,11 +43,28 @@ jobs:
             --route recomp/tests/m8_pirate_battle_p1.txt `
             --output "$env:RUNNER_TEMP/pirate-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Preserve exact battle, save and fresh-Continue evidence
+      - name: Continue the original route through village inn and a later Journal
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_pirate_village.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --seed "$env:RUNNER_TEMP/pirate-evidence/native/checkpoint.sav" `
+            --route recomp/tests/m8_pirate_village_p1.txt `
+            --output "$env:RUNNER_TEMP/village-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve original entry battle, save and fresh-Continue evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: DWM2t-Sea-World-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/pirate-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Preserve village, farm and later Journal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Sea-Village-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/village-evidence/**
           if-no-files-found: warn
           retention-days: 30
