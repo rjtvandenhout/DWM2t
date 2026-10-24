@@ -64,5 +64,27 @@
     "source_bmp_sha256": "e37f5e1a8ce995820f55fc6453fed6ddb90466ad2037070d61e6d78cd61b731b",
     "png_sha256": "21e9a62d17c6131ca6224efc6d148cbb684a3717b5c6e7056c380307c09a19b8",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "captain-first-attempt.png",
+    "caption": "First captain attempt: CaptDead with two escorts; this attempt later ended in defeat.",
+    "source_session": "sea-quest-20",
+    "source_bmp": "m8_792.bmp",
+    "frame": 74478,
+    "native_state": "M8_STATE frame=74478 mode=4:0 world=68 region=0,0 pos=96,48 party=3 selector=0x4a sram=0x57977fe98ad2b8fa screen=0x7f3dc9894c30ae5a image=m8_792.bmp",
+    "source_bmp_sha256": "b76b225fbbd21362caf94c1e94694720625e2817f76b63254f09dab1bea284b3",
+    "png_sha256": "c29c0c6d821cc34f8f9f6daccd7521951a1c0ec15c04273318f6e5b42f837222",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "captain-defeat.png",
+    "caption": "The original game reports that the party was wiped out. This is a recorded defeat.",
+    "source_session": "sea-quest-20",
+    "source_bmp": "m8_1004.bmp",
+    "frame": 80763,
+    "native_state": "M8_STATE frame=80763 mode=4:0 world=68 region=0,0 pos=96,48 party=3 selector=0x4a sram=0x57977fe98ad2b8fa screen=0xad420b4ff4fd587e image=m8_1004.bmp",
+    "source_bmp_sha256": "4d40013d3083006fc9b93215ca666965c72ba1f3037634a1cdde0b430eefe2d5",
+    "png_sha256": "a56fafdc1af3ec4d622d2894baeb4aea0e30788602f1f2feb3942a9ef5f44b4e",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

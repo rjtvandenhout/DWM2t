@@ -23,19 +23,21 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest story checkpoint: Kids Class won, PirateKey earned, original GreatLog
-Journal and fresh Continue verified. The 255-bank native EXE passes all 18
-combined local checks INCLUDING the new tournament replay. Story progression
-is stopped at this milestone pending the user's explicit continue/stop choice.
-See the final chronological section below; older stopping-point notes are history.
+Latest Windows-validated story checkpoint: HoodSquid defeated and recruited,
+fisherman's story complete, mermaid palace reached, original Journals and fresh
+Continue verified in run 40102961243. The subsequent stronger-party replay and
+first captain defeat/recovery are recorded in `M8_PROGRESS_2026-10-24.md`.
+Original breeding remains pending its story unlock. The remaining worlds,
+ending/credits and final release acceptance are still outstanding.
 
 ## Work sequence
 
-User-approved continuation rule: after completing a world or proving that an
-important boss fight fully works, summarize the evidence and ask whether to
-continue immediately or stop for now. Wait for the user's explicit decision
-before progressing beyond that milestone. Smaller tooling/build checkpoints
-do not require a pause. Keep all further project-authored text in English.
+Current authorization: continue through the whole original game and finish M8.
+The user's later whole-game and "continue and finish" instructions supersede
+the historical per-world stopping choices retained in the chronological record.
+Keep progress reports and important screenshots current. The user also requested
+breeding stronger monsters while reserving Squiz until his story role is complete.
+Keep all further project-authored text in English.
 
 1. Extend finite P1-only route support for complete battles and later Continue
    without assuming the introductory quest flags are still unchanged.

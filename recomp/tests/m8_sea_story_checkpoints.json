@@ -7,16 +7,58 @@
       "route_sha256": "1a0e74468bac6f3b8f498b272017580cf7ee18456abef74dac74692978caf7e7",
       "save_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
       "frames": 64544,
-      "party": [9, 4, 1],
-      "levels": [12, 12, 13],
-      "hp": [88, 52, 0],
-      "status": [0, 0, 128],
-      "owned": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-      "species": {"9": 335},
+      "party": [
+        9,
+        4,
+        1
+      ],
+      "levels": [
+        12,
+        12,
+        13
+      ],
+      "hp": [
+        88,
+        52,
+        0
+      ],
+      "status": [
+        0,
+        0,
+        128
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "species": {
+        "9": 335
+      },
       "gold": 0,
-      "location": [51, 0, 0, 32, 96],
-      "set_flags": [102, 109, 110, 120],
-      "clear_flags": [111]
+      "location": [
+        51,
+        0,
+        0,
+        32,
+        96
+      ],
+      "set_flags": [
+        102,
+        109,
+        110,
+        120
+      ],
+      "clear_flags": [
+        111
+      ]
     },
     {
       "name": "mermaid-palace",
@@ -24,16 +66,118 @@
       "route_sha256": "3f8331f25f56f6a78776fdff72f0c5281118c23ef322e176c78231c1c2181f9d",
       "save_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
       "frames": 93727,
-      "party": [9, 4, 5],
-      "levels": [12, 12, 8],
-      "hp": [89, 68, 21],
-      "status": [0, 0, 0],
-      "owned": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-      "species": {"9": 335},
+      "party": [
+        9,
+        4,
+        5
+      ],
+      "levels": [
+        12,
+        12,
+        8
+      ],
+      "hp": [
+        89,
+        68,
+        21
+      ],
+      "status": [
+        0,
+        0,
+        0
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "species": {
+        "9": 335
+      },
       "gold": 0,
-      "location": [65, 0, 1, 112, 64],
-      "set_flags": [102, 109, 110, 111, 120],
+      "location": [
+        65,
+        0,
+        1,
+        112,
+        64
+      ],
+      "set_flags": [
+        102,
+        109,
+        110,
+        111,
+        120
+      ],
       "clear_flags": []
+    },
+    {
+      "name": "strong-party",
+      "seed_stage": "mermaid-palace",
+      "route": "m8_sea_strong_party_p1.txt",
+      "route_sha256": "e0cae6e494110553314e5bafea31398e8b800a2637a8e9e80810bdfca6d3c44e",
+      "save_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+      "frames": 58319,
+      "party": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        12,
+        11
+      ],
+      "hp": [
+        89,
+        69,
+        102
+      ],
+      "status": [
+        0,
+        0,
+        0
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "species": {
+        "9": 335
+      },
+      "gold": 0,
+      "location": [
+        0,
+        1,
+        2,
+        64,
+        64
+      ],
+      "set_flags": [
+        102,
+        109,
+        110,
+        111,
+        120
+      ],
+      "clear_flags": [
+        34
+      ]
     }
   ]
 }
