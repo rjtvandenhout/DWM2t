@@ -515,5 +515,38 @@
     "source_bmp_sha256": "110aa5b994cf4a683f6fc531bd5bf8b229a08da7ffae18f5cdf604ab0279454d",
     "png_sha256": "060ac251cd62b882d4f6f3d3b331081e6ec6d664b3ecf3b0d3992e37c1f0cd7a",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "westania-notice.png",
+    "caption": "Original palace notice invites performers to restore Lady Yuna's laughter.",
+    "source_session": "ice-quest-31",
+    "source_bmp": "m8_490.bmp",
+    "frame": 42724,
+    "native_state": "M8_STATE frame=42724 mode=1:1 world=90 region=1,0 pos=96,96 party=3 selector=0x68 sram=0x2d4db90828f182df screen=0x7796ba4f9be3fbf4 image=m8_490.bmp",
+    "source_bmp_sha256": "24631dd9c9c1ddfceb8233ea5d07ede55e946ec9626e2ae0b2eb6008746f5a94",
+    "png_sha256": "09550f47462afc58163e15e3b9341fd46c680f77c2c926606aa149b24a27ea6c",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "westania-performance.png",
+    "caption": "Cobi and the original monster party perform before Westania's king and Lady Yuna.",
+    "source_session": "ice-quest-31",
+    "source_bmp": "m8_594.bmp",
+    "frame": 50840,
+    "native_state": "M8_STATE frame=50840 mode=1:1 world=91 region=1,0 pos=64,64 party=3 selector=0x70 sram=0x2d4db90828f182df screen=0x284455c8122e7517 image=m8_594.bmp",
+    "source_bmp_sha256": "6b458a7dae584cf1c1ad69ff25c94cef6e046f1f2b2fde528244a04e3d534cf2",
+    "png_sha256": "c307d877319f75f0b84efb7e4112a13c5ba96cabd4a03e81fa00e54392879c80",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "westania-yuna-unresponsive.png",
+    "caption": "The king praises Cobi's act, but Lady Yuna remains unresponsive.",
+    "source_session": "ice-quest-31",
+    "source_bmp": "m8_611.bmp",
+    "frame": 54264,
+    "native_state": "M8_STATE frame=54264 mode=1:1 world=91 region=1,0 pos=64,64 party=3 selector=0x70 sram=0x2d4db90828f182df screen=0x5473a3cc1028e6a1 image=m8_611.bmp",
+    "source_bmp_sha256": "37a0ca4fba7fbf82307b25f44c8ad24cdf5b6d5b90a9617fd2db9d85e20c1ecc",
+    "png_sha256": "812c80c46db44f47698c9daa68619aee2d7c00e5e10945ee8a9887622e66f624",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

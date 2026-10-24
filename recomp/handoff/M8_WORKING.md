@@ -58,6 +58,27 @@ combat-mode/full-HP witnesses without changing any controller input or Save
 hash. Native Windows acceptance of stages fourteen through seventeen is pending.
 The live continuation has crossed the reopened border and reached Weston.
 
+An eighteenth route reads Westania's palace notice, follows Kameha's arrival,
+gains admission and plays the original performance before the king and Lady
+Yuna. Yuna remains unresponsive. Its original town Journal independently
+replays under Wine to SHA256
+`7324097161189f30ada19a2577750b36b98bafe14a7e67bebf5d87566bff0f8c`;
+all thirteen monsters persist, with Totum/Liset/Slash level 19/19/17, HP
+86/58/109, status 0/0/0 and 945G. The action point for the notice is original
+world 90, region 1,0, position 96,96, facing Up. Bank 135's original field
+event tables describe non-NPC interactions and map-entry scenes; read-only
+inspection is useful alongside the NPC and map guides.
+
+Seventeen-stage Windows run 40130993635 at
+`f37cbcc4992605a747977376975dec499135ce98` launched successfully and reached
+the story-chain step. The environment's temporary GitHub credential then
+began returning HTTP 401. Its final result/artifacts have not been retrieved;
+latest independently audited Windows acceptance remains thirteen stages.
+GitHub reconnection has been requested asynchronously; local work continues.
+The live continuation has rested and reached Estria. The current ground and
+WaterCall planners cannot reach the isolated lake-tower entrance from the
+western region; no terrain or game state has been modified to bypass it.
+
 Ice World completion, the remaining worlds, ending/credits and final release
 acceptance are outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
