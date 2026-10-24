@@ -41,8 +41,15 @@ read-only observations alone are omitted. Explicit LF checkout attributes
 preserve the byte hashes on Windows.
 
 Compatibility evidence: evidence/2026-10-24/party-preparation-wine.json and the
-two unmodified native logs. Both native exits are zero. Native Windows execution
-of these two routes is a separate check and has not yet been claimed here.
+two unmodified native logs. Both native exits are zero.
+
+Native Windows run 40098604498 at commit 574865ee94d022acbc878d91432480545f84cb8f
+also PASSED, including all unchanged Sea World/dancer routes and both new routes.
+The downloaded artifact Journals were independently hashed again and match Wine.
+Report: evidence/2026-10-24/party-preparation-windows.json. Artifact 12562252552,
+130174 bytes; archive SHA256
+bee975476c8093c87cdf80007ddb887cfd56c7855f6ac20d80654a25a07e23a5.
+PR ROM verification run 40098607722 passed both build paths.
 The existing pinned Windows workflow includes this chain after the previous
 Sea World/dancer routes and uploads its small evidence artifact. It reuses the
 validated EXE rather than recompiling identical game code.

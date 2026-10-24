@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stages": [
+    {
+      "stage": "support",
+      "frames": 40825,
+      "route_sha256": "0f320ec0fb9ea82740d01c7d20f124506abffc1f00a38c48cb56084afce49b48",
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\party-preparation-evidence\\support\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_farm_support_p1.txt",
+        "D:\\a\\_temp\\party-preparation-evidence\\support\\native"
+      ],
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "c92dda4a93ca169af62704e17b33bb9aef3f75f1dc5779ed3e70a67dacf92249",
+      "active_party_records": [
+        0,
+        1,
+        4
+      ],
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "hp": [
+        60,
+        44,
+        54
+      ],
+      "gold": 0,
+      "owned": 8,
+      "additional_persistent_creature_bytes": 256
+    },
+    {
+      "stage": "training",
+      "frames": 395984,
+      "route_sha256": "7119278fe4fa7feae2df9020c1ec88d6a803d2d0c55e58207b983473066e8bc0",
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\party-preparation-evidence\\training\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_gate_training_p1.txt",
+        "D:\\a\\_temp\\party-preparation-evidence\\training\\native"
+      ],
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03",
+      "active_party_records": [
+        0,
+        1,
+        4
+      ],
+      "levels": [
+        10,
+        12,
+        12
+      ],
+      "hp": [
+        97,
+        60,
+        69
+      ],
+      "gold": 40,
+      "owned": 9,
+      "additional_persistent_creature_bytes": 288
+    }
+  ]
+}
