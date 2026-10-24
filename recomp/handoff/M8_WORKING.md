@@ -23,16 +23,16 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated story checkpoint: captain defeated and MoonRock obtained,
-original Journals and fresh Continue verified in run 40109654218. The chain also
-retains HoodSquid, the fisherman story, mermaid palace, party preparation and
-the original first captain defeat/recovery. Ongoing lighthouse and volcano
-progress is recorded with screenshots in `M8_PROGRESS_2026-10-24.md`.
-Sea World treasure discovery has now opened the shrine through original flag
-0x22; exact local replay and fresh Continue passed. Original breeding has produced
-an Octokid +1 egg after Squiz completed his story role; hatching is in progress.
-The remaining worlds,
-ending/credits and final release acceptance are still outstanding.
+Latest Windows-validated story checkpoint: original Sea World completion,
+Squiz/Phes breeding after Squiz's story role, and Liset (Octokid +1) trained to
+level 10 with HealMore, Increase, SpeedUp and MPass. All nine story checkpoints
+passed native Windows run 40115888033 with exact Journals and fresh Continue.
+The subsequent C Class retry won with every member alive; its original Journal,
+Arena class 2 and finite replay passed locally. Windows validation of that later
+route is pending. An ArmyAnt harbor side quest has also awarded a TinyMedal;
+IceKey discovery and the remaining worlds, ending/credits and final release
+acceptance remain outstanding. Screenshots and exact provenance are in
+`M8_PROGRESS_2026-10-24.md`.
 
 ## Work sequence
 
