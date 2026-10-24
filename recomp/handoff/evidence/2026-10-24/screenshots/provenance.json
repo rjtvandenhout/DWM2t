@@ -581,5 +581,38 @@
     "source_bmp_sha256": "90b8f3ce43ca89de14d9dc98155925cd0c5649f4d657369f3eb29c0f6883bb0c",
     "png_sha256": "868abdc79eeca63538e4d9683af0c3b9e271cb2904939983344d2d54b843eedd",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "sleep-herb-found.png",
+    "caption": "Original SleepHerb found by examining the mountain flower.",
+    "source_session": "ice-quest-33",
+    "source_bmp": "m8_234.bmp",
+    "frame": 31014,
+    "native_state": "M8_STATE frame=31014 mode=1:1 world=98 region=1,0 pos=32,48 party=3 selector=0x9c sram=0xd672928d8fb21217 screen=0x96b5d30edaf770a6 image=m8_234.bmp",
+    "source_bmp_sha256": "6fe820f05005dfa3ce6b581c7cfb31936d82c2230c728bd05c8110697277ef0b",
+    "png_sha256": "b62da7bd29e8a33706558909f4eca64171d23476d5815b95cd493fc78d3a12d0",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "goathorn-battle.png",
+    "caption": "Original 850 HP GoatHorn battle after using SleepHerb for Queen Helen.",
+    "source_session": "ice-quest-33",
+    "source_bmp": "m8_456.bmp",
+    "frame": 50468,
+    "native_state": "M8_STATE frame=50468 mode=4:0 world=97 region=0,0 pos=64,64 party=3 selector=0xaa sram=0x1ec003dd6483c68d screen=0x892722a8751bc659 image=m8_456.bmp",
+    "source_bmp_sha256": "d23469a21c43730b3f490e4b434facec3618efb5f3fcc1b36cb111f66256f914",
+    "png_sha256": "321ec442d3acc484eaa1bc8125abf2f54a872315a25b32be45d698e076f9350a",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "helen-awake.png",
+    "caption": "Queen Helen awakens after GoatHorn is defeated.",
+    "source_session": "ice-quest-33",
+    "source_bmp": "m8_803.bmp",
+    "frame": 62057,
+    "native_state": "M8_STATE frame=62057 mode=1:1 world=97 region=0,0 pos=64,64 party=3 selector=0xaa sram=0x56b18557c9403801 screen=0x550d06aaca3d74cc image=m8_803.bmp",
+    "source_bmp_sha256": "8f0b563f83eb390c51915f2cb428018b881abf4610c309135b2df0dfe8a93f0e",
+    "png_sha256": "4b10e9bd63878d680127d62623a23e9ba4dd6437930123325e96f6d969eb83d4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

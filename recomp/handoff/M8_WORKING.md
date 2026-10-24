@@ -85,8 +85,15 @@ pass to exact Journal SHA256
 `c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a`.
 All thirteen owned monsters persist; Totum/Liset/Slash are level 20/19/17,
 HP 74/64/140, status 0/0/0, with 935G and flags 0x97–0x9D. Stages eighteen
-and nineteen await Windows acceptance. The live continuation has obtained the
-SleepHerb on the mountain and is returning to Queen Helen.
+through twenty await Windows acceptance. The twentieth route obtains SleepHerb,
+defeats 850 HP GoatHorn with all three alive, restores Helen and rests. Its
+original Journal and fresh Continue independently replay under Wine to SHA256
+`bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7`.
+The party is level 21/20/18, full HP 119/79/143, with thirteen owned monsters,
+905G and late flags 0x1E1/0x1E2/0x1F1. The finite route includes the original
+unsuccessful save attempt during movement and later successful settled save;
+no runtime/game-state workaround was used. The live continuation has returned
+to the spring and started the three-enemy Sky Shield confrontation.
 
 Ice World completion, the remaining worlds, ending/credits and final release
 acceptance are outstanding. Screenshots and exact provenance are in
