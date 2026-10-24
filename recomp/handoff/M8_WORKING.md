@@ -28,10 +28,13 @@ Squiz/Phes breeding after Squiz's story role, and Liset (Octokid +1) trained to
 level 10 with HealMore, Increase, SpeedUp and MPass. All nine story checkpoints
 passed native Windows run 40115888033 with exact Journals and fresh Continue.
 The subsequent C Class retry won with every member alive; its original Journal,
-Arena class 2 and finite replay passed locally. Windows validation of that later
-route is pending. An ArmyAnt harbor side quest has also awarded a TinyMedal;
-IceKey discovery and the remaining worlds, ending/credits and final release
-acceptance remain outstanding. Screenshots and exact provenance are in
+Arena class 2 and finite replay passed locally and on Windows.
+The linked ArmyAnt/MadGopher trades
+awarded a TinyMedal and IceKey; the original two-member trade Journal and
+three-member Norden Journal both pass exact local replay and fresh Continue.
+Thirteen-stage Windows run 40121439217 passed; all thirteen archived Journals
+were independently downloaded and exactly match the local results. Ice World completion,
+the remaining worlds, ending/credits and final release acceptance are outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
 
 ## Work sequence
