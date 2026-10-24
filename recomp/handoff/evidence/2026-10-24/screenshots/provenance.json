@@ -119,5 +119,49 @@
     "source_bmp_sha256": "9a5a526ff0389a6debb86a34a272621e87c15f292f3e7add6f501d54dc4f9e06",
     "png_sha256": "805e027bbe207a2068e8b88ac07e17750c838453b4d42908b40d2044d7b43f47",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "sea-treasure-return.png",
+    "caption": "Original Sea World treasure sequence returned the living party to Warubou and unlocked Starry Shrine (flag 0x22).",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_462.bmp",
+    "frame": 26704,
+    "native_state": "M8_STATE frame=26704 mode=1:0 world=5 region=1,0 pos=80,48 party=3 selector=0x53 sram=0x48ba6bcad736fe8d screen=0xfa90b45e4e3dc5f6 image=m8_462.bmp",
+    "source_bmp_sha256": "0c12514ba3bb6bbf0b4e7a22b667b7bc4af07c62653f7aeef980df59458c6666",
+    "png_sha256": "b6bf7c886052584ee4fb56ea215aea0d50f744b364bdf28eacf420849218c6e3",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "breeding-preview.png",
+    "caption": "Original shrine preview: Squiz and Phes produce Octokid +1 after Sea World completion.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_521.bmp",
+    "frame": 32595,
+    "native_state": "M8_STATE frame=32595 mode=1:1 world=13 region=1,0 pos=64,64 party=3 selector=0x6a sram=0xb232d105cf6029c5 screen=0xf68dd38cc0e28dc2 image=m8_521.bmp",
+    "source_bmp_sha256": "c94f4a398651b45fcd653c5e2d47d7ffa2f24f723742e3f1aad857c794914d59",
+    "png_sha256": "0168311d7120ef4a205bebf8b0d60f43fee24ec83998cd98a17825bc616d9db8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "breeding-egg.png",
+    "caption": "The original breeding ceremony awarded an Octokid egg.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_541.bmp",
+    "frame": 35572,
+    "native_state": "M8_STATE frame=35572 mode=1:1 world=13 region=1,0 pos=64,64 party=1 selector=0x6a sram=0x60bddf8e5e9a4997 screen=0xf417b5575e19b8a image=m8_541.bmp",
+    "source_bmp_sha256": "a9f0a52b5d1507f88d003820db0c70557cbfb0059757ae1d6f44f88a69ba8cfc",
+    "png_sha256": "534b30ef64db4e9fd853885860845820b00f0c40dddf6c97e28f20f34cadfed3",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "breeding-hatch-fee.png",
+    "caption": "The original shrine requests 20 G to hatch the new Octokid egg.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_566.bmp",
+    "frame": 36970,
+    "native_state": "M8_STATE frame=36970 mode=1:1 world=13 region=1,0 pos=64,64 party=1 selector=0x6a sram=0x60bddf8e5e9a4997 screen=0xe159849f6be9f774 image=m8_566.bmp",
+    "source_bmp_sha256": "9c65d83c377337f2202c866eb4a0d172e5a386a13c08512c59a7bf0804f2da2c",
+    "png_sha256": "28e71a7b1c92e077be7277fac24517b14213dc1613f958082cbc8e965defcd3e",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

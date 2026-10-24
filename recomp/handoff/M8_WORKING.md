@@ -28,7 +28,10 @@ original Journals and fresh Continue verified in run 40109654218. The chain also
 retains HoodSquid, the fisherman story, mermaid palace, party preparation and
 the original first captain defeat/recovery. Ongoing lighthouse and volcano
 progress is recorded with screenshots in `M8_PROGRESS_2026-10-24.md`.
-Original breeding remains pending its story unlock. The remaining worlds,
+Sea World treasure discovery has now opened the shrine through original flag
+0x22; exact local replay and fresh Continue passed. Original breeding has produced
+an Octokid +1 egg after Squiz completed his story role; hatching is in progress.
+The remaining worlds,
 ending/credits and final release acceptance are still outstanding.
 
 ## Work sequence

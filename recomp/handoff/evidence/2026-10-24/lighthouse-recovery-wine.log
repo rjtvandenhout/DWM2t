@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xf21561e6abca90c1 source=Z:/workspace/scratch/m8-review/sea-quest-21-seed.sav
+M8_STATE frame=110161 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x5 sram=0x2a3023c1c025c87f screen=0x61dc48cb17bcea42 image=m8_0.bmp
+M8_AUDIO frame=110161 sample_values=121296396 stereo_frames=60648198 nonzero=113429629 peak=32768 hash=0x2a6d24b2cb9abe6a
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_lighthouse_recovery_p1.txt
+M8_SEED sram=0x2a3023c1c025c87f source=Z:/workspace/scratch/m8-review/lighthouse-recovery-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0xe4bad36930fc1bbf screen=0xbd38a40c2041a05e image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717680 stereo_frames=1358840 nonzero=1562509 peak=29184 hash=0x2cd5c12d1f2e6d3a
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/lighthouse-recovery-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_lighthouse_recovery_p1.txt ending_credits=NOT_YET_PROVEN

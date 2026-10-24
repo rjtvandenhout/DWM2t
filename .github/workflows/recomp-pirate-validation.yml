@@ -73,7 +73,7 @@ jobs:
             --training-route recomp/tests/m8_gate_training_p1.txt `
             --output "$env:RUNNER_TEMP/party-preparation-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Verify original HoodSquid, fisherman story and mermaid-palace Journals
+      - name: Verify original Sea World story, shrine unlock and later Journals
         shell: pwsh
         run: |
           python recomp/tools/test_m8_story_checkpoints.py `
