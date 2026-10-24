@@ -641,5 +641,71 @@
     "png_sha256": "f62be3af7c63cf3ffe37a2e631a48889a7b8ce06ce8696f8468614b300b401cc",
     "evidence": "../production-late-gui-wine.json",
     "pixels": "Original player framebuffer at integer 4x scale (640x576), lossless X11 window capture; no retouching. Diagnostic frame counters are unavailable in the production player."
+  },
+  {
+    "file": "spring-three-enemies.png",
+    "caption": "Original spring battle: ArcDemon, GoatHorn and ArcDemon.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_240.bmp",
+    "frame": 24697,
+    "native_state": "M8_STATE frame=24697 mode=4:0 world=73 region=0,0 pos=64,64 party=3 selector=0x14 sram=0x4de1b9d213355a29 screen=0xc403834e7b2c5de0 image=m8_240.bmp",
+    "source_bmp_sha256": "814f2a2c948225d6c3774ffb541ce9c1d730681ef7f236a485333adde1369b6e",
+    "png_sha256": "fd911aae7cd4521df2f8abc7c5270c69bab7c230cf333a4acb816046bbfbed87",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "spring-first-defeat.png",
+    "caption": "Warubou recovers the party after the first original spring defeat.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_628.bmp",
+    "frame": 33754,
+    "native_state": "M8_STATE frame=33754 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0x5 sram=0x1db608c86bd28014 screen=0xfe2b2b5eed3b908b image=m8_628.bmp",
+    "source_bmp_sha256": "6a16773f00d42c93f013b4796322254f0896a85ff78c7b6d7cf9781cfeb2b4ab",
+    "png_sha256": "c6773e73852c94c4597ee9a26927d9b4c8188f1f77399f751e65826d52de500d",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "spring-second-defeat.png",
+    "caption": "Warubou recovery after the second original spring defeat.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_1353.bmp",
+    "frame": 65374,
+    "native_state": "M8_STATE frame=65374 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0x5 sram=0xf90609350bc75c6a screen=0xdd03e73f325488db image=m8_1353.bmp",
+    "source_bmp_sha256": "f3598f3dcea4e06891604e623cb717a45654a4e9063c5fdf3fb1dba20013f785",
+    "png_sha256": "fbd7fa2bb9af4e17894a3ad104f21fd0704191a57885a20d94513d8a23867903",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "raygigas-breeding-preview.png",
+    "caption": "Original Totum and Nyar preview produces RayGigas +1.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_1512.bmp",
+    "frame": 77302,
+    "native_state": "M8_STATE frame=77302 mode=1:1 world=13 region=1,0 pos=64,64 party=3 selector=0x6a sram=0xd9ed7e6845c23ef screen=0xa27b24fae1ba1742 image=m8_1512.bmp",
+    "source_bmp_sha256": "e94a135fc6809a31ac506f6b2aa2ff0d0af79eab72f90b40a90f48e3e3b744e6",
+    "png_sha256": "ef6398c26512c684dbe10212b567c4014f2ba8badc5d999370512b9940436e81",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "raygigas-hatched.png",
+    "caption": "Original RayGigas +1 hatches from Totum and Nyar.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_1546.bmp",
+    "frame": 79879,
+    "native_state": "M8_STATE frame=79879 mode=1:1 world=20 region=0,0 pos=224,0 party=2 selector=0x17 sram=0x8c32ed4537d87e67 screen=0x61546e5ef6db348a image=m8_1546.bmp",
+    "source_bmp_sha256": "72a6627339dd4987d647095a7f4944a22719f538108192639ef69c547077c8d1",
+    "png_sha256": "a4ada08c9753c6577820d1050229254d1f96707c0da30ea6876f65e7484069af",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-name.png",
+    "caption": "The game names the genuinely hatched RayGigas +1 Derzo.",
+    "source_session": "ice-quest-35",
+    "source_bmp": "m8_1560.bmp",
+    "frame": 81010,
+    "native_state": "M8_STATE frame=81010 mode=1:1 world=13 region=1,0 pos=64,64 party=2 selector=0x6a sram=0x8c32ed4537d87e67 screen=0x238ef2c381dac8f3 image=m8_1560.bmp",
+    "source_bmp_sha256": "93a82221284620e6d6fac1d0df1a5e0c13538526ab7c62df5b5586320cd31d53",
+    "png_sha256": "5def2f5cded80c32e831b44ae69bb498cdaf860ac3176f5bf8b4ec23be949928",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

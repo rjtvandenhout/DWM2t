@@ -1,0 +1,66 @@
+name: Later Journal on pinned production Windows player
+
+on:
+  workflow_dispatch:
+    inputs:
+      story_run_id:
+        description: Successful story run containing the exact RayGigas birth Journal
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  production-late-journal:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse the pinned production package
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 39840204359
+          name: DWM2t-player-candidate-bfc591146659964740f6958add5f8e8b8ed14d5f
+          path: ${{ runner.temp }}/production-package
+      - name: Reuse a genuine later original Journal
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.story_run_id }}
+          name: DWM2t-Sea-Story-native-evidence-${{ inputs.story_run_id }}-1
+          path: ${{ runner.temp }}/story-evidence
+      - name: Unpack and validate the original package manifest
+        shell: pwsh
+        run: |
+          Expand-Archive -LiteralPath "$env:RUNNER_TEMP/production-package/DWM2t-M8-UNTESTED-bfc591146659.zip" -DestinationPath "$env:RUNNER_TEMP/production-player"
+          $player = "$env:RUNNER_TEMP/production-player/DWM2t-M8-UNTESTED"
+          $manifest = Get-Content -Raw "$player/manifest.json" | ConvertFrom-Json
+          if ($manifest.source_commit -ne 'bfc591146659964740f6958add5f8e8b8ed14d5f') { throw 'Production source differs' }
+          foreach ($file in $manifest.files.PSObject.Properties) {
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath "$player/$($file.Name)").Hash.ToLowerInvariant() -ne $file.Value) { throw "Package file differs: $($file.Name)" }
+          }
+      - name: Verify normal production later Continue, Journal and process reload
+        shell: pwsh
+        run: |
+          python recomp/tools/test_player_late_journal.py `
+            --exe "$env:RUNNER_TEMP/production-player/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --seed "$env:RUNNER_TEMP/story-evidence/raygigas-birth/native/checkpoint.sav" `
+            --manifest recomp/tests/m8_player_late_journal.json `
+            --output "$env:RUNNER_TEMP/production-late-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve the GUI evidence without duplicating the player binary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-production-late-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/production-late-evidence/**
+          if-no-files-found: warn
+          retention-days: 30

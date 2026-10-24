@@ -94,8 +94,16 @@ The party is level 21/20/18, full HP 119/79/143, with thirteen owned monsters,
 unsuccessful save attempt during movement and later successful settled save;
 no runtime/game-state workaround was used. The live continuation fought the spring's ArcDemon/GoatHorn group twice and
 was defeated through original combat. Warubou recovery retained quest progress.
-Further original breeding is being prepared with Totum and farm Merman Nyar
-before another attempt. All failed attempts remain in the controller trace.
+The twenty-first route retains both defeats and then breeds Totum (male
+RayGigas, level 21) with farm Merman Nyar (female, level 14). The original
+20G hatch produces Derzo, a male RayGigas +1. Independent Wine replay and
+fresh Continue pass to exact Journal SHA256
+`8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c`.
+All eleven other monsters are retained after original compaction; the active
+party is Liset/Slash/Derzo (records 7/0/11), levels 21/18/1, HP 79/143/46,
+with twelve owned monsters and 206G. Derzo then reaches level 10 through
+original training, HP 118, ATK 114 and DEF 104; former Totum at level 21 had
+HP 119, ATK 115 and DEF 78. Further Ice training is running.
 The separate production GUI has loaded Yuna's later Journal, completed original
 Journal Save and reloaded it in a fresh process under Wine/Xvfb. This does not
 replace final Windows/full-game release acceptance; its exact report and

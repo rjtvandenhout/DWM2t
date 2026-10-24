@@ -1,0 +1,18 @@
+{
+  "source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "executable_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "seed_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+  "field_reference": "m8_player_late_field.bmp",
+  "menu_reference": "m8_player_late_menu.bmp",
+  "reference_sha256": [
+    "95dfe25d906b7234348753f000f8c1ac532d00016f1c1adc2917cc5453cd91d6",
+    "58a13c2346b98474bd742e7a98e6c2c05efd0b7e1f619273ce1f0f8b6345ac27"
+  ],
+  "reference_source": "Original pinned 697647033b4ce6b00dd8e11759cb85e1ae469a65 diagnostic executable; genuine raygigas-birth Journal, original Continue and A 6 96 only.",
+  "reference_session": "production-reference-ray",
+  "reference_frames": [
+    2395,
+    2497
+  ],
+  "scope": "Production later Journal GUI only; not a full-game certificate"
+}
