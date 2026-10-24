@@ -383,5 +383,27 @@
     "source_bmp_sha256": "1cf285b4b706171da40a1a9f9f59ff9609946e978f882eefee0879a438c1f4ea",
     "png_sha256": "9464fe893d162ad0f090e81771bc2d017168b85b5a07520e77f1f0831a96a0c4",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "spring-spirit-envoy.png",
+    "caption": "The original spring spirit appoints Cobi as envoy to restore peace.",
+    "source_session": "ice-quest-28",
+    "source_bmp": "m8_524.bmp",
+    "frame": 51080,
+    "native_state": "M8_STATE frame=51080 mode=1:1 world=73 region=0,0 pos=64,64 party=3 selector=0x14 sram=0x7cd89cff952f4f3d screen=0xf2d877ed0a0239bc image=m8_524.bmp",
+    "source_bmp_sha256": "58348890f7e211281eaa54ee6f979161c761ada69b5e2deec50a19cc60363ad1",
+    "png_sha256": "5c27a836daace894988bb508e72104769e3a59a93006eeea817fe056bbca136b",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-crest-obtained.png",
+    "caption": "Original treasure-chest reward: Cobi obtains the Crest for castle access.",
+    "source_session": "ice-quest-28",
+    "source_bmp": "m8_545.bmp",
+    "frame": 52056,
+    "native_state": "M8_STATE frame=52056 mode=1:1 world=73 region=0,0 pos=80,112 party=3 selector=0xa0 sram=0x7cd89cff952f4f3d screen=0x64ac775ea15ad2b6 image=m8_545.bmp",
+    "source_bmp_sha256": "49d41211a5d763627886e4817ab6e728540b3d1e03e8adc23f1addad4adc102e",
+    "png_sha256": "0b469dd156eeecceaefd6a471ed9a066e9b47bf7432a7b9b885b64dfb7baec00",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

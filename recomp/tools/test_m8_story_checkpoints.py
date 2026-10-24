@@ -39,12 +39,20 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
                 not set(retained.values()).issubset(expected['owned'])):
             raise ValueError('Incomplete original roster compaction witness')
         for old, new in retained.items():
-            if saved[new*0xA5+1:new*0xA5+13] != initial[old*0xA5+1:old*0xA5+13]:
+            old_base, new_base = old*0xA5, new*0xA5
+            # Original Continue clears stale bytes after the F0 name terminator.
+            # WingSlime's genuine recruitment/Continue route exercises this.
+            old_name = initial[old_base+1:old_base+11].split(b'\xf0', 1)[0]
+            new_name = saved[new_base+1:new_base+11].split(b'\xf0', 1)[0]
+            if (new_name != old_name or
+                    saved[new_base+11:new_base+13] != initial[old_base+11:old_base+13]):
                 raise ValueError(f'Previously owned name/species differs: {old} -> {new}')
     for record in expected['owned']:
         base = record * 0xA5
         if saved[base] != (2 if record in party else 1):
             raise ValueError(f'Original farm/active status differs: {record}')
+        if saved[base+1:base+11].split(b'\xf0', 1)[0] != fresh[base+1:base+11].split(b'\xf0', 1)[0]:
+            raise ValueError(f'Creature name differs after Continue: {record}')
         for start, end in ((0x0B, 0x0D), (0x34, 0x3C), (0x55, 0x6B),
                            *expected.get('persistent_ranges', [])):
             if saved[base+start:base+end] != fresh[base+start:base+end]:
