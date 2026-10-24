@@ -163,5 +163,71 @@
     "source_bmp_sha256": "9c65d83c377337f2202c866eb4a0d172e5a386a13c08512c59a7bf0804f2da2c",
     "png_sha256": "28e71a7b1c92e077be7277fac24517b14213dc1613f958082cbc8e965defcd3e",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-hatched.png",
+    "caption": "Original hatching ceremony: Octokid +1 hatched.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_864.bmp",
+    "frame": 60679,
+    "native_state": "M8_STATE frame=60679 mode=1:1 world=20 region=0,0 pos=224,0 party=3 selector=0x16 sram=0x6583fc89ac30da24 screen=0xde90c54372e7330f image=m8_864.bmp",
+    "source_bmp_sha256": "95d7ceb3f77e51a28e14741bf15f4d4126389584178453581c992dd83a5a4d4b",
+    "png_sha256": "9b68133aaa5dc6fd975ca330b79a28bceb960a73637f9ee29038838992f09aa4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-name.png",
+    "caption": "The original game named the female Octokid +1 Liset.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_874.bmp",
+    "frame": 61369,
+    "native_state": "M8_STATE frame=61369 mode=1:1 world=13 region=1,0 pos=64,64 party=3 selector=0x6a sram=0x324c25d59b2124e4 screen=0x698f89fab10f89b6 image=m8_874.bmp",
+    "source_bmp_sha256": "181d593f2fe6a64146eba6a1b16b7e9d27d935e8fe602a3667fa5b1f979ee5ec",
+    "png_sha256": "a2d94d014ca1386fdb523e44705b74e3fec90fc2989c42717f72a30eecc21964",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-farm-pickup.png",
+    "caption": "Liset at level 1: original farm pickup before training.",
+    "source_session": "sea-quest-22",
+    "source_bmp": "m8_975.bmp",
+    "frame": 67926,
+    "native_state": "M8_STATE frame=67926 mode=1:1 world=0 region=1,2 pos=80,48 party=2 selector=0x1c sram=0x8fdefaa1fe0c60db screen=0xc6c03b976cc52cb7 image=m8_975.bmp",
+    "source_bmp_sha256": "aa7924fe47c332f7a10f96a5f46ce4beebc7464c8b35c05bec10afe0c729aa89",
+    "png_sha256": "a0017b5c5a9b484fb1efe4ece3e3a50739124bb5c652ba50f068efe7aba13f91",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-level-10-stats.png",
+    "caption": "Liset at level 10: original stats after ordinary battles.",
+    "source_session": "sea-quest-23",
+    "source_bmp": "m8_2274.bmp",
+    "frame": 131104,
+    "native_state": "M8_STATE frame=131104 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xf73f04264fe944c2 screen=0x1ddb6b01c2d51909 image=m8_2274.bmp",
+    "source_bmp_sha256": "b75a0a1c215ff2330b468a91d62b42661dba623b3f4159b6b63ccf23ce5280a4",
+    "png_sha256": "e50bb3d06007a5390fa5635a601a91f51aa1e36ac0bdb07a282c05ecb1c04a98",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-level-10-skills.png",
+    "caption": "Original learned skills: HealMore, Increase, SpeedUp and MPass.",
+    "source_session": "sea-quest-23",
+    "source_bmp": "m8_2278.bmp",
+    "frame": 131296,
+    "native_state": "M8_STATE frame=131296 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xf73f04264fe944c2 screen=0xbd20b542d296770b image=m8_2278.bmp",
+    "source_bmp_sha256": "4bed55504f6b5e60c9a27c270e49c00255843bdd178e43e706e9222a0b3388b5",
+    "png_sha256": "2258ba03756e13854feffbb6722066ff6cdecac2286df6fe22a19c3609fe8b33",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "octokid-original-parents.png",
+    "caption": "The original INFO page identifies Squiz and Phes as Liset's parents.",
+    "source_session": "sea-quest-23",
+    "source_bmp": "m8_2280.bmp",
+    "frame": 131392,
+    "native_state": "M8_STATE frame=131392 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xf73f04264fe944c2 screen=0x4a5a30454af6327f image=m8_2280.bmp",
+    "source_bmp_sha256": "a57a95e15557db3d39acb7c634e9fa91f7756057d9f44bf14b97b7807394ee07",
+    "png_sha256": "771afa8576141f3eb932d6e35f62cea6b2c30325ab62014851aa5894e65538b2",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

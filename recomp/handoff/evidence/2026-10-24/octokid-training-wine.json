@@ -1,0 +1,137 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "native_returncode": 0,
+  "stage": {
+    "name": "octokid-training",
+    "seed_stage": "octokid-birth",
+    "route": "m8_octokid_training_p1.txt",
+    "route_sha256": "f8d6449783fc8b5db5670431c3e091dfd454c05826767e54a2a6aa84c1206751",
+    "save_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+    "frames": 130852,
+    "party": [
+      0,
+      9,
+      10
+    ],
+    "levels": [
+      13,
+      12,
+      10
+    ],
+    "hp": [
+      115,
+      80,
+      58
+    ],
+    "status": [
+      0,
+      0,
+      0
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "species": {
+      "0": 10,
+      "1": 2,
+      "2": 145,
+      "3": 246,
+      "4": 166,
+      "5": 185,
+      "6": 185,
+      "7": 80,
+      "8": 322,
+      "9": 319,
+      "10": 323
+    },
+    "gold": 360,
+    "location": [
+      5,
+      1,
+      0,
+      80,
+      64
+    ],
+    "set_flags": [
+      34,
+      102,
+      109,
+      110,
+      111,
+      114,
+      116,
+      117,
+      118,
+      120,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "items": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      44,
+      1
+    ],
+    "persistent_ranges": [
+      [
+        25,
+        52
+      ],
+      [
+        107,
+        165
+      ]
+    ],
+    "learned_skills": {
+      "10": [
+        23,
+        38,
+        42,
+        27,
+        255,
+        255,
+        255,
+        255
+      ]
+    }
+  },
+  "additional_persistent_creature_bytes": 1287,
+  "full_game_verified": false
+}

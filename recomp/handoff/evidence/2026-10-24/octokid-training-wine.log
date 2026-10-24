@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x877784457015497e source=Z:/workspace/scratch/m8-review/sea-quest-23-seed.sav
+M8_STATE frame=130852 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xf73f04264fe944c2 screen=0x927c43e64055a197 image=m8_0.bmp
+M8_AUDIO frame=130852 sample_values=144883434 stereo_frames=72441717 nonzero=128302603 peak=32768 hash=0xe8cdfedf18e1d3a
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_octokid_training_p1.txt
+M8_SEED sram=0xf73f04264fe944c2 source=Z:/workspace/scratch/m8-review/octokid-training-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0xf73f04264fe944c2 screen=0xfeb2830645aa841e image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717768 stereo_frames=1358884 nonzero=1562531 peak=29184 hash=0xf360fb708c752b2
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/octokid-training-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_octokid_training_p1.txt ending_credits=NOT_YET_PROVEN

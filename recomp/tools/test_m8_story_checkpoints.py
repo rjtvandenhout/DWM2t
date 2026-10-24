@@ -7,6 +7,7 @@ Passing these checkpoints does not certify the ending or final M8 acceptance.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -29,20 +30,46 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
     if [i for i in range(40) if saved[i*0xA5] in (1, 2)] != expected['owned']:
         raise ValueError('Original owned roster differs')
     initial = seed.read_bytes()
+    retained = {int(old): new for old, new in expected.get('retained_records', {}).items()}
+    if retained:
+        initial_owned = {i for i in range(40) if initial[i*0xA5] in (1, 2)}
+        parents = set(expected['bred_parents'])
+        if (set(retained) | parents != initial_owned or set(retained) & parents or
+                len(set(retained.values())) != len(retained) or
+                not set(retained.values()).issubset(expected['owned'])):
+            raise ValueError('Incomplete original roster compaction witness')
+        for old, new in retained.items():
+            if saved[new*0xA5+1:new*0xA5+13] != initial[old*0xA5+1:old*0xA5+13]:
+                raise ValueError(f'Previously owned name/species differs: {old} -> {new}')
     for record in expected['owned']:
         base = record * 0xA5
         if saved[base] != (2 if record in party else 1):
             raise ValueError(f'Original farm/active status differs: {record}')
-        for start, end in ((0x0B, 0x0D), (0x34, 0x3C), (0x55, 0x6B)):
+        for start, end in ((0x0B, 0x0D), (0x34, 0x3C), (0x55, 0x6B),
+                           *expected.get('persistent_ranges', [])):
             if saved[base+start:base+end] != fresh[base+start:base+end]:
                 raise ValueError(f'Creature persistence differs: {record}, {start:02x}')
-        if initial[base] in (1, 2) and record not in expected.get('bred_parents', []):
+        if not retained and initial[base] in (1, 2) and record not in expected.get('bred_parents', []):
             if saved[base+11:base+13] != initial[base+11:base+13]:
                 raise ValueError(f'Previously owned species differs: {record}')
     for record, species in expected.get('species', {}).items():
         base = int(record) * 0xA5
         if int.from_bytes(saved[base+11:base+13], 'little') != species:
             raise ValueError(f'Observed species differs: {record}')
+    for record, skills in expected.get('learned_skills', {}).items():
+        base = int(record) * 0xA5
+        if list(saved[base+0x34:base+0x3C]) != skills:
+            raise ValueError(f'Original learned skill list differs: {record}')
+    if 'offspring' in expected:
+        child = expected['offspring']
+        base = child['record'] * 0xA5
+        if child['record'] in retained.values() or child['record'] not in expected['owned']:
+            raise ValueError('Offspring is not a new original roster entry')
+        genes = saved[base+0x19:base+0x34] + saved[base+0x6B:base+0xA5]
+        if (saved[base+0x6D] != child['plus'] or saved[base+0x0E] & 1 != child['gender'] or
+                list(saved[base+0x34:base+0x3C]) != child['skills'] or
+                hashlib.sha256(genes).hexdigest() != child['genes_sha256']):
+            raise ValueError('Original offspring generation, gender, skills or genes differ')
     for record, level, hp, status in zip(party, expected['levels'], expected['hp'],
                                          expected['status'], strict=True):
         base = record * 0xA5
@@ -139,10 +166,17 @@ def main() -> int:
                          active_party_records=expected['party'], levels=expected['levels'],
                          hp=expected['hp'], status_bytes=expected['status'], gold=expected['gold'],
                          owned=len(expected['owned']),
-                         additional_persistent_creature_bytes=32*len(expected['owned']))
+                         additional_persistent_creature_bytes=(32 + sum(
+                             end-start for start, end in expected.get('persistent_ranges', [])))
+                         * len(expected['owned']))
+            if 'offspring' in expected:
+                entry['offspring'] = expected['offspring']
+                entry['retained_records'] = expected['retained_records']
         for path, expected_hash in immutable:
             check_file(path, expected_hash)
         report['status'] = 'passed'
+        report['sea_world_completed'] = any(
+            {0x22, 0x7F}.issubset(stage.get('set_flags', [])) for stage in data['stages'])
         print(f'M8_STORY_CHECKPOINTS_PASS platform={report["platform"]} original_Journal fresh_Continue')
         return 0
     except (OSError, ValueError, RuntimeError, KeyError, subprocess.SubprocessError) as error:
