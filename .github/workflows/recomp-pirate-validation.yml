@@ -73,6 +73,23 @@ jobs:
             --training-route recomp/tests/m8_gate_training_p1.txt `
             --output "$env:RUNNER_TEMP/party-preparation-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify original HoodSquid, fisherman story and mermaid-palace Journals
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_story_checkpoints.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --seed "$env:RUNNER_TEMP/party-preparation-evidence/training/native/checkpoint.sav" `
+            --manifest recomp/tests/m8_sea_story_checkpoints.json `
+            --output "$env:RUNNER_TEMP/sea-story-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve original Sea World story and fresh-Continue evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Sea-Story-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/sea-story-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
       - name: Preserve original entry battle, save and fresh-Continue evidence
         if: always()
         uses: actions/upload-artifact@v4

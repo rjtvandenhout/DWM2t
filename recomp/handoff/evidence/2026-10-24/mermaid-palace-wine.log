@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x5d610a18d632484a source=Z:/workspace/scratch/m8-review/story-checks-01/mermaid-palace/seed-copy.sav
+M8_STATE frame=93727 mode=1:0 world=65 region=0,1 pos=112,64 party=3 selector=0x13 sram=0xc4d6f0a586269ed9 screen=0x4aa3d1a8ed32708b image=m8_0.bmp
+M8_AUDIO frame=93727 sample_values=103147246 stereo_frames=51573623 nonzero=98089423 peak=32768 hash=0xdfbfecd9d21303e
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_mermaid_palace_p1.txt
+M8_SEED sram=0xc4d6f0a586269ed9 source=Z:/workspace/scratch/m8-review/story-checks-01/mermaid-palace/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=65 region=0,1 pos=112,64 party=3 selector=0x0 sram=0x799ccffb4a0cde19 screen=0xbfd3feb4d16d7567 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2718998 stereo_frames=1359499 nonzero=1563439 peak=29184 hash=0xd2643c633c4647ea
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/story-checks-01/mermaid-palace/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_mermaid_palace_p1.txt ending_credits=NOT_YET_PROVEN

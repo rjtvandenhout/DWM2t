@@ -1,0 +1,68 @@
+[
+  {
+    "file": "hood-battle.png",
+    "caption": "HoodSquid boss battle, original 350 HP enemy; the trained party uses real battle commands.",
+    "source_session": "sea-quest-16",
+    "source_bmp": "m8_352.bmp",
+    "frame": 22098,
+    "native_state": "M8_STATE frame=22098 mode=4:0 world=53 region=3,3 pos=64,64 party=3 selector=0x34 sram=0x4d7d5fd08297e2c8 screen=0xbc3f1c305631288f image=m8_352.bmp",
+    "source_bmp_sha256": "f2482a66513aced86ea801b26e6a2c1774ccb6a871d147dd7dfaf4c8e3b08cbc",
+    "png_sha256": "c872b9a2722723f031e11f11312a53b3109dc6d3cb92f6445c542e70362867d8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "hood-victory.png",
+    "caption": "Original battle results and level gain after defeating HoodSquid.",
+    "source_session": "sea-quest-16",
+    "source_bmp": "m8_1203.bmp",
+    "frame": 39524,
+    "native_state": "M8_STATE frame=39524 mode=4:0 world=53 region=3,3 pos=64,64 party=3 selector=0x34 sram=0x1d84223ab7a0d296 screen=0x14efd9144dcea416 image=m8_1203.bmp",
+    "source_bmp_sha256": "16648182c5eca77f067b9e7696d1ad03c05f5a9478bd116afe7a6983f1e92bd9",
+    "png_sha256": "877e6007faedbd42ebe5f93c93dd56a3671bf53e8a67a901656ff27efaca334e",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "hood-dialogue.png",
+    "caption": "HoodSquid acknowledges the victory before the original recruitment dialogue.",
+    "source_session": "sea-quest-16",
+    "source_bmp": "m8_1211.bmp",
+    "frame": 39955,
+    "native_state": "M8_STATE frame=39955 mode=1:1 world=53 region=3,3 pos=64,64 party=3 selector=0x34 sram=0x23d014ed873ae94e screen=0xdbe77835ef9b1a4b image=m8_1211.bmp",
+    "source_bmp_sha256": "61cdb045c630720bc1d6bcd6295b56d53cfe98f4bec4b50b8d0cbcb147defc59",
+    "png_sha256": "903abffb2ad8153dc247c83c82ddcbb4d36a398926938ec7383a883377426bd5",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "fisherman-tales.png",
+    "caption": "Original fisherman dialogue; the subsequent conversation sets quest flag 0x6D.",
+    "source_session": "sea-quest-18",
+    "source_bmp": "m8_250.bmp",
+    "frame": 60398,
+    "native_state": "M8_STATE frame=60398 mode=1:1 world=51 region=0,0 pos=32,80 party=3 selector=0x33 sram=0x5b49c81058051b4e screen=0x8cb019156ac809ad image=m8_250.bmp",
+    "source_bmp_sha256": "8cb166f776b864c3a1be83c157266a9905faa4dd42283e1af12294edf7f0ef95",
+    "png_sha256": "76cf8aec7ac939ea1a07516b381b44a3254258f921b549b6355aef84f8a5f513",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "mermaid-dance-choice.png",
+    "caption": "Original dance invitation after meeting the story and skill prerequisites.",
+    "source_session": "sea-quest-18",
+    "source_bmp": "m8_594.bmp",
+    "frame": 90644,
+    "native_state": "M8_STATE frame=90644 mode=1:1 world=60 region=0,0 pos=96,48 party=3 selector=0x13 sram=0x588885eb706bb713 screen=0x17a08ee94e58fac5 image=m8_594.bmp",
+    "source_bmp_sha256": "1af343e44630bd0714e18164c5545749d4db411fae42b5f920e47abacdb0fd89",
+    "png_sha256": "445cdda5e063a5add684b489cb29fbd85536db239098a9625a94e11828d0dfa6",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "mermaid-palace-arrival.png",
+    "caption": "Arrival in the mermaid palace, world 65, with original quest flag 0x6F set.",
+    "source_session": "sea-quest-18",
+    "source_bmp": "m8_599.bmp",
+    "frame": 92413,
+    "native_state": "M8_STATE frame=92413 mode=1:0 world=65 region=0,1 pos=112,48 party=3 selector=0x13 sram=0x588885eb706bb713 screen=0x1fc85d45df8926fc image=m8_599.bmp",
+    "source_bmp_sha256": "e37f5e1a8ce995820f55fc6453fed6ddb90466ad2037070d61e6d78cd61b731b",
+    "png_sha256": "21e9a62d17c6131ca6224efc6d148cbb684a3717b5c6e7056c380307c09a19b8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  }
+]

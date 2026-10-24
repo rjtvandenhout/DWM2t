@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stages": [
+    {
+      "stage": "hood-tales",
+      "frames": 64544,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/story-checks-01/hood-tales/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_hood_squid_tales_p1.txt",
+        "Z:/workspace/scratch/m8-review/story-checks-01/hood-tales/native"
+      ],
+      "route_sha256": "1a0e74468bac6f3b8f498b272017580cf7ee18456abef74dac74692978caf7e7",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
+      "active_party_records": [
+        9,
+        4,
+        1
+      ],
+      "levels": [
+        12,
+        12,
+        13
+      ],
+      "hp": [
+        88,
+        52,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "mermaid-palace",
+      "frames": 93727,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/story-checks-01/mermaid-palace/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_mermaid_palace_p1.txt",
+        "Z:/workspace/scratch/m8-review/story-checks-01/mermaid-palace/native"
+      ],
+      "route_sha256": "3f8331f25f56f6a78776fdff72f0c5281118c23ef322e176c78231c1c2181f9d",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+      "active_party_records": [
+        9,
+        4,
+        5
+      ],
+      "levels": [
+        12,
+        12,
+        8
+      ],
+      "hp": [
+        89,
+        68,
+        21
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    }
+  ]
+}

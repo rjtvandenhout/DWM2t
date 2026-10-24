@@ -2,6 +2,9 @@
 
 Current continuation (2026-10-23): the user requested M7 review and M8 work
 for the whole game. The historical stop/continue choice below is answered.
+The continuing report with original screenshots is
+`M8_PROGRESS_2026-10-24.md`. HoodSquid and the mermaid-palace route have now been
+reached; the user also requested breeding while reserving Squiz for the story.
 See `M8_DANCER_2026-10-23.md` and `M8_PREPARATION_2026-10-24.md` for the
 replayed farm, recovery, trading and trained-party Journals. Remaining worlds
 and ending still need validation. Actions storage cleanup is recorded in
