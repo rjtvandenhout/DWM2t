@@ -1,6 +1,12 @@
 name: Later Journal on pinned production Windows player
 
 on:
+  workflow_call:
+    inputs:
+      story_run_id:
+        description: Successful story run containing the exact RayGigas birth Journal
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       story_run_id:

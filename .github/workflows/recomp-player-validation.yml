@@ -7,15 +7,23 @@ on:
       - 'recomp/**'
       - '.github/workflows/recomp-player-validation.yml'
   workflow_dispatch:
+    inputs:
+      late_story_run_id:
+        description: Optional successful story run; reuse the pinned player for later Journal validation
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: native-player-validation-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   player-windows:
+    if: ${{ inputs.late_story_run_id == '' }}
     runs-on: windows-latest
     timeout-minutes: 180
     steps:
@@ -63,6 +71,7 @@ jobs:
             ${{ runner.temp }}/player-smoke/**
           if-no-files-found: warn
           retention-days: 14
+
       - name: Upload startup-checked player candidate, not a final M8 release
         if: success()
         uses: actions/upload-artifact@v4
@@ -71,3 +80,9 @@ jobs:
           path: ${{ runner.temp }}/player-output/*.zip
           if-no-files-found: error
           retention-days: 14
+
+  production-late-journal:
+    if: ${{ inputs.late_story_run_id != '' }}
+    uses: ./.github/workflows/recomp-player-late-validation.yml
+    with:
+      story_run_id: ${{ inputs.late_story_run_id }}

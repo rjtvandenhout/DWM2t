@@ -42,6 +42,10 @@ restored Norden. Native Windows run
 [40130993635](https://github.com/rjtvandenhout/DWM2t/actions/runs/40130993635)
 passes all seventeen later story checkpoints with exact original Journal saves
 and fresh Continue; every archived save independently matches Wine.
+Later Wine replays restore Yuna and Helen, then breed Totum and Nyar to hatch
+Derzo (RayGigas +1). The production candidate's normal GUI also passes a later
+Continue, original Journal and fresh-process reload check under Wine. Native
+Windows acceptance of this newer progress is pending.
 
 **M8 is incomplete.** Ice World completion, later worlds, ending/credits,
 combined regressions and final production-package acceptance remain unproven.
