@@ -13,11 +13,11 @@
         "/workspace/.tools/wine-run",
         "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
         "--m8-checkpoint-test",
-        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-01/bombcrag-jail-escape/seed-copy.sav",
+        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-02/bombcrag-jail-escape/seed-copy.sav",
         "Z:/workspace/DWM2t/recomp/tests/m8_bombcrag_jail_escape_p1.txt",
-        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-01/bombcrag-jail-escape/native"
+        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-02/bombcrag-jail-escape/native"
       ],
-      "route_sha256": "385be7892fc114324f6a46e8eaf12f6539dc8e41c46d0b7911123f30b2b81bdc",
+      "route_sha256": "0cbab77becf4821a401e071c9fce8692db77aca95ffb3f9b7022b438c018701f",
       "native_returncode": 0,
       "status": "passed",
       "save_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",

@@ -471,5 +471,49 @@
     "source_bmp_sha256": "5635b2084f4c5a725ceca7bd6e809b503c9a1418c6be307b62d864dd45a09a92",
     "png_sha256": "cd51873128f12e1728cf1ec86161e1ee432031b3a7c75893d9bacf5480df651a",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "slash-priest-revival.png",
+    "caption": "The original Norden priest revives Slash after an 85G donation.",
+    "source_session": "ice-quest-30",
+    "source_bmp": "m8_28.bmp",
+    "frame": 4825,
+    "native_state": "M8_STATE frame=4825 mode=1:1 world=74 region=1,0 pos=32,64 party=3 selector=0x82 sram=0x9e0b7ec5275003fa screen=0x2012b5cb1e1b99e9 image=m8_28.bmp",
+    "source_bmp_sha256": "76e7ac94653719c3249effa4dfcb19d543d42b9acc19b6765725af1abb0d2609",
+    "png_sha256": "84910265639dfd42c6e8c7edaf68639eedd548b1191dff9fee7bbf128f45d6e8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "agdevil-battle.png",
+    "caption": "Original battle against Norden's exposed impostor AgDevil; native HP witness is 550.",
+    "source_session": "ice-quest-30",
+    "source_bmp": "m8_230.bmp",
+    "frame": 19104,
+    "native_state": "M8_STATE frame=19104 mode=4:0 world=76 region=0,0 pos=80,64 party=3 selector=0x4d sram=0x527df86995c1ece1 screen=0xc4e94469a51f81e3 image=m8_230.bmp",
+    "source_bmp_sha256": "c9637a964558cad1cc00ac85dfbb8f7678c584d0e3290004548a8cb8e0c24c96",
+    "png_sha256": "1516cc956dc60cd07ecf9352948095987187ff74d328108cf5ca852dfdf42345",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "agdevil-victory.png",
+    "caption": "Original AgDevil victory with Totum, Liset and Slash all alive.",
+    "source_session": "ice-quest-30",
+    "source_bmp": "m8_629.bmp",
+    "frame": 28108,
+    "native_state": "M8_STATE frame=28108 mode=4:0 world=76 region=0,0 pos=80,64 party=3 selector=0x4d sram=0x527df86995c1ece1 screen=0x294eb98c25ce9156 image=m8_629.bmp",
+    "source_bmp_sha256": "53921babcf3d3370da31a197c525a579459ee9712026bb51965636c83a03fa79",
+    "png_sha256": "5e26284af34c9a6c9b36738716cccb310ed1756758e994edf2fb31cbd10d283c",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "norden-border-reopened.png",
+    "caption": "The restored real king orders the western border reopened.",
+    "source_session": "ice-quest-30",
+    "source_bmp": "m8_654.bmp",
+    "frame": 29465,
+    "native_state": "M8_STATE frame=29465 mode=1:1 world=76 region=0,0 pos=80,64 party=3 selector=0x4d sram=0x9bca129e1da00ab0 screen=0x941f4b34895d15d8 image=m8_654.bmp",
+    "source_bmp_sha256": "110aa5b994cf4a683f6fc531bd5bf8b229a08da7ffae18f5cdf604ab0279454d",
+    "png_sha256": "060ac251cd62b882d4f6f3d3b331081e6ec6d664b3ecf3b0d3992e37c1f0cd7a",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

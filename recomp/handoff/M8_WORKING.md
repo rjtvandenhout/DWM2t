@@ -47,10 +47,16 @@ independently replays under Wine to SHA256
 Party order Totum/Liset/Slash is retained at levels 18/18/16, HP 63/70/0 and
 status 0/0/0x80; all thirteen monsters, skills, inherited data, keys and quest
 bytes persist. The original B-button jump is required in the central mine
-shaft. Native Windows acceptance of stages fourteen through sixteen is pending.
-The subsequent live continuation has revived Slash through the original
-priest for 85G and is resting before confronting the impostor. That later
-recovery is not yet a pinned checkpoint.
+shaft. The seventeenth route revives Slash through the original priest for
+85G, rests, exposes and defeats the 550 HP AgDevil with all three monsters
+alive, restores the real king, opens the border (flag 0x94), rests again and
+saves in Norden. Its exact Journal independently replays under Wine to SHA256
+`16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0`.
+Party Totum/Liset/Slash is level 19/18/16, full HP 118/76/138 and status 0/0/0,
+with all thirteen owned monsters and 355G. Both boss routes retain read-only
+combat-mode/full-HP witnesses without changing any controller input or Save
+hash. Native Windows acceptance of stages fourteen through seventeen is pending.
+The live continuation has crossed the reopened border and reached Weston.
 
 Ice World completion, the remaining worlds, ending/credits and final release
 acceptance are outstanding. Screenshots and exact provenance are in
