@@ -229,5 +229,38 @@
     "source_bmp_sha256": "a57a95e15557db3d39acb7c634e9fa91f7756057d9f44bf14b97b7807394ee07",
     "png_sha256": "771afa8576141f3eb932d6e35f62cea6b2c30325ab62014851aa5894e65538b2",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "c-class-first-defeat.png",
+    "caption": "The first C Class attempt ended in original defeat; Liset died in the final round.",
+    "source_session": "sea-quest-24",
+    "source_bmp": "m8_102.bmp",
+    "frame": 16758,
+    "native_state": "M8_STATE frame=16758 mode=4:0 world=11 region=0,0 pos=32,48 party=3 selector=0x18 sram=0x390975ec5ea50170 screen=0x9bdec7582faf83f3 image=m8_102.bmp",
+    "source_bmp_sha256": "019be421e09a443eb368bca838e5b38401a1078692d0a8efa56c75ff49d04b3e",
+    "png_sha256": "732ef823330db0cfa1478acece68532d980ab644ddc964ce068ad6683e81954d",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "c-class-final-round.png",
+    "caption": "C Class retry: all three original active monsters are alive during the final winning round.",
+    "source_session": "sea-quest-24",
+    "source_bmp": "m8_246.bmp",
+    "frame": 33247,
+    "native_state": "M8_STATE frame=33247 mode=4:0 world=11 region=0,0 pos=32,48 party=3 selector=0x18 sram=0xe55815d0c18705aa screen=0x8ee6a18589bc9e6e image=m8_246.bmp",
+    "source_bmp_sha256": "9ba59732d99c5a2ea69fa9d2a2ba5aaf19ec0878809594e4e0c23677ab06b163",
+    "png_sha256": "9966a126521c5661869910007c2cde8cfa8f015c356be1bf02e1086d0dc2fc9f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "c-class-champion.png",
+    "caption": "The original Arena celebrates the C Class champion on the retry.",
+    "source_session": "sea-quest-24",
+    "source_bmp": "m8_257.bmp",
+    "frame": 34957,
+    "native_state": "M8_STATE frame=34957 mode=1:1 world=11 region=0,0 pos=32,48 party=3 selector=0x18 sram=0x4a04a7d5d58c017c screen=0x2b8a5d638a62fb5e image=m8_257.bmp",
+    "source_bmp_sha256": "fd9acf3c35345b8a39c8c4d28404d07078f3d70756e87912e1e46ac895bcaf28",
+    "png_sha256": "f116f7ce9af611d8f525b214d83bae19ac31789731c0382481a8d19648a10e35",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

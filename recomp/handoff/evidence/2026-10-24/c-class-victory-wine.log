@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xf73f04264fe944c2 source=Z:/workspace/scratch/m8-review/sea-quest-24-seed.sav
+M8_STATE frame=40179 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0xf5 sram=0x846acb2abbdc7637 screen=0xe3d2ca65419c50a4 image=m8_0.bmp
+M8_AUDIO frame=40179 sample_values=44316630 stereo_frames=22158315 nonzero=40467423 peak=32768 hash=0x934cc6597fd3fdc8
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_c_class_victory_p1.txt
+M8_SEED sram=0x846acb2abbdc7637 source=Z:/workspace/scratch/m8-review/c-class-victory-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0x846acb2abbdc7637 screen=0x143884e2de4c28e7 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717768 stereo_frames=1358884 nonzero=1562527 peak=29184 hash=0xda81d7e8880f4812
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/c-class-victory-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_c_class_victory_p1.txt ending_credits=NOT_YET_PROVEN

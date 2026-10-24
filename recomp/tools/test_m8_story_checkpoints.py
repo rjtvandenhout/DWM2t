@@ -83,6 +83,8 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
             if bool(ram[0xCBD7+flag//8] & (1 << (flag % 8))) != flags:
                 raise ValueError(f'Observed quest flag differs: {flag:02x}')
     for capture in (source, ram):
+        if 'arena_class' in expected and capture[0xC82C] != expected['arena_class']:
+            raise ValueError('Original Arena class differs after Journal/Continue')
         if int.from_bytes(capture[0xC617:0xC61A], 'little') != expected['gold']:
             raise ValueError('Original wallet differs after Journal/Continue')
         location = [capture[a] for a in (0xFF90, 0xFF8F, 0xFF92, 0xFF8E, 0xFF91)]
@@ -90,7 +92,7 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
             raise ValueError('Original location differs after Journal/Continue')
         if 'items' in expected:
             items = []
-            for item in capture[0xC61D:0xC69D]:
+            for item in capture[0xC61D:0xC635]:
                 if item in (0, 255):
                     break
                 items.append(item)
