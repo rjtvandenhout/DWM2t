@@ -262,5 +262,82 @@
     "source_bmp_sha256": "fd9acf3c35345b8a39c8c4d28404d07078f3d70756e87912e1e46ac895bcaf28",
     "png_sha256": "f116f7ce9af611d8f525b214d83bae19ac31789731c0382481a8d19648a10e35",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "armyant-tiny-medal.png",
+    "caption": "Original ArmyAnt harbor trade awards a TinyMedal.",
+    "source_session": "sea-quest-25",
+    "source_bmp": "m8_180.bmp",
+    "frame": 15443,
+    "native_state": "M8_STATE frame=15443 mode=1:1 world=2 region=0,0 pos=48,64 party=2 selector=0x7f sram=0x3966c63c2db6e0bd screen=0x39ea6a357137b8aa image=m8_180.bmp",
+    "source_bmp_sha256": "0c05a8c9c6d8912ada454e36b67430f5646bf1f411ae0bd4ec61a19aedb1a001",
+    "png_sha256": "bc86ccd078007638958e34d741d87ac216ed3831a7877e81daace4b547140b3d",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "healer-torma-recruited.png",
+    "caption": "The original game invites Torma, a male Healer, to join the active party.",
+    "source_session": "sea-quest-25",
+    "source_bmp": "m8_329.bmp",
+    "frame": 32310,
+    "native_state": "M8_STATE frame=32310 mode=4:0 world=48 region=3,3 pos=48,16 party=2 selector=0x1 sram=0xa072982789d5c834 screen=0xdf09b0f81a983ce7 image=m8_329.bmp",
+    "source_bmp_sha256": "dea20f77cbb4e28047d2c03facb264a4c1f94f080e573afc70deeb08afa863c7",
+    "png_sha256": "b14f00fa3ac97dbc813833e083f12da4fcbd6a97ac59bb98c839b409cb488f06",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "madgopher-recruitment.png",
+    "caption": "Original MadGopher recruitment during ordinary Sea World encounters.",
+    "source_session": "sea-quest-25",
+    "source_bmp": "m8_555.bmp",
+    "frame": 49921,
+    "native_state": "M8_STATE frame=49921 mode=4:0 world=48 region=3,3 pos=48,48 party=3 selector=0x1 sram=0x7083327f3da756e2 screen=0x4bf36d2e65ad1a48 image=m8_555.bmp",
+    "source_bmp_sha256": "a90cf3810df972b2865ac73920d4b42559091168e83c332c4a0e3a5be4a6b480",
+    "png_sha256": "38c49b7fb72ef0159fd2d18b7ecc15ac66115ad27f5900332874115fc8878cb8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "madgopher-digging.png",
+    "caption": "MadGopher finds something hard while helping dig at the farm.",
+    "source_session": "sea-quest-26",
+    "source_bmp": "m8_107.bmp",
+    "frame": 11144,
+    "native_state": "M8_STATE frame=11144 mode=1:1 world=0 region=2,1 pos=96,64 party=2 selector=0x7 sram=0xcb9193edb70e7a02 screen=0xd36224af31131a1c image=m8_107.bmp",
+    "source_bmp_sha256": "7839b58e79aac8aaa7d5cbc1afac212be91dbad58e8afb148460eb67b68a6399",
+    "png_sha256": "f1c93eeec7462198b26ae556c7591cbdeefc949018a95ca8710f997321be89d0",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-key-reward.png",
+    "caption": "Original message: CobiA received the Ice Key.",
+    "source_session": "sea-quest-26",
+    "source_bmp": "m8_116.bmp",
+    "frame": 11720,
+    "native_state": "M8_STATE frame=11720 mode=1:1 world=0 region=2,1 pos=96,64 party=2 selector=0x7 sram=0xcb9193edb70e7a02 screen=0x677025205501080f image=m8_116.bmp",
+    "source_bmp_sha256": "99fcceb84b90a5e58775aab2ff36e37b99a4fda4e0db4bec0c2b569985c0ce2d",
+    "png_sha256": "a19a8912180b6b441c2bf6d24568cffd803385ad64f8eac5721fb05e05365ab9",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-world-arrival.png",
+    "caption": "Original arrival in Ice World after using IceKey.",
+    "source_session": "sea-quest-26",
+    "source_bmp": "m8_201.bmp",
+    "frame": 20417,
+    "native_state": "M8_STATE frame=20417 mode=1:0 world=72 region=11,4 pos=64,64 party=3 selector=0x1c sram=0x3d1a3eedd9bb7c4 screen=0xd9731d8c8a2140d0 image=m8_201.bmp",
+    "source_bmp_sha256": "f77eae3a97e8c8f36d77140a2f98f55967019801dac963069d57947af45789b8",
+    "png_sha256": "56b14122caaa49bfb0c75b7dfe0f3cf67aac1fd6842eb209ca613a438c9b4526",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "norden-arrival.png",
+    "caption": "Original arrival at Norden, the first Ice World town checkpoint.",
+    "source_session": "sea-quest-26",
+    "source_bmp": "m8_239.bmp",
+    "frame": 23513,
+    "native_state": "M8_STATE frame=23513 mode=1:0 world=74 region=0,1 pos=80,128 party=3 selector=0x1c sram=0x3d1a3eedd9bb7c4 screen=0x91b9a14b3f4c5d5 image=m8_239.bmp",
+    "source_bmp_sha256": "dd27378a1e6fb2e1ca1dcf5d2b9419fed9a791f33a7774ce3c8ad68dfca18c08",
+    "png_sha256": "1dc09cdc02f57bda83464b148a60ae0320998336891955d5adb7a0779c6e3399",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

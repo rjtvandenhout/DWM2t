@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xfaf46d3d08015e4 source=Z:/workspace/scratch/m8-review/sea-quest-26-seed.sav
+M8_STATE frame=13977 mode=1:0 world=0 region=2,1 pos=96,80 party=2 selector=0x7 sram=0xfab9840de805bb87 screen=0xab367545ea9a40fc image=m8_0.bmp
+M8_AUDIO frame=13977 sample_values=15426144 stereo_frames=7713072 nonzero=13231051 peak=32768 hash=0x82668138bb4471ea
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ice_key_p1.txt
+M8_SEED sram=0xfab9840de805bb87 source=Z:/workspace/scratch/m8-review/ice-key-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=0 region=2,1 pos=96,80 party=2 selector=0x0 sram=0xca724a709c757467 screen=0x468df7e2a6d5f532 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2716250 stereo_frames=1358125 nonzero=1562683 peak=29184 hash=0x849b33fc933900b2
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=44 source=Z:/workspace/scratch/m8-review/ice-key-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ice_key_p1.txt ending_credits=NOT_YET_PROVEN

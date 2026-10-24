@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xfaf46d3d08015e4 source=Z:/workspace/scratch/m8-review/sea-quest-26-seed.sav
+M8_STATE frame=24821 mode=1:0 world=74 region=0,1 pos=80,112 party=3 selector=0x1c sram=0x7c30a950bd89de60 screen=0x5279c0e724a7c6cf image=m8_0.bmp
+M8_AUDIO frame=24821 sample_values=27344702 stereo_frames=13672351 nonzero=24819179 peak=32768 hash=0x28014fdc679803da
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ice_world_entry_p1.txt
+M8_SEED sram=0x7c30a950bd89de60 source=Z:/workspace/scratch/m8-review/ice-world-entry-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=74 region=0,1 pos=80,112 party=3 selector=0x0 sram=0x93e11ad133f698e0 screen=0x4fa87600574ae2d6 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2719220 stereo_frames=1359610 nonzero=1560471 peak=29184 hash=0xfe67eb4a13947fe2
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/ice-world-entry-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ice_world_entry_p1.txt ending_credits=NOT_YET_PROVEN

@@ -25,7 +25,7 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
     if tuple(map(len, (saved, fresh, source, ram))) != (32768, 32768, 65536, 65536):
         raise ValueError('Incomplete original Journal/Continue capture')
     party = expected['party']
-    if ram[0xC6FD:0xC701] != bytes((len(party), *party)):
+    if ram[0xC6FD:0xC6FE+len(party)] != bytes((len(party), *party)):
         raise ValueError('Original active party differs after Continue')
     if [i for i in range(40) if saved[i*0xA5] in (1, 2)] != expected['owned']:
         raise ValueError('Original owned roster differs')
@@ -33,7 +33,7 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
     retained = {int(old): new for old, new in expected.get('retained_records', {}).items()}
     if retained:
         initial_owned = {i for i in range(40) if initial[i*0xA5] in (1, 2)}
-        parents = set(expected['bred_parents'])
+        parents = set(expected.get('consumed_records', expected.get('bred_parents', [])))
         if (set(retained) | parents != initial_owned or set(retained) & parents or
                 len(set(retained.values())) != len(retained) or
                 not set(retained.values()).issubset(expected['owned'])):
@@ -90,6 +90,10 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
         location = [capture[a] for a in (0xFF90, 0xFF8F, 0xFF92, 0xFF8E, 0xFF91)]
         if location != expected['location']:
             raise ValueError('Original location differs after Journal/Continue')
+        if 'key_entries' in expected:
+            key_bytes = bytes(value for key in expected['key_entries'] for value in key)
+            if capture[0xC707:0xC707+len(key_bytes)] != key_bytes:
+                raise ValueError('Original Magic Key entries differ after Journal/Continue')
         if 'items' in expected:
             items = []
             for item in capture[0xC61D:0xC635]:
@@ -159,7 +163,7 @@ def main() -> int:
             world, rx, ry, x, y = expected['location']
             location = f'world={world} region={rx},{ry} pos={x},{y}'
             for marker in ('M8_TRACE_REPLAY_PASS', 'M8_FRESH_CONTINUE_PASS', 'M8_CHECKPOINT_PASS',
-                           f'frame={expected["frames"]} mode=1:0 {location} party=3'):
+                           f'frame={expected["frames"]} mode=1:0 {location} party={len(expected["party"])}'):
                 if marker not in log:
                     raise ValueError(f'{name}: missing native witness: {marker}')
             verify_creatures(native, copied, expected)

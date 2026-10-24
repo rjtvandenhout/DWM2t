@@ -1,4 +1,4 @@
-name: Original Sea World validation on pinned Windows build
+name: Original story validation on pinned Windows build
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   sea-world:
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,7 +73,7 @@ jobs:
             --training-route recomp/tests/m8_gate_training_p1.txt `
             --output "$env:RUNNER_TEMP/party-preparation-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Verify original Sea World story, shrine unlock and later Journals
+      - name: Verify original story Journals, breeding and later Continue
         shell: pwsh
         run: |
           python recomp/tools/test_m8_story_checkpoints.py `
