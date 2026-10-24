@@ -405,5 +405,71 @@
     "source_bmp_sha256": "49d41211a5d763627886e4817ab6e728540b3d1e03e8adc23f1addad4adc102e",
     "png_sha256": "0b469dd156eeecceaefd6a471ed9a066e9b47bf7432a7b9b885b64dfb7baec00",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "bombcrag-twinhits.png",
+    "caption": "Liset casts TwinHits: the original battle reports that Totum's ATK doubled.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_437.bmp",
+    "frame": 33443,
+    "native_state": "M8_STATE frame=33443 mode=4:0 world=87 region=1,0 pos=64,48 party=3 selector=0x45 sram=0xcc4155e002a8e2eb screen=0x551139c18b67c2f7 image=m8_437.bmp",
+    "source_bmp_sha256": "f103419d71e5fa5b4b3536ce06db67b0f9881ff2e466cc63e6d2124c71b008b6",
+    "png_sha256": "c13ac5b88ab1e1279bf0c1d3ddca04200476dedd7c37ca1a65e77f805e44fce6",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "bombcrag-victory.png",
+    "caption": "Original BombCrag battle victory; Totum and Liset survive, with Slash fainted.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_928.bmp",
+    "frame": 45175,
+    "native_state": "M8_STATE frame=45175 mode=4:0 world=87 region=1,0 pos=64,48 party=3 selector=0x45 sram=0xcc4155e002a8e2eb screen=0xde38d39c058a6136 image=m8_928.bmp",
+    "source_bmp_sha256": "8185d8af7d8416aea5aa13288bcda59a84782d36d8cade61170df36c0f9746d5",
+    "png_sha256": "c8b8e4b59bb9b08fef0979b72f83644b0f248460808de976c653d79691609be6",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "gold-mine-dust.png",
+    "caption": "After BombCrag's explosion, the rival miners discover only a small amount of gold dust.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_947.bmp",
+    "frame": 47084,
+    "native_state": "M8_STATE frame=47084 mode=1:1 world=87 region=1,0 pos=64,64 party=3 selector=0x45 sram=0xf704d7e176c72f77 screen=0xe155764493b85515 image=m8_947.bmp",
+    "source_bmp_sha256": "47bd78117dc5a76e912987dc21d938b6a861e346e7774dd27920c722474b09c5",
+    "png_sha256": "baa1ecbb6506fed5003d5c46be585357bac5659cc32c6bbd7b13c6355c228ee7",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "norden-real-king.png",
+    "caption": "In the original jail, Norden's real king reveals that an impostor took his throne.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_1187.bmp",
+    "frame": 66394,
+    "native_state": "M8_STATE frame=66394 mode=1:1 world=77 region=0,1 pos=112,64 party=3 selector=0x48 sram=0x5e7f96a9e29a252f screen=0x2c8acc024dd21bb3 image=m8_1187.bmp",
+    "source_bmp_sha256": "7ad309ff7726970995532c89c6c653303da0b3c02c87141288e4a7d5ba14051c",
+    "png_sha256": "d5a8fd509167280bd45b7cf7ff4af9e2da2e845984dae8f5f63ae9ae47288736",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "norden-hollow-wall.png",
+    "caption": "Cobi searches the sealed jail wall and finds the hollow section.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_1252.bmp",
+    "frame": 69417,
+    "native_state": "M8_STATE frame=69417 mode=1:1 world=77 region=0,1 pos=48,16 party=3 selector=0x4b sram=0x5e7f96a9e29a252f screen=0x73f323fce26595a8 image=m8_1252.bmp",
+    "source_bmp_sha256": "99d98fc840f790000a99acf396985f0ad6d3bc3c096bbfcc2baaf506400cbe44",
+    "png_sha256": "2cdf9fa8d4ae34487793d931a32ba34448338a1515265bec39ec3ffb4db03717",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "norden-two-kings.png",
+    "caption": "After the original jail escape, the real king confronts the impostor in the throne room.",
+    "source_session": "ice-quest-29",
+    "source_bmp": "m8_1310.bmp",
+    "frame": 72141,
+    "native_state": "M8_STATE frame=72141 mode=1:0 world=76 region=0,0 pos=96,16 party=3 selector=0x4c sram=0x5e7f96a9e29a252f screen=0xe272d4e0ce22379f image=m8_1310.bmp",
+    "source_bmp_sha256": "5635b2084f4c5a725ceca7bd6e809b503c9a1418c6be307b62d864dd45a09a92",
+    "png_sha256": "cd51873128f12e1728cf1ec86161e1ee432031b3a7c75893d9bacf5480df651a",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

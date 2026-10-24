@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "stages": [
+    {
+      "stage": "bombcrag-jail-escape",
+      "frames": 75754,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-01/bombcrag-jail-escape/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_bombcrag_jail_escape_p1.txt",
+        "Z:/workspace/scratch/m8-review/bombcrag-escape-check-01/bombcrag-jail-escape/native"
+      ],
+      "route_sha256": "385be7892fc114324f6a46e8eaf12f6539dc8e41c46d0b7911123f30b2b81bdc",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        18,
+        18,
+        16
+      ],
+      "hp": [
+        63,
+        70,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 460,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    }
+  ]
+}

@@ -36,7 +36,21 @@ fourteenth route retains the exploration, defeat, recovery and training and
 passes independent Wine replay to exact Journal SHA256
 `d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1`.
 All thirteen owned creatures and their inherited data persist through fresh
-Continue. Native Windows acceptance of this later route is pending.
+Continue. A fifteenth route earns the spirit's Crest and rests at Norden's
+inn; its exact Journal also independently replays under Wine.
+
+The sixteenth route wins the original 650 HP BombCrag battle, follows the
+gold-dust aftermath, is imprisoned by Norden's impostor, meets the real king
+and Kameha, opens the hollow jail wall and escapes. Its original town Journal
+independently replays under Wine to SHA256
+`494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48`.
+Party order Totum/Liset/Slash is retained at levels 18/18/16, HP 63/70/0 and
+status 0/0/0x80; all thirteen monsters, skills, inherited data, keys and quest
+bytes persist. The original B-button jump is required in the central mine
+shaft. Native Windows acceptance of stages fourteen through sixteen is pending.
+The subsequent live continuation has revived Slash through the original
+priest for 85G and is resting before confronting the impostor. That later
+recovery is not yet a pinned checkpoint.
 
 Ice World completion, the remaining worlds, ending/credits and final release
 acceptance are outstanding. Screenshots and exact provenance are in
