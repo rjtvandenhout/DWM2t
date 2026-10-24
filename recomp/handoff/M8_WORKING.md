@@ -23,10 +23,11 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated story checkpoint: HoodSquid defeated and recruited,
-fisherman's story complete, mermaid palace reached, original Journals and fresh
-Continue verified in run 40102961243. The subsequent stronger-party replay and
-first captain defeat/recovery are recorded in `M8_PROGRESS_2026-10-24.md`.
+Latest Windows-validated story checkpoint: captain defeated and MoonRock obtained,
+original Journals and fresh Continue verified in run 40109654218. The chain also
+retains HoodSquid, the fisherman story, mermaid palace, party preparation and
+the original first captain defeat/recovery. Ongoing lighthouse and volcano
+progress is recorded with screenshots in `M8_PROGRESS_2026-10-24.md`.
 Original breeding remains pending its story unlock. The remaining worlds,
 ending/credits and final release acceptance are still outstanding.
 

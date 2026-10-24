@@ -108,5 +108,16 @@
     "source_bmp_sha256": "923416a7217d36deee513e6fbf08e02493e1ff2321168abbbed7724555b081dd",
     "png_sha256": "5d0c3740e84e936d21706033ab2d90b47089771da9e8d7b8c6976be54e4bc712",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "moonrock-pedestal.png",
+    "caption": "MoonRock installed at the lighthouse pinnacle through the original item menu; flag 0x7A set and Sea World map mask 0x02.",
+    "source_session": "sea-quest-21",
+    "source_bmp": "m8_1648.bmp",
+    "frame": 79622,
+    "native_state": "M8_STATE frame=79622 mode=1:0 world=64 region=0,0 pos=80,64 party=3 selector=0x6a sram=0xf499a5d485a55b98 screen=0x4723c50b36e916a image=m8_1648.bmp",
+    "source_bmp_sha256": "9a5a526ff0389a6debb86a34a272621e87c15f292f3e7add6f501d54dc4f9e06",
+    "png_sha256": "805e027bbe207a2068e8b88ac07e17750c838453b4d42908b40d2044d7b43f47",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]
