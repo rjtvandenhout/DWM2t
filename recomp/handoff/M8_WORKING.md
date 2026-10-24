@@ -23,11 +23,13 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated chain: seventeen story checkpoints through original
-Sea World completion, post-story Squiz/Phes breeding, healer training, C Class,
-IceKey, Crest, BombCrag, jail escape and AgDevil/Norden restoration. Run
-40130993635 passed; all seventeen archived Journals were independently
-downloaded and exactly match Wine, with original fresh Continue.
+Latest Windows-validated chain: twenty story checkpoints through Sea World,
+post-story Squiz/Phes breeding, C Class, IceKey, Norden restoration, Westania's
+performance, YunaSoul/Puppetor/Yuna restoration and SleepHerb/GoatHorn/Helen
+restoration. Run 40136433795 passed at
+`0e39a6fe49e37261d33d3a44b488ff66defa8930`. All twenty archived Journals were
+independently downloaded and exactly match Wine, including the 64-byte quest
+comparison after fresh Continue. Later original breeding/training continues.
 
 Subsequent Ice exploration ended in an original defeat and Warubou recovery.
 Further original battles trained Slash to level 16, Totum and Liset to level
@@ -85,7 +87,7 @@ pass to exact Journal SHA256
 `c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a`.
 All thirteen owned monsters persist; Totum/Liset/Slash are level 20/19/17,
 HP 74/64/140, status 0/0/0, with 935G and flags 0x97–0x9D. Stages eighteen
-through twenty await Windows acceptance. The twentieth route obtains SleepHerb,
+through twenty passed Windows run 40136433795. The twentieth route obtains SleepHerb,
 defeats 850 HP GoatHorn with all three alive, restores Helen and rests. Its
 original Journal and fresh Continue independently replay under Wine to SHA256
 `bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7`.
@@ -103,14 +105,32 @@ All eleven other monsters are retained after original compaction; the active
 party is Liset/Slash/Derzo (records 7/0/11), levels 21/18/1, HP 79/143/46,
 with twelve owned monsters and 206G. Derzo then reaches level 10 through
 original training, HP 118, ATK 114 and DEF 104; former Totum at level 21 had
-HP 119, ATK 115 and DEF 78. Further Ice training is running.
+HP 119, ATK 115 and DEF 78. The twenty-second original Journal now reaches
+Liset/Slash/Derzo levels 23/20/20, full HP 84/146/167, with twelve owned monsters
+and 206G. Derzo's Info shows ATK 186, DEF 153 and the learned Firebane, Defense,
+Vivify and SleepAir. Its exact Journal SHA256 is
+`62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24`;
+independent replay of the 658,627-frame route passed. The twenty-third route
+then defeats the spring group with all three alive, returns the Crest through
+its original Use action, earns Sky Shield, returns to Warubou and unlocks cloud
+flight (new flags 0x1E/0x23/0x1E4/0x1E5; IceKey entry 0x44). Independent Wine
+replay and fresh Continue pass to exact Journal SHA256
+`8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3`.
+The party is level 24/21/21, full HP 87/146/167, with twelve owned monsters
+and 206G. The subsequent live royal audience about Kameha's disappearance has
+added the original SkyKey entry 0x05. Native Windows acceptance after stage 20
+is pending.
 The separate production GUI has loaded Yuna's later Journal, completed original
 Journal Save and reloaded it in a fresh process under Wine/Xvfb. This does not
 replace final Windows/full-game release acceptance; its exact report and
 screenshots are linked in the progress report.
 
-Ice World completion, the remaining worlds, ending/credits and final release
-acceptance are outstanding. Screenshots and exact provenance are in
+Ice World's main story and Sky Key now pass independent Wine replay. The
+24th original Journal SHA256 is
+`48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f`.
+All twelve monsters, full party HP 87/146/167, 206G and six keys persist after
+fresh Continue. The live continuation is entering Sky World. Later worlds,
+ending/credits and final release acceptance remain outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
 
 ## Work sequence

@@ -707,5 +707,93 @@
     "source_bmp_sha256": "93a82221284620e6d6fac1d0df1a5e0c13538526ab7c62df5b5586320cd31d53",
     "png_sha256": "5def2f5cded80c32e831b44ae69bb498cdaf860ac3176f5bf8b4ec23be949928",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-level20-stats.png",
+    "caption": "Original Info shows Derzo at level 20: HP 167, ATK 186 and DEF 153.",
+    "source_session": "ice-quest-36",
+    "source_bmp": "m8_9241.bmp",
+    "frame": 656602,
+    "native_state": "M8_STATE frame=656602 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xcb8d07083f40feb4 screen=0x503da9ebcad629cc image=m8_9241.bmp",
+    "source_bmp_sha256": "6d688ac0a446603a2ddcd8143dd478721c53c03ba8f5654d6267ac02c71acbca",
+    "png_sha256": "be5160e5aad7f261f424f71b534cc4ec270bdfb7abacbdd183220bfe1e9cc41f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-raygigas-plus-one.png",
+    "caption": "Original Info confirms Derzo is RayGigas +1 with the game-assigned personality.",
+    "source_session": "ice-quest-36",
+    "source_bmp": "m8_9243.bmp",
+    "frame": 656728,
+    "native_state": "M8_STATE frame=656728 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xcb8d07083f40feb4 screen=0x2dcefd38f0c028bf image=m8_9243.bmp",
+    "source_bmp_sha256": "1bb7fe1ccc77d5675f2b4cd9a40462c219d081d213a611cb74183a6935282cbe",
+    "png_sha256": "8737c913f8975c964cfe8b13b8b59b81c1021e3a463fccbc2bf1771d4c502838",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-trained-skills.png",
+    "caption": "Original Info lists Firebane, Defense, Vivify and SleepAir learned through breeding and training.",
+    "source_session": "ice-quest-36",
+    "source_bmp": "m8_9245.bmp",
+    "frame": 656854,
+    "native_state": "M8_STATE frame=656854 mode=2:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xcb8d07083f40feb4 screen=0xba8fa870d1cd59a6 image=m8_9245.bmp",
+    "source_bmp_sha256": "ac1b1ea122512d8f91c40206ae7efb27ea40c707a51250ded6097e8abd366a13",
+    "png_sha256": "fedc8986f19e22d191a8cebab1e5664bd5fb35d939385b74b56e6a6109b3b16f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "spring-trained-party-battle.png",
+    "caption": "The original spring retry begins with full HP and original enemy HP 210/330/210.",
+    "source_session": "ice-quest-37",
+    "source_bmp": "m8_133.bmp",
+    "frame": 12908,
+    "native_state": "M8_STATE frame=12908 mode=4:0 world=73 region=0,0 pos=64,80 party=3 selector=0x9f sram=0xb011931c678db3f screen=0x2a13ed2102c8ebf0 image=m8_133.bmp",
+    "source_bmp_sha256": "7e34109392210479c9a78d7f1a724f9c316a75b1050f96e98036ba9c54e349f2",
+    "png_sha256": "94da38da8ef6a70bf9fce484324394ab635517ca387760f5397ff4f14e5fb8c2",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "spring-victory.png",
+    "caption": "The trained party defeats the original spring group with all three alive.",
+    "source_session": "ice-quest-37",
+    "source_bmp": "m8_572.bmp",
+    "frame": 24465,
+    "native_state": "M8_STATE frame=24465 mode=4:0 world=73 region=0,0 pos=64,80 party=3 selector=0x9f sram=0xb011931c678db3f screen=0xda88e2e4b63bc116 image=m8_572.bmp",
+    "source_bmp_sha256": "662f26f48f0e9ef9c1a6eaf0a51e07d623a65f9429bbbef002e4139a80d5c8e8",
+    "png_sha256": "8665d66a535f606b9eaeff1581256056081a44db8800b366d4c33f6ad60d5904",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "sky-shield-obtained.png",
+    "caption": "The original spirit awards the Sky Shield after the Crest is returned.",
+    "source_session": "ice-quest-37",
+    "source_bmp": "m8_658.bmp",
+    "frame": 30108,
+    "native_state": "M8_STATE frame=30108 mode=1:1 world=73 region=0,0 pos=64,64 party=3 selector=0xa1 sram=0xef90819a36c34fa7 screen=0xb93283b669c7f3f3 image=m8_658.bmp",
+    "source_bmp_sha256": "fad50d254c43873cc5ef65ac56abc191e8bd4dd6e61b3bbcb7e47c064bdda472",
+    "png_sha256": "e2e3e6c2b343dad3db7e796fa89e8bdb7b8f1a7595bbff241f95ef1485d699cd",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "cloud-flight-unlocked.png",
+    "caption": "Warubou grants original cloud flight after the Sky Shield is delivered.",
+    "source_session": "ice-quest-37",
+    "source_bmp": "m8_748.bmp",
+    "frame": 34163,
+    "native_state": "M8_STATE frame=34163 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0xa1 sram=0x108440cf9f38d6fb screen=0xf439eb4a5f1971a4 image=m8_748.bmp",
+    "source_bmp_sha256": "2fdd35a592674fbefcaaf00df6775aa5c1aaafad22cbb144e4bd57a0b625bbaa",
+    "png_sha256": "c44a5508773138e40c000e29f06ad3c74c56f2e9124ea8fc0350635190b8f0e4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "royal-sky-key.png",
+    "caption": "The original royal audience awards the Sky Key while Cobi is asked to find Prince Kameha.",
+    "source_session": "sky-quest-38",
+    "source_bmp": "m8_165.bmp",
+    "frame": 12640,
+    "native_state": "M8_STATE frame=12640 mode=1:1 world=25 region=0,0 pos=64,64 party=3 selector=0x20 sram=0xf74561b2a5d0487e screen=0xf04e61d74621faa8 image=m8_165.bmp",
+    "source_bmp_sha256": "ac7d43bc732038b1797d14b56885d561e76dd16e4602f4dd71788669275ef133",
+    "png_sha256": "2533f8b569ed3690f10428a38c1cee62f71b291c8d3771324b9b8cab5c3f0b25",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

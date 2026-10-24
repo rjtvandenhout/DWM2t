@@ -4,6 +4,17 @@ on:
   push:
     branches: ['work/recomp-m8-pirate-validation-20261022']
   workflow_dispatch:
+    inputs:
+      prefix_run_id:
+        description: Optional passed Windows story run to audit and continue from
+        required: false
+        default: ''
+        type: string
+      prefix_stage:
+        description: Exact last Journal in that passed prefix
+        required: false
+        default: helen-restored
+        type: string
 
 permissions:
   contents: read
@@ -11,6 +22,7 @@ permissions:
 
 jobs:
   sea-world:
+    if: ${{ inputs.prefix_run_id == '' }}
     runs-on: windows-latest
     timeout-minutes: 120
     steps:
@@ -120,5 +132,52 @@ jobs:
         with:
           name: DWM2t-Party-Preparation-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/party-preparation-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  later-story:
+    if: ${{ inputs.prefix_run_id != '' }}
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse the pinned complete-AOT diagnostic executable
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 39836316030
+          name: DWM2t-M8-development-Windows-x64-697647033b4ce6b00dd8e11759cb85e1ae469a65
+          path: ${{ runner.temp }}/native-player
+      - name: Download the passed native prefix and original boundary Journal
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.prefix_run_id }}
+          name: DWM2t-Sea-Story-native-evidence-${{ inputs.prefix_run_id }}-1
+          path: ${{ runner.temp }}/passed-prefix
+      - name: Audit every archived prefix checkpoint and replay the later story
+        shell: pwsh
+        env:
+          PREFIX_RUN: ${{ inputs.prefix_run_id }}
+          PREFIX_STAGE: ${{ inputs.prefix_stage }}
+        run: |
+          python recomp/tools/test_m8_story_suffix.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --prefix-evidence "$env:RUNNER_TEMP/passed-prefix" `
+            --prefix-run-id "$env:PREFIX_RUN" --prefix-stage "$env:PREFIX_STAGE" `
+            --manifest recomp/tests/m8_sea_story_checkpoints.json `
+            --output "$env:RUNNER_TEMP/later-story-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve the new native Journals and explicit prefix audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Sea-Story-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/later-story-evidence/**
           if-no-files-found: warn
           retention-days: 30

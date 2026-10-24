@@ -125,7 +125,8 @@ def main() -> int:
     report = {'status': 'running', 'platform': 'Wine on Linux' if args.wine else 'Windows',
               'executable_sha256': EXE_SHA,
               'executable_source': '697647033b4ce6b00dd8e11759cb85e1ae469a65',
-              'full_game_verified': False, 'sea_world_completed': False, 'stages': []}
+              'full_game_verified': False, 'sea_world_completed': False,
+              'ice_world_completed': False, 'stages': []}
     try:
         if (os.name != 'nt') != bool(args.wine):
             raise ValueError('Run on Windows, or explicitly supply --wine on Linux')
@@ -193,6 +194,8 @@ def main() -> int:
         report['status'] = 'passed'
         report['sea_world_completed'] = any(
             {0x22, 0x7F}.issubset(stage.get('set_flags', [])) for stage in data['stages'])
+        report['ice_world_completed'] = any(
+            {0x23, 0x1E5}.issubset(stage.get('set_flags', [])) for stage in data['stages'])
         print(f'M8_STORY_CHECKPOINTS_PASS platform={report["platform"]} original_Journal fresh_Continue')
         return 0
     except (OSError, ValueError, RuntimeError, KeyError, subprocess.SubprocessError) as error:
