@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "native_returncode": 0,
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stage": {
+    "name": "captain-preparation",
+    "seed_stage": "mermaid-palace",
+    "route": "m8_sea_captain_preparation_p1.txt",
+    "route_sha256": "369a2313ff137a10c06f5525d6c446cd41ee9f257c2592121bcd1190661a25a7",
+    "save_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+    "frames": 138371,
+    "party": [
+      9,
+      4,
+      0
+    ],
+    "levels": [
+      12,
+      13,
+      11
+    ],
+    "hp": [
+      89,
+      72,
+      102
+    ],
+    "status": [
+      0,
+      0,
+      0
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "species": {
+      "9": 335,
+      "10": 322
+    },
+    "gold": 0,
+    "location": [
+      5,
+      1,
+      0,
+      80,
+      64
+    ],
+    "set_flags": [
+      102,
+      109,
+      110,
+      111,
+      114,
+      116,
+      120
+    ],
+    "clear_flags": [
+      34,
+      117
+    ]
+  },
+  "additional_persistent_creature_bytes": 352,
+  "native_log_sha256": "eaa9e1eef5a4f154d50844d5156e1193755d0e1376b8b86af93be8aff0114e90"
+}

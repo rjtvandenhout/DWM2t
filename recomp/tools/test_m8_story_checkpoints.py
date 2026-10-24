@@ -61,6 +61,14 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
         location = [capture[a] for a in (0xFF90, 0xFF8F, 0xFF92, 0xFF8E, 0xFF91)]
         if location != expected['location']:
             raise ValueError('Original location differs after Journal/Continue')
+        if 'items' in expected:
+            items = []
+            for item in capture[0xC61D:0xC69D]:
+                if item in (0, 255):
+                    break
+                items.append(item)
+            if items != expected['items']:
+                raise ValueError('Original quest-item inventory differs after Continue')
 
 
 def main() -> int:
@@ -72,6 +80,8 @@ def main() -> int:
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     report = {'status': 'running', 'platform': 'Wine on Linux' if args.wine else 'Windows',
+              'executable_sha256': EXE_SHA,
+              'executable_source': '697647033b4ce6b00dd8e11759cb85e1ae469a65',
               'full_game_verified': False, 'sea_world_completed': False, 'stages': []}
     try:
         if (os.name != 'nt') != bool(args.wine):

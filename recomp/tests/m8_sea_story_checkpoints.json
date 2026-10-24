@@ -178,6 +178,142 @@
       "clear_flags": [
         34
       ]
+    },
+    {
+      "name": "captain-preparation",
+      "seed_stage": "mermaid-palace",
+      "route": "m8_sea_captain_preparation_p1.txt",
+      "route_sha256": "369a2313ff137a10c06f5525d6c446cd41ee9f257c2592121bcd1190661a25a7",
+      "save_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+      "frames": 138371,
+      "party": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        13,
+        11
+      ],
+      "hp": [
+        89,
+        72,
+        102
+      ],
+      "status": [
+        0,
+        0,
+        0
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "species": {
+        "9": 335,
+        "10": 322
+      },
+      "gold": 0,
+      "location": [
+        5,
+        1,
+        0,
+        80,
+        64
+      ],
+      "set_flags": [
+        102,
+        109,
+        110,
+        111,
+        114,
+        116,
+        120
+      ],
+      "clear_flags": [
+        34,
+        117
+      ]
+    },
+    {
+      "name": "moonrock",
+      "seed_stage": "captain-preparation",
+      "route": "m8_sea_moonrock_p1.txt",
+      "route_sha256": "90e9443f597fc634f987db6c5c3d5f1cb8fcce7bdd59d49488e08c252249932b",
+      "save_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+      "frames": 50283,
+      "party": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        13,
+        14,
+        11
+      ],
+      "hp": [
+        40,
+        56,
+        0
+      ],
+      "status": [
+        0,
+        0,
+        128
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "species": {
+        "9": 335,
+        "10": 322
+      },
+      "gold": 0,
+      "location": [
+        49,
+        0,
+        1,
+        64,
+        112
+      ],
+      "set_flags": [
+        102,
+        109,
+        110,
+        111,
+        114,
+        116,
+        117,
+        118,
+        120
+      ],
+      "clear_flags": [
+        34
+      ],
+      "items": [
+        49
+      ]
     }
   ]
 }
