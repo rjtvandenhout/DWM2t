@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux with Xvfb",
+  "scope": "Production GUI late original Continue, Journal and fresh process reload only; not ending or full M8 acceptance",
+  "source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "artifact_id": 12455681262,
+  "package_zip_sha256": "51bf94c6dca67ad2212a10955ad91643629335b3606f4bd9048d7308825153b2",
+  "executable_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "package_manifest_file_hashes_passed": 6,
+  "input_journal_sha256": "c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a",
+  "production_journal_sha256": "bc7bbcccc0ffc53eaf6e6df1452c591396a07d65e69894369e64a1eef8e2eee3",
+  "production_journal_size": 32768,
+  "changed_bytes": 14,
+  "observed_continue": "Westania, Totum/Liset/Slash level 20/19/17",
+  "controls": "Original P1 keys through normal Win32 player GUI; explicit copy of genuine Journal only",
+  "fresh_process_reload": true,
+  "second_player_normal_close_returncode": 0,
+  "first_close_method": "XDestroyWindow closed the X window without requesting Win32 shutdown; the owned first test process was then terminated after Journal Save. The second process received WM_DELETE_WINDOW and exited normally.",
+  "audio": "Host output unavailable in this Wine environment (WinMM no driver); original APU active. Windows live audio acceptance remains required.",
+  "screenshots": {
+    "production-player-late-continue.png": "24524fa4ee9a7950861afca73941be91ffb16c87794c110d1c1ad25cbe9247db",
+    "production-player-journal.png": "b197efe0e142146cbbe1629a38bad1952d4197c65f070d1182a6d58e51219f72",
+    "production-player-late-reload.png": "f62be3af7c63cf3ffe37a2e631a48889a7b8ce06ce8696f8468614b300b401cc"
+  },
+  "full_game_verified": false
+}

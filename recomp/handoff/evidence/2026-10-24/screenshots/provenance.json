@@ -614,5 +614,32 @@
     "source_bmp_sha256": "8f0b563f83eb390c51915f2cb428018b881abf4610c309135b2df0dfe8a93f0e",
     "png_sha256": "4b10e9bd63878d680127d62623a23e9ba4dd6437930123325e96f6d969eb83d4",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "production-player-late-continue.png",
+    "caption": "Production candidate loads the genuine later Yuna-restoration Journal through its normal Continue menu.",
+    "source_session": "production-candidate-bfc591146659-Wine-Xvfb",
+    "source": "Normal production Win32 window; X11 framebuffer capture at integer scale 4.",
+    "png_sha256": "24524fa4ee9a7950861afca73941be91ffb16c87794c110d1c1ad25cbe9247db",
+    "evidence": "../production-late-gui-wine.json",
+    "pixels": "Original player framebuffer at integer 4x scale (640x576), lossless X11 window capture; no retouching. Diagnostic frame counters are unavailable in the production player."
+  },
+  {
+    "file": "production-player-journal.png",
+    "caption": "Production candidate completes original PLAN > Journal Save.",
+    "source_session": "production-candidate-bfc591146659-Wine-Xvfb",
+    "source": "Normal production Win32 window; X11 framebuffer capture at integer scale 4.",
+    "png_sha256": "b197efe0e142146cbbe1629a38bad1952d4197c65f070d1182a6d58e51219f72",
+    "evidence": "../production-late-gui-wine.json",
+    "pixels": "Original player framebuffer at integer 4x scale (640x576), lossless X11 window capture; no retouching. Diagnostic frame counters are unavailable in the production player."
+  },
+  {
+    "file": "production-player-late-reload.png",
+    "caption": "A fresh production player process reloads the original Journal written by the GUI.",
+    "source_session": "production-candidate-bfc591146659-Wine-Xvfb",
+    "source": "Normal production Win32 window; X11 framebuffer capture at integer scale 4.",
+    "png_sha256": "f62be3af7c63cf3ffe37a2e631a48889a7b8ce06ce8696f8468614b300b401cc",
+    "evidence": "../production-late-gui-wine.json",
+    "pixels": "Original player framebuffer at integer 4x scale (640x576), lossless X11 window capture; no retouching. Diagnostic frame counters are unavailable in the production player."
   }
 ]
