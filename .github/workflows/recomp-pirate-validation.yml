@@ -12,7 +12,7 @@ permissions:
 jobs:
   sea-world:
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -63,6 +63,16 @@ jobs:
             --village-route recomp/tests/m8_sea_dancer_alive_p1.txt `
             --output "$env:RUNNER_TEMP/farm-dancer-evidence"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify original support party, trading and GreatLog-key training
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_party_preparation.py `
+            --exe "$env:RUNNER_TEMP/native-player/DWM2tRecompFull.exe" `
+            --seed "$env:RUNNER_TEMP/farm-dancer-evidence/village/native/checkpoint.sav" `
+            --support-route recomp/tests/m8_farm_support_p1.txt `
+            --training-route recomp/tests/m8_gate_training_p1.txt `
+            --output "$env:RUNNER_TEMP/party-preparation-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Preserve original entry battle, save and fresh-Continue evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -85,5 +95,13 @@ jobs:
         with:
           name: DWM2t-Farm-Dancer-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/farm-dancer-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Preserve support party and training Journal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-Party-Preparation-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/party-preparation-evidence/**
           if-no-files-found: warn
           retention-days: 30

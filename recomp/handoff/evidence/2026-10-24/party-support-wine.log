@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x2c025012133639d6 source=Z:/workspace/scratch/m8-review/preparation-chain-01/support/seed-copy.sav
+M8_STATE frame=40825 mode=1:0 world=0 region=1,2 pos=64,48 party=3 selector=0x1c sram=0x679caeec5d372e12 screen=0x988cbbab4cd8c09b image=m8_0.bmp
+M8_AUDIO frame=40825 sample_values=44993686 stereo_frames=22496843 nonzero=32519995 peak=32768 hash=0x6188f3ec42c04002
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_farm_support_p1.txt
+M8_SEED sram=0x679caeec5d372e12 source=Z:/workspace/scratch/m8-review/preparation-chain-01/support/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=0 region=1,2 pos=64,48 party=3 selector=0x0 sram=0xb20b4feb0f73ee52 screen=0x68098375665cb259 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717134 stereo_frames=1358567 nonzero=1562519 peak=29184 hash=0x8400a87551aed882
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/preparation-chain-01/support/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_farm_support_p1.txt ending_credits=NOT_YET_PROVEN
