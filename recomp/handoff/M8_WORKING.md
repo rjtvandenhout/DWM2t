@@ -23,18 +23,23 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated story checkpoint: original Sea World completion,
-Squiz/Phes breeding after Squiz's story role, and Liset (Octokid +1) trained to
-level 10 with HealMore, Increase, SpeedUp and MPass. All nine story checkpoints
-passed native Windows run 40115888033 with exact Journals and fresh Continue.
-The subsequent C Class retry won with every member alive; its original Journal,
-Arena class 2 and finite replay passed locally and on Windows.
-The linked ArmyAnt/MadGopher trades
-awarded a TinyMedal and IceKey; the original two-member trade Journal and
-three-member Norden Journal both pass exact local replay and fresh Continue.
-Thirteen-stage Windows run 40121439217 passed; all thirteen archived Journals
-were independently downloaded and exactly match the local results. Ice World completion,
-the remaining worlds, ending/credits and final release acceptance are outstanding. Screenshots and exact provenance are in
+Latest Windows-validated chain: thirteen story checkpoints through original Sea
+World completion, Squiz/Phes breeding after Squiz's story role, healer training,
+C Class victory, the linked trades, IceKey and Norden entry. Run 40121439217
+passed; all thirteen archived Journals were independently downloaded and
+exactly match Wine, including the two-member trade save and fresh Continue.
+
+Subsequent Ice exploration ended in an original defeat and Warubou recovery.
+Further original battles trained Slash to level 16, Totum and Liset to level
+17; Liset learned HealAll and TwinHits. A WingSlime joined the farm. The finite
+fourteenth route retains the exploration, defeat, recovery and training and
+passes independent Wine replay to exact Journal SHA256
+`d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1`.
+All thirteen owned creatures and their inherited data persist through fresh
+Continue. Native Windows acceptance of this later route is pending.
+
+Ice World completion, the remaining worlds, ending/credits and final release
+acceptance are outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
 
 ## Work sequence

@@ -339,5 +339,49 @@
     "source_bmp_sha256": "dd27378a1e6fb2e1ca1dcf5d2b9419fed9a791f33a7774ce3c8ad68dfca18c08",
     "png_sha256": "1dc09cdc02f57bda83464b148a60ae0320998336891955d5adb7a0779c6e3399",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-defeat.png",
+    "caption": "Original Warubou dialogue after the exploratory Ice World party defeat.",
+    "source_session": "ice-quest-27",
+    "source_bmp": "m8_1622.bmp",
+    "frame": 80185,
+    "native_state": "M8_STATE frame=80185 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0x5 sram=0xae02433a1d6b037a screen=0x44d9f2015789d123 image=m8_1622.bmp",
+    "source_bmp_sha256": "8eccbc487e3726b24855bb03537cf46d75c0f22af20550551b24d7025f302f98",
+    "png_sha256": "6510a1b837805a54eec837d87edb7bfc6fbf566c95d47a2aea5578dd08e13510",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-recovery.png",
+    "caption": "Warubou restores the party through the original GreatLog recovery event.",
+    "source_session": "ice-quest-27",
+    "source_bmp": "m8_1644.bmp",
+    "frame": 81031,
+    "native_state": "M8_STATE frame=81031 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0x5 sram=0xfd899e61c9d3a556 screen=0x38958b4c5aed2928 image=m8_1644.bmp",
+    "source_bmp_sha256": "f003da0fa484763c4215a911199db5b875cb60be5e1e49a8624d873bcc46f972",
+    "png_sha256": "9a8e762d8cb1a96a44e83e5267442bf67dbc1caf7bab5546ca0af19c8d8b39d6",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ice-first-level-gain.png",
+    "caption": "Totum gains level 13 after the recovered party wins an original Ice World encounter.",
+    "source_session": "ice-quest-27",
+    "source_bmp": "m8_1800.bmp",
+    "frame": 92323,
+    "native_state": "M8_STATE frame=92323 mode=4:0 world=72 region=11,4 pos=96,64 party=3 selector=0x5 sram=0x2af929e2b0a45fe7 screen=0x1ea285730cd5bba3 image=m8_1800.bmp",
+    "source_bmp_sha256": "e2f5e68bc2f3b93a563c74f2a98cc9508f50234f801c2d4c697cbc05fa7232c5",
+    "png_sha256": "15af4afd22e49abcc1447c0770794b75c4000d353e3f1c20a45e93f15967075a",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "liset-healall-twinhits.png",
+    "caption": "Original field skill menu: Liset now knows HealAll, Increase, SpeedUp, MPass and TwinHits.",
+    "source_session": "ice-quest-28",
+    "source_bmp": "m8_273.bmp",
+    "frame": 27847,
+    "native_state": "M8_STATE frame=27847 mode=2:2 world=87 region=1,0 pos=128,80 party=3 selector=0x42 sram=0x6c184438609dd497 screen=0xed886f242786dc1e image=m8_273.bmp",
+    "source_bmp_sha256": "1cf285b4b706171da40a1a9f9f59ff9609946e978f882eefee0879a438c1f4ea",
+    "png_sha256": "9464fe893d162ad0f090e81771bc2d017168b85b5a07520e77f1f0831a96a0c4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

@@ -17,8 +17,9 @@ game-data reads and hardware mapping.
 M7 adds genuine original P1 battles and player-attack damage, deterministic
 game audio with live WinMM output, original PLAN > Journal Save, and Continue
 in a new runtime carrying only the exact 32 KiB save file. All twelve local
-Windows gates passed twice. Hosted Actions' quota is exhausted; local acceptance
-was explicitly authorized, and the hosted workflow now runs the same CTest set.
+Windows gates passed twice; subsequent hosted checks also passed. Actions
+artifact cleanup reclaimed 3,946,430,584 bytes while preserving referenced
+builds and evidence; see [the storage audit](handoff/ACTIONS_STORAGE_2026-10-24.md).
 
 Run the offline build/validation cycle from the repository root:
 
@@ -31,18 +32,23 @@ See `milestones/M7_RESULT.md`, `handoff/M7_LOCAL_WINDOWS.md`, and
 still the final M8 milestone. Ordinary menu mode C5DB=2 is not battle proof;
 the accepted real battle mode is C5DB=4.
 
-M8 now proves the original Oasis quest through the dam boss, WaterCall,
-Mirage Lake's CurseLamp battle, recruitment/farm handling and the original
-aftermath/return home. Nine chained controller-only routes retain original
-Journal saves and fresh Continue checks, including battle HP and audio
-assertions. This does **not** prove later worlds, the ending or complete M8.
-The Kids Class tournament has also been won through three original rounds;
-PirateKey is visible in the original key list, and its GreatLog Journal passes
-fresh Continue. The new finite route is retained alongside the earlier chain.
-English development notes and exact current evidence are in
-`handoff/M8_WORKING.md`. The active branch is `work/recomp-m8`; the M7 restore
-remains immutable. The M7 validator and current packaging messages are English;
-quoted historical test evidence and original game text are retained unchanged.
+The M8 development build statically compiles bank 0 and all 255 switchable ROM
+banks, with no runtime opcode interpreter. Original controller-only routes
+have completed Oasis, Kids Class and Sea World. After Squiz finished his story
+role, original breeding produced Liset (Octokid +1), now a trained healer.
+The team also won C Class, completed the linked trades for IceKey and reached
+Norden in Ice World. Native Windows run
+[40121439217](https://github.com/rjtvandenhout/DWM2t/actions/runs/40121439217)
+passes all thirteen later story checkpoints with exact original Journal saves
+and fresh Continue; every archived save independently matches Wine.
+
+**M8 is incomplete.** Ice World completion, later worlds, ending/credits,
+combined regressions and final production-package acceptance remain unproven.
+The [current progress report](handoff/M8_PROGRESS_2026-10-24.md) includes original
+screenshots and exact evidence. Working notes are in `handoff/M8_WORKING.md`;
+the active draft PR is [#4](https://github.com/rjtvandenhout/DWM2t/pull/4) on
+`work/recomp-m8-dancer-20261023`. The M7 restore remains immutable. Project text
+is English; historical evidence and original game text are retained unchanged.
 
 After building, run the expanded development checks from the repository root:
 
