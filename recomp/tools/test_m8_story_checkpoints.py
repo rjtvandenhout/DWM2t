@@ -84,7 +84,9 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
         if (saved[base+0x56] != level or saved[base+0x55] != status or
                 int.from_bytes(saved[base+0x5B:base+0x5D], 'little') != hp):
             raise ValueError(f'Observed original creature stats differ: {record}')
-    if source[0xCBD7:0xCC0F] != ram[0xCBD7:0xCC0F]:
+    # Later Ice court scripts use flags 0x1E1 through 0x1F1. Include those
+    # original flag bytes in addition to the 56-byte native core witness.
+    if source[0xCBD7:0xCC17] != ram[0xCBD7:0xCC17]:
         raise ValueError('Original quest bytes differ after Continue')
     for name, flags in (('set_flags', True), ('clear_flags', False)):
         for flag in expected.get(name, []):

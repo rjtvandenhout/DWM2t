@@ -37,9 +37,10 @@ banks, with no runtime opcode interpreter. Original controller-only routes
 have completed Oasis, Kids Class and Sea World. After Squiz finished his story
 role, original breeding produced Liset (Octokid +1), now a trained healer.
 The team also won C Class, completed the linked trades for IceKey and reached
-Norden in Ice World. Native Windows run
-[40121439217](https://github.com/rjtvandenhout/DWM2t/actions/runs/40121439217)
-passes all thirteen later story checkpoints with exact original Journal saves
+Norden in Ice World, earned the Crest, defeated BombCrag and AgDevil, and
+restored Norden. Native Windows run
+[40130993635](https://github.com/rjtvandenhout/DWM2t/actions/runs/40130993635)
+passes all seventeen later story checkpoints with exact original Journal saves
 and fresh Continue; every archived save independently matches Wine.
 
 **M8 is incomplete.** Ice World completion, later worlds, ending/credits,

@@ -548,5 +548,38 @@
     "source_bmp_sha256": "37a0ca4fba7fbf82307b25f44c8ad24cdf5b6d5b90a9617fd2db9d85e20c1ecc",
     "png_sha256": "812c80c46db44f47698c9daa68619aee2d7c00e5e10945ee8a9887622e66f624",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "yuna-soul-found.png",
+    "caption": "Original YunaSoul obtained in the southern forest after the Westania performance.",
+    "source_session": "ice-quest-32",
+    "source_bmp": "m8_402.bmp",
+    "frame": 32524,
+    "native_state": "M8_STATE frame=32524 mode=1:1 world=93 region=2,3 pos=64,64 party=3 selector=0x99 sram=0x2a7d075e55d53ddd screen=0xd56521c736054045 image=m8_402.bmp",
+    "source_bmp_sha256": "6ab64d728d6842d2356514de546df4634d2fc20c45a3d7c7520ab446c0876a37",
+    "png_sha256": "7f81280dcb844cb4d625a679dc578874af33518b73495bf5004cb6beabbf3bf5",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "puppetor-battle.png",
+    "caption": "Original 400 HP Puppetor battle in Yuna's private room.",
+    "source_session": "ice-quest-32",
+    "source_bmp": "m8_566.bmp",
+    "frame": 46831,
+    "native_state": "M8_STATE frame=46831 mode=4:0 world=92 region=0,1 pos=96,64 party=3 selector=0x72 sram=0x714d79a1d8830bf9 screen=0x4f443042413d7bf4 image=m8_566.bmp",
+    "source_bmp_sha256": "24959bd6468c7c967fc9128a6bee3db9092dbe4865ce5f049a0af4bce29acf59",
+    "png_sha256": "f10121ccb4bf8c2ccb3cbe04afa816b7717ecaa4d924e28f579ae8b70098fa70",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "yuna-restored.png",
+    "caption": "Yuna's soul returns after the original Puppetor victory.",
+    "source_session": "ice-quest-32",
+    "source_bmp": "m8_583.bmp",
+    "frame": 52251,
+    "native_state": "M8_STATE frame=52251 mode=1:1 world=92 region=0,1 pos=96,64 party=3 selector=0x72 sram=0xb02e125c26fb0044 screen=0x1434a8868b10a574 image=m8_583.bmp",
+    "source_bmp_sha256": "90b8f3ce43ca89de14d9dc98155925cd0c5649f4d657369f3eb29c0f6883bb0c",
+    "png_sha256": "868abdc79eeca63538e4d9683af0c3b9e271cb2904939983344d2d54b843eedd",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

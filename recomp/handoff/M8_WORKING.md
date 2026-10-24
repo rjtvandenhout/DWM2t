@@ -23,11 +23,11 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated chain: thirteen story checkpoints through original Sea
-World completion, Squiz/Phes breeding after Squiz's story role, healer training,
-C Class victory, the linked trades, IceKey and Norden entry. Run 40121439217
-passed; all thirteen archived Journals were independently downloaded and
-exactly match Wine, including the two-member trade save and fresh Continue.
+Latest Windows-validated chain: seventeen story checkpoints through original
+Sea World completion, post-story Squiz/Phes breeding, healer training, C Class,
+IceKey, Crest, BombCrag, jail escape and AgDevil/Norden restoration. Run
+40130993635 passed; all seventeen archived Journals were independently
+downloaded and exactly match Wine, with original fresh Continue.
 
 Subsequent Ice exploration ended in an original defeat and Warubou recovery.
 Further original battles trained Slash to level 16, Totum and Liset to level
@@ -55,8 +55,7 @@ saves in Norden. Its exact Journal independently replays under Wine to SHA256
 Party Totum/Liset/Slash is level 19/18/16, full HP 118/76/138 and status 0/0/0,
 with all thirteen owned monsters and 355G. Both boss routes retain read-only
 combat-mode/full-HP witnesses without changing any controller input or Save
-hash. Native Windows acceptance of stages fourteen through seventeen is pending.
-The live continuation has crossed the reopened border and reached Weston.
+hash. Native Windows acceptance of stages fourteen through seventeen passed.
 
 An eighteenth route reads Westania's palace notice, follows Kameha's arrival,
 gains admission and plays the original performance before the king and Lady
@@ -70,14 +69,24 @@ event tables describe non-NPC interactions and map-entry scenes; read-only
 inspection is useful alongside the NPC and map guides.
 
 Seventeen-stage Windows run 40130993635 at
-`f37cbcc4992605a747977376975dec499135ce98` launched successfully and reached
-the story-chain step. The environment's temporary GitHub credential then
-began returning HTTP 401. Its final result/artifacts have not been retrieved;
-latest independently audited Windows acceptance remains thirteen stages.
-GitHub reconnection has been requested asynchronously; local work continues.
-The live continuation has rested and reached Estria. The current ground and
-WaterCall planners cannot reach the isolated lake-tower entrance from the
-western region; no terrain or game state has been modified to bypass it.
+`f37cbcc4992605a747977376975dec499135ce98` passed. A temporary HTTP 401 blocked
+evidence retrieval, but GitHub access recovered. Artifact 12575663721
+(1,128,844 bytes; ZIP SHA256
+`b4bdc27b86f81a046eb9e4fc1a3056492980c5f448aabd7ba7be4e087e9199ef`)
+was downloaded and all seventeen Journals matched the exact manifest hashes.
+The Python validator now additionally compares 64 quest bytes after fresh
+Continue: later Ice court scripts use flags 0x1E1 through 0x1F1 beyond the
+native 56-byte core witness. This stronger read-only check also passes against
+all seventeen archived Windows captures and the five latest Wine captures.
+The native executable and all M1–M7 checks remain unchanged.
+The nineteenth original route obtains YunaSoul, defeats 400 HP Puppetor,
+restores Yuna and saves in Westania. Independent Wine replay and fresh Continue
+pass to exact Journal SHA256
+`c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a`.
+All thirteen owned monsters persist; Totum/Liset/Slash are level 20/19/17,
+HP 74/64/140, status 0/0/0, with 935G and flags 0x97–0x9D. Stages eighteen
+and nineteen await Windows acceptance. The live continuation has obtained the
+SleepHerb on the mountain and is returning to Queen Helen.
 
 Ice World completion, the remaining worlds, ending/credits and final release
 acceptance are outstanding. Screenshots and exact provenance are in
