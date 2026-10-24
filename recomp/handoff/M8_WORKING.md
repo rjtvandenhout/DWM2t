@@ -23,7 +23,7 @@ inform implementation. No fabricated game state or runtime interpreter.
 - Accepted input/save fixtures and all exact M7 constants remain unchanged.
 - No `restore/recomp-m8`, `M8_RESULT.md`, or final-release claim until full acceptance.
 
-Latest Windows-validated chain: twenty story checkpoints through Sea World,
+Latest complete Windows prefix: twenty story checkpoints through Sea World,
 post-story Squiz/Phes breeding, C Class, IceKey, Norden restoration, Westania's
 performance, YunaSoul/Puppetor/Yuna restoration and SleepHerb/GoatHorn/Helen
 restoration. Run 40136433795 passed at
@@ -119,7 +119,8 @@ replay and fresh Continue pass to exact Journal SHA256
 The party is level 24/21/21, full HP 87/146/167, with twelve owned monsters
 and 206G. The subsequent live royal audience about Kameha's disappearance has
 added the original SkyKey entry 0x05. Native Windows acceptance after stage 20
-is pending.
+passed in run 40142961686: twenty archived checkpoints audited and four later
+routes replayed, with exact Journal hashes and current persistence checks.
 The separate production GUI has loaded Yuna's later Journal, completed original
 Journal Save and reloaded it in a fresh process under Wine/Xvfb. This does not
 replace final Windows/full-game release acceptance; its exact report and
@@ -129,7 +130,21 @@ Ice World's main story and Sky Key now pass independent Wine replay. The
 24th original Journal SHA256 is
 `48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f`.
 All twelve monsters, full party HP 87/146/167, 206G and six keys persist after
-fresh Continue. The live continuation is entering Sky World. Later worlds,
+fresh Continue. Windows run 40142961686 has independently passed the four
+later routes after auditing all twenty archived prefix checkpoints. Artifact
+12579134999 is 269,528 bytes, ZIP SHA256
+`27aaf91b98cca87b5d5c29e6cfbdec56b00eb5236f789032daa5e41fb952c1c9`;
+all four downloaded Journals exactly match Wine and pass current checks.
+Production GUI Windows run 40144322233 passed: two normal shutdowns, later
+Journal Save and fresh-process reload with all twelve monsters and 64 quest
+bytes retained. Its downloaded Save independently passes the current checks. The live party has
+visited Fhunt tower, seen the MadCondor take the LightOrb and obtained
+ChangeStaff from behind Ugor’s grave. The 25th finite route independently
+passes under Wine to original Journal SHA256
+`dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626`.
+The party is level 25/22/22, HP 87/121/169, status 0/0/0, with twelve owned
+monsters, 196G and ChangeStaff. Every persistent-data check passes. Its live
+continuation has used ChangeStaff and passed the guarded bridge normally. Later worlds,
 ending/credits and final release acceptance remain outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
 

@@ -795,5 +795,54 @@
     "source_bmp_sha256": "ac7d43bc732038b1797d14b56885d561e76dd16e4602f4dd71788669275ef133",
     "png_sha256": "2533f8b569ed3690f10428a38c1cee62f71b291c8d3771324b9b8cab5c3f0b25",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "madcondor-lightorb.png",
+    "caption": "The original MadCondor scene shows the LightOrb being taken from Fhunt tower.",
+    "source_session": "sky-quest-39",
+    "source_bmp": "m8_740.bmp",
+    "frame": 64806,
+    "native_state": "M8_STATE frame=64806 mode=1:1 world=118 region=0,0 pos=144,64 party=3 selector=0x14 sram=0xcb1101b862a40526 screen=0xa3aba08ed9b69f4d image=m8_740.bmp",
+    "source_bmp_sha256": "bf25a0a719e4757d3a9a5c4c9b739cefe6d36f855082464b3e71a148e1c12389",
+    "png_sha256": "7e81b34f186c1acf04b57c9d3ac21222ce79ba0ea0e51e39bd5583107113aa7b",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "change-staff-found.png",
+    "caption": "Following Ugor\u2019s instructions, the original ChangeStaff is obtained behind his grave.",
+    "source_session": "sky-quest-39",
+    "source_bmp": "m8_936.bmp",
+    "frame": 85474,
+    "native_state": "M8_STATE frame=85474 mode=1:1 world=113 region=0,0 pos=32,48 party=3 selector=0x15 sram=0x785462ef60d3aaae screen=0x1b78cd59bee20680 image=m8_936.bmp",
+    "source_bmp_sha256": "1b7f5b4b16f6ce2a9bfa2609c1cfd952041afe4fd4cc1d9fb5931fda28b62f2f",
+    "png_sha256": "15cd9b5692670d331d724841e32bdb512e8c723eff25208f99bc8e8aa0676146",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "production-windows-late-continue.png",
+    "caption": "Native Windows production player continues the original Derzo birth Journal.",
+    "source": "Native Windows production GUI validation 40144322233, artifact 12579284927",
+    "source_bmp": "continue-field.bmp",
+    "source_bmp_sha256": "dfda4f298b798182b5f9b31bc755eae81aec7ce7884ed165e5b97a48aa766801",
+    "png_sha256": "cae9973b76a8f0d8d312aca27bdadf45f0a2f554152e75e88a6e4f22160e49e8",
+    "pixels": "Original production window client capture 160x144, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "production-windows-late-journal.png",
+    "caption": "Native Windows production player completes the original later Journal Save.",
+    "source": "Native Windows production GUI validation 40144322233, artifact 12579284927",
+    "source_bmp": "original-journal.bmp",
+    "source_bmp_sha256": "288cb7f2293f0a9b92e34188c37eb906c20519818e5f44183b4efc5b40c70180",
+    "png_sha256": "431111c2c76198384ce29f1b6ce147ac49467b192d1cb7eab3c9d503617c89c6",
+    "pixels": "Original production window client capture 160x144, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "production-windows-late-reload.png",
+    "caption": "A fresh native Windows production process reloads the saved original party HUD.",
+    "source": "Native Windows production GUI validation 40144322233, artifact 12579284927",
+    "source_bmp": "reload-menu.bmp",
+    "source_bmp_sha256": "4c3c95d3ce74911fb0b8df92dd0c4514b70c1f7dbe8c425fd8d1ea8df9017075",
+    "png_sha256": "22a5103e9b47f8e66ce9a217fca02461ecb6e0829ea345f9ecf12ed622a432ef",
+    "pixels": "Original production window client capture 160x144, lossless PNG encoding; no retouching."
   }
 ]

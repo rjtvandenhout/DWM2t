@@ -44,8 +44,11 @@ passes all twenty later story checkpoints with exact original Journal saves
 and fresh Continue; every archived save independently matches Wine.
 Later Wine replays breed Totum and Nyar to hatch
 Derzo (RayGigas +1). The production candidate's normal GUI also passes a later
-Continue, original Journal and fresh-process reload check under Wine. Native
-Windows acceptance of this newer progress is pending.
+Continue, original Journal and fresh-process reload check under Wine and
+native Windows (run 40144322233). Native
+Windows run 40142961686 has now audited the twenty archived checkpoints and
+replayed four later routes through the Sky Key; all four new Journal hashes
+match Wine. Later Sky World, ending/credits and final acceptance remain pending.
 
 **M8 is incomplete.** Sky World, the later story, ending/credits,
 combined regressions and final production-package acceptance remain unproven.
