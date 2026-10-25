@@ -263,7 +263,13 @@ Sky exploration/training remains in the same controller trace. Training now
 uses ordinary160 encounters near the164 return gate and original home healing
 between battles, aiming for Garon40 before retry. The host controller is
 `train_limbo.py`; it stops on original full-skill learning choices. No runtime/
-game-state edits. Current input remains unpinned until the next true Journal.
+game-state edits. Checkpoint34 `limbo-training` now passes528900-frame Wine replay to Journal
+SHA256`9d0f97079957d0d47d6b2114b51b590dd1a46b10d6690711914ae0cfc639b2b1`.
+Party39/37/37, full204/214/180,17 owned,3G; full107/roster pass. Garon learns
+AquaWall155, replacing YellHelp79 through the original skill menu. Live51,
+native session89902, starts only from this genuine Journal. A subsequent
+retry defeats Garudian then loses after StopSpell. Original recovery follows;
+next attempt prioritizes repeated SleepAir. No independent replay for51 yet.
 
 The new manual full-validation workflow is prepared. `preflight_only=true`
 tests new Windows host checks on the historical bfc591 production package;
