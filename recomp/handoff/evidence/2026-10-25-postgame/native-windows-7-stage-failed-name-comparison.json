@@ -1,0 +1,81 @@
+{
+  "run": {
+    "id": 40205236671,
+    "head_sha": "e116d6374441321e1c6be01e565b0c09959df6d0",
+    "html_url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40205236671",
+    "status": "completed",
+    "conclusion": "failure",
+    "run_attempt": 1
+  },
+  "artifact": {
+    "id": 12603038493,
+    "node_id": "MDg6QXJ0aWZhY3QxMjYwMzAzODQ5Mw==",
+    "name": "M8-supplemental-postgame-40205236671",
+    "size_in_bytes": 502032,
+    "url": "https://api.github.com/repos/rjtvandenhout/DWM2t/actions/artifacts/12603038493",
+    "archive_download_url": "https://api.github.com/repos/rjtvandenhout/DWM2t/actions/artifacts/12603038493/zip",
+    "expired": false,
+    "digest": "sha256:311b91e014a673e9c802b522490f9de744d0d3db1f51d1e0799c53d8d5656769",
+    "created_at": "2026-10-25T15:08:10Z",
+    "updated_at": "2026-10-25T15:08:10Z",
+    "expires_at": "2026-11-08T15:08:08Z",
+    "workflow_run": {
+      "id": 40205236671,
+      "repository_id": 1421327183,
+      "head_repository_id": 1421327183,
+      "head_branch": "work/recomp-postgame",
+      "head_sha": "e116d6374441321e1c6be01e565b0c09959df6d0"
+    }
+  },
+  "download": {
+    "bytes": 502032,
+    "sha256": "311b91e014a673e9c802b522490f9de744d0d3db1f51d1e0799c53d8d5656769",
+    "raw_zip": "/workspace/scratch/m8-postgame/native-windows-02-failed/raw.zip"
+  },
+  "preserved_failure": "Original Python nickname comparison rejected legitimate original NPC-egg codec padding; native replay/Save hashes/fresh Continue passed",
+  "existing_outputs_checked_with_source_backed_fix": [
+    {
+      "stage": "key-appraisal",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 2805,
+      "exact_name_transitions": 0
+    },
+    {
+      "stage": "quietsea-clear",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 2805,
+      "exact_name_transitions": 0
+    },
+    {
+      "stage": "newlywed-gift",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 2970,
+      "exact_name_transitions": 4
+    },
+    {
+      "stage": "certified-egg",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 3135,
+      "exact_name_transitions": 8
+    },
+    {
+      "stage": "quest-gates",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 3135,
+      "exact_name_transitions": 8
+    },
+    {
+      "stage": "quietsea-reload-dungeon",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 2805,
+      "exact_name_transitions": 0
+    },
+    {
+      "stage": "npc-offers",
+      "new_pure_comparator": "pass_existing_native_observations",
+      "full_owned_bytes_checked": 3135,
+      "exact_name_transitions": 18
+    }
+  ],
+  "new_native_run_required_for_acceptance": true
+}

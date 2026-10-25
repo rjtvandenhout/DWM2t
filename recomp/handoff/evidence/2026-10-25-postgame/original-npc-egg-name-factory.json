@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "scope": "Original factory and Continue name codec; observation-only, no replay/state write.",
+  "factory_clear165": {
+    "bank": 14,
+    "address": "0x5688",
+    "rom_offset": "0x039688",
+    "source": "src/banks/bank_014.asm",
+    "line": 363
+  },
+  "original_NPC_calls_factory": {
+    "bank": 13,
+    "address": "0x7329",
+    "rom_offset": "0x037329",
+    "source": "src/banks/bank_013.asm",
+    "line": 821
+  },
+  "player_owner_name_copy_not_child_nickname": {
+    "bank": 14,
+    "address": "0x5E85",
+    "rom_offset": "0x039E85",
+    "source": "src/banks/bank_014.asm",
+    "line": 491
+  },
+  "original_unhatched_field6E_set1": {
+    "bank": 14,
+    "address": "0x58A4",
+    "rom_offset": "0x0398A4",
+    "source": "src/banks/bank_014.asm",
+    "line": 397
+  },
+  "original_NPC_commit_copies_all165_unchanged": {
+    "bank": 13,
+    "address": "0x7430",
+    "rom_offset": "0x037430",
+    "source": "src/banks/bank_013.asm",
+    "line": 838
+  },
+  "decoder_max_five_glyphs": {
+    "bank": 29,
+    "address": "0x7ACF",
+    "rom_offset": "0x077ACF",
+    "source": "src/banks/bank_029.asm",
+    "line": 943
+  },
+  "decoder_prefill11F0": {
+    "bank": 29,
+    "address": "0x7A90",
+    "rom_offset": "0x077A90",
+    "source": "src/banks/bank_029.asm",
+    "line": 940
+  },
+  "decoder_copy10_to_record_plus1": {
+    "bank": 29,
+    "address": "0x754B",
+    "rom_offset": "0x07754B",
+    "source": "src/banks/bank_029.asm",
+    "line": 855
+  },
+  "observations": [
+    {
+      "preview_snapshot": 172,
+      "final_record": 17,
+      "preview165_exactly_equals_final_Journal_record": true,
+      "factory_nickname10_hex": "00000000000000000000",
+      "fresh_nickname10_hex": "0000000000f0f0f0f0f0",
+      "factory_unhatched_field6E": 1,
+      "record165_sha256": "282b9cd4dc8a2423b5d79816aa3007ac84067db4b6f3175f138a4b75fe570956"
+    },
+    {
+      "preview_snapshot": 298,
+      "final_record": 18,
+      "preview165_exactly_equals_final_Journal_record": true,
+      "factory_nickname10_hex": "00000000000000000000",
+      "fresh_nickname10_hex": "0000000000f0f0f0f0f0",
+      "factory_unhatched_field6E": 1,
+      "record165_sha256": "6ffd205e237828c15539ae1293951b570eb37bf4eee36140ff351e7a9d071f6a"
+    }
+  ],
+  "conclusion": "The NPC child factory clears all165 bytes, leaving its own nickname ten zero bytes. It fills owner/pedigree and other child fields, then the original NPC commit copies all165 unchanged. Both captured factory records exactly equal their later saved records, proving the zero nickname is original generated NPC-egg data, not Naming Editor input. Original Continue decodes at most five glyphs and pads its ten-byte destination withF0."
+}

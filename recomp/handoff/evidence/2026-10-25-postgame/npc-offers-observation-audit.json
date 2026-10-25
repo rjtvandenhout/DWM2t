@@ -1386,8 +1386,8 @@
   },
   "commands": {
     "path": "/workspace/scratch/m8-postgame/quest-probe-03/commands_executed.txt",
-    "bytes": 4708,
-    "sha256": "4ae34bdd6f876d67acc96fd0eadf9dbc23466ae8b34151cb12f6aa2eefbdf1dc"
+    "bytes": 4714,
+    "sha256": "a21190c2bc38a023f5be876f5c5ed9b2569e01e40768a82dbf75911cad608161"
   },
   "fresh_continue_evidence": {
     "path": "/workspace/scratch/m8-postgame/quest-probe-03/npc_offers_continue/continue_evidence.txt",

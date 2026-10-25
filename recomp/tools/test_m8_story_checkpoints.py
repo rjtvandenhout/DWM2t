@@ -104,6 +104,39 @@ def verify_ending_witnesses(route: Path, expected: dict) -> None:
         raise ValueError('Ending witnesses do not match the tested original P1 route')
 
 
+def verify_name_bytes(saved: bytes, fresh: bytes, record: int, transitions: list[dict]) -> None:
+    """Keep historical name checks; pin original codec padding changes exactly."""
+    if len(saved) != 10 or len(fresh) != 10:
+        raise ValueError('Original nickname observations must contain ten bytes')
+    selected = []
+    for item in transitions:
+        if item.get('record') != record:
+            continue
+        offset = item.get('offset')
+        if type(offset) is not int:
+            raise ValueError('Original name transition offset must be an integer')
+        if 1 <= offset <= 10:
+            selected.append(item)
+    if selected:
+        expected = bytearray(saved)
+        seen = set()
+        for item in selected:
+            if (set(item) != {'record', 'offset', 'before', 'after'} or
+                    any(type(item[key]) is not int for key in item) or
+                    item['before'] not in range(256) or item['after'] not in range(256) or
+                    item['before'] == item['after'] or item['offset'] in seen):
+                raise ValueError('Invalid or duplicate exact original nickname transition')
+            index = item['offset']-1
+            if saved[index] != item['before'] or fresh[index] != item['after']:
+                raise ValueError('Original nickname transition differs from its exact pin')
+            expected[index] = item['after']
+            seen.add(item['offset'])
+        if bytes(expected) != fresh:
+            raise ValueError(f'Creature name differs after Continue: {record}')
+    elif saved.split(b'\xf0', 1)[0] != fresh.split(b'\xf0', 1)[0]:
+        raise ValueError(f'Creature name differs after Continue: {record}')
+
+
 def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
     saved = (native / 'checkpoint.sav').read_bytes()
     fresh = (native / 'fresh_continue/m8_0.sram').read_bytes()
@@ -138,8 +171,8 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
         base = record * 0xA5
         if saved[base] != (2 if record in party else 1):
             raise ValueError(f'Original farm/active status differs: {record}')
-        if saved[base+1:base+11].split(b'\xf0', 1)[0] != fresh[base+1:base+11].split(b'\xf0', 1)[0]:
-            raise ValueError(f'Creature name differs after Continue: {record}')
+        verify_name_bytes(saved[base+1:base+11], fresh[base+1:base+11], record,
+                          expected.get('continue_byte_transitions', []))
         for start, end in ((0x0B, 0x0D), (0x34, 0x3C), (0x55, 0x6B),
                            *expected.get('persistent_ranges', [])):
             if saved[base+start:base+end] != fresh[base+start:base+end]:
