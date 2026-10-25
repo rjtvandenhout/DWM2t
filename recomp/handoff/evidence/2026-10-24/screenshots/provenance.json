@@ -998,5 +998,49 @@
     "source_bmp_sha256": "3549901df835ecc365df8057671b5bac07c5ace85185b59187987505f10a3448",
     "png_sha256": "06b7f2b662a9464ff94cf15a3f3b3998e05ff32c312aa5532ae218658d67280d",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "coffin-trial-solved.png",
+    "caption": "Original coupled coffin-switch puzzle solved; the passage opens.",
+    "source_session": "sky-quest-48",
+    "source_bmp": "m8_499.bmp",
+    "frame": 40793,
+    "native_state": "M8_STATE frame=40793 mode=1:0 world=141 region=0,0 pos=96,96 party=3 selector=0x4e sram=0x9aa39bdacd191f2d screen=0x81a2541aabed1f31 image=m8_499.bmp",
+    "source_bmp_sha256": "72a44a1f2d8ceabd9deb30f0444352feb45a9c603b661430fad9c81376c2c74d",
+    "png_sha256": "c39ee8be5fae0fa9bb77605cb6d66bf9de017403241394855b70c2c413725075",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "lost-soul-guided.png",
+    "caption": "Original arrow-button sliding-soul puzzle completed; the next passage opens.",
+    "source_session": "sky-quest-48",
+    "source_bmp": "m8_675.bmp",
+    "frame": 54187,
+    "native_state": "M8_STATE frame=54187 mode=1:0 world=143 region=0,0 pos=96,112 party=3 selector=0x51 sram=0xe45eda60c3738ae0 screen=0xd3fe355a4574ec87 image=m8_675.bmp",
+    "source_bmp_sha256": "8de108836f1954bdbe314cf602a9676789bbc45063cdcea73f15dc2f34e14f66",
+    "png_sha256": "a4164f5526233177c223aa516e28a361b6ac648d6b33fb4ec45100d07d6d8981",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "heaven-helmet-obtained.png",
+    "caption": "The original Heaven Helmet chest is collected after the Niterich victory.",
+    "source_session": "sky-quest-48",
+    "source_bmp": "m8_1762.bmp",
+    "frame": 94062,
+    "native_state": "M8_STATE frame=94062 mode=1:1 world=145 region=0,0 pos=64,48 party=3 selector=0x56 sram=0x1466e18094a9c776 screen=0x6be85e56f2ae9c2b image=m8_1762.bmp",
+    "source_bmp_sha256": "6c67ee8d72c5d2520d1531628d77235ed2642f5d401bcfa240b8a9dee47be143",
+    "png_sha256": "47e7a37968dadda1b9897eb9cc9bfab11dd35a4da49de4876de46a943884a57f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "garon-seals-niterich-breath.png",
+    "caption": "Garon uses the original MouthShut skill to seal Niterich's mouth during the 1500-HP guardian battle.",
+    "source_session": "sky-quest-48",
+    "source_bmp": "m8_1283.bmp",
+    "frame": 81696,
+    "native_state": "M8_STATE frame=81696 mode=4:0 world=145 region=0,0 pos=64,64 party=3 selector=0x55 sram=0x421d3f21dafc4b03 screen=0x43bc0ca3e39f327a image=m8_1283.bmp",
+    "source_bmp_sha256": "3b84d6f40c3eb363691266e9c8d61a19cd91f02a282e7f293f23ed2519ff3c13",
+    "png_sha256": "73f8509edeaf7541d633c6dfdac9ead6b006bae565057fab3fbd6dd39476ee58",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

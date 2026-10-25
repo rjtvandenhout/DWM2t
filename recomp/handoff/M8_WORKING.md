@@ -224,6 +224,33 @@ live party is now in world143's first graveyard switch chamber; whole-game
 ending remains outstanding. Scratch helper `coffin_puzzle.py` computes only
 an input plan and applies it through original P1. No runtime edits.
 
+Native Windows run40152139075 at7d73ce3 has now passed thirty cumulative
+checkpoints (twenty archived audited, ten replayed). All downloaded Journals
+match Wine and independently pass the current107-byte/full-roster checks.
+Artifact12584475629,673140bytes,ZIP SHA256
+`a863a8f68d01724c0f928b2bd294a302224b86ee5d0053af3e3f7c67a4e48fe7`.
+
+The live `sky-quest-48` also solves the sliding-soul trial in143 via original
+arrow controls, presses the hidden grave button in142 and wins Niterich's
+1500-HP battle in145 with all three alive. Garon's MouthShut seals IceStorm;
+HealAll/Increase/TwinHits support physical attacks. HeavenHelmet59 is collected,
+so inventory contains57/58/59. Source battle witness is frame78035. The party
+is returning through139/140 for Journal; no independent replay yet for this
+later route. Half-tile exit positions with y%16==8 align through original
+Down8 input. The graveyard's two components require the return passage via144
+and143; attempting a direct path from the north chamber is insufficient.
+
+Checkpoint32 now passes157,612-frame independent Wine replay to original
+Journal SHA256`a825958b8e9c8aee2cd3c176187f853d7390c3ba728e7cdbe746723ec4b06b1e`.
+Party32/29/31, fullHP191/197/168, sixteen owned,13G, items57/58/59. Full107
+includes all original saved puzzle states and passes. Native Niterich witness
+frame78035 is asserted. Scratch `sky-quest-49` starts only from that genuine
+Journal. The town124 guard admits the party (B6), the palace127 chancellor
+asks them to take the rear traveler gate to the king's castle (B8). Original
+on-enter127 x64,16 transfers to shrine146; its south exit leads to11254,22.
+Current guide is approaching castle147 via11244,13. Original live probe
+session34837 owns49. Read-only replay32 has passed; no runtime/game-state edits.
+
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead
 and refuse Save. Use a clear, stationary town tile facing an empty tile.
