@@ -1,6 +1,11 @@
 name: Fresh M8 builds and campaign validation
 
 on:
+  workflow_call:
+    inputs:
+      preflight_only:
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       preflight_only:

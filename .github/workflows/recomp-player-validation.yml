@@ -8,6 +8,11 @@ on:
       - '.github/workflows/recomp-player-validation.yml'
   workflow_dispatch:
     inputs:
+      validation_mode:
+        description: Select existing player checks, historical package preflight, or fresh complete campaign validation
+        type: choice
+        default: existing
+        options: [existing, historical-package, fresh-campaign]
       late_story_run_id:
         description: Optional successful story run; reuse the pinned player for later Journal validation
         required: false
@@ -23,7 +28,7 @@ concurrency:
 
 jobs:
   player-windows:
-    if: ${{ inputs.late_story_run_id == '' }}
+    if: ${{ inputs.late_story_run_id == '' && (inputs.validation_mode == '' || inputs.validation_mode == 'existing') }}
     runs-on: windows-latest
     timeout-minutes: 180
     steps:
@@ -82,7 +87,13 @@ jobs:
           retention-days: 14
 
   production-late-journal:
-    if: ${{ inputs.late_story_run_id != '' }}
+    if: ${{ inputs.late_story_run_id != '' && (inputs.validation_mode == '' || inputs.validation_mode == 'existing') }}
     uses: ./.github/workflows/recomp-player-late-validation.yml
     with:
       story_run_id: ${{ inputs.late_story_run_id }}
+
+  complete-validation:
+    if: ${{ inputs.validation_mode == 'historical-package' || inputs.validation_mode == 'fresh-campaign' }}
+    uses: ./.github/workflows/recomp-full-validation.yml
+    with:
+      preflight_only: ${{ inputs.validation_mode == 'historical-package' }}
