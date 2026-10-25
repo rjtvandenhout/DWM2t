@@ -1,0 +1,97 @@
+{
+  "label": "skeletor-poisongon-preview",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-03",
+  "frame": 26180,
+  "location": [
+    4,
+    2,
+    0,
+    80,
+    48
+  ],
+  "mode": [
+    1,
+    1
+  ],
+  "selector": 241,
+  "gold": 11,
+  "owned_count": 19,
+  "owned_records": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "catalogue_count": 24,
+  "flags": {
+    "0x25": true,
+    "0x28": true,
+    "0x29": true,
+    "0x2A": false,
+    "0x2B": false,
+    "0x2E": true,
+    "0x31": true,
+    "0x32": true,
+    "0x33": false,
+    "0x34": false,
+    "0x35": false,
+    "0x36": false,
+    "0x37": false,
+    "0x38": false,
+    "0x39": false,
+    "0x3A": false,
+    "0x3B": false,
+    "0x3C": false,
+    "0x3D": false,
+    "0x3E": false,
+    "0xC8": false,
+    "0xCD": true,
+    "0x192": false,
+    "0x193": false,
+    "0x194": false,
+    "0x195": false,
+    "0x206": false,
+    "0x207": false
+  },
+  "quest107_hex": "eeffafec3f4306003f07f88770e075fdef9fffbfd1f77f05ff220f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "observations_only": true,
+  "raw": {
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_298.bmp": {
+      "bytes": 92214,
+      "sha256": "9e20ac219e569c3adaabcc9bb231619ce69f489b9499f5d6311bc9c17bab9ed7"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_298.ram": {
+      "bytes": 65536,
+      "sha256": "4cc794d690045fbe8053321d1333fa4e4ae84196df7993098e9f7ca82e2bb39b"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_298.sram": {
+      "bytes": 32768,
+      "sha256": "4731b197220181cc2a3bbb3bf46dc1566fdd2152829bb955f5b6cde6f7d9ee3b"
+    },
+    "/workspace/scratch/m8-postgame/quest3-evidence/skeletor-poisongon-preview.png": {
+      "bytes": 4169,
+      "sha256": "dcb30bc5ffdaab122585006f8fbe4b2947703b440ab845e588ae228feab41b44"
+    }
+  },
+  "original_journals": {
+    "/workspace/scratch/m8-postgame/quest-probe-03/medal_minimum.sav": {
+      "bytes": 32768,
+      "sha256": "b7f15d610618a6d8f61c6087afb9d8a3b63c9af398fd7d3ac7efbbaaf2f98514"
+    }
+  }
+}

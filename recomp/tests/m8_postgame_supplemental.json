@@ -2447,6 +2447,655 @@
         1,
         5
       ]
+    },
+    {
+      "name": "npc-offers",
+      "route": "m8_postgame_npc_offers_p1.txt",
+      "route_sha256": "0073aee573182654c3085e105e77a08142d382b5f66459eb729c2974732ff74f",
+      "save_sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
+      "frames": 41231,
+      "party": [
+        11,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status": [
+        0,
+        0,
+        0
+      ],
+      "owned": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "species": {
+        "0": 10,
+        "1": 2,
+        "2": 145,
+        "3": 246,
+        "4": 166,
+        "5": 185,
+        "6": 80,
+        "7": 11,
+        "8": 115,
+        "9": 3,
+        "10": 319,
+        "11": 319,
+        "12": 167,
+        "13": 8,
+        "14": 12,
+        "15": 127,
+        "16": 223,
+        "17": 214,
+        "18": 42
+      },
+      "learned_skills": {
+        "0": [
+          5,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "1": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "2": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "3": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "4": [
+          97,
+          118,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "5": [
+          97,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "6": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "7": [
+          22,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "8": [
+          47,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "9": [
+          98,
+          153,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "10": [
+          5,
+          40,
+          30,
+          113,
+          147,
+          255,
+          255,
+          255
+        ],
+        "11": [
+          24,
+          29,
+          38,
+          42,
+          5,
+          45,
+          147,
+          155
+        ],
+        "12": [
+          13,
+          53,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "13": [
+          2,
+          38,
+          111,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "14": [
+          78,
+          104,
+          144,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "15": [
+          72,
+          146,
+          156,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "16": [
+          13,
+          108,
+          130,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "17": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "18": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "gold": 11,
+      "location": [
+        0,
+        1,
+        1,
+        64,
+        16
+      ],
+      "set_flags": [
+        37,
+        40,
+        41,
+        46,
+        49,
+        50,
+        53,
+        201,
+        203,
+        205
+      ],
+      "items": [
+        9,
+        53,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "arena_class": 2,
+      "key_entries": [
+        [
+          1,
+          255,
+          255,
+          128
+        ],
+        [
+          66,
+          255,
+          255,
+          128
+        ],
+        [
+          67,
+          255,
+          255,
+          128
+        ],
+        [
+          254,
+          7,
+          19,
+          8
+        ],
+        [
+          68,
+          255,
+          255,
+          128
+        ],
+        [
+          69,
+          255,
+          255,
+          128
+        ],
+        [
+          70,
+          255,
+          255,
+          128
+        ]
+      ],
+      "persistent_ranges": [
+        [
+          25,
+          52
+        ],
+        [
+          107,
+          165
+        ]
+      ],
+      "observed_witnesses": [
+        {
+          "name": "journal",
+          "frame": 41231,
+          "snapshot": "quest-probe-03/m8_438.ram",
+          "snapshot_sha256": "70232fb12b2413627ce848dee58a48efffa9080c2326becc79de35c1c3dc3a89",
+          "mode": [
+            1,
+            0
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "medal-minimum-refusal",
+          "frame": 6687,
+          "snapshot": "quest-probe-03/m8_61.ram",
+          "snapshot_sha256": "3d06c9d9d0e9109101f250eb15f0bf9a5fb2bcee10cf708812f438f48d4bd6fe",
+          "mode": [
+            1,
+            1
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "funky-demonite-preview",
+          "frame": 14502,
+          "snapshot": "quest-probe-03/m8_172.ram",
+          "snapshot_sha256": "1eae8e5ebbaec1cd71b6baae9b9634fdeb477aeba3c27d19f03231a39c697930",
+          "mode": [
+            1,
+            1
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "funky-breeding-complete",
+          "frame": 18805,
+          "snapshot": "quest-probe-03/m8_188.ram",
+          "snapshot_sha256": "fa54bc584add93a0d42608c6fbbd5e2518b752693e743bcf7481e392fcc95eed",
+          "mode": [
+            1,
+            0
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skeletor-poisongon-preview",
+          "frame": 26180,
+          "snapshot": "quest-probe-03/m8_298.ram",
+          "snapshot_sha256": "4cc794d690045fbe8053321d1333fa4e4ae84196df7993098e9f7ca82e2bb39b",
+          "mode": [
+            1,
+            1
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skeletor-breeding-complete",
+          "frame": 30424,
+          "snapshot": "quest-probe-03/m8_316.ram",
+          "snapshot_sha256": "d988f0e120c9a11be782f63be24b772d3d644266b71196698e3bb454a577447b",
+          "mode": [
+            1,
+            0
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "dreamegg-original-absent",
+          "frame": 37824,
+          "snapshot": "quest-probe-03/m8_410.ram",
+          "snapshot_sha256": "7c8946eea1a95697e238f4210bbd9cfd6adb7a5244e553d403e5154c9366db91",
+          "mode": [
+            1,
+            2
+          ],
+          "random_context": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "seed_stage": "quest-gates",
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 6,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 7,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 8,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 9,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 10,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 6,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 7,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 8,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 9,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 10,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "cache_expectations": [],
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        "10": 10,
+        "12": 11,
+        "13": 12,
+        "14": 13,
+        "16": 14,
+        "17": 15,
+        "18": 16
+      },
+      "consumed_records": [
+        11,
+        15
+      ],
+      "offspring": {
+        "record": 17,
+        "plus": 3,
+        "gender": 1,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "188353b1e5c225d5d4fdfe41b0ad61263aed23a693e94ccab30c9c287018219b"
+      },
+      "observed_npc_offspring": [
+        {
+          "record": 17,
+          "species": 214,
+          "plus": 3,
+          "gender": 1,
+          "skills": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ],
+          "genes_sha256": "188353b1e5c225d5d4fdfe41b0ad61263aed23a693e94ccab30c9c287018219b"
+        },
+        {
+          "record": 18,
+          "species": 42,
+          "plus": 3,
+          "gender": 1,
+          "skills": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ],
+          "genes_sha256": "90eaf4571660e3f6dea863802a2b463f5525970c911bdc0a5767308ddcb32623"
+        }
+      ],
+      "continue_byte_transition_source": "../handoff/evidence/2026-10-25-postgame/npc-offer-continue-name-disassembly.txt"
     }
   ]
 }

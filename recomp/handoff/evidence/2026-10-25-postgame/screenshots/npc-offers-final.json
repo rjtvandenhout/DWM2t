@@ -1,0 +1,101 @@
+{
+  "label": "npc-offers-final",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-03",
+  "frame": 41231,
+  "location": [
+    0,
+    1,
+    1,
+    64,
+    16
+  ],
+  "mode": [
+    1,
+    0
+  ],
+  "selector": 228,
+  "gold": 11,
+  "owned_count": 19,
+  "owned_records": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "catalogue_count": 24,
+  "flags": {
+    "0x25": true,
+    "0x28": true,
+    "0x29": true,
+    "0x2A": false,
+    "0x2B": false,
+    "0x2E": true,
+    "0x31": true,
+    "0x32": true,
+    "0x33": false,
+    "0x34": false,
+    "0x35": true,
+    "0x36": false,
+    "0x37": false,
+    "0x38": false,
+    "0x39": false,
+    "0x3A": false,
+    "0x3B": false,
+    "0x3C": false,
+    "0x3D": false,
+    "0x3E": false,
+    "0xC8": false,
+    "0xCD": true,
+    "0x192": false,
+    "0x193": false,
+    "0x194": false,
+    "0x195": false,
+    "0x206": false,
+    "0x207": false
+  },
+  "quest107_hex": "eeffafec3f4326003f07f88770e075fdef9fffbfd1f77f05ff2a0f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "observations_only": true,
+  "raw": {
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_438.bmp": {
+      "bytes": 92214,
+      "sha256": "9e76515a6da2c00327e31de22040c539eea1af5f03a315f1f1e18258b9179d3f"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_438.ram": {
+      "bytes": 65536,
+      "sha256": "70232fb12b2413627ce848dee58a48efffa9080c2326becc79de35c1c3dc3a89"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_438.sram": {
+      "bytes": 32768,
+      "sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5"
+    },
+    "/workspace/scratch/m8-postgame/quest3-evidence/npc-offers-final.png": {
+      "bytes": 4079,
+      "sha256": "839db2e46c4b9fb4d1be02cdca95197242116dabcb7cc1b3ae501ebebb57eeb6"
+    }
+  },
+  "original_journals": {
+    "/workspace/scratch/m8-postgame/quest-probe-03/npc_offers.sav": {
+      "bytes": 32768,
+      "sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/medal_minimum.sav": {
+      "bytes": 32768,
+      "sha256": "b7f15d610618a6d8f61c6087afb9d8a3b63c9af398fd7d3ac7efbbaaf2f98514"
+    }
+  }
+}

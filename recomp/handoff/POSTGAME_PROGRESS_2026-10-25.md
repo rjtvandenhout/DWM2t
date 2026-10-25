@@ -110,7 +110,7 @@ This does not fund Arena B's 500G fee from the current 11G wallet.
 
 ## Remaining postgame scope
 
-The source inventory covers the fixed postgame keys, character rewards, Arena
+The [source inventory](POSTGAME_CONTENT_AUDIT_2026-10-25.md) covers the fixed postgame keys, character rewards, Arena
 tiers, King bounties, breeding offers and catalogue gates. The ending Save has
 22 acquired catalogue species; the character branch reaches 24. Later rewards
 require 50, 100, 120, 140, 150, 160, 250 or 290 species and suitable real parents.

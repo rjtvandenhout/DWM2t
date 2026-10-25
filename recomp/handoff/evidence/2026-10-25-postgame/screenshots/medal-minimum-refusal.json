@@ -1,0 +1,92 @@
+{
+  "label": "medal-minimum-refusal",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-03",
+  "frame": 6687,
+  "location": [
+    22,
+    0,
+    0,
+    96,
+    64
+  ],
+  "mode": [
+    1,
+    1
+  ],
+  "selector": 114,
+  "gold": 11,
+  "owned_count": 19,
+  "owned_records": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "catalogue_count": 24,
+  "flags": {
+    "0x25": true,
+    "0x28": true,
+    "0x29": true,
+    "0x2A": false,
+    "0x2B": false,
+    "0x2E": true,
+    "0x31": true,
+    "0x32": false,
+    "0x33": false,
+    "0x34": false,
+    "0x35": false,
+    "0x36": false,
+    "0x37": false,
+    "0x38": false,
+    "0x39": false,
+    "0x3A": false,
+    "0x3B": false,
+    "0x3C": false,
+    "0x3D": false,
+    "0x3E": false,
+    "0xC8": false,
+    "0xCD": true,
+    "0x192": false,
+    "0x193": false,
+    "0x194": false,
+    "0x195": false,
+    "0x206": false,
+    "0x207": false
+  },
+  "quest107_hex": "eeffafec3f4302003f07f88770e075fdef9fffbfd1f77f05ff200f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "observations_only": true,
+  "raw": {
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_61.bmp": {
+      "bytes": 92214,
+      "sha256": "cb6e305e8b00bad96360523d4ede537081b6b046922f8ec655894a7222f6064e"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_61.ram": {
+      "bytes": 65536,
+      "sha256": "3d06c9d9d0e9109101f250eb15f0bf9a5fb2bcee10cf708812f438f48d4bd6fe"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-03/m8_61.sram": {
+      "bytes": 32768,
+      "sha256": "36d7003f238767cba032c9d8674fb89a791c4b3a9252b5d0fcb6aba99596d0f8"
+    },
+    "/workspace/scratch/m8-postgame/quest3-evidence/medal-minimum-refusal.png": {
+      "bytes": 3552,
+      "sha256": "04ba252cf96bd83a51206347fa177bfde65060330850d737cac06466873afbb9"
+    }
+  },
+  "original_journals": {}
+}
