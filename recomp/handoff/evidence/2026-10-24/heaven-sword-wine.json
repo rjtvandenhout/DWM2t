@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "heaven-sword",
+      "frames": 131651,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/heaven-sword-check-01/heaven-sword/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_heaven_sword_p1.txt",
+        "Z:/workspace/scratch/m8-review/heaven-sword-check-01/heaven-sword/native"
+      ],
+      "route_sha256": "ef6fb58816a7138bc3cb40c1387e7191d8847d78a5bb5fed91b7ad4b7c860cd7",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "94d024c3d3aa146f246136b0c7107d69b4a05bf67f784aaafbbe68344bccd06d",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        29,
+        24,
+        27
+      ],
+      "hp": [
+        184,
+        188,
+        157
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 33,
+      "owned": 16,
+      "additional_persistent_creature_bytes": 1872
+    }
+  ]
+}

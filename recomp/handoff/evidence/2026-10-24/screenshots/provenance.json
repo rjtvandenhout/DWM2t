@@ -943,5 +943,38 @@
     "source_bmp_sha256": "65920ad8fb14f6afe2c3f1da76dc49e82e109007ac2844130fbe8738a5758f27",
     "png_sha256": "c1c7185279ac68585fa01248bf4e0a54ce64f5043caa255e1065bd6ac9425311",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "garon-healall-learned.png",
+    "caption": "Original Garon skill menu after training: HealAll, Increase and SpeedUp; HP and inherited skills are also pinned in checkpoint 29.",
+    "source_session": "sky-quest-46",
+    "source_bmp": "m8_6.bmp",
+    "frame": 2833,
+    "native_state": "M8_STATE frame=2833 mode=2:2 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0x2a10527ad6af6775 screen=0x6bc837db4f345396 image=m8_6.bmp",
+    "source_bmp_sha256": "70d1e583a473f7851d5be0d910d7a641edb47fa1cbb1f49e22a90704011f4f51",
+    "png_sha256": "3ed6299d4ccbfedcd76de3d73353bc56d111df4964adc82941f0b4e1df4d48f4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "metabble-defeated.png",
+    "caption": "Original Metabble guardian defeat with all three party members alive.",
+    "source_session": "sky-quest-46",
+    "source_bmp": "m8_1542.bmp",
+    "frame": 88330,
+    "native_state": "M8_STATE frame=88330 mode=4:0 world=132 region=0,0 pos=64,64 party=3 selector=0x4a sram=0x39c3b1fda713517 screen=0xbe5f85126e885d5b image=m8_1542.bmp",
+    "source_bmp_sha256": "8e20347385f62290b5d271ee3782c635fc96c672ca1ed8598c87df536b97d65c",
+    "png_sha256": "99b2811cb5cae2c850fd3b6399c69254126fc92fd01d233ef33ea40d4316df50",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "heaven-sword-obtained.png",
+    "caption": "The original Heaven Sword chest is collected after defeating its Metabble guardian.",
+    "source_session": "sky-quest-46",
+    "source_bmp": "m8_1654.bmp",
+    "frame": 91080,
+    "native_state": "M8_STATE frame=91080 mode=1:1 world=132 region=0,0 pos=80,16 party=3 selector=0x49 sram=0x57452e52227a994 screen=0x9ae3df094b3ba01d image=m8_1654.bmp",
+    "source_bmp_sha256": "83c77eb30dd5bd0ff4ba3b195fb3b7266c84674cbd93e0528b23c007d8728fac",
+    "png_sha256": "6650ad1218fbcc9893d06846c0a8aaacdf534e9a83b17e413a485c0505f08ef2",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

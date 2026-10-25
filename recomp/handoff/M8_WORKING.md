@@ -189,6 +189,20 @@ Production Windows run 40148371157 also passes the current direct 107-byte
 quest comparison, all twelve original birth-21 monsters, later Journal Save,
 two normal shutdowns and fresh-process Continue on the pinned production EXE.
 
+The 29th original Journal trains Garon to level 17, HP174, with HealAll,
+Increase and TwinHits; its 86,481-frame independent Wine replay passes.
+The 30th route passes the smaller-disguise hole, explores the Sword dungeon,
+retains original skill-forgetting choices, defeats Metabble (20 HP/999 DEF)
+with all three alive and obtains Heaven Sword. It returns to the settlement
+inn, rests for 10G and saves at world125 r0,0 x48,32 Down. Independent Wine
+replay of 131,651 frames passes to original Journal SHA256
+`94d024c3d3aa146f246136b0c7107d69b4a05bf67f784aaafbbe68344bccd06d`.
+All sixteen monsters, quest107, inherited data, skills, keys, wallet33G and
+inventory persist. Party Derzo/Garon/Slash is level29/24/27, fullHP184/188/157.
+Scratch `sky-quest-47` starts only from that authentic Sword Journal and is
+exploring Heaven Armor's platform maze. Original unlocked flight crosses the
+black gaps; ordinary walking and B jumping did not. Only P1 changes game state.
+
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead
 and refuse Save. Use a clear, stationary town tile facing an empty tile.
