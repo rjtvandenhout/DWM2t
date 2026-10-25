@@ -36,7 +36,7 @@ def main() -> int:
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    report = {'status': 'running', 'executable_source': '697647033b4ce6b00dd8e11759cb85e1ae469a65',
+    report = {'status': 'running', 'platform': 'Windows', 'executable_source': '697647033b4ce6b00dd8e11759cb85e1ae469a65',
               'baseline_windows_run': 39836316030, 'seed_windows_run': 39846303155,
               'scope': 'Sea World village, recruitment/farm, inn and original Journal',
               'controller_frames': 8299, 'full_game_verified': False, 'sea_world_completed': False,

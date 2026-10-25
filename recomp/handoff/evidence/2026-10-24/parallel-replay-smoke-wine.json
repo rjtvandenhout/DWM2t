@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "ice_world_completed": false,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "mermaid-palace",
+      "frames": 93727,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/parallel-story-smoke-02/mermaid-palace/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_mermaid_palace_p1.txt",
+        "Z:/workspace/scratch/m8-review/parallel-story-smoke-02/mermaid-palace/native"
+      ],
+      "route_sha256": "3f8331f25f56f6a78776fdff72f0c5281118c23ef322e176c78231c1c2181f9d",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+      "active_party_records": [
+        9,
+        4,
+        5
+      ],
+      "levels": [
+        12,
+        12,
+        8
+      ],
+      "hp": [
+        89,
+        68,
+        21
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "strong-party",
+      "frames": 58319,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/parallel-story-smoke-02/strong-party/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_strong_party_p1.txt",
+        "Z:/workspace/scratch/m8-review/parallel-story-smoke-02/strong-party/native"
+      ],
+      "route_sha256": "e0cae6e494110553314e5bafea31398e8b800a2637a8e9e80810bdfca6d3c44e",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        12,
+        11
+      ],
+      "hp": [
+        89,
+        69,
+        102
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    }
+  ],
+  "workers": 2,
+  "seed_chain_audited": true,
+  "executable_bytes": 725318144,
+  "seed_bundle_sha256": "c1d629f4754014189c156031b5270f0eba6ea993fe8fe3e68c4ed9f58fb7955b",
+  "seed_chain_links": 2,
+  "ending_completed": false
+}

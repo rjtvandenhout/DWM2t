@@ -63,7 +63,8 @@ passes original ending Journal and fresh-process reload under Wine.
 
 **Final M8 acceptance is pending.** Fresh exact-source diagnostic/production
 builds, combined native Windows regressions and final verified-package checks
-remain outstanding.
+remain outstanding. The optional four-process story executor validates genuine
+Journal inputs and audits every child against its newly replayed parent output.
 The [current progress report](handoff/M8_PROGRESS_2026-10-25.md) includes original
 screenshots and exact evidence. Working notes are in `handoff/M8_WORKING.md`;
 the active draft PR is [#4](https://github.com/rjtvandenhout/DWM2t/pull/4) on

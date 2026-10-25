@@ -13,6 +13,14 @@ Native Windows story coverage remains 30 checkpoints. Fresh exact-source builds,
 all retained/new Windows gates and the final verified package remain pending.
 Do not create M8_RESULT or move/create the M8 restore before those pass.
 
+The first fresh run40171984163 was canceled before campaign replay to correct
+two missing Windows report-platform fields and enable the requested acceleration.
+The optional four-process executor uses39 pinned authentic Journals and audits
+every child against its newly replayed parent;22 contracts and a real two-stage
+Wine smoke pass. The next native dispatch will use this executor. Production
+MSVC compilation now matches the diagnostic /MP4 scheduling. Failed final-package
+evidence is retained separately; the VERIFIED ZIP uploads only after success.
+
 Current continuation (2026-10-23): the user requested M7 review and M8 work
 for the whole game. The historical stop/continue choice below is answered.
 The continuing report with original screenshots is

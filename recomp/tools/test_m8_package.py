@@ -143,7 +143,8 @@ class PackageContracts(unittest.TestCase):
         stages = [dict(stage=s['name'], frames=s['frames'], route_sha256=s['route_sha256'],
                        save_sha256=s['save_sha256'], native_returncode=0, status='passed') for s in manifest['stages']]
         stages[-1]['ending_completed'] = True
-        report(folders['story'], 'story-checkpoints-validation.json', stages=stages, ending_completed=True)
+        report(folders['story'], 'story-checkpoints-validation.json', stages=stages, ending_completed=True,
+               workers=4, seed_chain_audited=True, seed_chain_links=len(stages))
         for name, no_arguments in [('direct-start', True), ('profile-start', False)]:
             report(folders['production']/name, 'player-startup.json', checks=['fixture']*12, no_argument_start=no_arguments)
         report(folders['production-journal'], 'player-package.json', checks=['fixture']*21,

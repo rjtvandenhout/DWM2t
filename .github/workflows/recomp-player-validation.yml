@@ -18,6 +18,11 @@ on:
         required: false
         default: ''
         type: string
+      story_journals_base64:
+        description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -97,3 +102,4 @@ jobs:
     uses: ./.github/workflows/recomp-full-validation.yml
     with:
       preflight_only: ${{ inputs.validation_mode == 'historical-package' }}
+      story_journals_base64: ${{ inputs.story_journals_base64 || '' }}

@@ -6,12 +6,21 @@ on:
       preflight_only:
         type: boolean
         default: false
+      story_journals_base64:
+        type: string
+        required: false
+        default: ''
   workflow_dispatch:
     inputs:
       preflight_only:
         description: Check new host tests on the pinned historical package; no fresh game build
         type: boolean
         default: false
+      story_journals_base64:
+        description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
+        type: string
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -32,6 +41,29 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Decode optional pinned original Journal inputs without shell interpolation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const encoded = context.payload.inputs?.story_journals_base64 ?? '';
+            if (typeof encoded !== 'string') {
+              throw new Error('The original Journal bundle input must be a base64 string.');
+            }
+            if (encoded === '') {
+              core.info('No original Journal input bundle supplied; retaining serial replay.');
+              return;
+            }
+            core.setSecret(encoded);
+            if (encoded.length > 65535 || encoded.length % 4 !== 0 || !/^[A-Za-z0-9+/]*={0,2}$/.test(encoded)) {
+              throw new Error('The original Journal bundle input is not canonical base64.');
+            }
+            const decoded = Buffer.from(encoded, 'base64');
+            if (decoded.toString('base64') !== encoded) {
+              throw new Error('The original Journal bundle input is not canonical base64.');
+            }
+            const path = require('path').join(process.env.RUNNER_TEMP, 'story-seed-journals.tar.xz');
+            require('fs').writeFileSync(path, decoded, {flag: 'wx', mode: 0o600});
+            core.info('Original Journal input bundle decoded for hash-validated parallel replay.');
       - name: Check host-side validation contracts
         shell: pwsh
         run: |
@@ -40,6 +72,8 @@ jobs:
           python recomp/tools/test_m8_handoff.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python recomp/tools/test_m8_package.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_story_parallel_contracts.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build fresh complete-AOT diagnostic from an isolated source archive
         shell: pwsh
@@ -88,11 +122,19 @@ jobs:
       - name: Replay every retained later story checkpoint on this fresh build
         shell: pwsh
         run: |
-          python recomp/tools/test_m8_story_checkpoints.py `
-            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
-            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
-            --seed "$env:RUNNER_TEMP/preparation-evidence/training/native/checkpoint.sav" `
-            --manifest recomp/tests/m8_sea_story_checkpoints.json --output "$env:RUNNER_TEMP/story-evidence"
+          $storyArguments = @(
+            'recomp/tools/test_m8_story_checkpoints.py',
+            '--exe', "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe",
+            '--build-identity', "$env:RUNNER_TEMP/diagnostic-output/build-identity.json",
+            '--seed', "$env:RUNNER_TEMP/preparation-evidence/training/native/checkpoint.sav",
+            '--manifest', 'recomp/tests/m8_sea_story_checkpoints.json',
+            '--output', "$env:RUNNER_TEMP/story-evidence"
+          )
+          $storySeedBundle = Join-Path $env:RUNNER_TEMP 'story-seed-journals.tar.xz'
+          if (Test-Path -LiteralPath $storySeedBundle -PathType Leaf) {
+            $storyArguments += @('--workers', '4', '--seed-bundle', $storySeedBundle)
+          }
+          python @storyArguments
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Preserve original story Journals and fresh Continue captures
         if: always()
@@ -110,6 +152,7 @@ jobs:
           path: |
             ${{ runner.temp }}/diagnostic-output/**
             ${{ runner.temp }}/diagnostic-work/source.tar
+            ${{ runner.temp }}/story-seed-journals.tar.xz
             ${{ runner.temp }}/diagnostic-work/native/native-results.xml
             ${{ runner.temp }}/diagnostic-work/native/CTestTestfile.cmake
             ${{ runner.temp }}/diagnostic-work/native/Testing/Temporary/LastTest.log
@@ -279,18 +322,26 @@ jobs:
             --seed "$env:RUNNER_TEMP/proof/M8-fresh-story-${{ github.run_id }}/ending-complete/native/checkpoint.sav" `
             --manifest "$env:RUNNER_TEMP/verified-ending-spec.json" --output "$env:RUNNER_TEMP/verified-ending-journal"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Preserve the final package and its post-packaging checks
+      - name: Preserve post-packaging evidence, including failures
         if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-final-package-checks-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/verified-package-checks/**
+            ${{ runner.temp }}/verified-ending-journal/**
+            ${{ runner.temp }}/verified-ending-spec.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish the verified package only after its final checks pass
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: DWM2t-M8-VERIFIED-${{ github.sha }}
           path: |
             ${{ runner.temp }}/verified-output/*.zip
             ${{ runner.temp }}/verified-output/verified-package.json
-            ${{ runner.temp }}/verified-package-checks/**
-            ${{ runner.temp }}/verified-ending-journal/**
-            ${{ runner.temp }}/verified-ending-spec.json
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
   historical-package-preflight:

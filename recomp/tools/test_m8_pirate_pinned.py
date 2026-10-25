@@ -39,7 +39,7 @@ def main() -> int:
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    report = {'status': 'running', 'executable_source': SOURCE,
+    report = {'status': 'running', 'platform': 'Windows', 'executable_source': SOURCE,
               'baseline_run': 39836316030, 'scope': 'Sea World field progression, not full M8',
               'expected_executable_sha256': EXE_SHA, 'expected_seed_sha256': SEED_SHA,
               'expected_route_sha256': ROUTE_SHA, 'expected_final_sha256': FINAL_SHA}

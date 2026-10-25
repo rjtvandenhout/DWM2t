@@ -57,7 +57,7 @@ target_compile_definitions(DWM2tPlayer PRIVATE NOMINMAX
     DWM2T_SOURCE_REVISION="${DWM2T_SOURCE_REVISION}")
 target_link_libraries(DWM2tPlayer PRIVATE ${PLAYER_LIBRARIES} user32 gdi32 winmm)
 if(MSVC)
-    target_compile_options(DWM2tPlayer PRIVATE /W4 /permissive- /O1 /bigobj /utf-8)
+    target_compile_options(DWM2tPlayer PRIVATE /W4 /permissive- /O1 /bigobj /utf-8 /MP4)
     target_link_options(DWM2tPlayer PRIVATE /STACK:8388608)
 else()
     target_compile_options(DWM2tPlayer PRIVATE -Wall -Wextra -Wpedantic -O1)

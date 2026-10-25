@@ -94,6 +94,10 @@ def package_run(root: Path, source: str, run: str, output: Path) -> Path:
     manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
     if len(campaign['stages']) != len(manifest['stages']) or campaign.get('ending_completed') is not True:
         raise ValueError('The full original campaign and ending have not passed')
+    if (campaign.get('workers', 1) not in range(1, 5)
+            or campaign.get('seed_chain_audited') is not True
+            or campaign.get('seed_chain_links') != len(manifest['stages'])):
+        raise ValueError('The actual replayed parent/input Journal chain has not been audited')
     for actual, expected in zip(campaign['stages'], manifest['stages'], strict=True):
         route = manifest_path.parent/expected['route']
         if (actual.get('status') != 'passed' or actual.get('native_returncode') != 0
@@ -158,6 +162,9 @@ def package_run(root: Path, source: str, run: str, output: Path) -> Path:
                   native_run_url=f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{run}',
                   campaign='Original main story through Darck, MagicPlug, complete credits and THE END',
                   story_checkpoints=len(campaign['stages']), retained_native_tests=tests,
+                  story_workers=campaign.get('workers', 1), seed_chain_audited=True,
+                  seed_chain_links=campaign['seed_chain_links'],
+                  original_journal_bundle_sha256=campaign.get('seed_bundle_sha256'),
                   ending_journal_sha256=ending['save_sha256'],
                   limitations=['CI does not establish audible playback on the user\'s physical audio hardware.'],
                   created_utc=datetime.now(timezone.utc).isoformat(),
