@@ -1,0 +1,116 @@
+name: Native tooling and save persistence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'recomp/**'
+      - 'src/banks/**'
+      - '.github/workflows/recomp-*.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'recomp/**'
+      - 'src/banks/**'
+      - '.github/workflows/recomp-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-tooling-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  host-contracts:
+    name: Tooling and persistence (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check host tooling, LR35902 frontend and Bank 0 audit (no gameplay)
+        shell: python
+        run: |
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          logs = Path(os.environ['RUNNER_TEMP']) / 'native-host-validation'
+          logs.mkdir(exist_ok=False)
+          checks = [
+              ('handoff', ['recomp/tools/test_m8_handoff.py']),
+              ('build-identity', ['recomp/tools/test_m8_build_identity.py']),
+              ('package', ['recomp/tools/test_m8_package.py']),
+              ('parallel-replay', ['recomp/tools/test_m8_story_parallel_contracts.py']),
+              ('native-retest', ['recomp/tools/test_m8_native_retest.py']),
+              ('lr35902', ['recomp/tools/test_lr35902.py', '--bank0', 'src/banks/bank_000.asm']),
+              ('bank0-audit', ['recomp/tools/recompile_bank0.py', '--bank', 'src/banks/bank_000.asm', '--audit-only']),
+          ]
+          results = []
+          for name, arguments in checks:
+              command = [sys.executable, *arguments]
+              path = logs / (name + '.log')
+              with path.open('x', encoding='utf-8') as output:
+                  result = subprocess.run(command, stdout=output, stderr=subprocess.STDOUT, check=False)
+              print(path.read_text(encoding='utf-8', errors='replace'), end='', flush=True)
+              results.append(dict(check=name, command=command, returncode=result.returncode))
+          (logs / 'tooling-results.json').write_text(
+              json.dumps(dict(scope='tooling/persistence; no full-game acceptance', checks=results), indent=2) + '\n',
+              encoding='utf-8')
+          if any(result['returncode'] != 0 for result in results):
+              raise SystemExit(1)
+      - name: Build and run the two standalone SaveIO CTest cases
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          import subprocess
+          import xml.etree.ElementTree as ET
+
+          logs = Path(os.environ['RUNNER_TEMP']) / 'native-host-validation'
+          build = Path(os.environ['RUNNER_TEMP']) / 'native-save-io-build'
+          configure = ['cmake', '-S', 'recomp/tests/save-io', '-B', str(build)]
+          configure += ['-A', 'x64'] if os.name == 'nt' else ['-DCMAKE_BUILD_TYPE=Release']
+          checks = [
+              ('save-io-configure', configure),
+              ('save-io-build', ['cmake', '--build', str(build), '--config', 'Release', '--parallel', '2']),
+              ('save-io-ctest', ['ctest', '--test-dir', str(build), '-C', 'Release', '--no-tests=error',
+                                 '--output-on-failure', '--output-junit', str(logs / 'save-io.xml')]),
+          ]
+          for name, command in checks:
+              path = logs / (name + '.log')
+              with path.open('x', encoding='utf-8') as output:
+                  result = subprocess.run(command, stdout=output, stderr=subprocess.STDOUT, check=False)
+              print(path.read_text(encoding='utf-8', errors='replace'), end='', flush=True)
+              if result.returncode:
+                  raise SystemExit(result.returncode)
+          cases = list(ET.parse(logs / 'save-io.xml').getroot().iter('testcase'))
+          expected = {'M8_save_io_contracts', 'M8_save_io_fault_contracts'}
+          if ({case.get('name') for case in cases} != expected or len(cases) != len(expected)
+                  or any(case.find(tag) is not None for case in cases for tag in ('failure', 'error', 'skipped'))):
+              raise SystemExit('Both actual SaveIO cases must run and pass without skips.')
+      - name: Preserve actual tooling and persistence logs (no full-game acceptance)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-tooling-persistence-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/native-host-validation/**
+            ${{ runner.temp }}/native-save-io-build/Testing/Temporary/LastTest.log
+          if-no-files-found: warn
+          retention-days: 7

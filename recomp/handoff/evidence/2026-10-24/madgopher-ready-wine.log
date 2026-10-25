@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x846acb2abbdc7637 source=Z:/workspace/scratch/m8-review/sea-quest-25-seed.sav
+M8_STATE frame=60818 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xfaf46d3d08015e4 screen=0x470be4d5bbf36b47 image=m8_0.bmp
+M8_AUDIO frame=60818 sample_values=67029960 stereo_frames=33514980 nonzero=58649511 peak=32768 hash=0x517a4650a7688efe
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_madgopher_ready_p1.txt
+M8_SEED sram=0xfaf46d3d08015e4 source=Z:/workspace/scratch/m8-review/madgopher-ready-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0x93b23316bf7ea783 screen=0xed4ba8934db67e76 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717794 stereo_frames=1358897 nonzero=1562401 peak=29184 hash=0x9773e22b5a092bba
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/madgopher-ready-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_madgopher_ready_p1.txt ending_credits=NOT_YET_PROVEN

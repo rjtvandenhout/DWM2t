@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "executable_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "scope": "Sea World village, recruitment/farm, inn and original Journal",
+  "controller_frames": 8299,
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "expected_executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "expected_seed_sha256": "6e05f52f2ead8b2ab7fa9f16d757668c39db924acd2b9295196740ca4ab8addd",
+  "expected_route_sha256": "faee6b94a0896c23ac055b90ea2b65a9a18a661df77c9f78324b995cc8860cee",
+  "expected_final_sha256": "acf128eeeb75c5cb130c58bf692f39eb20c2129306bcb647bde784e7a14a770a",
+  "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "executable_bytes": 725575680,
+  "build_identity": "D:\\a\\_temp\\diagnostic-output\\build-identity.json",
+  "build_identity_sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+  "historical_seed_windows_run": 39846303155,
+  "historical_baseline_windows_run": 39836316030,
+  "command": [
+    "D:\\a\\_temp\\diagnostic-output\\DWM2tRecompFull.exe",
+    "--m8-checkpoint-test",
+    "D:\\a\\_temp\\village-evidence\\seed-copy.sav",
+    "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_pirate_village_p1.txt",
+    "D:\\a\\_temp\\village-evidence\\native"
+  ],
+  "native_returncode": 0,
+  "final_sha256": "acf128eeeb75c5cb130c58bf692f39eb20c2129306bcb647bde784e7a14a770a",
+  "persistent_creature_bytes": 154,
+  "active_party_hp": [
+    60,
+    44,
+    32
+  ]
+}

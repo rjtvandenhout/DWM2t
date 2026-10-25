@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "darck-preparation",
+      "frames": 149478,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/darck-preparation-check-01/darck-preparation/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_darck_preparation_p1.txt",
+        "Z:/workspace/scratch/m8-review/darck-preparation-check-01/darck-preparation/native"
+      ],
+      "route_sha256": "29b9b4ce5e77bdf1270e7266e2ecd36b3f75ae554935ba3bbe047c117d2720a7",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "087b316af434d4289585281db9d31337d714a93026f5cd8ee2474ad4cb9894fb",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        38,
+        37,
+        40
+      ],
+      "hp": [
+        215,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 162,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    }
+  ],
+  "executable_bytes": 725318144
+}

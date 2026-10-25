@@ -1,0 +1,70 @@
+name: Build untested M8 player candidate
+
+# Explicit manual build only. No push trigger, CTest, gameplay or publication.
+on:
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: 'Native compiler parallelism (1-4; 2 uses less memory)'
+        required: true
+        type: choice
+        default: '2'
+        options: ['1', '2', '3', '4']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m8-candidate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  candidate:
+    name: Complete AOT player - testing pending
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and package without executing the game or tests
+        shell: pwsh
+        env:
+          CANDIDATE_JOBS: ${{ inputs.jobs }}
+        run: |
+          python recomp/tools/build_m8_candidate.py --jobs $env:CANDIDATE_JOBS `
+            --workspace "$env:RUNNER_TEMP/m8-candidate-work" `
+            --output "$env:RUNNER_TEMP/m8-candidate-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve build reports (not test evidence)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-candidate-build-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/m8-candidate-output/build-report.json
+            ${{ runner.temp }}/m8-candidate-output/build-logs/**
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload private untested candidate package
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-M8-UNTESTED-player-${{ github.sha }}
+          path: ${{ runner.temp }}/m8-candidate-output/*.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record the validation boundary
+        if: always()
+        shell: pwsh
+        run: |
+          @'
+          ## M8 candidate build
+          This workflow builds and packages source only. It does not execute the
+          native player, test suite, scripted routes, audio checks or ending.
+          A successful build is NOT M8 acceptance. No final release or restore
+          branch is created. Historical test evidence is unchanged.
+          '@ >> $env:GITHUB_STEP_SUMMARY

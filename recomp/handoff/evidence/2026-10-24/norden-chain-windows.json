@@ -1,0 +1,681 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "stages": [
+    {
+      "stage": "hood-tales",
+      "frames": 64544,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\hood-tales\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_hood_squid_tales_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\hood-tales\\native"
+      ],
+      "route_sha256": "1a0e74468bac6f3b8f498b272017580cf7ee18456abef74dac74692978caf7e7",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
+      "active_party_records": [
+        9,
+        4,
+        1
+      ],
+      "levels": [
+        12,
+        12,
+        13
+      ],
+      "hp": [
+        88,
+        52,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "mermaid-palace",
+      "frames": 93727,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\mermaid-palace\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_mermaid_palace_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\mermaid-palace\\native"
+      ],
+      "route_sha256": "3f8331f25f56f6a78776fdff72f0c5281118c23ef322e176c78231c1c2181f9d",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+      "active_party_records": [
+        9,
+        4,
+        5
+      ],
+      "levels": [
+        12,
+        12,
+        8
+      ],
+      "hp": [
+        89,
+        68,
+        21
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "strong-party",
+      "frames": 58319,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\strong-party\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_strong_party_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\strong-party\\native"
+      ],
+      "route_sha256": "e0cae6e494110553314e5bafea31398e8b800a2637a8e9e80810bdfca6d3c44e",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        12,
+        11
+      ],
+      "hp": [
+        89,
+        69,
+        102
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "captain-preparation",
+      "frames": 138371,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\captain-preparation\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_captain_preparation_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\captain-preparation\\native"
+      ],
+      "route_sha256": "369a2313ff137a10c06f5525d6c446cd41ee9f257c2592121bcd1190661a25a7",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        13,
+        11
+      ],
+      "hp": [
+        89,
+        72,
+        102
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 352
+    },
+    {
+      "stage": "moonrock",
+      "frames": 50283,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\moonrock\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_moonrock_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\moonrock\\native"
+      ],
+      "route_sha256": "90e9443f597fc634f987db6c5c3d5f1cb8fcce7bdd59d49488e08c252249932b",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        13,
+        14,
+        11
+      ],
+      "hp": [
+        40,
+        56,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 0,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 352
+    },
+    {
+      "stage": "lighthouse-recovery",
+      "frames": 110161,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\lighthouse-recovery\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_lighthouse_recovery_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\lighthouse-recovery\\native"
+      ],
+      "route_sha256": "801162e398849e955ccba25d0dd8447ca72626ec9bfea80ce3947a0142107d2b",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+      "active_party_records": [
+        0,
+        4,
+        9
+      ],
+      "levels": [
+        12,
+        15,
+        13
+      ],
+      "hp": [
+        107,
+        74,
+        92
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 384
+    },
+    {
+      "stage": "sea-treasure",
+      "frames": 28012,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\sea-treasure\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_treasure_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\sea-treasure\\native"
+      ],
+      "route_sha256": "e9de6c2f7353ad8fa6671ffd3860804aea672bf95d905cc0a8655064bf6ac27d",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "046ef944cc794c4f8272cb306f82f7cefa44b3dd53908de7bc6267ec7a779074",
+      "active_party_records": [
+        4,
+        9,
+        0
+      ],
+      "levels": [
+        15,
+        13,
+        12
+      ],
+      "hp": [
+        74,
+        92,
+        107
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 384
+    },
+    {
+      "stage": "octokid-birth",
+      "frames": 69744,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\octokid-birth\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_octokid_birth_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\octokid-birth\\native"
+      ],
+      "route_sha256": "e0bf4dd0a3500df0336ed48779b6f6d6d285531e6dde79d8298279220e18a7fd",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "e1151817365e74414719f21e274f137150bbe5e3d54c3c8f63b823dadc184ce7",
+      "active_party_records": [
+        0,
+        9,
+        10
+      ],
+      "levels": [
+        12,
+        12,
+        1
+      ],
+      "hp": [
+        107,
+        80,
+        41
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 60,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287,
+      "offspring": {
+        "record": 10,
+        "species": 323,
+        "plus": 1,
+        "gender": 1,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "8fa0d22c2c8a1d2ab15960e6d3ac01cb17e945362b98866adac33bd8949512d5"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "5": 4,
+        "6": 5,
+        "7": 6,
+        "8": 7,
+        "10": 8,
+        "11": 9
+      }
+    },
+    {
+      "stage": "octokid-training",
+      "frames": 130852,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\octokid-training\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_octokid_training_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\octokid-training\\native"
+      ],
+      "route_sha256": "f8d6449783fc8b5db5670431c3e091dfd454c05826767e54a2a6aa84c1206751",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+      "active_party_records": [
+        0,
+        9,
+        10
+      ],
+      "levels": [
+        13,
+        12,
+        10
+      ],
+      "hp": [
+        115,
+        80,
+        58
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 360,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287
+    },
+    {
+      "stage": "c-class-victory",
+      "frames": 40179,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\c-class-victory\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_c_class_victory_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\c-class-victory\\native"
+      ],
+      "route_sha256": "084eaa42177df587e6d6cae427d5770530659cc8dd3252e655461f448f936997",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+      "active_party_records": [
+        10,
+        0,
+        9
+      ],
+      "levels": [
+        10,
+        13,
+        12
+      ],
+      "hp": [
+        58,
+        115,
+        80
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287
+    },
+    {
+      "stage": "madgopher-ready",
+      "frames": 60818,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\madgopher-ready\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_madgopher_ready_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\madgopher-ready\\native"
+      ],
+      "route_sha256": "89f8c81c856fd2343e952c98ed31b76c833f11d2c463d95247b4d62eff98a4fe",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+      "active_party_records": [
+        9,
+        0,
+        10
+      ],
+      "levels": [
+        11,
+        13,
+        10
+      ],
+      "hp": [
+        61,
+        115,
+        38
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "ice-key",
+      "frames": 13977,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-key\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_ice_key_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-key\\native"
+      ],
+      "route_sha256": "dd5b20d0f612655bd858291fe6e298c1e4ccb830cb3b82fa8218de7886ad6154",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "1b41e7df21a346ddb2cf21f2906e345d30c5b5f1ca8269581be31835f6afc108",
+      "active_party_records": [
+        9,
+        0
+      ],
+      "levels": [
+        11,
+        13
+      ],
+      "hp": [
+        61,
+        115
+      ],
+      "status_bytes": [
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "ice-world-entry",
+      "frames": 24821,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-world-entry\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_ice_world_entry_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-world-entry\\native"
+      ],
+      "route_sha256": "909b2e1131e7cce2356bf3e9ce035c2bafe0b4350f44a980796227e99d451ea2",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "e28221938470fd287f3ec4952e7b3336282feeb344169c7fdc0a20a241caebe3",
+      "active_party_records": [
+        9,
+        0,
+        8
+      ],
+      "levels": [
+        11,
+        13,
+        12
+      ],
+      "hp": [
+        61,
+        115,
+        80
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "ice-training",
+      "frames": 295304,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-training\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_ice_training_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-training\\native"
+      ],
+      "route_sha256": "d9e4d3a38293c864ffd35b061c19d1b049d692e6ea128f8d4640c4e61ac8a8e8",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1",
+      "active_party_records": [
+        0,
+        8,
+        9
+      ],
+      "levels": [
+        16,
+        17,
+        17
+      ],
+      "hp": [
+        138,
+        113,
+        73
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 80,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "ice-crest",
+      "frames": 61681,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-crest\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_ice_crest_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\ice-crest\\native"
+      ],
+      "route_sha256": "d94e3d4c9f09c241c98929417606b8c6e71c554da2cfd360f1b18c62f5dc57b3",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "c20f93ffdc1a7a282cc5903d36ae56bd0838df89daaece1088e169e0e143bec1",
+      "active_party_records": [
+        0,
+        8,
+        9
+      ],
+      "levels": [
+        16,
+        18,
+        17
+      ],
+      "hp": [
+        138,
+        116,
+        73
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 70,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "bombcrag-jail-escape",
+      "frames": 75754,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\bombcrag-jail-escape\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_bombcrag_jail_escape_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\bombcrag-jail-escape\\native"
+      ],
+      "route_sha256": "0cbab77becf4821a401e071c9fce8692db77aca95ffb3f9b7022b438c018701f",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        18,
+        18,
+        16
+      ],
+      "hp": [
+        63,
+        70,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 460,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "norden-restored",
+      "frames": 37976,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\sea-story-evidence\\norden-restored\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_norden_restored_p1.txt",
+        "D:\\a\\_temp\\sea-story-evidence\\norden-restored\\native"
+      ],
+      "route_sha256": "dda48e2f106a226d357a070ec9b5440c338a84eff85d4666e98fb8364bd78155",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        19,
+        18,
+        16
+      ],
+      "hp": [
+        118,
+        76,
+        138
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 355,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    }
+  ]
+}

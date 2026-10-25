@@ -1,0 +1,155 @@
+{
+  "schema": 1,
+  "run_id": "40182774086",
+  "status": "comparison_incomplete",
+  "scope": "Independent preservation and read-only audit of focused native Windows audio probe artifacts",
+  "drivers": [
+    {
+      "driver_pack": "43",
+      "artifact_id": 12594627539,
+      "bytes": 2324925,
+      "sha256": "bd2dc2e8e30e9fe14a9323db8042f0219f5adedf6c811bd665b13c534d043a4f",
+      "head_sha": "4ca6ff05e789704100fe1e8e8dc48bf1b949e7e4",
+      "endpoint_after": 1,
+      "catalog_signature_before": "Valid",
+      "catalog_signature_after": "Valid",
+      "catalog_subject": "CN=Vincent Burel, OU=Individual Developer, OU=Digital ID Class 3 - Microsoft Software Validation v2, O=No Organization Affiliation, L=Eymet, S=Dordogne, C=FR",
+      "device_install_exit": 0,
+      "host_status": "passed",
+      "error": null,
+      "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+      "diagnostic_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+      "playback_returncode": 0,
+      "playback_stdout": "AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0\nAUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=1638\nAUDIO_PLAYBACK_PASS original_pcm_values=16458 nonzero=16458 submitted=16458 premix_peak=2304 exceeds_legacy_pcm=0 played_frames=8229 subjective_hearing=not_assessed\n",
+      "native_flags_executed": true,
+      "runs": [
+        {
+          "trial": 1,
+          "returncode": 147,
+          "results": [
+            {
+              "buffered": 0,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            },
+            {
+              "buffered": 1,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            }
+          ],
+          "stderr": "AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue"
+        },
+        {
+          "trial": 2,
+          "returncode": 147,
+          "results": [
+            {
+              "buffered": 0,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            },
+            {
+              "buffered": 1,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            }
+          ],
+          "stderr": "AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue"
+        },
+        {
+          "trial": 3,
+          "returncode": 0,
+          "results": [
+            {
+              "buffered": 0,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            },
+            {
+              "buffered": 1,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 0
+            }
+          ],
+          "stderr": ""
+        },
+        {
+          "trial": 4,
+          "returncode": 147,
+          "results": [
+            {
+              "buffered": 0,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            },
+            {
+              "buffered": 1,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            }
+          ],
+          "stderr": "AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue"
+        },
+        {
+          "trial": 5,
+          "returncode": 0,
+          "results": [
+            {
+              "buffered": 0,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 1
+            },
+            {
+              "buffered": 1,
+              "queued_frames": 98753,
+              "played_frames": 98753,
+              "queue_empty_events": 0
+            }
+          ],
+          "stderr": ""
+        }
+      ],
+      "timer_current_ms": 15.625,
+      "passive_sleep1ms_statistics": {
+        "samples": 40,
+        "min_ms": 1.981,
+        "median_ms": 13.599450000000001,
+        "mean_ms": 9.86597,
+        "max_ms": 16.3872
+      },
+      "power_plan": "Power Scheme GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  (High performance)\n"
+    },
+    {
+      "driver_pack": "45",
+      "artifact_id": 12594727361,
+      "bytes": 2682091,
+      "sha256": "fe17105877f8d30dc33064e9b0040c8226195bf19dcaff82fb8d79747e2d1016",
+      "head_sha": "4ca6ff05e789704100fe1e8e8dc48bf1b949e7e4",
+      "endpoint_after": 1,
+      "catalog_signature_before": "Valid",
+      "catalog_signature_after": "Valid",
+      "catalog_subject": "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "device_install_exit": 0,
+      "host_status": "failed",
+      "error": "No Win32_PnPEntity objects found with property 'PNPClass' equal to 'AudioEndpoint'.  Verify the value of the property and retry.",
+      "native_flags_executed": false,
+      "interpretation": "Collector failure after successful installation/endpoint enumeration; no playback or stream result exists."
+    }
+  ],
+  "conclusions": [
+    "Pack43 original stream test is unstable here: all frames eventually played, but3of5 strict buffered-queue runs fail. No passing trial replaces the failed trials.",
+    "Pack45 has a Valid Microsoft catalog, installation return0, WinMM endpoint1; an inventory collector failed before any original audio flag ran, so no driver-stream comparison is established.",
+    "Passive timer observations are in the PowerShell process; they do not locate or prove the cause of the diagnostic child empty event."
+  ],
+  "overall_m8_acceptance": false
+}

@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "native_returncode": 0,
+  "stage": {
+    "name": "madgopher-ready",
+    "seed_stage": "c-class-victory",
+    "route": "m8_madgopher_ready_p1.txt",
+    "route_sha256": "89f8c81c856fd2343e952c98ed31b76c833f11d2c463d95247b4d62eff98a4fe",
+    "save_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+    "frames": 60818,
+    "party": [
+      9,
+      0,
+      10
+    ],
+    "levels": [
+      11,
+      13,
+      10
+    ],
+    "hp": [
+      61,
+      115,
+      38
+    ],
+    "status": [
+      0,
+      0,
+      0
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "species": {
+      "0": 10,
+      "1": 2,
+      "2": 145,
+      "3": 246,
+      "4": 166,
+      "5": 185,
+      "6": 80,
+      "7": 322,
+      "8": 319,
+      "9": 323,
+      "10": 11,
+      "11": 115,
+      "12": 90
+    },
+    "gold": 160,
+    "location": [
+      5,
+      1,
+      0,
+      80,
+      64
+    ],
+    "set_flags": [
+      34,
+      102,
+      109,
+      110,
+      111,
+      114,
+      116,
+      117,
+      118,
+      120,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      307,
+      308
+    ],
+    "items": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      44
+    ],
+    "consumed_records": [
+      5
+    ],
+    "retained_records": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "6": 5,
+      "7": 6,
+      "8": 7,
+      "9": 8,
+      "10": 9
+    },
+    "arena_class": 2,
+    "persistent_ranges": [
+      [
+        25,
+        52
+      ],
+      [
+        107,
+        165
+      ]
+    ],
+    "learned_skills": {
+      "9": [
+        23,
+        38,
+        42,
+        27,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    "clear_flags": [
+      309
+    ]
+  },
+  "additional_persistent_creature_bytes": 1521,
+  "full_game_verified": false
+}

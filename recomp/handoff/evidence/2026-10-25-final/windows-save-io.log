@@ -1,0 +1,78 @@
+Start testing: Oct 25 08:08 Coordinated Universal Time
+----------------------------------------------------------
+1/2 Testing: M8_save_io_contracts
+1/2 Test: M8_save_io_contracts
+Command: "D:/a/_temp/save-io/Release/DWM2tSaveIoContracts.exe" "D:/a/_temp/save-io/evidence"
+Directory: D:/a/_temp/save-io
+"M8_save_io_contracts" start time: Oct 25 08:08 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+SAVE_IO_EVIDENCE D:/a/_temp/save-io/evidence\save-io-271590396900
+SAVE_IO_PASS reject_empty_path
+SAVE_IO_PASS reject_null_input
+SAVE_IO_PASS reject_wrong_size
+SAVE_IO_PASS create_exact_sram
+SAVE_IO_PASS replace_exact_sram
+SAVE_IO_PASS create_parent_directory
+SAVE_IO_PASS unicode_save_path
+SAVE_IO_PASS preserve_short_existing_file
+SAVE_IO_PASS preserve_oversized_existing_file
+SAVE_IO_PASS reject_directory_destination
+SAVE_IO_PASS preserve_blocked_parent
+SAVE_IO_PASS preserve_unrelated_temporary_file
+SAVE_IO_PASS cartridge_write_sets_dirty
+SAVE_IO_PASS failed_persistence_keeps_dirty
+SAVE_IO_PASS successful_persistence_clears_dirty
+SAVE_IO_PASS fresh_memory_round_trip
+SAVE_IO_PASS truncated_load_preserves_memory
+SAVE_IO_PASS oversized_load_preserves_memory
+SAVE_IO_PASS missing_optional_save_is_not_created
+SAVE_IO_PASS reject_link_without_replacing_target
+SAVE_IO_PASS denied_windows_replacement_preserves_previous_save
+SAVE_IO_PASS no_new_temporary_files_left
+SAVE_IO_CONTRACTS_PASS checks=22 gameplay_test=false
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"M8_save_io_contracts" end time: Oct 25 08:08 Coordinated Universal Time
+"M8_save_io_contracts" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: M8_save_io_fault_contracts
+2/2 Test: M8_save_io_fault_contracts
+Command: "D:/a/_temp/save-io/Release/DWM2tSaveIoFaultContracts.exe" "D:/a/_temp/save-io/evidence"
+Directory: D:/a/_temp/save-io
+"M8_save_io_fault_contracts" start time: Oct 25 08:08 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+SAVE_IO_FAULT_EVIDENCE D:/a/_temp/save-io/evidence\save-io-faults-271621114400
+SAVE_IO_FAULT_PASS create_synthetic_original
+SAVE_IO_FAULT_PASS synthetic_cartridge_write_sets_dirty
+SAVE_IO_FAULT_PASS partial_write_is_reported
+SAVE_IO_FAULT_PASS failure_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS failed_call_removes_its_own_temporary
+SAVE_IO_FAULT_PASS failed_flush_is_reported
+SAVE_IO_FAULT_PASS failure_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS failed_call_removes_its_own_temporary
+SAVE_IO_FAULT_PASS failed_replace_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS set_readonly_fixture
+SAVE_IO_FAULT_PASS clear_readonly_fixture
+SAVE_IO_FAULT_PASS readonly_destination_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS child_stops_during_actual_partial_temporary_write
+SAVE_IO_FAULT_PASS interrupted_write_keeps_original_and_partial_temporary_separate
+SAVE_IO_FAULT_PASS fresh_load_reads_original_instead_of_abandoned_temporary
+SAVE_IO_FAULT_PASS retry_after_exact_temporary_name_collision
+SAVE_IO_FAULT_PASS preexisting_exact_temporary_is_not_replaced
+SAVE_IO_FAULT_PASS recovery_persists_exact_sram_without_consuming_abandoned_temporary
+SAVE_IO_FAULT_PASS only_the_two_expected_abandoned_temporaries_remain
+SAVE_IO_FAULT_CONTRACTS_PASS checks=19 gameplay_test=false
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"M8_save_io_fault_contracts" end time: Oct 25 08:08 Coordinated Universal Time
+"M8_save_io_fault_contracts" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 25 08:08 Coordinated Universal Time

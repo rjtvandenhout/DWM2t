@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "stages": [
+    {
+      "stage": "change-staff",
+      "frames": 87492,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/change-staff-check-01/change-staff/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_change_staff_p1.txt",
+        "Z:/workspace/scratch/m8-review/change-staff-check-01/change-staff/native"
+      ],
+      "route_sha256": "b7b5b9a8285e3e2d4149106d94c89666afb9132921e4c4ab25c7110320ba786a",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        25,
+        22,
+        22
+      ],
+      "hp": [
+        87,
+        121,
+        169
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 196,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "full_game_verified": false,
+  "scope": "Production later original Continue, Journal and fresh process reload",
+  "continue_field_match": 1.0,
+  "reload_field_match": 0.9990596064814815,
+  "source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "executable_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "input_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "production_journal_sha256": "888f0906fc7c6162abfe8c133dd86cf6efd35092afa110eff83added51e148b9",
+  "original_owned_creatures": 17,
+  "quest_bytes": 107,
+  "original_p1_only": true,
+  "fresh_process_reload": true,
+  "normal_shutdowns": 2
+}

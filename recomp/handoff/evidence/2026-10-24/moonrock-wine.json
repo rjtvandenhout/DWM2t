@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "native_returncode": 0,
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stage": {
+    "name": "moonrock",
+    "seed_stage": "captain-preparation",
+    "route": "m8_sea_moonrock_p1.txt",
+    "route_sha256": "90e9443f597fc634f987db6c5c3d5f1cb8fcce7bdd59d49488e08c252249932b",
+    "save_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+    "frames": 50283,
+    "party": [
+      9,
+      4,
+      0
+    ],
+    "levels": [
+      13,
+      14,
+      11
+    ],
+    "hp": [
+      40,
+      56,
+      0
+    ],
+    "status": [
+      0,
+      0,
+      128
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "species": {
+      "9": 335,
+      "10": 322
+    },
+    "gold": 0,
+    "location": [
+      49,
+      0,
+      1,
+      64,
+      112
+    ],
+    "set_flags": [
+      102,
+      109,
+      110,
+      111,
+      114,
+      116,
+      117,
+      118,
+      120
+    ],
+    "clear_flags": [
+      34
+    ],
+    "items": [
+      49
+    ]
+  },
+  "additional_persistent_creature_bytes": 352,
+  "native_log_sha256": "79b86b16a206f942479b090662a043b2a2bde01b85da91411b702d1db3e6f13e"
+}

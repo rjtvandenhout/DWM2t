@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "executable_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "baseline_run": null,
+  "scope": "Sea World field progression, not full M8",
+  "expected_executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "expected_seed_sha256": "a48fb7b52d6b5063f03725d205f96964174b44afbb3600782892ba44caeaa91a",
+  "expected_route_sha256": "36d3de2795b20b10e7284409990d412f1ef0e25d253f9889a115ea0ba774e474",
+  "expected_final_sha256": "6e05f52f2ead8b2ab7fa9f16d757668c39db924acd2b9295196740ca4ab8addd",
+  "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "executable_bytes": 725575680,
+  "build_identity": "D:\\a\\_temp\\diagnostic-output\\build-identity.json",
+  "build_identity_sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+  "historical_baseline_run": 39836316030,
+  "baseline_evidence": "D:\\a\\_temp\\diagnostic-work\\native",
+  "command": [
+    "D:\\a\\_temp\\diagnostic-output\\DWM2tRecompFull.exe",
+    "--m8-checkpoint-test",
+    "D:\\a\\_temp\\pirate-evidence\\kids-class-copy.sav",
+    "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_pirate_battle_p1.txt",
+    "D:\\a\\_temp\\pirate-evidence\\native"
+  ],
+  "native_returncode": 0,
+  "final_sha256": "6e05f52f2ead8b2ab7fa9f16d757668c39db924acd2b9295196740ca4ab8addd",
+  "controller_frames": 12398,
+  "full_game_verified": false,
+  "sea_world_completed": false
+}

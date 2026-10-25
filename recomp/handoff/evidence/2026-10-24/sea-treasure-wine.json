@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "native_returncode": 0,
+  "stage": {
+    "name": "sea-treasure",
+    "seed_stage": "lighthouse-recovery",
+    "route": "m8_sea_treasure_p1.txt",
+    "route_sha256": "e9de6c2f7353ad8fa6671ffd3860804aea672bf95d905cc0a8655064bf6ac27d",
+    "save_sha256": "046ef944cc794c4f8272cb306f82f7cefa44b3dd53908de7bc6267ec7a779074",
+    "frames": 28012,
+    "party": [
+      4,
+      9,
+      0
+    ],
+    "levels": [
+      15,
+      13,
+      12
+    ],
+    "hp": [
+      74,
+      92,
+      107
+    ],
+    "status": [
+      0,
+      0,
+      0
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "species": {
+      "0": 10,
+      "1": 2,
+      "2": 145,
+      "3": 246,
+      "4": 295,
+      "5": 166,
+      "6": 185,
+      "7": 185,
+      "8": 80,
+      "9": 335,
+      "10": 322,
+      "11": 319
+    },
+    "gold": 0,
+    "location": [
+      5,
+      1,
+      0,
+      80,
+      64
+    ],
+    "set_flags": [
+      34,
+      102,
+      109,
+      110,
+      111,
+      114,
+      116,
+      117,
+      118,
+      120,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "items": [
+      27,
+      27
+    ]
+  },
+  "additional_persistent_creature_bytes": 384,
+  "full_game_verified": false
+}

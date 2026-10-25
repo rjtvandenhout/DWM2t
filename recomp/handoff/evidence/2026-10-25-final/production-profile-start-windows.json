@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "checks": [
+    "--help",
+    "--version",
+    "informational_commands_do_not_create_profile",
+    "real_production_window_created",
+    "window_message_loop_responsive",
+    "native_save_lock_blocks_competing_access",
+    "close_message_delivered",
+    "normal_player_shutdown",
+    "native_save_lock_released",
+    "any_original_boot_sram_is_exact_size",
+    "no_pending_save_temporaries",
+    "player_binary_unchanged"
+  ],
+  "platform": "Windows",
+  "scope": "production startup only; full M8 remains unproven",
+  "executable_sha256": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+  "no_argument_start": false,
+  "command": [
+    "D:\\a\\_temp\\production-output\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+    "--profile",
+    "smoke",
+    "--audio-volume",
+    "0"
+  ]
+}

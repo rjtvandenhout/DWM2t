@@ -26,6 +26,18 @@ The current source is a **100% byte-covering matching assembly baseline**:
 
 That means the repository can already be edited, rebuilt and regression-tested without keeping a baserom in the repository.
 
+## Native Windows player
+
+The native Windows x64 recompilation has completed M8: all 256 ROM banks are
+statically translated, and the original main story, complete credits, THE END,
+ending Save and Continue pass native validation. The final package passes all
+18 original native tests with zero skips and 21 actual launcher checks.
+
+See the [native overview](recomp/README.md), [M8 completion record](recomp/milestones/M8_RESULT.md)
+and [playthrough report with screenshots](recomp/handoff/M8_PROGRESS_2026-10-25.md).
+`main` holds the current finished game; accepted M0–M8 snapshots remain in the
+[immutable milestone branches](recomp/RESTORE_POINTS.md).
+
 ## What “decompilation” means here
 
 Byte coverage and semantic understanding are different milestones.

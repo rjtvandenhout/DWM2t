@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xc4d6f0a586269ed9 source=Z:/workspace/scratch/m8-review/sea-quest-19-seed.sav
+M8_STATE frame=138371 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xf21561e6abca90c1 screen=0x7884020ad9782b3 image=m8_0.bmp
+M8_AUDIO frame=138371 sample_values=152284534 stereo_frames=76142267 nonzero=144256969 peak=32768 hash=0x8e0f7ce4ccbb7636
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_captain_preparation_p1.txt
+M8_SEED sram=0xf21561e6abca90c1 source=Z:/workspace/scratch/m8-review/captain-preparation-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0xaf7bb62f9c36fa41 screen=0xbd38a40c2041a05e image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717684 stereo_frames=1358842 nonzero=1562511 peak=29184 hash=0xccea3d9d2b78a8da
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/captain-preparation-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_captain_preparation_p1.txt ending_credits=NOT_YET_PROVEN

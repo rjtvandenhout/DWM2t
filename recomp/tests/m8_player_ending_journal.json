@@ -1,0 +1,18 @@
+{
+  "source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "executable_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "field_reference": "m8_player_ending_field.bmp",
+  "menu_reference": "m8_player_ending_menu.bmp",
+  "reference_sha256": [
+    "89e152b42c5215e2214b56dcbf105be04f768d395f53717878d430e897afc385",
+    "7a9a609c0d923f32276a6fbf012944239d73d5510597fc4d626d2eff105fac05"
+  ],
+  "reference_source": "Original pinned 697647033b4ce6b00dd8e11759cb85e1ae469a65 diagnostic executable; genuine ending-complete Journal after Darck, MagicPlug, full credits, THE END, original ending Save and Continue. New Runtime original Continue and A 6 96 only.",
+  "reference_session": "production-reference-ending",
+  "reference_frames": [
+    2395,
+    2497
+  ],
+  "scope": "Production ending Journal GUI and fresh-process reload; complete M8 acceptance also requires the independent full campaign and all retained checks."
+}

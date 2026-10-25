@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "platform": "Linux",
+  "scope": "Host filesystem contracts only; no gameplay evidence",
+  "full_game_verified": false,
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "build": "Direct g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic; CMake unavailable on this host",
+  "fault_checks": 15,
+  "base_checks": 21,
+  "source_hashes": {
+    "recomp/tests/save_io_fault_contracts.cpp": "62fd7961c9fb3e20a238a348deb5fb7ccd64bb2957ace55945db1d6351b08e4d",
+    "recomp/tests/save_io_contracts.cpp": "b5628a8cfa41b6913866a6af8763afef787a95f597c7425f391953aff9753e39",
+    "recomp/src/memory.cpp": "067456b3f7dbe1c30b181e3ff217d9682bbb711d5bfc68fa5022074481b6d76b",
+    "recomp/src/apu.cpp": "f1468115c991dc13671c25197687dc3c8298b500f8b1bcab0078bb1c4818f85b",
+    "recomp/include/recomp/atomic_sram.hpp": "df6c3add1359d4ba16dfb13e7573119f2bc897375dcbee0d645b20b6a68e062a",
+    "recomp/include/recomp/memory.hpp": "97871598df98618bc89894c172476e1bb5379d65b552d4d0f097dec5ed2ddf96",
+    "recomp/include/recomp/apu.hpp": "4e09cdf76d88a2ba755382c2fc20de52d78e3449c39ef9eab2dced4222780093"
+  },
+  "logs": {
+    "save-io-faults-linux.log": "0bdc7c9e0c57eb8c791726120364a088ae7a07f1c40b6ecd4ca30645ba816c8c",
+    "save-io-base-linux.log": "29b15f3db3aba6a6e560e1dc687316d6d4400732c9a574520c8e617b29e90820"
+  }
+}

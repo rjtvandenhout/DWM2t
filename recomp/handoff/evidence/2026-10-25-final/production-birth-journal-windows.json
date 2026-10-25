@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "full_game_verified": false,
+  "scope": "Production later original Continue, Journal and fresh process reload",
+  "continue_field_match": 0.99375,
+  "reload_field_match": 0.9861834490740741,
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "executable_sha256": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+  "input_journal_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+  "production_journal_sha256": "4f2b07749f88bdd9a924a7c643c99c05e347b804229521d2d708433bec7afa38",
+  "original_owned_creatures": 12,
+  "quest_bytes": 107,
+  "original_p1_only": true,
+  "fresh_process_reload": true,
+  "normal_shutdowns": 2
+}

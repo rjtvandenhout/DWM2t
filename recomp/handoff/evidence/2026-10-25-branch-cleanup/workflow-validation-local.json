@@ -1,0 +1,321 @@
+{
+  "schema": 1,
+  "scope": "Local validation of workflow cleanup; no CI or game replay",
+  "status": "passed",
+  "changed_workflows": [
+    "recomp-finish-validation.yml",
+    "recomp-full-validation.yml",
+    "recomp-pirate-validation.yml",
+    "recomp-player-late-validation.yml",
+    "recomp-player-validation.yml",
+    "recomp-windows.yml"
+  ],
+  "remaining_workflows": [
+    "recomp-candidate.yml",
+    "recomp-finish-validation.yml",
+    "recomp-full-validation.yml",
+    "recomp-player-validation.yml",
+    "recomp-windows.yml",
+    "verify.yml"
+  ],
+  "all_yaml_and_dependency_graphs_valid": true,
+  "all_reusable_workflow_inputs_resolve": true,
+  "full_fresh_jobs_preserved_exactly_except_requested_preflight_guards": [
+    "diagnostic",
+    "production",
+    "production-journal",
+    "verified-package",
+    "posix-persistence"
+  ],
+  "finish_gate_changed_only_to_accept_exact_or_namespaced_job_names": true,
+  "candidate_and_verify_byte_identical": true,
+  "protected_cpp_rom_fixtures_goldens_launcher_build_and_python_tools_unchanged": true,
+  "actionlint": {
+    "version": "1.7.7",
+    "exit_code": 0,
+    "workflows_checked": 6,
+    "official_release_archive_sha256": "023070a287cd8cccd71515fedc843f1985bf96c436b7effaecce67290e7e0757",
+    "binary": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/tooling/bin/actionlint",
+    "binary_sha256": "9f7dedb4e23f89f2922073d1a6720405b7b520d4f5832ebb96f0d55a2958886c",
+    "version_output": "1.7.7\ninstalled by downloading from release page\nbuilt with go1.23.4 compiler for linux/amd64",
+    "upstream_repository": "https://github.com/rhysd/actionlint",
+    "release_tag": "v1.7.7",
+    "archive_url": "https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz",
+    "checksums_url": "https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_checksums.txt",
+    "checksums_file_sha256": "ac22e6577b8d133c7cd779682e65712ef722e719a297633699a4da05e9f351e0",
+    "release_archive_verified_against_official_checksums": true,
+    "command": [
+      "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/tooling/bin/actionlint",
+      "-shellcheck=",
+      "-pyflakes=",
+      ".github/workflows/recomp-windows.yml",
+      ".github/workflows/recomp-player-validation.yml",
+      ".github/workflows/recomp-full-validation.yml",
+      ".github/workflows/recomp-finish-validation.yml",
+      ".github/workflows/recomp-candidate.yml",
+      ".github/workflows/verify.yml"
+    ],
+    "diagnostics": [],
+    "embedded_python_syntax_checked": true
+  },
+  "executed_existing_contracts": {
+    "handoff": 41,
+    "identity": 10,
+    "package": 12,
+    "parallel": 22,
+    "native_retest": 20,
+    "total": 105
+  },
+  "lr35902": {
+    "legal_base": 245,
+    "illegal_base": 11,
+    "cb_prefixed": 256,
+    "bank0_entry_decodes": 16384,
+    "status": "passed"
+  },
+  "bank0_static_audit": {
+    "entry_addresses": 16384,
+    "status": "passed"
+  },
+  "standalone_saveio": {
+    "cases": [
+      "M8_save_io_contracts",
+      "M8_save_io_fault_contracts"
+    ],
+    "failures": 0,
+    "skips": 0,
+    "xml": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io.xml",
+    "xml_sha256": "0d93ccf6b57a679eca2cdeb6659e011f5e692e09420aab39fde719fab303672f"
+  },
+  "actual_workflow_producer_js_scenarios": 7,
+  "python_version": "3.12.14",
+  "local_host": "linux",
+  "windows_execution": "PENDING root PR CI",
+  "ci_dispatches": 0,
+  "commits_or_pushes": 0,
+  "workflow_sha256": {
+    "recomp-candidate.yml": "9e69073bb4ba99e68d7b3d2b7f49596f59969f67f635f123c62dbad8bc5b59d8",
+    "recomp-finish-validation.yml": "e2af6dcd67cdf76300990ca714415c79519aa700ca295d835e6bffa3e78dc861",
+    "recomp-full-validation.yml": "129cddecb5fb70a3f280b465b7c793ee90b12a6acce11e2146173f4ea56962f0",
+    "recomp-player-validation.yml": "b8b69e9af20c9b4a3e7f630d14c0db6bb3f2364bb1a4ebe9225b1a682f318fbc",
+    "recomp-windows.yml": "62ef3e48460b7e15d36463e585837c1c1859dc61ce532a768b212c85b3e60c3d",
+    "verify.yml": "19ba6566b7234baec68b1c784e806214047f37bfcaada14dbda4e63f37567a8d"
+  },
+  "actual_command_outcomes": [
+    {
+      "check": "handoff",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_m8_handoff.py"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/handoff.log"
+    },
+    {
+      "check": "build-identity",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_m8_build_identity.py"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/build-identity.log"
+    },
+    {
+      "check": "package",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_m8_package.py"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/package.log"
+    },
+    {
+      "check": "parallel-replay",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_m8_story_parallel_contracts.py"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/parallel-replay.log"
+    },
+    {
+      "check": "native-retest",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_m8_native_retest.py"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/native-retest.log"
+    },
+    {
+      "check": "lr35902",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/test_lr35902.py",
+        "--bank0",
+        "src/banks/bank_000.asm"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/lr35902.log"
+    },
+    {
+      "check": "bank0-audit",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "recomp/tools/recompile_bank0.py",
+        "--bank",
+        "src/banks/bank_000.asm",
+        "--audit-only"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/bank0-audit.log"
+    },
+    {
+      "check": "save-io-configure",
+      "command": [
+        "cmake",
+        "-S",
+        "recomp/tests/save-io",
+        "-B",
+        "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-save-io-build",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io-configure.log"
+    },
+    {
+      "check": "save-io-build",
+      "command": [
+        "cmake",
+        "--build",
+        "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-save-io-build",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io-build.log"
+    },
+    {
+      "check": "save-io-ctest",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-save-io-build",
+        "-C",
+        "Release",
+        "--no-tests=error",
+        "--output-on-failure",
+        "--output-junit",
+        "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io.xml"
+      ],
+      "returncode": 0,
+      "log": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io-ctest.log"
+    }
+  ],
+  "saveio_outcome_authority": "Exact executed workflow Python step completed with exit0; it exits immediately on any failing command and then validates both actual JUnit cases without failures/errors/skips.",
+  "producer_selector_result": {
+    "scope": "Actual workflow JavaScript executed with mocked Actions APIs; no CI or gameplay performed",
+    "script_sha256": "429cbeac7476a031f1f5f3dcc25d495ff6f619d93107dbfb48dac5ab226fde34",
+    "cases": [
+      {
+        "case": "direct full-workflow jobs",
+        "expected_acceptance": true,
+        "passed": true
+      },
+      {
+        "case": "namespaced wrapper jobs",
+        "expected_acceptance": true,
+        "passed": true
+      },
+      {
+        "case": "mixed exact and namespaced jobs",
+        "expected_acceptance": true,
+        "passed": true
+      },
+      {
+        "case": "duplicate producer identities",
+        "expected_acceptance": false,
+        "passed": true
+      },
+      {
+        "case": "missing producer",
+        "expected_acceptance": false,
+        "passed": true
+      },
+      {
+        "case": "failed producer",
+        "expected_acceptance": false,
+        "passed": true
+      },
+      {
+        "case": "partial-name collision",
+        "expected_acceptance": false,
+        "passed": true
+      }
+    ]
+  },
+  "full_fresh_semantic_comparison": {
+    "baseline_file": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/before/recomp-full-validation.yml",
+    "baseline_sha256": "2e13c8c65b60b08070c988a07f2436047ddb06f791fb984cea31db2ceaba25c4",
+    "current_sha256": "129cddecb5fb70a3f280b465b7c793ee90b12a6acce11e2146173f4ea56962f0",
+    "removed_job": "historical-package-preflight",
+    "removed_inputs": [
+      "workflow_call.preflight_only",
+      "workflow_dispatch.preflight_only"
+    ],
+    "removed_preflight_guards": [
+      "diagnostic",
+      "production",
+      "verified-package"
+    ],
+    "every_remaining_job_including_all_steps_needs_timeouts_artifacts_equals_baseline_after_only_expected_removals": true
+  },
+  "protected_paths_comparison": {
+    "reference": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "e44b41394c23f63f55b6d5255bc065696ba554c2",
+      "--",
+      "src/banks",
+      "recomp/src",
+      "recomp/include",
+      "recomp/player",
+      "recomp/tests",
+      "recomp/release",
+      "recomp/CMakeLists.txt",
+      "recomp/tools"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  "git_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  "source_snapshot": {
+    "repository_head": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+    "workflow_changes_uncommitted_when_validated": true,
+    "raw_baseline_manifest": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/before-workflows.json",
+    "executed_host_workflow_python_sha256": "8804a9eff05cdba463098fe9a37346d173e01bbf3a59be7b445515daaefa2129",
+    "executed_saveio_workflow_python_sha256": "46c715af932b2e6e14a600d6e532631e1e29f2fe0c2ce1c4bf072c7f2e3146f6",
+    "node_mock_driver_sha256": "c12d032fe014a6c62bb11bda0de014320dc07ab1db628166c1fa7378e0958bd2"
+  },
+  "raw_log_paths": {
+    "host_command_logs": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation",
+    "host_run": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/host-tooling-run.log",
+    "saveio_run": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/save-io-run.log",
+    "saveio_xml": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-host-validation/save-io.xml",
+    "saveio_last_test": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/local-run/native-save-io-build/Testing/Temporary/LastTest.log",
+    "selector_results": "/workspace/branch-cleanup-2026-10-25/recomp-workflow-validation/producer-selector-results.json"
+  },
+  "observed_at": "2026-10-25T11:32:29.330124+00:00"
+}

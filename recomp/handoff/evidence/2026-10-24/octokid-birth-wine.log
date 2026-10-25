@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x2a3023c1c025c87f source=Z:/workspace/scratch/m8-review/sea-quest-22-seed.sav
+M8_STATE frame=69744 mode=1:0 world=0 region=1,2 pos=80,64 party=3 selector=0x1c sram=0x877784457015497e screen=0x7857efa275f2fcf5 image=m8_0.bmp
+M8_AUDIO frame=69744 sample_values=76830048 stereo_frames=38415024 nonzero=73043007 peak=32768 hash=0x196148ec6e11fffe
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_octokid_birth_p1.txt
+M8_SEED sram=0x877784457015497e source=Z:/workspace/scratch/m8-review/octokid-birth-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=0 region=1,2 pos=80,64 party=3 selector=0x0 sram=0x22666015457b67de screen=0x57ecf778c15efb60 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717214 stereo_frames=1358607 nonzero=1562565 peak=29184 hash=0x15546d99af3a68da
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/octokid-birth-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_octokid_birth_p1.txt ending_credits=NOT_YET_PROVEN

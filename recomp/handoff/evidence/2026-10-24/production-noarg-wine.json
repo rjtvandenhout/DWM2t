@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "checks": [
+    "--help",
+    "--version",
+    "informational_commands_do_not_create_profile",
+    "real_production_window_created",
+    "window_message_loop_responsive",
+    "native_save_lock_blocks_competing_access",
+    "close_message_delivered",
+    "normal_player_shutdown",
+    "native_save_lock_released",
+    "any_original_boot_sram_is_exact_size",
+    "no_pending_save_temporaries",
+    "player_binary_unchanged"
+  ],
+  "platform": "Wine on Linux",
+  "scope": "production startup only; full M8 remains unproven",
+  "executable_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "no_argument_start": true,
+  "command": [
+    "Z:\\workspace\\scratch\\m8-review\\production-candidate\\player\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe"
+  ]
+}

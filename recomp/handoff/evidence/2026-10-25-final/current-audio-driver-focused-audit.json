@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Focused Pack45 environment comparison only; full native suite and final package gates remain pending",
+  "run_id": "40183245214",
+  "artifact_id": 12595540162,
+  "artifact_bytes": 2686483,
+  "original_zip": "/workspace/scratch/m8-review/windows-audio-research-3d/audio-compare-40183245214/45/original.actions.zip",
+  "artifact_sha256": "cb11c2372145e3981cb623f5d1528c62517bf5311624561242a5d5001cc3f8be",
+  "workflow_source": "17daad09c676abfce0f8d38a97754f7c5804cb9a",
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "diagnostic_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "playback_returncode": 0,
+  "host": {
+    "schema": 1,
+    "status": "passed",
+    "driver_pack": "45",
+    "endpoint_before": 0,
+    "physical_audibility_assessed": false,
+    "tests_modified": false,
+    "endpoint_after_services": 0,
+    "downloads": [
+      {
+        "url": "https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack45.zip",
+        "sha": "b950e39f01af1d04ea623c8f6d8eb9b6ea5c477c637295fabf20631c85116bfb",
+        "name": "VBCABLE_Driver_Pack45.zip"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/mozilla/cubeb/dcd7cddafa4b95776cf5d117549ad58e17f23764/.github/tools/windows/devcon.exe",
+        "sha": "97cff42f8c0fe4fbdf991273159516bf78090625a933c3983ebd6f62284e329a",
+        "name": "devcon.exe"
+      }
+    ],
+    "catalog_signature_before": "Valid",
+    "catalog_subject": "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+    "catalog_thumbprint": "9A4A6CFEE73C6B65945FCAA083DFBCC1E9077E7E",
+    "catalog_signature_after": "Valid",
+    "device_install_exit": 0,
+    "endpoint_after": 1
+  },
+  "runs": [
+    {
+      "trial": 1,
+      "returncode": 0,
+      "results": [
+        {
+          "buffered": 0,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 1
+        },
+        {
+          "buffered": 1,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 0
+        }
+      ],
+      "stdout_sha256": "96c5aa6c49eddfaab640e6de8c612d85f8c0d5f87e8d536093d3f6ec52d3640f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "trial": 2,
+      "returncode": 0,
+      "results": [
+        {
+          "buffered": 0,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 1
+        },
+        {
+          "buffered": 1,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 0
+        }
+      ],
+      "stdout_sha256": "96c5aa6c49eddfaab640e6de8c612d85f8c0d5f87e8d536093d3f6ec52d3640f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "trial": 3,
+      "returncode": 0,
+      "results": [
+        {
+          "buffered": 0,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 1
+        },
+        {
+          "buffered": 1,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 0
+        }
+      ],
+      "stdout_sha256": "96c5aa6c49eddfaab640e6de8c612d85f8c0d5f87e8d536093d3f6ec52d3640f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "trial": 4,
+      "returncode": 0,
+      "results": [
+        {
+          "buffered": 0,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 1
+        },
+        {
+          "buffered": 1,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 0
+        }
+      ],
+      "stdout_sha256": "96c5aa6c49eddfaab640e6de8c612d85f8c0d5f87e8d536093d3f6ec52d3640f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "trial": 5,
+      "returncode": 0,
+      "results": [
+        {
+          "buffered": 0,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 1
+        },
+        {
+          "buffered": 1,
+          "queued_frames": 98753,
+          "played_frames": 98753,
+          "queue_empty_events": 0
+        }
+      ],
+      "stdout_sha256": "96c5aa6c49eddfaab640e6de8c612d85f8c0d5f87e8d536093d3f6ec52d3640f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "timer_current_ms": 15.625,
+  "passive_sleep1ms_statistics": {
+    "samples": 40,
+    "min_ms": 1.7787,
+    "median_ms": 13.7974,
+    "mean_ms": 10.7790875,
+    "max_ms": 16.4118
+  },
+  "power_plan": "Power Scheme GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  (High performance)\n",
+  "limitations": [
+    "The original diagnostic hash/source are CI measurements bound to this pinned workflow; no executable copy was included in this probe artifact.",
+    "Five successful controlled trials on this host do not establish the complete18-test suite, final Play.cmd package checks, original ending GUI or M8 acceptance.",
+    "This does not establish audible output on physical speakers or prove the cause of the earlier Pack43 empty events."
+  ],
+  "overall_m8_acceptance": false
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "png_hashes_verified": 113,
+  "original_size_frames": 110,
+  "integer_4x_production_windows": 3,
+  "original_bmp_pixels_verified": 107,
+  "source_bmp_not_locally_available": [],
+  "other_provenance_formats": [
+    "production-player-late-continue.png",
+    "production-player-journal.png",
+    "production-player-late-reload.png",
+    "production-windows-late-continue.png",
+    "production-windows-late-journal.png",
+    "production-windows-late-reload.png"
+  ],
+  "scope": "Read-only screenshot integrity audit; direct source pixel comparisons only where original BMPs were locally resolved. No M8 acceptance claim."
+}

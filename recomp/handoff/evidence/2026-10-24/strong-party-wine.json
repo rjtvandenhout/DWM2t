@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "native_returncode": 0,
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stage": {
+    "name": "strong-party",
+    "seed_stage": "mermaid-palace",
+    "route": "m8_sea_strong_party_p1.txt",
+    "route_sha256": "e0cae6e494110553314e5bafea31398e8b800a2637a8e9e80810bdfca6d3c44e",
+    "save_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+    "frames": 58319,
+    "party": [
+      9,
+      4,
+      0
+    ],
+    "levels": [
+      12,
+      12,
+      11
+    ],
+    "hp": [
+      89,
+      69,
+      102
+    ],
+    "status": [
+      0,
+      0,
+      0
+    ],
+    "owned": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "species": {
+      "9": 335
+    },
+    "gold": 0,
+    "location": [
+      0,
+      1,
+      2,
+      64,
+      64
+    ],
+    "set_flags": [
+      102,
+      109,
+      110,
+      111,
+      120
+    ],
+    "clear_flags": [
+      34
+    ]
+  },
+  "additional_persistent_creature_bytes": 320,
+  "native_log_sha256": "fe77bb21a993ae9619f97070b6ce83e6283dd1448be6dffde1ef9e83c1920b01"
+}

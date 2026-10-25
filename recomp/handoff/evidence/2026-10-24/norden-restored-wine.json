@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "stages": [
+    {
+      "stage": "norden-restored",
+      "frames": 37976,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/norden-restored-check-01/norden-restored/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_norden_restored_p1.txt",
+        "Z:/workspace/scratch/m8-review/norden-restored-check-01/norden-restored/native"
+      ],
+      "route_sha256": "dda48e2f106a226d357a070ec9b5440c338a84eff85d4666e98fb8364bd78155",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        19,
+        18,
+        16
+      ],
+      "hp": [
+        118,
+        76,
+        138
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 355,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    }
+  ]
+}

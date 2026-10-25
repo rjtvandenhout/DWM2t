@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x679caeec5d372e12 source=Z:/workspace/scratch/m8-review/preparation-chain-01/training/seed-copy.sav
+M8_STATE frame=395984 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0x5d610a18d632484a screen=0xdf7545eeedb5d967 image=m8_0.bmp
+M8_AUDIO frame=395984 sample_values=438403800 stereo_frames=219201900 nonzero=394888575 peak=32768 hash=0x9e974af5d9d78ea6
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_gate_training_p1.txt
+M8_SEED sram=0x5d610a18d632484a source=Z:/workspace/scratch/m8-review/preparation-chain-01/training/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,64 party=3 selector=0x0 sram=0x73934f7fa2c2028a screen=0x1cc450ae1853f75a image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717692 stereo_frames=1358846 nonzero=1562543 peak=29184 hash=0x939ca535cca73eea
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/preparation-chain-01/training/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_gate_training_p1.txt ending_credits=NOT_YET_PROVEN

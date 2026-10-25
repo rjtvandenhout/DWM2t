@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "endpoint_before": 0,
+  "physical_audibility_assessed": false,
+  "tests_modified": false,
+  "endpoint_after_services": 0,
+  "downloads": [
+    {
+      "url": "https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack43.zip",
+      "name": "VBCABLE_Driver_Pack43.zip",
+      "sha": "66fd0a4d9f4896ff41632b7e3d53892c085c4561f53e8ae8d0f0bc10eedd1cdd"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mozilla/cubeb/dcd7cddafa4b95776cf5d117549ad58e17f23764/.github/tools/windows/devcon.exe",
+      "name": "devcon.exe",
+      "sha": "97cff42f8c0fe4fbdf991273159516bf78090625a933c3983ebd6f62284e329a"
+    }
+  ],
+  "catalog_signature_before": "Valid",
+  "catalog_subject": "CN=Vincent Burel, OU=Individual Developer, OU=Digital ID Class 3 - Microsoft Software Validation v2, O=No Organization Affiliation, L=Eymet, S=Dordogne, C=FR",
+  "catalog_thumbprint": "00859AAC6A54B8C1B3C139DE67846E64E7B82DB2",
+  "catalog_signature_after": "Valid",
+  "device_install_exit": 0,
+  "endpoint_after": 1
+}

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "Historical production package and host filesystem checks; not fresh-build or ending acceptance",
+  "full_game_verified": false,
+  "run_id": 40162781175,
+  "validation_source": "ec73753e35a0d2232e9a0b653603745b8fdd3b04",
+  "player_source": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+  "player_sha256": "21458fc1baaa799b01630155412fe01357df22fc82631d53f29d3d5bc67067ad",
+  "artifact_id": 12587116500,
+  "artifact_bytes": 45917,
+  "artifact_sha256": "903313fc17ebc3bf2b1676e70492289c8deb8120c00ff79c8e8e8e0aabfcb4b0",
+  "package_checks": 21,
+  "direct_start_checks": 12,
+  "filesystem_results": [
+    "SAVE_IO_CONTRACTS_PASS checks=22",
+    "SAVE_IO_FAULT_CONTRACTS_PASS checks=19"
+  ],
+  "duplicate_cleanup": "Only the owned rejected duplicate process is terminated after stderr lock refusal and absence of a game window. Both actual game processes close normally.",
+  "posix_artifact_id": 12587001629,
+  "posix_artifact_bytes": 2122,
+  "posix_artifact_sha256": "dda5bf5020ee3e607f67799c6e316fcb7b20a6f77090dbfbffa2eb4c0e2a7b8c"
+}

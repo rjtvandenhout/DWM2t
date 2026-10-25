@@ -1,0 +1,202 @@
+{
+  "status": "passed",
+  "scope": "Read-only recheck of archived native captures with the complete original saved quest block",
+  "full_game_verified": false,
+  "quest_bytes": 107,
+  "original_ram_range": "CBD7:CC42",
+  "original_sram_range": "3DA0:3E0B",
+  "original_save_source": "bank 2:$7636, LD DE,$CBD7; LD BC,$006B",
+  "original_restore_source": "bank 2:$76AC, LD HL,$CBD7; LD BC,$006B",
+  "captures": [
+    {
+      "stage": "hood-tales",
+      "platform": "Windows",
+      "original_journal_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
+      "quest_sha256": "de612f46bc7d80cd8dba5779ad5ee28ff20c873b0cdfac3c655ba4ca7da088c6",
+      "status": "passed"
+    },
+    {
+      "stage": "mermaid-palace",
+      "platform": "Windows",
+      "original_journal_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+      "quest_sha256": "f67ed58e36b8381e9ef92519de42d18f6dcb2e669a8a75ea5671b7ff141a319f",
+      "status": "passed"
+    },
+    {
+      "stage": "strong-party",
+      "platform": "Windows",
+      "original_journal_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+      "quest_sha256": "7e74b29169e54cc606529377e450355b95b3b0cfd236e25ab881a013e5ed0d0e",
+      "status": "passed"
+    },
+    {
+      "stage": "captain-preparation",
+      "platform": "Windows",
+      "original_journal_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+      "quest_sha256": "e861239aacd7f02221382ea458731888daef50862c6b9b8f85e90e13deb249cb",
+      "status": "passed"
+    },
+    {
+      "stage": "moonrock",
+      "platform": "Windows",
+      "original_journal_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+      "quest_sha256": "9e715b272e2728488bc7edfa3bb20bf2ef0a35ddffc2020cd0ece0b1d0a1746c",
+      "status": "passed"
+    },
+    {
+      "stage": "lighthouse-recovery",
+      "platform": "Windows",
+      "original_journal_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+      "quest_sha256": "28eff593d7512dbf7c92d40340c903e45517ca1f764b9d79627e2556609ebadc",
+      "status": "passed"
+    },
+    {
+      "stage": "sea-treasure",
+      "platform": "Windows",
+      "original_journal_sha256": "046ef944cc794c4f8272cb306f82f7cefa44b3dd53908de7bc6267ec7a779074",
+      "quest_sha256": "9403f0ec4e5d68813c81933c1a66142c19db83ae976c7dbdea670ddd5249a0ab",
+      "status": "passed"
+    },
+    {
+      "stage": "octokid-birth",
+      "platform": "Windows",
+      "original_journal_sha256": "e1151817365e74414719f21e274f137150bbe5e3d54c3c8f63b823dadc184ce7",
+      "quest_sha256": "a12d91e8ae51f43b20b6a9bcc13ac68d86b087d2f6c93de7e5fc4168b9750a67",
+      "status": "passed"
+    },
+    {
+      "stage": "octokid-training",
+      "platform": "Windows",
+      "original_journal_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+      "quest_sha256": "a12d91e8ae51f43b20b6a9bcc13ac68d86b087d2f6c93de7e5fc4168b9750a67",
+      "status": "passed"
+    },
+    {
+      "stage": "c-class-victory",
+      "platform": "Windows",
+      "original_journal_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+      "quest_sha256": "2edd5038bfb7accd5aa9f1a13ac376089ac8b258eeb95194ab4dcbdb6b94e0b6",
+      "status": "passed"
+    },
+    {
+      "stage": "madgopher-ready",
+      "platform": "Windows",
+      "original_journal_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+      "quest_sha256": "e5936e12b83d0892824d1597d086ea09be37fbe534abc4d131257292416acf75",
+      "status": "passed"
+    },
+    {
+      "stage": "ice-key",
+      "platform": "Windows",
+      "original_journal_sha256": "1b41e7df21a346ddb2cf21f2906e345d30c5b5f1ca8269581be31835f6afc108",
+      "quest_sha256": "42162c4a17d8b71ac185f3fcb77ec5173b767048f33b95c88c328ae10fbe5a9e",
+      "status": "passed"
+    },
+    {
+      "stage": "ice-world-entry",
+      "platform": "Windows",
+      "original_journal_sha256": "e28221938470fd287f3ec4952e7b3336282feeb344169c7fdc0a20a241caebe3",
+      "quest_sha256": "42162c4a17d8b71ac185f3fcb77ec5173b767048f33b95c88c328ae10fbe5a9e",
+      "status": "passed"
+    },
+    {
+      "stage": "ice-training",
+      "platform": "Windows",
+      "original_journal_sha256": "d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1",
+      "quest_sha256": "42162c4a17d8b71ac185f3fcb77ec5173b767048f33b95c88c328ae10fbe5a9e",
+      "status": "passed"
+    },
+    {
+      "stage": "ice-crest",
+      "platform": "Windows",
+      "original_journal_sha256": "c20f93ffdc1a7a282cc5903d36ae56bd0838df89daaece1088e169e0e143bec1",
+      "quest_sha256": "07f7f2cb7a873d856b6aed24b20299943fbc045f01526a65d0bc7af28d5f372f",
+      "status": "passed"
+    },
+    {
+      "stage": "bombcrag-jail-escape",
+      "platform": "Windows",
+      "original_journal_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+      "quest_sha256": "4f59d0a9f2ee501d021f9903619cabc1abc56f24b7e495bf0ecfe941fedd91ef",
+      "status": "passed"
+    },
+    {
+      "stage": "norden-restored",
+      "platform": "Windows",
+      "original_journal_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+      "quest_sha256": "db1a94f6f1dc0896425e396e611e4c26384ff410feae03a0447f74814302efe1",
+      "status": "passed"
+    },
+    {
+      "stage": "westania-performance",
+      "platform": "Windows",
+      "original_journal_sha256": "7324097161189f30ada19a2577750b36b98bafe14a7e67bebf5d87566bff0f8c",
+      "quest_sha256": "a5a38c0fe46e349351f6bcf0dab80ad58f7f959b76327c6bee7d9ed58d4688e5",
+      "status": "passed"
+    },
+    {
+      "stage": "yuna-restored",
+      "platform": "Windows",
+      "original_journal_sha256": "c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a",
+      "quest_sha256": "f9b43b5a22a80c13aea58bb966b5b23a784cb6993104a13a1d66a0eab7376b51",
+      "status": "passed"
+    },
+    {
+      "stage": "helen-restored",
+      "platform": "Windows",
+      "original_journal_sha256": "bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7",
+      "quest_sha256": "b39e51efe38c3045038e1a3403a4937c77409c91df0cc9636a99bab6f6b737f7",
+      "status": "passed"
+    },
+    {
+      "stage": "raygigas-birth",
+      "platform": "Windows",
+      "original_journal_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+      "quest_sha256": "502efc19c0d4ac7a57abb32158885abb27672f40be9a6547b089e8f7ea0673de",
+      "status": "passed"
+    },
+    {
+      "stage": "derzo-training",
+      "platform": "Windows",
+      "original_journal_sha256": "62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24",
+      "quest_sha256": "502efc19c0d4ac7a57abb32158885abb27672f40be9a6547b089e8f7ea0673de",
+      "status": "passed"
+    },
+    {
+      "stage": "sky-shield",
+      "platform": "Windows",
+      "original_journal_sha256": "8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3",
+      "quest_sha256": "d220fafc1d5ff28b5dcfab301a9742a9884da223eed01a7f27a83653657e8527",
+      "status": "passed"
+    },
+    {
+      "stage": "sky-key",
+      "platform": "Windows",
+      "original_journal_sha256": "48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f",
+      "quest_sha256": "712be8d7cfed501ced931475089b809387a5776f14ad2b371da473f6dd364ad4",
+      "status": "passed"
+    },
+    {
+      "stage": "change-staff",
+      "platform": "Wine on Linux",
+      "original_journal_sha256": "dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626",
+      "quest_sha256": "2e5281b859e75741404aaf2c2bfdba2d06be714d0b5725d4ba08f83e8b513549",
+      "status": "passed"
+    },
+    {
+      "stage": "pei-inn",
+      "platform": "Wine on Linux",
+      "original_journal_sha256": "fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736",
+      "quest_sha256": "2c0c6fec3a155fb4130f0009a395a84450d45a69447de8732db7bf413fdfab10",
+      "status": "passed"
+    }
+  ],
+  "production_saved_journal": {
+    "platform": "Windows",
+    "run_id": "40144322233",
+    "status": "passed",
+    "quest_bytes": 107,
+    "saved_journal_sha256": "4f2b07749f88bdd9a924a7c643c99c05e347b804229521d2d708433bec7afa38",
+    "method": "Additional read-only comparison; original GUI execution report retains its 64-byte scope"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "status": "passed",
+  "platform": "Windows",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "stages": [
+    {
+      "stage": "raygigas-birth",
+      "frames": 87794,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\later-story-evidence\\raygigas-birth\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_raygigas_birth_p1.txt",
+        "D:\\a\\_temp\\later-story-evidence\\raygigas-birth\\native"
+      ],
+      "route_sha256": "137f0f2d4bafe5377a1983cd7b3584e68304ec8bc400df63d0cd0fab07a0b103",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        21,
+        18,
+        1
+      ],
+      "hp": [
+        79,
+        143,
+        46
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404,
+      "offspring": {
+        "record": 11,
+        "plus": 1,
+        "gender": 0,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "90b08e988245342d1d4a36cbb1c4ac297fbc11edf5bc30ec34aa3b1dec4e9814"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "9": 7,
+        "10": 8,
+        "11": 9,
+        "12": 10
+      }
+    },
+    {
+      "stage": "derzo-training",
+      "frames": 658627,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\later-story-evidence\\derzo-training\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_derzo_training_p1.txt",
+        "D:\\a\\_temp\\later-story-evidence\\derzo-training\\native"
+      ],
+      "route_sha256": "82c4a49bd6760868de5149c1412212b0e818b98117c5fe2465a543bb70616970",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        23,
+        20,
+        20
+      ],
+      "hp": [
+        84,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "sky-shield",
+      "frames": 36980,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\later-story-evidence\\sky-shield\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sky_shield_p1.txt",
+        "D:\\a\\_temp\\later-story-evidence\\sky-shield\\native"
+      ],
+      "route_sha256": "5514807ac94fd9cd687213199d178c119aa14ae517b40a7b1eb4ec47e00dcc50",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        24,
+        21,
+        21
+      ],
+      "hp": [
+        87,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "sky-key",
+      "frames": 20034,
+      "command": [
+        "D:\\a\\_temp\\native-player\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\later-story-evidence\\sky-key\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sky_key_p1.txt",
+        "D:\\a\\_temp\\later-story-evidence\\sky-key\\native"
+      ],
+      "route_sha256": "359871eed989932923872184ea3cbe376f8bb3409b4a80151497575409d51bc8",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        24,
+        21,
+        21
+      ],
+      "hp": [
+        87,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xc4d6f0a586269ed9 source=Z:/workspace/scratch/m8-review/sea-quest-19-seed.sav
+M8_STATE frame=58319 mode=1:0 world=0 region=1,2 pos=64,64 party=3 selector=0x1c sram=0xa7541134f4f080f4 screen=0x38dc90da2b50741a image=m8_0.bmp
+M8_AUDIO frame=58319 sample_values=64139220 stereo_frames=32069610 nonzero=61478731 peak=32768 hash=0x94b2010a4244b54a
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_strong_party_p1.txt
+M8_SEED sram=0xa7541134f4f080f4 source=Z:/workspace/scratch/m8-review/strong-party-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=0 region=1,2 pos=64,64 party=3 selector=0x0 sram=0xa7541134f4f080f4 screen=0x546e09f94fddbabd image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717128 stereo_frames=1358564 nonzero=1562557 peak=29184 hash=0xb2d5365cef6f3d0a
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/strong-party-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_strong_party_p1.txt ending_credits=NOT_YET_PROVEN

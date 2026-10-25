@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0xf21561e6abca90c1 source=Z:/workspace/scratch/m8-review/sea-quest-21-seed.sav
+M8_STATE frame=50283 mode=1:0 world=49 region=0,1 pos=64,112 party=3 selector=0x4b sram=0xa59507848f4d2d65 screen=0xa4f723c21e9ae4d0 image=m8_0.bmp
+M8_AUDIO frame=50283 sample_values=55318282 stereo_frames=27659141 nonzero=52151115 peak=32768 hash=0xd9cefb9f3ebf28a2
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_moonrock_p1.txt
+M8_SEED sram=0xa59507848f4d2d65 source=Z:/workspace/scratch/m8-review/moonrock-check-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=49 region=0,1 pos=64,112 party=3 selector=0x0 sram=0xa59507848f4d2d65 screen=0x2291ee94fd7626c4 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717892 stereo_frames=1358946 nonzero=1563471 peak=29184 hash=0xe1774f3b8be19052
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/moonrock-check-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_moonrock_p1.txt ending_credits=NOT_YET_PROVEN

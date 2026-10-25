@@ -1,0 +1,17 @@
+# Fresh Runtime with only the original 32 KiB SRAM file loaded.
+boot
+Start 6 96
+A 6 180
+A 6 180
+expect C5DB 01
+expect C5DC 00
+expect C6FD 01
+expect CBD7 EE
+expect CBD8 FF
+expect CBD9 AF
+expect CBDA 0C
+expect FF90 06
+expect FF8F 00
+expect FF92 00
+expect FF8E 70
+expect FF91 40

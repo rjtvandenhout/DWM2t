@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x8a282ecc3ebebc62 source=Z:/workspace/scratch/m8-review/dancer-chain-01/village/seed-copy.sav
+M8_STATE frame=12966 mode=1:0 world=60 region=0,0 pos=96,48 party=3 selector=0x13 sram=0x2c025012133639d6 screen=0x6fa4f178cd284421 image=m8_0.bmp
+M8_AUDIO frame=12966 sample_values=14372328 stereo_frames=7186164 nonzero=12732203 peak=32768 hash=0x7d51fa9c702fb99a
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_dancer_alive_p1.txt
+M8_SEED sram=0x2c025012133639d6 source=Z:/workspace/scratch/m8-review/dancer-chain-01/village/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=60 region=0,0 pos=96,48 party=3 selector=0x0 sram=0x2c025012133639d6 screen=0x332e0dc2cc8ef327 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717292 stereo_frames=1358646 nonzero=1563327 peak=29184 hash=0xfa6462970e81dea
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/m8-review/dancer-chain-01/village/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_sea_dancer_alive_p1.txt ending_credits=NOT_YET_PROVEN
