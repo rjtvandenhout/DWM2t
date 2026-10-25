@@ -1,0 +1,32 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_STORY_STAGE_START longest
+M8_STORY_STAGE_START long
+M8_STORY_STAGE_PASS long
+M8_STORY_STAGE_START medium
+M8_STORY_STAGE_START short
+M8_STORY_STAGE_FAIL longest: RuntimeError: Synthetic native failure, not a game result
+M8_STORY_STAGE_PASS medium
+M8_STORY_STAGE_PASS short
+..M8_STORY_STAGE_START longest
+M8_STORY_STAGE_START long
+M8_STORY_STAGE_START medium
+M8_STORY_STAGE_PASS long
+M8_STORY_STAGE_START short
+M8_STORY_STAGE_PASS longest
+M8_STORY_STAGE_PASS short
+M8_STORY_STAGE_PASS medium
+................M8_STORY_CHECKPOINTS_PASS platform=Windows original_Journal fresh_Continue
+M8_STORY_STAGE_START first
+M8_STORY_STAGE_START second
+M8_STORY_STAGE_PASS first
+M8_STORY_STAGE_PASS second
+....
+----------------------------------------------------------------------
+Ran 22 tests in 0.217s
+
+OK
+M8_STORY_CHECKPOINTS_FAIL Pinned input/output mismatch: checkpoint.sav
+M8_STORY_CHECKPOINTS_FAIL Parallel original replay requires a pinned original Journal seed bundle

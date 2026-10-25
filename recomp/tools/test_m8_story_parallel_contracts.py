@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import tarfile
 import tempfile
@@ -166,7 +167,9 @@ class OriginalJournalContracts(unittest.TestCase):
         manifest.write_text(json.dumps(self.data))
         output = self.root/'orchestration-output'
         arguments = ['checkpoint-test', '--exe', str(executable), '--seed', str(initial),
-                     '--manifest', str(manifest), '--output', str(output), '--wine', str(wine)]
+                     '--manifest', str(manifest), '--output', str(output)]
+        if os.name != 'nt':
+            arguments += ['--wine', str(wine)]
         identity = SimpleNamespace(sha256=sha(executable.read_bytes()),
                                    verify=lambda path: None,
                                    report=lambda: {'synthetic_contract_only':True})
