@@ -1097,5 +1097,27 @@
     "source_bmp_sha256": "40086dcd03ed252208bc54ff205af2fc25500b65b1b9eb2fa362782fcd420a94",
     "png_sha256": "4f90a88549a838f3bdd51c21a519fdcd6ae7a23b8fe12ef29be10f36190c3f4e",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "limbo-giga-defeated.png",
+    "caption": "GigaDraco is defeated in the fourth original guardian attempt; all three allies remain alive.",
+    "source_session": "limbo-quest-51",
+    "source_bmp": "m8_2608.bmp",
+    "frame": 78771,
+    "native_state": "M8_STATE frame=78771 mode=4:0 world=161 region=0,0 pos=64,64 party=3 selector=0x0 sram=0x9514ac101feb2e76 screen=0x689a327d705f1116 image=m8_2608.bmp",
+    "source_bmp_sha256": "b98a019ed9536624311efdda2b980fdf42765d2406748ca88337c4989c7db6bc",
+    "png_sha256": "395f60845040f90f5dd531cfa8e0cfeca0873b09705109f11e83390f05196f98",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "limbo-guardian-defeated.png",
+    "caption": "Original Limbo guardian defeated with all three allies alive; repeated SleepAir and Garon's TwinHits-supported attacks overcome the three-monster team.",
+    "source_session": "limbo-quest-51",
+    "source_bmp": "m8_3165.bmp",
+    "frame": 94580,
+    "native_state": "M8_STATE frame=94580 mode=4:0 world=161 region=0,0 pos=64,64 party=3 selector=0x0 sram=0x9514ac101feb2e76 screen=0x5874ab488da8bd5e image=m8_3165.bmp",
+    "source_bmp_sha256": "c223f1c80370d2f0a071d57a6c51693af4de43e1f3ed0932d6868a6d346ae902",
+    "png_sha256": "09443444e52532179496e966f9d0e6cef40860e007f0c97173f1a6af57886af5",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

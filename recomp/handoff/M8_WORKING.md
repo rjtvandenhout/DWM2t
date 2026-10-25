@@ -271,6 +271,19 @@ native session89902, starts only from this genuine Journal. A subsequent
 retry defeats Garudian then loses after StopSpell. Original recovery follows;
 next attempt prioritizes repeated SleepAir. No independent replay for51 yet.
 
+Checkpoint35 now independently passes105365 frames, Journal SHA256
+`842eb6339d3e139312897180d876274e402c7a911acb90104e493d276f5b7854`.
+Fourth guardian attempt wins all alive: repeated Hero SleepAir controls Centasaur/
+Garudian, Garon TwinHits-self+Increase+HealAll, Slash Guard, kill GigaDraco first.
+Victory witness94580 asserts900/1000/800 maxima and all enemy HP0. Actual new
+flagD3 opens the upper route (notD0). Current party[0,10,12], level37/40/38,
+full180/207/215,17 owned,0G, full107/roster pass. True Journal at GreatLog.
+Live `limbo-quest-52`, native session80163, starts only from this genuine Save.
+North1614,1 thenUp32 transfers to16214,26. Target16214,1 enters1634,17;
+Darck interaction is1634,4Up. Current guide targets1634,5 for health checks.
+Guide Flee now observes the actual cursor; party target indexes follow the
+original reordered roster. No runtime or game-state edits.
+
 The new manual full-validation workflow is prepared. `preflight_only=true`
 tests new Windows host checks on the historical bfc591 production package;
 it does not build or certify a new game binary. The default workflow builds

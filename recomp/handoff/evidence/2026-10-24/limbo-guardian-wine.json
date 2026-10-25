@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "limbo-guardian",
+      "frames": 105365,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/limbo-guardian-check-01/limbo-guardian/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_limbo_guardian_p1.txt",
+        "Z:/workspace/scratch/m8-review/limbo-guardian-check-01/limbo-guardian/native"
+      ],
+      "route_sha256": "8d790e6edb568de3114b8a815123767140dce2c12de1f35173bca0a093aeef44",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "842eb6339d3e139312897180d876274e402c7a911acb90104e493d276f5b7854",
+      "active_party_records": [
+        0,
+        10,
+        12
+      ],
+      "levels": [
+        37,
+        40,
+        38
+      ],
+      "hp": [
+        180,
+        207,
+        215
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    }
+  ],
+  "executable_bytes": 725318144
+}
