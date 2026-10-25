@@ -46,13 +46,14 @@ Later Wine replays breed Totum and Nyar to hatch
 Derzo (RayGigas +1). The production candidate's normal GUI also passes a later
 Continue, original Journal and fresh-process reload check under Wine and
 native Windows (run 40144322233). Native
-Windows run 40148369185 has audited twenty archived checkpoints and
-replayed seven later routes through the MadCondor victory; all seven new
-Journal hashes match Wine with the full 107-byte quest block verified. A third
-original breeding produces Garon (RayGigas +3), whose birth Journal also
-passes independent Wine replay. Later Sky World, ending/credits and final acceptance remain pending.
+Windows run 40152139075 has audited twenty archived checkpoints and
+replayed ten later routes through Heaven Sword; all ten new Journal hashes
+match Wine with the full 107-byte quest block verified. A third original
+breeding produces Garon (RayGigas +3). Wine validation now covers33 checkpoints
+through all Heaven relics, Niterich, Mudou and Sky completion. The party has
+earned Limbo Key and entered the final world.
 
-**M8 is incomplete.** Sky World, the later story, ending/credits,
+**M8 is incomplete.** Limbo's remaining story, ending/credits,
 combined regressions and final production-package acceptance remain unproven.
 The [current progress report](handoff/M8_PROGRESS_2026-10-25.md) includes original
 screenshots and exact evidence. Working notes are in `handoff/M8_WORKING.md`;

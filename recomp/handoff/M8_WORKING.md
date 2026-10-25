@@ -248,8 +248,16 @@ frame78035 is asserted. Scratch `sky-quest-49` starts only from that genuine
 Journal. The town124 guard admits the party (B6), the palace127 chancellor
 asks them to take the rear traveler gate to the king's castle (B8). Original
 on-enter127 x64,16 transfers to shrine146; its south exit leads to11254,22.
-Current guide is approaching castle147 via11244,13. Original live probe
-session34837 owns49. Read-only replay32 has passed; no runtime/game-state edits.
+That route continues through castle147–155, defeats two450-HP EvilArmor and
+3000-HP Mudou, witnesses Kameha/Darck's original scenes and earns LimboKey06.
+Warubou returns and heals the party at home, then provides repaired treasures.
+Checkpoint33 passes114894-frame Wine replay to original Journal SHA256
+`11deaaa8784a7f79c24132173a2fb2cbd221281f2314c9da97f058f9fca51a0b`.
+Party33/30/32, fullHP193/200/170, sixteen owned,13G; full107/roster pass.
+Live `limbo-quest-50` starts only from this genuine Journal. MagicDoor164 leads
+to160;16014,22 enters1614,26. Stand1614,4Up gives the three repaired treasures
+and starts Centasaur/GigaDraco/Garudian (900/1000/800HP). Battle in progress.
+Live native session6088 owns50. No runtime/game-state edits.
 
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead

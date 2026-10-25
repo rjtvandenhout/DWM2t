@@ -1042,5 +1042,49 @@
     "source_bmp_sha256": "3b84d6f40c3eb363691266e9c8d61a19cd91f02a282e7f293f23ed2519ff3c13",
     "png_sha256": "73f8509edeaf7541d633c6dfdac9ead6b006bae565057fab3fbd6dd39476ee58",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "mudou-defeated.png",
+    "caption": "Original 3000-HP Mudou victory with all three alive.",
+    "source_session": "sky-quest-49",
+    "source_bmp": "m8_2653.bmp",
+    "frame": 90242,
+    "native_state": "M8_STATE frame=90242 mode=4:0 world=155 region=0,1 pos=64,48 party=3 selector=0x67 sram=0x4866a3b579646b0f screen=0xf5c9cedc0fc53e30 image=m8_2653.bmp",
+    "source_bmp_sha256": "0ee7d8d956565c4facd7b51a5e4c7941506ad65e836c9418d5cb45edead1d6e7",
+    "png_sha256": "431c96379852ac9ea2c9be1f0c4b8618e7fddc52c5dbbcc35ccf7844742c8402",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "kameha-monster-king.png",
+    "caption": "Original Kameha Monster King reveal after the relic trial.",
+    "source_session": "sky-quest-49",
+    "source_bmp": "m8_2778.bmp",
+    "frame": 94956,
+    "native_state": "M8_STATE frame=94956 mode=1:1 world=155 region=0,0 pos=64,64 party=3 selector=0x68 sram=0x44d8a913629957a2 screen=0x23a5bbbbe6a41bf8 image=m8_2778.bmp",
+    "source_bmp_sha256": "8fd8d497a0d8d4b368e0fda2f212e20b3612dfeeab351f38fd0b032bd4a25ef8",
+    "png_sha256": "82a66afb7e95ae472dc44c3bfa7eb31da9d09d99b98e8f03a11302de7d4e2db4",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "limbo-key-received.png",
+    "caption": "Original Darck audience awards the Limbo Key.",
+    "source_session": "sky-quest-49",
+    "source_bmp": "m8_2992.bmp",
+    "frame": 103908,
+    "native_state": "M8_STATE frame=103908 mode=1:1 world=155 region=0,0 pos=64,64 party=3 selector=0x68 sram=0x44d8a913629957a2 screen=0xbe0b79af74709832 image=m8_2992.bmp",
+    "source_bmp_sha256": "32dbf1526f0ab6a3345b30eeac2eb503579160a5de4aea23ce68378120305986",
+    "png_sha256": "4d90bd8750295a3244b4671a61b9b8e89d18841ebf121d5cc085ca5d69503652",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "treasures-ready-for-limbo.png",
+    "caption": "Warubou returns the repaired TidalBell, HarMirror and SkyShield for Limbo.",
+    "source_session": "sky-quest-49",
+    "source_bmp": "m8_3196.bmp",
+    "frame": 113080,
+    "native_state": "M8_STATE frame=113080 mode=1:1 world=5 region=1,0 pos=80,48 party=3 selector=0x19 sram=0x97617b7df2511d71 screen=0x55190fec46447350 image=m8_3196.bmp",
+    "source_bmp_sha256": "dafca2bd31e34350bc90ed5ad44a420ccdf23b01b0f493a3d6b7033bea16492e",
+    "png_sha256": "356cf2e87fe2404fad3d9a824c27cb6b4860c37070f2a198b7ab550abfd901bc",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]
