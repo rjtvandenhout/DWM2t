@@ -11,10 +11,13 @@ seeds, and no game state, RNG, party, flags or generated worlds are edited.
 
 Six original Journal checkpoints are pinned in
 [`m8_postgame_supplemental.json`](../tests/m8_postgame_supplemental.json),
-totalling 228,921 recorded P1 frames. The first four curated checkpoints have
-passed an independent Wine replay. The in-world checkpoint has also passed
-the frozen native checkpoint command and fresh Continue. Native Windows
-supplemental replay is pending at this report revision.
+totalling 228,921 recorded P1 frames. All six pass on native Windows in
+[run 40202234497](https://github.com/rjtvandenhout/DWM2t/actions/runs/40202234497),
+including all six actual parent/input links, exact original Save hashes and
+fresh Continue. Independent Wine checks also pass. The native run uses tooling
+source `0bbb41e68d00` and the unchanged accepted game executable; it does not
+rebuild or replace the player. Its complete evidence artifact is only 416,187
+bytes ([receipt](evidence/2026-10-25-postgame/native-windows-6-stage-artifact.json)).
 
 | Check | Observed result |
 | --- | --- |

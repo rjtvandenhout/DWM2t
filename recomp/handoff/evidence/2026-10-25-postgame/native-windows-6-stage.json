@@ -1,0 +1,2547 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Supplemental pinned original-P1 postgame replay and fresh Continue only",
+  "platform": "Windows",
+  "executable_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "build_run_id": "40175408153",
+  "accepted_baseline_validation_run_id": "40183484388",
+  "supplemental_validation_run_id": "40202234497",
+  "tooling_source_commit": "0bbb41e68d003f7768c059d534ed2f5a1ad44944",
+  "full_postgame_verified": false,
+  "all_random_seeds_verified": false,
+  "new_binary_accepted": false,
+  "accepted_package_changed": false,
+  "stages": [
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 2805,
+      "continue_byte_transitions": [],
+      "continue_byte_transition_count": 0,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "00071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": null,
+      "stage": "key-appraisal",
+      "save_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+      "observation_sha256": {
+        "key-appraisal\\native\\checkpoint.sav": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+        "key-appraisal\\native\\fresh_continue\\m8_0.sram": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+        "key-appraisal\\native\\m8_0.ram": "2678837a2caf9cb65748d466bfbc1d92ad6a2b7212acaa871e5928a4c8616f54",
+        "key-appraisal\\native\\fresh_continue\\m8_0.ram": "48950635d30cdea8d7d61434c729295e7de1e0e4d26022aeb549065854fde4e1"
+      }
+    },
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 2805,
+      "continue_byte_transitions": [],
+      "continue_byte_transition_count": 0,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "c0071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 80,
+          "sha256": "cfa367dfdff016f74f47d3c976a803f839c58312906f56e9f8a26bd54dad3275",
+          "descriptor_sha256": "065e1929ea5c0e73f03b310cbf032dccf9b9858e40f6593fad7f9b68c630895b",
+          "core_flags": 128,
+          "world_cleared": true,
+          "area_clear_bytes": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": null,
+      "stage": "quietsea-clear",
+      "save_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "observation_sha256": {
+        "quietsea-clear\\native\\checkpoint.sav": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+        "quietsea-clear\\native\\fresh_continue\\m8_0.sram": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+        "quietsea-clear\\native\\m8_0.ram": "d8aa8b9b5358aba1f06b0b291b31ca27be66b5e25589cb9af46a1fed1f927e5e",
+        "quietsea-clear\\native\\fresh_continue\\m8_0.ram": "343daa1bdd50745091d3938e884815e8b33587deb8f66b7cff2b51b91575d782"
+      }
+    },
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 2970,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "continue_byte_transition_count": 4,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "fe071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": null,
+      "stage": "newlywed-gift",
+      "save_sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+      "observation_sha256": {
+        "newlywed-gift\\native\\checkpoint.sav": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+        "newlywed-gift\\native\\fresh_continue\\m8_0.sram": "f79d82ac01bf871fd941bbfb4486daeb3c34510864e53c4587dd5c4fdfe243bc",
+        "newlywed-gift\\native\\m8_0.ram": "d16665a1f2f11f9531b4a5e720fd4798321da245cb290d7d4907287dadb55ac6",
+        "newlywed-gift\\native\\fresh_continue\\m8_0.ram": "aba5f7515b35981b4ca7f6faeb3cd025256db9bf775719f96b09ef143356a1f8"
+      }
+    },
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 3135,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "continue_byte_transition_count": 8,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "fe071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": null,
+      "stage": "certified-egg",
+      "save_sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+      "observation_sha256": {
+        "certified-egg\\native\\checkpoint.sav": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+        "certified-egg\\native\\fresh_continue\\m8_0.sram": "172992be0825252a833a43c07aae8eb5a61d6e7fe856b027d95157a61c32cb16",
+        "certified-egg\\native\\m8_0.ram": "d89833bf50c6101b50703c648cf1564924680a345cd833842626b60d8df4ec0a",
+        "certified-egg\\native\\fresh_continue\\m8_0.ram": "d99a8385024957941a400adf45e61207560aa52b1e32b590029a4eafdbb6a34b"
+      }
+    },
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 3135,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "continue_byte_transition_count": 8,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "fe071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": null,
+      "stage": "quest-gates",
+      "save_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+      "observation_sha256": {
+        "quest-gates\\native\\checkpoint.sav": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+        "quest-gates\\native\\fresh_continue\\m8_0.sram": "36d7003f238767cba032c9d8674fb89a791c4b3a9252b5d0fcb6aba99596d0f8",
+        "quest-gates\\native\\m8_0.ram": "cb1921060474836e6a0bfb008419519dd266297b83619e3aff06c97aefdcb0e7",
+        "quest-gates\\native\\fresh_continue\\m8_0.ram": "3a685870ac99b13b9fa5c5f025dc2574f5d6bed016f6f6db7e890392ac2bd551"
+      }
+    },
+    {
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "owned_bytes_each": 165,
+      "owned_bytes_checked": 2805,
+      "continue_byte_transitions": [],
+      "continue_byte_transition_count": 0,
+      "party": [
+        12,
+        0,
+        10
+      ],
+      "quest_bytes": 107,
+      "key_record_bytes": 128,
+      "key_seed_bytes": 64,
+      "key_records_hex": [
+        "01ffff80",
+        "42ffff80",
+        "43ffff80",
+        "c0071308",
+        "44ffff80",
+        "45ffff80",
+        "46ffff80",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff",
+        "ffffffff"
+      ],
+      "key_seeds_hex": [
+        "0000",
+        "0000",
+        "0000",
+        "c016",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000",
+        "0000"
+      ],
+      "cache_slots": 20,
+      "cache_bytes_each": 405,
+      "cache_four_way_equal": true,
+      "cache_descriptors": [
+        {
+          "slot": 0,
+          "marker": 80,
+          "sha256": "f52a79cd766e333baaf364d275a039c8b8b0ce7512839f7564b12f9d46b54b83",
+          "descriptor_sha256": "0d97ee90ab65093865b48f5b81378e94a648d599461ef43386599a0f18eb8d90",
+          "core_flags": 128,
+          "world_cleared": true,
+          "area_clear_bytes": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 1,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 2,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 6,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 7,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 8,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 9,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 10,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 11,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 12,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 13,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 14,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 15,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 16,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 17,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 18,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "slot": 19,
+          "marker": 0,
+          "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+          "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+          "core_flags": 0,
+          "world_cleared": false,
+          "area_clear_bytes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "random_context": {
+        "bytes": [
+          0,
+          0,
+          131,
+          0
+        ],
+        "descriptor_bytes": 404,
+        "descriptor_sha256": "0d97ee90ab65093865b48f5b81378e94a648d599461ef43386599a0f18eb8d90",
+        "source_fresh_and_saved_cache_equal": true
+      },
+      "stage": "quietsea-reload-dungeon",
+      "save_sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+      "observation_sha256": {
+        "quietsea-reload-dungeon\\native\\checkpoint.sav": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+        "quietsea-reload-dungeon\\native\\fresh_continue\\m8_0.sram": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+        "quietsea-reload-dungeon\\native\\m8_0.ram": "2ea63e14c7d2b463848f9ce18d9fbec3e8b3d5ef2997e4e3c23868f29834fe3b",
+        "quietsea-reload-dungeon\\native\\fresh_continue\\m8_0.ram": "207c45c974268e2d916ee40c3d6e1d0ff585cf4cac9b760d7ad8fd49583e1738"
+      }
+    }
+  ],
+  "manifest_sha256": "623e4f73e528e3f83cff906907029240e598a2873deb3bf4cdce731ba3a78ed1",
+  "build_identity_sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+  "runner_sha256": "3b6715fc244fa213d221743c94ab118c5d17c338475c6748a5c6601df262d591",
+  "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "source_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "command": [
+    "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+    "D:\\a\\DWM2t\\DWM2t\\recomp\\tools\\test_m8_story_checkpoints.py",
+    "--exe",
+    "D:\\a\\_temp\\postgame-accepted-inputs\\DWM2tRecompFull.exe",
+    "--seed",
+    "D:\\a\\_temp\\postgame-accepted-inputs\\ending-complete.sav",
+    "--manifest",
+    "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_postgame_supplemental.json",
+    "--output",
+    "D:\\a\\_temp\\postgame-replay",
+    "--build-identity",
+    "D:\\a\\_temp\\postgame-accepted-inputs\\build-identity.json"
+  ],
+  "runner_returncode": 0,
+  "seed_chain_links": 6
+}

@@ -1,0 +1,866 @@
+{
+  "schema": "m8-postgame-source-gaps-addendum-v1",
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "scope": "Original source-only closure; no P1 or game/state writes in this addendum. Subsequent authorized NPC-probe gameplay will be reported separately.",
+  "medal_man": {
+    "npc": {
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "selector": "0x72",
+      "handler": {
+        "bank": 19,
+        "address": "0x6F0F",
+        "rom_offset": "0x04EF0F",
+        "source": "src/banks/bank_019.asm",
+        "line": 755
+      }
+    },
+    "intro_flag": "0x31 afterending25 (earlierintro112); noindividualawardflag inactualprizecheckout",
+    "model": "Repeatable exchange spending bankedTinyMedals, not cumulative one-time threshold ladder",
+    "banked_balance_address": "C838:C839 little-endian",
+    "inventory_runtime_medal_id": 44,
+    "deposit_source": {
+      "bank": 13,
+      "address": "0x6DD0",
+      "rom_offset": "0x036DD0",
+      "source": "src/banks/bank_013.asm",
+      "line": 736
+    },
+    "deduction_source": {
+      "bank": 13,
+      "address": "0x6AA2",
+      "rom_offset": "0x036AA2",
+      "source": "src/banks/bank_013.asm",
+      "line": 685
+    },
+    "grant_source": {
+      "bank": 13,
+      "address": "0x6AEC",
+      "rom_offset": "0x036AEC",
+      "source": "src/banks/bank_013.asm",
+      "line": 689
+    },
+    "prebuilt_formula": "selection1..6\u2192377+selection, IDs378..383;selection0 directlyaddsitem30MeteOrb",
+    "capacity_guard_sources": [
+      {
+        "bank": 13,
+        "address": "0x6A1F",
+        "rom_offset": "0x036A1F",
+        "source": "src/banks/bank_013.asm",
+        "line": 676
+      },
+      {
+        "bank": 13,
+        "address": "0x6CCC",
+        "rom_offset": "0x036CCC",
+        "source": "src/banks/bank_013.asm",
+        "line": 719
+      },
+      {
+        "bank": 13,
+        "address": "0x6D09",
+        "rom_offset": "0x036D09",
+        "source": "src/banks/bank_013.asm",
+        "line": 723
+      }
+    ],
+    "menu_gate": {
+      "persistent_byte": "C837",
+      "six_prizes_when_zero": true,
+      "seventh_Darck_when_nonzero": true,
+      "ending_baseline": 1,
+      "setter_in_original_ending_return": {
+        "bank": 15,
+        "address": "0x4254",
+        "rom_offset": "0x03C254",
+        "source": "src/banks/bank_015.asm",
+        "line": 40
+      }
+    },
+    "ending_banked_medals": 1,
+    "prizes": [
+      {
+        "selection": 0,
+        "name": "MeteOrb",
+        "cost_tiny_medals": 3,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x710E",
+          "rom_offset": "0x03710E",
+          "source": "src/banks/bank_013.asm",
+          "line": 787
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x4599",
+          "rom_offset": "0x034599",
+          "source": "src/banks/bank_013.asm",
+          "line": 92
+        },
+        "prebuilt_id": null,
+        "grant_runtime_item_id": 30,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 1,
+        "name": "MadCat",
+        "cost_tiny_medals": 3,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x710F",
+          "rom_offset": "0x03710F",
+          "source": "src/banks/bank_013.asm",
+          "line": 787
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45A1",
+          "rom_offset": "0x0345A1",
+          "source": "src/banks/bank_013.asm",
+          "line": 93
+        },
+        "prebuilt_id": 378,
+        "grant_runtime_item_id": null,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 2,
+        "name": "HornBeet",
+        "cost_tiny_medals": 4,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x7110",
+          "rom_offset": "0x037110",
+          "source": "src/banks/bank_013.asm",
+          "line": 788
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45A8",
+          "rom_offset": "0x0345A8",
+          "source": "src/banks/bank_013.asm",
+          "line": 93
+        },
+        "prebuilt_id": 379,
+        "grant_runtime_item_id": null,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 3,
+        "name": "SkyDragon",
+        "cost_tiny_medals": 4,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x7111",
+          "rom_offset": "0x037111",
+          "source": "src/banks/bank_013.asm",
+          "line": 788
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45B1",
+          "rom_offset": "0x0345B1",
+          "source": "src/banks/bank_013.asm",
+          "line": 94
+        },
+        "prebuilt_id": 380,
+        "grant_runtime_item_id": null,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 4,
+        "name": "Octogon",
+        "cost_tiny_medals": 5,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x7112",
+          "rom_offset": "0x037112",
+          "source": "src/banks/bank_013.asm",
+          "line": 788
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45BB",
+          "rom_offset": "0x0345BB",
+          "source": "src/banks/bank_013.asm",
+          "line": 94
+        },
+        "prebuilt_id": 381,
+        "grant_runtime_item_id": null,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 5,
+        "name": "Servant",
+        "cost_tiny_medals": 5,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x7113",
+          "rom_offset": "0x037113",
+          "source": "src/banks/bank_013.asm",
+          "line": 788
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45C3",
+          "rom_offset": "0x0345C3",
+          "source": "src/banks/bank_013.asm",
+          "line": 95
+        },
+        "prebuilt_id": 382,
+        "grant_runtime_item_id": null,
+        "additional_gate": null,
+        "repeatable": true
+      },
+      {
+        "selection": 6,
+        "name": "Darck",
+        "cost_tiny_medals": 10,
+        "cost_source": {
+          "bank": 13,
+          "address": "0x7114",
+          "rom_offset": "0x037114",
+          "source": "src/banks/bank_013.asm",
+          "line": 788
+        },
+        "name_source": {
+          "bank": 13,
+          "address": "0x45CB",
+          "rom_offset": "0x0345CB",
+          "source": "src/banks/bank_013.asm",
+          "line": 95
+        },
+        "prebuilt_id": 383,
+        "grant_runtime_item_id": null,
+        "additional_gate": "C837!=0",
+        "repeatable": true
+      }
+    ]
+  },
+  "npc_breeding": {
+    "offers": [
+      {
+        "npc_mode": 5,
+        "mate_species_name": "FunkyBird",
+        "mate_species_id": 128,
+        "mate_template_level": 46,
+        "mate_template_source": {
+          "bank": 13,
+          "address": "0x7C2F",
+          "rom_offset": "0x037C2F",
+          "source": "src/banks/bank_013.asm",
+          "line": 965
+        },
+        "claim_flag": "0x32",
+        "catalogue_minimum": 0,
+        "selected_parent_minimum_level": 10,
+        "npc_mate_gender": "Original13:7314 setsopposite selectedparentbit0; nofixedrequiredplayergender",
+        "route": "GreatLog1(1,0)48,64\u2192Tavern23 NPC64,48",
+        "claims_then_next_spawn": "32\u2192C9, thenCopycat"
+      },
+      {
+        "npc_mode": 6,
+        "mate_species_name": "Copycat",
+        "mate_species_id": 269,
+        "mate_template_level": 53,
+        "mate_template_source": {
+          "bank": 13,
+          "address": "0x7CD4",
+          "rom_offset": "0x037CD4",
+          "source": "src/banks/bank_013.asm",
+          "line": 976
+        },
+        "claim_flag": "0x33",
+        "catalogue_minimum": 100,
+        "selected_parent_minimum_level": 10,
+        "npc_mate_gender": "Original13:7314 setsopposite selectedparentbit0; nofixedrequiredplayergender",
+        "route": "GreatLog1(1,0)48,64\u2192Tavern23 NPC64,48",
+        "claims_then_next_spawn": "33\u2192CA, thenAndreal"
+      },
+      {
+        "npc_mode": 7,
+        "mate_species_name": "Andreal",
+        "mate_species_id": 51,
+        "mate_template_level": 59,
+        "mate_template_source": {
+          "bank": 13,
+          "address": "0x7D79",
+          "rom_offset": "0x037D79",
+          "source": "src/banks/bank_013.asm",
+          "line": 986
+        },
+        "claim_flag": "0x34",
+        "catalogue_minimum": 150,
+        "selected_parent_minimum_level": 10,
+        "npc_mate_gender": "Original13:7314 setsopposite selectedparentbit0; nofixedrequiredplayergender",
+        "route": "GreatLog1(1,0)48,64\u2192Tavern23 NPC64,48",
+        "claims_then_next_spawn": "34; remainscompletedAndreal"
+      },
+      {
+        "npc_mode": 8,
+        "mate_species_name": "Skeletor",
+        "mate_species_id": 266,
+        "mate_template_level": 43,
+        "mate_template_source": {
+          "bank": 13,
+          "address": "0x7E1E",
+          "rom_offset": "0x037E1E",
+          "source": "src/banks/bank_013.asm",
+          "line": 996
+        },
+        "claim_flag": "0x35",
+        "catalogue_minimum": 0,
+        "selected_parent_minimum_level": 10,
+        "npc_mate_gender": "Original13:7314 setsopposite selectedparentbit0; nofixedrequiredplayergender",
+        "route": "GreatLog1(1,2)32,48\u2192Residences12(1,0)64,64\u2192Reception4(2,0) NPC80,32",
+        "claims_then_next_spawn": "35\u2192CB, thenStoneMan"
+      },
+      {
+        "npc_mode": 9,
+        "mate_species_name": "StoneMan",
+        "mate_species_id": 307,
+        "mate_template_level": 54,
+        "mate_template_source": {
+          "bank": 13,
+          "address": "0x7EC3",
+          "rom_offset": "0x037EC3",
+          "source": "src/banks/bank_013.asm",
+          "line": 1007
+        },
+        "claim_flag": "0x36",
+        "catalogue_minimum": 100,
+        "selected_parent_minimum_level": 10,
+        "npc_mate_gender": "Original13:7314 setsopposite selectedparentbit0; nofixedrequiredplayergender",
+        "route": "GreatLog1(1,2)32,48\u2192Residences12(1,0)64,64\u2192Reception4(2,0) NPC80,32",
+        "claims_then_next_spawn": "36\u2192CC, thenTerry"
+      }
+    ],
+    "conditional_spawn_records": [
+      {
+        "world": 4,
+        "world_name": "Reception",
+        "region": [
+          2,
+          0
+        ],
+        "selector": "0xF1",
+        "sprite_context": 46,
+        "position": [
+          80,
+          32
+        ],
+        "raw": "85 01 2e 00 00 50 20 05 00 50 f1",
+        "conditions": [
+          "0x25=set",
+          "0xCB=clear"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x6B48",
+          "rom_offset": "0x1A6B48",
+          "source": "src/banks/bank_105.asm",
+          "line": 695
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x6BCD",
+          "rom_offset": "0x1A6BCD",
+          "source": "src/banks/bank_105.asm",
+          "line": 703
+        }
+      },
+      {
+        "world": 4,
+        "world_name": "Reception",
+        "region": [
+          2,
+          0
+        ],
+        "selector": "0xF1",
+        "sprite_context": 20,
+        "position": [
+          80,
+          32
+        ],
+        "raw": "85 01 14 00 00 50 20 05 00 50 f1",
+        "conditions": [
+          "0x25=set",
+          "0xCB=set",
+          "0xCC=clear"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x6B4C",
+          "rom_offset": "0x1A6B4C",
+          "source": "src/banks/bank_105.asm",
+          "line": 695
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x6BEF",
+          "rom_offset": "0x1A6BEF",
+          "source": "src/banks/bank_105.asm",
+          "line": 705
+        }
+      },
+      {
+        "world": 4,
+        "world_name": "Reception",
+        "region": [
+          2,
+          0
+        ],
+        "selector": "0xF2",
+        "sprite_context": 95,
+        "position": [
+          80,
+          32
+        ],
+        "raw": "85 01 5f 00 00 50 20 05 00 50 f2",
+        "conditions": [
+          "0x25=set",
+          "0xCB=set",
+          "0xCC=set"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x6B50",
+          "rom_offset": "0x1A6B50",
+          "source": "src/banks/bank_105.asm",
+          "line": 696
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x6C11",
+          "rom_offset": "0x1A6C11",
+          "source": "src/banks/bank_105.asm",
+          "line": 708
+        }
+      },
+      {
+        "world": 23,
+        "world_name": "Tavern",
+        "region": [
+          0,
+          0
+        ],
+        "selector": "0xF0",
+        "sprite_context": 42,
+        "position": [
+          64,
+          48
+        ],
+        "raw": "87 01 2a 00 00 40 30 07 03 70 f0",
+        "conditions": [
+          "0x25=set",
+          "0xC9=clear"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x721A",
+          "rom_offset": "0x1A721A",
+          "source": "src/banks/bank_105.asm",
+          "line": 804
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x7289",
+          "rom_offset": "0x1A7289",
+          "source": "src/banks/bank_105.asm",
+          "line": 811
+        }
+      },
+      {
+        "world": 23,
+        "world_name": "Tavern",
+        "region": [
+          0,
+          0
+        ],
+        "selector": "0xF0",
+        "sprite_context": 19,
+        "position": [
+          64,
+          48
+        ],
+        "raw": "87 01 13 00 00 40 30 07 03 70 f0",
+        "conditions": [
+          "0x25=set",
+          "0xC9=set",
+          "0xCA=clear"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x721E",
+          "rom_offset": "0x1A721E",
+          "source": "src/banks/bank_105.asm",
+          "line": 804
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x72B6",
+          "rom_offset": "0x1A72B6",
+          "source": "src/banks/bank_105.asm",
+          "line": 814
+        }
+      },
+      {
+        "world": 23,
+        "world_name": "Tavern",
+        "region": [
+          0,
+          0
+        ],
+        "selector": "0xF0",
+        "sprite_context": 23,
+        "position": [
+          64,
+          48
+        ],
+        "raw": "87 01 17 00 00 40 30 07 03 70 f0",
+        "conditions": [
+          "0x25=set",
+          "0xC9=set",
+          "0xCA=set"
+        ],
+        "condition_source": {
+          "bank": 105,
+          "address": "0x7222",
+          "rom_offset": "0x1A7222",
+          "source": "src/banks/bank_105.asm",
+          "line": 805
+        },
+        "record_source": {
+          "bank": 105,
+          "address": "0x72E3",
+          "rom_offset": "0x1A72E3",
+          "source": "src/banks/bank_105.asm",
+          "line": 817
+        }
+      }
+    ],
+    "eligibility_sources": [
+      {
+        "bank": 13,
+        "address": "0x722A",
+        "rom_offset": "0x03722A",
+        "source": "src/banks/bank_013.asm",
+        "line": 805
+      },
+      {
+        "bank": 13,
+        "address": "0x726B",
+        "rom_offset": "0x03726B",
+        "source": "src/banks/bank_013.asm",
+        "line": 809
+      },
+      {
+        "bank": 13,
+        "address": "0x7314",
+        "rom_offset": "0x037314",
+        "source": "src/banks/bank_013.asm",
+        "line": 820
+      }
+    ],
+    "constraints": [
+      "Selected original ownedparentlevel>=10",
+      "Do notconsume the sole activepartymember ifpartycount<2",
+      "OriginalNPCtemplateadaptsoppositegender",
+      "Originalnormal/NPCbreedingcompatibilityapplies; mode1, link-only FBFB selector requiresmode2",
+      "Onlythechosen playerparentisconsumed/replaced; NPCmateisoriginaltemplate, resultingchildandclaimflagarecartridgeowned"
+    ],
+    "original_breeding_mode_source": {
+      "bank": 13,
+      "address": "0x7329",
+      "rom_offset": "0x037329",
+      "source": "src/banks/bank_013.asm",
+      "line": 821
+    },
+    "child_commit_and_claim_sources": [
+      {
+        "bank": 13,
+        "address": "0x740F",
+        "rom_offset": "0x03740F",
+        "source": "src/banks/bank_013.asm",
+        "line": 835
+      },
+      {
+        "bank": 13,
+        "address": "0x7430",
+        "rom_offset": "0x037430",
+        "source": "src/banks/bank_013.asm",
+        "line": 838
+      },
+      {
+        "bank": 13,
+        "address": "0x7477",
+        "rom_offset": "0x037477",
+        "source": "src/banks/bank_013.asm",
+        "line": 842
+      }
+    ],
+    "spawn_progression_sources": [
+      {
+        "bank": 19,
+        "address": "0x7F4E",
+        "rom_offset": "0x04FF4E",
+        "source": "src/banks/bank_019.asm",
+        "line": 1015
+      },
+      {
+        "bank": 19,
+        "address": "0x7F6A",
+        "rom_offset": "0x04FF6A",
+        "source": "src/banks/bank_019.asm",
+        "line": 1017
+      }
+    ],
+    "terry_spawn": "Reception4(2,0)80,32 selectorF2 requires25+CB+CC; thenhandler19:7F02 alsorequirescatalogue150. ThusSkeletorandStoneMancompletionarepriorappearancegates.",
+    "eligible_nonactive_adults_in_quest19_owned_seed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16
+    ],
+    "protected_active_records": [
+      12,
+      0,
+      10
+    ],
+    "new_eggs_ineligible_level1": [
+      17,
+      18
+    ]
+  },
+  "dream_egg": {
+    "ending_baseline_CECE": 0,
+    "known_state": "CECE==1 neededforfarmegginteraction;CE9B..CF72 containsoriginaleggstate, distinctfromnewlywed/certifiedSRAMfarmeggs",
+    "route": {
+      "world": 0,
+      "region": [
+        0,
+        3
+      ],
+      "stand": [
+        64,
+        48
+      ],
+      "face": "Down",
+      "interact_event": "0xE5",
+      "event_source": {
+        "bank": 135,
+        "address": "0x476F",
+        "rom_offset": "0x21C76F",
+        "source": "src/banks/bank_135.asm",
+        "line": 121
+      },
+      "on_enter_event": "0xE4",
+      "on_enter_source": {
+        "bank": 135,
+        "address": "0x5D3D",
+        "rom_offset": "0x21DD3D",
+        "source": "src/banks/bank_135.asm",
+        "line": 470
+      }
+    },
+    "gate_handler_sources": [
+      {
+        "bank": 19,
+        "address": "0x7D2F",
+        "rom_offset": "0x04FD2F",
+        "source": "src/banks/bank_019.asm",
+        "line": 981
+      },
+      {
+        "bank": 19,
+        "address": "0x7D45",
+        "rom_offset": "0x04FD45",
+        "source": "src/banks/bank_019.asm",
+        "line": 983
+      }
+    ],
+    "feeding": "19:7D45\u219216:57E3/57E8\u2192mode78\u2192133:4717 opensoriginalfieldmenu2:0C foritemfeeding;mustactuallypossesseggfirst",
+    "egg_creation_original_source": {
+      "bank": 240,
+      "address": "0x7D0A",
+      "rom_offset": "0x3C3D0A",
+      "source": "src/banks/bank_240.asm",
+      "line": 979
+    },
+    "creation_caller": {
+      "bank": 18,
+      "address": "0x621F",
+      "rom_offset": "0x04A21F",
+      "source": "src/banks/bank_018.asm",
+      "line": 548
+    },
+    "unknowns": "Exact legitimate obtaining encounter/structure selector, fullfeeding-effect matrix andhatchconditions are not yet proven end-to-end. Do notclaimbaselineemptyeggstateasplayedfeeding/hatching."
+  },
+  "arrival_and_catalogue_strings": {
+    "arrival_strings": [
+      {
+        "identifier": "0x0D63",
+        "text": "Lamia entered\nthe farm.",
+        "raw": "15 24 30 2c 24 90 28 31 37 28 35 28 27 f1 37 2b 28 90 29 24 35 30 b5 f7 f0",
+        "source": {
+          "bank": 137,
+          "address": "0x61F6",
+          "rom_offset": "0x2261F6",
+          "source": "src/banks/bank_137.asm",
+          "line": 546
+        }
+      },
+      {
+        "identifier": "0x0D64",
+        "text": "Dimensaur entered\nthe farm.",
+        "raw": "0d 2c 30 28 31 36 24 38 35 90 28 31 37 28 35 28 27 f1 37 2b 28 90 29 24 35 30 b5 f7 f0",
+        "source": {
+          "bank": 137,
+          "address": "0x620F",
+          "rom_offset": "0x22620F",
+          "source": "src/banks/bank_137.asm",
+          "line": 547
+        }
+      },
+      {
+        "identifier": "0x0D65",
+        "text": "Kagebou entered\nthe farm.",
+        "raw": "14 24 2a 28 25 32 38 90 28 31 37 28 35 28 27 f1 37 2b 28 90 29 24 35 30 b5 f7 f0",
+        "source": {
+          "bank": 137,
+          "address": "0x622C",
+          "rom_offset": "0x22622C",
+          "source": "src/banks/bank_137.asm",
+          "line": 549
+        }
+      }
+    ],
+    "scope": "Lamia/Dimensaur/Kagebou arrivaltexts alone establishneitherdistribution/link-onlynorordinarysoloacquisition. Thosepathsremainunclassified, notcompleted.",
+    "ordinary_catalogue_count_range": "Original22:5AC0 enumerates0..<373, so specials380..382 are outside its ordinaryvalidspeciesloop.",
+    "catalogue_message_source": {
+      "bank": 19,
+      "address": "0x7D65",
+      "rom_offset": "0x04FD65",
+      "source": "src/banks/bank_019.asm",
+      "line": 985
+    },
+    "catalogue_event_locations": "Home6(1,0),x48/64/96,y16Up,selectorE6, original135:4851/485B/4865",
+    "catalogue_handler_actual_effect": "19:7D65 shows100/200/alltextthen133:5DF5 copiescanned48-byte masks intoC7CC. This is unresolveddebug/temporary-display behavior, notproof of an earnedcollectionreward. Never usedinourP1route.",
+    "canned_mask_source": {
+      "bank": 133,
+      "address": "0x5DF5",
+      "rom_offset": "0x215DF5",
+      "source": "src/banks/bank_133.asm",
+      "line": 482
+    }
+  },
+  "item_price_repair": {
+    "extractor": "/workspace/scratch/m8-postgame/extract_item_records_corrected.py",
+    "outputs": "/workspace/scratch/m8-postgame/item-records-corrected",
+    "table_records": 99,
+    "raw_table_bytes": 1287,
+    "legacy_misparsed_rows": 111,
+    "defects": {
+      "path": "/workspace/DWM2t/research/full_rom_read/items_data.csv",
+      "sha256": "ea51fe2e7651ad121ffe1cdc4ecbd1098e1bf7ef61516bde5582d00001b1dbcb",
+      "legacy_rows": 111,
+      "defects": [
+        "15-byte stride instead of original13",
+        "Names omit empty runtime0, so CSVitem_id is nameindex rather than runtimeID",
+        "Parsing111wide rows overruns the99record metadata table into unrelated tables/code"
+      ],
+      "same_name_different_rom_offset": 98,
+      "different_value_word": 90
+    },
+    "SteelFang": {
+      "runtime_item_id": 69,
+      "legacy_name_index": 68,
+      "record_cpu": "0x5043",
+      "record_rom_offset": "0x059043",
+      "raw_13_hex": "06 f4 01 64 01 00 00 00 00 30 27 00 00",
+      "byte_00": 6,
+      "byte_01": 244,
+      "byte_02": 1,
+      "byte_03": 100,
+      "byte_04": 1,
+      "byte_05": 0,
+      "byte_06": 0,
+      "byte_07": 0,
+      "byte_08": 0,
+      "byte_09": 48,
+      "byte_0A": 39,
+      "byte_0B": 0,
+      "byte_0C": 0,
+      "raw_u16_le_01_02": 500,
+      "name_pointer_cpu": "0x670A",
+      "name_raw_hex": "1c 37 28 28 2f 0f 24 31 2a f0",
+      "name_original_glyphs": "SteelFang",
+      "shop_resale_base_gold": 500,
+      "main_merchant_percent": 75,
+      "main_merchant_unit_sale_gold": 375,
+      "placeholder_name": false
+    },
+    "shop_formula": "floor(28:[6338+2*runtimeID] *28:[6320+merchantD7FB] /100), original28:5F3E;mainmerchant0=75%",
+    "snapshot421_inventory": {
+      "path": "/workspace/scratch/m8-postgame/postgame-03/m8_421.ram",
+      "gold": 11,
+      "items": [
+        {
+          "id": 9,
+          "name": "AwakeSand",
+          "sale_gold": 15
+        },
+        {
+          "id": 53,
+          "name": "Change<51>",
+          "sale_gold": 0
+        },
+        {
+          "id": 10,
+          "name": "SkyBell",
+          "sale_gold": 15
+        },
+        {
+          "id": 1,
+          "name": "Herb",
+          "sale_gold": 7
+        },
+        {
+          "id": 44,
+          "name": "TinyMedal",
+          "sale_gold": 0
+        },
+        {
+          "id": 69,
+          "name": "SteelFang",
+          "sale_gold": 375
+        }
+      ],
+      "sell_SteelFang_only_gold_after": 386,
+      "sell_all_priced_items_gold_after": 423
+    },
+    "legitimate_funding_lead": "Actual421has1bankedmedal+1unsubmittedTinyMedal44;onefurtherTinyMedalallows3-medalMeteOrb, whichmainmerchantvalues3750G. Thisisalead, notaplayedtransaction."
+  }
+}

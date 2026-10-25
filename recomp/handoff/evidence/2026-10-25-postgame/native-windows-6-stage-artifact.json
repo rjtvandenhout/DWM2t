@@ -1,0 +1,38 @@
+{
+  "run": {
+    "id": 40202234497,
+    "head_sha": "0bbb41e68d003f7768c059d534ed2f5a1ad44944",
+    "html_url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40202234497",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "created_at": "2026-10-25T14:26:23Z",
+    "updated_at": "2026-10-25T14:33:03Z"
+  },
+  "artifact": {
+    "id": 12602053600,
+    "node_id": "MDg6QXJ0aWZhY3QxMjYwMjA1MzYwMA==",
+    "name": "M8-supplemental-postgame-40202234497",
+    "size_in_bytes": 416187,
+    "url": "https://api.github.com/repos/rjtvandenhout/DWM2t/actions/artifacts/12602053600",
+    "archive_download_url": "https://api.github.com/repos/rjtvandenhout/DWM2t/actions/artifacts/12602053600/zip",
+    "expired": false,
+    "digest": "sha256:6e91bee4675ff79192df66973e0ec62528912d2a4563b215d6c7d4010c37b049",
+    "created_at": "2026-10-25T14:32:58Z",
+    "updated_at": "2026-10-25T14:32:58Z",
+    "expires_at": "2026-11-08T14:32:57Z",
+    "workflow_run": {
+      "id": 40202234497,
+      "repository_id": 1421327183,
+      "head_repository_id": 1421327183,
+      "head_branch": "work/recomp-postgame",
+      "head_sha": "0bbb41e68d003f7768c059d534ed2f5a1ad44944"
+    }
+  },
+  "download": {
+    "bytes": 416187,
+    "sha256": "6e91bee4675ff79192df66973e0ec62528912d2a4563b215d6c7d4010c37b049",
+    "raw_zip": "/workspace/scratch/m8-postgame/native-windows-01/native-windows-replay.zip"
+  },
+  "report_path": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/postgame-supplemental-validation.json"
+}
