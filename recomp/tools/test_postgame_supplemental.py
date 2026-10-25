@@ -138,6 +138,9 @@ def main() -> int:
     for flag in ('exe', 'seed', 'manifest', 'output', 'build-identity'):
         parser.add_argument('--'+flag, type=Path, required=True)
     parser.add_argument('--wine', type=Path)
+    parser.add_argument('--workers', type=int, choices=range(1, 5), default=1)
+    parser.add_argument('--seed-bundle', type=Path,
+                        help='Pinned genuine original Journals for bounded parallel replay')
     parser.add_argument('--tool-source', default=os.environ.get('GITHUB_SHA'))
     parser.add_argument('--story-runner', type=Path,
                         default=Path(__file__).with_name('test_m8_story_checkpoints.py'))
@@ -152,6 +155,7 @@ def main() -> int:
               'tooling_source_commit': args.tool_source, 'full_postgame_verified': False,
               'all_random_seeds_verified': False, 'new_binary_accepted': False,
               'accepted_package_changed': False, 'stages': []}
+    report['workers'] = args.workers
     may_write = False
     try:
         if out.exists():
@@ -160,6 +164,8 @@ def main() -> int:
             raise ValueError('Use Windows, or explicitly supply --wine on Linux')
         if args.tool_source is not None and not re.fullmatch(r'[0-9a-f]{40}', args.tool_source):
             raise ValueError('Tooling source must be an exact commit')
+        if args.workers > 1 and args.seed_bundle is None:
+            raise ValueError('Parallel replay requires pinned genuine original Journals')
         exe, seed, manifest, identity_path, runner = [p.resolve(strict=True) for p in
             (args.exe, args.seed, args.manifest, args.build_identity, args.story_runner)]
         data = json.loads(manifest.read_text(encoding='utf-8'))
@@ -184,6 +190,12 @@ def main() -> int:
                    '--build-identity', str(identity_path)]
         if args.wine:
             command += ['--wine', str(args.wine.resolve(strict=True))]
+        command += ['--workers', str(args.workers)]
+        if args.seed_bundle:
+            bundle = args.seed_bundle.resolve(strict=True)
+            immutable[bundle] = digest(bundle)
+            report['seed_bundle_sha256'] = immutable[bundle]
+            command += ['--seed-bundle', str(bundle)]
         report['command'] = command
         # The existing runner creates output exclusively, uses actual new parent
         # Saves for every child, checks hashes/P1/screens/PCM, and preserves logs.
