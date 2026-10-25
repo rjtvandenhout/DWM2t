@@ -183,7 +183,16 @@ def main() -> int:
                 raise RuntimeError('Duplicate unexpectedly created a game window')
             dialog = next((hwnd for hwnd, name in owned if name == '#32770'), None)
             if dialog:
-                api.user.PostMessageW(dialog, 0x111, 1, 0)  # dismiss this owned error dialog with OK
+                api.user.GetDlgItem.argtypes = [w.HWND, c.c_int]
+                api.user.GetDlgItem.restype = w.HWND
+                button = api.user.GetDlgItem(dialog, 1)
+                report['duplicate_error_dialog_seen'] = True
+                if not button:
+                    raise RuntimeError('Owned duplicate-instance dialog has no OK button')
+                # BM_CLICK sends the normal button notification, including its
+                # control handle; a bare WM_COMMAND can be ignored by MessageBox.
+                if not api.user.PostMessageW(button, 0xF5, 0, 0):
+                    raise RuntimeError('Could not click owned duplicate-instance error dialog')
                 break
             time.sleep(.1)
         require(duplicate.wait(timeout=15) != 0 and first[1].poll() is None,
