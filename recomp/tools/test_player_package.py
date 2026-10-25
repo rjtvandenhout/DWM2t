@@ -18,7 +18,7 @@ import time
 
 from m8_build_identity import digest
 from prepare_m8_player_validation import prepare
-from test_player_late_journal import Window, verify_saved_roster
+from test_player_late_journal import Window
 
 
 class Processes:
@@ -125,7 +125,6 @@ def main() -> int:
         reference = Path(__file__).resolve().parents[1]/'tests/m8_player_late_journal.json'
         spec = prepare(package, args.source, reference, out/'package-gui-spec.json')
         require(seed.stat().st_size == 32768 and digest(seed) == spec['seed_sha256'], 'authentic_later_journal_seed')
-        original = seed.read_bytes()
         immutable = {path: digest(path) for path in package.iterdir() if path.is_file()}
         powershell = shutil.which('powershell.exe')
         require(bool(powershell), 'windows_powershell_available')
@@ -203,7 +202,12 @@ def main() -> int:
             api.close(hwnd, child)
             require(launcher.wait(timeout=30) == 0, profile+'_launcher_reports_normal_exit')
             current = data/('saves/'+profile+'.sav')
-            verify_saved_roster(original, current.read_bytes())
+            # This gate closes at the original boot screen, before Continue.
+            # The cartridge may initialize working SRAM there. Exact import
+            # bytes are checked in both pre-launch backups below; roster and
+            # quest persistence are checked after real Continue/Journal by
+            # the separate production Journal gate.
+            require(current.stat().st_size == 32768, profile+'_cartridge_sram_remains_exact_size')
             sessions = list((data/'logs').glob(profile+'-*.session.json'))
             require(len(sessions) == 1, profile+'_session_log_created')
             session = json.loads(sessions[0].read_text(encoding='utf-8-sig'))
