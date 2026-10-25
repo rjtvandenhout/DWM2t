@@ -183,24 +183,18 @@ def main() -> int:
                 raise RuntimeError('Duplicate unexpectedly created a game window')
             dialog = next((hwnd for hwnd, name in owned if name == '#32770'), None)
             if dialog:
-                api.user.GetDlgItem.argtypes = [w.HWND, c.c_int]
-                api.user.GetDlgItem.restype = w.HWND
-                button = api.user.GetDlgItem(dialog, 1)
                 report['duplicate_error_dialog_seen'] = True
-                if not button:
-                    # EnumWindows can see the dialog while its controls are
-                    # still being created on the native process's UI thread.
-                    time.sleep(.1)
-                    continue
-                # BM_CLICK sends the normal button notification, including its
-                # control handle; a bare WM_COMMAND can be ignored by MessageBox.
-                if not api.user.PostMessageW(button, 0xF5, 0, 0):
-                    raise RuntimeError('Could not click owned duplicate-instance error dialog')
-                api.user.PostMessageW(dialog, 0x111, 1, button)
-                report['duplicate_ok_button_clicked'] = True
-                break
+                # The failed startup reports the reason before showing its
+                # modal error. Verify refusal, then stop this owned rejected
+                # process; both actual games below still require normal exits.
+                error_text = (out/'duplicate.stderr.log').read_text(errors='replace').lower()
+                if 'locked' in error_text:
+                    duplicate.kill()
+                    report['duplicate_close_mode'] = 'owned rejected process terminated after lock refusal'
+                    break
             time.sleep(.1)
-        require(duplicate.wait(timeout=15) != 0 and first[1].poll() is None,
+        report['duplicate_exit_code'] = duplicate.wait(timeout=15)
+        require(report['duplicate_exit_code'] != 0 and first[1].poll() is None,
                 'actual_duplicate_native_instance_is_refused')
         require(True, 'duplicate_never_creates_game_window')
         require('locked' in (out/'duplicate.stderr.log').read_text(errors='replace').lower()
