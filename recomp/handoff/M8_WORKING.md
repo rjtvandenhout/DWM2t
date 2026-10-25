@@ -203,6 +203,27 @@ Scratch `sky-quest-47` starts only from that authentic Sword Journal and is
 exploring Heaven Armor's platform maze. Original unlocked flight crosses the
 black gaps; ordinary walking and B jumping did not. Only P1 changes game state.
 
+Checkpoint 31 independently replays the Heaven Armor platform maze and town
+Journal in 97,722 frames. Original flight crosses the black gaps between
+platforms; the chest is approached from below at world133 global15,3 facingUp.
+The event target global15,2 is the chest, not a passable standing destination.
+Its exact Journal SHA256 is
+`97d1fe94ec209aa00f55fa0169d852061b65bd3c30c3df731bbc9e8b2c31f46b`.
+Party Derzo/Garon/Slash is level30/25/28, fullHP187/189/160, sixteen owned,
+23G, with both HeavenSword57 and HeavenArmor58. Scratch `sky-quest-48` starts
+only from that authentic Save and has reached Helmet tower world141 after
+traversing worlds139/140. The 107-byte assertions pass all 31 Wine captures.
+Native Windows run40152139075 is validating the suffix through checkpoint30;
+previous Windows acceptance still covers27 until that run passes.
+
+Helmet tower world141's four floor switches rotate coupled coffin states
+modulo three. Original bank115:$5C5F describes their effects; the guide read
+those rules and observed C1EA/C1F8/C28A/C298 without writing them, then walked
+the required switches. All four reach native tile0x10 and flagB0 sets. The
+live party is now in world143's first graveyard switch chamber; whole-game
+ending remains outstanding. Scratch helper `coffin_puzzle.py` computes only
+an input plan and applies it through original P1. No runtime edits.
+
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead
 and refuse Save. Use a clear, stationary town tile facing an empty tile.

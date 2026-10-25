@@ -976,5 +976,27 @@
     "source_bmp_sha256": "83c77eb30dd5bd0ff4ba3b195fb3b7266c84674cbd93e0528b23c007d8728fac",
     "png_sha256": "6650ad1218fbcc9893d06846c0a8aaacdf534e9a83b17e413a485c0505f08ef2",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "armor-maze-flight.png",
+    "caption": "Original unlocked flight crosses a gap in the Heaven Armor platform maze.",
+    "source_session": "sky-quest-47",
+    "source_bmp": "m8_370.bmp",
+    "frame": 41230,
+    "native_state": "M8_STATE frame=41230 mode=1:1 world=136 region=0,1 pos=48,78 party=3 selector=0x1 sram=0x2d9a2d3e9193872f screen=0x2ae26783ee629f27 image=m8_370.bmp",
+    "source_bmp_sha256": "b3833d1ee3e70d561d0574818718ba98e8f55ed1c337af81d8a91652f62a8c56",
+    "png_sha256": "b636a997df7af407517bd2056e5b29ef3845274674ccd3c87ddc16afb8d38fab",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "heaven-armor-obtained.png",
+    "caption": "The original Heaven Armor chest is collected after traversing the platform maze.",
+    "source_session": "sky-quest-47",
+    "source_bmp": "m8_468.bmp",
+    "frame": 52128,
+    "native_state": "M8_STATE frame=52128 mode=1:1 world=133 region=1,0 pos=80,48 party=3 selector=0x4b sram=0x7199017c49c59ed5 screen=0x65b4abad52389e36 image=m8_468.bmp",
+    "source_bmp_sha256": "3549901df835ecc365df8057671b5bac07c5ace85185b59187987505f10a3448",
+    "png_sha256": "06b7f2b662a9464ff94cf15a3f3b3998e05ff32c312aa5532ae218658d67280d",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]
