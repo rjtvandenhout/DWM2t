@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "scope": "housekeeping tooling/persistence and matching ROM; existing accepted M8 game binary unchanged",
+  "runs": [
+    {
+      "run_id": 40189353988,
+      "role": "native-pr",
+      "source": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+      "event": "pull_request",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189353988",
+      "jobs": [
+        {
+          "id": 121156836406,
+          "name": "Tooling and persistence (ubuntu-latest)",
+          "conclusion": "success"
+        },
+        {
+          "id": 121156836632,
+          "name": "Tooling and persistence (windows-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189352628,
+      "role": "matching-pr",
+      "source": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+      "event": "pull_request",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189352628",
+      "jobs": [
+        {
+          "id": 121156832197,
+          "name": "python-rebuild",
+          "conclusion": "success"
+        },
+        {
+          "id": 121156832448,
+          "name": "rgbds-recompile",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189515907,
+      "role": "native-main",
+      "source": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+      "event": "push",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189515907",
+      "jobs": [
+        {
+          "id": 121157321114,
+          "name": "Tooling and persistence (windows-latest)",
+          "conclusion": "success"
+        },
+        {
+          "id": 121157321232,
+          "name": "Tooling and persistence (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189515912,
+      "role": "matching-main",
+      "source": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+      "event": "push",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189515912",
+      "jobs": [
+        {
+          "id": 121157320707,
+          "name": "python-rebuild",
+          "conclusion": "success"
+        },
+        {
+          "id": 121157320892,
+          "name": "rgbds-recompile",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

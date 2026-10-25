@@ -1,7 +1,21 @@
 # Recomp branch cleanup — 2026-10-25
 
-Status: audit complete; canonical-main integration and exact-ref retirement are
-pending. The final application receipt will record actual branch/cache changes.
+Status: **completed**. PR #4 merged as `2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6`.
+All 26 audited remote refs were retired atomically with exact-SHA leases. All nine
+milestone hashes remain unchanged. The local checkout tracks `origin/main`.
+
+| Item | Before | After |
+| --- | ---: | ---: |
+| Remote branches | 36 | 10: main plus M0–M8 snapshots |
+| Temporary local branch aliases | 3 | 0 |
+| Extra probe worktrees | 1 | 0 |
+| Obsolete branch build cache | 437,842,443 bytes | 0 |
+| Immutable milestone snapshots | 9 | 9, exact original commits |
+
+[Actual application receipt](evidence/2026-10-25-branch-cleanup/application-receipt.json),
+[post-retirement refs](evidence/2026-10-25-branch-cleanup/remote-heads-after-retirement.txt),
+[CI results](evidence/2026-10-25-branch-cleanup/ci-validation.json), and
+[cache receipt](evidence/2026-10-25-branch-cleanup/cache-cleanup.json).
 
 The maintained layout is `main` plus immutable `restore/recomp-m0` through
 `restore/recomp-m8`. Main receives the accepted M8 history and maintenance;
@@ -35,12 +49,13 @@ To recover an archived experiment into a new branch:
 git fetch /path/to/pre-cleanup.bundle refs/remotes/origin/work/recomp-m7-battle-gate-scan:refs/heads/recovery/old-probe
 ```
 
-## Reviewed refs for retirement
+## Retired refs
 
-These are the audited pre-cleanup tips. The live deletion operation must lease
-its exact current tips; the M8 PR head may advance only by the reviewed cleanup
-commit that is first preserved on main. Deletion is atomic and excludes every
-restore ref and main.
+The table records the audited original tips. The M8 PR head subsequently
+advanced to reviewed cleanup commit `b78c395e1d3d3204227cf89ea95a7995acd6a218`,
+which was merged into main before deletion. Its actual deletion lease is
+recorded in the receipt; every other retired head matches its original tip.
+The atomic deletion excluded main and all restore refs.
 
 | Branch | Audited original commit | Classification |
 | --- | --- | --- |
@@ -73,19 +88,23 @@ restore ref and main.
 
 ## Recomp and CI maintenance
 
-- Update stale current status and the restore index through M8. Historical
+- Updated stale current status and the restore index through M8. Historical
   milestone evidence and accepted hashes remain intact.
-- Replace the former cached full-build workflow with quick Linux/Windows
+- Replaced the former cached full-build workflow with quick Linux/Windows
   tooling and filesystem contracts on main/PRs. Heavy full-campaign validation
   and build-only candidates remain manual.
-- Retire duplicate pinned historical workflows from main; their source remains
+- Retired duplicate pinned historical workflows from main; their source remains
   in the immutable M8 snapshot and full-history backup. Keep every fresh native,
   campaign, persistence, production and final-package acceptance gate.
-- Use explicit source/run inputs for completing an archived fresh build, and
+- Added explicit source/run inputs for completing an archived fresh build, and
   support both direct and namespaced producer-job names.
-- Retire audited local aliases/worktrees after integration. The old 437,842,443-byte
-  cache tied to `work/recomp-m8` is rebuildable and unused by the maintained
-  workflows; its actual deletion, if applied, belongs in the receipt.
+- Removed audited local aliases and the clean probe worktree, pruned stale
+  tracking refs and configured the standard all-branch fetch mapping. Deleted
+  the unused 437,842,443-byte cache tied to `work/recomp-m8`; no caches remain.
+
+Both PR and main CI pass on Windows and Linux: 105 host contracts, LR35902/Bank0
+checks, both actual SaveIO cases on each OS, and both byte-identical ROM rebuild
+paths. All six retained workflows pass actionlint 1.7.7.
 
 No full game replay is implied by housekeeping checks. The existing M8 accepted
 run remains [40183484388](https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388);

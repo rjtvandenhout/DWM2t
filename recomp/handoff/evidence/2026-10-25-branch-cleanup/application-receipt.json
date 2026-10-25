@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "status": "applied_and_verified",
+  "integration_commit": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+  "reviewed_cleanup_commit": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+  "before_remote_heads": 36,
+  "after_remote_heads": 10,
+  "retired_refs": [
+    {
+      "branch": "archive/recomp-m5-attempt1",
+      "audited_original_sha": "2fe6a0a3b3bf8d1a0c18130f20f43c33351b9331",
+      "deleted_sha": "2fe6a0a3b3bf8d1a0c18130f20f43c33351b9331",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "bootstrap-full-decomp",
+      "audited_original_sha": "513d05cd7bfdfa5d99a33d0939cebff435529c51",
+      "deleted_sha": "513d05cd7bfdfa5d99a33d0939cebff435529c51",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "bootstrap-upload",
+      "audited_original_sha": "9785ce52d6d46b27370ae9adf7d91bc23787bed0",
+      "deleted_sha": "9785ce52d6d46b27370ae9adf7d91bc23787bed0",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "bootstrap/full-decomp",
+      "audited_original_sha": "48474472c6f2ed37a2e77315b1dd46ec68d8f8ce",
+      "deleted_sha": "48474472c6f2ed37a2e77315b1dd46ec68d8f8ce",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "recomp/native-pc",
+      "audited_original_sha": "4996ea8753077786abe77c5d0673bbc325d6c40d",
+      "deleted_sha": "4996ea8753077786abe77c5d0673bbc325d6c40d",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "research-upload",
+      "audited_original_sha": "cc0cfd82946b6b11ac0b456494468d14ce1cc839",
+      "deleted_sha": "cc0cfd82946b6b11ac0b456494468d14ce1cc839",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m2",
+      "audited_original_sha": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+      "deleted_sha": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m3",
+      "audited_original_sha": "1036a43d24f46d01e3feebbe7ab15ecc4c2e4396",
+      "deleted_sha": "1036a43d24f46d01e3feebbe7ab15ecc4c2e4396",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m4",
+      "audited_original_sha": "66d6743a04411b5a142e2c3538b1261b2da31bb9",
+      "deleted_sha": "66d6743a04411b5a142e2c3538b1261b2da31bb9",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m5",
+      "audited_original_sha": "33b76c5f65b44ca05cd12c2c9a0e2bc55a50d010",
+      "deleted_sha": "33b76c5f65b44ca05cd12c2c9a0e2bc55a50d010",
+      "classification": "patch_equivalent"
+    },
+    {
+      "branch": "work/recomp-m6",
+      "audited_original_sha": "70628e9a6f210f494ace326c51d1ac295a36c023",
+      "deleted_sha": "70628e9a6f210f494ace326c51d1ac295a36c023",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m7",
+      "audited_original_sha": "bc79ec91342031451103145e4fd830d9b7fe00dd",
+      "deleted_sha": "bc79ec91342031451103145e4fd830d9b7fe00dd",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m7-battle-flag2-route",
+      "audited_original_sha": "ab5835169f6419ee902cf1983df21b7eb40b788a",
+      "deleted_sha": "ab5835169f6419ee902cf1983df21b7eb40b788a",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-flag4-seed",
+      "audited_original_sha": "88f30f349867e56ee1b3144d6df1a17f44aa2e44",
+      "deleted_sha": "88f30f349867e56ee1b3144d6df1a17f44aa2e44",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-gate-scan",
+      "audited_original_sha": "84205b5061300898e66fd43e8843954685b7716d",
+      "deleted_sha": "84205b5061300898e66fd43e8843954685b7716d",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-post-slash",
+      "audited_original_sha": "1688e900a055961db9a4f88a4429ee0b26bcdf9e",
+      "deleted_sha": "1688e900a055961db9a4f88a4429ee0b26bcdf9e",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-pump-seed",
+      "audited_original_sha": "fba06a038451477a92e86b92a23bf17a501ee937",
+      "deleted_sha": "fba06a038451477a92e86b92a23bf17a501ee937",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-selector09",
+      "audited_original_sha": "20ff816fa5164d4eeb611bd688bd71d3a2ecc850",
+      "deleted_sha": "20ff816fa5164d4eeb611bd688bd71d3a2ecc850",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-probe",
+      "audited_original_sha": "0372efdd818b2378ba87b03db8592c0eadfed318",
+      "deleted_sha": "0372efdd818b2378ba87b03db8592c0eadfed318",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-save-probe",
+      "audited_original_sha": "0cff0bd40d925097fd5dc5c35a24686b863312ee",
+      "deleted_sha": "0cff0bd40d925097fd5dc5c35a24686b863312ee",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m8",
+      "audited_original_sha": "0e59dbd19415cce58393c21c2ede2acd6f60c4d3",
+      "deleted_sha": "0e59dbd19415cce58393c21c2ede2acd6f60c4d3",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-audio-host-probe-20261025",
+      "audited_original_sha": "17daad09c676abfce0f8d38a97754f7c5804cb9a",
+      "deleted_sha": "17daad09c676abfce0f8d38a97754f7c5804cb9a",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m8-dancer-20261023",
+      "audited_original_sha": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+      "deleted_sha": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-pirate-validation-20261022",
+      "audited_original_sha": "8fc6e64cca83fd63a99f8b3544e3992c304d25cd",
+      "deleted_sha": "8fc6e64cca83fd63a99f8b3544e3992c304d25cd",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-recheck-20261022",
+      "audited_original_sha": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+      "deleted_sha": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-world-validation",
+      "audited_original_sha": "4d5f07f61ff5606d26a645d25f6f030d0c5ee34d",
+      "deleted_sha": "4d5f07f61ff5606d26a645d25f6f030d0c5ee34d",
+      "classification": "superseded_experiment"
+    }
+  ],
+  "kept_restore_refs": {
+    "restore/recomp-m0": "ac588dc73f59020efc69a53d17c46db6c7286acd",
+    "restore/recomp-m1": "68bf911c5845021db140575bdae721edda572965",
+    "restore/recomp-m2": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+    "restore/recomp-m3": "8ec0c1e80b5cea3df8f9581d1424fae319ec67d6",
+    "restore/recomp-m4": "29c4c8249f5a77a17ea8194d624d20af52da3e6b",
+    "restore/recomp-m5": "9d0b9830ea6542def717a8cde726691cd0421cc2",
+    "restore/recomp-m6": "70628e9a6f210f494ace326c51d1ac295a36c023",
+    "restore/recomp-m7": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+    "restore/recomp-m8": "e44b41394c23f63f55b6d5255bc065696ba554c2"
+  },
+  "atomic_deletion": true,
+  "exact_sha_leases": true,
+  "backup": {
+    "path": "/workspace/branch-cleanup-2026-10-25/pre-cleanup.bundle",
+    "bytes": 6990792,
+    "sha256": "346e531eea00de6ecd5890d3afda4abadd93933a8dd4cc86b0e845f7aa74d7ba",
+    "bundle_verify_passed": true,
+    "complete_history": true,
+    "listed_refs": 43,
+    "all_reviewed_remote_heads_match_backup": true
+  },
+  "all_milestone_hashes_unchanged": true,
+  "local_canonical_heads": {
+    "main": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+    "restore/recomp-m0": "ac588dc73f59020efc69a53d17c46db6c7286acd",
+    "restore/recomp-m1": "68bf911c5845021db140575bdae721edda572965",
+    "restore/recomp-m2": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+    "restore/recomp-m3": "8ec0c1e80b5cea3df8f9581d1424fae319ec67d6",
+    "restore/recomp-m4": "29c4c8249f5a77a17ea8194d624d20af52da3e6b",
+    "restore/recomp-m5": "9d0b9830ea6542def717a8cde726691cd0421cc2",
+    "restore/recomp-m6": "70628e9a6f210f494ace326c51d1ac295a36c023",
+    "restore/recomp-m7": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+    "restore/recomp-m8": "e44b41394c23f63f55b6d5255bc065696ba554c2"
+  },
+  "removed_local_aliases": [
+    "work",
+    "recomp-m8-full-game",
+    "recomp-m8-audio-host-probe"
+  ],
+  "removed_clean_worktree": "/workspace/scratch/m8-audio-host-probe",
+  "fetch_refspec": "+refs/heads/*:refs/remotes/origin/*",
+  "cache_cleanup": {
+    "id": 9361828616,
+    "ref": "refs/heads/work/recomp-m8",
+    "bytes": 437842443,
+    "delete_exitcode": 0,
+    "remaining_cache_count": 0,
+    "removed": true
+  },
+  "completed_utc": "2026-10-25T11:42:32.556516+00:00",
+  "ci_validation": [
+    {
+      "run_id": 40189353988,
+      "role": "native-pr",
+      "source": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+      "event": "pull_request",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189353988",
+      "jobs": [
+        {
+          "id": 121156836406,
+          "name": "Tooling and persistence (ubuntu-latest)",
+          "conclusion": "success"
+        },
+        {
+          "id": 121156836632,
+          "name": "Tooling and persistence (windows-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189352628,
+      "role": "matching-pr",
+      "source": "b78c395e1d3d3204227cf89ea95a7995acd6a218",
+      "event": "pull_request",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189352628",
+      "jobs": [
+        {
+          "id": 121156832197,
+          "name": "python-rebuild",
+          "conclusion": "success"
+        },
+        {
+          "id": 121156832448,
+          "name": "rgbds-recompile",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189515907,
+      "role": "native-main",
+      "source": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+      "event": "push",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189515907",
+      "jobs": [
+        {
+          "id": 121157321114,
+          "name": "Tooling and persistence (windows-latest)",
+          "conclusion": "success"
+        },
+        {
+          "id": 121157321232,
+          "name": "Tooling and persistence (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 40189515912,
+      "role": "matching-main",
+      "source": "2200d7ea7b75dd43bbe5ea665d5af7892a0c0fa6",
+      "event": "push",
+      "conclusion": "success",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40189515912",
+      "jobs": [
+        {
+          "id": 121157320707,
+          "name": "python-rebuild",
+          "conclusion": "success"
+        },
+        {
+          "id": 121157320892,
+          "name": "rgbds-recompile",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "game_tools_rom_fixtures_launchers_unchanged_from_accepted_m8": true,
+  "verified_player_zip_unchanged": true,
+  "verified_zip_sha256": "2e002da616fa5692ba56ba5b91a1d6ace0049fb596fe6b25d56c65fae200e02e",
+  "source_snapshot_stage": "after main integration and branch retirement, before documentation-only final receipt commit"
+}
