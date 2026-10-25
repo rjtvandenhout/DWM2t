@@ -1,9 +1,11 @@
 # Ephemeral GitHub Windows runners only. Installs a real signed render device;
 # does not modify the game, its tests, Windows test-signing, or user machines.
-# Mozilla cubeb Windows-2025 WinMM precedent:
+# Based on Mozilla cubeb's Windows-2025 WinMM setup; the current Microsoft-signed
+# Pack45 also passes five unchanged original stream gates on our Windows host.
 # https://github.com/mozilla/cubeb/blob/dcd7cddafa4b95776cf5d117549ad58e17f23764/.github/scripts/setup_windows_audio.ps1
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][string]$Output)
+param([Parameter(Mandatory=$true)][string]$Output,
+      [ValidateSet('43','45')][string]$DriverPack='45')
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 if ($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows') {
@@ -18,7 +20,7 @@ public static class NativeAudioProbe {
 }
 '@
 $before = [NativeAudioProbe]::waveOutGetNumDevs()
-$report = [ordered]@{schema=1; status='not_started'; endpoint_before=$before; physical_audibility_assessed=$false; tests_modified=$false}
+$report = [ordered]@{schema=1; status='not_started'; driver_pack=$DriverPack; endpoint_before=$before; physical_audibility_assessed=$false; tests_modified=$false}
 try {
     Get-Service -Name AudioEndpointBuilder,Audiosrv | Format-List * | Out-File (Join-Path $Output 'services-before.txt') -Encoding utf8
     Get-CimInstance Win32_SoundDevice | Format-List * | Out-File (Join-Path $Output 'sound-devices-before.txt') -Encoding utf8
@@ -27,8 +29,11 @@ try {
         Start-Service -Name $name
     }
     $report.endpoint_after_services = [NativeAudioProbe]::waveOutGetNumDevs()
+    $driverHash = if ($DriverPack -eq '43') { '66fd0a4d9f4896ff41632b7e3d53892c085c4561f53e8ae8d0f0bc10eedd1cdd' } else { 'b950e39f01af1d04ea623c8f6d8eb9b6ea5c477c637295fabf20631c85116bfb' }
+    $driverZip = "VBCABLE_Driver_Pack$DriverPack.zip"
+    $driverPlatform = if ($DriverPack -eq '43') { 'win7' } else { 'win10' }
     $downloads = @(
-        @{name='VBCABLE_Driver_Pack43.zip'; url='https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack43.zip'; sha='66fd0a4d9f4896ff41632b7e3d53892c085c4561f53e8ae8d0f0bc10eedd1cdd'},
+        @{name=$driverZip; url="https://download.vb-audio.com/Download_CABLE/$driverZip"; sha=$driverHash},
         @{name='devcon.exe'; url='https://raw.githubusercontent.com/mozilla/cubeb/dcd7cddafa4b95776cf5d117549ad58e17f23764/.github/tools/windows/devcon.exe'; sha='97cff42f8c0fe4fbdf991273159516bf78090625a933c3983ebd6f62284e329a'}
     )
     foreach ($item in $downloads) {
@@ -38,8 +43,8 @@ try {
     }
     $report.downloads = $downloads
     $driver = Join-Path $Output 'driver'
-    Expand-Archive -LiteralPath (Join-Path $Output 'VBCABLE_Driver_Pack43.zip') -DestinationPath $driver
-    $catalog = Join-Path $driver 'vbaudio_cable64_win7.cat'
+    Expand-Archive -LiteralPath (Join-Path $Output $driverZip) -DestinationPath $driver
+    $catalog = Join-Path $driver "vbaudio_cable64_$driverPlatform.cat"
     $signature = Get-AuthenticodeSignature -LiteralPath $catalog
     if ($null -eq $signature.SignerCertificate) { throw 'Missing signed driver catalog certificate.' }
     if ($signature.Status -ne 'Valid') { throw 'The pinned driver catalog signature is not valid.' }
@@ -52,7 +57,7 @@ try {
     & certutil.exe -addstore -f TrustedPublisher $certificate 2>&1 | Out-File (Join-Path $Output 'trusted-publisher.txt') -Encoding utf8
     if ($LASTEXITCODE -ne 0) { throw 'Could not trust the signed driver publisher.' }
     $report.catalog_signature_after = [string](Get-AuthenticodeSignature -LiteralPath $catalog).Status
-    & (Join-Path $Output 'devcon.exe') install (Join-Path $driver 'vbMmeCable64_win7.inf') VBAudioVACWDM 2>&1 | Out-File (Join-Path $Output 'device-install.txt') -Encoding utf8
+    & (Join-Path $Output 'devcon.exe') install (Join-Path $driver "vbMmeCable64_$driverPlatform.inf") VBAudioVACWDM 2>&1 | Out-File (Join-Path $Output 'device-install.txt') -Encoding utf8
     $report.device_install_exit = $LASTEXITCODE
     if ($LASTEXITCODE -ne 0) { throw 'Signed render-device installation failed or requires restart.' }
     $deadline = [DateTime]::UtcNow.AddSeconds(30)
@@ -64,7 +69,7 @@ try {
     $report.endpoint_after = $after
     Get-Service -Name AudioEndpointBuilder,Audiosrv | Format-List * | Out-File (Join-Path $Output 'services-after.txt') -Encoding utf8
     Get-CimInstance Win32_SoundDevice | Format-List * | Out-File (Join-Path $Output 'sound-devices-after.txt') -Encoding utf8
-    Get-PnpDevice -Class AudioEndpoint,MEDIA | Format-List * | Out-File (Join-Path $Output 'pnp-after.txt') -Encoding utf8
+    Get-PnpDevice | Where-Object { $_.Class -in @('AudioEndpoint','MEDIA') } | Format-List * | Out-File (Join-Path $Output 'pnp-after.txt') -Encoding utf8
     if ($after -eq 0) { throw 'Windows still reports no genuine WinMM render endpoint.' }
     $report.status = 'passed'
     Write-Host "WINDOWS_CI_AUDIO_HOST_PASS endpoints=$after"
