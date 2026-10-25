@@ -132,8 +132,8 @@ def main() -> int:
         # A PowerShell 7 Actions parent exports its own module search path.
         # Let Windows PowerShell initialize its standard modules as it does
         # when Play.cmd is started from Explorer or a normal command prompt.
-        launcher_env = dict(os.environ)
-        launcher_env.pop('PSModulePath', None)
+        launcher_env = {key: value for key, value in os.environ.items()
+                        if key.upper() != 'PSMODULEPATH'}
         report['powershell'] = powershell
         data = out/'profiles with spaces-é-☃'
 
