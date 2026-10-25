@@ -12,6 +12,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from m8_build_identity import load_identity
+
 from test_m8_farm_dancer import EXE_SHA, check_file, digest
 
 SEED_SHA = '5632ab2d6c200ca3c93f768d8d56843f2a9c32fe4f437f9572b4ea843a86e333'
@@ -71,6 +73,8 @@ def main() -> int:
     for name in ('exe', 'seed', 'support-route', 'training-route', 'output'):
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--wine', type=Path, help='Explicit Linux compatibility launcher')
+    parser.add_argument('--build-identity', type=Path,
+                        help='Fresh diagnostic build identity; default preserves the historical pin')
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -81,9 +85,14 @@ def main() -> int:
         if (os.name != 'nt') != bool(args.wine):
             raise ValueError('Use Windows directly, or explicitly supply --wine on Linux')
         exe, seed = args.exe.resolve(strict=True), args.seed.resolve(strict=True)
-        check_file(exe, EXE_SHA, 725318144)
+        identity = load_identity(args.build_identity)
+        identity.verify(exe)
+        report.update(identity.report())
+        if args.build_identity:
+            for key in ('baseline_windows_run', 'seed_windows_run'):
+                if key in report:report['historical_'+key] = report.pop(key)
         check_file(seed, SEED_SHA, 32768)
-        inputs = [(exe, EXE_SHA), (seed, SEED_SHA)]
+        inputs = [(exe, identity.sha256), (seed, SEED_SHA)]
         initial = seed.read_bytes()
         initial_species = [initial[i*0xA5+0x0B:i*0xA5+0x0D] for i in range(7)]
         for _, argument, route_sha, *_ in STAGES:
@@ -127,6 +136,7 @@ def main() -> int:
                          additional_persistent_creature_bytes=32*owned)
         for path, expected in inputs:
             check_file(path, expected)
+        identity.verify(exe)
         report['status'] = 'passed'
         print(f'M8_PARTY_PREPARATION_PASS platform={report["platform"]} original_Journal fresh_Continue')
         return 0

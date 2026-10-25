@@ -11,6 +11,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from m8_build_identity import load_identity
+
 SOURCE = '697647033b4ce6b00dd8e11759cb85e1ae469a65'
 EXE_SHA = '4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d'
 SEED_SHA = 'a48fb7b52d6b5063f03725d205f96964174b44afbb3600782892ba44caeaa91a'
@@ -32,6 +34,8 @@ def main() -> int:
     parser.add_argument('--evidence', type=Path, required=True)
     parser.add_argument('--route', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--build-identity', type=Path,
+                        help='Fresh diagnostic build identity; default preserves the historical pin')
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -45,8 +49,12 @@ def main() -> int:
         if len(candidates) != 1:
             raise ValueError('Expected exactly one recorded Kids Class Journal')
         original = candidates[0]
-        if digest(exe) != EXE_SHA or exe.stat().st_size != 725318144:
-            raise ValueError('Pinned tested Windows executable mismatch')
+        identity = load_identity(args.build_identity)
+        identity.verify(exe)
+        report.update(identity.report(), expected_executable_sha256=identity.sha256)
+        if args.build_identity:
+            report.update(baseline_run=None, historical_baseline_run=39836316030,
+                          baseline_evidence=str(args.evidence.resolve()))
         if original.stat().st_size != 32768 or digest(original) != SEED_SHA:
             raise ValueError('Original Kids Class checkpoint mismatch')
         if digest(route) != ROUTE_SHA:
@@ -70,8 +78,7 @@ def main() -> int:
             raise ValueError('Native original Save/fresh-Continue evidence missing')
         if digest(original) != SEED_SHA or digest(seed) != SEED_SHA or digest(route) != ROUTE_SHA:
             raise ValueError('Immutable inputs changed during execution')
-        if digest(exe) != EXE_SHA:
-            raise ValueError('Native executable changed during execution')
+        identity.verify(exe)
         report.update(status='passed', final_sha256=digest(final), controller_frames=12398,
                       full_game_verified=False, sea_world_completed=False)
         print('M8_PIRATE_WINDOWS_PASS original_P1_battle_recruitment_Journal_and_fresh_Continue')

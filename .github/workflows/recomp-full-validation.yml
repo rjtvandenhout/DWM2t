@@ -1,0 +1,304 @@
+name: Fresh M8 builds and campaign validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      preflight_only:
+        description: Check new host tests on the pinned historical package; no fresh game build
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  diagnostic:
+    if: ${{ inputs.preflight_only != true }}
+    runs-on: windows-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check host-side validation contracts
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_build_identity.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_handoff.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build fresh complete-AOT diagnostic from an isolated source archive
+        shell: pwsh
+        run: |
+          python recomp/tools/build_m8_diagnostic.py --jobs 2 `
+            --workspace "$env:RUNNER_TEMP/diagnostic-work" --output "$env:RUNNER_TEMP/diagnostic-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Run the retained M1-M8 development suite
+        shell: pwsh
+        run: |
+          ctest --test-dir "$env:RUNNER_TEMP/diagnostic-work/native" -C Release `
+            --parallel 4 --output-on-failure --output-junit native-results.xml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Replay original Sea entry from the newly generated Kids Class Journal
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_pirate_pinned.py `
+            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
+            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
+            --evidence "$env:RUNNER_TEMP/diagnostic-work/native" `
+            --route recomp/tests/m8_pirate_battle_p1.txt --output "$env:RUNNER_TEMP/pirate-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_pirate_village.py `
+            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
+            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
+            --seed "$env:RUNNER_TEMP/pirate-evidence/native/checkpoint.sav" `
+            --route recomp/tests/m8_pirate_village_p1.txt --output "$env:RUNNER_TEMP/village-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Replay original farm exchange, support party and key training
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_farm_dancer.py `
+            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
+            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
+            --seed "$env:RUNNER_TEMP/village-evidence/native/checkpoint.sav" `
+            --route recomp/tests/m8_farm_dancer_p1.txt --ready-route recomp/tests/m8_farm_dancer_ready_p1.txt `
+            --village-route recomp/tests/m8_sea_dancer_alive_p1.txt --output "$env:RUNNER_TEMP/farm-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_party_preparation.py `
+            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
+            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
+            --seed "$env:RUNNER_TEMP/farm-evidence/village/native/checkpoint.sav" `
+            --support-route recomp/tests/m8_farm_support_p1.txt --training-route recomp/tests/m8_gate_training_p1.txt `
+            --output "$env:RUNNER_TEMP/preparation-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Replay every retained later story checkpoint on this fresh build
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_story_checkpoints.py `
+            --exe "$env:RUNNER_TEMP/diagnostic-output/DWM2tRecompFull.exe" `
+            --build-identity "$env:RUNNER_TEMP/diagnostic-output/build-identity.json" `
+            --seed "$env:RUNNER_TEMP/preparation-evidence/training/native/checkpoint.sav" `
+            --manifest recomp/tests/m8_sea_story_checkpoints.json --output "$env:RUNNER_TEMP/story-evidence"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve original story Journals and fresh Continue captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-fresh-story-${{ github.run_id }}
+          path: ${{ runner.temp }}/story-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Preserve fresh diagnostic and exact source archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-fresh-diagnostic-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/diagnostic-output/**
+            ${{ runner.temp }}/diagnostic-work/source.tar
+            ${{ runner.temp }}/diagnostic-work/native/native-results.xml
+            ${{ runner.temp }}/diagnostic-work/native/CTestTestfile.cmake
+            ${{ runner.temp }}/diagnostic-work/native/Testing/Temporary/LastTest.log
+            ${{ runner.temp }}/diagnostic-work/native/local-validation/**
+            ${{ runner.temp }}/pirate-evidence/**
+            ${{ runner.temp }}/village-evidence/**
+            ${{ runner.temp }}/farm-evidence/**
+            ${{ runner.temp }}/preparation-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  production:
+    if: ${{ inputs.preflight_only != true }}
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run actual Windows filesystem persistence contracts
+        shell: pwsh
+        run: |
+          cmake -S recomp/tests/save-io -B "$env:RUNNER_TEMP/save-io" -A x64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build "$env:RUNNER_TEMP/save-io" --config Release --parallel 2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ctest --test-dir "$env:RUNNER_TEMP/save-io" -C Release --output-on-failure --output-junit save-io.xml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Independently build the production package from the same exact commit
+        shell: pwsh
+        run: |
+          python recomp/tools/build_m8_candidate.py --jobs 2 `
+            --workspace "$env:RUNNER_TEMP/production-work" --output "$env:RUNNER_TEMP/production-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Check the copied production EXE with direct and named-profile startup
+        shell: pwsh
+        run: |
+          python recomp/tools/test_player_startup.py --no-arguments `
+            --exe "$env:RUNNER_TEMP/production-output/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --output "$env:RUNNER_TEMP/direct-start" --source '${{ github.sha }}'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_startup.py `
+            --exe "$env:RUNNER_TEMP/production-output/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --output "$env:RUNNER_TEMP/profile-start" --source '${{ github.sha }}'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve the production package and exact source archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-fresh-production-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/production-output/*.zip
+            ${{ runner.temp }}/production-output/build-report.json
+            ${{ runner.temp }}/production-output/build-logs/**
+            ${{ runner.temp }}/production-work/source.tar
+            ${{ runner.temp }}/save-io/save-io.xml
+            ${{ runner.temp }}/save-io/Testing/Temporary/LastTest.log
+            ${{ runner.temp }}/direct-start/**
+            ${{ runner.temp }}/profile-start/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  production-journal:
+    needs: [diagnostic, production]
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: M8-fresh-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/production
+      - uses: actions/download-artifact@v4
+        with:
+          name: M8-fresh-story-${{ github.run_id }}
+          path: ${{ runner.temp }}/story
+      - name: Validate the actual archived package and derive its GUI spec
+        shell: pwsh
+        run: |
+          $archive = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/production/production-output" -Filter '*.zip')
+          if ($archive.Count -ne 1) { throw 'Expected exactly one fresh package archive' }
+          Expand-Archive -LiteralPath $archive[0].FullName -DestinationPath "$env:RUNNER_TEMP/package with spaces-é"
+          python recomp/tools/prepare_m8_player_validation.py `
+            --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" --source '${{ github.sha }}' `
+            --reference recomp/tests/m8_player_late_journal.json --output "$env:RUNNER_TEMP/fresh-gui-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test original later Journal Save and fresh production-process Continue
+        shell: pwsh
+        run: |
+          python recomp/tools/test_player_package.py `
+            --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" --source '${{ github.sha }}' `
+            --seed "$env:RUNNER_TEMP/story/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/player-package"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py `
+            --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --seed "$env:RUNNER_TEMP/story/raygigas-birth/native/checkpoint.sav" `
+            --manifest "$env:RUNNER_TEMP/fresh-gui-spec.json" --output "$env:RUNNER_TEMP/production-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve production GUI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-fresh-production-journal-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/production-journal/**
+            ${{ runner.temp }}/player-package/**
+            ${{ runner.temp }}/fresh-gui-spec.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  historical-package-preflight:
+    if: ${{ inputs.preflight_only == true }}
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and run new Windows filesystem fault contracts
+        shell: pwsh
+        run: |
+          cmake -S recomp/tests/save-io -B "$env:RUNNER_TEMP/save-io" -A x64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build "$env:RUNNER_TEMP/save-io" --config Release --parallel 2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ctest --test-dir "$env:RUNNER_TEMP/save-io" -C Release --output-on-failure --output-junit save-io.xml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 39840204359
+          name: DWM2t-player-candidate-bfc591146659964740f6958add5f8e8b8ed14d5f
+          path: ${{ runner.temp }}/pinned-package
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40152139075
+          name: DWM2t-Sea-Story-native-evidence-40152139075-1
+          path: ${{ runner.temp }}/pinned-story
+      - name: Exercise new host checks on the unchanged historical player
+        shell: pwsh
+        run: |
+          $archive = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/pinned-package" -Filter '*.zip')
+          if ($archive.Count -ne 1) { throw 'Expected exactly one pinned package' }
+          if ((Get-FileHash -LiteralPath $archive[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant() -ne '51bf94c6dca67ad2212a10955ad91643629335b3606f4bd9048d7308825153b2') { throw 'Pinned package archive differs' }
+          Expand-Archive -LiteralPath $archive[0].FullName -DestinationPath "$env:RUNNER_TEMP/package with spaces-é"
+          python recomp/tools/test_player_startup.py --no-arguments `
+            --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --source bfc591146659964740f6958add5f8e8b8ed14d5f --output "$env:RUNNER_TEMP/direct-start"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_package.py `
+            --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" `
+            --source bfc591146659964740f6958add5f8e8b8ed14d5f `
+            --seed "$env:RUNNER_TEMP/pinned-story/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/player-package"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: M8-historical-package-preflight-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/save-io/save-io.xml
+            ${{ runner.temp }}/save-io/Testing/Temporary/LastTest.log
+            ${{ runner.temp }}/direct-start/**
+            ${{ runner.temp }}/player-package/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  posix-persistence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate the POSIX filesystem helper separately
+        run: |
+          cmake -S recomp/tests/save-io -B "$RUNNER_TEMP/save-io" -DCMAKE_BUILD_TYPE=Release
+          cmake --build "$RUNNER_TEMP/save-io" --parallel 2
+          ctest --test-dir "$RUNNER_TEMP/save-io" --output-on-failure --output-junit save-io.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: M8-fresh-posix-persistence-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/save-io/save-io.xml
+            ${{ runner.temp }}/save-io/Testing/Temporary/LastTest.log
+          retention-days: 30

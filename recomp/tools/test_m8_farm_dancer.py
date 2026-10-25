@@ -12,6 +12,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from m8_build_identity import load_identity
+
 EXE_SHA = '4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d'
 SEED_SHA = 'acf128eeeb75c5cb130c58bf692f39eb20c2129306bcb647bde784e7a14a770a'
 # stage, argument, fixture SHA, original Journal SHA, frames, party, HP, location
@@ -65,6 +67,8 @@ def main() -> int:
     for name in ('exe', 'seed', 'route', 'ready-route', 'village-route', 'output'):
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--wine', type=Path, help='Explicit Linux Wine launcher; never labelled Windows')
+    parser.add_argument('--build-identity', type=Path,
+                        help='Fresh diagnostic build identity; default preserves the historical pin')
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -79,9 +83,14 @@ def main() -> int:
             raise ValueError('--wine is reserved for Linux compatibility runs')
         launcher = [str(args.wine.resolve(strict=True))] if args.wine else []
         exe, seed = args.exe.resolve(strict=True), args.seed.resolve(strict=True)
-        check_file(exe, EXE_SHA, 725318144)
+        identity = load_identity(args.build_identity)
+        identity.verify(exe)
+        report.update(identity.report())
+        if args.build_identity:
+            for key in ('baseline_windows_run', 'seed_windows_run'):
+                if key in report:report['historical_'+key] = report.pop(key)
         check_file(seed, SEED_SHA, 32768)
-        inputs = [(exe, EXE_SHA), (seed, SEED_SHA)]
+        inputs = [(exe, identity.sha256), (seed, SEED_SHA)]
         for _, attr, route_sha, *_ in STAGES:
             route = getattr(args, attr).resolve(strict=True)
             check_file(route, route_sha)
@@ -124,6 +133,7 @@ def main() -> int:
             raise ValueError('Original village dance-introduction flag did not survive Continue')
         for path, expected in inputs:
             check_file(path, expected)
+        identity.verify(exe)
         report['status'] = 'passed'
         print(f'M8_FARM_DANCER_PASS platform={report["platform"]} original_farm_flee_Journal_fresh_Continue')
         return 0

@@ -1086,5 +1086,16 @@
     "source_bmp_sha256": "dafca2bd31e34350bc90ed5ad44a420ccdf23b01b0f493a3d6b7033bea16492e",
     "png_sha256": "356cf2e87fe2404fad3d9a824c27cb6b4860c37070f2a198b7ab550abfd901bc",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "limbo-first-guardian.png",
+    "caption": "Original first Limbo guardian: Centasaur, GigaDraco and Garudian; this attempt subsequently ends in defeat.",
+    "source_session": "limbo-quest-50",
+    "source_bmp": "m8_104.bmp",
+    "frame": 9561,
+    "native_state": "M8_STATE frame=9561 mode=4:0 world=161 region=0,0 pos=64,64 party=3 selector=0x0 sram=0xfa371c5c5fc292f1 screen=0xa2e7e1f194fbffeb image=m8_104.bmp",
+    "source_bmp_sha256": "40086dcd03ed252208bc54ff205af2fc25500b65b1b9eb2fa362782fcd420a94",
+    "png_sha256": "4f90a88549a838f3bdd51c21a519fdcd6ae7a23b8fe12ef29be10f36190c3f4e",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

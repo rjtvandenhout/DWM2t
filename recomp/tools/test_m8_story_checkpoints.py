@@ -15,6 +15,7 @@ import shutil
 import subprocess
 
 from test_m8_farm_dancer import EXE_SHA, check_file, digest
+from m8_build_identity import load_identity
 
 
 def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
@@ -122,6 +123,8 @@ def main() -> int:
     for name in ('exe', 'seed', 'manifest', 'output'):
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--wine', type=Path, help='Explicit Linux compatibility launcher')
+    parser.add_argument('--build-identity', type=Path,
+                        help='Isolated fresh diagnostic build identity; default preserves the historical pin')
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -136,9 +139,11 @@ def main() -> int:
         exe, initial = args.exe.resolve(strict=True), args.seed.resolve(strict=True)
         manifest = args.manifest.resolve(strict=True)
         data = json.loads(manifest.read_text(encoding='utf-8'))
-        check_file(exe, EXE_SHA, 725318144)
+        identity = load_identity(args.build_identity)
+        identity.verify(exe)
+        report.update(identity.report())
         check_file(initial, data['seed_sha256'], 32768)
-        immutable = [(exe, EXE_SHA), (initial, digest(initial)), (manifest, digest(manifest))]
+        immutable = [(exe, identity.sha256), (initial, digest(initial)), (manifest, digest(manifest))]
         launcher = [str(args.wine.resolve(strict=True))] if args.wine else []
         completed = {}
 
@@ -194,6 +199,7 @@ def main() -> int:
                 entry['retained_records'] = expected['retained_records']
         for path, expected_hash in immutable:
             check_file(path, expected_hash)
+        identity.verify(exe)
         report['status'] = 'passed'
         report['sea_world_completed'] = any(
             {0x22, 0x7F}.issubset(stage.get('set_flags', [])) for stage in data['stages'])

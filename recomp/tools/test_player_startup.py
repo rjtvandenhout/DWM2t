@@ -28,6 +28,9 @@ def main() -> int:
     parser.add_argument('--exe', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--source', required=True)
+    parser.add_argument('--no-arguments', action='store_true',
+                        help='Launch the copied EXE directly with no arguments and its default profile')
+    parser.add_argument('--environment', choices=('Windows', 'Wine on Linux'), default='Windows')
     args = parser.parse_args()
     if os.name != 'nt':
         print('PLAYER_STARTUP_UNAVAILABLE requires Windows')
@@ -35,9 +38,9 @@ def main() -> int:
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     exe = args.exe.resolve(strict=True)
-    report = {'status': 'running', 'source': args.source, 'checks': [],
+    report = {'status': 'running', 'source': args.source, 'checks': [], 'platform': args.environment,
               'scope': 'production startup only; full M8 remains unproven',
-              'executable_sha256': digest(exe)}
+              'executable_sha256': digest(exe), 'no_argument_start': args.no_arguments}
     process = None
 
     def require(condition: bool, label: str) -> None:
@@ -77,7 +80,10 @@ def main() -> int:
         kernel.CloseHandle.argtypes = [wintypes.HANDLE]
         invalid = ctypes.c_void_p(-1).value
         with (out / 'startup.stdout.txt').open('wb') as stdout, (out / 'startup.stderr.txt').open('wb') as stderr:
-            process = subprocess.Popen([str(exe), '--profile', 'smoke', '--audio-volume', '0'],
+            profile = 'default' if args.no_arguments else 'smoke'
+            command = [str(exe)] if args.no_arguments else [str(exe), '--profile', profile, '--audio-volume', '0']
+            report['command'] = command
+            process = subprocess.Popen(command,
                                        cwd=out, env=env, stdout=stdout, stderr=stderr)
             hwnd = None
             deadline = time.monotonic() + 60
@@ -108,7 +114,7 @@ def main() -> int:
             response = ctypes.c_size_t()
             require(process.poll() is None and bool(user.SendMessageTimeoutW(
                 hwnd, 0, 0, 0, 2, 5000, ctypes.byref(response))), 'window_message_loop_responsive')
-            lock = Path(env['LOCALAPPDATA']) / 'DWM2t/saves/smoke.sav.lock'
+            lock = Path(env['LOCALAPPDATA']) / ('DWM2t/saves/'+profile+'.sav.lock')
             held = kernel.CreateFileW(str(lock), 0x80000000, 0, None, 3, 0x80, None)
             error = ctypes.get_last_error()
             if held != invalid:

@@ -257,7 +257,19 @@ Party33/30/32, fullHP193/200/170, sixteen owned,13G; full107/roster pass.
 Live `limbo-quest-50` starts only from this genuine Journal. MagicDoor164 leads
 to160;16014,22 enters1614,26. Stand1614,4Up gives the three repaired treasures
 and starts Centasaur/GigaDraco/Garudian (900/1000/800HP). Battle in progress.
-Live native session6088 owns50. No runtime/game-state edits.
+Live native session6088 owns50. The first guardian attempt is lost after
+StopSpell seals both healers; original Warubou recovery follows. Additional
+Sky exploration/training remains in the same controller trace. Training now
+uses ordinary160 encounters near the164 return gate and original home healing
+between battles, aiming for Garon40 before retry. The host controller is
+`train_limbo.py`; it stops on original full-skill learning choices. No runtime/
+game-state edits. Current input remains unpinned until the next true Journal.
+
+The new manual full-validation workflow is prepared. `preflight_only=true`
+tests new Windows host checks on the historical bfc591 production package;
+it does not build or certify a new game binary. The default workflow builds
+fresh diagnostic+production from the same exact source and runs retained/
+later campaign and package checks. Do not claim final acceptance from preflight.
 
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead
