@@ -3,19 +3,12 @@ name: Fresh M8 builds and campaign validation
 on:
   workflow_call:
     inputs:
-      preflight_only:
-        type: boolean
-        default: false
       story_journals_base64:
         type: string
         required: false
         default: ''
   workflow_dispatch:
     inputs:
-      preflight_only:
-        description: Check new host tests on the pinned historical package; no fresh game build
-        type: boolean
-        default: false
       story_journals_base64:
         description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
         type: string
@@ -31,7 +24,6 @@ env:
 
 jobs:
   diagnostic:
-    if: ${{ inputs.preflight_only != true }}
     runs-on: windows-latest
     timeout-minutes: 360
     steps:
@@ -171,7 +163,6 @@ jobs:
           retention-days: 30
 
   production:
-    if: ${{ inputs.preflight_only != true }}
     runs-on: windows-latest
     timeout-minutes: 180
     steps:
@@ -290,7 +281,6 @@ jobs:
           retention-days: 30
 
   verified-package:
-    if: ${{ inputs.preflight_only != true }}
     needs: [diagnostic, production, production-journal, posix-persistence]
     runs-on: windows-latest
     timeout-minutes: 30
@@ -348,67 +338,6 @@ jobs:
             ${{ runner.temp }}/verified-output/*.zip
             ${{ runner.temp }}/verified-output/verified-package.json
           if-no-files-found: error
-          retention-days: 30
-
-  historical-package-preflight:
-    if: ${{ inputs.preflight_only == true }}
-    runs-on: windows-latest
-    timeout-minutes: 25
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Compile and run new Windows filesystem fault contracts
-        shell: pwsh
-        run: |
-          cmake -S recomp/tests/save-io -B "$env:RUNNER_TEMP/save-io" -A x64
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          cmake --build "$env:RUNNER_TEMP/save-io" --config Release --parallel 2
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          ctest --test-dir "$env:RUNNER_TEMP/save-io" -C Release --output-on-failure --output-junit save-io.xml
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/download-artifact@v4
-        with:
-          github-token: ${{ github.token }}
-          run-id: 39840204359
-          name: DWM2t-player-candidate-bfc591146659964740f6958add5f8e8b8ed14d5f
-          path: ${{ runner.temp }}/pinned-package
-      - uses: actions/download-artifact@v4
-        with:
-          github-token: ${{ github.token }}
-          run-id: 40152139075
-          name: DWM2t-Sea-Story-native-evidence-40152139075-1
-          path: ${{ runner.temp }}/pinned-story
-      - name: Exercise new host checks on the unchanged historical player
-        shell: pwsh
-        run: |
-          $archive = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/pinned-package" -Filter '*.zip')
-          if ($archive.Count -ne 1) { throw 'Expected exactly one pinned package' }
-          if ((Get-FileHash -LiteralPath $archive[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'ee712cdddd7156cbc1b0eaa9df42bdb0ede4aee7ca9ecd4945489dc470a2b7e5') { throw 'Pinned package archive differs' }
-          Expand-Archive -LiteralPath $archive[0].FullName -DestinationPath "$env:RUNNER_TEMP/package with spaces-é"
-          python recomp/tools/test_player_startup.py --no-arguments `
-            --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
-            --source bfc591146659964740f6958add5f8e8b8ed14d5f --output "$env:RUNNER_TEMP/direct-start"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          python recomp/tools/test_player_package.py `
-            --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" `
-            --source bfc591146659964740f6958add5f8e8b8ed14d5f `
-            --seed "$env:RUNNER_TEMP/pinned-story/raygigas-birth/native/checkpoint.sav" `
-            --output "$env:RUNNER_TEMP/player-package"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: M8-historical-package-preflight-${{ github.run_id }}
-          path: |
-            ${{ runner.temp }}/save-io/save-io.xml
-            ${{ runner.temp }}/save-io/Testing/Temporary/LastTest.log
-            ${{ runner.temp }}/direct-start/**
-            ${{ runner.temp }}/player-package/**
-          if-no-files-found: warn
           retention-days: 30
 
   posix-persistence:

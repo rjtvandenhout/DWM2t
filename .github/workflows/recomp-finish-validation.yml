@@ -42,7 +42,7 @@ jobs:
             if (original.head_sha !== source || original.status !== 'completed') throw new Error('Original build source/run differs or is unfinished');
             const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {...query, filter:'latest', per_page:100});
             for (const name of ['diagnostic', 'production', 'production-journal', 'posix-persistence']) {
-              const matching = jobs.filter(j => j.name.endsWith('/ '+name));
+              const matching = jobs.filter(j => j.name === name || j.name.endsWith('/ '+name));
               if (matching.length !== 1 || matching[0].conclusion !== 'success') throw new Error('Original producer not successful: '+name);
             }
             const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {...query, per_page:100});

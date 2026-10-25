@@ -1,195 +1,116 @@
-name: Native static recomp - M8
+name: Native tooling and save persistence
 
 on:
   push:
-    branches:
-      - 'recomp/native-pc'
-      - 'work/recomp-m8'
+    branches: [main]
     paths:
       - 'recomp/**'
       - 'src/banks/**'
-      - '.github/workflows/recomp-windows.yml'
+      - '.github/workflows/recomp-*.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'recomp/**'
+      - 'src/banks/**'
+      - '.github/workflows/recomp-*.yml'
   workflow_dispatch:
-    inputs:
-      clean_empty_runs:
-        description: 'Remove obsolete failed/cancelled runs without steps or artifacts'
-        type: boolean
-        default: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: native-recomp-${{ github.ref }}
+  group: native-tooling-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
 jobs:
-  tooling:
-    name: Clean Actions and validate M8 tooling
-    runs-on: ubuntu-latest
+  host-contracts:
+    name: Tooling and persistence (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 15
-    permissions:
-      contents: read
-      actions: write
     steps:
-      - name: Clean obsolete empty runs without deleting milestone evidence
-        if: ${{ inputs.clean_empty_runs == true || contains(github.event.head_commit.message, '[clean-actions]') }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const repo = context.repo;
-            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
-              ...repo, workflow_id: 'recomp-windows.yml', per_page: 100
-            });
-            // Snapshot first: deleting during pagination would skip entries.
-            const newest = new Map();
-            for (const run of runs) {
-              if (!newest.has(run.head_branch) || run.id > newest.get(run.head_branch)) {
-                newest.set(run.head_branch, run.id);
-              }
-            }
-            const cutoff = Date.now() - 24 * 60 * 60 * 1000;
-            const audit = {deleted: [], preserved: [], errors: []};
-            try {
-              for (const run of runs) {
-                if (audit.deleted.length >= 100) break;
-                if (run.id === context.runId || newest.get(run.head_branch) === run.id ||
-                    run.head_branch?.startsWith('restore/') ||
-                    run.status !== 'completed' ||
-                    !['failure', 'cancelled'].includes(run.conclusion) ||
-                    !(Date.parse(run.updated_at) < cutoff)) continue;
-                const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
-                  ...repo, run_id: run.id, per_page: 1
-                });
-                if (artifacts.data.total_count !== 0) {
-                  audit.preserved.push({id: run.id, reason: 'artifact evidence'});
-                  continue;
-                }
-                const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {
-                  ...repo, run_id: run.id, filter: 'all', per_page: 100
-                });
-                if (jobs.some(job => !Array.isArray(job.steps) || job.steps.length !== 0)) {
-                  audit.preserved.push({id: run.id, reason: 'steps or unknown job evidence'});
-                  continue;
-                }
-                await github.rest.actions.deleteWorkflowRun({...repo, run_id: run.id});
-                audit.deleted.push({id: run.id, branch: run.head_branch, sha: run.head_sha});
-                core.info(`Deleted empty obsolete run ${run.id}`);
-              }
-            } catch (error) {
-              audit.errors.push(String(error));
-              throw error;
-            } finally {
-              fs.writeFileSync('actions-cleanup.json', JSON.stringify(audit, null, 2) + '\n');
-              await core.summary.addHeading('Conservative Actions cleanup')
-                .addRaw(`Deleted ${audit.deleted.length} empty obsolete runs. Successful runs, ` +
-                  'artifacts, started job steps, restore branches and each branch\'s latest run are preserved.')
-                .write();
-            }
-
-      - name: Preserve cleanup audit
-        if: ${{ always() && (inputs.clean_empty_runs == true || contains(github.event.head_commit.message, '[clean-actions]')) }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: actions-cleanup-${{ github.run_id }}-${{ github.run_attempt }}
-          path: actions-cleanup.json
-          if-no-files-found: warn
-          retention-days: 30
-
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Archive committed native sources for offline diagnostics
-        shell: bash
+      - name: Check host tooling, LR35902 frontend and Bank 0 audit (no gameplay)
+        shell: python
         run: |
-          git archive --format=zip --output="$RUNNER_TEMP/recomp-source.zip" HEAD \
-            recomp src/banks LICENSE-NOTICE.md .github/workflows/recomp-windows.yml
-          git rev-parse HEAD > "$RUNNER_TEMP/recomp-source-commit.txt"
-          sha256sum "$RUNNER_TEMP/recomp-source.zip"
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
 
-      - name: Preserve exact source snapshot without saves or build caches
-        uses: actions/upload-artifact@v4
-        with:
-          name: DWM2t-native-source-${{ github.sha }}
-          path: |
-            ${{ runner.temp }}/recomp-source.zip
-            ${{ runner.temp }}/recomp-source-commit.txt
-          compression-level: 0
-          if-no-files-found: error
-          retention-days: 14
+          logs = Path(os.environ['RUNNER_TEMP']) / 'native-host-validation'
+          logs.mkdir(exist_ok=False)
+          checks = [
+              ('handoff', ['recomp/tools/test_m8_handoff.py']),
+              ('build-identity', ['recomp/tools/test_m8_build_identity.py']),
+              ('package', ['recomp/tools/test_m8_package.py']),
+              ('parallel-replay', ['recomp/tools/test_m8_story_parallel_contracts.py']),
+              ('native-retest', ['recomp/tools/test_m8_native_retest.py']),
+              ('lr35902', ['recomp/tools/test_lr35902.py', '--bank0', 'src/banks/bank_000.asm']),
+              ('bank0-audit', ['recomp/tools/recompile_bank0.py', '--bank', 'src/banks/bank_000.asm', '--audit-only']),
+          ]
+          results = []
+          for name, arguments in checks:
+              command = [sys.executable, *arguments]
+              path = logs / (name + '.log')
+              with path.open('x', encoding='utf-8') as output:
+                  result = subprocess.run(command, stdout=output, stderr=subprocess.STDOUT, check=False)
+              print(path.read_text(encoding='utf-8', errors='replace'), end='', flush=True)
+              results.append(dict(check=name, command=command, returncode=result.returncode))
+          (logs / 'tooling-results.json').write_text(
+              json.dumps(dict(scope='tooling/persistence; no full-game acceptance', checks=results), indent=2) + '\n',
+              encoding='utf-8')
+          if any(result['returncode'] != 0 for result in results):
+              raise SystemExit(1)
+      - name: Build and run the two standalone SaveIO CTest cases
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          import subprocess
+          import xml.etree.ElementTree as ET
 
-      - name: Run offline safe-resume contracts (not gameplay acceptance)
-        run: python recomp/tools/test_m8_handoff.py
-
-      - name: Validate complete LR35902 frontend
-        run: python recomp/tools/test_lr35902.py --bank0 src/banks/bank_000.asm
-
-      - name: Audit complete Bank 0 static translation
-        run: python recomp/tools/recompile_bank0.py --bank src/banks/bank_000.asm --audit-only
-
-  windows-x64:
-    name: Complete AOT build and retained M1-M8 development tests
-    needs: tooling
-    runs-on: windows-latest
-    timeout-minutes: 180
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Run safe-resume contracts on Windows
-        run: python recomp/tools/test_m8_handoff.py
-
-      - name: Restore complete-AOT build cache
-        uses: actions/cache/restore@v4
-        with:
-          path: recomp/build-ci
-          key: m8-all-aot-${{ runner.os }}-${{ hashFiles('recomp/CMakeLists.txt', 'recomp/include/**', 'recomp/tools/recompile*.py', 'recomp/tools/generate*.py', 'recomp/tools/lr35902.py', 'src/banks/**') }}-${{ github.sha }}
-          restore-keys: |
-            m8-all-aot-${{ runner.os }}-${{ hashFiles('recomp/CMakeLists.txt', 'recomp/include/**', 'recomp/tools/recompile*.py', 'recomp/tools/generate*.py', 'recomp/tools/lr35902.py', 'src/banks/**') }}-
-
-      - name: Configure all 255 ROMX banks and retained Kids Class route
-        run: cmake -S recomp -B recomp/build-ci -A x64 -DDWM2T_ALL_ROMX=ON -DDWM2T_OUTPUT_NAME=DWM2tRecompFull
-
-      # Always let CMake verify the full dependency graph. Cached libraries are
-      # an optimization, never grounds to bypass changed native source files.
-      - name: Build complete native executable
-        run: cmake --build recomp/build-ci --config Release --target DWM2tRecomp --parallel 4
-
-      - name: Save complete-AOT build cache
-        uses: actions/cache/save@v4
-        with:
-          path: recomp/build-ci
-          key: m8-all-aot-${{ runner.os }}-${{ hashFiles('recomp/CMakeLists.txt', 'recomp/include/**', 'recomp/tools/recompile*.py', 'recomp/tools/generate*.py', 'recomp/tools/lr35902.py', 'src/banks/**') }}-${{ github.sha }}
-
-      - name: Run retained native development suite and real checkpoint handoff
-        run: ctest --test-dir recomp/build-ci -C Release --parallel 4 --output-on-failure --output-junit native-results.xml
-
-      # Headless hosted audio may skip device tests. Preserve the actual test
-      # report; this workflow is not full-game or physical-audio acceptance.
-      - name: Preserve native test evidence, including failures and skips
+          logs = Path(os.environ['RUNNER_TEMP']) / 'native-host-validation'
+          build = Path(os.environ['RUNNER_TEMP']) / 'native-save-io-build'
+          configure = ['cmake', '-S', 'recomp/tests/save-io', '-B', str(build)]
+          configure += ['-A', 'x64'] if os.name == 'nt' else ['-DCMAKE_BUILD_TYPE=Release']
+          checks = [
+              ('save-io-configure', configure),
+              ('save-io-build', ['cmake', '--build', str(build), '--config', 'Release', '--parallel', '2']),
+              ('save-io-ctest', ['ctest', '--test-dir', str(build), '-C', 'Release', '--no-tests=error',
+                                 '--output-on-failure', '--output-junit', str(logs / 'save-io.xml')]),
+          ]
+          for name, command in checks:
+              path = logs / (name + '.log')
+              with path.open('x', encoding='utf-8') as output:
+                  result = subprocess.run(command, stdout=output, stderr=subprocess.STDOUT, check=False)
+              print(path.read_text(encoding='utf-8', errors='replace'), end='', flush=True)
+              if result.returncode:
+                  raise SystemExit(result.returncode)
+          cases = list(ET.parse(logs / 'save-io.xml').getroot().iter('testcase'))
+          expected = {'M8_save_io_contracts', 'M8_save_io_fault_contracts'}
+          if ({case.get('name') for case in cases} != expected or len(cases) != len(expected)
+                  or any(case.find(tag) is not None for case in cases for tag in ('failure', 'error', 'skipped'))):
+              raise SystemExit('Both actual SaveIO cases must run and pass without skips.')
+      - name: Preserve actual tooling and persistence logs (no full-game acceptance)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: DWM2t-M8-development-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-tooling-persistence-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            recomp/build-ci/local-validation/**
-            recomp/build-ci/Testing/Temporary/LastTest.log
-            recomp/build-ci/native-results.xml
-            recomp/build-ci/CTestTestfile.cmake
-            recomp/build-ci/CMakeCache.txt
+            ${{ runner.temp }}/native-host-validation/**
+            ${{ runner.temp }}/native-save-io-build/Testing/Temporary/LastTest.log
           if-no-files-found: warn
-          retention-days: 14
-
-      - name: Upload tested development executable (not a final release)
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: DWM2t-M8-development-Windows-x64-${{ github.sha }}
-          path: recomp/build-ci/Release/DWM2tRecompFull.exe
-          if-no-files-found: error
-          retention-days: 14
+          retention-days: 7

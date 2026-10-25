@@ -21,6 +21,8 @@ ROM banks are statically compiled, with no runtime opcode interpreter.
 
 [Download the verified package and view the successful final run](https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388).
 Extract the full package and run `DWM2t-M8/Play.cmd`.
+`DWM2tRecomp.exe` also starts directly with the same default save; the launcher
+adds integrity checks, logs and convenient import options.
 [Completion record and exact hashes](milestones/M8_RESULT.md),
 [controls, ending-save import and recovery](handoff/M8_NEXT.md), and
 [progress with original screenshots](handoff/M8_PROGRESS_2026-10-25.md).
@@ -39,6 +41,13 @@ The final verified package retains the byte-identical tested production EXE;
 validation tools are `8859ef67289ce90712a44b9c17174de4519a59b3`.
 Recovery is `restore/recomp-m8`. M7's fixtures and immutable restore remain
 unchanged; all M1–M7 regressions pass. [M7 record](milestones/M7_RESULT.md).
+
+`main` is the current finished-game branch. The accepted M0–M8 snapshots are
+listed in [RESTORE_POINTS.md](RESTORE_POINTS.md); see the
+[branch cleanup record](handoff/BRANCH_CLEANUP_2026-10-25.md) for retired refs.
+Routine CI checks tooling and persistence. Full native builds and campaign
+validation run manually, so documentation and branch maintenance do not rebuild
+the entire game.
 
 Original breeding produces Liset (Octokid +1), Derzo (RayGigas +1), and Garon
 (RayGigas +3). Squiz is reserved until his Sea story role finishes. Garon wins

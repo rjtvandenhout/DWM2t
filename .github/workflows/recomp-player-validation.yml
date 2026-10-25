@@ -1,117 +1,42 @@
-name: Native player and save protection validation
+name: Native campaign and exact-build validation
 
 on:
-  push:
-    branches: ['work/recomp-m8-recheck-20261022']
-    paths:
-      - 'recomp/**'
-      - '.github/workflows/recomp-player-validation.yml'
   workflow_dispatch:
     inputs:
       validation_mode:
-        description: Select player checks, a fresh campaign, or completion of an exact fresh build
+        description: Run a fresh campaign or finish an exact archived build
         type: choice
-        default: existing
-        options: [existing, historical-package, fresh-campaign, finish-fresh-build]
-      late_story_run_id:
-        description: Optional successful story run; reuse the pinned player for later Journal validation
-        required: false
-        default: ''
-        type: string
+        default: fresh-campaign
+        options: [fresh-campaign, finish-fresh-build]
       story_journals_base64:
         description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
         required: false
         default: ''
         type: string
       fresh_build_run_id:
-        description: Original fresh build/story artifact run for finish-fresh-build
+        description: Required for finish-fresh-build; exact original build/story artifact run
         required: false
-        default: '40175408153'
+        default: ''
         type: string
       fresh_build_source:
-        description: Exact already built game source for finish-fresh-build
+        description: Required for finish-fresh-build; exact 40-character archived game source
         required: false
-        default: '3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba'
+        default: ''
         type: string
 
 permissions:
   contents: read
   actions: read
+
 concurrency:
-  group: native-player-validation-${{ github.ref }}-${{ inputs.validation_mode || 'existing' }}
+  group: native-player-validation-${{ github.ref }}-${{ inputs.validation_mode }}
   cancel-in-progress: true
 
 jobs:
-  player-windows:
-    if: ${{ inputs.late_story_run_id == '' && (inputs.validation_mode == '' || inputs.validation_mode == 'existing') }}
-    runs-on: windows-latest
-    timeout-minutes: 180
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Build actual SRAM filesystem contracts
-        shell: pwsh
-        run: |
-          cmake -S recomp/tests/save-io -B "$env:RUNNER_TEMP/save-io-build" -A x64
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          cmake --build "$env:RUNNER_TEMP/save-io-build" --config Release --parallel 2
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Check Windows save creation, replacement and failure preservation
-        shell: pwsh
-        run: |
-          ctest --test-dir "$env:RUNNER_TEMP/save-io-build" -C Release --output-on-failure --output-junit save-io.xml
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Build isolated complete-AOT production candidate
-        shell: pwsh
-        run: |
-          python recomp/tools/build_m8_candidate.py --jobs 2 `
-            --workspace "$env:RUNNER_TEMP/player-build" --output "$env:RUNNER_TEMP/player-output"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Exercise real production entry point and isolated Unicode profile
-        shell: pwsh
-        run: |
-          python recomp/tools/test_player_startup.py `
-            --exe "$env:RUNNER_TEMP/player-output/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
-            --output "$env:RUNNER_TEMP/player-smoke" --source "${{ github.sha }}"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Preserve real results without claiming full-game completion
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: DWM2t-player-validation-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ runner.temp }}/save-io-build/save-io.xml
-            ${{ runner.temp }}/save-io-build/Testing/Temporary/LastTest.log
-            ${{ runner.temp }}/player-output/build-report.json
-            ${{ runner.temp }}/player-output/build-logs/**
-            ${{ runner.temp }}/player-smoke/**
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Upload startup-checked player candidate, not a final M8 release
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: DWM2t-player-candidate-${{ github.sha }}
-          path: ${{ runner.temp }}/player-output/*.zip
-          if-no-files-found: error
-          retention-days: 14
-
-  production-late-journal:
-    if: ${{ inputs.late_story_run_id != '' && (inputs.validation_mode == '' || inputs.validation_mode == 'existing') }}
-    uses: ./.github/workflows/recomp-player-late-validation.yml
-    with:
-      story_run_id: ${{ inputs.late_story_run_id }}
-
   complete-validation:
-    if: ${{ inputs.validation_mode == 'historical-package' || inputs.validation_mode == 'fresh-campaign' }}
+    if: ${{ inputs.validation_mode == 'fresh-campaign' }}
     uses: ./.github/workflows/recomp-full-validation.yml
     with:
-      preflight_only: ${{ inputs.validation_mode == 'historical-package' }}
       story_journals_base64: ${{ inputs.story_journals_base64 || '' }}
 
   finish-validation:

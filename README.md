@@ -35,6 +35,8 @@ ending Save and Continue pass native validation. The final package passes all
 
 See the [native overview](recomp/README.md), [M8 completion record](recomp/milestones/M8_RESULT.md)
 and [playthrough report with screenshots](recomp/handoff/M8_PROGRESS_2026-10-25.md).
+`main` holds the current finished game; accepted M0–M8 snapshots remain in the
+[immutable milestone branches](recomp/RESTORE_POINTS.md).
 
 ## What “decompilation” means here
 

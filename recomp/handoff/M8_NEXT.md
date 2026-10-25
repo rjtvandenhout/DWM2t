@@ -12,6 +12,10 @@ Run `DWM2t-M8/Play.cmd`. Its SHA256 is
 Local delivery is under `outputs/`, with a matching `.sha256` sidecar.
 Actions artifacts have 30-day retention; keep a downloaded package.
 
+You can also double-click `DWM2tRecomp.exe` directly. It uses the same default
+save location and retains native save locking/backups. The recommended launcher
+adds package/evidence checksum checks, session logs and convenient import options.
+
 Arrow keys are the D-pad; Z is A, X is B, Enter is Start and Backspace is
 Select. Open the field menu with A facing empty space, then use PLAN > Journal
 and finish the original confirmation. Closing the window flushes SRAM; use
@@ -46,10 +50,14 @@ accepted validation tools are `8859ef67289ce90712a44b9c17174de4519a59b3`.
 The immutable recovery branch is `restore/recomp-m8`. M7 remains unchanged at
 `3bb1e18170fc928f372f9cc72cc433d85c0666ca`.
 
+Current development belongs on `main` or a short-lived branch from it. Inspect
+restore points detached or create a new recovery branch; keep their recorded
+commits unchanged. [All milestone branches](../RESTORE_POINTS.md).
+
 Full validation is manual:
 
 ```sh
-gh workflow run recomp-player-validation.yml --ref restore/recomp-m8 -f validation_mode=fresh-campaign
+gh workflow run recomp-player-validation.yml --ref main -f validation_mode=fresh-campaign
 ```
 
 It builds new independent diagnostic/production binaries, retains the original
@@ -65,6 +73,11 @@ tests from the archived source, preserves initial XML as unaccepted, checks
 both source archives and exact EXEs, and records the actual separate runs.
 Its final Play.cmd and ending GUI gates remain mandatory. The CI-only signed
 audio-driver helper refuses to run outside GitHub Windows CI.
+
+For `finish-fresh-build`, supply `fresh_build_run_id` and `fresh_build_source`
+explicitly. Historical workflow definitions remain in the immutable M8 snapshot;
+routine checks on `main` run the tooling and filesystem contracts without a full
+native build. Full campaign validation and build-only candidates are manual.
 
 Newly built packages remain `UNTESTED_CANDIDATE` until their required evidence
 passes. Preserve failures, original Journals and the M7/M8 recovery branches.

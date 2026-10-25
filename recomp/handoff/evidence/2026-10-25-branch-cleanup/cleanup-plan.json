@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "status": "reviewed_plan_pending_merge_and_exact_ref_retirement",
+  "repository": "rjtvandenhout/DWM2t",
+  "main_before": "dd21ded6ca194d295a9ca65e115676eafbf86955",
+  "accepted_m8": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+  "backup": {
+    "path": "/workspace/branch-cleanup-2026-10-25/pre-cleanup.bundle",
+    "bytes": 6990792,
+    "sha256": "346e531eea00de6ecd5890d3afda4abadd93933a8dd4cc86b0e845f7aa74d7ba",
+    "bundle_verify_passed": true,
+    "complete_history": true,
+    "listed_refs": 43,
+    "all_reviewed_remote_heads_match_backup": true
+  },
+  "keep_restore_refs": {
+    "restore/recomp-m0": "ac588dc73f59020efc69a53d17c46db6c7286acd",
+    "restore/recomp-m1": "68bf911c5845021db140575bdae721edda572965",
+    "restore/recomp-m2": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+    "restore/recomp-m3": "8ec0c1e80b5cea3df8f9581d1424fae319ec67d6",
+    "restore/recomp-m4": "29c4c8249f5a77a17ea8194d624d20af52da3e6b",
+    "restore/recomp-m5": "9d0b9830ea6542def717a8cde726691cd0421cc2",
+    "restore/recomp-m6": "70628e9a6f210f494ace326c51d1ac295a36c023",
+    "restore/recomp-m7": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+    "restore/recomp-m8": "e44b41394c23f63f55b6d5255bc065696ba554c2"
+  },
+  "delete_refs": [
+    {
+      "branch": "archive/recomp-m5-attempt1",
+      "expected_pre_cleanup_sha": "2fe6a0a3b3bf8d1a0c18130f20f43c33351b9331",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "bootstrap-full-decomp",
+      "expected_pre_cleanup_sha": "513d05cd7bfdfa5d99a33d0939cebff435529c51",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "bootstrap-upload",
+      "expected_pre_cleanup_sha": "9785ce52d6d46b27370ae9adf7d91bc23787bed0",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "bootstrap/full-decomp",
+      "expected_pre_cleanup_sha": "48474472c6f2ed37a2e77315b1dd46ec68d8f8ce",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "recomp/native-pc",
+      "expected_pre_cleanup_sha": "4996ea8753077786abe77c5d0673bbc325d6c40d",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "research-upload",
+      "expected_pre_cleanup_sha": "cc0cfd82946b6b11ac0b456494468d14ce1cc839",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m2",
+      "expected_pre_cleanup_sha": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m3",
+      "expected_pre_cleanup_sha": "1036a43d24f46d01e3feebbe7ab15ecc4c2e4396",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m4",
+      "expected_pre_cleanup_sha": "66d6743a04411b5a142e2c3538b1261b2da31bb9",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m5",
+      "expected_pre_cleanup_sha": "33b76c5f65b44ca05cd12c2c9a0e2bc55a50d010",
+      "classification": "patch_equivalent"
+    },
+    {
+      "branch": "work/recomp-m6",
+      "expected_pre_cleanup_sha": "70628e9a6f210f494ace326c51d1ac295a36c023",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m7",
+      "expected_pre_cleanup_sha": "bc79ec91342031451103145e4fd830d9b7fe00dd",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m7-battle-flag2-route",
+      "expected_pre_cleanup_sha": "ab5835169f6419ee902cf1983df21b7eb40b788a",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-flag4-seed",
+      "expected_pre_cleanup_sha": "88f30f349867e56ee1b3144d6df1a17f44aa2e44",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-gate-scan",
+      "expected_pre_cleanup_sha": "84205b5061300898e66fd43e8843954685b7716d",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-post-slash",
+      "expected_pre_cleanup_sha": "1688e900a055961db9a4f88a4429ee0b26bcdf9e",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-pump-seed",
+      "expected_pre_cleanup_sha": "fba06a038451477a92e86b92a23bf17a501ee937",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-battle-selector09",
+      "expected_pre_cleanup_sha": "20ff816fa5164d4eeb611bd688bd71d3a2ecc850",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-probe",
+      "expected_pre_cleanup_sha": "0372efdd818b2378ba87b03db8592c0eadfed318",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m7-save-probe",
+      "expected_pre_cleanup_sha": "0cff0bd40d925097fd5dc5c35a24686b863312ee",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m8",
+      "expected_pre_cleanup_sha": "0e59dbd19415cce58393c21c2ede2acd6f60c4d3",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-audio-host-probe-20261025",
+      "expected_pre_cleanup_sha": "17daad09c676abfce0f8d38a97754f7c5804cb9a",
+      "classification": "superseded_experiment"
+    },
+    {
+      "branch": "work/recomp-m8-dancer-20261023",
+      "expected_pre_cleanup_sha": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-pirate-validation-20261022",
+      "expected_pre_cleanup_sha": "8fc6e64cca83fd63a99f8b3544e3992c304d25cd",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-recheck-20261022",
+      "expected_pre_cleanup_sha": "bfc591146659964740f6958add5f8e8b8ed14d5f",
+      "classification": "fully_reachable"
+    },
+    {
+      "branch": "work/recomp-m8-world-validation",
+      "expected_pre_cleanup_sha": "4d5f07f61ff5606d26a645d25f6f030d0c5ee34d",
+      "classification": "superseded_experiment"
+    }
+  ],
+  "required_before_delete": [
+    "validated cleanup commit merged into main with complete M8 history",
+    "all nine restore hashes unchanged",
+    "exact current remote head SHA leased for every deletion",
+    "no unique useful product work lost"
+  ],
+  "binary_sha256_must_remain": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+  "verified_zip_sha256_must_remain": "2e002da616fa5692ba56ba5b91a1d6ace0049fb596fe6b25d56c65fae200e02e"
+}
