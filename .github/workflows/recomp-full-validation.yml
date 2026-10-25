@@ -264,7 +264,7 @@ jobs:
         run: |
           $archive = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/pinned-package" -Filter '*.zip')
           if ($archive.Count -ne 1) { throw 'Expected exactly one pinned package' }
-          if ((Get-FileHash -LiteralPath $archive[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant() -ne '51bf94c6dca67ad2212a10955ad91643629335b3606f4bd9048d7308825153b2') { throw 'Pinned package archive differs' }
+          if ((Get-FileHash -LiteralPath $archive[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'ee712cdddd7156cbc1b0eaa9df42bdb0ede4aee7ca9ecd4945489dc470a2b7e5') { throw 'Pinned package archive differs' }
           Expand-Archive -LiteralPath $archive[0].FullName -DestinationPath "$env:RUNNER_TEMP/package with spaces-é"
           python recomp/tools/test_player_startup.py --no-arguments `
             --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
