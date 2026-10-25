@@ -129,6 +129,12 @@ def main() -> int:
         immutable = {path: digest(path) for path in package.iterdir() if path.is_file()}
         powershell = shutil.which('powershell.exe')
         require(bool(powershell), 'windows_powershell_available')
+        # A PowerShell 7 Actions parent exports its own module search path.
+        # Let Windows PowerShell initialize its standard modules as it does
+        # when Play.cmd is started from Explorer or a normal command prompt.
+        launcher_env = dict(os.environ)
+        launcher_env.pop('PSModulePath', None)
+        report['powershell'] = powershell
         data = out/'profiles with spaces-é-☃'
 
         def command(folder, profile, imported=True):
@@ -140,7 +146,8 @@ def main() -> int:
 
         def launch(profile):
             with (out/(profile+'-launcher.log')).open('wb') as log:
-                launcher = subprocess.Popen(command(package, profile), stdout=log, stderr=subprocess.STDOUT)
+                launcher = subprocess.Popen(command(package, profile), stdout=log, stderr=subprocess.STDOUT,
+                                            env=launcher_env)
             launchers.append(launcher)
             child = processes.child(launcher)
             children.append(child)
@@ -198,7 +205,7 @@ def main() -> int:
             require(len(backups) >= 2 and all(digest(path) == spec['seed_sha256'] for path in backups),
                     profile+'_launcher_and_native_prelaunch_backups_are_recoverable')
         old_hash = digest(saved)
-        result = subprocess.run(command(package, 'first'), capture_output=True, timeout=30)
+        result = subprocess.run(command(package, 'first'), capture_output=True, timeout=30, env=launcher_env)
         (out/'refuse-overwrite.log').write_bytes(result.stdout+result.stderr)
         require(result.returncode != 0 and digest(saved) == old_hash, 'import_refuses_existing_profile_without_replacement')
         bad = out/'checksum mismatch package'
@@ -210,7 +217,7 @@ def main() -> int:
                 shutil.copyfile(path, bad/path.name)
         with (bad/'README.txt').open('ab') as stream:
             stream.write(b'\nIntentional checksum rejection fixture.\n')
-        result = subprocess.run(command(bad, 'checksum'), capture_output=True, timeout=30)
+        result = subprocess.run(command(bad, 'checksum'), capture_output=True, timeout=30, env=launcher_env)
         (out/'checksum-mismatch.log').write_bytes(result.stdout+result.stderr)
         require(result.returncode != 0 and not (data/'saves/checksum.sav').exists(), 'changed_package_is_refused_before_import')
         require(digest(seed) == spec['seed_sha256'] and all(digest(path) == sha for path, sha in immutable.items()),
