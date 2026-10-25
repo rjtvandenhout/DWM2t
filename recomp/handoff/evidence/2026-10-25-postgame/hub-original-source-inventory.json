@@ -1,0 +1,9034 @@
+{
+  "npcs": [
+    {
+      "world": 0,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x0A",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        32,
+        16
+      ],
+      "raw": "85 01 1a 00 00 20 10 05 00 50 0a",
+      "source": {
+        "bank": 105,
+        "address": "0x6405",
+        "rom_offset": "0x1A6405",
+        "source": "src/banks/bank_105.asm",
+        "line": 579
+      },
+      "selected_conditions": [
+        {
+          "flag": 21,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x63CA",
+            "rom_offset": "0x1A63CA",
+            "source": "src/banks/bank_105.asm",
+            "line": 575
+          }
+        },
+        {
+          "flag": 6,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x63CE",
+            "rom_offset": "0x1A63CE",
+            "source": "src/banks/bank_105.asm",
+            "line": 575
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x00",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        64,
+        224
+      ],
+      "raw": "86 01 10 00 00 40 e0 06 00 60 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6410",
+        "rom_offset": "0x1A6410",
+        "source": "src/banks/bank_105.asm",
+        "line": 580
+      },
+      "selected_conditions": [
+        {
+          "flag": 21,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x63CA",
+            "rom_offset": "0x1A63CA",
+            "source": "src/banks/bank_105.asm",
+            "line": 575
+          }
+        },
+        {
+          "flag": 6,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x63CE",
+            "rom_offset": "0x1A63CE",
+            "source": "src/banks/bank_105.asm",
+            "line": 575
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0x07",
+      "sprite": [
+        4,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 04 00 00 50 30 05 01 50 07",
+      "source": {
+        "bank": 105,
+        "address": "0x645C",
+        "rom_offset": "0x1A645C",
+        "source": "src/banks/bank_105.asm",
+        "line": 584
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x641B",
+            "rom_offset": "0x1A641B",
+            "source": "src/banks/bank_105.asm",
+            "line": 580
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0x4B",
+      "sprite": [
+        90,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "raw": "86 00 5a 00 00 60 20 06 00 60 4b",
+      "source": {
+        "bank": 105,
+        "address": "0x6467",
+        "rom_offset": "0x1A6467",
+        "source": "src/banks/bank_105.asm",
+        "line": 585
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x641B",
+            "rom_offset": "0x1A641B",
+            "source": "src/banks/bank_105.asm",
+            "line": 580
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0x7C",
+      "sprite": [
+        1,
+        1
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "raw": "87 00 01 01 00 30 60 07 00 70 7c",
+      "source": {
+        "bank": 105,
+        "address": "0x6472",
+        "rom_offset": "0x1A6472",
+        "source": "src/banks/bank_105.asm",
+        "line": 586
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x641B",
+            "rom_offset": "0x1A641B",
+            "source": "src/banks/bank_105.asm",
+            "line": 580
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        0,
+        2
+      ],
+      "selector": "0x98",
+      "sprite": [
+        240,
+        0
+      ],
+      "position": [
+        128,
+        48
+      ],
+      "raw": "85 00 f0 00 00 80 30 05 00 50 98",
+      "source": {
+        "bank": 105,
+        "address": "0x64A0",
+        "rom_offset": "0x1A64A0",
+        "source": "src/banks/bank_105.asm",
+        "line": 589
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x647D",
+            "rom_offset": "0x1A647D",
+            "source": "src/banks/bank_105.asm",
+            "line": 586
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        2
+      ],
+      "selector": "0x1C",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "raw": "85 01 01 00 00 60 30 05 00 50 1c",
+      "source": {
+        "bank": 105,
+        "address": "0x6560",
+        "rom_offset": "0x1A6560",
+        "source": "src/banks/bank_105.asm",
+        "line": 601
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x64AB",
+            "rom_offset": "0x1A64AB",
+            "source": "src/banks/bank_105.asm",
+            "line": 589
+          }
+        },
+        {
+          "flag": 0,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x64B1",
+            "rom_offset": "0x1A64B1",
+            "source": "src/banks/bank_105.asm",
+            "line": 590
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        2
+      ],
+      "selector": "0x1A",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "raw": "86 00 01 00 02 50 50 06 03 60 1a",
+      "source": {
+        "bank": 105,
+        "address": "0x656B",
+        "rom_offset": "0x1A656B",
+        "source": "src/banks/bank_105.asm",
+        "line": 601
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x64AB",
+            "rom_offset": "0x1A64AB",
+            "source": "src/banks/bank_105.asm",
+            "line": 589
+          }
+        },
+        {
+          "flag": 0,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x64B1",
+            "rom_offset": "0x1A64B1",
+            "source": "src/banks/bank_105.asm",
+            "line": 590
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        2
+      ],
+      "selector": "0xB2",
+      "sprite": [
+        36,
+        0
+      ],
+      "position": [
+        112,
+        96
+      ],
+      "raw": "84 00 24 00 00 70 60 04 03 40 b2",
+      "source": {
+        "bank": 105,
+        "address": "0x6576",
+        "rom_offset": "0x1A6576",
+        "source": "src/banks/bank_105.asm",
+        "line": 602
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x64AB",
+            "rom_offset": "0x1A64AB",
+            "source": "src/banks/bank_105.asm",
+            "line": 589
+          }
+        },
+        {
+          "flag": 0,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x64B1",
+            "rom_offset": "0x1A64B1",
+            "source": "src/banks/bank_105.asm",
+            "line": 590
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        2
+      ],
+      "selector": "0xB3",
+      "sprite": [
+        79,
+        0
+      ],
+      "position": [
+        48,
+        32
+      ],
+      "raw": "85 00 4f 00 00 30 20 05 00 50 b3",
+      "source": {
+        "bank": 105,
+        "address": "0x660E",
+        "rom_offset": "0x1A660E",
+        "source": "src/banks/bank_105.asm",
+        "line": 611
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x65AF",
+            "rom_offset": "0x1A65AF",
+            "source": "src/banks/bank_105.asm",
+            "line": 605
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        2
+      ],
+      "selector": "0x4A",
+      "sprite": [
+        216,
+        0
+      ],
+      "position": [
+        80,
+        16
+      ],
+      "raw": "86 00 d8 00 00 50 10 06 00 60 4a",
+      "source": {
+        "bank": 105,
+        "address": "0x6619",
+        "rom_offset": "0x1A6619",
+        "source": "src/banks/bank_105.asm",
+        "line": 612
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x65AF",
+            "rom_offset": "0x1A65AF",
+            "source": "src/banks/bank_105.asm",
+            "line": 605
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        2
+      ],
+      "selector": "0x7B",
+      "sprite": [
+        42,
+        0
+      ],
+      "position": [
+        64,
+        96
+      ],
+      "raw": "87 00 2a 00 00 40 60 07 00 70 7b",
+      "source": {
+        "bank": 105,
+        "address": "0x6624",
+        "rom_offset": "0x1A6624",
+        "source": "src/banks/bank_105.asm",
+        "line": 613
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x65AF",
+            "rom_offset": "0x1A65AF",
+            "source": "src/banks/bank_105.asm",
+            "line": 605
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        0,
+        3
+      ],
+      "selector": "0x04",
+      "sprite": [
+        145,
+        0
+      ],
+      "position": [
+        48,
+        48
+      ],
+      "raw": "86 00 91 00 00 30 30 06 01 60 04",
+      "source": {
+        "bank": 105,
+        "address": "0x6634",
+        "rom_offset": "0x1A6634",
+        "source": "src/banks/bank_105.asm",
+        "line": 614
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        3
+      ],
+      "selector": "0x09",
+      "sprite": [
+        185,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "85 00 b9 00 02 40 20 05 01 50 09",
+      "source": {
+        "bank": 105,
+        "address": "0x669C",
+        "rom_offset": "0x1A669C",
+        "source": "src/banks/bank_105.asm",
+        "line": 620
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x663F",
+            "rom_offset": "0x1A663F",
+            "source": "src/banks/bank_105.asm",
+            "line": 614
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        3
+      ],
+      "selector": "0xB4",
+      "sprite": [
+        246,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "86 00 f6 00 00 60 40 06 00 60 b4",
+      "source": {
+        "bank": 105,
+        "address": "0x66A7",
+        "rom_offset": "0x1A66A7",
+        "source": "src/banks/bank_105.asm",
+        "line": 621
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x663F",
+            "rom_offset": "0x1A663F",
+            "source": "src/banks/bank_105.asm",
+            "line": 614
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        1,
+        3
+      ],
+      "selector": "0xD4",
+      "sprite": [
+        177,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "raw": "87 00 b1 00 00 70 30 07 00 70 d4",
+      "source": {
+        "bank": 105,
+        "address": "0x66B2",
+        "rom_offset": "0x1A66B2",
+        "source": "src/banks/bank_105.asm",
+        "line": 622
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x663F",
+            "rom_offset": "0x1A663F",
+            "source": "src/banks/bank_105.asm",
+            "line": 614
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        3
+      ],
+      "selector": "0x7D",
+      "sprite": [
+        61,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "85 00 3d 00 00 40 10 05 01 50 7d",
+      "source": {
+        "bank": 105,
+        "address": "0x6701",
+        "rom_offset": "0x1A6701",
+        "source": "src/banks/bank_105.asm",
+        "line": 627
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x66BD",
+            "rom_offset": "0x1A66BD",
+            "source": "src/banks/bank_105.asm",
+            "line": 622
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        3
+      ],
+      "selector": "0x7E",
+      "sprite": [
+        46,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "raw": "86 00 2e 00 00 20 30 06 00 60 7e",
+      "source": {
+        "bank": 105,
+        "address": "0x670C",
+        "rom_offset": "0x1A670C",
+        "source": "src/banks/bank_105.asm",
+        "line": 627
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x66BD",
+            "rom_offset": "0x1A66BD",
+            "source": "src/banks/bank_105.asm",
+            "line": 622
+          }
+        }
+      ]
+    },
+    {
+      "world": 0,
+      "region": [
+        2,
+        3
+      ],
+      "selector": "0xD5",
+      "sprite": [
+        248,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "raw": "87 00 f8 00 00 10 40 07 00 70 d5",
+      "source": {
+        "bank": 105,
+        "address": "0x6717",
+        "rom_offset": "0x1A6717",
+        "source": "src/banks/bank_105.asm",
+        "line": 628
+      },
+      "selected_conditions": [
+        {
+          "flag": 35,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x66BD",
+            "rom_offset": "0x1A66BD",
+            "source": "src/banks/bank_105.asm",
+            "line": 622
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x80",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "raw": "85 01 11 00 00 20 60 05 01 50 80",
+      "source": {
+        "bank": 105,
+        "address": "0x673F",
+        "rom_offset": "0x1A673F",
+        "source": "src/banks/bank_105.asm",
+        "line": 630
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 1,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0xDA",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        128,
+        64
+      ],
+      "raw": "85 01 1a 00 00 80 40 05 01 50 da",
+      "source": {
+        "bank": 105,
+        "address": "0x674F",
+        "rom_offset": "0x1A674F",
+        "source": "src/banks/bank_105.asm",
+        "line": 631
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 1,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x22",
+      "sprite": [
+        25,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "raw": "85 01 19 00 00 20 60 05 01 50 22",
+      "source": {
+        "bank": 105,
+        "address": "0x675F",
+        "rom_offset": "0x1A675F",
+        "source": "src/banks/bank_105.asm",
+        "line": 632
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 1,
+      "region": [
+        3,
+        1
+      ],
+      "selector": "0xEA",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        64,
+        96
+      ],
+      "raw": "85 01 1a 00 00 40 60 05 00 50 ea",
+      "source": {
+        "bank": 105,
+        "address": "0x67C7",
+        "rom_offset": "0x1A67C7",
+        "source": "src/banks/bank_105.asm",
+        "line": 639
+      },
+      "selected_conditions": [
+        {
+          "flag": 2,
+          "set": true,
+          "conditional_marker": 251,
+          "source": {
+            "bank": 105,
+            "address": "0x67BA",
+            "rom_offset": "0x1A67BA",
+            "source": "src/banks/bank_105.asm",
+            "line": 638
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        0,
+        2
+      ],
+      "selector": "0x12",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        96,
+        112
+      ],
+      "raw": "85 01 1b 00 00 60 70 05 03 50 12",
+      "source": {
+        "bank": 105,
+        "address": "0x67DF",
+        "rom_offset": "0x1A67DF",
+        "source": "src/banks/bank_105.asm",
+        "line": 640
+      },
+      "selected_conditions": [
+        {
+          "flag": 7,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x67D2",
+            "rom_offset": "0x1A67D2",
+            "source": "src/banks/bank_105.asm",
+            "line": 640
+          }
+        },
+        {
+          "flag": 10,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x67D6",
+            "rom_offset": "0x1A67D6",
+            "source": "src/banks/bank_105.asm",
+            "line": 640
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        0,
+        2
+      ],
+      "selector": "0x0B",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "86 01 10 00 00 20 50 06 00 60 0b",
+      "source": {
+        "bank": 105,
+        "address": "0x67EA",
+        "rom_offset": "0x1A67EA",
+        "source": "src/banks/bank_105.asm",
+        "line": 641
+      },
+      "selected_conditions": [
+        {
+          "flag": 7,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x67D2",
+            "rom_offset": "0x1A67D2",
+            "source": "src/banks/bank_105.asm",
+            "line": 640
+          }
+        },
+        {
+          "flag": 10,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x67D6",
+            "rom_offset": "0x1A67D6",
+            "source": "src/banks/bank_105.asm",
+            "line": 640
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        1,
+        2
+      ],
+      "selector": "0x21",
+      "sprite": [
+        24,
+        0
+      ],
+      "position": [
+        112,
+        96
+      ],
+      "raw": "85 01 18 00 00 70 60 05 00 50 21",
+      "source": {
+        "bank": 105,
+        "address": "0x685C",
+        "rom_offset": "0x1A685C",
+        "source": "src/banks/bank_105.asm",
+        "line": 648
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6822",
+            "rom_offset": "0x1A6822",
+            "source": "src/banks/bank_105.asm",
+            "line": 645
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        2,
+        2
+      ],
+      "selector": "0x0C",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "85 01 1c 00 00 40 30 05 00 50 0c",
+      "source": {
+        "bank": 105,
+        "address": "0x68F2",
+        "rom_offset": "0x1A68F2",
+        "source": "src/banks/bank_105.asm",
+        "line": 658
+      },
+      "selected_conditions": [
+        {
+          "flag": 7,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6867",
+            "rom_offset": "0x1A6867",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 10,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x686B",
+            "rom_offset": "0x1A686B",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 33,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x686F",
+            "rom_offset": "0x1A686F",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6873",
+            "rom_offset": "0x1A6873",
+            "source": "src/banks/bank_105.asm",
+            "line": 650
+          }
+        },
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6877",
+            "rom_offset": "0x1A6877",
+            "source": "src/banks/bank_105.asm",
+            "line": 650
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        2,
+        2
+      ],
+      "selector": "0xB9",
+      "sprite": [
+        8,
+        0
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "raw": "86 01 08 00 02 30 40 06 01 60 b9",
+      "source": {
+        "bank": 105,
+        "address": "0x68FD",
+        "rom_offset": "0x1A68FD",
+        "source": "src/banks/bank_105.asm",
+        "line": 658
+      },
+      "selected_conditions": [
+        {
+          "flag": 7,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6867",
+            "rom_offset": "0x1A6867",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 10,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x686B",
+            "rom_offset": "0x1A686B",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 33,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x686F",
+            "rom_offset": "0x1A686F",
+            "source": "src/banks/bank_105.asm",
+            "line": 649
+          }
+        },
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6873",
+            "rom_offset": "0x1A6873",
+            "source": "src/banks/bank_105.asm",
+            "line": 650
+          }
+        },
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6877",
+            "rom_offset": "0x1A6877",
+            "source": "src/banks/bank_105.asm",
+            "line": 650
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        3,
+        2
+      ],
+      "selector": "0x1E",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "raw": "85 01 1a 00 00 30 60 05 00 50 1e",
+      "source": {
+        "bank": 105,
+        "address": "0x692F",
+        "rom_offset": "0x1A692F",
+        "source": "src/banks/bank_105.asm",
+        "line": 661
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6908",
+            "rom_offset": "0x1A6908",
+            "source": "src/banks/bank_105.asm",
+            "line": 659
+          }
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "region": [
+        3,
+        2
+      ],
+      "selector": "0xEB",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        64
+      ],
+      "raw": "86 01 10 00 00 20 40 06 01 60 eb",
+      "source": {
+        "bank": 105,
+        "address": "0x693A",
+        "rom_offset": "0x1A693A",
+        "source": "src/banks/bank_105.asm",
+        "line": 662
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6908",
+            "rom_offset": "0x1A6908",
+            "source": "src/banks/bank_105.asm",
+            "line": 659
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x10",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "raw": "85 01 15 00 00 60 50 05 02 50 10",
+      "source": {
+        "bank": 105,
+        "address": "0x6A07",
+        "rom_offset": "0x1A6A07",
+        "source": "src/banks/bank_105.asm",
+        "line": 675
+      },
+      "selected_conditions": [
+        {
+          "flag": 308,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x694B",
+            "rom_offset": "0x1A694B",
+            "source": "src/banks/bank_105.asm",
+            "line": 663
+          }
+        },
+        {
+          "flag": 35,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6951",
+            "rom_offset": "0x1A6951",
+            "source": "src/banks/bank_105.asm",
+            "line": 664
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x7F",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "raw": "85 01 15 00 00 10 40 05 01 50 7f",
+      "source": {
+        "bank": 105,
+        "address": "0x6A12",
+        "rom_offset": "0x1A6A12",
+        "source": "src/banks/bank_105.asm",
+        "line": 676
+      },
+      "selected_conditions": [
+        {
+          "flag": 308,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x694B",
+            "rom_offset": "0x1A694B",
+            "source": "src/banks/bank_105.asm",
+            "line": 663
+          }
+        },
+        {
+          "flag": 35,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6951",
+            "rom_offset": "0x1A6951",
+            "source": "src/banks/bank_105.asm",
+            "line": 664
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        87,
+        0
+      ],
+      "position": [
+        128,
+        96
+      ],
+      "raw": "86 01 57 00 00 80 60 06 02 60 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6A1D",
+        "rom_offset": "0x1A6A1D",
+        "source": "src/banks/bank_105.asm",
+        "line": 676
+      },
+      "selected_conditions": [
+        {
+          "flag": 308,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x694B",
+            "rom_offset": "0x1A694B",
+            "source": "src/banks/bank_105.asm",
+            "line": 663
+          }
+        },
+        {
+          "flag": 35,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6951",
+            "rom_offset": "0x1A6951",
+            "source": "src/banks/bank_105.asm",
+            "line": 664
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xCD",
+      "sprite": [
+        185,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "87 00 b9 00 00 20 50 07 01 70 cd",
+      "source": {
+        "bank": 105,
+        "address": "0x6A28",
+        "rom_offset": "0x1A6A28",
+        "source": "src/banks/bank_105.asm",
+        "line": 677
+      },
+      "selected_conditions": [
+        {
+          "flag": 308,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x694B",
+            "rom_offset": "0x1A694B",
+            "source": "src/banks/bank_105.asm",
+            "line": 663
+          }
+        },
+        {
+          "flag": 35,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6951",
+            "rom_offset": "0x1A6951",
+            "source": "src/banks/bank_105.asm",
+            "line": 664
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x11",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "85 01 15 00 00 40 10 05 00 50 11",
+      "source": {
+        "bank": 105,
+        "address": "0x6A53",
+        "rom_offset": "0x1A6A53",
+        "source": "src/banks/bank_105.asm",
+        "line": 680
+      },
+      "selected_conditions": [
+        {
+          "flag": 33,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6A33",
+            "rom_offset": "0x1A6A33",
+            "source": "src/banks/bank_105.asm",
+            "line": 678
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x0F",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "86 01 1d 00 02 50 30 06 03 60 0f",
+      "source": {
+        "bank": 105,
+        "address": "0x6A5E",
+        "rom_offset": "0x1A6A5E",
+        "source": "src/banks/bank_105.asm",
+        "line": 680
+      },
+      "selected_conditions": [
+        {
+          "flag": 33,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6A33",
+            "rom_offset": "0x1A6A33",
+            "source": "src/banks/bank_105.asm",
+            "line": 678
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0xAA",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        16,
+        80
+      ],
+      "raw": "87 01 1c 00 00 10 50 07 00 70 aa",
+      "source": {
+        "bank": 105,
+        "address": "0x6A69",
+        "rom_offset": "0x1A6A69",
+        "source": "src/banks/bank_105.asm",
+        "line": 681
+      },
+      "selected_conditions": [
+        {
+          "flag": 33,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6A33",
+            "rom_offset": "0x1A6A33",
+            "source": "src/banks/bank_105.asm",
+            "line": 678
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x0E",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "raw": "85 01 1d 00 00 40 40 05 00 50 0e",
+      "source": {
+        "bank": 105,
+        "address": "0x6AC3",
+        "rom_offset": "0x1A6AC3",
+        "source": "src/banks/bank_105.asm",
+        "line": 687
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6A74",
+            "rom_offset": "0x1A6A74",
+            "source": "src/banks/bank_105.asm",
+            "line": 682
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x15",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "86 01 1d 00 00 20 50 06 00 60 15",
+      "source": {
+        "bank": 105,
+        "address": "0x6ACE",
+        "rom_offset": "0x1A6ACE",
+        "source": "src/banks/bank_105.asm",
+        "line": 687
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6A74",
+            "rom_offset": "0x1A6A74",
+            "source": "src/banks/bank_105.asm",
+            "line": 682
+          }
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x16",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "raw": "84 01 1d 00 00 20 60 04 02 40 16",
+      "source": {
+        "bank": 105,
+        "address": "0x6AD9",
+        "rom_offset": "0x1A6AD9",
+        "source": "src/banks/bank_105.asm",
+        "line": 688
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6A74",
+            "rom_offset": "0x1A6A74",
+            "source": "src/banks/bank_105.asm",
+            "line": 682
+          }
+        }
+      ]
+    },
+    {
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x64",
+      "sprite": [
+        22,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "85 01 16 00 00 40 10 05 01 50 64",
+      "source": {
+        "bank": 105,
+        "address": "0x6B06",
+        "rom_offset": "0x1A6B06",
+        "source": "src/banks/bank_105.asm",
+        "line": 691
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xC3",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "raw": "86 01 11 00 00 50 20 06 02 60 c3",
+      "source": {
+        "bank": 105,
+        "address": "0x6B11",
+        "rom_offset": "0x1A6B11",
+        "source": "src/banks/bank_105.asm",
+        "line": 692
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xC4",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        96,
+        16
+      ],
+      "raw": "87 01 10 00 00 60 10 07 03 70 c4",
+      "source": {
+        "bank": 105,
+        "address": "0x6B1C",
+        "rom_offset": "0x1A6B1C",
+        "source": "src/banks/bank_105.asm",
+        "line": 692
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 4,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        23,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "85 01 17 00 00 40 10 05 00 50 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6B2C",
+        "rom_offset": "0x1A6B2C",
+        "source": "src/banks/bank_105.asm",
+        "line": 693
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 4,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        23,
+        0
+      ],
+      "position": [
+        80,
+        16
+      ],
+      "raw": "86 01 17 00 00 50 10 06 00 60 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6B37",
+        "rom_offset": "0x1A6B37",
+        "source": "src/banks/bank_105.asm",
+        "line": 694
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 4,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0xF1",
+      "sprite": [
+        46,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "raw": "85 01 2e 00 00 50 20 05 00 50 f1",
+      "source": {
+        "bank": 105,
+        "address": "0x6BCD",
+        "rom_offset": "0x1A6BCD",
+        "source": "src/banks/bank_105.asm",
+        "line": 703
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6B42",
+            "rom_offset": "0x1A6B42",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        },
+        {
+          "flag": 203,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x6B48",
+            "rom_offset": "0x1A6B48",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        }
+      ]
+    },
+    {
+      "world": 4,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x67",
+      "sprite": [
+        123,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "86 00 7b 00 00 60 40 06 00 60 67",
+      "source": {
+        "bank": 105,
+        "address": "0x6BD8",
+        "rom_offset": "0x1A6BD8",
+        "source": "src/banks/bank_105.asm",
+        "line": 704
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6B42",
+            "rom_offset": "0x1A6B42",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        },
+        {
+          "flag": 203,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x6B48",
+            "rom_offset": "0x1A6B48",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        }
+      ]
+    },
+    {
+      "world": 4,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x68",
+      "sprite": [
+        46,
+        1
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "raw": "87 00 2e 01 00 60 50 07 02 70 68",
+      "source": {
+        "bank": 105,
+        "address": "0x6BE3",
+        "rom_offset": "0x1A6BE3",
+        "source": "src/banks/bank_105.asm",
+        "line": 705
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6B42",
+            "rom_offset": "0x1A6B42",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        },
+        {
+          "flag": 203,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x6B48",
+            "rom_offset": "0x1A6B48",
+            "source": "src/banks/bank_105.asm",
+            "line": 695
+          }
+        }
+      ]
+    },
+    {
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0xA9",
+      "sprite": [
+        74,
+        0
+      ],
+      "position": [
+        224,
+        224
+      ],
+      "raw": "85 01 4a 00 00 e0 e0 05 00 50 a9",
+      "source": {
+        "bank": 105,
+        "address": "0x6D0C",
+        "rom_offset": "0x1A6D0C",
+        "source": "src/banks/bank_105.asm",
+        "line": 723
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6C38",
+            "rom_offset": "0x1A6C38",
+            "source": "src/banks/bank_105.asm",
+            "line": 710
+          }
+        }
+      ]
+    },
+    {
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x19",
+      "sprite": [
+        2,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "raw": "86 01 02 00 00 50 20 06 00 60 19",
+      "source": {
+        "bank": 105,
+        "address": "0x6D17",
+        "rom_offset": "0x1A6D17",
+        "source": "src/banks/bank_105.asm",
+        "line": 724
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6C38",
+            "rom_offset": "0x1A6C38",
+            "source": "src/banks/bank_105.asm",
+            "line": 710
+          }
+        }
+      ]
+    },
+    {
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x19",
+      "sprite": [
+        2,
+        0
+      ],
+      "position": [
+        224,
+        224
+      ],
+      "raw": "87 01 02 00 00 e0 e0 07 00 70 19",
+      "source": {
+        "bank": 105,
+        "address": "0x6D22",
+        "rom_offset": "0x1A6D22",
+        "source": "src/banks/bank_105.asm",
+        "line": 725
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6C38",
+            "rom_offset": "0x1A6C38",
+            "source": "src/banks/bank_105.asm",
+            "line": 710
+          }
+        }
+      ]
+    },
+    {
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x02",
+      "sprite": [
+        5,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "85 01 05 00 00 40 30 05 00 50 02",
+      "source": {
+        "bank": 105,
+        "address": "0x6D62",
+        "rom_offset": "0x1A6D62",
+        "source": "src/banks/bank_105.asm",
+        "line": 729
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6D2F",
+            "rom_offset": "0x1A6D2F",
+            "source": "src/banks/bank_105.asm",
+            "line": 725
+          }
+        }
+      ]
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x4C",
+      "sprite": [
+        147,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "85 00 93 00 00 40 30 05 01 50 4c",
+      "source": {
+        "bank": 105,
+        "address": "0x6E44",
+        "rom_offset": "0x1A6E44",
+        "source": "src/banks/bank_105.asm",
+        "line": 743
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x4D",
+      "sprite": [
+        94,
+        0
+      ],
+      "position": [
+        48,
+        112
+      ],
+      "raw": "86 00 5e 00 00 30 70 06 00 60 4d",
+      "source": {
+        "bank": 105,
+        "address": "0x6E4F",
+        "rom_offset": "0x1A6E4F",
+        "source": "src/banks/bank_105.asm",
+        "line": 743
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xB5",
+      "sprite": [
+        118,
+        0
+      ],
+      "position": [
+        128,
+        80
+      ],
+      "raw": "87 00 76 00 00 80 50 07 00 70 b5",
+      "source": {
+        "bank": 105,
+        "address": "0x6E5A",
+        "rom_offset": "0x1A6E5A",
+        "source": "src/banks/bank_105.asm",
+        "line": 744
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x4E",
+      "sprite": [
+        78,
+        1
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "raw": "85 00 4e 01 00 50 40 05 03 50 4e",
+      "source": {
+        "bank": 105,
+        "address": "0x6E6A",
+        "rom_offset": "0x1A6E6A",
+        "source": "src/banks/bank_105.asm",
+        "line": 745
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x4F",
+      "sprite": [
+        142,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "86 00 8e 00 00 20 50 06 01 60 4f",
+      "source": {
+        "bank": 105,
+        "address": "0x6E75",
+        "rom_offset": "0x1A6E75",
+        "source": "src/banks/bank_105.asm",
+        "line": 746
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0xB6",
+      "sprite": [
+        119,
+        0
+      ],
+      "position": [
+        80,
+        112
+      ],
+      "raw": "87 00 77 00 00 50 70 07 02 70 b6",
+      "source": {
+        "bank": 105,
+        "address": "0x6E80",
+        "rom_offset": "0x1A6E80",
+        "source": "src/banks/bank_105.asm",
+        "line": 747
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 8,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x14",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "85 01 15 00 00 40 20 05 00 50 14",
+      "source": {
+        "bank": 105,
+        "address": "0x6EA2",
+        "rom_offset": "0x1A6EA2",
+        "source": "src/banks/bank_105.asm",
+        "line": 749
+      },
+      "selected_conditions": [
+        {
+          "flag": 2,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6E8D",
+            "rom_offset": "0x1A6E8D",
+            "source": "src/banks/bank_105.asm",
+            "line": 747
+          }
+        }
+      ]
+    },
+    {
+      "world": 8,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x1D",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        96,
+        96
+      ],
+      "raw": "86 01 10 00 00 60 60 06 00 60 1d",
+      "source": {
+        "bank": 105,
+        "address": "0x6EAD",
+        "rom_offset": "0x1A6EAD",
+        "source": "src/banks/bank_105.asm",
+        "line": 749
+      },
+      "selected_conditions": [
+        {
+          "flag": 2,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x6E8D",
+            "rom_offset": "0x1A6E8D",
+            "source": "src/banks/bank_105.asm",
+            "line": 747
+          }
+        }
+      ]
+    },
+    {
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x92",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        48,
+        32
+      ],
+      "raw": "85 01 1c 00 00 30 20 05 00 50 92",
+      "source": {
+        "bank": 105,
+        "address": "0x6EBF",
+        "rom_offset": "0x1A6EBF",
+        "source": "src/banks/bank_105.asm",
+        "line": 750
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x93",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "raw": "86 01 1a 00 00 20 60 06 03 60 93",
+      "source": {
+        "bank": 105,
+        "address": "0x6ECA",
+        "rom_offset": "0x1A6ECA",
+        "source": "src/banks/bank_105.asm",
+        "line": 751
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x94",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "raw": "86 01 1a 00 00 60 50 06 00 60 94",
+      "source": {
+        "bank": 105,
+        "address": "0x6ED5",
+        "rom_offset": "0x1A6ED5",
+        "source": "src/banks/bank_105.asm",
+        "line": 752
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xE9",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        80,
+        112
+      ],
+      "raw": "87 01 10 00 00 50 70 07 02 70 e9",
+      "source": {
+        "bank": 105,
+        "address": "0x6EE0",
+        "rom_offset": "0x1A6EE0",
+        "source": "src/banks/bank_105.asm",
+        "line": 753
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 10,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x69",
+      "sprite": [
+        42,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 2a 00 00 50 30 05 00 50 69",
+      "source": {
+        "bank": 105,
+        "address": "0x6EF2",
+        "rom_offset": "0x1A6EF2",
+        "source": "src/banks/bank_105.asm",
+        "line": 754
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 10,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xB7",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        16,
+        96
+      ],
+      "raw": "86 01 15 00 00 10 60 06 01 60 b7",
+      "source": {
+        "bank": 105,
+        "address": "0x6EFD",
+        "rom_offset": "0x1A6EFD",
+        "source": "src/banks/bank_105.asm",
+        "line": 754
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 10,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xB8",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        112,
+        80
+      ],
+      "raw": "87 01 12 00 00 70 50 07 00 70 b8",
+      "source": {
+        "bank": 105,
+        "address": "0x6F08",
+        "rom_offset": "0x1A6F08",
+        "source": "src/banks/bank_105.asm",
+        "line": 755
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 11,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "raw": "84 01 00 00 00 70 30 04 03 40 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6F1A",
+        "rom_offset": "0x1A6F1A",
+        "source": "src/banks/bank_105.asm",
+        "line": 756
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 11,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "85 00 01 00 00 60 40 05 03 50 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6F25",
+        "rom_offset": "0x1A6F25",
+        "source": "src/banks/bank_105.asm",
+        "line": 757
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 11,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "raw": "86 00 01 00 00 60 30 06 03 60 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6F30",
+        "rom_offset": "0x1A6F30",
+        "source": "src/banks/bank_105.asm",
+        "line": 758
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 11,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "raw": "87 00 01 00 00 60 20 07 03 70 00",
+      "source": {
+        "bank": 105,
+        "address": "0x6F3B",
+        "rom_offset": "0x1A6F3B",
+        "source": "src/banks/bank_105.asm",
+        "line": 758
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x25",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        64,
+        112
+      ],
+      "raw": "85 01 1e 00 00 40 70 05 02 50 25",
+      "source": {
+        "bank": 105,
+        "address": "0x6F5B",
+        "rom_offset": "0x1A6F5B",
+        "source": "src/banks/bank_105.asm",
+        "line": 760
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6F4A",
+            "rom_offset": "0x1A6F4A",
+            "source": "src/banks/bank_105.asm",
+            "line": 759
+          }
+        }
+      ]
+    },
+    {
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x26",
+      "sprite": [
+        31,
+        0
+      ],
+      "position": [
+        64,
+        96
+      ],
+      "raw": "86 01 1f 00 00 40 60 06 00 60 26",
+      "source": {
+        "bank": 105,
+        "address": "0x6F66",
+        "rom_offset": "0x1A6F66",
+        "source": "src/banks/bank_105.asm",
+        "line": 761
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6F4A",
+            "rom_offset": "0x1A6F4A",
+            "source": "src/banks/bank_105.asm",
+            "line": 759
+          }
+        }
+      ]
+    },
+    {
+      "world": 12,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x23",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 10 00 00 50 30 05 00 50 23",
+      "source": {
+        "bank": 105,
+        "address": "0x6F84",
+        "rom_offset": "0x1A6F84",
+        "source": "src/banks/bank_105.asm",
+        "line": 763
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6F71",
+            "rom_offset": "0x1A6F71",
+            "source": "src/banks/bank_105.asm",
+            "line": 762
+          }
+        }
+      ]
+    },
+    {
+      "world": 12,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x24",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        96,
+        112
+      ],
+      "raw": "86 01 10 00 00 60 70 06 03 60 24",
+      "source": {
+        "bank": 105,
+        "address": "0x6F8F",
+        "rom_offset": "0x1A6F8F",
+        "source": "src/banks/bank_105.asm",
+        "line": 763
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x6F71",
+            "rom_offset": "0x1A6F71",
+            "source": "src/banks/bank_105.asm",
+            "line": 762
+          }
+        }
+      ]
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x6A",
+      "sprite": [
+        12,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "85 01 0c 00 00 40 30 05 00 50 6a",
+      "source": {
+        "bank": 105,
+        "address": "0x6FC6",
+        "rom_offset": "0x1A6FC6",
+        "source": "src/banks/bank_105.asm",
+        "line": 767
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x6B",
+      "sprite": [
+        24,
+        0
+      ],
+      "position": [
+        96,
+        96
+      ],
+      "raw": "86 01 18 00 00 60 60 06 03 60 6b",
+      "source": {
+        "bank": 105,
+        "address": "0x6FD1",
+        "rom_offset": "0x1A6FD1",
+        "source": "src/banks/bank_105.asm",
+        "line": 768
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x70",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "raw": "85 01 12 00 00 30 40 05 03 50 70",
+      "source": {
+        "bank": 105,
+        "address": "0x6FE1",
+        "rom_offset": "0x1A6FE1",
+        "source": "src/banks/bank_105.asm",
+        "line": 769
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x6F",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "raw": "86 01 10 00 00 20 30 06 00 60 6f",
+      "source": {
+        "bank": 105,
+        "address": "0x6FEC",
+        "rom_offset": "0x1A6FEC",
+        "source": "src/banks/bank_105.asm",
+        "line": 769
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x71",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "86 01 10 00 02 20 50 06 02 60 71",
+      "source": {
+        "bank": 105,
+        "address": "0x6FF7",
+        "rom_offset": "0x1A6FF7",
+        "source": "src/banks/bank_105.asm",
+        "line": 770
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0xE3",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        112,
+        32
+      ],
+      "raw": "84 01 11 00 02 70 20 04 01 40 e3",
+      "source": {
+        "bank": 105,
+        "address": "0x7002",
+        "rom_offset": "0x1A7002",
+        "source": "src/banks/bank_105.asm",
+        "line": 771
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x38",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        112,
+        64
+      ],
+      "raw": "85 01 1c 00 00 70 40 05 03 50 38",
+      "source": {
+        "bank": 105,
+        "address": "0x7026",
+        "rom_offset": "0x1A7026",
+        "source": "src/banks/bank_105.asm",
+        "line": 773
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x39",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "raw": "86 01 1d 00 00 60 50 06 02 60 39",
+      "source": {
+        "bank": 105,
+        "address": "0x7031",
+        "rom_offset": "0x1A7031",
+        "source": "src/banks/bank_105.asm",
+        "line": 774
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x3A",
+      "sprite": [
+        24,
+        0
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "raw": "87 01 18 00 00 20 20 07 00 70 3a",
+      "source": {
+        "bank": 105,
+        "address": "0x703C",
+        "rom_offset": "0x1A703C",
+        "source": "src/banks/bank_105.asm",
+        "line": 774
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xB0",
+      "sprite": [
+        24,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "87 01 18 00 00 40 10 07 00 70 b0",
+      "source": {
+        "bank": 105,
+        "address": "0x7047",
+        "rom_offset": "0x1A7047",
+        "source": "src/banks/bank_105.asm",
+        "line": 775
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x42",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        32,
+        64
+      ],
+      "raw": "85 01 1b 00 00 20 40 05 02 50 42",
+      "source": {
+        "bank": 105,
+        "address": "0x7071",
+        "rom_offset": "0x1A7071",
+        "source": "src/banks/bank_105.asm",
+        "line": 778
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7054",
+            "rom_offset": "0x1A7054",
+            "source": "src/banks/bank_105.asm",
+            "line": 776
+          }
+        }
+      ]
+    },
+    {
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x3E",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        48,
+        48
+      ],
+      "raw": "86 01 1a 00 00 30 30 06 03 60 3e",
+      "source": {
+        "bank": 105,
+        "address": "0x707C",
+        "rom_offset": "0x1A707C",
+        "source": "src/banks/bank_105.asm",
+        "line": 778
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7054",
+            "rom_offset": "0x1A7054",
+            "source": "src/banks/bank_105.asm",
+            "line": 776
+          }
+        }
+      ]
+    },
+    {
+      "world": 16,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x42",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "85 01 1b 00 00 60 40 05 00 50 42",
+      "source": {
+        "bank": 105,
+        "address": "0x709E",
+        "rom_offset": "0x1A709E",
+        "source": "src/banks/bank_105.asm",
+        "line": 780
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7089",
+            "rom_offset": "0x1A7089",
+            "source": "src/banks/bank_105.asm",
+            "line": 779
+          }
+        }
+      ]
+    },
+    {
+      "world": 16,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x3E",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "raw": "86 01 1a 00 00 60 50 06 02 60 3e",
+      "source": {
+        "bank": 105,
+        "address": "0x70A9",
+        "rom_offset": "0x1A70A9",
+        "source": "src/banks/bank_105.asm",
+        "line": 781
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7089",
+            "rom_offset": "0x1A7089",
+            "source": "src/banks/bank_105.asm",
+            "line": 779
+          }
+        }
+      ]
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x2B",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 1b 00 00 50 30 05 00 50 2b",
+      "source": {
+        "bank": 105,
+        "address": "0x70BD",
+        "rom_offset": "0x1A70BD",
+        "source": "src/banks/bank_105.asm",
+        "line": 782
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xAF",
+      "sprite": [
+        24,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "raw": "86 01 18 00 00 10 40 06 01 60 af",
+      "source": {
+        "bank": 105,
+        "address": "0x70C8",
+        "rom_offset": "0x1A70C8",
+        "source": "src/banks/bank_105.asm",
+        "line": 783
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x29",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "85 01 1b 00 00 40 20 05 00 50 29",
+      "source": {
+        "bank": 105,
+        "address": "0x70D8",
+        "rom_offset": "0x1A70D8",
+        "source": "src/banks/bank_105.asm",
+        "line": 784
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x2C",
+      "sprite": [
+        26,
+        0
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "raw": "86 01 1a 00 00 30 40 06 03 60 2c",
+      "source": {
+        "bank": 105,
+        "address": "0x70E3",
+        "rom_offset": "0x1A70E3",
+        "source": "src/banks/bank_105.asm",
+        "line": 785
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x2A",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        96,
+        96
+      ],
+      "raw": "87 01 11 00 02 60 60 07 01 70 2a",
+      "source": {
+        "bank": 105,
+        "address": "0x70EE",
+        "rom_offset": "0x1A70EE",
+        "source": "src/banks/bank_105.asm",
+        "line": 785
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0xAE",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        128,
+        112
+      ],
+      "raw": "85 01 1b 00 00 80 70 05 03 50 ae",
+      "source": {
+        "bank": 105,
+        "address": "0x70F9",
+        "rom_offset": "0x1A70F9",
+        "source": "src/banks/bank_105.asm",
+        "line": 786
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x77",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        96,
+        96
+      ],
+      "raw": "85 01 1e 00 00 60 60 05 00 50 77",
+      "source": {
+        "bank": 105,
+        "address": "0x713B",
+        "rom_offset": "0x1A713B",
+        "source": "src/banks/bank_105.asm",
+        "line": 790
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7106",
+            "rom_offset": "0x1A7106",
+            "source": "src/banks/bank_105.asm",
+            "line": 787
+          }
+        }
+      ]
+    },
+    {
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x27",
+      "sprite": [
+        25,
+        0
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "raw": "86 01 19 00 00 40 40 06 02 60 27",
+      "source": {
+        "bank": 105,
+        "address": "0x7146",
+        "rom_offset": "0x1A7146",
+        "source": "src/banks/bank_105.asm",
+        "line": 791
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7106",
+            "rom_offset": "0x1A7106",
+            "source": "src/banks/bank_105.asm",
+            "line": 787
+          }
+        }
+      ]
+    },
+    {
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xAD",
+      "sprite": [
+        2,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "87 00 02 00 00 40 30 07 00 70 ad",
+      "source": {
+        "bank": 105,
+        "address": "0x7151",
+        "rom_offset": "0x1A7151",
+        "source": "src/banks/bank_105.asm",
+        "line": 792
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7106",
+            "rom_offset": "0x1A7106",
+            "source": "src/banks/bank_105.asm",
+            "line": 787
+          }
+        }
+      ]
+    },
+    {
+      "world": 19,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x46",
+      "sprite": [
+        33,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "85 01 21 00 00 40 30 05 00 50 46",
+      "source": {
+        "bank": 105,
+        "address": "0x7163",
+        "rom_offset": "0x1A7163",
+        "source": "src/banks/bank_105.asm",
+        "line": 793
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 20,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        12,
+        0
+      ],
+      "position": [
+        80,
+        144
+      ],
+      "raw": "85 01 0c 00 00 50 90 05 02 50 00",
+      "source": {
+        "bank": 105,
+        "address": "0x7175",
+        "rom_offset": "0x1A7175",
+        "source": "src/banks/bank_105.asm",
+        "line": 794
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 20,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        160
+      ],
+      "raw": "86 00 01 00 00 50 a0 06 00 60 00",
+      "source": {
+        "bank": 105,
+        "address": "0x7180",
+        "rom_offset": "0x1A7180",
+        "source": "src/banks/bank_105.asm",
+        "line": 795
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 20,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        160
+      ],
+      "raw": "87 00 01 00 00 50 a0 07 00 70 00",
+      "source": {
+        "bank": 105,
+        "address": "0x718B",
+        "rom_offset": "0x1A718B",
+        "source": "src/banks/bank_105.asm",
+        "line": 795
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x8F",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 1e 00 00 50 30 05 00 50 8f",
+      "source": {
+        "bank": 105,
+        "address": "0x71B1",
+        "rom_offset": "0x1A71B1",
+        "source": "src/banks/bank_105.asm",
+        "line": 798
+      },
+      "selected_conditions": [
+        {
+          "flag": 61,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x7198",
+            "rom_offset": "0x1A7198",
+            "source": "src/banks/bank_105.asm",
+            "line": 796
+          }
+        }
+      ]
+    },
+    {
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xDB",
+      "sprite": [
+        93,
+        0
+      ],
+      "position": [
+        96,
+        8
+      ],
+      "raw": "86 01 5d 00 00 60 08 06 00 60 db",
+      "source": {
+        "bank": 105,
+        "address": "0x71BC",
+        "rom_offset": "0x1A71BC",
+        "source": "src/banks/bank_105.asm",
+        "line": 798
+      },
+      "selected_conditions": [
+        {
+          "flag": 61,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x7198",
+            "rom_offset": "0x1A7198",
+            "source": "src/banks/bank_105.asm",
+            "line": 796
+          }
+        }
+      ]
+    },
+    {
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x72",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "raw": "85 01 1e 00 00 60 30 05 00 50 72",
+      "source": {
+        "bank": 105,
+        "address": "0x71F1",
+        "rom_offset": "0x1A71F1",
+        "source": "src/banks/bank_105.asm",
+        "line": 802
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x73",
+      "sprite": [
+        31,
+        0
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "raw": "86 01 1f 00 00 30 60 06 00 60 73",
+      "source": {
+        "bank": 105,
+        "address": "0x71FC",
+        "rom_offset": "0x1A71FC",
+        "source": "src/banks/bank_105.asm",
+        "line": 802
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xD0",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "87 00 11 00 00 40 20 07 01 70 d0",
+      "source": {
+        "bank": 105,
+        "address": "0x7207",
+        "rom_offset": "0x1A7207",
+        "source": "src/banks/bank_105.asm",
+        "line": 803
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 23,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xF0",
+      "sprite": [
+        42,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "raw": "87 01 2a 00 00 40 30 07 03 70 f0",
+      "source": {
+        "bank": 105,
+        "address": "0x7289",
+        "rom_offset": "0x1A7289",
+        "source": "src/banks/bank_105.asm",
+        "line": 811
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7214",
+            "rom_offset": "0x1A7214",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        },
+        {
+          "flag": 201,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x721A",
+            "rom_offset": "0x1A721A",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        }
+      ]
+    },
+    {
+      "world": 23,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x86",
+      "sprite": [
+        22,
+        0
+      ],
+      "position": [
+        112,
+        64
+      ],
+      "raw": "85 01 16 00 00 70 40 05 03 50 86",
+      "source": {
+        "bank": 105,
+        "address": "0x7294",
+        "rom_offset": "0x1A7294",
+        "source": "src/banks/bank_105.asm",
+        "line": 812
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7214",
+            "rom_offset": "0x1A7214",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        },
+        {
+          "flag": 201,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x721A",
+            "rom_offset": "0x1A721A",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        }
+      ]
+    },
+    {
+      "world": 23,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x87",
+      "sprite": [
+        22,
+        0
+      ],
+      "position": [
+        16,
+        96
+      ],
+      "raw": "85 01 16 00 00 10 60 05 02 50 87",
+      "source": {
+        "bank": 105,
+        "address": "0x729F",
+        "rom_offset": "0x1A729F",
+        "source": "src/banks/bank_105.asm",
+        "line": 812
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7214",
+            "rom_offset": "0x1A7214",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        },
+        {
+          "flag": 201,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x721A",
+            "rom_offset": "0x1A721A",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        }
+      ]
+    },
+    {
+      "world": 23,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x88",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "raw": "86 01 12 00 00 50 50 06 01 60 88",
+      "source": {
+        "bank": 105,
+        "address": "0x72AA",
+        "rom_offset": "0x1A72AA",
+        "source": "src/banks/bank_105.asm",
+        "line": 813
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7214",
+            "rom_offset": "0x1A7214",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        },
+        {
+          "flag": 201,
+          "set": false,
+          "source": {
+            "bank": 105,
+            "address": "0x721A",
+            "rom_offset": "0x1A721A",
+            "source": "src/banks/bank_105.asm",
+            "line": 804
+          }
+        }
+      ]
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x56",
+      "sprite": [
+        25,
+        0
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "raw": "85 01 19 00 00 40 40 05 00 50 56",
+      "source": {
+        "bank": 105,
+        "address": "0x7320",
+        "rom_offset": "0x1A7320",
+        "source": "src/banks/bank_105.asm",
+        "line": 821
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x57",
+      "sprite": [
+        85,
+        0
+      ],
+      "position": [
+        64,
+        80
+      ],
+      "raw": "86 00 55 00 00 40 50 06 02 60 57",
+      "source": {
+        "bank": 105,
+        "address": "0x732B",
+        "rom_offset": "0x1A732B",
+        "source": "src/banks/bank_105.asm",
+        "line": 821
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xBB",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        112,
+        96
+      ],
+      "raw": "87 01 1d 00 00 70 60 07 00 70 bb",
+      "source": {
+        "bank": 105,
+        "address": "0x7336",
+        "rom_offset": "0x1A7336",
+        "source": "src/banks/bank_105.asm",
+        "line": 822
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xBC",
+      "sprite": [
+        7,
+        0
+      ],
+      "position": [
+        96,
+        112
+      ],
+      "raw": "85 01 07 00 02 60 70 05 01 50 bc",
+      "source": {
+        "bank": 105,
+        "address": "0x7341",
+        "rom_offset": "0x1A7341",
+        "source": "src/banks/bank_105.asm",
+        "line": 823
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x61",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        112,
+        96
+      ],
+      "raw": "85 01 1b 00 00 70 60 05 00 50 61",
+      "source": {
+        "bank": 105,
+        "address": "0x7351",
+        "rom_offset": "0x1A7351",
+        "source": "src/banks/bank_105.asm",
+        "line": 824
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0xBD",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "raw": "86 01 1e 00 00 50 50 06 02 60 bd",
+      "source": {
+        "bank": 105,
+        "address": "0x735C",
+        "rom_offset": "0x1A735C",
+        "source": "src/banks/bank_105.asm",
+        "line": 824
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0xBE",
+      "sprite": [
+        6,
+        0
+      ],
+      "position": [
+        32,
+        112
+      ],
+      "raw": "87 01 06 00 02 20 70 07 01 70 be",
+      "source": {
+        "bank": 105,
+        "address": "0x7367",
+        "rom_offset": "0x1A7367",
+        "source": "src/banks/bank_105.asm",
+        "line": 825
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x5B",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "raw": "85 01 1e 00 00 10 40 05 00 50 5b",
+      "source": {
+        "bank": 105,
+        "address": "0x7377",
+        "rom_offset": "0x1A7377",
+        "source": "src/banks/bank_105.asm",
+        "line": 826
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0xBF",
+      "sprite": [
+        31,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "86 01 1f 00 00 20 50 06 03 60 bf",
+      "source": {
+        "bank": 105,
+        "address": "0x7382",
+        "rom_offset": "0x1A7382",
+        "source": "src/banks/bank_105.asm",
+        "line": 827
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x5C",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "raw": "87 01 10 00 02 30 60 07 01 70 5c",
+      "source": {
+        "bank": 105,
+        "address": "0x738D",
+        "rom_offset": "0x1A738D",
+        "source": "src/banks/bank_105.asm",
+        "line": 827
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0xC0",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        112,
+        112
+      ],
+      "raw": "85 01 1e 00 00 70 70 05 03 50 c0",
+      "source": {
+        "bank": 105,
+        "address": "0x7398",
+        "rom_offset": "0x1A7398",
+        "source": "src/banks/bank_105.asm",
+        "line": 828
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x58",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "raw": "85 01 12 00 00 60 20 05 00 50 58",
+      "source": {
+        "bank": 105,
+        "address": "0x73A8",
+        "rom_offset": "0x1A73A8",
+        "source": "src/banks/bank_105.asm",
+        "line": 829
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x59",
+      "sprite": [
+        145,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "86 00 91 00 00 50 30 06 01 60 59",
+      "source": {
+        "bank": 105,
+        "address": "0x73B3",
+        "rom_offset": "0x1A73B3",
+        "source": "src/banks/bank_105.asm",
+        "line": 830
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x5A",
+      "sprite": [
+        51,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "87 00 33 00 00 60 40 07 02 70 5a",
+      "source": {
+        "bank": 105,
+        "address": "0x73BE",
+        "rom_offset": "0x1A73BE",
+        "source": "src/banks/bank_105.asm",
+        "line": 830
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x5D",
+      "sprite": [
+        21,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "raw": "85 01 15 00 00 50 20 05 00 50 5d",
+      "source": {
+        "bank": 105,
+        "address": "0x73CE",
+        "rom_offset": "0x1A73CE",
+        "source": "src/banks/bank_105.asm",
+        "line": 831
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x5F",
+      "sprite": [
+        95,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "raw": "86 00 5f 00 00 60 40 06 03 60 5f",
+      "source": {
+        "bank": 105,
+        "address": "0x73D9",
+        "rom_offset": "0x1A73D9",
+        "source": "src/banks/bank_105.asm",
+        "line": 832
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x60",
+      "sprite": [
+        38,
+        1
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "raw": "87 00 26 01 02 20 50 07 01 70 60",
+      "source": {
+        "bank": 105,
+        "address": "0x73E4",
+        "rom_offset": "0x1A73E4",
+        "source": "src/banks/bank_105.asm",
+        "line": 833
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0x55",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "raw": "85 01 1c 00 00 50 50 05 03 50 55",
+      "source": {
+        "bank": 105,
+        "address": "0x73F4",
+        "rom_offset": "0x1A73F4",
+        "source": "src/banks/bank_105.asm",
+        "line": 834
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0x5E",
+      "sprite": [
+        29,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "raw": "86 01 1d 00 00 20 30 06 00 60 5e",
+      "source": {
+        "bank": 105,
+        "address": "0x73FF",
+        "rom_offset": "0x1A73FF",
+        "source": "src/banks/bank_105.asm",
+        "line": 834
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0xC1",
+      "sprite": [
+        28,
+        0
+      ],
+      "position": [
+        32,
+        64
+      ],
+      "raw": "85 01 1c 00 00 20 40 05 02 50 c1",
+      "source": {
+        "bank": 105,
+        "address": "0x740A",
+        "rom_offset": "0x1A740A",
+        "source": "src/banks/bank_105.asm",
+        "line": 835
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "selector": "0xC2",
+      "sprite": [
+        27,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "87 01 1b 00 02 40 20 07 01 70 c2",
+      "source": {
+        "bank": 105,
+        "address": "0x7415",
+        "rom_offset": "0x1A7415",
+        "source": "src/banks/bank_105.asm",
+        "line": 836
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x81",
+      "sprite": [
+        59,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "raw": "85 01 3b 00 00 40 20 05 00 50 81",
+      "source": {
+        "bank": 105,
+        "address": "0x7460",
+        "rom_offset": "0x1A7460",
+        "source": "src/banks/bank_105.asm",
+        "line": 841
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x742C",
+            "rom_offset": "0x1A742C",
+            "source": "src/banks/bank_105.asm",
+            "line": 837
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x82",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "raw": "86 01 12 00 00 60 30 06 03 60 82",
+      "source": {
+        "bank": 105,
+        "address": "0x746B",
+        "rom_offset": "0x1A746B",
+        "source": "src/banks/bank_105.asm",
+        "line": 841
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x742C",
+            "rom_offset": "0x1A742C",
+            "source": "src/banks/bank_105.asm",
+            "line": 837
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x20",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        64
+      ],
+      "raw": "87 01 10 00 00 20 40 07 02 70 20",
+      "source": {
+        "bank": 105,
+        "address": "0x7476",
+        "rom_offset": "0x1A7476",
+        "source": "src/banks/bank_105.asm",
+        "line": 842
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x742C",
+            "rom_offset": "0x1A742C",
+            "source": "src/banks/bank_105.asm",
+            "line": 837
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x83",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "raw": "85 01 10 00 00 30 60 05 02 50 83",
+      "source": {
+        "bank": 105,
+        "address": "0x74CC",
+        "rom_offset": "0x1A74CC",
+        "source": "src/banks/bank_105.asm",
+        "line": 847
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x74A3",
+            "rom_offset": "0x1A74A3",
+            "source": "src/banks/bank_105.asm",
+            "line": 845
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x84",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "raw": "85 01 10 00 00 20 30 05 01 50 84",
+      "source": {
+        "bank": 105,
+        "address": "0x7512",
+        "rom_offset": "0x1A7512",
+        "source": "src/banks/bank_105.asm",
+        "line": 852
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x74F9",
+            "rom_offset": "0x1A74F9",
+            "source": "src/banks/bank_105.asm",
+            "line": 850
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        1,
+        1
+      ],
+      "selector": "0x85",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "raw": "86 01 10 00 00 20 60 06 01 60 85",
+      "source": {
+        "bank": 105,
+        "address": "0x751D",
+        "rom_offset": "0x1A751D",
+        "source": "src/banks/bank_105.asm",
+        "line": 852
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x74F9",
+            "rom_offset": "0x1A74F9",
+            "source": "src/banks/bank_105.asm",
+            "line": 850
+          }
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "selector": "0x99",
+      "sprite": [
+        3,
+        0
+      ],
+      "position": [
+        208,
+        48
+      ],
+      "raw": "85 01 03 00 00 d0 30 05 00 50 99",
+      "source": {
+        "bank": 105,
+        "address": "0x755F",
+        "rom_offset": "0x1A755F",
+        "source": "src/banks/bank_105.asm",
+        "line": 856
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x754A",
+            "rom_offset": "0x1A754A",
+            "source": "src/banks/bank_105.asm",
+            "line": 855
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x8A",
+      "sprite": [
+        30,
+        0
+      ],
+      "position": [
+        64,
+        96
+      ],
+      "raw": "85 01 1e 00 00 40 60 05 00 50 8a",
+      "source": {
+        "bank": 105,
+        "address": "0x7583",
+        "rom_offset": "0x1A7583",
+        "source": "src/banks/bank_105.asm",
+        "line": 859
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7570",
+            "rom_offset": "0x1A7570",
+            "source": "src/banks/bank_105.asm",
+            "line": 858
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0xD9",
+      "sprite": [
+        31,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "raw": "86 01 1f 00 00 50 20 06 02 60 d9",
+      "source": {
+        "bank": 105,
+        "address": "0x758E",
+        "rom_offset": "0x1A758E",
+        "source": "src/banks/bank_105.asm",
+        "line": 859
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x7570",
+            "rom_offset": "0x1A7570",
+            "source": "src/banks/bank_105.asm",
+            "line": 858
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x8D",
+      "sprite": [
+        18,
+        0
+      ],
+      "position": [
+        48,
+        80
+      ],
+      "raw": "85 01 12 00 00 30 50 05 00 50 8d",
+      "source": {
+        "bank": 105,
+        "address": "0x75E7",
+        "rom_offset": "0x1A75E7",
+        "source": "src/banks/bank_105.asm",
+        "line": 865
+      },
+      "selected_conditions": [
+        {
+          "flag": 37,
+          "set": true,
+          "conditional_marker": 252,
+          "source": {
+            "bank": 105,
+            "address": "0x75C6",
+            "rom_offset": "0x1A75C6",
+            "source": "src/banks/bank_105.asm",
+            "line": 863
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0x8C",
+      "sprite": [
+        16,
+        0
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "raw": "85 01 10 00 00 20 20 05 00 50 8c",
+      "source": {
+        "bank": 105,
+        "address": "0x76C3",
+        "rom_offset": "0x1A76C3",
+        "source": "src/banks/bank_105.asm",
+        "line": 879
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7679",
+            "rom_offset": "0x1A7679",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 209,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x767D",
+            "rom_offset": "0x1A767D",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7681",
+            "rom_offset": "0x1A7681",
+            "source": "src/banks/bank_105.asm",
+            "line": 875
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0xD7",
+      "sprite": [
+        122,
+        0
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "raw": "86 00 7a 00 00 50 40 06 02 60 d7",
+      "source": {
+        "bank": 105,
+        "address": "0x76CE",
+        "rom_offset": "0x1A76CE",
+        "source": "src/banks/bank_105.asm",
+        "line": 879
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7679",
+            "rom_offset": "0x1A7679",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 209,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x767D",
+            "rom_offset": "0x1A767D",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7681",
+            "rom_offset": "0x1A7681",
+            "source": "src/banks/bank_105.asm",
+            "line": 875
+          }
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "region": [
+        2,
+        0
+      ],
+      "selector": "0xD6",
+      "sprite": [
+        17,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "87 01 11 00 00 50 30 07 00 70 d6",
+      "source": {
+        "bank": 105,
+        "address": "0x76D9",
+        "rom_offset": "0x1A76D9",
+        "source": "src/banks/bank_105.asm",
+        "line": 880
+      },
+      "selected_conditions": [
+        {
+          "flag": 36,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7679",
+            "rom_offset": "0x1A7679",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 209,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x767D",
+            "rom_offset": "0x1A767D",
+            "source": "src/banks/bank_105.asm",
+            "line": 874
+          }
+        },
+        {
+          "flag": 37,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x7681",
+            "rom_offset": "0x1A7681",
+            "source": "src/banks/bank_105.asm",
+            "line": 875
+          }
+        }
+      ]
+    },
+    {
+      "world": 28,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        87,
+        0
+      ],
+      "position": [
+        69,
+        128
+      ],
+      "raw": "85 01 57 00 00 45 80 05 02 50 00",
+      "source": {
+        "bank": 105,
+        "address": "0x76ED",
+        "rom_offset": "0x1A76ED",
+        "source": "src/banks/bank_105.asm",
+        "line": 881
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 28,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x45",
+      "sprite": [
+        252,
+        118
+      ],
+      "position": [
+        133,
+        1
+      ],
+      "raw": "fe ff fc 76 01 85 01 57 00 00 45",
+      "source": {
+        "bank": 105,
+        "address": "0x76F8",
+        "rom_offset": "0x1A76F8",
+        "source": "src/banks/bank_105.asm",
+        "line": 882
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 28,
+      "region": [
+        0,
+        1
+      ],
+      "selector": "0x00",
+      "sprite": [
+        87,
+        0
+      ],
+      "position": [
+        69,
+        160
+      ],
+      "raw": "85 01 57 00 00 45 a0 05 02 50 00",
+      "source": {
+        "bank": 105,
+        "address": "0x76FD",
+        "rom_offset": "0x1A76FD",
+        "source": "src/banks/bank_105.asm",
+        "line": 882
+      },
+      "selected_conditions": []
+    },
+    {
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x32",
+      "sprite": [
+        4,
+        0
+      ],
+      "position": [
+        80,
+        16
+      ],
+      "raw": "85 01 04 00 00 50 10 05 00 50 32",
+      "source": {
+        "bank": 105,
+        "address": "0x7742",
+        "rom_offset": "0x1A7742",
+        "source": "src/banks/bank_105.asm",
+        "line": 887
+      },
+      "selected_conditions": [
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x770C",
+            "rom_offset": "0x1A770C",
+            "source": "src/banks/bank_105.asm",
+            "line": 883
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x31",
+      "sprite": [
+        5,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "raw": "86 01 05 00 00 40 10 06 00 60 31",
+      "source": {
+        "bank": 105,
+        "address": "0x774D",
+        "rom_offset": "0x1A774D",
+        "source": "src/banks/bank_105.asm",
+        "line": 887
+      },
+      "selected_conditions": [
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x770C",
+            "rom_offset": "0x1A770C",
+            "source": "src/banks/bank_105.asm",
+            "line": 883
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x30",
+      "sprite": [
+        40,
+        0
+      ],
+      "position": [
+        128,
+        64
+      ],
+      "raw": "87 01 28 00 00 80 40 07 01 70 30",
+      "source": {
+        "bank": 105,
+        "address": "0x7758",
+        "rom_offset": "0x1A7758",
+        "source": "src/banks/bank_105.asm",
+        "line": 888
+      },
+      "selected_conditions": [
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x770C",
+            "rom_offset": "0x1A770C",
+            "source": "src/banks/bank_105.asm",
+            "line": 883
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "selector": "0x00",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        176,
+        80
+      ],
+      "raw": "84 01 01 00 00 b0 50 04 03 40 00",
+      "source": {
+        "bank": 105,
+        "address": "0x7763",
+        "rom_offset": "0x1A7763",
+        "source": "src/banks/bank_105.asm",
+        "line": 889
+      },
+      "selected_conditions": [
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x770C",
+            "rom_offset": "0x1A770C",
+            "source": "src/banks/bank_105.asm",
+            "line": 883
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x2D",
+      "sprite": [
+        41,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "raw": "85 01 29 00 02 50 30 05 01 50 2d",
+      "source": {
+        "bank": 105,
+        "address": "0x7801",
+        "rom_offset": "0x1A7801",
+        "source": "src/banks/bank_105.asm",
+        "line": 899
+      },
+      "selected_conditions": [
+        {
+          "flag": 18,
+          "set": true,
+          "conditional_marker": 251,
+          "source": {
+            "bank": 105,
+            "address": "0x776E",
+            "rom_offset": "0x1A776E",
+            "source": "src/banks/bank_105.asm",
+            "line": 889
+          }
+        },
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x777C",
+            "rom_offset": "0x1A777C",
+            "source": "src/banks/bank_105.asm",
+            "line": 890
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x2E",
+      "sprite": [
+        41,
+        0
+      ],
+      "position": [
+        16,
+        96
+      ],
+      "raw": "86 01 29 00 00 10 60 06 00 60 2e",
+      "source": {
+        "bank": 105,
+        "address": "0x780C",
+        "rom_offset": "0x1A780C",
+        "source": "src/banks/bank_105.asm",
+        "line": 899
+      },
+      "selected_conditions": [
+        {
+          "flag": 18,
+          "set": true,
+          "conditional_marker": 251,
+          "source": {
+            "bank": 105,
+            "address": "0x776E",
+            "rom_offset": "0x1A776E",
+            "source": "src/banks/bank_105.asm",
+            "line": 889
+          }
+        },
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x777C",
+            "rom_offset": "0x1A777C",
+            "source": "src/banks/bank_105.asm",
+            "line": 890
+          }
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "selector": "0x2F",
+      "sprite": [
+        1,
+        0
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "raw": "87 01 01 00 00 30 40 07 01 70 2f",
+      "source": {
+        "bank": 105,
+        "address": "0x7817",
+        "rom_offset": "0x1A7817",
+        "source": "src/banks/bank_105.asm",
+        "line": 900
+      },
+      "selected_conditions": [
+        {
+          "flag": 18,
+          "set": true,
+          "conditional_marker": 251,
+          "source": {
+            "bank": 105,
+            "address": "0x776E",
+            "rom_offset": "0x1A776E",
+            "source": "src/banks/bank_105.asm",
+            "line": 889
+          }
+        },
+        {
+          "flag": 1,
+          "set": true,
+          "source": {
+            "bank": 105,
+            "address": "0x777C",
+            "rom_offset": "0x1A777C",
+            "source": "src/banks/bank_105.asm",
+            "line": 890
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "kind": "on_enter",
+      "world": 0,
+      "region": [
+        1,
+        1
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 21,
+      "flag_set": true,
+      "selector": "0x01",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5D33",
+        "rom_offset": "0x21DD33",
+        "source": "src/banks/bank_135.asm",
+        "line": 470
+      },
+      "raw": "00 00 01 01 ff ff 15 00 01 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 0,
+      "region": [
+        0,
+        3
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE4",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5D3D",
+        "rom_offset": "0x21DD3D",
+        "source": "src/banks/bank_135.asm",
+        "line": 470
+      },
+      "raw": "00 00 00 03 ff ff ff ff e4 01"
+    },
+    {
+      "kind": "interact",
+      "world": 0,
+      "region": [
+        1,
+        2
+      ],
+      "position": [
+        112,
+        112
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA3",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4751",
+        "rom_offset": "0x21C751",
+        "source": "src/banks/bank_135.asm",
+        "line": 120
+      },
+      "raw": "05 00 01 02 70 70 ff ff a3 01"
+    },
+    {
+      "kind": "interact",
+      "world": 0,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        48,
+        80
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA2",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x475B",
+        "rom_offset": "0x21C75B",
+        "source": "src/banks/bank_135.asm",
+        "line": 120
+      },
+      "raw": "04 00 00 02 30 50 ff ff a2 01"
+    },
+    {
+      "kind": "interact",
+      "world": 0,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x1B",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x4765",
+        "rom_offset": "0x21C765",
+        "source": "src/banks/bank_135.asm",
+        "line": 121
+      },
+      "raw": "03 00 00 02 70 30 ff ff 1b 00"
+    },
+    {
+      "kind": "interact",
+      "world": 0,
+      "region": [
+        0,
+        3
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE5",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x476F",
+        "rom_offset": "0x21C76F",
+        "source": "src/banks/bank_135.asm",
+        "line": 121
+      },
+      "raw": "01 00 00 03 40 30 ff ff e5 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 1,
+      "region": [
+        1,
+        1
+      ],
+      "position": [
+        48,
+        72
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE7",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5D48",
+        "rom_offset": "0x21DD48",
+        "source": "src/banks/bank_135.asm",
+        "line": 471
+      },
+      "raw": "00 01 01 01 30 48 ff ff e7 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 1,
+      "region": [
+        1,
+        1
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 312,
+      "flag_set": true,
+      "selector": "0xD1",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5D52",
+        "rom_offset": "0x21DD52",
+        "source": "src/banks/bank_135.asm",
+        "line": 472
+      },
+      "raw": "00 01 01 01 ff ff 38 01 d1 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 1,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xF4",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5D5C",
+        "rom_offset": "0x21DD5C",
+        "source": "src/banks/bank_135.asm",
+        "line": 472
+      },
+      "raw": "00 01 01 00 ff ff ff ff f4 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 1,
+      "region": [
+        2,
+        2
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 391,
+      "flag_set": true,
+      "selector": "0xF6",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5D66",
+        "rom_offset": "0x21DD66",
+        "source": "src/banks/bank_135.asm",
+        "line": 473
+      },
+      "raw": "00 01 02 02 ff ff 87 01 f6 01"
+    },
+    {
+      "kind": "interact",
+      "world": 1,
+      "region": [
+        2,
+        2
+      ],
+      "position": [
+        96,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x17",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x477A",
+        "rom_offset": "0x21C77A",
+        "source": "src/banks/bank_135.asm",
+        "line": 122
+      },
+      "raw": "03 01 02 02 60 70 ff ff 17 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 2,
+      "region": [
+        2,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 5,
+      "flag_set": true,
+      "selector": "0x04",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5D71",
+        "rom_offset": "0x21DD71",
+        "source": "src/banks/bank_135.asm",
+        "line": 474
+      },
+      "raw": "00 02 02 00 ff ff 05 00 04 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 6,
+      "flag_set": true,
+      "selector": "0x05",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5D7B",
+        "rom_offset": "0x21DD7B",
+        "source": "src/banks/bank_135.asm",
+        "line": 474
+      },
+      "raw": "00 02 00 00 ff ff 06 00 05 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        48,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x13",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4785",
+        "rom_offset": "0x21C785",
+        "source": "src/banks/bank_135.asm",
+        "line": 123
+      },
+      "raw": "03 02 01 00 30 20 ff ff 13 01"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        32,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x13",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x478F",
+        "rom_offset": "0x21C78F",
+        "source": "src/banks/bank_135.asm",
+        "line": 123
+      },
+      "raw": "05 02 01 00 20 40 ff ff 13 01"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA5",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4799",
+        "rom_offset": "0x21C799",
+        "source": "src/banks/bank_135.asm",
+        "line": 124
+      },
+      "raw": "03 02 01 00 50 20 ff ff a5 01"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x45",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x47A3",
+        "rom_offset": "0x21C7A3",
+        "source": "src/banks/bank_135.asm",
+        "line": 125
+      },
+      "raw": "03 02 00 00 10 40 ff ff 45 01"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xAB",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x47AD",
+        "rom_offset": "0x21C7AD",
+        "source": "src/banks/bank_135.asm",
+        "line": 125
+      },
+      "raw": "01 02 00 00 50 40 ff ff ab 01"
+    },
+    {
+      "kind": "interact",
+      "world": 2,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        64
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xAB",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x47B7",
+        "rom_offset": "0x21C7B7",
+        "source": "src/banks/bank_135.asm",
+        "line": 126
+      },
+      "raw": "01 02 00 00 70 40 ff ff ab 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x25",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x5D86",
+        "rom_offset": "0x21DD86",
+        "source": "src/banks/bank_135.asm",
+        "line": 475
+      },
+      "raw": "00 04 00 00 50 50 ff ff 25 00"
+    },
+    {
+      "kind": "on_enter",
+      "world": 4,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x26",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x5D90",
+        "rom_offset": "0x21DD90",
+        "source": "src/banks/bank_135.asm",
+        "line": 476
+      },
+      "raw": "00 04 01 00 ff ff ff ff 26 00"
+    },
+    {
+      "kind": "interact",
+      "world": 4,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x65",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x47CD",
+        "rom_offset": "0x21C7CD",
+        "source": "src/banks/bank_135.asm",
+        "line": 127
+      },
+      "raw": "03 04 01 00 40 30 ff ff 65 01"
+    },
+    {
+      "kind": "interact",
+      "world": 4,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x9D",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x47D7",
+        "rom_offset": "0x21C7D7",
+        "source": "src/banks/bank_135.asm",
+        "line": 128
+      },
+      "raw": "03 04 01 00 50 30 ff ff 9d 01"
+    },
+    {
+      "kind": "interact",
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x22",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x47E1",
+        "rom_offset": "0x21C7E1",
+        "source": "src/banks/bank_135.asm",
+        "line": 129
+      },
+      "raw": "05 04 00 00 40 40 ff ff 22 00"
+    },
+    {
+      "kind": "interact",
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        80
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x23",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x47EB",
+        "rom_offset": "0x21C7EB",
+        "source": "src/banks/bank_135.asm",
+        "line": 129
+      },
+      "raw": "05 04 00 00 30 50 ff ff 23 00"
+    },
+    {
+      "kind": "interact",
+      "world": 4,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x24",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x47F5",
+        "rom_offset": "0x21C7F5",
+        "source": "src/banks/bank_135.asm",
+        "line": 130
+      },
+      "raw": "05 04 00 00 40 60 ff ff 24 00"
+    },
+    {
+      "kind": "on_enter",
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 11,
+      "flag_set": true,
+      "selector": "0x06",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5D9B",
+        "rom_offset": "0x21DD9B",
+        "source": "src/banks/bank_135.asm",
+        "line": 476
+      },
+      "raw": "00 05 01 00 ff ff 0b 00 06 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        0,
+        64
+      ],
+      "direction": "any/target",
+      "flag": 2,
+      "flag_set": true,
+      "selector": "0x1A",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5DA5",
+        "rom_offset": "0x21DDA5",
+        "source": "src/banks/bank_135.asm",
+        "line": 477
+      },
+      "raw": "00 05 01 00 00 40 02 00 1a 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        144,
+        64
+      ],
+      "direction": "any/target",
+      "flag": 2,
+      "flag_set": true,
+      "selector": "0x1A",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x5DAF",
+        "rom_offset": "0x21DDAF",
+        "source": "src/banks/bank_135.asm",
+        "line": 477
+      },
+      "raw": "00 05 01 00 90 40 02 00 1a 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 5,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA9",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4800",
+        "rom_offset": "0x21C800",
+        "source": "src/banks/bank_135.asm",
+        "line": 131
+      },
+      "raw": "05 05 01 00 40 30 ff ff a9 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x03",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x480B",
+        "rom_offset": "0x21C80B",
+        "source": "src/banks/bank_135.asm",
+        "line": 131
+      },
+      "raw": "03 06 00 00 40 10 ff ff 03 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA0",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4815",
+        "rom_offset": "0x21C815",
+        "source": "src/banks/bank_135.asm",
+        "line": 132
+      },
+      "raw": "03 06 00 00 30 10 ff ff a0 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xA1",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x481F",
+        "rom_offset": "0x21C81F",
+        "source": "src/banks/bank_135.asm",
+        "line": 132
+      },
+      "raw": "03 06 00 00 60 10 ff ff a1 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x05",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4829",
+        "rom_offset": "0x21C829",
+        "source": "src/banks/bank_135.asm",
+        "line": 133
+      },
+      "raw": "05 06 00 00 20 50 ff ff 05 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        64
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x06",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4833",
+        "rom_offset": "0x21C833",
+        "source": "src/banks/bank_135.asm",
+        "line": 134
+      },
+      "raw": "01 06 00 00 10 40 ff ff 06 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x06",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x483D",
+        "rom_offset": "0x21C83D",
+        "source": "src/banks/bank_135.asm",
+        "line": 134
+      },
+      "raw": "04 06 00 00 20 60 ff ff 06 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        112
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x06",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4847",
+        "rom_offset": "0x21C847",
+        "source": "src/banks/bank_135.asm",
+        "line": 135
+      },
+      "raw": "05 06 00 00 20 70 ff ff 06 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        64,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE6",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4851",
+        "rom_offset": "0x21C851",
+        "source": "src/banks/bank_135.asm",
+        "line": 136
+      },
+      "raw": "03 06 01 00 40 10 ff ff e6 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        48,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE6",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x485B",
+        "rom_offset": "0x21C85B",
+        "source": "src/banks/bank_135.asm",
+        "line": 136
+      },
+      "raw": "03 06 01 00 30 10 ff ff e6 01"
+    },
+    {
+      "kind": "interact",
+      "world": 6,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        96,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE6",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4865",
+        "rom_offset": "0x21C865",
+        "source": "src/banks/bank_135.asm",
+        "line": 137
+      },
+      "raw": "03 06 01 00 60 10 ff ff e6 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        96
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x50",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4870",
+        "rom_offset": "0x21C870",
+        "source": "src/banks/bank_135.asm",
+        "line": 138
+      },
+      "raw": "03 07 00 00 60 60 ff ff 50 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        16
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xD2",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x487A",
+        "rom_offset": "0x21C87A",
+        "source": "src/banks/bank_135.asm",
+        "line": 138
+      },
+      "raw": "05 07 00 00 70 10 ff ff d2 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xD3",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4884",
+        "rom_offset": "0x21C884",
+        "source": "src/banks/bank_135.asm",
+        "line": 139
+      },
+      "raw": "03 07 00 00 80 20 ff ff d3 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        16,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x51",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x488E",
+        "rom_offset": "0x21C88E",
+        "source": "src/banks/bank_135.asm",
+        "line": 139
+      },
+      "raw": "03 07 00 01 10 30 ff ff 51 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x52",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4898",
+        "rom_offset": "0x21C898",
+        "source": "src/banks/bank_135.asm",
+        "line": 140
+      },
+      "raw": "05 07 00 01 20 20 ff ff 52 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        112,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x53",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48A2",
+        "rom_offset": "0x21C8A2",
+        "source": "src/banks/bank_135.asm",
+        "line": 141
+      },
+      "raw": "03 07 00 01 70 20 ff ff 53 01"
+    },
+    {
+      "kind": "interact",
+      "world": 7,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        128,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x54",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48AC",
+        "rom_offset": "0x21C8AC",
+        "source": "src/banks/bank_135.asm",
+        "line": 141
+      },
+      "raw": "03 07 00 01 80 20 ff ff 54 01"
+    },
+    {
+      "kind": "interact",
+      "world": 8,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x07",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x48B7",
+        "rom_offset": "0x21C8B7",
+        "source": "src/banks/bank_135.asm",
+        "line": 142
+      },
+      "raw": "03 08 00 00 40 40 ff ff 07 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 8,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x08",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x48C1",
+        "rom_offset": "0x21C8C1",
+        "source": "src/banks/bank_135.asm",
+        "line": 143
+      },
+      "raw": "03 08 00 00 60 40 ff ff 08 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xC5",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48CC",
+        "rom_offset": "0x21C8CC",
+        "source": "src/banks/bank_135.asm",
+        "line": 143
+      },
+      "raw": "03 09 00 00 20 30 ff ff c5 01"
+    },
+    {
+      "kind": "interact",
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xC6",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48D6",
+        "rom_offset": "0x21C8D6",
+        "source": "src/banks/bank_135.asm",
+        "line": 144
+      },
+      "raw": "05 09 00 00 60 20 ff ff c6 01"
+    },
+    {
+      "kind": "interact",
+      "world": 9,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xC7",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48E0",
+        "rom_offset": "0x21C8E0",
+        "source": "src/banks/bank_135.asm",
+        "line": 145
+      },
+      "raw": "03 09 00 00 70 30 ff ff c7 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        16
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x01",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5DBA",
+        "rom_offset": "0x21DDBA",
+        "source": "src/banks/bank_135.asm",
+        "line": 478
+      },
+      "raw": "00 0c 00 00 20 10 ff ff 01 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        16
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x01",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5DC4",
+        "rom_offset": "0x21DDC4",
+        "source": "src/banks/bank_135.asm",
+        "line": 479
+      },
+      "raw": "00 0c 00 00 70 10 ff ff 01 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 12,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xF5",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5DCE",
+        "rom_offset": "0x21DDCE",
+        "source": "src/banks/bank_135.asm",
+        "line": 479
+      },
+      "raw": "00 0c 01 00 ff ff ff ff f5 01"
+    },
+    {
+      "kind": "interact",
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xC9",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48EB",
+        "rom_offset": "0x21C8EB",
+        "source": "src/banks/bank_135.asm",
+        "line": 145
+      },
+      "raw": "04 0c 00 00 20 50 ff ff c9 01"
+    },
+    {
+      "kind": "interact",
+      "world": 12,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xCA",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48F5",
+        "rom_offset": "0x21C8F5",
+        "source": "src/banks/bank_135.asm",
+        "line": 146
+      },
+      "raw": "04 0c 00 00 20 60 ff ff ca 01"
+    },
+    {
+      "kind": "interact",
+      "world": 12,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        48,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x1F",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x48FF",
+        "rom_offset": "0x21C8FF",
+        "source": "src/banks/bank_135.asm",
+        "line": 146
+      },
+      "raw": "03 0c 01 00 30 70 ff ff 1f 01"
+    },
+    {
+      "kind": "interact",
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "position": [
+        16,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x6C",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x490A",
+        "rom_offset": "0x21C90A",
+        "source": "src/banks/bank_135.asm",
+        "line": 147
+      },
+      "raw": "03 0d 01 01 10 10 ff ff 6c 01"
+    },
+    {
+      "kind": "interact",
+      "world": 13,
+      "region": [
+        1,
+        1
+      ],
+      "position": [
+        128,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x6D",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4914",
+        "rom_offset": "0x21C914",
+        "source": "src/banks/bank_135.asm",
+        "line": 148
+      },
+      "raw": "03 0d 01 01 80 10 ff ff 6d 01"
+    },
+    {
+      "kind": "interact",
+      "world": 13,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        80,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x6E",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x491E",
+        "rom_offset": "0x21C91E",
+        "source": "src/banks/bank_135.asm",
+        "line": 148
+      },
+      "raw": "03 0d 01 00 50 10 ff ff 6e 01"
+    },
+    {
+      "kind": "interact",
+      "world": 13,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        80,
+        112
+      ],
+      "direction": "D",
+      "flag": 299,
+      "flag_set": false,
+      "selector": "0xCC",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4928",
+        "rom_offset": "0x21C928",
+        "source": "src/banks/bank_135.asm",
+        "line": 149
+      },
+      "raw": "01 0d 00 01 50 70 2b 01 cc 01"
+    },
+    {
+      "kind": "interact",
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x3B",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4933",
+        "rom_offset": "0x21C933",
+        "source": "src/banks/bank_135.asm",
+        "line": 150
+      },
+      "raw": "03 0e 00 00 10 10 ff ff 3b 01"
+    },
+    {
+      "kind": "interact",
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x3C",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x493D",
+        "rom_offset": "0x21C93D",
+        "source": "src/banks/bank_135.asm",
+        "line": 150
+      },
+      "raw": "03 0e 00 00 20 10 ff ff 3c 01"
+    },
+    {
+      "kind": "interact",
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x3D",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4947",
+        "rom_offset": "0x21C947",
+        "source": "src/banks/bank_135.asm",
+        "line": 151
+      },
+      "raw": "03 0e 00 00 50 20 ff ff 3d 01"
+    },
+    {
+      "kind": "interact",
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x3D",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4951",
+        "rom_offset": "0x21C951",
+        "source": "src/banks/bank_135.asm",
+        "line": 152
+      },
+      "raw": "03 0e 00 00 60 20 ff ff 3d 01"
+    },
+    {
+      "kind": "interact",
+      "world": 14,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xB1",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x495B",
+        "rom_offset": "0x21C95B",
+        "source": "src/banks/bank_135.asm",
+        "line": 152
+      },
+      "raw": "03 0e 00 00 70 20 ff ff b1 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x40",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4966",
+        "rom_offset": "0x21C966",
+        "source": "src/banks/bank_135.asm",
+        "line": 153
+      },
+      "raw": "03 0f 00 00 10 10 ff ff 40 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x3F",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4970",
+        "rom_offset": "0x21C970",
+        "source": "src/banks/bank_135.asm",
+        "line": 154
+      },
+      "raw": "03 0f 00 00 20 10 ff ff 3f 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x41",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x497A",
+        "rom_offset": "0x21C97A",
+        "source": "src/banks/bank_135.asm",
+        "line": 154
+      },
+      "raw": "05 0f 00 00 10 60 ff ff 41 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x43",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4984",
+        "rom_offset": "0x21C984",
+        "source": "src/banks/bank_135.asm",
+        "line": 155
+      },
+      "raw": "03 0f 00 00 60 10 ff ff 43 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x44",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x498E",
+        "rom_offset": "0x21C98E",
+        "source": "src/banks/bank_135.asm",
+        "line": 155
+      },
+      "raw": "03 0f 00 00 70 10 ff ff 44 01"
+    },
+    {
+      "kind": "interact",
+      "world": 15,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        48
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xCB",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4998",
+        "rom_offset": "0x21C998",
+        "source": "src/banks/bank_135.asm",
+        "line": 156
+      },
+      "raw": "05 0f 00 00 80 30 ff ff cb 01"
+    },
+    {
+      "kind": "interact",
+      "world": 16,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x43",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x49A3",
+        "rom_offset": "0x21C9A3",
+        "source": "src/banks/bank_135.asm",
+        "line": 157
+      },
+      "raw": "03 10 00 00 60 10 ff ff 43 01"
+    },
+    {
+      "kind": "interact",
+      "world": 16,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x44",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x49AD",
+        "rom_offset": "0x21C9AD",
+        "source": "src/banks/bank_135.asm",
+        "line": 157
+      },
+      "raw": "03 10 00 00 70 10 ff ff 44 01"
+    },
+    {
+      "kind": "interact",
+      "world": 16,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        48
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xCB",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x49B7",
+        "rom_offset": "0x21C9B7",
+        "source": "src/banks/bank_135.asm",
+        "line": 158
+      },
+      "raw": "05 10 00 00 80 30 ff ff cb 01"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        112,
+        80
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x09",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49C2",
+        "rom_offset": "0x21C9C2",
+        "source": "src/banks/bank_135.asm",
+        "line": 159
+      },
+      "raw": "05 11 00 01 70 50 ff ff 09 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "direction": "R",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0A",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49CC",
+        "rom_offset": "0x21C9CC",
+        "source": "src/banks/bank_135.asm",
+        "line": 159
+      },
+      "raw": "02 11 00 01 20 20 ff ff 0a 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        64,
+        64
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0A",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49D6",
+        "rom_offset": "0x21C9D6",
+        "source": "src/banks/bank_135.asm",
+        "line": 160
+      },
+      "raw": "03 11 00 01 40 40 ff ff 0a 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0B",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49E0",
+        "rom_offset": "0x21C9E0",
+        "source": "src/banks/bank_135.asm",
+        "line": 161
+      },
+      "raw": "03 11 00 00 10 30 ff ff 0b 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0C",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49EA",
+        "rom_offset": "0x21C9EA",
+        "source": "src/banks/bank_135.asm",
+        "line": 161
+      },
+      "raw": "03 11 00 00 20 30 ff ff 0c 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0D",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49F4",
+        "rom_offset": "0x21C9F4",
+        "source": "src/banks/bank_135.asm",
+        "line": 162
+      },
+      "raw": "03 11 00 00 30 30 ff ff 0d 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0E",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x49FE",
+        "rom_offset": "0x21C9FE",
+        "source": "src/banks/bank_135.asm",
+        "line": 162
+      },
+      "raw": "03 11 00 00 70 30 ff ff 0e 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x0F",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A08",
+        "rom_offset": "0x21CA08",
+        "source": "src/banks/bank_135.asm",
+        "line": 163
+      },
+      "raw": "03 11 00 00 80 30 ff ff 0f 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x10",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A12",
+        "rom_offset": "0x21CA12",
+        "source": "src/banks/bank_135.asm",
+        "line": 164
+      },
+      "raw": "03 11 00 00 10 70 ff ff 10 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x11",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A1C",
+        "rom_offset": "0x21CA1C",
+        "source": "src/banks/bank_135.asm",
+        "line": 164
+      },
+      "raw": "03 11 00 00 20 70 ff ff 11 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x12",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A26",
+        "rom_offset": "0x21CA26",
+        "source": "src/banks/bank_135.asm",
+        "line": 165
+      },
+      "raw": "03 11 00 00 40 70 ff ff 12 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x13",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A30",
+        "rom_offset": "0x21CA30",
+        "source": "src/banks/bank_135.asm",
+        "line": 166
+      },
+      "raw": "03 11 00 00 50 70 ff ff 13 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x14",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A3A",
+        "rom_offset": "0x21CA3A",
+        "source": "src/banks/bank_135.asm",
+        "line": 166
+      },
+      "raw": "03 11 00 00 70 70 ff ff 14 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        112
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x15",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A44",
+        "rom_offset": "0x21CA44",
+        "source": "src/banks/bank_135.asm",
+        "line": 167
+      },
+      "raw": "03 11 00 00 80 70 ff ff 15 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x16",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A4E",
+        "rom_offset": "0x21CA4E",
+        "source": "src/banks/bank_135.asm",
+        "line": 167
+      },
+      "raw": "03 11 00 00 40 30 ff ff 16 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 17,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x16",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4A58",
+        "rom_offset": "0x21CA58",
+        "source": "src/banks/bank_135.asm",
+        "line": 168
+      },
+      "raw": "03 11 00 00 60 30 ff ff 16 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xC8",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A63",
+        "rom_offset": "0x21CA63",
+        "source": "src/banks/bank_135.asm",
+        "line": 169
+      },
+      "raw": "03 12 00 00 80 20 ff ff c8 01"
+    },
+    {
+      "kind": "interact",
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x78",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A6D",
+        "rom_offset": "0x21CA6D",
+        "source": "src/banks/bank_135.asm",
+        "line": 169
+      },
+      "raw": "03 12 00 00 30 10 ff ff 78 01"
+    },
+    {
+      "kind": "interact",
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        16
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x79",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A77",
+        "rom_offset": "0x21CA77",
+        "source": "src/banks/bank_135.asm",
+        "line": 170
+      },
+      "raw": "05 12 00 00 70 10 ff ff 79 01"
+    },
+    {
+      "kind": "interact",
+      "world": 18,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x7A",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A81",
+        "rom_offset": "0x21CA81",
+        "source": "src/banks/bank_135.asm",
+        "line": 171
+      },
+      "raw": "05 12 00 00 50 40 ff ff 7a 01"
+    },
+    {
+      "kind": "interact",
+      "world": 19,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x47",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A8C",
+        "rom_offset": "0x21CA8C",
+        "source": "src/banks/bank_135.asm",
+        "line": 171
+      },
+      "raw": "03 13 00 00 10 30 ff ff 47 01"
+    },
+    {
+      "kind": "interact",
+      "world": 19,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x48",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4A96",
+        "rom_offset": "0x21CA96",
+        "source": "src/banks/bank_135.asm",
+        "line": 172
+      },
+      "raw": "03 13 00 00 20 30 ff ff 48 01"
+    },
+    {
+      "kind": "interact",
+      "world": 19,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x49",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AA0",
+        "rom_offset": "0x21CAA0",
+        "source": "src/banks/bank_135.asm",
+        "line": 173
+      },
+      "raw": "03 13 00 00 70 30 ff ff 49 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AAB",
+        "rom_offset": "0x21CAAB",
+        "source": "src/banks/bank_135.asm",
+        "line": 173
+      },
+      "raw": "03 15 00 00 10 10 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AB5",
+        "rom_offset": "0x21CAB5",
+        "source": "src/banks/bank_135.asm",
+        "line": 174
+      },
+      "raw": "03 15 00 00 20 10 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        16
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4ABF",
+        "rom_offset": "0x21CABF",
+        "source": "src/banks/bank_135.asm",
+        "line": 174
+      },
+      "raw": "03 15 00 00 30 10 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AC9",
+        "rom_offset": "0x21CAC9",
+        "source": "src/banks/bank_135.asm",
+        "line": 175
+      },
+      "raw": "03 15 00 00 60 50 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        80
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AD3",
+        "rom_offset": "0x21CAD3",
+        "source": "src/banks/bank_135.asm",
+        "line": 176
+      },
+      "raw": "03 15 00 00 70 50 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        80
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x90",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4ADD",
+        "rom_offset": "0x21CADD",
+        "source": "src/banks/bank_135.asm",
+        "line": 176
+      },
+      "raw": "03 15 00 00 80 50 ff ff 90 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        16
+      ],
+      "direction": "R",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x91",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AE7",
+        "rom_offset": "0x21CAE7",
+        "source": "src/banks/bank_135.asm",
+        "line": 177
+      },
+      "raw": "02 15 00 00 30 10 ff ff 91 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x91",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AF1",
+        "rom_offset": "0x21CAF1",
+        "source": "src/banks/bank_135.asm",
+        "line": 178
+      },
+      "raw": "05 15 00 00 40 20 ff ff 91 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        16,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x91",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4AFB",
+        "rom_offset": "0x21CAFB",
+        "source": "src/banks/bank_135.asm",
+        "line": 178
+      },
+      "raw": "05 15 00 00 10 60 ff ff 91 01"
+    },
+    {
+      "kind": "interact",
+      "world": 21,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "direction": "U",
+      "flag": 48,
+      "flag_set": false,
+      "selector": "0xDB",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B05",
+        "rom_offset": "0x21CB05",
+        "source": "src/banks/bank_135.asm",
+        "line": 179
+      },
+      "raw": "03 15 00 00 60 20 30 00 db 01"
+    },
+    {
+      "kind": "interact",
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x74",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B10",
+        "rom_offset": "0x21CB10",
+        "source": "src/banks/bank_135.asm",
+        "line": 180
+      },
+      "raw": "03 16 00 00 20 20 ff ff 74 01"
+    },
+    {
+      "kind": "interact",
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x75",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B1A",
+        "rom_offset": "0x21CB1A",
+        "source": "src/banks/bank_135.asm",
+        "line": 180
+      },
+      "raw": "03 16 00 00 30 20 ff ff 75 01"
+    },
+    {
+      "kind": "interact",
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        112,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x76",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B24",
+        "rom_offset": "0x21CB24",
+        "source": "src/banks/bank_135.asm",
+        "line": 181
+      },
+      "raw": "03 16 00 00 70 30 ff ff 76 01"
+    },
+    {
+      "kind": "interact",
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xCE",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B2E",
+        "rom_offset": "0x21CB2E",
+        "source": "src/banks/bank_135.asm",
+        "line": 181
+      },
+      "raw": "05 16 00 00 50 20 ff ff ce 01"
+    },
+    {
+      "kind": "interact",
+      "world": 22,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xCE",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B38",
+        "rom_offset": "0x21CB38",
+        "source": "src/banks/bank_135.asm",
+        "line": 182
+      },
+      "raw": "03 16 00 00 60 30 ff ff ce 01"
+    },
+    {
+      "kind": "interact",
+      "world": 23,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "direction": "R",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x86",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B43",
+        "rom_offset": "0x21CB43",
+        "source": "src/banks/bank_135.asm",
+        "line": 183
+      },
+      "raw": "02 17 00 00 50 40 ff ff 86 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        48,
+        48
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x62",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B4E",
+        "rom_offset": "0x21CB4E",
+        "source": "src/banks/bank_135.asm",
+        "line": 183
+      },
+      "raw": "04 18 00 01 30 30 ff ff 62 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x62",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B58",
+        "rom_offset": "0x21CB58",
+        "source": "src/banks/bank_135.asm",
+        "line": 184
+      },
+      "raw": "05 18 00 01 30 40 ff ff 62 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        80,
+        64
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x62",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B62",
+        "rom_offset": "0x21CB62",
+        "source": "src/banks/bank_135.asm",
+        "line": 185
+      },
+      "raw": "01 18 00 00 50 40 ff ff 62 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        32,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x63",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B6C",
+        "rom_offset": "0x21CB6C",
+        "source": "src/banks/bank_135.asm",
+        "line": 185
+      },
+      "raw": "05 18 00 00 20 60 ff ff 63 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "position": [
+        112,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x62",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B76",
+        "rom_offset": "0x21CB76",
+        "source": "src/banks/bank_135.asm",
+        "line": 186
+      },
+      "raw": "05 18 02 01 70 40 ff ff 62 01"
+    },
+    {
+      "kind": "interact",
+      "world": 24,
+      "region": [
+        2,
+        1
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x62",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B80",
+        "rom_offset": "0x21CB80",
+        "source": "src/banks/bank_135.asm",
+        "line": 187
+      },
+      "raw": "01 18 02 01 60 40 ff ff 62 01"
+    },
+    {
+      "kind": "on_enter",
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        64,
+        0
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xF3",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5DD9",
+        "rom_offset": "0x21DDD9",
+        "source": "src/banks/bank_135.asm",
+        "line": 480
+      },
+      "raw": "00 19 00 02 40 00 ff ff f3 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        64,
+        32
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xD8",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B8B",
+        "rom_offset": "0x21CB8B",
+        "source": "src/banks/bank_135.asm",
+        "line": 187
+      },
+      "raw": "04 19 00 01 40 20 ff ff d8 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        1
+      ],
+      "position": [
+        80,
+        32
+      ],
+      "direction": "R",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xD8",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B95",
+        "rom_offset": "0x21CB95",
+        "source": "src/banks/bank_135.asm",
+        "line": 188
+      },
+      "raw": "02 19 00 01 50 20 ff ff d8 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        96,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xE2",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4B9F",
+        "rom_offset": "0x21CB9F",
+        "source": "src/banks/bank_135.asm",
+        "line": 188
+      },
+      "raw": "03 19 00 02 60 20 ff ff e2 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        112,
+        32
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xEE",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4BA9",
+        "rom_offset": "0x21CBA9",
+        "source": "src/banks/bank_135.asm",
+        "line": 189
+      },
+      "raw": "03 19 00 02 70 20 ff ff ee 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        128,
+        48
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x9A",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4BB3",
+        "rom_offset": "0x21CBB3",
+        "source": "src/banks/bank_135.asm",
+        "line": 190
+      },
+      "raw": "05 19 00 02 80 30 ff ff 9a 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        128,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x9B",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4BBD",
+        "rom_offset": "0x21CBBD",
+        "source": "src/banks/bank_135.asm",
+        "line": 190
+      },
+      "raw": "05 19 00 02 80 60 ff ff 9b 01"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        48
+      ],
+      "direction": "L",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x1B",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BC7",
+        "rom_offset": "0x21CBC7",
+        "source": "src/banks/bank_135.asm",
+        "line": 191
+      },
+      "raw": "04 19 00 00 30 30 25 00 1b 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        80
+      ],
+      "direction": "L",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x1C",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BD1",
+        "rom_offset": "0x21CBD1",
+        "source": "src/banks/bank_135.asm",
+        "line": 192
+      },
+      "raw": "04 19 00 00 30 50 25 00 1c 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        96
+      ],
+      "direction": "L",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x1D",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BDB",
+        "rom_offset": "0x21CBDB",
+        "source": "src/banks/bank_135.asm",
+        "line": 192
+      },
+      "raw": "04 19 00 00 30 60 25 00 1d 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        112
+      ],
+      "direction": "L",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x1E",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BE5",
+        "rom_offset": "0x21CBE5",
+        "source": "src/banks/bank_135.asm",
+        "line": 193
+      },
+      "raw": "04 19 00 00 30 70 25 00 1e 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        48
+      ],
+      "direction": "R",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x1F",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BEF",
+        "rom_offset": "0x21CBEF",
+        "source": "src/banks/bank_135.asm",
+        "line": 193
+      },
+      "raw": "02 19 00 00 60 30 25 00 1f 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "direction": "R",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x20",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4BF9",
+        "rom_offset": "0x21CBF9",
+        "source": "src/banks/bank_135.asm",
+        "line": 194
+      },
+      "raw": "02 19 00 00 60 40 25 00 20 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        80
+      ],
+      "direction": "R",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x21",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C03",
+        "rom_offset": "0x21CC03",
+        "source": "src/banks/bank_135.asm",
+        "line": 195
+      },
+      "raw": "02 19 00 00 60 50 25 00 21 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 25,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        96,
+        112
+      ],
+      "direction": "R",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x22",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C0D",
+        "rom_offset": "0x21CC0D",
+        "source": "src/banks/bank_135.asm",
+        "line": 195
+      },
+      "raw": "02 19 00 00 60 70 25 00 22 0a"
+    },
+    {
+      "kind": "on_enter",
+      "world": 26,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        255,
+        255
+      ],
+      "direction": "any/target",
+      "flag": 37,
+      "flag_set": true,
+      "selector": "0x9E",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x5DE4",
+        "rom_offset": "0x21DDE4",
+        "source": "src/banks/bank_135.asm",
+        "line": 481
+      },
+      "raw": "00 1a 01 00 ff ff 25 00 9e 01"
+    },
+    {
+      "kind": "interact",
+      "world": 26,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x8B",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4C18",
+        "rom_offset": "0x21CC18",
+        "source": "src/banks/bank_135.asm",
+        "line": 196
+      },
+      "raw": "05 1a 00 00 30 40 ff ff 8b 01"
+    },
+    {
+      "kind": "interact",
+      "world": 26,
+      "region": [
+        2,
+        0
+      ],
+      "position": [
+        80,
+        80
+      ],
+      "direction": "R",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x1C",
+      "group": 0,
+      "source": {
+        "bank": 135,
+        "address": "0x4C22",
+        "rom_offset": "0x21CC22",
+        "source": "src/banks/bank_135.asm",
+        "line": 197
+      },
+      "raw": "02 1a 02 00 50 50 ff ff 1c 00"
+    },
+    {
+      "kind": "interact",
+      "world": 27,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        48,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xEC",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4C2D",
+        "rom_offset": "0x21CC2D",
+        "source": "src/banks/bank_135.asm",
+        "line": 197
+      },
+      "raw": "05 1b 00 02 30 40 ff ff ec 01"
+    },
+    {
+      "kind": "interact",
+      "world": 27,
+      "region": [
+        0,
+        2
+      ],
+      "position": [
+        96,
+        64
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0xED",
+      "group": 1,
+      "source": {
+        "bank": 135,
+        "address": "0x4C37",
+        "rom_offset": "0x21CC37",
+        "source": "src/banks/bank_135.asm",
+        "line": 198
+      },
+      "raw": "05 1b 00 02 60 40 ff ff ed 01"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        144,
+        48
+      ],
+      "direction": "L",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x18",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C42",
+        "rom_offset": "0x21CC42",
+        "source": "src/banks/bank_135.asm",
+        "line": 199
+      },
+      "raw": "04 1d 00 00 90 30 ff ff 18 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        128,
+        96
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x19",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C4C",
+        "rom_offset": "0x21CC4C",
+        "source": "src/banks/bank_135.asm",
+        "line": 199
+      },
+      "raw": "05 1d 00 00 80 60 ff ff 19 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        0,
+        0
+      ],
+      "position": [
+        144,
+        80
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x19",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C56",
+        "rom_offset": "0x21CC56",
+        "source": "src/banks/bank_135.asm",
+        "line": 200
+      },
+      "raw": "01 1d 00 00 90 50 ff ff 19 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        16,
+        48
+      ],
+      "direction": "any/target",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x19",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C60",
+        "rom_offset": "0x21CC60",
+        "source": "src/banks/bank_135.asm",
+        "line": 201
+      },
+      "raw": "05 1d 01 00 10 30 ff ff 19 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        64,
+        48
+      ],
+      "direction": "U",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x19",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C6A",
+        "rom_offset": "0x21CC6A",
+        "source": "src/banks/bank_135.asm",
+        "line": 201
+      },
+      "raw": "03 1d 01 00 40 30 ff ff 19 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        0,
+        80
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x19",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C74",
+        "rom_offset": "0x21CC74",
+        "source": "src/banks/bank_135.asm",
+        "line": 202
+      },
+      "raw": "01 1d 01 00 00 50 ff ff 19 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        32,
+        80
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x18",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C7E",
+        "rom_offset": "0x21CC7E",
+        "source": "src/banks/bank_135.asm",
+        "line": 202
+      },
+      "raw": "01 1d 01 00 20 50 ff ff 18 0a"
+    },
+    {
+      "kind": "interact",
+      "world": 29,
+      "region": [
+        1,
+        0
+      ],
+      "position": [
+        48,
+        80
+      ],
+      "direction": "D",
+      "flag": null,
+      "flag_set": false,
+      "selector": "0x18",
+      "group": 10,
+      "source": {
+        "bank": 135,
+        "address": "0x4C88",
+        "rom_offset": "0x21CC88",
+        "source": "src/banks/bank_135.asm",
+        "line": 203
+      },
+      "raw": "01 1d 01 00 30 50 ff ff 18 0a"
+    }
+  ]
+}

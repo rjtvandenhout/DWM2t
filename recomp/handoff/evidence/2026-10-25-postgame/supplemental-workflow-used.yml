@@ -1,0 +1,118 @@
+name: Native campaign and exact-build validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      validation_mode:
+        description: Run a fresh campaign or finish an exact archived build
+        type: choice
+        default: fresh-campaign
+        options: [fresh-campaign, finish-fresh-build, postgame-supplemental]
+      story_journals_base64:
+        description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
+        required: false
+        default: ''
+        type: string
+      fresh_build_run_id:
+        description: Required for finish-fresh-build; exact original build/story artifact run
+        required: false
+        default: ''
+        type: string
+      fresh_build_source:
+        description: Required for finish-fresh-build; exact 40-character archived game source
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: native-player-validation-${{ github.ref }}-${{ inputs.validation_mode }}
+  cancel-in-progress: true
+
+jobs:
+  complete-validation:
+    if: ${{ inputs.validation_mode == 'fresh-campaign' }}
+    uses: ./.github/workflows/recomp-full-validation.yml
+    with:
+      story_journals_base64: ${{ inputs.story_journals_base64 || '' }}
+
+  finish-validation:
+    if: ${{ inputs.validation_mode == 'finish-fresh-build' }}
+    uses: ./.github/workflows/recomp-finish-validation.yml
+    with:
+      build_run_id: ${{ inputs.fresh_build_run_id }}
+      build_source: ${{ inputs.fresh_build_source }}
+
+  original-p1-and-fresh-continue:
+    if: ${{ inputs.validation_mode == 'postgame-supplemental' }}
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      POSTGAME_PRODUCER_RUN: ${{ inputs.fresh_build_run_id }}
+      POSTGAME_DIAGNOSTIC_ARTIFACT: '12594525715'
+      POSTGAME_STORY_ARTIFACT: '12594545489'
+      POSTGAME_BINARY_SOURCE: ${{ inputs.fresh_build_source }}
+      POSTGAME_SEED_BUNDLE_BASE64: ${{ inputs.story_journals_base64 }}
+      POSTGAME_MANIFEST: recomp/tests/m8_postgame_supplemental.json
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and identify exact accepted original build and ending inputs
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ($env:POSTGAME_BINARY_SOURCE -cne '3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba') { throw 'Expected exact accepted game source' }
+          python recomp/tools/download_postgame_artifacts.py `
+            --producer-run-id "$env:POSTGAME_PRODUCER_RUN" `
+            --diagnostic-artifact-id "$env:POSTGAME_DIAGNOSTIC_ARTIFACT" `
+            --story-artifact-id "$env:POSTGAME_STORY_ARTIFACT" `
+            --output "$env:RUNNER_TEMP/postgame-accepted-inputs"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Decode pinned genuine Journals for four isolated replays
+        shell: python
+        run: |
+          import base64
+          import os
+          from pathlib import Path
+          encoded = os.environ['POSTGAME_SEED_BUNDLE_BASE64']
+          bundle = base64.b64decode(encoded, validate=True)
+          if not bundle or len(bundle) > 65536:
+              raise ValueError('Expected a small pinned original-Journal tar.xz')
+          path = Path(os.environ['RUNNER_TEMP']) / 'postgame-original-journals.tar.xz'
+          with path.open('xb') as stream:
+              stream.write(bundle)
+      - name: Replay pinned original P1 then compare complete owned, quest, key and cache persistence
+        shell: pwsh
+        run: |
+          $env:GIT_LITERAL_PATHSPECS = '1'
+          git ls-files --error-unmatch -- "$env:POSTGAME_MANIFEST" | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw 'Supplemental manifest must be committed in this tool source' }
+          python recomp/tools/test_postgame_supplemental.py `
+            --exe "$env:RUNNER_TEMP/postgame-accepted-inputs/DWM2tRecompFull.exe" `
+            --seed "$env:RUNNER_TEMP/postgame-accepted-inputs/ending-complete.sav" `
+            --build-identity "$env:RUNNER_TEMP/postgame-accepted-inputs/build-identity.json" `
+            --manifest "$env:POSTGAME_MANIFEST" `
+            --tool-source "$env:GITHUB_SHA" `
+            --workers 4 --seed-bundle "$env:RUNNER_TEMP/postgame-original-journals.tar.xz" `
+            --output "$env:RUNNER_TEMP/postgame-replay"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve supplemental observations and failures without publishing a player package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-supplemental-postgame-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/postgame-accepted-inputs/accepted-input-artifacts.json
+            ${{ runner.temp }}/postgame-accepted-inputs/build-identity.json
+            ${{ runner.temp }}/postgame-replay/**
+          if-no-files-found: warn
+          retention-days: 14

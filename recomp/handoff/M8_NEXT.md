@@ -82,5 +82,8 @@ native build. Full campaign validation and build-only candidates are manual.
 Newly built packages remain `UNTESTED_CANDIDATE` until their required evidence
 passes. Preserve failures, original Journals and the M7/M8 recovery branches.
 Main-story acceptance does not exhaustively cover optional postgame paths.
+Additional original-P1 checks and source coverage are documented in the
+[postgame report](POSTGAME_PROGRESS_2026-10-25.md), including native Windows
+random-world saving/re-entry and the remaining catalogue/link limitations.
 CI tests real WinMM streaming through a virtual endpoint; physical audibility
 is not measured. Optional enhancements can proceed as separate work.

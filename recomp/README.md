@@ -57,6 +57,8 @@ healing restores the final party to full HP at levels 40/37/40.
 CI tests real WinMM streaming through a signed virtual endpoint. Physical
 speaker audibility and every optional postgame branch are not exhaustively
 verified. New builds remain UNTESTED_CANDIDATE until their required checks pass.
+See the [postgame checks and screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md)
+for the additional key-world/egg/persistence replays and finite generator audit.
 The existing partial development suite alone does not certify a new full game.
 
 Actions cleanup reclaimed 3,946,430,584 bytes from 159 unused artifacts while

@@ -1,0 +1,55 @@
+{
+  "scope": "Unmodified genuine original Journal files only; no RAM/SRAM observational dumps",
+  "sha256": "8240d1e4b7b1a698a248407f0b7900530283856064e7ac1ef942fa47a273f6df",
+  "bytes": 3956,
+  "members": [
+    {
+      "member": "initial.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-review/final-story-3d/extracted/ending-complete/native/checkpoint.sav",
+      "sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "bytes": 32768
+    },
+    {
+      "member": "key-appraisal.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/key-appraisal/native/checkpoint.sav",
+      "sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+      "bytes": 32768
+    },
+    {
+      "member": "quietsea-clear.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/quietsea-clear/native/checkpoint.sav",
+      "sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768
+    },
+    {
+      "member": "newlywed-gift.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/newlywed-gift/native/checkpoint.sav",
+      "sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+      "bytes": 32768
+    },
+    {
+      "member": "certified-egg.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/certified-egg/native/checkpoint.sav",
+      "sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+      "bytes": 32768
+    },
+    {
+      "member": "quest-gates.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/quest-gates/native/checkpoint.sav",
+      "sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+      "bytes": 32768
+    },
+    {
+      "member": "quietsea-reload-dungeon.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/native-windows-01/extracted/postgame-replay/quietsea-reload-dungeon/native/checkpoint.sav",
+      "sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+      "bytes": 32768
+    },
+    {
+      "member": "npc-offers.sav",
+      "source_genuine_journal": "/workspace/scratch/m8-postgame/quest-probe-03/npc_offers.sav",
+      "sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
+      "bytes": 32768
+    }
+  ]
+}

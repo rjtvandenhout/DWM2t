@@ -1,0 +1,13 @@
+{
+  "label": "granddaughter-original-battle",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-01",
+  "source_snapshot": "/workspace/scratch/m8-postgame/quest-probe-01/m8_107",
+  "frame": 10494,
+  "original_loss_only": true,
+  "raw_sha256": {
+    ".bmp": "ccb37d0f136461c69ca1cee373a5417c1c24d59f8df24635e41d3531554b8d1e",
+    ".ram": "1e2eaf1fb342999c3f62875ca3d7d35e6c4c39b34966972d7623538980525e67",
+    ".sram": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d"
+  },
+  "png_sha256": "373736e677e56536e94e4cf8e74349e27003d42f8faf3f7df869646d2f3939cc"
+}

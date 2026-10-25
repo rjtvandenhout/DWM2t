@@ -1,0 +1,204 @@
+[
+  {
+    "world": 4,
+    "world_name": "Reception",
+    "region": [
+      2,
+      0
+    ],
+    "selector": "0xF1",
+    "sprite_context": 46,
+    "position": [
+      80,
+      32
+    ],
+    "raw": "85 01 2e 00 00 50 20 05 00 50 f1",
+    "conditions": [
+      "0x25=set",
+      "0xCB=clear"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x6B48",
+      "rom_offset": "0x1A6B48",
+      "source": "src/banks/bank_105.asm",
+      "line": 695
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x6BCD",
+      "rom_offset": "0x1A6BCD",
+      "source": "src/banks/bank_105.asm",
+      "line": 703
+    }
+  },
+  {
+    "world": 4,
+    "world_name": "Reception",
+    "region": [
+      2,
+      0
+    ],
+    "selector": "0xF1",
+    "sprite_context": 20,
+    "position": [
+      80,
+      32
+    ],
+    "raw": "85 01 14 00 00 50 20 05 00 50 f1",
+    "conditions": [
+      "0x25=set",
+      "0xCB=set",
+      "0xCC=clear"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x6B4C",
+      "rom_offset": "0x1A6B4C",
+      "source": "src/banks/bank_105.asm",
+      "line": 695
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x6BEF",
+      "rom_offset": "0x1A6BEF",
+      "source": "src/banks/bank_105.asm",
+      "line": 705
+    }
+  },
+  {
+    "world": 4,
+    "world_name": "Reception",
+    "region": [
+      2,
+      0
+    ],
+    "selector": "0xF2",
+    "sprite_context": 95,
+    "position": [
+      80,
+      32
+    ],
+    "raw": "85 01 5f 00 00 50 20 05 00 50 f2",
+    "conditions": [
+      "0x25=set",
+      "0xCB=set",
+      "0xCC=set"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x6B50",
+      "rom_offset": "0x1A6B50",
+      "source": "src/banks/bank_105.asm",
+      "line": 696
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x6C11",
+      "rom_offset": "0x1A6C11",
+      "source": "src/banks/bank_105.asm",
+      "line": 708
+    }
+  },
+  {
+    "world": 23,
+    "world_name": "Tavern",
+    "region": [
+      0,
+      0
+    ],
+    "selector": "0xF0",
+    "sprite_context": 42,
+    "position": [
+      64,
+      48
+    ],
+    "raw": "87 01 2a 00 00 40 30 07 03 70 f0",
+    "conditions": [
+      "0x25=set",
+      "0xC9=clear"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x721A",
+      "rom_offset": "0x1A721A",
+      "source": "src/banks/bank_105.asm",
+      "line": 804
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x7289",
+      "rom_offset": "0x1A7289",
+      "source": "src/banks/bank_105.asm",
+      "line": 811
+    }
+  },
+  {
+    "world": 23,
+    "world_name": "Tavern",
+    "region": [
+      0,
+      0
+    ],
+    "selector": "0xF0",
+    "sprite_context": 19,
+    "position": [
+      64,
+      48
+    ],
+    "raw": "87 01 13 00 00 40 30 07 03 70 f0",
+    "conditions": [
+      "0x25=set",
+      "0xC9=set",
+      "0xCA=clear"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x721E",
+      "rom_offset": "0x1A721E",
+      "source": "src/banks/bank_105.asm",
+      "line": 804
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x72B6",
+      "rom_offset": "0x1A72B6",
+      "source": "src/banks/bank_105.asm",
+      "line": 814
+    }
+  },
+  {
+    "world": 23,
+    "world_name": "Tavern",
+    "region": [
+      0,
+      0
+    ],
+    "selector": "0xF0",
+    "sprite_context": 23,
+    "position": [
+      64,
+      48
+    ],
+    "raw": "87 01 17 00 00 40 30 07 03 70 f0",
+    "conditions": [
+      "0x25=set",
+      "0xC9=set",
+      "0xCA=set"
+    ],
+    "condition_source": {
+      "bank": 105,
+      "address": "0x7222",
+      "rom_offset": "0x1A7222",
+      "source": "src/banks/bank_105.asm",
+      "line": 805
+    },
+    "record_source": {
+      "bank": 105,
+      "address": "0x72E3",
+      "rom_offset": "0x1A72E3",
+      "source": "src/banks/bank_105.asm",
+      "line": 817
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "Read-only authenticated artifact metadata and exact original story ZIP download; no game execution",
+  "original_run_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "original_run_conclusion": "failure",
+  "accepted_final_run_source": "8859ef67289ce90712a44b9c17174de4519a59b3",
+  "accepted_final_run_conclusion": "success",
+  "artifact": {
+    "id": 12594545489,
+    "name": "M8-fresh-story-40175408153",
+    "bytes": 2625793,
+    "sha256": "2734ea5d13be5ce3d938199c4cc8bb7c86604aa275154c7fd80c71aaf1706117",
+    "download": {
+      "bytes": 2625793,
+      "sha256": "2734ea5d13be5ce3d938199c4cc8bb7c86604aa275154c7fd80c71aaf1706117",
+      "raw_zip": "/workspace/scratch/m8-postgame/story-authenticated-download-contract/original-actions.zip"
+    }
+  },
+  "credential": "Ephemeral process memory; API only; never logged or forwarded to blob redirect"
+}

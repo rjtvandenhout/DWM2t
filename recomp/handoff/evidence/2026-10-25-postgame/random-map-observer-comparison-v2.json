@@ -1,0 +1,4920 @@
+{
+  "scope": "ROM decoder with per-byte4KB dictionary wrap; staticcomparison with existing observedRAM only",
+  "snapshots": 207,
+  "by_submode": {
+    "0x87": 6,
+    "0x80": 119,
+    "0x83": 80,
+    "0x85": 2
+  },
+  "mismatches": [],
+  "records": [
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_36.ram",
+      "snapshot_sha256": "6a077b5b543f7662b21a0e3d32a500a0ff3db248b7fb18ed9091e5dc935d8d45",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_37.ram",
+      "snapshot_sha256": "6a077b5b543f7662b21a0e3d32a500a0ff3db248b7fb18ed9091e5dc935d8d45",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_38.ram",
+      "snapshot_sha256": "b73ebeb7735f8dd5ef4d2bb2b07fe13c939be05174c43619ee54931dd8a0b4c5",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_39.ram",
+      "snapshot_sha256": "b73ebeb7735f8dd5ef4d2bb2b07fe13c939be05174c43619ee54931dd8a0b4c5",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_40.ram",
+      "snapshot_sha256": "776e2b3ad810813334d90232e350939de7ed6cb923a0b125815174c48fd1d7ee",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_41.ram",
+      "snapshot_sha256": "776e2b3ad810813334d90232e350939de7ed6cb923a0b125815174c48fd1d7ee",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x87",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 102,
+        "header": {
+          "bank": 97,
+          "cpu": "$654C",
+          "file": "src/banks/bank_097.asm",
+          "line": 599
+        },
+        "threshold": 50,
+        "interactive_tile": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_42.ram",
+      "snapshot_sha256": "78cbe196690dab37a8d28a9f2081f9604a0b84840a57e7dc872f015ab00b9fda",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_43.ram",
+      "snapshot_sha256": "78cbe196690dab37a8d28a9f2081f9604a0b84840a57e7dc872f015ab00b9fda",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_44.ram",
+      "snapshot_sha256": "b1a16c83136d34422807367e9ba639394f3b2518f406af575b2ff565e4554b84",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_45.ram",
+      "snapshot_sha256": "b1a16c83136d34422807367e9ba639394f3b2518f406af575b2ff565e4554b84",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_48.ram",
+      "snapshot_sha256": "55eb3df254ce7b3d79709d295e543f282c7b3cb120a20f962d3cd192ad510bd4",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_49.ram",
+      "snapshot_sha256": "55eb3df254ce7b3d79709d295e543f282c7b3cb120a20f962d3cd192ad510bd4",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_50.ram",
+      "snapshot_sha256": "60d8fffd4b06c26b38617cc2bf76abca0bcf0b7be5efdf5a0a902fb95d8e4c22",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 44
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_51.ram",
+      "snapshot_sha256": "faff7461f7f842bd8fead7b74488dd1d51d7141e164aa36606f9bf0de14005a6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_52.ram",
+      "snapshot_sha256": "faff7461f7f842bd8fead7b74488dd1d51d7141e164aa36606f9bf0de14005a6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_53.ram",
+      "snapshot_sha256": "fb0f7fb31b61ab2b0362be27a3d4577bfcac3e7a3bea0815677023ebfc301fa0",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_54.ram",
+      "snapshot_sha256": "fb0f7fb31b61ab2b0362be27a3d4577bfcac3e7a3bea0815677023ebfc301fa0",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_55.ram",
+      "snapshot_sha256": "d6741b9bf9b5c27ea4bc0b3c9e8c101ee6bf4bd3bf5f26ab23301e3e4a57e60a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_56.ram",
+      "snapshot_sha256": "d6741b9bf9b5c27ea4bc0b3c9e8c101ee6bf4bd3bf5f26ab23301e3e4a57e60a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_57.ram",
+      "snapshot_sha256": "956125d67bb6d7f1d2ba711518eaa04cc5ce58eea067ca40f6444e9e864cacf9",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_70.ram",
+      "snapshot_sha256": "856225bebb81381ca653cae99e2ccb917444bd36fc051464d8c29bb76cd7faf3",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_71.ram",
+      "snapshot_sha256": "856225bebb81381ca653cae99e2ccb917444bd36fc051464d8c29bb76cd7faf3",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_72.ram",
+      "snapshot_sha256": "1c9642a5699ae96bd7db38cf922928e8fd77660fdea9f5cfbe97826916f922e9",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_73.ram",
+      "snapshot_sha256": "1c9642a5699ae96bd7db38cf922928e8fd77660fdea9f5cfbe97826916f922e9",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_74.ram",
+      "snapshot_sha256": "df05163d5039aa797fea94b014d90d93dcc68b60aaf3614c15ea860cf053fc74",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_76.ram",
+      "snapshot_sha256": "136dec3998749d460af73b2a7be5d40b3a78f96be051e4b83db8437d560303d8",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_77.ram",
+      "snapshot_sha256": "136dec3998749d460af73b2a7be5d40b3a78f96be051e4b83db8437d560303d8",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_78.ram",
+      "snapshot_sha256": "7a2dd15c246bebb995c8fd72f60f4cf3f0617dc89c233fd53e843e4d1dba1f40",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_81.ram",
+      "snapshot_sha256": "beac1787002d53b83867163b6ec94c2fd47064365ca75ef58ed929b5c397a9bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_82.ram",
+      "snapshot_sha256": "beac1787002d53b83867163b6ec94c2fd47064365ca75ef58ed929b5c397a9bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_83.ram",
+      "snapshot_sha256": "106083763a15ae0830c283e769c1dc7d7b9649ff91a72900327de94dafb58d7b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_84.ram",
+      "snapshot_sha256": "106083763a15ae0830c283e769c1dc7d7b9649ff91a72900327de94dafb58d7b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_85.ram",
+      "snapshot_sha256": "a162125f2117b9edc4659e568c60248115d5d6a1081266d6e7a539044cf5515c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_86.ram",
+      "snapshot_sha256": "a162125f2117b9edc4659e568c60248115d5d6a1081266d6e7a539044cf5515c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_87.ram",
+      "snapshot_sha256": "7a47a7ba7f80a044535bbb291a92a6beeba782ef05f5dff9a5a79af4e2f5fda1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_88.ram",
+      "snapshot_sha256": "7a47a7ba7f80a044535bbb291a92a6beeba782ef05f5dff9a5a79af4e2f5fda1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_89.ram",
+      "snapshot_sha256": "b8c99c128f5498fee137032b30f97493dac35a75e716eec8ea14b92aa854857b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_90.ram",
+      "snapshot_sha256": "b8c99c128f5498fee137032b30f97493dac35a75e716eec8ea14b92aa854857b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_91.ram",
+      "snapshot_sha256": "b3ccf65a41095a4e66ecdc4ee1f21dc31f9363290b0ef53cdaf9e6283dd70933",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_92.ram",
+      "snapshot_sha256": "b3ccf65a41095a4e66ecdc4ee1f21dc31f9363290b0ef53cdaf9e6283dd70933",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_93.ram",
+      "snapshot_sha256": "18030ac02e11a47a541edbe02192941452d20e1df253c395ab98a0ca75788294",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_94.ram",
+      "snapshot_sha256": "18030ac02e11a47a541edbe02192941452d20e1df253c395ab98a0ca75788294",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_95.ram",
+      "snapshot_sha256": "fda885542cf3c0dbf6df7418cf72a57bab44894d7ceca0c8dc86d0c1e7c7b4c7",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_96.ram",
+      "snapshot_sha256": "fda885542cf3c0dbf6df7418cf72a57bab44894d7ceca0c8dc86d0c1e7c7b4c7",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_97.ram",
+      "snapshot_sha256": "ba1e2715e18daea01fef565854f9dc21ff690d6deca0db58b35fcd61e4876b99",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_98.ram",
+      "snapshot_sha256": "ba1e2715e18daea01fef565854f9dc21ff690d6deca0db58b35fcd61e4876b99",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_99.ram",
+      "snapshot_sha256": "19a1645b0d970823a4f7ba0fd910bb7b354d6314b037d0e898e33534bd597106",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_100.ram",
+      "snapshot_sha256": "19a1645b0d970823a4f7ba0fd910bb7b354d6314b037d0e898e33534bd597106",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_101.ram",
+      "snapshot_sha256": "2cf0312fd7255fceadd66a25d017b8489646abe3573727d664d2a1b85632c746",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_102.ram",
+      "snapshot_sha256": "2cf0312fd7255fceadd66a25d017b8489646abe3573727d664d2a1b85632c746",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_103.ram",
+      "snapshot_sha256": "cdd80c2a6e35e615f50acdaa929160b520fd57d18fca2e5315c4296bf7bc9726",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_104.ram",
+      "snapshot_sha256": "cdd80c2a6e35e615f50acdaa929160b520fd57d18fca2e5315c4296bf7bc9726",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_105.ram",
+      "snapshot_sha256": "ee5ab2f3b90761e51170409b63b155f2283feca9e16018c9eded489d910f19b4",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_106.ram",
+      "snapshot_sha256": "ee5ab2f3b90761e51170409b63b155f2283feca9e16018c9eded489d910f19b4",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 2,
+        "header": {
+          "bank": 97,
+          "cpu": "$620C",
+          "file": "src/banks/bank_097.asm",
+          "line": 547
+        },
+        "threshold": 79,
+        "interactive_tile": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_107.ram",
+      "snapshot_sha256": "35bd80e38ab945798f944468717920d5c32312bf525f0bfdc40150e045fd0eb7",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_108.ram",
+      "snapshot_sha256": "35bd80e38ab945798f944468717920d5c32312bf525f0bfdc40150e045fd0eb7",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_109.ram",
+      "snapshot_sha256": "95279f86aca3dd42d66e378e4ed07d6933fb273885b7ddd49e37524011c9f72f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_110.ram",
+      "snapshot_sha256": "95279f86aca3dd42d66e378e4ed07d6933fb273885b7ddd49e37524011c9f72f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_111.ram",
+      "snapshot_sha256": "beb565a1af477ba46f9c0a679836854443905b802f1595ff2cf4f39e19af0c4d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_112.ram",
+      "snapshot_sha256": "beb565a1af477ba46f9c0a679836854443905b802f1595ff2cf4f39e19af0c4d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_113.ram",
+      "snapshot_sha256": "862c9f0afd757fa278461e15638bba194d71f7c3d5f3a00d61e44a020b8d5fee",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_114.ram",
+      "snapshot_sha256": "862c9f0afd757fa278461e15638bba194d71f7c3d5f3a00d61e44a020b8d5fee",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_115.ram",
+      "snapshot_sha256": "cfd50f31c96d73645f9a740b6b22c5a68d007a1df38652ea691c8240b11dd5bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_116.ram",
+      "snapshot_sha256": "cfd50f31c96d73645f9a740b6b22c5a68d007a1df38652ea691c8240b11dd5bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_117.ram",
+      "snapshot_sha256": "9315ed817b5c0f9955a7b3ec65bde8f0d117ab925233c86693b4207cab777167",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_118.ram",
+      "snapshot_sha256": "9315ed817b5c0f9955a7b3ec65bde8f0d117ab925233c86693b4207cab777167",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_119.ram",
+      "snapshot_sha256": "1f6ba8e842ee56cbd570c974da2afa3f0964704f12496f946bbd95eee23e8bfc",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_120.ram",
+      "snapshot_sha256": "1f6ba8e842ee56cbd570c974da2afa3f0964704f12496f946bbd95eee23e8bfc",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_121.ram",
+      "snapshot_sha256": "298ca91cdb66832663c3d348cedd2bd62d8982cbb94439261fe2dcda566ca6a8",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_122.ram",
+      "snapshot_sha256": "298ca91cdb66832663c3d348cedd2bd62d8982cbb94439261fe2dcda566ca6a8",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_123.ram",
+      "snapshot_sha256": "2c685ac48c62f6798b7f72805e74e43c1317ce4d76d09a2942f05b947de081de",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_124.ram",
+      "snapshot_sha256": "2c685ac48c62f6798b7f72805e74e43c1317ce4d76d09a2942f05b947de081de",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_125.ram",
+      "snapshot_sha256": "adf632b4f4fd7608f4d8aea967d7b931951fcd11363c60ddc119c5a6c42f689b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_126.ram",
+      "snapshot_sha256": "adf632b4f4fd7608f4d8aea967d7b931951fcd11363c60ddc119c5a6c42f689b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_127.ram",
+      "snapshot_sha256": "fd2a59f59a755b7a4901ffe7b9cb603fab40e6dea4ecab872e957df32e50b2d1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x85",
+      "floor": 0,
+      "region": [
+        1,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 5,
+        "floor": 0,
+        "floor_array_index": 0,
+        "layout_id": 170,
+        "layout_header": {
+          "bank": 114,
+          "cpu": "$7A5A",
+          "file": "src/banks/bank_114.asm",
+          "line": 936
+        },
+        "layout_header_raw": "00 03 04",
+        "threshold": 63,
+        "interactive_tile_observed": 76,
+        "stairs": [
+          {
+            "region": [
+              0,
+              3
+            ],
+            "tile": 70,
+            "kind": "high_nibble"
+          }
+        ],
+        "objects": [],
+        "warp_caveat": "Generated floor links use CE2C pairs plus97:$4818 coordinates, not generic mapID warp table."
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_128.ram",
+      "snapshot_sha256": "fd2a59f59a755b7a4901ffe7b9cb603fab40e6dea4ecab872e957df32e50b2d1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x85",
+      "floor": 0,
+      "region": [
+        1,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 5,
+        "floor": 0,
+        "floor_array_index": 0,
+        "layout_id": 170,
+        "layout_header": {
+          "bank": 114,
+          "cpu": "$7A5A",
+          "file": "src/banks/bank_114.asm",
+          "line": 936
+        },
+        "layout_header_raw": "00 03 04",
+        "threshold": 63,
+        "interactive_tile_observed": 76,
+        "stairs": [
+          {
+            "region": [
+              0,
+              3
+            ],
+            "tile": 70,
+            "kind": "high_nibble"
+          }
+        ],
+        "objects": [],
+        "warp_caveat": "Generated floor links use CE2C pairs plus97:$4818 coordinates, not generic mapID warp table."
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_129.ram",
+      "snapshot_sha256": "dfd5aa724041801ea12b9d10f5fc41ded4b984a87ddefd3bc5d2d3bf705d4cba",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_130.ram",
+      "snapshot_sha256": "dfd5aa724041801ea12b9d10f5fc41ded4b984a87ddefd3bc5d2d3bf705d4cba",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_131.ram",
+      "snapshot_sha256": "d926f197ed20b744b92c337b24de13f8e5be03a5f1237e213b5b67aa8625bd51",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_132.ram",
+      "snapshot_sha256": "d926f197ed20b744b92c337b24de13f8e5be03a5f1237e213b5b67aa8625bd51",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_133.ram",
+      "snapshot_sha256": "45ae4040f51b21b1144bccc5c99ead76a2d12c9328b06e8f94d7122cca990a61",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_134.ram",
+      "snapshot_sha256": "45ae4040f51b21b1144bccc5c99ead76a2d12c9328b06e8f94d7122cca990a61",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_135.ram",
+      "snapshot_sha256": "d79f4a6a942d1f38ba3706ff6592105d38e1b4227e7f016063fee50277abd1ca",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_136.ram",
+      "snapshot_sha256": "d79f4a6a942d1f38ba3706ff6592105d38e1b4227e7f016063fee50277abd1ca",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_137.ram",
+      "snapshot_sha256": "e59af5e8d43fb52ffb840f5a80b0ba692517977e4040396ef63c7c4cdfbb7171",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_138.ram",
+      "snapshot_sha256": "e59af5e8d43fb52ffb840f5a80b0ba692517977e4040396ef63c7c4cdfbb7171",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_139.ram",
+      "snapshot_sha256": "f36d817f4975eae8f00900691557fd6e0d003cc642ccc5f7e785d9896e2e3dec",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_140.ram",
+      "snapshot_sha256": "f36d817f4975eae8f00900691557fd6e0d003cc642ccc5f7e785d9896e2e3dec",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_141.ram",
+      "snapshot_sha256": "9c9a6dd049840d1b5781dcd911ad805576d3e144a59abe3f69f013b16c5aa562",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_142.ram",
+      "snapshot_sha256": "9c9a6dd049840d1b5781dcd911ad805576d3e144a59abe3f69f013b16c5aa562",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_143.ram",
+      "snapshot_sha256": "1bc01336e00d37d63da633b3d41264b12360201b6468bbbc80bed8bd24560fa1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_144.ram",
+      "snapshot_sha256": "1bc01336e00d37d63da633b3d41264b12360201b6468bbbc80bed8bd24560fa1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_145.ram",
+      "snapshot_sha256": "8535124067895e523e3916a35a1d1af0633ac16fb7b6d69fb174b23c987e47cd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_146.ram",
+      "snapshot_sha256": "8535124067895e523e3916a35a1d1af0633ac16fb7b6d69fb174b23c987e47cd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 76
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_147.ram",
+      "snapshot_sha256": "76860bf5724c78f8c1857895c9a86358885b331e2848dabbf04a691be8ee9fc9",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_148.ram",
+      "snapshot_sha256": "76860bf5724c78f8c1857895c9a86358885b331e2848dabbf04a691be8ee9fc9",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_149.ram",
+      "snapshot_sha256": "aea246e31481f6eeb5e7adf22c3f828438fd14d0e45c68ce1ea203021ca6699f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_150.ram",
+      "snapshot_sha256": "aea246e31481f6eeb5e7adf22c3f828438fd14d0e45c68ce1ea203021ca6699f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_151.ram",
+      "snapshot_sha256": "7931be7de9b369ad9b2551d6c46cd1585bbd493ce5e0c1c32a8efa3c9301681c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_152.ram",
+      "snapshot_sha256": "7931be7de9b369ad9b2551d6c46cd1585bbd493ce5e0c1c32a8efa3c9301681c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_153.ram",
+      "snapshot_sha256": "a993785928e9fda7dca62dbb2904e21170f0998202cf5dbb3e02c48a5d9810c6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_154.ram",
+      "snapshot_sha256": "a993785928e9fda7dca62dbb2904e21170f0998202cf5dbb3e02c48a5d9810c6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_155.ram",
+      "snapshot_sha256": "b5b4aef507ced940d03455a5b76f59a4d7ea309b13fee42d1b9cccb4d0805e5b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_156.ram",
+      "snapshot_sha256": "b5b4aef507ced940d03455a5b76f59a4d7ea309b13fee42d1b9cccb4d0805e5b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_157.ram",
+      "snapshot_sha256": "764f5156f9b2aebf978bf1b2ccdb55f5930cc75d324766d7fcd0777629442f21",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_166.ram",
+      "snapshot_sha256": "ccc6c6d7016ed9b50c686f810620bd9adb4412f3e248694337baf5532798a8ac",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_167.ram",
+      "snapshot_sha256": "ccc6c6d7016ed9b50c686f810620bd9adb4412f3e248694337baf5532798a8ac",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_168.ram",
+      "snapshot_sha256": "327b8290ffcdff553978839d19733b379c58eb678891cb10978b5fefc90b2de3",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_169.ram",
+      "snapshot_sha256": "97c1eaf5b1656f14039ed99dfbee18178b911d57547589a3bdae44513301329b",
+      "mode": [
+        1,
+        0
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_181.ram",
+      "snapshot_sha256": "76def1fe4f6945633eb32b7743e46d563ad9a6978b0f22735f5bdde84891aba5",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_182.ram",
+      "snapshot_sha256": "240bd0f55cc99cec63aa6df1ba3a13cf6d28261a7c83f1f4c9eef6cc39cfe39b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_183.ram",
+      "snapshot_sha256": "240bd0f55cc99cec63aa6df1ba3a13cf6d28261a7c83f1f4c9eef6cc39cfe39b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_184.ram",
+      "snapshot_sha256": "b25d118a40640b6b727f3e9c54c383335e888fe9cb0e2134176d86a87e3ed923",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_185.ram",
+      "snapshot_sha256": "b25d118a40640b6b727f3e9c54c383335e888fe9cb0e2134176d86a87e3ed923",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_186.ram",
+      "snapshot_sha256": "7fc06daee446096cc25f72a5690708b4d13b5d4314cce7aa2d087f2f630c7b36",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_187.ram",
+      "snapshot_sha256": "7fc06daee446096cc25f72a5690708b4d13b5d4314cce7aa2d087f2f630c7b36",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_188.ram",
+      "snapshot_sha256": "30199ceb6341392d9f1fab253d721e16b53e34ea923efdb124a015ea8dce349e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_189.ram",
+      "snapshot_sha256": "30199ceb6341392d9f1fab253d721e16b53e34ea923efdb124a015ea8dce349e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_190.ram",
+      "snapshot_sha256": "a883f777b59bd7fc1bef1e3413589cc7e979e386351403cd5fe43af6d63a7380",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_191.ram",
+      "snapshot_sha256": "a883f777b59bd7fc1bef1e3413589cc7e979e386351403cd5fe43af6d63a7380",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_192.ram",
+      "snapshot_sha256": "fecdee97b5f3da4f5e9922008402ddc8a1151df0b72e542cd90985e2aa1c7f13",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_193.ram",
+      "snapshot_sha256": "fecdee97b5f3da4f5e9922008402ddc8a1151df0b72e542cd90985e2aa1c7f13",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 66,
+        "header": {
+          "bank": 97,
+          "cpu": "$63AC",
+          "file": "src/banks/bank_097.asm",
+          "line": 573
+        },
+        "threshold": 63,
+        "interactive_tile": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_194.ram",
+      "snapshot_sha256": "d745838dafc9f2b6e073d5d87e05464743ce2b319e9920a46e512308e5604d7f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_195.ram",
+      "snapshot_sha256": "d745838dafc9f2b6e073d5d87e05464743ce2b319e9920a46e512308e5604d7f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_196.ram",
+      "snapshot_sha256": "68816e8751203229733e887cdd4a46aabc3dbb5c3dede3f33ddfa6e79eb32930",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_197.ram",
+      "snapshot_sha256": "68816e8751203229733e887cdd4a46aabc3dbb5c3dede3f33ddfa6e79eb32930",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_198.ram",
+      "snapshot_sha256": "7095d6c1da0bdd9d140fab3c45df3bb4a3a27f7f2c6bee6dfb652ca324caf937",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_199.ram",
+      "snapshot_sha256": "7095d6c1da0bdd9d140fab3c45df3bb4a3a27f7f2c6bee6dfb652ca324caf937",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_200.ram",
+      "snapshot_sha256": "ceeb675f855a68e1e94202d067d7154bfbfbc74968cc0a94b0316917f03d77be",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_201.ram",
+      "snapshot_sha256": "ceeb675f855a68e1e94202d067d7154bfbfbc74968cc0a94b0316917f03d77be",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_202.ram",
+      "snapshot_sha256": "a86aa448480816c0632868bdbd8d8cfd5c5065c8e7ed0f74a4833f897c3c7017",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_203.ram",
+      "snapshot_sha256": "a86aa448480816c0632868bdbd8d8cfd5c5065c8e7ed0f74a4833f897c3c7017",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        3
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_204.ram",
+      "snapshot_sha256": "a2768ccdf85e901a085fbe9e8e327f84ddcd1df5005a17291689918bc1905a4d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_205.ram",
+      "snapshot_sha256": "a2768ccdf85e901a085fbe9e8e327f84ddcd1df5005a17291689918bc1905a4d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_206.ram",
+      "snapshot_sha256": "d45e4bfce71faa871343aea214ac3f2e4c83670239177703f8ff646fdfe40a3b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_207.ram",
+      "snapshot_sha256": "d45e4bfce71faa871343aea214ac3f2e4c83670239177703f8ff646fdfe40a3b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_208.ram",
+      "snapshot_sha256": "b6bda13a1baddeb8cb30369d23588130ce92d471683ecbb932b32cf5a61fcd9e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_209.ram",
+      "snapshot_sha256": "b6bda13a1baddeb8cb30369d23588130ce92d471683ecbb932b32cf5a61fcd9e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_210.ram",
+      "snapshot_sha256": "bbbff6e790893dfeaefd5bb2c2e83bcd8010af00e96b8fe67479ba85cae2a70b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_211.ram",
+      "snapshot_sha256": "bbbff6e790893dfeaefd5bb2c2e83bcd8010af00e96b8fe67479ba85cae2a70b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_212.ram",
+      "snapshot_sha256": "67ff036532761e06e24750aeddb23720bcc95c2485531396173497888d13dd0d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_213.ram",
+      "snapshot_sha256": "67ff036532761e06e24750aeddb23720bcc95c2485531396173497888d13dd0d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_214.ram",
+      "snapshot_sha256": "8769e192b483057272bc1be950854d2ac6a640f862d4c752ebac6b31f20242bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_215.ram",
+      "snapshot_sha256": "8769e192b483057272bc1be950854d2ac6a640f862d4c752ebac6b31f20242bd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_216.ram",
+      "snapshot_sha256": "379bbed39b9b1e4edb40fade4af8a54e3e09b31be8168a1948c5dabca4bad8da",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_217.ram",
+      "snapshot_sha256": "379bbed39b9b1e4edb40fade4af8a54e3e09b31be8168a1948c5dabca4bad8da",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_218.ram",
+      "snapshot_sha256": "e22d92afcababe9378393fced88ceafaad57d49bbc0c7d697c66a23fd19d4d3e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_219.ram",
+      "snapshot_sha256": "e22d92afcababe9378393fced88ceafaad57d49bbc0c7d697c66a23fd19d4d3e",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_220.ram",
+      "snapshot_sha256": "73700aba5e3efcceaa6573ed05e32cb4257eb19f5b2c0636e21f11833fca531d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_221.ram",
+      "snapshot_sha256": "73700aba5e3efcceaa6573ed05e32cb4257eb19f5b2c0636e21f11833fca531d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_222.ram",
+      "snapshot_sha256": "628d7d608d5648eedb230f7487d6cb70c7b2e4c1d31d7a235d4dceac0ec76226",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_223.ram",
+      "snapshot_sha256": "628d7d608d5648eedb230f7487d6cb70c7b2e4c1d31d7a235d4dceac0ec76226",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        2
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_224.ram",
+      "snapshot_sha256": "63e7ae17818186d46742996f083ced7a05bc6b3402534926da38566d9afc924c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_225.ram",
+      "snapshot_sha256": "63e7ae17818186d46742996f083ced7a05bc6b3402534926da38566d9afc924c",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_226.ram",
+      "snapshot_sha256": "98e0a757a56026e6347d3b5d9f8a6a623bf108a1de287ecdde49fb95fb8df8e2",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_227.ram",
+      "snapshot_sha256": "98e0a757a56026e6347d3b5d9f8a6a623bf108a1de287ecdde49fb95fb8df8e2",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_228.ram",
+      "snapshot_sha256": "6ccbb2124095d7129279be51a771ea7bc635514726f0eb8265dca0dc76db5b93",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_229.ram",
+      "snapshot_sha256": "6ccbb2124095d7129279be51a771ea7bc635514726f0eb8265dca0dc76db5b93",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_230.ram",
+      "snapshot_sha256": "76192adbafc4fa89e4228501f27ac364f404368d5a4904f224441a7cd624c559",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_231.ram",
+      "snapshot_sha256": "76192adbafc4fa89e4228501f27ac364f404368d5a4904f224441a7cd624c559",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_232.ram",
+      "snapshot_sha256": "178006134e03d613d0194841c32dc644dc22565cffb8ed8dcfa0e08fc7026ce1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_233.ram",
+      "snapshot_sha256": "178006134e03d613d0194841c32dc644dc22565cffb8ed8dcfa0e08fc7026ce1",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_234.ram",
+      "snapshot_sha256": "488e72756eadbcbc9bf7753a472064aa4872e21a72d0cf78daf1d4b02a264afa",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_235.ram",
+      "snapshot_sha256": "488e72756eadbcbc9bf7753a472064aa4872e21a72d0cf78daf1d4b02a264afa",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_236.ram",
+      "snapshot_sha256": "6e546ee25d446ee5f600ec5a84ff5f426c79f768a6b4bd2e053446f8c89f4b78",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_237.ram",
+      "snapshot_sha256": "6e546ee25d446ee5f600ec5a84ff5f426c79f768a6b4bd2e053446f8c89f4b78",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_238.ram",
+      "snapshot_sha256": "4cc1ef331be65330554b328a5122dd3ce060d2717753e29a7c3d60d65c00d53d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_239.ram",
+      "snapshot_sha256": "4cc1ef331be65330554b328a5122dd3ce060d2717753e29a7c3d60d65c00d53d",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        3,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_240.ram",
+      "snapshot_sha256": "5dfcc238354d8ab3ef442c34e633c6ede6b6d34eecc5526cd0884a552143f8b6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_241.ram",
+      "snapshot_sha256": "5dfcc238354d8ab3ef442c34e633c6ede6b6d34eecc5526cd0884a552143f8b6",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_242.ram",
+      "snapshot_sha256": "974493ad1ec5c87bc47bc8458cb19e49a1281bcab3cfba2c36cab4633c045455",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_243.ram",
+      "snapshot_sha256": "974493ad1ec5c87bc47bc8458cb19e49a1281bcab3cfba2c36cab4633c045455",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_244.ram",
+      "snapshot_sha256": "e30df8a6df751a12fc0c5f970d9178c1583b8b84d21bf21ea5c58f71c694aa9a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_245.ram",
+      "snapshot_sha256": "e30df8a6df751a12fc0c5f970d9178c1583b8b84d21bf21ea5c58f71c694aa9a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_246.ram",
+      "snapshot_sha256": "9a310d6a97cf5a3b48cb6eedf748a019fa214b679c5990bab745d319fc3dbbb2",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_247.ram",
+      "snapshot_sha256": "9a310d6a97cf5a3b48cb6eedf748a019fa214b679c5990bab745d319fc3dbbb2",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_248.ram",
+      "snapshot_sha256": "f078eb61684db9e56202c369fcbaa45581dd87801a07bd997008d3ed42728b7a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_249.ram",
+      "snapshot_sha256": "f078eb61684db9e56202c369fcbaa45581dd87801a07bd997008d3ed42728b7a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_250.ram",
+      "snapshot_sha256": "62fa2ee03aef05197a65ed2e770f50dccc00acc6b2b14016d7c941e13f95d6df",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_251.ram",
+      "snapshot_sha256": "62fa2ee03aef05197a65ed2e770f50dccc00acc6b2b14016d7c941e13f95d6df",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_252.ram",
+      "snapshot_sha256": "868447688ac557d08bf0921f7618af6ebe6557a4e770a7ff4137f86b3abdc727",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_253.ram",
+      "snapshot_sha256": "868447688ac557d08bf0921f7618af6ebe6557a4e770a7ff4137f86b3abdc727",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_254.ram",
+      "snapshot_sha256": "4b3870c45a084b272f53adaa823e50cf9d644c802f98fe51d3a50b83292d814b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_255.ram",
+      "snapshot_sha256": "4b3870c45a084b272f53adaa823e50cf9d644c802f98fe51d3a50b83292d814b",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_256.ram",
+      "snapshot_sha256": "8e983e44a5ada1f2966bf5effa93e0892ebf2b7aca665bd1d4c85dbbb2590431",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_257.ram",
+      "snapshot_sha256": "8e983e44a5ada1f2966bf5effa93e0892ebf2b7aca665bd1d4c85dbbb2590431",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_262.ram",
+      "snapshot_sha256": "185d4871f4220263b29064a0077aa607d9b098e00644b4dcc6cce8d643a6ec94",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_263.ram",
+      "snapshot_sha256": "185d4871f4220263b29064a0077aa607d9b098e00644b4dcc6cce8d643a6ec94",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        2,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_264.ram",
+      "snapshot_sha256": "d707e53cf696c3a7b4533946bc156f06129db073d1fdab1d16529b2077ccef4f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_265.ram",
+      "snapshot_sha256": "d707e53cf696c3a7b4533946bc156f06129db073d1fdab1d16529b2077ccef4f",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_266.ram",
+      "snapshot_sha256": "2ccdefae7db38416065b68273f1942a842ff625fe4873527445feb0ce4bb2595",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_267.ram",
+      "snapshot_sha256": "2ccdefae7db38416065b68273f1942a842ff625fe4873527445feb0ce4bb2595",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_268.ram",
+      "snapshot_sha256": "089b3497dcf28f259362bac18b9221fe0d4230542e719c48c448725f73e5c840",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_269.ram",
+      "snapshot_sha256": "089b3497dcf28f259362bac18b9221fe0d4230542e719c48c448725f73e5c840",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_270.ram",
+      "snapshot_sha256": "601976f5649f5336de62f67e5210f8b80ba821558c2aafcbdf77712838766709",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_271.ram",
+      "snapshot_sha256": "601976f5649f5336de62f67e5210f8b80ba821558c2aafcbdf77712838766709",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x80",
+      "floor": 0,
+      "region": [
+        1,
+        1
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "mode": 0,
+        "threshold": 61,
+        "interactive_tile_observed": 0
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_272.ram",
+      "snapshot_sha256": "55350426168e695bbb660b8a7a79bd3d9f29155af7453bb23593f2ff748d2c63",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_273.ram",
+      "snapshot_sha256": "55350426168e695bbb660b8a7a79bd3d9f29155af7453bb23593f2ff748d2c63",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_274.ram",
+      "snapshot_sha256": "ee7c5369f5d8b6bc3a44740bd6ce26d88429ea1b2820cfe0f020eb2b516ac280",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_275.ram",
+      "snapshot_sha256": "ee7c5369f5d8b6bc3a44740bd6ce26d88429ea1b2820cfe0f020eb2b516ac280",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_276.ram",
+      "snapshot_sha256": "a520091e1bb705c2cf411daced6cd45e21bce72d3e4931d008697e01606023a5",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_277.ram",
+      "snapshot_sha256": "a520091e1bb705c2cf411daced6cd45e21bce72d3e4931d008697e01606023a5",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_278.ram",
+      "snapshot_sha256": "37e26d4e4ca6b625a0f0f9d7121dcc5c763243c14182bb0bb645c1cc70a47a7a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_279.ram",
+      "snapshot_sha256": "37e26d4e4ca6b625a0f0f9d7121dcc5c763243c14182bb0bb645c1cc70a47a7a",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_280.ram",
+      "snapshot_sha256": "dcbf1d50a039dd0b5951f7385d7a9ba6005ff14e91e91fa8cd89bc2212307584",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_281.ram",
+      "snapshot_sha256": "dcbf1d50a039dd0b5951f7385d7a9ba6005ff14e91e91fa8cd89bc2212307584",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    },
+    {
+      "path": "/workspace/scratch/m8-postgame/postgame-02/m8_282.ram",
+      "snapshot_sha256": "f9d7a01faff1c5c865987fee564b3b0d7fd26be1cd08ee2cca00c92942d3adcd",
+      "mode": [
+        1,
+        5
+      ],
+      "submode": "0x83",
+      "floor": 0,
+      "region": [
+        0,
+        0
+      ],
+      "diff_count": 0,
+      "diff_offsets": [],
+      "map_identity": {
+        "map_id": 84,
+        "header": {
+          "bank": 97,
+          "cpu": "$64E4",
+          "file": "src/banks/bank_097.asm",
+          "line": 593
+        },
+        "threshold": 63,
+        "interactive_tile": 60
+      }
+    }
+  ]
+}

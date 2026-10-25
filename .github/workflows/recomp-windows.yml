@@ -57,7 +57,12 @@ jobs:
               ('build-identity', ['recomp/tools/test_m8_build_identity.py']),
               ('package', ['recomp/tools/test_m8_package.py']),
               ('parallel-replay', ['recomp/tools/test_m8_story_parallel_contracts.py']),
+              ('postgame-names', ['recomp/tools/test_m8_postgame_name_contracts.py']),
               ('native-retest', ['recomp/tools/test_m8_native_retest.py']),
+              ('original-map-decoder', ['recomp/tools/test_inspect_map.py']),
+              ('magic-key-tables', ['recomp/tools/inspect_magic_keys.py', '--check']),
+              ('original-items', ['recomp/tools/inspect_items.py', '--check']),
+              ('magic-world-source', ['recomp/tools/audit_magic_worlds.py', '--output', str(logs / 'magic-world-source.json')]),
               ('lr35902', ['recomp/tools/test_lr35902.py', '--bank0', 'src/banks/bank_000.asm']),
               ('bank0-audit', ['recomp/tools/recompile_bank0.py', '--bank', 'src/banks/bank_000.asm', '--audit-only']),
           ]

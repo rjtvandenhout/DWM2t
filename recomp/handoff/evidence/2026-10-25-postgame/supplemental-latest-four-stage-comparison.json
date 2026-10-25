@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "Read-only verification of existing actual Wine replay observations; no new game execution",
+  "stages": [
+    {
+      "stage": "key-appraisal",
+      "owned_bytes_checked": 2805,
+      "continue_byte_transition_count": 0,
+      "cache_four_way_equal": true
+    },
+    {
+      "stage": "quietsea-clear",
+      "owned_bytes_checked": 2805,
+      "continue_byte_transition_count": 0,
+      "cache_four_way_equal": true
+    },
+    {
+      "stage": "newlywed-gift",
+      "owned_bytes_checked": 2970,
+      "continue_byte_transition_count": 4,
+      "cache_four_way_equal": true
+    },
+    {
+      "stage": "certified-egg",
+      "owned_bytes_checked": 3135,
+      "continue_byte_transition_count": 8,
+      "cache_four_way_equal": true
+    }
+  ]
+}

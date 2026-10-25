@@ -18,6 +18,8 @@ jobs:
         run: python tools/rebuild.py --out build/dwm2_cobi.gbc
       - name: Verify exact ROM hashes
         run: python tools/verify.py build/dwm2_cobi.gbc
+      - name: Verify original Magic Key tables and selector bins
+        run: python recomp/tools/inspect_magic_keys.py --check
 
   rgbds-recompile:
     runs-on: ubuntu-latest

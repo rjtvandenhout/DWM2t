@@ -1,0 +1,1792 @@
+[
+  {
+    "world_name": "MonsterFarm",
+    "world": 0,
+    "kind": "0xFD",
+    "destination_world": 6,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 02 40 40 06 00 00 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69A7",
+      "rom_offset": "0x0469A7",
+      "source": "src/banks/bank_017.asm",
+      "line": 669
+    },
+    "source_region": [
+      0,
+      2
+    ],
+    "source_position": [
+      64,
+      64
+    ],
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "MonsterFarm",
+    "world": 0,
+    "kind": "0xFF",
+    "destination_world": 2,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "ff 00 00 01 02 02 00 90 00",
+    "source": {
+      "bank": 17,
+      "address": "0x69B0",
+      "rom_offset": "0x0469B0",
+      "source": "src/banks/bank_017.asm",
+      "line": 670
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_relative_offsets": [
+      -112,
+      0
+    ]
+  },
+  {
+    "world_name": "MonsterFarm",
+    "world": 0,
+    "kind": "0x02",
+    "destination_world": 1,
+    "destination_region": [
+      3,
+      2
+    ],
+    "raw": "02 10 40 00 01 03 02 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69B9",
+      "rom_offset": "0x0469B9",
+      "source": "src/banks/bank_017.asm",
+      "line": 670
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      64,
+      0
+    ],
+    "direction": "U",
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "MonsterFarm",
+    "world": 0,
+    "kind": "0xFF",
+    "destination_world": 1,
+    "destination_region": [
+      3,
+      2
+    ],
+    "raw": "ff 00 01 00 01 03 02 90 00",
+    "source": {
+      "bank": 17,
+      "address": "0x69C2",
+      "rom_offset": "0x0469C2",
+      "source": "src/banks/bank_017.asm",
+      "line": 671
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "destination_relative_offsets": [
+      -112,
+      0
+    ]
+  },
+  {
+    "world_name": "MonsterFarm",
+    "world": 0,
+    "kind": "0xFD",
+    "destination_world": 7,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 21 60 30 07 00 10 06 03",
+    "source": {
+      "bank": 17,
+      "address": "0x69CB",
+      "rom_offset": "0x0469CB",
+      "source": "src/banks/bank_017.asm",
+      "line": 671
+    },
+    "source_region": [
+      2,
+      1
+    ],
+    "source_position": [
+      96,
+      48
+    ],
+    "destination_position": [
+      96,
+      48
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 5,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "fd 22 50 50 05 02 30 05 00",
+    "source": {
+      "bank": 17,
+      "address": "0x69D5",
+      "rom_offset": "0x0469D5",
+      "source": "src/banks/bank_017.asm",
+      "line": 672
+    },
+    "source_region": [
+      2,
+      2
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      0
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 21,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 00 50 50 15 00 00 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69DE",
+      "rom_offset": "0x0469DE",
+      "source": "src/banks/bank_017.asm",
+      "line": 672
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 23,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 10 30 40 17 00 00 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69E7",
+      "rom_offset": "0x0469E7",
+      "source": "src/banks/bank_017.asm",
+      "line": 673
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      48,
+      64
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 25,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "fd 10 50 00 19 01 01 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69F0",
+      "rom_offset": "0x0469F0",
+      "source": "src/banks/bank_017.asm",
+      "line": 674
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      80,
+      0
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 17,
+    "destination_region": [
+      0,
+      1
+    ],
+    "raw": "fd 01 40 50 11 00 01 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x69F9",
+      "rom_offset": "0x0469F9",
+      "source": "src/banks/bank_017.asm",
+      "line": 674
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "source_position": [
+      64,
+      80
+    ],
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 17,
+    "destination_region": [
+      0,
+      1
+    ],
+    "raw": "fd 01 50 50 11 00 01 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A02",
+      "rom_offset": "0x046A02",
+      "source": "src/banks/bank_017.asm",
+      "line": 675
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 9,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 11 30 40 09 00 00 03 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A0B",
+      "rom_offset": "0x046A0B",
+      "source": "src/banks/bank_017.asm",
+      "line": 675
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "source_position": [
+      48,
+      64
+    ],
+    "destination_position": [
+      48,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 19,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 11 20 10 13 00 00 02 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A14",
+      "rom_offset": "0x046A14",
+      "source": "src/banks/bank_017.asm",
+      "line": 676
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "source_position": [
+      32,
+      16
+    ],
+    "destination_position": [
+      32,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 10,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 21 50 50 0a 00 00 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A1D",
+      "rom_offset": "0x046A1D",
+      "source": "src/banks/bank_017.asm",
+      "line": 676
+    },
+    "source_region": [
+      2,
+      1
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 8,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 02 40 40 08 00 00 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A26",
+      "rom_offset": "0x046A26",
+      "source": "src/banks/bank_017.asm",
+      "line": 677
+    },
+    "source_region": [
+      0,
+      2
+    ],
+    "source_position": [
+      64,
+      64
+    ],
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 22,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 02 60 10 16 00 00 06 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A2F",
+      "rom_offset": "0x046A2F",
+      "source": "src/banks/bank_017.asm",
+      "line": 677
+    },
+    "source_region": [
+      0,
+      2
+    ],
+    "source_position": [
+      96,
+      16
+    ],
+    "destination_position": [
+      96,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFF",
+    "destination_world": 2,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "ff 00 00 03 02 00 00 00 80",
+    "source": {
+      "bank": 17,
+      "address": "0x6A38",
+      "rom_offset": "0x046A38",
+      "source": "src/banks/bank_017.asm",
+      "line": 678
+    },
+    "source_region": [
+      0,
+      3
+    ],
+    "destination_relative_offsets": [
+      0,
+      -128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFD",
+    "destination_world": 12,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fd 12 20 30 0c 01 00 03 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6A41",
+      "rom_offset": "0x046A41",
+      "source": "src/banks/bank_017.asm",
+      "line": 679
+    },
+    "source_region": [
+      1,
+      2
+    ],
+    "source_position": [
+      32,
+      48
+    ],
+    "destination_position": [
+      48,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFF",
+    "destination_world": 0,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "ff 00 04 02 00 02 00 70 00",
+    "source": {
+      "bank": 17,
+      "address": "0x6A4A",
+      "rom_offset": "0x046A4A",
+      "source": "src/banks/bank_017.asm",
+      "line": 679
+    },
+    "source_region": [
+      4,
+      2
+    ],
+    "destination_relative_offsets": [
+      112,
+      0
+    ]
+  },
+  {
+    "world_name": "GreatLog",
+    "world": 1,
+    "kind": "0xFF",
+    "destination_world": 0,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "ff 00 03 03 00 01 01 00 80",
+    "source": {
+      "bank": 17,
+      "address": "0x6A53",
+      "rom_offset": "0x046A53",
+      "source": "src/banks/bank_017.asm",
+      "line": 680
+    },
+    "source_region": [
+      3,
+      3
+    ],
+    "destination_relative_offsets": [
+      0,
+      -128
+    ]
+  },
+  {
+    "world_name": "Main Street",
+    "world": 2,
+    "kind": "0xFF",
+    "destination_world": 1,
+    "destination_region": [
+      0,
+      2
+    ],
+    "raw": "ff 00 00 ff 01 00 02 00 80",
+    "source": {
+      "bank": 17,
+      "address": "0x6A5D",
+      "rom_offset": "0x046A5D",
+      "source": "src/banks/bank_017.asm",
+      "line": 680
+    },
+    "source_region": [
+      0,
+      255
+    ],
+    "destination_relative_offsets": [
+      0,
+      -128
+    ]
+  },
+  {
+    "world_name": "Main Street",
+    "world": 2,
+    "kind": "0xFF",
+    "destination_world": 0,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "ff 00 03 00 00 01 01 70 00",
+    "source": {
+      "bank": 17,
+      "address": "0x6A66",
+      "rom_offset": "0x046A66",
+      "source": "src/banks/bank_017.asm",
+      "line": 681
+    },
+    "source_region": [
+      3,
+      0
+    ],
+    "destination_relative_offsets": [
+      112,
+      0
+    ]
+  },
+  {
+    "world_name": "Magic Door",
+    "world": 3,
+    "kind": "0xFD",
+    "destination_world": 5,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 00 50 50 05 00 10 05 05",
+    "source": {
+      "bank": 17,
+      "address": "0x6A70",
+      "rom_offset": "0x046A70",
+      "source": "src/banks/bank_017.asm",
+      "line": 682
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      80
+    ]
+  },
+  {
+    "world_name": "Reception",
+    "world": 4,
+    "kind": "0xFD",
+    "destination_world": 12,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fd 20 40 40 0c 01 10 04 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6A7A",
+      "rom_offset": "0x046A7A",
+      "source": "src/banks/bank_017.asm",
+      "line": 682
+    },
+    "source_region": [
+      2,
+      0
+    ],
+    "source_position": [
+      64,
+      64
+    ],
+    "destination_position": [
+      64,
+      64
+    ]
+  },
+  {
+    "world_name": "Reception",
+    "world": 4,
+    "kind": "0xFF",
+    "destination_world": 24,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "ff 00 02 01 18 82 00 00 a0",
+    "source": {
+      "bank": 17,
+      "address": "0x6A83",
+      "rom_offset": "0x046A83",
+      "source": "src/banks/bank_017.asm",
+      "line": 683
+    },
+    "source_region": [
+      2,
+      1
+    ],
+    "destination_relative_offsets": [
+      0,
+      -96
+    ]
+  },
+  {
+    "world_name": "Reception",
+    "world": 4,
+    "kind": "0xFF",
+    "destination_world": 24,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "ff 00 01 01 18 81 00 00 80",
+    "source": {
+      "bank": 17,
+      "address": "0x6A8C",
+      "rom_offset": "0x046A8C",
+      "source": "src/banks/bank_017.asm",
+      "line": 683
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "destination_relative_offsets": [
+      0,
+      -128
+    ]
+  },
+  {
+    "world_name": "Log's Navel",
+    "world": 5,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      2,
+      2
+    ],
+    "raw": "fe 00 02 ff 01 02 12 05 05",
+    "source": {
+      "bank": 17,
+      "address": "0x6A96",
+      "rom_offset": "0x046A96",
+      "source": "src/banks/bank_017.asm",
+      "line": 684
+    },
+    "source_region": [
+      2,
+      255
+    ],
+    "destination_position": [
+      80,
+      80
+    ]
+  },
+  {
+    "world_name": "Log's Navel",
+    "world": 5,
+    "kind": "0xFD",
+    "destination_world": 3,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 00 50 50 03 00 10 05 05",
+    "source": {
+      "bank": 17,
+      "address": "0x6A9F",
+      "rom_offset": "0x046A9F",
+      "source": "src/banks/bank_017.asm",
+      "line": 684
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      80,
+      80
+    ],
+    "destination_position": [
+      80,
+      80
+    ]
+  },
+  {
+    "world_name": "Log's Navel",
+    "world": 5,
+    "kind": "0xFD",
+    "destination_world": 13,
+    "destination_region": [
+      0,
+      1
+    ],
+    "raw": "fd 00 50 10 0d 00 31 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6AA8",
+      "rom_offset": "0x046AA8",
+      "source": "src/banks/bank_017.asm",
+      "line": 685
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      80,
+      16
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "Home",
+    "world": 6,
+    "kind": "0xFE",
+    "destination_world": 0,
+    "destination_region": [
+      0,
+      2
+    ],
+    "raw": "fe 00 00 01 00 80 02 04 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6AB2",
+      "rom_offset": "0x046AB2",
+      "source": "src/banks/bank_017.asm",
+      "line": 686
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      64,
+      64
+    ]
+  },
+  {
+    "world_name": "Stable",
+    "world": 7,
+    "kind": "0xFD",
+    "destination_world": 0,
+    "destination_region": [
+      2,
+      1
+    ],
+    "raw": "fd 00 60 30 00 02 11 06 03",
+    "source": {
+      "bank": 17,
+      "address": "0x6ABC",
+      "rom_offset": "0x046ABC",
+      "source": "src/banks/bank_017.asm",
+      "line": 686
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      96,
+      48
+    ],
+    "destination_position": [
+      96,
+      48
+    ]
+  },
+  {
+    "world_name": "Stable",
+    "world": 7,
+    "kind": "0xFD",
+    "destination_world": 13,
+    "destination_region": [
+      3,
+      1
+    ],
+    "raw": "fd 00 50 00 0d 03 31 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6AC5",
+      "rom_offset": "0x046AC5",
+      "source": "src/banks/bank_017.asm",
+      "line": 687
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      80,
+      0
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "Vault",
+    "world": 8,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      0,
+      2
+    ],
+    "raw": "fe 00 00 01 01 80 02 04 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6ACF",
+      "rom_offset": "0x046ACF",
+      "source": "src/banks/bank_017.asm",
+      "line": 687
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      64,
+      64
+    ]
+  },
+  {
+    "world_name": "Key Shop",
+    "world": 9,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "fe 00 00 01 01 81 01 03 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6AD9",
+      "rom_offset": "0x046AD9",
+      "source": "src/banks/bank_017.asm",
+      "line": 688
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      48,
+      64
+    ]
+  },
+  {
+    "world_name": "Evaluator",
+    "world": 10,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      2,
+      1
+    ],
+    "raw": "fe 00 00 01 01 82 01 05 05",
+    "source": {
+      "bank": 17,
+      "address": "0x6AE3",
+      "rom_offset": "0x046AE3",
+      "source": "src/banks/bank_017.asm",
+      "line": 689
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      80,
+      80
+    ]
+  },
+  {
+    "world_name": "Evaluator",
+    "world": 10,
+    "kind": "0xFD",
+    "destination_world": 13,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "fd 00 80 40 0d 01 11 08 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6AEC",
+      "rom_offset": "0x046AEC",
+      "source": "src/banks/bank_017.asm",
+      "line": 689
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      128,
+      64
+    ],
+    "destination_position": [
+      128,
+      64
+    ]
+  },
+  {
+    "world_name": "Residences",
+    "world": 12,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      1,
+      2
+    ],
+    "raw": "fe 00 01 01 01 81 02 02 03",
+    "source": {
+      "bank": 17,
+      "address": "0x6AF6",
+      "rom_offset": "0x046AF6",
+      "source": "src/banks/bank_017.asm",
+      "line": 690
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "destination_position": [
+      32,
+      48
+    ]
+  },
+  {
+    "world_name": "Residences",
+    "world": 12,
+    "kind": "0xFD",
+    "destination_world": 4,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "fd 10 40 40 04 02 10 04 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6AFF",
+      "rom_offset": "0x046AFF",
+      "source": "src/banks/bank_017.asm",
+      "line": 690
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      64,
+      64
+    ],
+    "destination_position": [
+      64,
+      64
+    ]
+  },
+  {
+    "world_name": "Residences",
+    "world": 12,
+    "kind": "0xFD",
+    "destination_world": 14,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 00 30 40 0e 00 00 03 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6B08",
+      "rom_offset": "0x046B08",
+      "source": "src/banks/bank_017.asm",
+      "line": 691
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      48,
+      64
+    ],
+    "destination_position": [
+      48,
+      128
+    ]
+  },
+  {
+    "world_name": "Residences",
+    "world": 12,
+    "kind": "0xFD",
+    "destination_world": 18,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 00 70 40 12 00 00 07 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6B11",
+      "rom_offset": "0x046B11",
+      "source": "src/banks/bank_017.asm",
+      "line": 692
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      112,
+      64
+    ],
+    "destination_position": [
+      112,
+      128
+    ]
+  },
+  {
+    "world_name": "Starry <59>",
+    "world": 13,
+    "kind": "0xFD",
+    "destination_world": 10,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 11 80 40 0a 00 10 08 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6B1B",
+      "rom_offset": "0x046B1B",
+      "source": "src/banks/bank_017.asm",
+      "line": 692
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "source_position": [
+      128,
+      64
+    ],
+    "destination_position": [
+      128,
+      64
+    ]
+  },
+  {
+    "world_name": "Starry <59>",
+    "world": 13,
+    "kind": "0xFE",
+    "destination_world": 5,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 00 02 05 80 10 05 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B24",
+      "rom_offset": "0x046B24",
+      "source": "src/banks/bank_017.asm",
+      "line": 693
+    },
+    "source_region": [
+      0,
+      2
+    ],
+    "destination_position": [
+      80,
+      16
+    ]
+  },
+  {
+    "world_name": "Starry <59>",
+    "world": 13,
+    "kind": "0xFE",
+    "destination_world": 7,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 03 02 07 80 10 05 00",
+    "source": {
+      "bank": 17,
+      "address": "0x6B2D",
+      "rom_offset": "0x046B2D",
+      "source": "src/banks/bank_017.asm",
+      "line": 693
+    },
+    "source_region": [
+      3,
+      2
+    ],
+    "destination_position": [
+      80,
+      0
+    ]
+  },
+  {
+    "world_name": "Family Rm.",
+    "world": 14,
+    "kind": "0xFE",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 00 01 0c 80 00 03 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6B37",
+      "rom_offset": "0x046B37",
+      "source": "src/banks/bank_017.asm",
+      "line": 694
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      48,
+      64
+    ]
+  },
+  {
+    "world_name": "Guy's Rm.",
+    "world": 15,
+    "kind": "0x00",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "00 00 40 80 0c 80 00 02 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B41",
+      "rom_offset": "0x046B41",
+      "source": "src/banks/bank_017.asm",
+      "line": 695
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      64,
+      128
+    ],
+    "direction": "D",
+    "destination_position": [
+      32,
+      16
+    ]
+  },
+  {
+    "world_name": "Guy's Rm.",
+    "world": 15,
+    "kind": "0x00",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "00 00 20 80 0c 80 00 02 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B4A",
+      "rom_offset": "0x046B4A",
+      "source": "src/banks/bank_017.asm",
+      "line": 695
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      32,
+      128
+    ],
+    "direction": "D",
+    "destination_position": [
+      32,
+      16
+    ]
+  },
+  {
+    "world_name": "Guy's Rm.",
+    "world": 15,
+    "kind": "0x00",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "00 00 70 80 0c 80 00 07 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B53",
+      "rom_offset": "0x046B53",
+      "source": "src/banks/bank_017.asm",
+      "line": 696
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      112,
+      128
+    ],
+    "direction": "D",
+    "destination_position": [
+      112,
+      16
+    ]
+  },
+  {
+    "world_name": "Lady's Rm.",
+    "world": 16,
+    "kind": "0xFE",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 00 01 0c 80 00 07 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B5D",
+      "rom_offset": "0x046B5D",
+      "source": "src/banks/bank_017.asm",
+      "line": 696
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      112,
+      16
+    ]
+  },
+  {
+    "world_name": "Library",
+    "world": 17,
+    "kind": "0xFF",
+    "destination_world": 1,
+    "destination_region": [
+      0,
+      1
+    ],
+    "raw": "ff 00 00 02 01 80 01 00 d0",
+    "source": {
+      "bank": 17,
+      "address": "0x6B67",
+      "rom_offset": "0x046B67",
+      "source": "src/banks/bank_017.asm",
+      "line": 697
+    },
+    "source_region": [
+      0,
+      2
+    ],
+    "destination_relative_offsets": [
+      0,
+      -48
+    ]
+  },
+  {
+    "world_name": "Girl's Rm.",
+    "world": 18,
+    "kind": "0xFE",
+    "destination_world": 12,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 00 01 0c 80 00 07 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6B71",
+      "rom_offset": "0x046B71",
+      "source": "src/banks/bank_017.asm",
+      "line": 698
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      112,
+      64
+    ]
+  },
+  {
+    "world_name": "Christener",
+    "world": 19,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "fe 00 00 01 01 81 01 02 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B7B",
+      "rom_offset": "0x046B7B",
+      "source": "src/banks/bank_017.asm",
+      "line": 698
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      32,
+      16
+    ]
+  },
+  {
+    "world_name": "Old man's",
+    "world": 21,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fe 00 00 01 01 80 00 05 05",
+    "source": {
+      "bank": 17,
+      "address": "0x6B85",
+      "rom_offset": "0x046B85",
+      "source": "src/banks/bank_017.asm",
+      "line": 699
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      80,
+      80
+    ]
+  },
+  {
+    "world_name": "Medal man",
+    "world": 22,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      0,
+      2
+    ],
+    "raw": "fe 00 00 01 01 80 02 06 01",
+    "source": {
+      "bank": 17,
+      "address": "0x6B8F",
+      "rom_offset": "0x046B8F",
+      "source": "src/banks/bank_017.asm",
+      "line": 699
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      96,
+      16
+    ]
+  },
+  {
+    "world_name": "Tavern",
+    "world": 23,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fe 00 00 01 01 81 00 03 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6B99",
+      "rom_offset": "0x046B99",
+      "source": "src/banks/bank_017.asm",
+      "line": 700
+    },
+    "source_region": [
+      0,
+      1
+    ],
+    "destination_position": [
+      48,
+      64
+    ]
+  },
+  {
+    "world_name": "Arena",
+    "world": 24,
+    "kind": "0xFD",
+    "destination_world": 4,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "fd 20 40 20 04 02 00 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6BA3",
+      "rom_offset": "0x046BA3",
+      "source": "src/banks/bank_017.asm",
+      "line": 701
+    },
+    "source_region": [
+      2,
+      0
+    ],
+    "source_position": [
+      64,
+      32
+    ],
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "Arena",
+    "world": 24,
+    "kind": "0xFD",
+    "destination_world": 4,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "fd 20 50 20 04 02 00 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6BAC",
+      "rom_offset": "0x046BAC",
+      "source": "src/banks/bank_017.asm",
+      "line": 701
+    },
+    "source_region": [
+      2,
+      0
+    ],
+    "source_position": [
+      80,
+      32
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "Arena",
+    "world": 24,
+    "kind": "0xFD",
+    "destination_world": 4,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fd 10 40 00 04 01 00 04 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6BB5",
+      "rom_offset": "0x046BB5",
+      "source": "src/banks/bank_017.asm",
+      "line": 702
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      64,
+      0
+    ],
+    "destination_position": [
+      64,
+      128
+    ]
+  },
+  {
+    "world_name": "Arena",
+    "world": 24,
+    "kind": "0xFD",
+    "destination_world": 4,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fd 10 50 00 04 01 00 05 08",
+    "source": {
+      "bank": 17,
+      "address": "0x6BBE",
+      "rom_offset": "0x046BBE",
+      "source": "src/banks/bank_017.asm",
+      "line": 702
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      80,
+      0
+    ],
+    "destination_position": [
+      80,
+      128
+    ]
+  },
+  {
+    "world_name": "GreatLog <58>",
+    "world": 25,
+    "kind": "0xFE",
+    "destination_world": 1,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fe 00 01 02 01 81 00 05 00",
+    "source": {
+      "bank": 17,
+      "address": "0x6BC8",
+      "rom_offset": "0x046BC8",
+      "source": "src/banks/bank_017.asm",
+      "line": 703
+    },
+    "source_region": [
+      1,
+      2
+    ],
+    "destination_position": [
+      80,
+      0
+    ]
+  },
+  {
+    "world_name": "GreatLog <58>",
+    "world": 25,
+    "kind": "0xFD",
+    "destination_world": 26,
+    "destination_region": [
+      1,
+      0
+    ],
+    "raw": "fd 11 50 40 1a 01 10 05 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6BD1",
+      "rom_offset": "0x046BD1",
+      "source": "src/banks/bank_017.asm",
+      "line": 704
+    },
+    "source_region": [
+      1,
+      1
+    ],
+    "source_position": [
+      80,
+      64
+    ],
+    "destination_position": [
+      80,
+      64
+    ]
+  },
+  {
+    "world_name": "Treetop",
+    "world": 26,
+    "kind": "0xFD",
+    "destination_world": 25,
+    "destination_region": [
+      1,
+      1
+    ],
+    "raw": "fd 10 50 40 19 01 11 05 04",
+    "source": {
+      "bank": 17,
+      "address": "0x6BDB",
+      "rom_offset": "0x046BDB",
+      "source": "src/banks/bank_017.asm",
+      "line": 704
+    },
+    "source_region": [
+      1,
+      0
+    ],
+    "source_position": [
+      80,
+      64
+    ],
+    "destination_position": [
+      80,
+      64
+    ]
+  },
+  {
+    "world_name": "Treetop",
+    "world": 26,
+    "kind": "0xFD",
+    "destination_world": 27,
+    "destination_region": [
+      0,
+      0
+    ],
+    "raw": "fd 20 40 30 1b 00 10 04 03",
+    "source": {
+      "bank": 17,
+      "address": "0x6BE4",
+      "rom_offset": "0x046BE4",
+      "source": "src/banks/bank_017.asm",
+      "line": 705
+    },
+    "source_region": [
+      2,
+      0
+    ],
+    "source_position": [
+      64,
+      48
+    ],
+    "destination_position": [
+      64,
+      48
+    ]
+  },
+  {
+    "world_name": "Log's nut",
+    "world": 27,
+    "kind": "0xFD",
+    "destination_world": 26,
+    "destination_region": [
+      2,
+      0
+    ],
+    "raw": "fd 00 40 30 1a 02 10 04 03",
+    "source": {
+      "bank": 17,
+      "address": "0x6BEE",
+      "rom_offset": "0x046BEE",
+      "source": "src/banks/bank_017.asm",
+      "line": 705
+    },
+    "source_region": [
+      0,
+      0
+    ],
+    "source_position": [
+      64,
+      48
+    ],
+    "destination_position": [
+      64,
+      48
+    ]
+  }
+]

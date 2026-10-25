@@ -2,6 +2,8 @@
 
 This package was extracted directly from the supplied USA ROM. The original ROM is intentionally **not** included in this package.
 
+Validation scope as of 2026-10-25: the key thresholds, item records and random-world map assets are reproducibly checked against original code. Other datasets retain their historical provenance; this audit does not certify every legacy export.
+
 ## ROM identity
 
 - Size: 4,194,304 bytes (4 MiB)
@@ -25,7 +27,7 @@ This package was extracted directly from the supplied USA ROM. The original ROM 
 7. **Items are decoded as 111 15-byte records** beginning at `0x58CC2`, including purchase price, target/icon fields, effect-related bytes and the two numeric effect variables used by healing/meat-style items.
 8. **Skills and skill requirements are dumped for the full 223-ID pointer range.** Skill data is treated as 17-byte records at `0x680D4`; requirement records are 18 bytes at `0x6900A`. Empty/duplicate internal skill IDs are preserved rather than silently discarded.
 9. **Random encounters for the documented main-world areas are decoded** into screen-level pointers, selection thresholds and prebuilt enemy IDs/names.
-10. **Magic-key prefix and suffix probability threshold tables are extracted raw-by-band**, not reconstructed from a guide.
+10. **Magic-key prefix and suffix thresholds and exact accepted-roll bins are extracted from the original selector.** Prefix rows use 16 bytes; suffix rows use 60 bytes (56 names plus four padding bytes). The selector accepts the first threshold greater than or equal to a roll in 0–99; prefix zero entries are skipped. `accepted_roll_count` records the exact selector bins, while `threshold_delta_from_previous` is only a threshold difference. These bins do not establish the distribution or correlations of all original PRNG seeds. The 2026-10-25 audit corrected 487 suffix thresholds that had been read using an incorrect 56-byte row stride and recovered the previously omitted suffix labels from the ROM.
 11. **Personality command-effect tables are extracted** from the four 32-byte blocks and represented as signed 8x4 rows. Their exact semantic mapping to hidden traits still needs execution tracing.
 
 ## Files
@@ -41,7 +43,8 @@ This package was extracted directly from the supplied USA ROM. The original ROM 
 - `breeding_*.csv` / `breeding_*_raw.bin` — breeding recipes and lossless raw breeding regions
 - `library_metadata.csv` — library size/rarity and displayed breeding references
 - `random_encounters.csv` — fixed encounter tables
-- `magic_key_*_thresholds.csv` — key-generation threshold tables
+- `magic_key_*_thresholds.csv` — original key-generation thresholds, names and accepted-roll bins; reproduce with `python3 recomp/tools/inspect_magic_keys.py --output /tmp/new-magic-key-tables` or verify with `python3 recomp/tools/inspect_magic_keys.py --check` from the repository root.
+- `items_data.csv` — lossless original 13-byte records for runtime IDs 0–98, including empty record 0; original name pointers and independent shop resale lookups are retained. The old 15-byte export overran the table and used name indices as runtime IDs. Unknown bytes now have neutral names; the raw word at bytes 1–2 is not presented as a universal shop purchase price. Reproduce with `python3 recomp/tools/inspect_items.py --output /tmp/new-item-records` or verify with `python3 recomp/tools/inspect_items.py --check`.
 - `personality_command_effect_tables.csv` — hidden personality command effects
 - `rom_map_mechanics.csv` — mechanics-oriented offset map
 - raw `.bin` blocks — known but not yet semantically decoded structures preserved byte-perfectly for the next pass

@@ -1,0 +1,75 @@
+[
+  {
+    "checkpoint": "appraised_quiet_sea",
+    "save_path": "/workspace/scratch/m8-postgame/postgame-01/appraised_quiet_sea.sav",
+    "save_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+    "quest_bytes_compared": 107,
+    "keys_seeds_party_and_catalogue_bytes_compared": 304,
+    "owned_records": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "additional_persistent_creature_bytes_compared": 2159,
+    "cache_slots_compared": 20,
+    "cache_bytes_compared": 8100,
+    "cache_sha256": "40762940f1c3641c1805d2e74a578bad297dfa97ed2f71fa3635b7bc46bdd7e9",
+    "cached_worlds": [],
+    "fresh_continue": "pass",
+    "host": "Linux/Wine10; exact accepted f93 Windows complete-AOT diagnostic"
+  },
+  {
+    "checkpoint": "quietsea_cleared_home",
+    "save_path": "/workspace/scratch/m8-postgame/postgame-02/quietsea_cleared_home.sav",
+    "save_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+    "quest_bytes_compared": 107,
+    "keys_seeds_party_and_catalogue_bytes_compared": 304,
+    "owned_records": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "additional_persistent_creature_bytes_compared": 2159,
+    "cache_slots_compared": 20,
+    "cache_bytes_compared": 8100,
+    "cache_sha256": "d03426426428401f52d3edf2f66b257fdf946aa011c5036cbc967757e57c7b6a",
+    "cached_worlds": [
+      {
+        "slot": 0,
+        "marker": 80,
+        "descriptor_sha256": "065e1929ea5c0e73f03b310cbf032dccf9b9858e40f6593fad7f9b68c630895b",
+        "world_clear": true
+      }
+    ],
+    "fresh_continue": "pass",
+    "host": "Linux/Wine10; exact accepted f93 Windows complete-AOT diagnostic"
+  }
+]

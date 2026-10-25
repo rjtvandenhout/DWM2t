@@ -1,0 +1,150 @@
+{
+  "schema": "m8-random-generator-independent-risk-review-v1",
+  "scope": "Read-only original ROM and current accepted-source-compatible native runtime review; no tracked edits, no new acceptance claim.",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "binary_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "findings": [
+    {
+      "id": "random-context",
+      "severity": "high-for-validation-claims",
+      "finding": "A random key world is identified byCC44 bit7 plusCC42 cache slot,CC43 floor,CC45 structure/link and generatedCDxx descriptors. FF90 is the fixed-map byte and can remain stale. A fixed-world navigation/acceptance condition alone can silently name the wrong world.",
+      "sources": [
+        {
+          "bank": 17,
+          "cpu": "4002",
+          "behavior": "CC44bit7 branches to97:5764"
+        },
+        {
+          "bank": 17,
+          "cpu": "4130",
+          "behavior": "CC44bit7 branches to97:596F"
+        }
+      ],
+      "recommendation": "Use context-sensitive original random observer and actual rendered/collision observations. Treat helper/decompressor mismatches as observer uncertainty until original runtime evidence establishes a game defect."
+    },
+    {
+      "id": "cache-ownership",
+      "severity": "medium",
+      "finding": "Original96:4001 first allocates a slot via6C61; cached data is cartridge-owned. SRAM bank2 holds20 records of0x195 bytes: marker50+slot and194 bytes fromCD07. 6CD1 restores onlymatching-marker records, CC42 must be<20. Full-slot exhaustion returnsFF. A single key entry does not test repeated entry, different keys, retirement, slot-full behavior or restoration.",
+      "sources": [
+        {
+          "bank": 96,
+          "cpu": "4001"
+        },
+        {
+          "bank": 96,
+          "cpu": "6C61"
+        },
+        {
+          "bank": 96,
+          "cpu": "6C96"
+        },
+        {
+          "bank": 96,
+          "cpu": "6CD1"
+        }
+      ],
+      "recommendation": "Prioritize real same-key exit/re-entry, actual Journal/new Runtime Continue, a second genuine key, and cache-byte/descriptor observations.20-slot exhaustion is a separate optional bounded stress case; do not fabricate keys or edit caches."
+    },
+    {
+      "id": "native-continue-scope",
+      "severity": "high-for-validation-claims",
+      "finding": "Existing native Session::verify_continue comparesC6FD..<C82D, CBD7..<CC0F (56 quest bytes), fixedFF90/8F/92/8E/91 and22 persistent bytes per active party member. It does not itself check flags206/207 atCC17, generated contextCC42.., whole cache persistence, or all farm creatures. The original main-story Python verifier separately covered107 quest bytes and every owned creature.",
+      "sources": [
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 333
+        },
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 345
+        },
+        {
+          "file": "recomp/tools/test_m8_story_checkpoints.py",
+          "line": 107
+        }
+      ],
+      "recommendation": "Retain existing fail-closed guards; supplement observational comparisons of107 quest bytes, all original owned records and generated descriptors/cache/revisited layouts. Do not equate native Journal PASS with complete postgame persistence."
+    },
+    {
+      "id": "full-aot-meaning",
+      "severity": "medium",
+      "finding": "DWM2T_ALL_ROMX translates all255 ROMX banks and every16384 byte offset in4 chunks, not just known branch entry points. This avoids a missing-bank gap for new generator paths, but does not prove every original opcode/timing path or every procedural recipe has been exercised. Runtime traps execution outside ROM apart from known HRAM DMA; newly reached dynamic RAM code would fail closed.",
+      "sources": [
+        {
+          "file": "recomp/CMakeLists.txt",
+          "line": 156
+        },
+        {
+          "file": "recomp/tools/recompile_romx_bank.py",
+          "line": 155
+        },
+        {
+          "file": "recomp/src/runtime.cpp",
+          "line": 106
+        }
+      ],
+      "recommendation": "Keep exact f93 full-AOT binary unchanged for new samples; retain raw runtime traps if any. New procedural maps should be produced by original ROM96/97, never host replacements. Test semantic outcomes, not only bank inclusion."
+    },
+    {
+      "id": "bounded-control-assumptions",
+      "severity": "medium",
+      "finding": "M8 per-frame instruction budget, per-command frame budgets and host scripts are operational limits. Existing talk/battle convenience commands pulseA and can choose defaults; earlier story direct-skill helper assumes a manual command menu. The post-ending granddaughter Arena battle actually exposes tactics-only menus. These helpers can fail or play poorly without a native game defect. Journal requires idle field and an empty facing tile; pending postbattle dialogue must finish first.",
+      "sources": [
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 66
+        },
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 245
+        },
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 275
+        },
+        {
+          "file": "recomp/src/m8.cpp",
+          "line": 290
+        }
+      ],
+      "recommendation": "Inspect original menus/choices, preserve every failed attempt, distinguish host-budget/selection failures from original runtime traps, and use deliberateP1 for recruitment/name/skill decisions."
+    },
+    {
+      "id": "link-boundary",
+      "severity": "high-for-full-content-claims",
+      "finding": "The memory model handles FF01/FF02 through generic IO storage; no serial-peer transport or serial-transfer ticking implementation was found in runtime/memory. Original serial interrupt vector exists, which is not proof of actual linked gameplay. Counterpart-only Baffle/Lonely and arrival text must not be reported as solo-tested content.",
+      "sources": [
+        {
+          "file": "recomp/src/memory.cpp",
+          "line": 182
+        },
+        {
+          "file": "recomp/src/memory.cpp",
+          "line": 355
+        },
+        {
+          "file": "recomp/src/runtime.cpp",
+          "line": 18
+        },
+        {
+          "bank": 19,
+          "cpu": "7BA1",
+          "behavior": "hardcodedCobiBrawn branch"
+        }
+      ],
+      "recommendation": "State single-P1 scope. A real original linked peer plus implemented transport and an actual witnessed exchange are prerequisites to claim these paths, without flags/keys substitution."
+    }
+  ],
+  "observed_other_session_caveat": "Existing root observer comparison had unsupported-submode mismatches; those are not proof of a game defect and root owns current random-world gameplay.",
+  "recommended_finite_sample_matrix": [
+    "Original appraisal and first real generated surface",
+    "At least one village/NPC/shop interior",
+    "Actual tower and cave floors with original stairs/chests/boss path",
+    "Original world clear/reward and genuine Journal",
+    "Same-key revisit and fresh Runtime Continue preserving original generated data",
+    "Second genuine key showing independently owned cache record",
+    "Context-sensitive refusal and boundary behavior",
+    "Cache-full/link-only cases explicitly pending if not truly exercised"
+  ]
+}

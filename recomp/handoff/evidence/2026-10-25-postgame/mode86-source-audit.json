@@ -1,0 +1,192 @@
+{
+  "scope": "Read-only original ROM source and existing real Wine observation; no game execution or all-seed/postgame acceptance claim",
+  "facts": [
+    {
+      "finding": "Final dungeon floor selects generic map0x50 or0x51 from structure type parity. Type5 selects0x51; both are1x1.",
+      "sources": [
+        {
+          "bank": 97,
+          "cpu": "$422B",
+          "file": "src/banks/bank_097.asm",
+          "line": 37
+        },
+        {
+          "bank": 97,
+          "cpu": "$4490",
+          "file": "src/banks/bank_097.asm",
+          "line": 76
+        }
+      ]
+    },
+    {
+      "finding": "Descriptorbyte3 odd/FF overlays reward tiles atC244,C245,C258,C259. Odd uses1A,1B,1E,1F;FF uses1C,1D,1E,1F.",
+      "sources": [
+        {
+          "bank": 97,
+          "cpu": "$44DB",
+          "file": "src/banks/bank_097.asm",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "finding": "Finalfloor NPC is absent if descriptorbyte3 is odd/FF or worldclearCD07bit7 is set; otherwise generatedboss species atCE72/73 is used.",
+      "sources": [
+        {
+          "bank": 4,
+          "cpu": "$40C4",
+          "file": "src/banks/bank_004.asm",
+          "line": 15
+        },
+        {
+          "bank": 4,
+          "cpu": "$4191",
+          "file": "src/banks/bank_004.asm",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "finding": "Original facing-tile dispatch accepts85/86, reads thetile underonecellinfront, and mode86 handles1Aasreward/1Casalreadyopened. RewardID comesfromCE8B+structureindex.",
+      "sources": [
+        {
+          "bank": 18,
+          "cpu": "$740A",
+          "file": "src/banks/bank_018.asm",
+          "line": 835
+        },
+        {
+          "bank": 18,
+          "cpu": "$74FB",
+          "file": "src/banks/bank_018.asm",
+          "line": 850
+        }
+      ]
+    },
+    {
+      "finding": "Successful finalfloor reward writesCDAF+16*index=FF and redraws opened overlay.",
+      "sources": [
+        {
+          "bank": 18,
+          "cpu": "$6225",
+          "file": "src/banks/bank_018.asm",
+          "line": 549
+        },
+        {
+          "bank": 18,
+          "cpu": "$6257",
+          "file": "src/banks/bank_018.asm",
+          "line": 552
+        }
+      ]
+    },
+    {
+      "finding": "RuntimeitemID69 resolves via original0:$2431 pointerbase8:$4716+2*69=8:$47A0 to8:$670A, SteelFang. OldCSVnameindex69 was incorrectlyused earlier; runtime69 correspondsCSVnameindex68.",
+      "sources": [
+        {
+          "bank": 0,
+          "cpu": "$2431",
+          "file": "src/banks/bank_000.asm",
+          "line": 582
+        },
+        {
+          "bank": 8,
+          "cpu": "$47A0",
+          "file": "src/banks/bank_008.asm",
+          "line": 125
+        },
+        {
+          "bank": 8,
+          "cpu": "$670A",
+          "file": "src/banks/bank_008.asm",
+          "line": 627
+        }
+      ]
+    },
+    {
+      "finding": "Worldclear flag bypasses recruitment world/area lock. Otherwise only generatedsurface80 or dungeon85 contexts calculate area clear fromCD74 andCE7E+4*area.",
+      "sources": [
+        {
+          "bank": 97,
+          "cpu": "$606D",
+          "file": "src/banks/bank_097.asm",
+          "line": 521
+        }
+      ]
+    }
+  ],
+  "observed_snapshot": "/workspace/scratch/m8-postgame/postgame-03/m8_405.ram",
+  "observed_sha256": "57a163a242af104e58674b1d26411db5eda45e5d886c2904535ed7dd3c002e49",
+  "context": [
+    0,
+    2,
+    134,
+    1
+  ],
+  "observed_reward_runtime_item_id": 69,
+  "observed_reward_name_source_decoded": "SteelFang",
+  "all360_map_bytes_match": true,
+  "current_screen_sha256": "a4ac86b90477fb519bc6859fd912e93b74b600abfda88a5926eca1aa041de128",
+  "prediction": {
+    "map_id": 81,
+    "header": {
+      "bank": 97,
+      "cpu": "$6496",
+      "file": "src/banks/bank_097.asm",
+      "line": 588
+    },
+    "threshold": 63,
+    "interactive_tile": 60,
+    "screen_pointers": [
+      {
+        "region": [
+          0,
+          0
+        ],
+        "source": {
+          "bank": 108,
+          "cpu": "$73CC",
+          "file": "src/banks/bank_108.asm",
+          "line": 831
+        },
+        "unknown_byte_offsets": [],
+        "forward_references": []
+      }
+    ],
+    "warps": [],
+    "mode": 6,
+    "floor": 2,
+    "structure": 1,
+    "final_floor_state": 3,
+    "map_selection_source": {
+      "bank": 97,
+      "cpu": "$4490",
+      "file": "src/banks/bank_097.asm",
+      "line": 76
+    },
+    "overlays": [
+      {
+        "source": {
+          "bank": 97,
+          "cpu": "$44DB",
+          "file": "src/banks/bank_097.asm",
+          "line": 80
+        },
+        "descriptor_state": 3,
+        "offsets": [
+          172,
+          173,
+          192,
+          193
+        ],
+        "tile_values": [
+          26,
+          27,
+          30,
+          31
+        ]
+      }
+    ],
+    "warp_caveat": "Original97:$59AA exits at position64,64, using generated CE2D incoming stairs."
+  }
+}

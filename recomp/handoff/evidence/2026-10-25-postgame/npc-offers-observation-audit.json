@@ -1,0 +1,1440 @@
+{
+  "schema": "m8-isolated-postgame-npc-offers-observed-v1",
+  "status": "PASS",
+  "scope": "Two initial original NPC breeding offers and reachable gate/absence observations; not all postgame or all species.",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "seed": {
+    "path": "/workspace/scratch/m8-postgame/quest-probe-03-seed.sav",
+    "bytes": 32768,
+    "sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba"
+  },
+  "journal": {
+    "path": "/workspace/scratch/m8-postgame/quest-probe-03/npc_offers.sav",
+    "bytes": 32768,
+    "sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5"
+  },
+  "endpoint": {
+    "frame": 41231,
+    "snapshot_index": 438
+  },
+  "location": [
+    0,
+    1,
+    1,
+    64,
+    16
+  ],
+  "facing": "Right",
+  "party": [
+    11,
+    0,
+    10
+  ],
+  "owned_count": 19,
+  "catalogue_count": 24,
+  "gold": 11,
+  "gold_before": 11,
+  "fees_debited": 0,
+  "consumed_original_records": [
+    11,
+    15
+  ],
+  "retained_records": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "12": 11,
+    "13": 12,
+    "14": 13,
+    "16": 14,
+    "17": 15,
+    "18": 16
+  },
+  "retained_full165_checks": [
+    {
+      "old_record": 0,
+      "new_record": 0,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 0,
+        "status": 2,
+        "nickname_glyphs": "Slash",
+        "nickname_raw": "1c2f24362bf0f0f0f0f0",
+        "species_id": 10,
+        "level": 37,
+        "gender": 0,
+        "plus": 0,
+        "hp": 180,
+        "max_hp": 180,
+        "skills": [
+          5,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "ef94c153dd755093df04d7e02b9dafe254998a5d04ce6706c8b33c16d6c5cad8",
+        "genes_sha256": "ee4e26b3ba4778732776a1844daffa8e4bbb3afb12e3e3e52988b04da7b964cc",
+        "raw165_hex": "021c2f24362bf0f0f0f0f00a0000700c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00005ffffffffffffff3d7fffffffffffffffffffffffffffffffffffffffffffffff002528ca0105b400b400720072009a0097007a006d0000000000ebc500b9000000000000020202020202020202020000000000000000000000989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 1,
+      "new_record": 1,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 1,
+        "status": 1,
+        "nickname_glyphs": "AAAy",
+        "nickname_raw": "0a0a0a3cf0f0f0f0f0f0",
+        "species_id": 2,
+        "level": 25,
+        "gender": 0,
+        "plus": 0,
+        "hp": 112,
+        "max_hp": 112,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "a1a40cf180ddb2943e1685543aad58f10dca56f3116fa2c0c73558482aa24209",
+        "genes_sha256": "c07cdbe60b594e562e620f16f1eee9ffc8c395c7df33e38bb733c69561bd91fb",
+        "raw165_hex": "010a0a0a3cf0f0f0f0f0f0020000a00c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ffffffffffffffffff4e8b9effffffffffffffffffffffffffffffffffffffffffff001923019f00700070002f002f006700470068004600130000006373963a000000000000020202020202030302020000000000010101010100989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 2,
+      "new_record": 2,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 2,
+        "status": 1,
+        "nickname_glyphs": "A",
+        "nickname_raw": "0af0f0f0f0f0f0f0f0f0",
+        "species_id": 145,
+        "level": 27,
+        "gender": 0,
+        "plus": 0,
+        "hp": 140,
+        "max_hp": 140,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "aca449e7ab7c1b6ceb7e4115cfa919d8d087ffd7e10c3d4a4e157993d3f49dd4",
+        "genes_sha256": "baa6dba8f9f988e91c3e240f6ea1510a27cb7dbad54ca1b2930ffa9843aa0ba5",
+        "raw165_hex": "010af0f0f0f0f0f0f0f0f0910004000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ffffffffffffffffff606a76ffffffffffffffffffffffffffffffffffffffffffff001b1ee097008c008c008100810071007f006f004600ac000000aa46c41e000000020200000100020201000000000000010101020202010102989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 3,
+      "new_record": 3,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 3,
+        "status": 1,
+        "nickname_glyphs": "A",
+        "nickname_raw": "0af0f0f0f0f0f0f0f0f0",
+        "species_id": 246,
+        "level": 25,
+        "gender": 1,
+        "plus": 0,
+        "hp": 88,
+        "max_hp": 88,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "c6e0ecf27d370c3550ca69b6fccb28b7c6685825c3c02aef19b4aa74dde7e966",
+        "genes_sha256": "fbee385832aac6219240bf4165e3a33d8f765bd7d6877d5052bd9edb0daecb87",
+        "raw165_hex": "010af0f0f0f0f0f0f0f0f0f60007010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ffffffffffffffffff7f93a5ffffffffffffffffffffffffffffffffffffffffffff00192887980058005800700070005300450090008a00460000009696a396000000000000030303010103010103010000020202000000000000989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 4,
+      "new_record": 4,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 4,
+        "status": 1,
+        "nickname_glyphs": "Ellan",
+        "nickname_raw": "0e2f2f2431f0f0f0f0f0",
+        "species_id": 166,
+        "level": 28,
+        "gender": 1,
+        "plus": 0,
+        "hp": 100,
+        "max_hp": 100,
+        "skills": [
+          97,
+          118,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "18b6155ab0009ce90a9cc8c6a7cba2f4f7afa09d7cefecf793e2797524a70d58",
+        "genes_sha256": "2d7f1389492fbf86908fd80a16cfde3f2bffe73a3f9525cda330168684504153",
+        "raw165_hex": "010e2f2f2431f0f0f0f0f0a60004010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff6176ffffffffffff1b7affffffffffffffffffffffffffffffffffffffffffffff001c1ef997006400640078007800510076003e009a00aa000000695a7246000000000000010101030301010101000000010102000000000102989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 5,
+      "new_record": 5,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 5,
+        "status": 1,
+        "nickname_glyphs": "Quii",
+        "nickname_raw": "1a382c2cf0f0f0f0f0f0",
+        "species_id": 185,
+        "level": 28,
+        "gender": 1,
+        "plus": 0,
+        "hp": 89,
+        "max_hp": 89,
+        "skills": [
+          97,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "fa51479189f22fbc451345a0f5a61f4cf3d7889c1f048e34407666666d5086ee",
+        "genes_sha256": "631f42ffca6e47afc75a2525eda3acba2f9f714ecc65cb90de73c0b672a54511",
+        "raw165_hex": "011a382c2cf0f0f0f0f0f0b90005010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff61ffffffffffffff4e70ffffffffffffffffffffffffffffffffffffffffffffff001c234198005900590051005100510067005e005a00f9000000fa96881e000000000000000200000002000000000000020202000000020200989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 6,
+      "new_record": 6,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 6,
+        "status": 1,
+        "nickname_glyphs": "Almmo",
+        "nickname_raw": "0a2f303032f0f0f0f0f0",
+        "species_id": 80,
+        "level": 25,
+        "gender": 1,
+        "plus": 0,
+        "hp": 120,
+        "max_hp": 120,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "6869a671ff710165349537ca1f0a492ef409e065f8fbf36e8e1c83f3b0e1ccce",
+        "genes_sha256": "15e47cb7c6b6e587be1f95528e7f20b15182891b8cf99b6a6f4d793a1f1cf8fb",
+        "raw165_hex": "010a2f303032f0f0f0f0f0500002010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ffffffffffffffffff5e628bffffffffffffffffffffffffffffffffffffffffffff001928e29700780078003500350065004f0069006800ad000000aad285aa000000000000000000000000020200000000000000020202020201989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 7,
+      "new_record": 7,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 7,
+        "status": 1,
+        "nickname_glyphs": "Torma",
+        "nickname_raw": "1d32353024f0f0f0f0f0",
+        "species_id": 11,
+        "level": 25,
+        "gender": 0,
+        "plus": 0,
+        "hp": 87,
+        "max_hp": 87,
+        "skills": [
+          22,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "539b161e3e63f82f4b7fb244a398300d91e63d0d5bc953b391196a46307895a0",
+        "genes_sha256": "86f99af3d84c21b5ca0a9fc56a6bdf86e7df9aa07a9657eec760e8bb0ed56d54",
+        "raw165_hex": "011d32353024f0f0f0f0f00b0000000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff16ffffffffffffff1925ffffffffffffffffffffffffffffffffffffffffffffff0019328798005700570069006900480045006800b800ef00000014466446000000010100020202030302020202020000000000010202000000989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 8,
+      "new_record": 8,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 8,
+        "status": 1,
+        "nickname_glyphs": "Almmo",
+        "nickname_raw": "0a2f303032f0f0f0f0f0",
+        "species_id": 115,
+        "level": 28,
+        "gender": 1,
+        "plus": 0,
+        "hp": 97,
+        "max_hp": 97,
+        "skills": [
+          47,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "7d076fed8993c490e33c67d64d25dd4c78fe3c3f7f3aa01b2c1f3d29ce60b1f3",
+        "genes_sha256": "00021965448661b8c52dd8bca0fb09333e2505047d4b8bcdc2c21aa82b8d7085",
+        "raw165_hex": "010a2f303032f0f0f0f0f0730003010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff2fffffffffffffff2132ffffffffffffffffffffffffffffffffffffffffffffff001c32b0960061006100690069005c004b007f008e00a6000000fa969328000000020200000000000000000000000000000000020202020200989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 9,
+      "new_record": 9,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 9,
+        "status": 1,
+        "nickname_glyphs": "A",
+        "nickname_raw": "0af0f0f0f0f0f0f0f0f0",
+        "species_id": 3,
+        "level": 25,
+        "gender": 1,
+        "plus": 0,
+        "hp": 95,
+        "max_hp": 95,
+        "skills": [
+          98,
+          153,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "66375dc3a8c8e673443c72e2c0b7fe70dc8f41fadd5a0d92599915a542171931",
+        "genes_sha256": "97326d183de58fba5889c8fee547d70c4ebf9e7c8a5532b7fc98c2dc10477793",
+        "raw165_hex": "010af0f0f0f0f0f0f0f0f0030000010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff6299ffffffffffff48ffffffffffffffffffffffffffffffffffffffffffffffff00192300a0005f005f00560056005e004e00040194006d010000c8c85f14000000010100020202020202020202020000000000010101010100989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 10,
+      "new_record": 10,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 10,
+        "status": 2,
+        "nickname_glyphs": "Derzo",
+        "nickname_raw": "0d28353d32f0f0f0f0f0",
+        "species_id": 319,
+        "level": 40,
+        "gender": 0,
+        "plus": 1,
+        "hp": 207,
+        "max_hp": 207,
+        "skills": [
+          5,
+          40,
+          30,
+          113,
+          147,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "1b43699350679385e38c40069bf1944c6e581ecd4159f066abfc967fd8fc0bf9",
+        "genes_sha256": "f67ad284206cfa59655c809ba8f62f98821756110cca2f2712da3026c3b9d05b",
+        "raw165_hex": "020d28353d32f0f0f0f0f03f0109300c32252c0af0f0f0f0f04a3f0142010c32252c0af0f0f0f0f0000c32252c0af0f0f0f0f00005281e7193ffffff9bffffffffffffffffffffffffffffffffffffffffffffffff00282b21be04cf00cf00f800f8004f01c10003019a00000001000554001d0202010100000102000000010002000002000000000202020100021d32373830f0f0f0f0f000173c2435f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 12,
+      "new_record": 11,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 11,
+        "status": 2,
+        "nickname_glyphs": "Garon",
+        "nickname_raw": "1024353231f0f0f0f0f0",
+        "species_id": 319,
+        "level": 40,
+        "gender": 0,
+        "plus": 3,
+        "hp": 220,
+        "max_hp": 220,
+        "skills": [
+          24,
+          29,
+          38,
+          42,
+          5,
+          45,
+          147,
+          155
+        ],
+        "raw165_sha256": "4cf65ab731de7649d94d3d9d7215ff47818d1fab9e39d7be3efe121d2c9c5e0c",
+        "genes_sha256": "d3138fa30f38598a9fb5fe9225ab54cd611c11406ee6f57ffd954086eb3f5d9d",
+        "raw165_hex": "021024353231f0f0f0f0f03f0119b00c32252c0af0f0f0f0f04a790043010c32252c0af0f0f0f0f0000c32252c0af0f0f0f0f000181d262a052d939b1966ffffffffffffffffffffffffffffffffffffffffffffff002831f7d804dc00dc001c011c016601e7002701d100000003004a8600090202010100000102000000010002000002000000000202020100021f24352f2cf0f0f0f0f000152c362837f0f0f0f0f00100"
+      }
+    },
+    {
+      "old_record": 13,
+      "new_record": 12,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 12,
+        "status": 1,
+        "nickname_glyphs": "Cerol",
+        "nickname_raw": "0c2835322ff0f0f0f0f0",
+        "species_id": 167,
+        "level": 23,
+        "gender": 0,
+        "plus": 0,
+        "hp": 149,
+        "max_hp": 149,
+        "skills": [
+          13,
+          53,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "c6f2fdfe74ac04528af6e5cae88e1ee56dc93feb70512042164e6311e2a74ca5",
+        "genes_sha256": "066c5743345e311971df3a99ebe251215900b6df87e7be8e08ad6ac425fa3ec2",
+        "raw165_hex": "010c2835322ff0f0f0f0f0a70004000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff0d35ffffffffffff1667ffffffffffffffffffffffffffffffffffffffffffffff00172da8e200950095007a007a0066006500b9009e00f8010000e6c85150000000000000000102030302020102000101010200010300010102989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 14,
+      "new_record": 13,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 13,
+        "status": 1,
+        "nickname_glyphs": "Oshan",
+        "nickname_raw": "18362b2431f0f0f0f0f0",
+        "species_id": 8,
+        "level": 33,
+        "gender": 0,
+        "plus": 0,
+        "hp": 142,
+        "max_hp": 142,
+        "skills": [
+          2,
+          38,
+          111,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "71aed692f64ce471df32e803ac4fa8e587566fcef6a2c0e95921928a43050749",
+        "genes_sha256": "5a14b76ab479e51b3c63c808d14cf7e796c0c133911c3466e1e6b148cd363ef2",
+        "raw165_hex": "0118362b2431f0f0f0f0f0080000000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff02266fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff002132b264028e008e00470047007700b2006500e90024030000c80a5a0a000001000001020203020202020203020001000000000000000000989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 16,
+      "new_record": 14,
+      "all165_exact_except": [],
+      "genes_exact": true,
+      "creature": {
+        "record": 14,
+        "status": 1,
+        "nickname_glyphs": "Arle",
+        "nickname_raw": "0a352f28f0f0f0f0f0f0",
+        "species_id": 12,
+        "level": 24,
+        "gender": 1,
+        "plus": 0,
+        "hp": 126,
+        "max_hp": 126,
+        "skills": [
+          78,
+          104,
+          144,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "c962100df77eb259f5f63241996ff73ea42590e1393a0d8b08d01c83266326a5",
+        "genes_sha256": "fb11882199e4bc98ee6a81a6de179be14f1ca2a9e02ad4acedabf5c280bf89c8",
+        "raw165_hex": "010a352f28f0f0f0f0f0f00c0000010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff4e6890ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001823ac90007e007e003b003b00680047009f00a100dd010000d2965f64000000000000020203020202030303020000000100010101010100989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 17,
+      "new_record": 15,
+      "all165_exact_except": [
+        {
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "genes_exact": true,
+      "creature": {
+        "record": 15,
+        "status": 1,
+        "nickname_glyphs": "Egg",
+        "nickname_raw": "0e2a2af0f0f0f0f0f0f0",
+        "species_id": 127,
+        "level": 1,
+        "gender": 1,
+        "plus": 0,
+        "hp": 30,
+        "max_hp": 30,
+        "skills": [
+          72,
+          146,
+          156,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "e13e7efab9b76b2a8a70bdff3ef7e9e300f1b493f1eb1691ed9ec1a0094c97a4",
+        "genes_sha256": "50fa3b3d6ebb65de8c6de67ef07b5a21c3a43cd00e9f920d8393dd0419781d43",
+        "raw165_hex": "010e2a2af0f0f0f0f0f0f07f0003010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00048929cffffffffff358485ffffffffffffffffffffffffffffffffffffffffffff00013c0000001e001e00320032001e00230028006400000000016496c864010101020201010102000001000002000101000200020202020200989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "old_record": 18,
+      "new_record": 16,
+      "all165_exact_except": [
+        {
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "genes_exact": true,
+      "creature": {
+        "record": 16,
+        "status": 1,
+        "nickname_glyphs": "Egg",
+        "nickname_raw": "0e2a2af0f0f0f0f0f0f0",
+        "species_id": 223,
+        "level": 1,
+        "gender": 0,
+        "plus": 0,
+        "hp": 50,
+        "max_hp": 50,
+        "skills": [
+          13,
+          108,
+          130,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "c5d02db086433a3e32bdf9c49d35d6fd0517523b4333ecd25feefbb1c4d3a2ad",
+        "genes_sha256": "5c3f1e22b101b201d7161416c23f5f0d884b0787743f7ad4a0dfbe0d39dcb0ec",
+        "raw165_hex": "010e2a2af0f0f0f0f0f0f0df0006000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f0000d6c82ffffffffff0a1951ffffffffffffffffffffffffffffffffffffffffffff00012d000000320032001900190028001e001e00500000000001fac8c864010302020202020203010101000003000202010002020000000000989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    }
+  ],
+  "protected_core_original_records": [
+    12,
+    0,
+    10
+  ],
+  "protected_core_final_records": [
+    11,
+    0,
+    10
+  ],
+  "protected_core_all165_exact": true,
+  "breeds": [
+    {
+      "preview_snapshot": 172,
+      "mode": 5,
+      "consumed_original_record": 11,
+      "selected_at_time_record": 11,
+      "player_parent": {
+        "record": 11,
+        "status": 1,
+        "nickname_glyphs": "A",
+        "nickname_raw": "0af0f0f0f0f0f0f0f0f0",
+        "species_id": 234,
+        "level": 29,
+        "gender": 0,
+        "plus": 0,
+        "hp": 252,
+        "max_hp": 252,
+        "skills": [
+          84,
+          104,
+          107,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "bac70ed33061094938a15b48d954afd1f6775a3db03ce07339d46113d9136f5b",
+        "genes_sha256": "31a31e9be4c8881762d60f0505b2f542123ae7adcf1f2bec8a47d6e67f4f0a74",
+        "raw165_hex": "010af0f0f0f0f0f0f0f0f0ea0006000c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff54686bffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001d2d36fa02fc00fc003c003c008e0058002b004200c1020000c814538c010101010101000103000000020203000000000200020101010100989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      },
+      "npc_template": {
+        "bank": 13,
+        "address": "0x7C2F",
+        "rom_offset": "0x037C2F",
+        "source": "src/banks/bank_013.asm",
+        "line": 965
+      },
+      "npc_species_core_id": 128,
+      "npc_level": 46,
+      "npc_gender_after_original_adaptation": 1,
+      "npc_mate_raw165_sha256": "509ae35e279263e1455b5ffe28346537531e76c05800e84733f594bb1f6233c4",
+      "npc_mate_id_scope": "Original ROM template, not an owned-record index or a synthetic parent.",
+      "child_name": "Demonite",
+      "child": {
+        "record": 17,
+        "status": 1,
+        "nickname_glyphs": "0000000000",
+        "nickname_raw": "00000000000000000000",
+        "species_id": 214,
+        "level": 1,
+        "gender": 1,
+        "plus": 3,
+        "hp": 161,
+        "max_hp": 161,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "282b9cd4dc8a2423b5d79816aa3007ac84067db4b6f3175f138a4b75fe570956",
+        "genes_sha256": "188353b1e5c225d5d4fdfe41b0ad61263aed23a693e94ccab30c9c287018219b",
+        "raw165_hex": "0100000000000000000000d60006010c32252c0af0000000004aea0080000c32252c0af0f0f0f0f000989898f0f0f0f0f0f0f000ffffffffffffffff01404454686b787b7c7992ffffffffffffffffffffffffffff000127000000a100a1006a006a0081006b00810080000000030116555b070101010303020000020000020000020000000001010202020201000af0f0f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      }
+    },
+    {
+      "preview_snapshot": 298,
+      "mode": 8,
+      "consumed_original_record": 15,
+      "selected_at_time_record": 14,
+      "player_parent": {
+        "record": 15,
+        "status": 1,
+        "nickname_glyphs": "Konni",
+        "nickname_raw": "143231312cf0f0f0f0f0",
+        "species_id": 49,
+        "level": 25,
+        "gender": 1,
+        "plus": 0,
+        "hp": 167,
+        "max_hp": 167,
+        "skills": [
+          52,
+          96,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "9272f609f738c2fe34ed1c5e33de804c1a7f537ef9d3b828b7c349d3b9657088",
+        "genes_sha256": "7bb1f599bf2ddc63dfdbcf0ea58c10b8217f07508baa40a26ea75fe08918f90d",
+        "raw165_hex": "01143231312cf0f0f0f0f0310001010c32252c0af0f0f0f0f04affffffff989898f0f0f0f0f0f0f0ff989898f0f0f0f0f0f0f0ff3460ffffffffffff72ffffffffffffffffffffffffffffffffffffffffffffffff001928596601a700a7004500450064006d00780015015b02000050505a82010202000000000002010003000003000300000000000000000001989898f0f0f0f0f0f0f000989898f0f0f0f0f0f0f00000"
+      },
+      "npc_template": {
+        "bank": 13,
+        "address": "0x7E1E",
+        "rom_offset": "0x037E1E",
+        "source": "src/banks/bank_013.asm",
+        "line": 996
+      },
+      "npc_species_core_id": 266,
+      "npc_level": 43,
+      "npc_gender_after_original_adaptation": 0,
+      "npc_mate_raw165_sha256": "6084f3b56a1e9abd23e40e06166ee65b797d5131da54f8229cea99544a46ec75",
+      "npc_mate_id_scope": "Original ROM template, not an owned-record index or a synthetic parent.",
+      "child_name": "Poisongon",
+      "child": {
+        "record": 18,
+        "status": 1,
+        "nickname_glyphs": "0000000000",
+        "nickname_raw": "00000000000000000000",
+        "species_id": 42,
+        "level": 1,
+        "gender": 1,
+        "plus": 3,
+        "hp": 131,
+        "max_hp": 131,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "raw165_sha256": "6ffd205e237828c15539ae1293951b570eb37bf4eee36140ff351e7a9d071f6a",
+        "genes_sha256": "90eaf4571660e3f6dea863802a2b463f5525970c911bdc0a5767308ddcb32623",
+        "raw165_hex": "01000000000000000000002a0011010c32252c0af0000000004a0a013100989898f0f0f0f0f0f0f0000c32252c0af0f0f0f0f000ffffffffffffffff5f738b346072275763505152ffffffffffffffffffffffffff000136000000830083006100610074006e006300af000000030164695f6e000000000000010101000002000002000200020101000000000001989898f0f0f0f0f0f0f000143231312cf0f0f0f0f00000"
+      }
+    }
+  ],
+  "quest107_before_hex": "eeffafec3f4300003f07f88770e075fdef9fffbfd1f77f05ff200f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "quest107_after_hex": "eeffafec3f4326003f07f88770e075fdef9fffbfd1f77f05ff2a0f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "added_flags": [
+    49,
+    50,
+    53,
+    201,
+    203
+  ],
+  "removed_flags": [],
+  "strict_journal_continue": {
+    "owned_records": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "owned_bytes_each": 165,
+    "owned_bytes_checked": 3135,
+    "continue_byte_transitions": [
+      {
+        "record": 17,
+        "offset": 6,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 7,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 8,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 9,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 10,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 21,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 22,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 23,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 17,
+        "offset": 24,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 6,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 7,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 8,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 9,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 10,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 21,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 22,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 23,
+        "before": 0,
+        "after": 240
+      },
+      {
+        "record": 18,
+        "offset": 24,
+        "before": 0,
+        "after": 240
+      }
+    ],
+    "continue_byte_transition_count": 18,
+    "party": [
+      11,
+      0,
+      10
+    ],
+    "quest_bytes": 107,
+    "key_record_bytes": 128,
+    "key_seed_bytes": 64,
+    "key_records_hex": [
+      "01ffff80",
+      "42ffff80",
+      "43ffff80",
+      "fe071308",
+      "44ffff80",
+      "45ffff80",
+      "46ffff80",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff",
+      "ffffffff"
+    ],
+    "key_seeds_hex": [
+      "0000",
+      "0000",
+      "0000",
+      "c016",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000"
+    ],
+    "cache_slots": 20,
+    "cache_bytes_each": 405,
+    "cache_four_way_equal": true,
+    "cache_descriptors": [
+      {
+        "slot": 0,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 1,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 2,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 3,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 4,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 5,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 6,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 7,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 8,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 9,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 10,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 11,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 12,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 13,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 14,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 15,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 16,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 17,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 18,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "slot": 19,
+        "marker": 0,
+        "sha256": "a7ca0125b93e1a5681d5a9c294ec3a4e5680cc58e44fd223d2dac04232b7367c",
+        "descriptor_sha256": "0441772f66559a1c71f4559dc4405438fc9b8383ce1229139257a7fe6d7b8de9",
+        "core_flags": 0,
+        "world_cleared": false,
+        "area_clear_bytes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "random_context": null
+  },
+  "original_continue_normalization_source": [
+    {
+      "bank": 29,
+      "address": "0x7546",
+      "rom_offset": "0x077546",
+      "source": "src/banks/bank_029.asm",
+      "line": 855
+    },
+    {
+      "bank": 29,
+      "address": "0x7555",
+      "rom_offset": "0x077555",
+      "source": "src/banks/bank_029.asm",
+      "line": 856
+    },
+    {
+      "bank": 29,
+      "address": "0x755A",
+      "rom_offset": "0x07755A",
+      "source": "src/banks/bank_029.asm",
+      "line": 856
+    },
+    {
+      "bank": 29,
+      "address": "0x7569",
+      "rom_offset": "0x077569",
+      "source": "src/banks/bank_029.asm",
+      "line": 857
+    },
+    {
+      "bank": 29,
+      "address": "0x795D",
+      "rom_offset": "0x07795D",
+      "source": "src/banks/bank_029.asm",
+      "line": 920
+    },
+    {
+      "bank": 29,
+      "address": "0x7A90",
+      "rom_offset": "0x077A90",
+      "source": "src/banks/bank_029.asm",
+      "line": 940
+    },
+    {
+      "bank": 29,
+      "address": "0x7AD0",
+      "rom_offset": "0x077AD0",
+      "source": "src/banks/bank_029.asm",
+      "line": 944
+    }
+  ],
+  "normalization_description": "New original unnamed NPC eggs: record nickname offsets6..10 and owner offsets21..24 are exact00\u2192F0 after original compressed-name Continue decoder. All other165 bytes per owned record match. Five glyphs copied, F0-filled tail. No blanket exclusions.",
+  "endpoints": {
+    "medal_minimum": {
+      "frame": 8501,
+      "snapshot_index": 76
+    },
+    "funky_preview": {
+      "frame": 14502,
+      "snapshot_index": 172
+    },
+    "funky_complete": {
+      "frame": 18805,
+      "snapshot_index": 188
+    },
+    "copycat_gate": {
+      "frame": 20771,
+      "snapshot_index": 215
+    },
+    "skeletor_preview": {
+      "frame": 26180,
+      "snapshot_index": 298
+    },
+    "skeletor_complete": {
+      "frame": 30424,
+      "snapshot_index": 316
+    },
+    "stoneman_gate": {
+      "frame": 31718,
+      "snapshot_index": 335
+    },
+    "dreamegg_absent": {
+      "frame": 37824,
+      "snapshot_index": 410
+    },
+    "npc_offers": {
+      "frame": 41231,
+      "snapshot_index": 438
+    }
+  },
+  "trace": {
+    "path": "/workspace/scratch/m8-postgame/quest-probe-03/trace_p1.txt",
+    "bytes": 490990,
+    "sha256": "e975e80349440ca6c2f96640ae46d2877be3b804afa245a937f934bc48fec12e"
+  },
+  "commands": {
+    "path": "/workspace/scratch/m8-postgame/quest-probe-03/commands_executed.txt",
+    "bytes": 4714,
+    "sha256": "a21190c2bc38a023f5be876f5c5ed9b2569e01e40768a82dbf75911cad608161"
+  },
+  "fresh_continue_evidence": {
+    "path": "/workspace/scratch/m8-postgame/quest-probe-03/npc_offers_continue/continue_evidence.txt",
+    "bytes": 1014,
+    "sha256": "7be29903d259f0b081db4a6fe758d7d42f49748932228aca55072f5343c5e29e"
+  },
+  "dream_egg": {
+    "world": 0,
+    "region": [
+      0,
+      3
+    ],
+    "position": [
+      64,
+      48
+    ],
+    "facing": "Down",
+    "selector": "0xE5",
+    "CECE": 0,
+    "observed": "No egg actor/feeding dialogue; original E5 returned and ordinary menu opened. No egg acquisition or hatch claimed.",
+    "source": {
+      "bank": 19,
+      "address": "0x7D45",
+      "rom_offset": "0x04FD45",
+      "source": "src/banks/bank_019.asm",
+      "line": 983
+    },
+    "debug_E6_used": false
+  },
+  "medal_man": {
+    "banked": 1,
+    "minimum": 3,
+    "menu_displayed": false,
+    "observed": "Original minimum-three-medals refusal; seven-prize content is source-backed only."
+  },
+  "next_npc_gates": {
+    "C9": true,
+    "CB": true,
+    "catalogue": 24,
+    "Copycat": "bogus lead dialogue",
+    "StoneMan": "Does such a battler exist? dialogue",
+    "catalogue100_gate_source_only": true
+  },
+  "source_to_final_key_records_seeds_exact": true,
+  "source_to_final_cache_banks_exact": true,
+  "observations_were_never_used_as_seeds": true,
+  "state_or_rng_writes": false,
+  "parent_live_probes_touched": false,
+  "tracked_files_changed": false
+}

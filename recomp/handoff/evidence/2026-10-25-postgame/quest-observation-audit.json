@@ -1,0 +1,333 @@
+{
+  "schema": "m8-isolated-postgame-quests-observed-v1",
+  "exact_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "source_seed": "/workspace/scratch/m8-postgame/quest-probe-02-seed.sav",
+  "source_seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "isolated_branch": "Quest probe is separate from root random-key branch; no save/state merge was performed. Only original Journal .sav seeds; captures never loaded.",
+  "stages": [
+    {
+      "name": "newlywed_gift",
+      "frame": 11462,
+      "snapshot_index": 111,
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/newlywed_gift.sav",
+      "journal_bytes": 32768,
+      "journal_sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+      "location": [
+        15,
+        0,
+        0,
+        32,
+        96
+      ],
+      "owned_count": 18,
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "owned_record_bytes_checked": 2970,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "all_other_owned_bytes_identical": true,
+      "quest107_identical": true,
+      "backup_and_cache_banks_identical_after_continue": true,
+      "persistent_cache_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+      "fresh_continue_evidence": "/workspace/scratch/m8-postgame/quest-probe-02/newlywed_gift_continue/continue_evidence.txt",
+      "new_original_eggs": [
+        {
+          "record": 17,
+          "species_id": 127,
+          "species": "WhipBird",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "certified_egg",
+      "frame": 23853,
+      "snapshot_index": 271,
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/certified_egg.sav",
+      "journal_bytes": 32768,
+      "journal_sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+      "location": [
+        10,
+        0,
+        0,
+        80,
+        80
+      ],
+      "owned_count": 19,
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_record_bytes_checked": 3135,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "all_other_owned_bytes_identical": true,
+      "quest107_identical": true,
+      "backup_and_cache_banks_identical_after_continue": true,
+      "persistent_cache_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+      "fresh_continue_evidence": "/workspace/scratch/m8-postgame/quest-probe-02/certified_egg_continue/continue_evidence.txt",
+      "new_original_eggs": [
+        {
+          "record": 17,
+          "species_id": 127,
+          "species": "WhipBird",
+          "level": 1
+        },
+        {
+          "record": 18,
+          "species_id": 223,
+          "species": "Lionex",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "postgame_quest_gates",
+      "frame": 44371,
+      "snapshot_index": 553,
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/postgame_quest_gates.sav",
+      "journal_bytes": 32768,
+      "journal_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+      "location": [
+        0,
+        1,
+        1,
+        64,
+        16
+      ],
+      "owned_count": 19,
+      "owned_records": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_record_bytes_checked": 3135,
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "all_other_owned_bytes_identical": true,
+      "quest107_identical": true,
+      "backup_and_cache_banks_identical_after_continue": true,
+      "persistent_cache_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+      "fresh_continue_evidence": "/workspace/scratch/m8-postgame/quest-probe-02/postgame_quest_gates_continue/continue_evidence.txt",
+      "new_original_eggs": [
+        {
+          "record": 17,
+          "species_id": 127,
+          "species": "WhipBird",
+          "level": 1
+        },
+        {
+          "record": 18,
+          "species_id": 223,
+          "species": "Lionex",
+          "level": 1
+        }
+      ]
+    }
+  ],
+  "actual_completed": [
+    "Original newlywed egg gift, sharedCD claim;17\u219218owned,22\u219223catalogue",
+    "Original certified egg gift29 and evaluator introduction28;18\u219219owned,23\u219224catalogue",
+    "Original normal Journal and freshRuntimeContinue at all3 endpoints",
+    "Actual oldman2E introduction then explicit original party-species refusal",
+    "Actual ArenaB500G admission refusal at11G",
+    "Actual King postending greeting/training dialogue with100catalogue bounty gate unfulfilled",
+    "Actual Kameha F3 castle-entry event with offscreenactorX208 at24catalogue;50gate unfulfilled",
+    "Actual Warubou postending greeting with250/290catalogue gates unfulfilled"
+  ],
+  "remaining_unplayed": [
+    "B/A/S wins: fees unavailable at11G",
+    "Kameha battles/key claims, all4Kingbounties, Terry and high-catalogue NPC breeding",
+    "Petibou/Warubou alternative gifts",
+    "DemonLord oldmankey, counterpart tests and SoulKey",
+    "FullMedalMan ladder/DreamEgg/link and complete collection"
+  ],
+  "separate_failed_attempt": {
+    "probe": "/workspace/scratch/m8-postgame/quest-probe-01",
+    "granddaughter_battle": 21,
+    "outcome": "original loss D092=1, all3fainted; no victory claimed",
+    "failure": "Host Journal request during pending original loss dialogue was refused; no Journal .sav created; no runtime trap/missing-bank failure",
+    "retained_log": "/workspace/scratch/m8-postgame/quest-probe-01.log",
+    "raw_p1_trace": "/workspace/scratch/m8-postgame/quest-probe-01/trace_p1.txt",
+    "retry": "Not retried after the genuine combined endpoint; no extra gameplay after frame44371."
+  },
+  "full_native_windows_replay": "PENDING root execution; Wine discovery only in this report",
+  "trace_path": "/workspace/scratch/m8-postgame/quest-probe-02/trace_p1.txt",
+  "source_backed_transition_evidence": "/workspace/scratch/m8-postgame/quest-evidence/original-owner-name-byte-transitions.json",
+  "controller_isolation_provenance": [
+    "/workspace/scratch/m8-postgame/quest-probe-01-provenance.json",
+    "/workspace/scratch/m8-postgame/quest-probe-02-provenance.json"
+  ]
+}

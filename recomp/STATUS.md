@@ -46,6 +46,18 @@ Older failed/skipped attempts remain preserved and explicitly unaccepted.
 Physical speaker audibility and optional postgame paths are not exhaustively
 verified by CI.
 
+## Supplemental postgame checks
+
+The accepted executable passes seven further native Windows original-P1
+checkpoints (270,152 frames in 2m07s with four isolated processes): key appraisal, QuietSea generation and world boss,
+cache/re-entry, a three-floor dungeon, two postgame egg gifts, two NPC breeds and direct Journal
+Continue inside a random world. Full owned, quest, key, seed and cache comparisons
+are recorded in the [postgame report with screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md).
+Finite source checks cover all 10 terrains, 100 key levels, 48 recipes and 833
+map assets. Collection-gated reward playthroughs remain pending, and the runtime
+has no serial-peer transport for actual link exchanges. These supplemental
+checks leave the verified player and M0–M8 snapshots unchanged.
+
 ## Maintenance boundary
 
 Branch/documentation/CI housekeeping keeps the accepted game, ROM banks,

@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "checks": 27,
+  "scope": "Read-only current verify_name_bytes review; actual19 owned nicknames plus8 bounded positive/negative cases. No gameplay or tracked edits.",
+  "results": [
+    {
+      "case": "actual_record_0",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_1",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_2",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_3",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_4",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_5",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_6",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_7",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_8",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_9",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_10",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_11",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_12",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_13",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_14",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_15",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_16",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_17",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "actual_record_18",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    },
+    {
+      "case": "undeclared_original_failure_retained",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Creature name differs after Continue: 17"
+    },
+    {
+      "case": "missing_one_pin_rejected",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Creature name differs after Continue: 17"
+    },
+    {
+      "case": "wrong_saved_before_rejected",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Original nickname transition differs from its exact pin"
+    },
+    {
+      "case": "wrong_fresh_after_rejected",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Original nickname transition differs from its exact pin"
+    },
+    {
+      "case": "unlisted_leading_glyph_tamper_rejected",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Creature name differs after Continue: 17"
+    },
+    {
+      "case": "owner_only_pins_cannot_exempt_nickname",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Creature name differs after Continue: 17"
+    },
+    {
+      "case": "duplicate_pin_rejected",
+      "passed": true,
+      "name_accepted": false,
+      "detail": "Invalid or duplicate exact original nickname transition"
+    },
+    {
+      "case": "historical_F0_tail_behavior_unchanged",
+      "passed": true,
+      "name_accepted": true,
+      "detail": "accepted"
+    }
+  ]
+}

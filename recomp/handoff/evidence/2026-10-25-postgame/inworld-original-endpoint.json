@@ -1,0 +1,14 @@
+{
+  "frames": 51325,
+  "snapshot": 726,
+  "observed_sram_sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+  "manual_plan_journal": true,
+  "saved_sram_unchanged_through_non_event_npc": true,
+  "random_context": [
+    0,
+    0,
+    131,
+    0
+  ],
+  "route_sha256": "54b33d591d672dbfb103b3d1a494ed1e49c16496d658a339f53e18324ccb6acc"
+}

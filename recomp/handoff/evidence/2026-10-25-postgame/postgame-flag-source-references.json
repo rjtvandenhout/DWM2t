@@ -1,0 +1,838 @@
+[
+  {
+    "flag": "0x38",
+    "kind": "check",
+    "source": {
+      "bank": 2,
+      "address": "0x62C8",
+      "rom_offset": "0x00A2C8",
+      "source": "src/banks/bank_002.asm",
+      "line": 559
+    }
+  },
+  {
+    "flag": "0x2D",
+    "kind": "check",
+    "source": {
+      "bank": 4,
+      "address": "0x5786",
+      "rom_offset": "0x011786",
+      "source": "src/banks/bank_004.asm",
+      "line": 379
+    }
+  },
+  {
+    "flag": "0x188",
+    "kind": "set",
+    "source": {
+      "bank": 12,
+      "address": "0x6F65",
+      "rom_offset": "0x032F65",
+      "source": "src/banks/bank_012.asm",
+      "line": 761
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "check",
+    "source": {
+      "bank": 18,
+      "address": "0x554C",
+      "rom_offset": "0x04954C",
+      "source": "src/banks/bank_018.asm",
+      "line": 343
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "check",
+    "source": {
+      "bank": 18,
+      "address": "0x5654",
+      "rom_offset": "0x049654",
+      "source": "src/banks/bank_018.asm",
+      "line": 360
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "check",
+    "source": {
+      "bank": 18,
+      "address": "0x56BA",
+      "rom_offset": "0x0496BA",
+      "source": "src/banks/bank_018.asm",
+      "line": 366
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "check",
+    "source": {
+      "bank": 18,
+      "address": "0x5709",
+      "rom_offset": "0x049709",
+      "source": "src/banks/bank_018.asm",
+      "line": 371
+    }
+  },
+  {
+    "flag": "0x28",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6E94",
+      "rom_offset": "0x04EE94",
+      "source": "src/banks/bank_019.asm",
+      "line": 748
+    }
+  },
+  {
+    "flag": "0x29",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x78ED",
+      "rom_offset": "0x04F8ED",
+      "source": "src/banks/bank_019.asm",
+      "line": 913
+    }
+  },
+  {
+    "flag": "0x2A",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x659E",
+      "rom_offset": "0x04E59E",
+      "source": "src/banks/bank_019.asm",
+      "line": 604
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x65A6",
+      "rom_offset": "0x04E5A6",
+      "source": "src/banks/bank_019.asm",
+      "line": 605
+    }
+  },
+  {
+    "flag": "0x2C",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6ECF",
+      "rom_offset": "0x04EECF",
+      "source": "src/banks/bank_019.asm",
+      "line": 751
+    }
+  },
+  {
+    "flag": "0x2E",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7498",
+      "rom_offset": "0x04F498",
+      "source": "src/banks/bank_019.asm",
+      "line": 844
+    }
+  },
+  {
+    "flag": "0x2E",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x74A6",
+      "rom_offset": "0x04F4A6",
+      "source": "src/banks/bank_019.asm",
+      "line": 845
+    }
+  },
+  {
+    "flag": "0x31",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6F32",
+      "rom_offset": "0x04EF32",
+      "source": "src/banks/bank_019.asm",
+      "line": 758
+    }
+  },
+  {
+    "flag": "0x32",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7E1E",
+      "rom_offset": "0x04FE1E",
+      "source": "src/banks/bank_019.asm",
+      "line": 996
+    }
+  },
+  {
+    "flag": "0x32",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7F4E",
+      "rom_offset": "0x04FF4E",
+      "source": "src/banks/bank_019.asm",
+      "line": 1015
+    }
+  },
+  {
+    "flag": "0x33",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7E39",
+      "rom_offset": "0x04FE39",
+      "source": "src/banks/bank_019.asm",
+      "line": 998
+    }
+  },
+  {
+    "flag": "0x33",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7F5C",
+      "rom_offset": "0x04FF5C",
+      "source": "src/banks/bank_019.asm",
+      "line": 1016
+    }
+  },
+  {
+    "flag": "0x34",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7E6C",
+      "rom_offset": "0x04FE6C",
+      "source": "src/banks/bank_019.asm",
+      "line": 1001
+    }
+  },
+  {
+    "flag": "0x35",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7EB4",
+      "rom_offset": "0x04FEB4",
+      "source": "src/banks/bank_019.asm",
+      "line": 1006
+    }
+  },
+  {
+    "flag": "0x35",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7F6A",
+      "rom_offset": "0x04FF6A",
+      "source": "src/banks/bank_019.asm",
+      "line": 1017
+    }
+  },
+  {
+    "flag": "0x36",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7ECF",
+      "rom_offset": "0x04FECF",
+      "source": "src/banks/bank_019.asm",
+      "line": 1007
+    }
+  },
+  {
+    "flag": "0x36",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7F78",
+      "rom_offset": "0x04FF78",
+      "source": "src/banks/bank_019.asm",
+      "line": 1018
+    }
+  },
+  {
+    "flag": "0x38",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7F02",
+      "rom_offset": "0x04FF02",
+      "source": "src/banks/bank_019.asm",
+      "line": 1011
+    }
+  },
+  {
+    "flag": "0x39",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x75BE",
+      "rom_offset": "0x04F5BE",
+      "source": "src/banks/bank_019.asm",
+      "line": 862
+    }
+  },
+  {
+    "flag": "0x3A",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x75B6",
+      "rom_offset": "0x04F5B6",
+      "source": "src/banks/bank_019.asm",
+      "line": 862
+    }
+  },
+  {
+    "flag": "0x3B",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x763E",
+      "rom_offset": "0x04F63E",
+      "source": "src/banks/bank_019.asm",
+      "line": 870
+    }
+  },
+  {
+    "flag": "0x3C",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7636",
+      "rom_offset": "0x04F636",
+      "source": "src/banks/bank_019.asm",
+      "line": 870
+    }
+  },
+  {
+    "flag": "0x3D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7490",
+      "rom_offset": "0x04F490",
+      "source": "src/banks/bank_019.asm",
+      "line": 844
+    }
+  },
+  {
+    "flag": "0x3D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7B98",
+      "rom_offset": "0x04FB98",
+      "source": "src/banks/bank_019.asm",
+      "line": 956
+    }
+  },
+  {
+    "flag": "0x3D",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x7C06",
+      "rom_offset": "0x04FC06",
+      "source": "src/banks/bank_019.asm",
+      "line": 963
+    }
+  },
+  {
+    "flag": "0x3D",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x7C74",
+      "rom_offset": "0x04FC74",
+      "source": "src/banks/bank_019.asm",
+      "line": 970
+    }
+  },
+  {
+    "flag": "0x3E",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7C82",
+      "rom_offset": "0x04FC82",
+      "source": "src/banks/bank_019.asm",
+      "line": 971
+    }
+  },
+  {
+    "flag": "0x3E",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x74E3",
+      "rom_offset": "0x04F4E3",
+      "source": "src/banks/bank_019.asm",
+      "line": 849
+    }
+  },
+  {
+    "flag": "0xC8",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7488",
+      "rom_offset": "0x04F488",
+      "source": "src/banks/bank_019.asm",
+      "line": 843
+    }
+  },
+  {
+    "flag": "0xC8",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7B91",
+      "rom_offset": "0x04FB91",
+      "source": "src/banks/bank_019.asm",
+      "line": 956
+    }
+  },
+  {
+    "flag": "0xC8",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x7CE9",
+      "rom_offset": "0x04FCE9",
+      "source": "src/banks/bank_019.asm",
+      "line": 977
+    }
+  },
+  {
+    "flag": "0xCD",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6AEF",
+      "rom_offset": "0x04EAEF",
+      "source": "src/banks/bank_019.asm",
+      "line": 689
+    }
+  },
+  {
+    "flag": "0xCD",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x6B24",
+      "rom_offset": "0x04EB24",
+      "source": "src/banks/bank_019.asm",
+      "line": 693
+    }
+  },
+  {
+    "flag": "0x129",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x76E8",
+      "rom_offset": "0x04F6E8",
+      "source": "src/banks/bank_019.asm",
+      "line": 881
+    }
+  },
+  {
+    "flag": "0x12C",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6207",
+      "rom_offset": "0x04E207",
+      "source": "src/banks/bank_019.asm",
+      "line": 547
+    }
+  },
+  {
+    "flag": "0x12D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x68F2",
+      "rom_offset": "0x04E8F2",
+      "source": "src/banks/bank_019.asm",
+      "line": 658
+    }
+  },
+  {
+    "flag": "0x12D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x692A",
+      "rom_offset": "0x04E92A",
+      "source": "src/banks/bank_019.asm",
+      "line": 661
+    }
+  },
+  {
+    "flag": "0x12D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6F75",
+      "rom_offset": "0x04EF75",
+      "source": "src/banks/bank_019.asm",
+      "line": 762
+    }
+  },
+  {
+    "flag": "0x12D",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6FA8",
+      "rom_offset": "0x04EFA8",
+      "source": "src/banks/bank_019.asm",
+      "line": 765
+    }
+  },
+  {
+    "flag": "0x180",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5BE7",
+      "rom_offset": "0x04DBE7",
+      "source": "src/banks/bank_019.asm",
+      "line": 449
+    }
+  },
+  {
+    "flag": "0x180",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5C1B",
+      "rom_offset": "0x04DC1B",
+      "source": "src/banks/bank_019.asm",
+      "line": 452
+    }
+  },
+  {
+    "flag": "0x180",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x5C2F",
+      "rom_offset": "0x04DC2F",
+      "source": "src/banks/bank_019.asm",
+      "line": 453
+    }
+  },
+  {
+    "flag": "0x181",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5BEF",
+      "rom_offset": "0x04DBEF",
+      "source": "src/banks/bank_019.asm",
+      "line": 449
+    }
+  },
+  {
+    "flag": "0x181",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5C13",
+      "rom_offset": "0x04DC13",
+      "source": "src/banks/bank_019.asm",
+      "line": 452
+    }
+  },
+  {
+    "flag": "0x181",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6621",
+      "rom_offset": "0x04E621",
+      "source": "src/banks/bank_019.asm",
+      "line": 613
+    }
+  },
+  {
+    "flag": "0x181",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x5C59",
+      "rom_offset": "0x04DC59",
+      "source": "src/banks/bank_019.asm",
+      "line": 456
+    }
+  },
+  {
+    "flag": "0x182",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5C0B",
+      "rom_offset": "0x04DC0B",
+      "source": "src/banks/bank_019.asm",
+      "line": 451
+    }
+  },
+  {
+    "flag": "0x182",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x5C66",
+      "rom_offset": "0x04DC66",
+      "source": "src/banks/bank_019.asm",
+      "line": 457
+    }
+  },
+  {
+    "flag": "0x183",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5C75",
+      "rom_offset": "0x04DC75",
+      "source": "src/banks/bank_019.asm",
+      "line": 458
+    }
+  },
+  {
+    "flag": "0x184",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5C6D",
+      "rom_offset": "0x04DC6D",
+      "source": "src/banks/bank_019.asm",
+      "line": 457
+    }
+  },
+  {
+    "flag": "0x185",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5CB0",
+      "rom_offset": "0x04DCB0",
+      "source": "src/banks/bank_019.asm",
+      "line": 462
+    }
+  },
+  {
+    "flag": "0x186",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5CA8",
+      "rom_offset": "0x04DCA8",
+      "source": "src/banks/bank_019.asm",
+      "line": 461
+    }
+  },
+  {
+    "flag": "0x189",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x6DB4",
+      "rom_offset": "0x04EDB4",
+      "source": "src/banks/bank_019.asm",
+      "line": 734
+    }
+  },
+  {
+    "flag": "0x18A",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x5BDF",
+      "rom_offset": "0x04DBDF",
+      "source": "src/banks/bank_019.asm",
+      "line": 448
+    }
+  },
+  {
+    "flag": "0x18A",
+    "kind": "set",
+    "source": {
+      "bank": 19,
+      "address": "0x5BFD",
+      "rom_offset": "0x04DBFD",
+      "source": "src/banks/bank_019.asm",
+      "line": 450
+    }
+  },
+  {
+    "flag": "0x206",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x74C6",
+      "rom_offset": "0x04F4C6",
+      "source": "src/banks/bank_019.asm",
+      "line": 847
+    }
+  },
+  {
+    "flag": "0x206",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7BCC",
+      "rom_offset": "0x04FBCC",
+      "source": "src/banks/bank_019.asm",
+      "line": 959
+    }
+  },
+  {
+    "flag": "0x207",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x74CE",
+      "rom_offset": "0x04F4CE",
+      "source": "src/banks/bank_019.asm",
+      "line": 847
+    }
+  },
+  {
+    "flag": "0x207",
+    "kind": "check",
+    "source": {
+      "bank": 19,
+      "address": "0x7C3A",
+      "rom_offset": "0x04FC3A",
+      "source": "src/banks/bank_019.asm",
+      "line": 966
+    }
+  },
+  {
+    "flag": "0x206",
+    "kind": "set",
+    "source": {
+      "bank": 115,
+      "address": "0x5282",
+      "rom_offset": "0x1CD282",
+      "source": "src/banks/bank_115.asm",
+      "line": 299
+    }
+  },
+  {
+    "flag": "0x207",
+    "kind": "set",
+    "source": {
+      "bank": 115,
+      "address": "0x5294",
+      "rom_offset": "0x1CD294",
+      "source": "src/banks/bank_115.asm",
+      "line": 300
+    }
+  },
+  {
+    "flag": "0x2A",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4CAA",
+      "rom_offset": "0x214CAA",
+      "source": "src/banks/bank_133.asm",
+      "line": 205
+    }
+  },
+  {
+    "flag": "0x2B",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4B63",
+      "rom_offset": "0x214B63",
+      "source": "src/banks/bank_133.asm",
+      "line": 185
+    }
+  },
+  {
+    "flag": "0x37",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4A58",
+      "rom_offset": "0x214A58",
+      "source": "src/banks/bank_133.asm",
+      "line": 168
+    }
+  },
+  {
+    "flag": "0x38",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4A4A",
+      "rom_offset": "0x214A4A",
+      "source": "src/banks/bank_133.asm",
+      "line": 167
+    }
+  },
+  {
+    "flag": "0x39",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4975",
+      "rom_offset": "0x214975",
+      "source": "src/banks/bank_133.asm",
+      "line": 154
+    }
+  },
+  {
+    "flag": "0x3A",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x49CE",
+      "rom_offset": "0x2149CE",
+      "source": "src/banks/bank_133.asm",
+      "line": 159
+    }
+  },
+  {
+    "flag": "0x3B",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x48C8",
+      "rom_offset": "0x2148C8",
+      "source": "src/banks/bank_133.asm",
+      "line": 143
+    }
+  },
+  {
+    "flag": "0x3C",
+    "kind": "set",
+    "source": {
+      "bank": 133,
+      "address": "0x4921",
+      "rom_offset": "0x214921",
+      "source": "src/banks/bank_133.asm",
+      "line": 149
+    }
+  }
+]
