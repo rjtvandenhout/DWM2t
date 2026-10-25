@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "stages": [
+    {
+      "stage": "pei-inn",
+      "frames": 156892,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/pei-inn-check-01/pei-inn/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_pei_inn_p1.txt",
+        "Z:/workspace/scratch/m8-review/pei-inn-check-01/pei-inn/native"
+      ],
+      "route_sha256": "60305ebe70eff25131fac11324752ff41cc4d4b29b4a7c33b3a4dedc90e4b0c2",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736",
+      "active_party_records": [
+        0,
+        11,
+        7
+      ],
+      "levels": [
+        23,
+        24,
+        26
+      ],
+      "hp": [
+        151,
+        175,
+        90
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 186,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    }
+  ]
+}

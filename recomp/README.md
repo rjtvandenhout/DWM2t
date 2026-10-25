@@ -52,7 +52,7 @@ match Wine. Later Sky World, ending/credits and final acceptance remain pending.
 
 **M8 is incomplete.** Sky World, the later story, ending/credits,
 combined regressions and final production-package acceptance remain unproven.
-The [current progress report](handoff/M8_PROGRESS_2026-10-24.md) includes original
+The [current progress report](handoff/M8_PROGRESS_2026-10-25.md) includes original
 screenshots and exact evidence. Working notes are in `handoff/M8_WORKING.md`;
 the active draft PR is [#4](https://github.com/rjtvandenhout/DWM2t/pull/4) on
 `work/recomp-m8-dancer-20261023`. The M7 restore remains immutable. Project text

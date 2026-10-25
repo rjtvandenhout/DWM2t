@@ -1,5 +1,9 @@
 # M8 deferred validation handoff
 
+> Historical deferral: the user's later whole-game continuation and finish
+> requests authorize the validation work below. Current progress and remaining
+> acceptance work are in [M8_PROGRESS_2026-10-25.md](M8_PROGRESS_2026-10-25.md).
+
 The user explicitly deferred testing on 2026-10-22. Do not automatically run
 these steps merely to build the release candidate. No build or test result
 is recorded for the new player/save-hardening implementation.

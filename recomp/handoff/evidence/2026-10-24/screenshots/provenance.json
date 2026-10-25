@@ -844,5 +844,82 @@
     "source_bmp_sha256": "4c3c95d3ce74911fb0b8df92dd0c4514b70c1f7dbe8c425fd8d1ea8df9017075",
     "png_sha256": "22a5103e9b47f8e66ce9a217fca02461ecb6e0829ea345f9ecf12ed622a432ef",
     "pixels": "Original production window client capture 160x144, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-vivify-revival.png",
+    "caption": "Derzo\u2019s inherited Vivify restores Liset after its first attempt failed.",
+    "source_session": "sky-quest-41",
+    "source_bmp": "m8_484.bmp",
+    "frame": 44536,
+    "native_state": "M8_STATE frame=44536 mode=2:2 world=122 region=0,1 pos=64,128 party=3 selector=0x29 sram=0x1170dcef9130817d screen=0xd813f1bfbb6badd3 image=m8_484.bmp",
+    "source_bmp_sha256": "14e7aed0b7f55aa39e498051c703da8c4af38b1a88784f95d1388e97890fd424",
+    "png_sha256": "4e9b6ed8ed210fd57882113cca3c2938e4c88093639bcc49e018728d63cf75fa",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "gigantes-joins.png",
+    "caption": "Original Gigantes recruitment during Sky World travel, followed by naming and farm placement.",
+    "source_session": "sky-quest-41",
+    "source_bmp": "m8_1311.bmp",
+    "frame": 96727,
+    "native_state": "M8_STATE frame=96727 mode=4:0 world=112 region=1,4 pos=112,80 party=3 selector=0x29 sram=0x30cdeffe64758a07 screen=0xeba603182687fc44 image=m8_1311.bmp",
+    "source_bmp_sha256": "6dfcb82e84445c1c5328d99fc26a5d0c08105d01f7b4648b0abf3f67456c35a9",
+    "png_sha256": "bd2411431aa51b60915637f0c14818c8a12e5294924591bbc3260e93583ab553",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "cloud-flight-across-sky.png",
+    "caption": "Original cloud flight crosses Sky World while preserving the Swordgon disguise.",
+    "source_session": "sky-quest-42",
+    "source_bmp": "m8_648.bmp",
+    "frame": 78248,
+    "native_state": "M8_STATE frame=78248 mode=1:1 world=112 region=0,8 pos=64,62 party=3 selector=0x1 sram=0xcf99260d9ac40cdc screen=0xf34408cfd6a6072f image=m8_648.bmp",
+    "source_bmp_sha256": "c96296e1e9c6e620d109758c0ba00c3397ad7dc1c19e73a3cd134b99c14a2551",
+    "png_sha256": "6a5f8587d6724884a03de8d1356aa3e97091ff2759485a171d43dfe9b6f0515e",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "madcondor-battle.png",
+    "caption": "The original 600-HP MadCondor battle begins; Slash has fainted during travel.",
+    "source_session": "sky-quest-42",
+    "source_bmp": "m8_667.bmp",
+    "frame": 81316,
+    "native_state": "M8_STATE frame=81316 mode=4:0 world=122 region=0,0 pos=64,48 party=3 selector=0x29 sram=0xcf99260d9ac40cdc screen=0x638b95dec394c075 image=m8_667.bmp",
+    "source_bmp_sha256": "79451213580eaaf216a396e42ae3d5b086fe3ed1fdb5e43e0e81df31cf7fd6cb",
+    "png_sha256": "04592a08b9d9c279d38587cf6e2240b3d6974bb87693fed3c752037ff33dba14",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "derzo-revives-slash.png",
+    "caption": "Derzo\u2019s inherited Vivify revives Slash during the MadCondor battle.",
+    "source_session": "sky-quest-42",
+    "source_bmp": "m8_791.bmp",
+    "frame": 84520,
+    "native_state": "M8_STATE frame=84520 mode=4:0 world=122 region=0,0 pos=64,48 party=3 selector=0x29 sram=0xcf99260d9ac40cdc screen=0xbb1564c052717a5d image=m8_791.bmp",
+    "source_bmp_sha256": "dd1742a85f16108ca3e9cefd391b9de3d9db1dcafc8faa9224a34584261549df",
+    "png_sha256": "19c77d715e38e6df7911ac40ae6ce0a530f47b3935aa014d6ffd6974a30e6319",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "madcondor-victory.png",
+    "caption": "The original MadCondor victory with all three party members alive.",
+    "source_session": "sky-quest-42",
+    "source_bmp": "m8_953.bmp",
+    "frame": 88376,
+    "native_state": "M8_STATE frame=88376 mode=4:0 world=122 region=0,0 pos=64,48 party=3 selector=0x29 sram=0xcf99260d9ac40cdc screen=0xc7e1e7a22ab2f06e image=m8_953.bmp",
+    "source_bmp_sha256": "aab5339e9f57a2508b2683d8e74d9f832be6464fe5878003ae3ef8217e8a9606",
+    "png_sha256": "4b7812edc3d5d43508efe0742c5f24b2282bf95eb36f3c35165853275936a8f0",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "lightorb-chest-empty.png",
+    "caption": "After the MadCondor victory, the original nest chest is empty; LightOrb remains missing.",
+    "source_session": "sky-quest-42",
+    "source_bmp": "m8_1489.bmp",
+    "frame": 99334,
+    "native_state": "M8_STATE frame=99334 mode=1:1 world=122 region=0,0 pos=48,48 party=3 selector=0x2b sram=0xe5389cf67e636066 screen=0xd9ab24c500bfe7a8 image=m8_1489.bmp",
+    "source_bmp_sha256": "8bcc14267f371c61561e5a43a5b93a89f20fc105699740f75fb203c5f4e2b172",
+    "png_sha256": "ebbd86e3d975abaf47d8b8807bb4592c44dcfdcc51da286d98dea27e9c141bc8",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

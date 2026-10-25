@@ -142,10 +142,10 @@ def verify_saved_roster(initial: bytes, saved: bytes) -> None:
         for start, end in ((0x0B, 0x0D), (0x19, 0x3C), (0x55, 0xA5)):
             if initial[base+start:base+end] != saved[base+start:base+end]:
                 raise ValueError(f'Production Journal changed persistent creature data: {record}')
-    # The original Journal stores CBD7..CC16 here, confirmed independently
-    # against native fresh-Continue captures. This is a comparison only.
-    if initial[0x3DA0:0x3DE0] != saved[0x3DA0:0x3DE0]:
-        raise ValueError('Production Journal changed the original 64 quest bytes')
+    # Original bank 2:$7636/$76AC saves/restores CBD7 with length 0x6B.
+    # Independently matched against original native Save/Continue captures.
+    if initial[0x3DA0:0x3E0B] != saved[0x3DA0:0x3E0B]:
+        raise ValueError('Production Journal changed the original 107 quest bytes')
 
 
 def main() -> int:
@@ -228,7 +228,7 @@ def main() -> int:
         report.update(status='passed', source=spec['source'], executable_sha256=digest(exe),
                       input_journal_sha256=digest(seed), production_journal_sha256=saved_hash,
                       original_owned_creatures=sum(initial[i*165] in (1, 2) for i in range(40)),
-                      quest_bytes=64, original_p1_only=True, fresh_process_reload=True,
+                      quest_bytes=107, original_p1_only=True, fresh_process_reload=True,
                       normal_shutdowns=2)
         print('PLAYER_LATE_JOURNAL_PASS original_P1 original_Journal fresh_production_Continue')
         return 0

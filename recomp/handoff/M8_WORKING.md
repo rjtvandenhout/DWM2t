@@ -3,7 +3,7 @@
 Current continuation (2026-10-23): the user requested M7 review and M8 work
 for the whole game. The historical stop/continue choice below is answered.
 The continuing report with original screenshots is
-`M8_PROGRESS_2026-10-24.md`. HoodSquid and the mermaid-palace route have now been
+`M8_PROGRESS_2026-10-25.md` (continuing `M8_PROGRESS_2026-10-24.md`). HoodSquid and the mermaid-palace route have now been
 reached; the user also requested breeding while reserving Squiz for the story.
 See `M8_DANCER_2026-10-23.md` and `M8_PREPARATION_2026-10-24.md` for the
 replayed farm, recovery, trading and trained-party Journals. Remaining worlds
@@ -147,6 +147,44 @@ monsters, 196G and ChangeStaff. Every persistent-data check passes. Its live
 continuation has used ChangeStaff and passed the guarded bridge normally. Later worlds,
 ending/credits and final release acceptance remain outstanding. Screenshots and exact provenance are in
 `M8_PROGRESS_2026-10-24.md`.
+
+## Current Sky continuation (2026-10-25)
+
+Checkpoint 26, Pei inn, passes independent Wine replay to Journal SHA256
+`fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736`.
+All thirteen owned monsters persist; party Slash/Derzo/Liset is level 23/24/26,
+full HP 151/175/90, with 186G. Gigantes joined the farm normally. Derzo's
+inherited Vivify revived Liset after a travel knockout. Current validators
+compare the full original 107-byte saved quest block CBD7:CC42 (bank 2:$7636
+and $76AC, length 0x6B; original SRAM 3DA0:3E0B), including Sky flag 0x209.
+All 24 Windows and two later Wine captures pass that stronger read-only check.
+
+The live continuation defeated the 600-HP MadCondor with all three alive after
+Derzo revived Slash. MadCondor joined the farm. WorldDew was collected but the
+LightOrb chest is empty. The original game refused Journal Save at the nest.
+The exact original P1 prefix, including that refusal, replayed from the
+original Pei Journal. The party returned to Pei's traveler inn, rested and
+made its 27th Journal. Its 136,123-frame Wine replay and fresh Continue pass
+to SHA256 `2655aa444fb56f2312e36b48ec446d0e085024ff3e11001fcc282fd3e6814788`,
+including all 107 quest bytes and fourteen owned monsters. The party is
+Derzo/Liset/Slash, level 25/27/24, full HP 176/90/154, with 166G. The live
+continuation in scratch `sky-quest-44` has reached the settlement at world
+124. Its gate guard asks the player to read the king's notice. No observational
+dump is used as a seed.
+
+Journal safety: verify that the original Plan menu actually offers Journal
+before invoking the native Journal helper. Dungeons can offer Info instead
+and refuse Save. Use a clear, stationary town tile facing an empty tile.
+Keep original dialogue/recruitment visible; repeated identical dialogue can
+need another A, and battle completion can lead into original naming.
+
+ChangeStaff copies current-room NPCs. Pei region 1,0 includes Swordgon (43),
+a shiny disguise. Cloud flight (unlocked flag 0x1E) uses A facing suitable
+shore terrain, crosses gaps automatically, and lands on walkable ground;
+its flight script pauses the disguise countdown. It does not use the boat's
+persistent FF8C bit 3. The observed cloud route successfully reached the nest
+with 53 disguise steps remaining. Scratch helpers issue only finite original
+P1 commands; all game/runtime state remains original.
 
 ## Work sequence
 

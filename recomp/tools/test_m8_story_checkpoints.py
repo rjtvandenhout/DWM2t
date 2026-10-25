@@ -84,10 +84,13 @@ def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
         if (saved[base+0x56] != level or saved[base+0x55] != status or
                 int.from_bytes(saved[base+0x5B:base+0x5D], 'little') != hp):
             raise ValueError(f'Observed original creature stats differ: {record}')
-    # Later Ice court scripts use flags 0x1E1 through 0x1F1. Include those
-    # original flag bytes in addition to the 56-byte native core witness.
-    if source[0xCBD7:0xCC17] != ram[0xCBD7:0xCC17]:
+    # Original bank 2:$7636/$76AC saves/restores CBD7 with length 0x6B.
+    # Sky's bridge uses flag 0x209, beyond the earlier 64-byte comparison.
+    # Keep the complete original block; the pinned native core is unchanged.
+    if source[0xCBD7:0xCC42] != ram[0xCBD7:0xCC42]:
         raise ValueError('Original quest bytes differ after Continue')
+    if saved[0x3DA0:0x3E0B] != ram[0xCBD7:0xCC42]:
+        raise ValueError('Original Journal quest block differs after Continue')
     for name, flags in (('set_flags', True), ('clear_flags', False)):
         for flag in expected.get(name, []):
             if bool(ram[0xCBD7+flag//8] & (1 << (flag % 8))) != flags:
@@ -126,7 +129,7 @@ def main() -> int:
               'executable_sha256': EXE_SHA,
               'executable_source': '697647033b4ce6b00dd8e11759cb85e1ae469a65',
               'full_game_verified': False, 'sea_world_completed': False,
-              'ice_world_completed': False, 'stages': []}
+              'ice_world_completed': False, 'quest_bytes': 107, 'stages': []}
     try:
         if (os.name != 'nt') != bool(args.wine):
             raise ValueError('Run on Windows, or explicitly supply --wine on Linux')
