@@ -1,0 +1,547 @@
+Start testing: Oct 25 09:46 Coordinated Universal Time
+----------------------------------------------------------
+2/18 Testing: M2_bank0_audit
+2/18 Test: M2_bank0_audit
+Command: "C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe" "D:/a/_temp/native-retest-work/source/recomp/tools/recompile_bank0.py" "--bank" "D:/a/_temp/native-retest-work/source/recomp/../src/banks/bank_000.asm" "--audit-only"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M2_bank0_audit" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Bank 0 static recomp audit
+  entry addresses: 16384
+  base decodes: 15726
+  CB decodes: 382
+  illegal decodes: 276
+  bank-boundary operand fetches: 0
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"M2_bank0_audit" end time: Oct 25 09:46 Coordinated Universal Time
+"M2_bank0_audit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+1/18 Testing: M1_decoder
+1/18 Test: M1_decoder
+Command: "C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe" "D:/a/_temp/native-retest-work/source/recomp/tools/test_lr35902.py" "--bank0" "D:/a/_temp/native-retest-work/source/recomp/../src/banks/bank_000.asm"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M1_decoder" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M1 LR35902 decoder: PASS
+  base legal opcodes: 245 / 245
+  base illegal opcodes represented: 11 / 11
+  CB-prefixed opcodes: 256 / 256
+  Bank 0 independent entry decodes: 16384 / 16384
+  Bank 0 offsets decoding as CB prefix: 382
+  Bank 0 offsets decoding as illegal opcode: 276
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"M1_decoder" end time: Oct 25 09:46 Coordinated Universal Time
+"M1_decoder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/18 Testing: M4_renderer
+3/18 Test: M4_renderer
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--self-test" "--bmp" "D:/a/_temp/native-retest-work/native/local-validation/m4.bmp"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M4_renderer" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+DWM2t native static recomp - milestone M4
+Target ROM SHA-256: 8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e
+
+M3 mapped hardware regression suite: PASS
+CGB BG/window/OAM/palette software renderer: PASS
+Renderer FNV-1a: 0x284882dc2a98916f
+
+M4 PASS: the native recomp now renders Game Boy Color tilemaps, window layers, OAM sprites and palettes into a deterministic 160x144 host framebuffer and can present it in a Win32 window.
+Next milestone: M5 original DWM2 title screen from recompiled game code.
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"M4_renderer" end time: Oct 25 09:46 Coordinated Universal Time
+"M4_renderer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/18 Testing: M6_sram
+6/18 Test: M6_sram
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m6-sram-test" "D:/a/_temp/native-retest-work/native/local-validation/m6.sav"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M6_sram" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M6_SRAM_PASS bytes=32768 bank2_A321=0xe7 path=D:/a/_temp/native-retest-work/native/local-validation/m6.sav
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"M6_sram" end time: Oct 25 09:46 Coordinated Universal Time
+"M6_sram" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/18 Testing: M5_title
+4/18 Test: M5_title
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--title-test" "D:/a/_temp/native-retest-work/native/local-validation/m5.bmp"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M5_title" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M5 original-title regression: booting recompiled DWM2 from $0100
+AOT ROMX bank count: 255
+M5_TITLE_REACHED frame=1921 hash=0x49c67a53ef4f8a80 stable_frames=30 C5DB=5 C5DC=0
+M5 PASS: original DWM2 Cobi title framebuffer was produced by the recompiled cartridge boot path.
+<end of output>
+Test time =   3.25 sec
+----------------------------------------------------------
+Test Passed.
+"M5_title" end time: Oct 25 09:46 Coordinated Universal Time
+"M5_title" time elapsed: 00:00:03
+----------------------------------------------------------
+
+8/18 Testing: M7_audio
+8/18 Test: M7_audio
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m7-audio-probe"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M7_audio" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M7_AUDIO_RESULT sample_values=2138926 stereo_frames=1069463 nonzero=1074861 peak=19200 hash=0x3b50ed7ed79bda0 NR50=0x77 NR51=0x33 NR52=0xf3
+M7_AUDIO_PASS original_game_apu_writes_produced_deterministic_pcm
+<end of output>
+Test time =   3.29 sec
+----------------------------------------------------------
+Test Passed.
+"M7_audio" end time: Oct 25 09:46 Coordinated Universal Time
+"M7_audio" time elapsed: 00:00:03
+----------------------------------------------------------
+
+5/18 Testing: M6_movement
+5/18 Test: M6_movement
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m6-probe" "D:/a/_temp/native-retest-work/native/local-validation/m6"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M6_movement" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M6 exploration: booting real game path and driving P1 input
+M6_TITLE_READY frame=1921 hash=0x49c67a53ef4f8a80
+M6_FRAME relative=0 absolute=1922 buttons=0x80 hash=0x49c67a53ef4f8a80 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1 absolute=1923 buttons=0x80 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=2 pc=0x41b5
+M6_FRAME relative=2 absolute=1924 buttons=0x80 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=3 absolute=1925 buttons=0x0 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=4 absolute=1926 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=2 pc=0x419a
+M6_FRAME relative=5 absolute=1927 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=6 absolute=1928 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=7 absolute=1929 buttons=0x0 hash=0x2015da761f596627 C5DB=5 C5DC=1 bank=2 pc=0x4176
+M6_FRAME relative=8 absolute=1930 buttons=0x0 hash=0x2015da761f596627 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=9 absolute=1931 buttons=0x0 hash=0x2015da761f596627 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=10 absolute=1932 buttons=0x0 hash=0xab6f70da7c3dcc81 C5DB=5 C5DC=1 bank=2 pc=0x4176
+M6_FRAME relative=11 absolute=1933 buttons=0x0 hash=0xab6f70da7c3dcc81 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=30 absolute=1952 buttons=0x0 hash=0x22ded39ec9e2d9a5 C5DB=5 C5DC=1 bank=2 pc=0x4223
+M6_FRAME relative=45 absolute=1967 buttons=0x0 hash=0x5a369426ae66147f C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=60 absolute=1982 buttons=0x0 hash=0xec4ed0c04c325cf0 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=120 absolute=2042 buttons=0x0 hash=0x4ed45b582f065293 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=165 absolute=2087 buttons=0x0 hash=0x8b9f9ab297286af3 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=180 absolute=2102 buttons=0x80 hash=0x622c539188812bb3 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=195 absolute=2117 buttons=0x0 hash=0x9628606439c2bc27 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=240 absolute=2162 buttons=0x0 hash=0xbc68a258255ba257 C5DB=5 C5DC=1 bank=31 pc=0x5db4
+M6_FRAME relative=244 absolute=2166 buttons=0x0 hash=0xb423319be6530b83 C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=270 absolute=2192 buttons=0x0 hash=0x2aeb0717eb996383 C5DB=1 C5DC=0 bank=2 pc=0x4220
+M6_FRAME relative=280 absolute=2202 buttons=0x0 hash=0xd69e5a31e90d1383 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=300 absolute=2222 buttons=0x0 hash=0xd69e5a31e90d1383 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=360 absolute=2282 buttons=0x0 hash=0xaf06e280336623f6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=390 absolute=2312 buttons=0x0 hash=0xe682fcb9922f7d36 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=420 absolute=2342 buttons=0x80 hash=0xf780f5842d7c9d9e C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=435 absolute=2357 buttons=0x0 hash=0x6e1c04c3faf6cf8e C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=450 absolute=2372 buttons=0x0 hash=0xa03de6fa8a286e5e C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=480 absolute=2402 buttons=0x0 hash=0x379f8e9431a4311b C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=495 absolute=2417 buttons=0x0 hash=0xa0d4e3047d411e06 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=525 absolute=2447 buttons=0x0 hash=0xd1b45bf858a407f6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=540 absolute=2462 buttons=0x0 hash=0xc7df3740143b2e03 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=555 absolute=2477 buttons=0x0 hash=0x3d256342c92ca683 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=600 absolute=2522 buttons=0x0 hash=0xc6ae0e77b6540303 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=605 absolute=2527 buttons=0x0 hash=0xd69e5a31e90d1383 C5DB=1 C5DC=4 bank=1 pc=0x32c
+M6_FRAME relative=658 absolute=2580 buttons=0x0 hash=0xbc0bc68ceb8dafaa C5DB=1 C5DC=1 bank=2 pc=0x426d
+M6_FRAME relative=660 absolute=2582 buttons=0x80 hash=0xd4a1fee61e9f2154 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=675 absolute=2597 buttons=0x0 hash=0x8b8b915f7287dc7e C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=705 absolute=2627 buttons=0x0 hash=0x6e2d0ef1c89cc6d6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=720 absolute=2642 buttons=0x0 hash=0x25f8dda92da98436 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=765 absolute=2687 buttons=0x0 hash=0x1d02d01776abb251 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=780 absolute=2702 buttons=0x0 hash=0x6e2d0ef1c89cc6d6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=795 absolute=2717 buttons=0x0 hash=0x691e45c798df08c0 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=810 absolute=2732 buttons=0x0 hash=0x3e81101c722384c7 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=825 absolute=2747 buttons=0x0 hash=0x1633ca3e794b1c06 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=840 absolute=2762 buttons=0x0 hash=0x8de057ebf9f5b6e9 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=885 absolute=2807 buttons=0x0 hash=0xe6e6a398995319a7 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=900 absolute=2822 buttons=0x80 hash=0xaf27c41c4ac57c6f C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=915 absolute=2837 buttons=0x0 hash=0x40a03759b89ec977 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=945 absolute=2867 buttons=0x0 hash=0x295d73f7b663271f C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=960 absolute=2882 buttons=0x0 hash=0xddd0ec8a3eafc598 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1020 absolute=2942 buttons=0x0 hash=0xe96e063f0e78dcd7 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1035 absolute=2957 buttons=0x0 hash=0x6934196513e6136a C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1050 absolute=2972 buttons=0x0 hash=0x4cfeb93814cefd7a C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1065 absolute=2987 buttons=0x0 hash=0x6e2d0ef1c89cc6d6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1080 absolute=3002 buttons=0x0 hash=0x25f8dda92da98436 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1125 absolute=3047 buttons=0x0 hash=0x1d02d01776abb251 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1140 absolute=3062 buttons=0x80 hash=0x6e2d0ef1c89cc6d6 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1185 absolute=3107 buttons=0x0 hash=0xdd1820d72a687202 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1200 absolute=3122 buttons=0x0 hash=0x4ce1b794574d5169 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1215 absolute=3137 buttons=0x0 hash=0x7db855b002eded12 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1230 absolute=3152 buttons=0x0 hash=0x557e93cfba3589a7 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1245 absolute=3167 buttons=0x0 hash=0xe050dce380f2ba96 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1260 absolute=3182 buttons=0x0 hash=0x3485c4fa1bf87e9a C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1275 absolute=3197 buttons=0x0 hash=0xc82e279b43ca91e4 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1290 absolute=3212 buttons=0x0 hash=0xf90b1705dd685f2e C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1305 absolute=3227 buttons=0x0 hash=0xf8a9ee30f7505370 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1320 absolute=3242 buttons=0x0 hash=0x13d926b837392654 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1335 absolute=3257 buttons=0x0 hash=0xf37a96b274a39565 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1380 absolute=3302 buttons=0x80 hash=0x7765e8da2ded219e C5DB=1 C5DC=1 bank=2 pc=0x1221
+M6_FRAME relative=1395 absolute=3317 buttons=0x0 hash=0x421a1fc768b799a2 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1440 absolute=3362 buttons=0x0 hash=0xb398320dbf9329da C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1455 absolute=3377 buttons=0x0 hash=0xcc01a8b7bfad4842 C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1500 absolute=3422 buttons=0x0 hash=0xc29d9cbcecfd064c C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1515 absolute=3437 buttons=0x0 hash=0x41be77c9c57093ba C5DB=1 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1525 absolute=3447 buttons=0x10 hash=0x78dd3cba00bf02fb C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=1530 absolute=3452 buttons=0x0 hash=0xa490036a727cb565 C5DB=1 C5DC=0 bank=2 pc=0x121f
+M6_FRAME relative=1560 absolute=3482 buttons=0x0 hash=0xb1715771967fcd3d C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=1575 absolute=3497 buttons=0x0 hash=0xd78b90bdb25da543 C5DB=1 C5DC=0 bank=2 pc=0x510b
+M6_FRAME relative=1620 absolute=3542 buttons=0x80 hash=0xd4d3b51dea0cba9f C5DB=1 C5DC=0 bank=2 pc=0x1221
+M6_FRAME relative=1665 absolute=3587 buttons=0x0 hash=0xbd2f481f3082f0b C5DB=1 C5DC=0 bank=2 pc=0x1221
+M6_FRAME relative=1680 absolute=3602 buttons=0x0 hash=0xba0bcbcd890eb057 C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=1695 absolute=3617 buttons=0x0 hash=0x4f296bac4dc1ae29 C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=1710 absolute=3632 buttons=0x0 hash=0xf5941b8c034dd13 C5DB=1 C5DC=0 bank=2 pc=0x121f
+M6_FRAME relative=1740 absolute=3662 buttons=0x0 hash=0xce0e5671322f8d2c C5DB=1 C5DC=0 bank=1 pc=0x32c
+M6_FRAME relative=1755 absolute=3677 buttons=0x0 hash=0x5158e2d6ee5e1226 C5DB=1 C5DC=0 bank=2 pc=0x121f
+M6_MOVE_WRAM c000:51->50 c001:60->58 c003:20->0 c004:51->50 c005:58->60 c007:20->0 c008:59->58 c009:60->58 c00a:8->6 c00b:20->0 c00c:59->58 c00d:58->60 c00e:9->7 c00f:20->0 c010:48->40 c012:58->54
+M6_MOVE_RESULT before_hash=0xd926fc62969f3bb4 after_hash=0xea72400372e2d1c5 SCX=0->0 SCY=0->0 wram_changes=69 frame=3757
+M6_PROBE_COMPLETE frame=3757 C5DB=1 C5DC=0 hash=0xea72400372e2d1c5
+<end of output>
+Test time =   6.44 sec
+----------------------------------------------------------
+Test Passed.
+"M6_movement" end time: Oct 25 09:46 Coordinated Universal Time
+"M6_movement" time elapsed: 00:00:06
+----------------------------------------------------------
+
+9/18 Testing: M7_intro_p1
+9/18 Test: M7_intro_p1
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m7-replay-p1" "D:/a/_temp/native-retest-work/source/recomp/tests/m7_intro_p1.txt" "D:/a/_temp/native-retest-work/native/local-validation/intro"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M7_intro_p1" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+P1_REPLAY_COMPLETE result=0 frame=42472 C5DB=1 C5DC=0 flags=ea/7f/2d hash=9b6a56c9ee1816e3
+<end of output>
+Test time =  61.29 sec
+----------------------------------------------------------
+Test Passed.
+"M7_intro_p1" end time: Oct 25 09:47 Coordinated Universal Time
+"M7_intro_p1" time elapsed: 00:01:01
+----------------------------------------------------------
+
+13/18 Testing: M8_trace_contract
+13/18 Test: M8_trace_contract
+Command: "C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe" "D:/a/_temp/native-retest-work/source/recomp/tools/test_m8_trace.py" "--exe" "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--output" "D:/a/_temp/native-retest-work/native/local-validation/m8_tools"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M8_trace_contract" start time: Oct 25 09:47 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M8_TRACE_CONTRACT_PASS controller_only
+M8_TRACE_CONTRACT_PASS reject_checkpoint
+M8_TRACE_CONTRACT_PASS reject_restore
+M8_TRACE_CONTRACT_PASS reject_host_write
+M8_TRACE_CONTRACT_PASS reject_wrong_seed
+M8_TRACE_CONTRACT_PASS reject_state_mismatch
+M8_TRACE_CONTRACT_PASS reject_sram_mismatch
+M8_TRACE_CONTRACT_PASS reject_screen_mismatch
+M8_TRACE_CONTRACT_PASS audio_initial
+M8_TRACE_CONTRACT_PASS reject_audio_mismatch
+M8_TRACE_CONTRACT_PASS reject_invalid_audio
+M8_TRACE_CONTRACT_PASS reject_frame_budget
+M8_TRACE_CONTRACT_PASS reject_partial_failure
+M8_TRACE_CONTRACT_PASS existing_evidence_protected
+M8_TRACE_CONTRACT_PASS recorded_audio_roundtrip
+M8_TRACE_CONTRACT_PASS exact_save_size_required
+M8_TRACE_CONTRACT_PASS reject_unsaved_checkpoint
+M8_TRACE_CONTRACT_PASS total=17 full_game_acceptance=NOT_CLAIMED
+<end of output>
+Test time =   1.09 sec
+----------------------------------------------------------
+Test Passed.
+"M8_trace_contract" end time: Oct 25 09:47 Coordinated Universal Time
+"M8_trace_contract" time elapsed: 00:00:01
+----------------------------------------------------------
+
+14/18 Testing: M8_audio_selection
+14/18 Test: M8_audio_selection
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--audio-selection-test"
+Directory: D:/a/_temp/native-retest-work/native
+"M8_audio_selection" start time: Oct 25 09:47 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+AUDIO_SELECTION_CONTRACT_PASS cases=6
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"M8_audio_selection" end time: Oct 25 09:47 Coordinated Universal Time
+"M8_audio_selection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/18 Testing: M8_audio_presentation
+15/18 Test: M8_audio_presentation
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--audio-presentation-test"
+Directory: D:/a/_temp/native-retest-work/native
+"M8_audio_presentation" start time: Oct 25 09:47 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+AUDIO_PRESENTATION_CONTRACT_PASS raw_exact quiet mute stereo decay bounded
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"M8_audio_presentation" end time: Oct 25 09:47 Coordinated Universal Time
+"M8_audio_presentation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/18 Testing: M7_party_p1
+10/18 Test: M7_party_p1
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m7-replay-p1" "D:/a/_temp/native-retest-work/source/recomp/tests/m7_party_p1.txt" "D:/a/_temp/native-retest-work/native/local-validation/party"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M7_party_p1" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+P1_REPLAY_COMPLETE result=0 frame=59391 C5DB=1 C5DC=0 flags=ee/ff/af hash=fa8488e1217da29d
+<end of output>
+Test time =  81.12 sec
+----------------------------------------------------------
+Test Passed.
+"M7_party_p1" end time: Oct 25 09:48 Coordinated Universal Time
+"M7_party_p1" time elapsed: 00:01:21
+----------------------------------------------------------
+
+12/18 Testing: M7_save_continue
+12/18 Test: M7_save_continue
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m7-save-continue-test" "D:/a/_temp/native-retest-work/native/local-validation/m7_original.sav" "D:/a/_temp/native-retest-work/native/local-validation/save_continue"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M7_save_continue" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M7_SAVE_CONTINUE_PASS original_Journal_save fresh_Runtime_SRAM_only bytes=32768 changed=317 party_bytes=304 matched_fields=11 sram=0x81daa8e19c019ce4 source_screen=0xe2c568bb82de9659 continued_screen=0xbc6b373672fa22d8
+<end of output>
+Test time =  88.07 sec
+----------------------------------------------------------
+Test Passed.
+"M7_save_continue" end time: Oct 25 09:48 Coordinated Universal Time
+"M7_save_continue" time elapsed: 00:01:28
+----------------------------------------------------------
+
+11/18 Testing: M7_battle
+11/18 Test: M7_battle
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m7-battle-test" "D:/a/_temp/native-retest-work/native/local-validation/battle"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M7_battle" start time: Oct 25 09:46 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M7_BATTLE_RESULT original_P1_encounter mode=4 original_player_attack frames=282 party_hp=25->20 enemy_hp=9->6 control_hp_unchanged=1 before=0x8e2dcfe5df6d1e0 after=0xa220d333e6f055b0 control=0x8e2dcfe5df6d1e0
+M7_BATTLE_PASS original_player_attack_and_equal_time_control
+<end of output>
+Test time =  85.75 sec
+----------------------------------------------------------
+Test Passed.
+"M7_battle" end time: Oct 25 09:48 Coordinated Universal Time
+"M7_battle" time elapsed: 00:01:25
+----------------------------------------------------------
+
+18/18 Testing: M8_oasis_checkpoint
+18/18 Test: M8_oasis_checkpoint
+Command: "C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe" "D:/a/_temp/native-retest-work/source/recomp/tools/test_m8_oasis.py" "--exe" "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--seed" "D:/a/_temp/native-retest-work/native/local-validation/m7_original.sav" "--route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_oasis_town_p1.txt" "--inn-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_inn_heal_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_asiya_arrival_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_asiya_king_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_kalka_canal_preparation_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_dam_boss_victory_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_asiya_thieves_report_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_watercall_exchange_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_oasis_curselamp_victory_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_post_oasis_home_p1.txt" "--checkpoint-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_kids_class_victory_p1.txt" "--feeding-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_enemy_meat_p1.txt" "--audio-route" "D:/a/_temp/native-retest-work/source/recomp/tests/m8_hub_audio_p1.txt" "--output" "D:/a/_temp/native-retest-work/native/local-validation/m8_oasis"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M8_oasis_checkpoint" start time: Oct 25 09:48 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M8_OASIS_EVIDENCE D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et
+M8_SEED sram=0x81daa8e19c019ce4 source=D:\a\_temp\native-retest-work\native\local-validation\m7_original.sav
+M8_STATE frame=29449 mode=1:0 world=33 region=0,0 pos=80,128 party=2 selector=0xf6 sram=0x79f780ede66cc6d1 screen=0x1db4f63819947a38 image=m8_0.bmp
+M8_AUDIO frame=29449 sample_values=32472324 stereo_frames=16236162 nonzero=17507363 peak=32768 hash=0xdb5294f23001ace6
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_oasis_town_p1.txt
+M8_SEED sram=0x79f780ede66cc6d1 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\oasis_original_journal.sav
+M8_STATE frame=2395 mode=1:0 world=33 region=0,0 pos=80,128 party=2 selector=0x0 sram=0x22664e2f7acd5d91 screen=0x38131a3e623d9428 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717506 stereo_frames=1358753 nonzero=1563355 peak=29184 hash=0x5a71198978dfbbba
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=44 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\oasis_original_journal.sav
+M8_OASIS_CHECKPOINT_PASS party=2 original_Journal fresh_Runtime ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x79f780ede66cc6d1 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\oasis_original_journal.sav
+M8_STATE frame=4924 mode=1:0 world=34 region=0,0 pos=80,80 party=2 selector=0xa sram=0x520c04981e15a459 screen=0x35be72c170b8c50b image=m8_0.bmp
+M8_AUDIO frame=4924 sample_values=5492450 stereo_frames=2746225 nonzero=4240135 peak=29184 hash=0xc9110ea29f1dfa22
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_inn_heal_p1.txt
+M8_SEED sram=0x520c04981e15a459 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\inn\inn_original_journal.sav
+M8_STATE frame=2395 mode=1:0 world=34 region=0,0 pos=80,80 party=2 selector=0x0 sram=0x520c04981e15a459 screen=0xd6137771fc647604 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2715690 stereo_frames=1357845 nonzero=1563431 peak=29184 hash=0x2647b54479329472
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=44 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\inn\inn_original_journal.sav
+M8_INN_CHECKPOINT_PASS original_healing hp=18->25/25 original_Journal fresh_Runtime ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x520c04981e15a459 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\inn\inn_original_journal.sav
+M8_STATE frame=7194 mode=1:0 world=35 region=0,0 pos=64,128 party=2 selector=0x3 sram=0xf6cea1c0e98e1737 screen=0x275844d70872af37 image=m8_0.bmp
+M8_AUDIO frame=7194 sample_values=7981394 stereo_frames=3990697 nonzero=6688659 peak=32768 hash=0x9f3329f6df44c14a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_arrival_p1.txt
+M8_SEED sram=0xf6cea1c0e98e1737 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-01\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=35 region=0,0 pos=64,128 party=2 selector=0x0 sram=0xf6cea1c0e98e1737 screen=0xe2d43d82fe725d6e image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2714912 stereo_frames=1357456 nonzero=1563445 peak=29184 hash=0x39ea9cc0c4110a42
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=44 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-01\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_arrival_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0xf6cea1c0e98e1737 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-01\checkpoint.sav
+M8_STATE frame=26188 mode=1:0 world=38 region=0,0 pos=64,32 party=3 selector=0x2b sram=0x3b7c45f1713eb77e screen=0xcae7a54fd2a0386a image=m8_0.bmp
+M8_AUDIO frame=26188 sample_values=28867508 stereo_frames=14433754 nonzero=25482885 peak=32768 hash=0xdad902a7b405d2b3
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_king_p1.txt
+M8_SEED sram=0x3b7c45f1713eb77e source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-02\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=38 region=0,0 pos=64,32 party=3 selector=0x0 sram=0x71dd6ad0575b5f48 screen=0xa80cb116eb110c5c image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717616 stereo_frames=1358808 nonzero=1563361 peak=29184 hash=0x5f487907c94a826a
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-02\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_king_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x3b7c45f1713eb77e source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-02\checkpoint.sav
+M8_STATE frame=15883 mode=1:0 world=34 region=0,0 pos=80,80 party=3 selector=0xa sram=0x3de20fbe8f08b6c3 screen=0xdb3e5e5b28fd722b image=m8_0.bmp
+M8_AUDIO frame=15883 sample_values=17517324 stereo_frames=8758662 nonzero=15998119 peak=32768 hash=0x33853b268aa7964a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_kalka_canal_preparation_p1.txt
+M8_SEED sram=0x3de20fbe8f08b6c3 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-03\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=34 region=0,0 pos=80,80 party=3 selector=0x0 sram=0x3de20fbe8f08b6c3 screen=0xfa5810c4278797c9 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2716498 stereo_frames=1358249 nonzero=1563375 peak=29184 hash=0x14e26e9ed912fb2
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-03\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_kalka_canal_preparation_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x3de20fbe8f08b6c3 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-03\checkpoint.sav
+M8_STATE frame=66305 mode=1:0 world=34 region=0,0 pos=80,80 party=3 selector=0xa sram=0x51c23bf4c4399ebc screen=0x90f0f13dceb93f89 image=m8_0.bmp
+M8_AUDIO frame=66305 sample_values=73034148 stereo_frames=36517074 nonzero=64194945 peak=32768 hash=0xf70e3315b897faee
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_dam_boss_victory_p1.txt
+M8_SEED sram=0x51c23bf4c4399ebc source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-04\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=34 region=0,0 pos=80,80 party=3 selector=0x0 sram=0x19c3add9884a4ebc screen=0xfbb965c4e1b1abd0 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2716520 stereo_frames=1358260 nonzero=1563371 peak=29184 hash=0x6fbd6c5447085742
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-04\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_dam_boss_victory_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x51c23bf4c4399ebc source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-04\checkpoint.sav
+M8_STATE frame=12869 mode=1:0 world=38 region=0,0 pos=96,32 party=3 selector=0x2b sram=0x25b3f7391031727c screen=0xd7e3d574fdd8575c image=m8_0.bmp
+M8_AUDIO frame=12869 sample_values=14209118 stereo_frames=7104559 nonzero=12807705 peak=32768 hash=0x1929c01f6ad742aa
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_thieves_report_p1.txt
+M8_SEED sram=0x25b3f7391031727c source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-05\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=38 region=0,0 pos=96,32 party=3 selector=0x0 sram=0x25b3f7391031727c screen=0xd7e3d574fdd8575c image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2716308 stereo_frames=1358154 nonzero=1563367 peak=29184 hash=0x9d2b112f80dcaf62
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-05\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_asiya_thieves_report_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x25b3f7391031727c source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-05\checkpoint.sav
+M8_STATE frame=19508 mode=1:0 world=36 region=0,1 pos=80,112 party=3 selector=0x12 sram=0xeea0f1d399fac8f8 screen=0xe4d548f0d591a089 image=m8_0.bmp
+M8_AUDIO frame=19508 sample_values=21518774 stereo_frames=10759387 nonzero=19709673 peak=32768 hash=0x34cf35b13da6af3a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_enemy_meat_p1.txt
+M8_SEED sram=0xeea0f1d399fac8f8 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\enemy-feeding\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=36 region=0,1 pos=80,112 party=3 selector=0x0 sram=0xeea0f1d399fac8f8 screen=0xd80594e2544adebc image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2719126 stereo_frames=1359563 nonzero=1563385 peak=29184 hash=0x16dcfb5fc5c6a65a
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\enemy-feeding\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_enemy_meat_p1.txt ending_credits=NOT_YET_PROVEN
+M8_ENEMY_FEEDING_BRANCH_PASS original_item_consumption_and_bonus
+M8_SEED sram=0x25b3f7391031727c source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-05\checkpoint.sav
+M8_STATE frame=20511 mode=1:0 world=36 region=0,0 pos=80,8 party=3 selector=0x38 sram=0x5fe465082e40e700 screen=0x7ede2afe6e41251b image=m8_0.bmp
+M8_AUDIO frame=20511 sample_values=22594090 stereo_frames=11297045 nonzero=21020929 peak=32768 hash=0x84ffc3080845927a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_watercall_exchange_p1.txt
+M8_SEED sram=0x5fe465082e40e700 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-06\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=36 region=0,0 pos=80,8 party=3 selector=0x0 sram=0x5fe465082e40e700 screen=0x8b5b8ec71a8b56dd image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2718954 stereo_frames=1359477 nonzero=1563443 peak=29184 hash=0x855c75cc35782dba
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-06\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_watercall_exchange_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0x5fe465082e40e700 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-06\checkpoint.sav
+M8_STATE frame=30639 mode=1:0 world=5 region=1,0 pos=80,48 party=3 selector=0x3c sram=0xdd87953eae7f0643 screen=0xef1c684e3b7c39db image=m8_0.bmp
+M8_AUDIO frame=30639 sample_values=33781652 stereo_frames=16890826 nonzero=29596905 peak=32768 hash=0x1a5c1d118fa6663e
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_oasis_curselamp_victory_p1.txt
+M8_SEED sram=0xdd87953eae7f0643 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-07\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=5 region=1,0 pos=80,48 party=3 selector=0x0 sram=0xefd1f672be5d94e3 screen=0xa623ce6e11939633 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717590 stereo_frames=1358795 nonzero=1562473 peak=29184 hash=0x92a3e0ddfcaaa4fa
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-07\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_oasis_curselamp_victory_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0xdd87953eae7f0643 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-07\checkpoint.sav
+M8_STATE frame=9251 mode=1:0 world=1 region=2,2 pos=64,64 party=3 selector=0xc sram=0xd5374bb11f3cdd70 screen=0x752442684943d327 image=m8_0.bmp
+M8_AUDIO frame=9251 sample_values=10240336 stereo_frames=5120168 nonzero=8918445 peak=30720 hash=0xd1292166b7e7611a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_post_oasis_home_p1.txt
+M8_SEED sram=0xd5374bb11f3cdd70 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-08\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=1 region=2,2 pos=64,64 party=3 selector=0x0 sram=0xd5374bb11f3cdd70 screen=0x80f31454958efc67 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2718568 stereo_frames=1359284 nonzero=1562477 peak=29184 hash=0x86949c567282e62a
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-08\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_post_oasis_home_p1.txt ending_credits=NOT_YET_PROVEN
+M8_SEED sram=0xd5374bb11f3cdd70 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-08\checkpoint.sav
+M8_STATE frame=5626 mode=1:1 world=9 region=0,0 pos=48,48 party=3 selector=0x92 sram=0xd5374bb11f3cdd70 screen=0xe193e0945fed2c29 image=m8_0.bmp
+M8_AUDIO frame=5626 sample_values=6263782 stereo_frames=3131891 nonzero=5025089 peak=32768 hash=0x865ab37c80553b36
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_hub_audio_p1.txt
+M8_AUDIO_OUTPUT_RESULT premix_peak=35328 legacy_overflow_values=1768 output_peak=1766 output_clipped=0 volume=5 smoothing=on
+M8_AUDIO_OUTPUT_PASS original_P1_and_legacy_PCM_assertions_retained
+M8_SEED sram=0xd5374bb11f3cdd70 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-08\checkpoint.sav
+M8_STATE frame=27075 mode=1:0 world=1 region=2,2 pos=64,80 party=3 selector=0xf5 sram=0xc13e0658b2e3cb22 screen=0x7e4a74dab4b54b52 image=m8_0.bmp
+M8_AUDIO frame=27075 sample_values=29884156 stereo_frames=14942078 nonzero=27302484 peak=32768 hash=0xd7b303215dba365a
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_kids_class_victory_p1.txt
+M8_SEED sram=0xc13e0658b2e3cb22 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-09\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=1 region=2,2 pos=64,80 party=3 selector=0x0 sram=0xc13e0658b2e3cb22 screen=0x1cb096bec07e43cf image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2718568 stereo_frames=1359284 nonzero=1562473 peak=29184 hash=0xd10648ab26f0d392
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\story-09\checkpoint.sav
+M8_CHECKPOINT_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_kids_class_victory_p1.txt ending_credits=NOT_YET_PROVEN
+M8_CHECKPOINT_HANDOFF D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\handoff.json
+<end of output>
+Test time = 239.10 sec
+----------------------------------------------------------
+Test Passed.
+"M8_oasis_checkpoint" end time: Oct 25 09:52 Coordinated Universal Time
+"M8_oasis_checkpoint" time elapsed: 00:03:59
+----------------------------------------------------------
+
+7/18 Testing: M6_window
+7/18 Test: M6_window
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--m6-window-smoke" "D:/a/_temp/native-retest-work/native/local-validation/m6_window.sav"
+Directory: D:/a/_temp/native-retest-work/source/recomp/..
+"M6_window" start time: Oct 25 09:52 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+M6_WINDOW_SMOKE_PASS frames=4 keydown=1 keyup=1 p1_down=1 p1_up=1 framebuffer_hash=0xb423319be6530b83
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"M6_window" end time: Oct 25 09:52 Coordinated Universal Time
+"M6_window" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/18 Testing: M8_audio_playback
+16/18 Test: M8_audio_playback
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--audio-playback-test"
+Directory: D:/a/_temp/native-retest-work/native
+"M8_audio_playback" start time: Oct 25 09:52 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=1638
+AUDIO_PLAYBACK_PASS original_pcm_values=16458 nonzero=16458 submitted=16458 premix_peak=2304 exceeds_legacy_pcm=0 played_frames=8229 subjective_hearing=not_assessed
+<end of output>
+Test time =   1.79 sec
+----------------------------------------------------------
+Test Passed.
+"M8_audio_playback" end time: Oct 25 09:52 Coordinated Universal Time
+"M8_audio_playback" time elapsed: 00:00:01
+----------------------------------------------------------
+
+17/18 Testing: M8_audio_stream
+17/18 Test: M8_audio_stream
+Command: "D:/a/_temp/native-retest-work/native/Release/DWM2tRecompFull.exe" "--audio-stream-test"
+Directory: D:/a/_temp/native-retest-work/native
+"M8_audio_stream" start time: Oct 25 09:52 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=0
+AUDIO_STREAM_RESULT buffered=0 queued_frames=98753 played_frames=98753 queue_empty_events=1 injected_jitter_ms=20
+AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=1638
+AUDIO_STREAM_RESULT buffered=1 queued_frames=98753 played_frames=98753 queue_empty_events=1 injected_jitter_ms=20
+AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue
+<end of output>
+Test time =   7.61 sec
+----------------------------------------------------------
+Test Failed.
+"M8_audio_stream" end time: Oct 25 09:52 Coordinated Universal Time
+"M8_audio_stream" time elapsed: 00:00:07
+----------------------------------------------------------
+
+End testing: Oct 25 09:52 Coordinated Universal Time

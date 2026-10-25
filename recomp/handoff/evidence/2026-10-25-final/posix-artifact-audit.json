@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "artifact_id": 12592037765,
+  "artifact_name": "M8-fresh-posix-persistence-40175408153",
+  "artifact_bytes": 2123,
+  "actions_zip_sha256": "1f2b8bc22e3ac3ebe46973130b0e23efaa1f3e467ef5d4038f241d5820579971",
+  "run_id": 40175408153,
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "ctest_cases": [
+    {
+      "name": "M8_save_io_contracts",
+      "classname": "M8_save_io_contracts",
+      "time": "0.0220332",
+      "status": "run"
+    },
+    {
+      "name": "M8_save_io_fault_contracts",
+      "classname": "M8_save_io_fault_contracts",
+      "time": "0.0137467",
+      "status": "run"
+    }
+  ],
+  "persistence_checks": 21,
+  "fault_checks": 15,
+  "previous_save_preserved_on_injected_failure": true,
+  "gameplay_validation": false
+}

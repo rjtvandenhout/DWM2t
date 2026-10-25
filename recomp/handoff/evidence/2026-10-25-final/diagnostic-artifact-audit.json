@@ -1,0 +1,42 @@
+{
+  "status": "passed_build_and_campaign_prefix_only",
+  "source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "executable_bytes": 725575680,
+  "source_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "independent_source_archives_identical": true,
+  "source_inventory_files": 647,
+  "source_manifest_sha256": "462752ad7e2fa0e658486cc5524106bb1f121a353d279418dd5cfa75d230ba99",
+  "original_ctest_cases": 18,
+  "original_ctest_passed": 16,
+  "original_ctest_skipped": [
+    "M8_audio_playback",
+    "M8_audio_stream"
+  ],
+  "original_native_tests_accepted": false,
+  "original_xml_sha256": "afea16054674d1ddfcdfcfafcb10d21cc4b5753cdc2fc84d747670579a75bd23",
+  "early_reports": {
+    "pirate": {
+      "path": "/workspace/scratch/m8-review/final-diagnostic-3d/extracted/pirate-evidence/pirate-validation.json",
+      "sha256": "0fa24aad988e827316940662ca4f391904d4c722003f7621ba8b2601f04b5422",
+      "status": "passed"
+    },
+    "village": {
+      "path": "/workspace/scratch/m8-review/final-diagnostic-3d/extracted/village-evidence/village-validation.json",
+      "sha256": "f3a4c29fce060bf0eae28bc340161057421a169b528ac042ad72de4540258b7c",
+      "status": "passed"
+    },
+    "farm-dancer": {
+      "path": "/workspace/scratch/m8-review/final-diagnostic-3d/extracted/farm-evidence/farm-dancer-validation.json",
+      "sha256": "8845a5cc0c7e38bac2a3b821fdec3ea7e2a5736bc03ef81370ab63bd25d6f1ba",
+      "status": "passed"
+    },
+    "party-preparation": {
+      "path": "/workspace/scratch/m8-review/final-diagnostic-3d/extracted/preparation-evidence/party-preparation-validation.json",
+      "sha256": "d31b348728af3d0093ae2c71958bb2aad533dc9113f4baad6ba8cb4ce5bb94f1",
+      "status": "passed"
+    }
+  },
+  "fresh_preparation_journal_sha256": "eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03",
+  "overall_m8_acceptance": false
+}

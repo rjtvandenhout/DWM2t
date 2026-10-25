@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Independent artifact, complete-AOT production build, exact-source package integrity, native Windows startup and synthetic Windows filesystem persistence only",
+  "overall_m8_acceptance": false,
+  "source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "run_id": 40175408153,
+  "job_id": 121114879656,
+  "job_conclusion": "success",
+  "reviewed_utc": "2026-10-25T08:54:46.016984+00:00",
+  "artifact": {
+    "id": 12593078775,
+    "name": "M8-fresh-production-40175408153",
+    "metadata_size": 133239217,
+    "download_size": 133239217,
+    "sha256": "2d0eb9d02052f3bc8856d10f751e7a18ede48b7322f9547d5854692818de3bfe",
+    "matches_github_digest": true,
+    "original_actions_zip": "/workspace/scratch/m8-review/final-production-3d/M8-fresh-production-40175408153.actions.zip"
+  },
+  "candidate_zip": {
+    "path": "/workspace/scratch/m8-review/final-production-3d/extracted/production-output/DWM2t-M8-UNTESTED-3d573873ae81.zip",
+    "bytes": 134759134,
+    "sha256": "242aafc83ad2f9089bef2335d88ebfd706b9ca18d6945ffe57ec485412c8b42c",
+    "manifest_files": 6,
+    "status": "UNTESTED_CANDIDATE"
+  },
+  "executable": {
+    "path": "/workspace/scratch/m8-review/final-production-3d/extracted/candidate/DWM2t-M8-UNTESTED/DWM2tRecomp.exe",
+    "bytes": 725012480,
+    "sha256": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+    "pe_machine": "0x8664",
+    "pe_optional_magic": "0x20b",
+    "import_dlls": [
+      "USER32.dll",
+      "GDI32.dll",
+      "WINMM.dll",
+      "KERNEL32.dll"
+    ],
+    "external_vc_runtime_imports": false,
+    "complete_aot_romx_dispatch_cases": 255,
+    "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/m8-review/final-production-3d/extracted/production-work/source.tar",
+    "bytes": 27443200,
+    "sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+    "pax_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+    "members": 664,
+    "regular_files": 647,
+    "packaged_inventory_exact_match": true,
+    "matches_independent_core_autocrlf_true_git_archive": true,
+    "linux_baseline_sha256": "10dee9530d9bc916690b6605d7afc5c54245ddc0ca9d2a5dc397c377a8e582ca",
+    "raw_file_differences_from_linux": 439,
+    "non_line_ending_file_differences_from_linux": 0,
+    "raw_archives_preserved": true
+  },
+  "startup": [
+    {
+      "path": "/workspace/scratch/m8-review/final-production-3d/extracted/direct-start/player-startup.json",
+      "sha256": "d3158d39f6b66c16ebcf09bc094f355cb96737075cbbe1e09e32fbb2c563540a",
+      "check_count": 12,
+      "no_argument_start": true,
+      "scope": "production startup only; full M8 remains unproven",
+      "audio_stderr": "Audio output unavailable: WinMM error=2 (A device ID has been used that is out of range for your system.), enumerated_devices=0. Check the output device; original APU timing remains active.\n"
+    },
+    {
+      "path": "/workspace/scratch/m8-review/final-production-3d/extracted/profile-start/player-startup.json",
+      "sha256": "1f03dfd30ccd827b1a36be456ebf3bbfd2ad3ad1d71903569ff0df246c71d031",
+      "check_count": 12,
+      "no_argument_start": false,
+      "scope": "production startup only; full M8 remains unproven",
+      "audio_stderr": "Audio output unavailable: WinMM error=2 (A device ID has been used that is out of range for your system.), enumerated_devices=0. Check the output device; original APU timing remains active.\n"
+    }
+  ],
+  "windows_save_io": {
+    "xml": "/workspace/scratch/m8-review/final-production-3d/extracted/save-io/save-io.xml",
+    "xml_sha256": "1d38e10f3b23143434a5bb461515b3df4dffa6814a9754ce4dbaabc54569cfb7",
+    "full_log": "/workspace/scratch/m8-review/final-production-3d/extracted/save-io/Testing/Temporary/LastTest.log",
+    "full_log_sha256": "fe618b15842700ca59e721b00dd72c6af113200c983a4c60de740ba1181cedca",
+    "ctest_cases": 2,
+    "failures": 0,
+    "skipped": 0,
+    "base_checks": 22,
+    "fault_checks": 19,
+    "synthetic_not_gameplay": true
+  },
+  "limitations": [
+    "This audit does not establish overall M8 acceptance, full story replay, production ending Journal/Continue behavior, Play.cmd package process handling, or final promoted package checks.",
+    "Both startup reports explicitly scope themselves to production startup only; candidate metadata still says UNTESTED_CANDIDATE.",
+    "The Windows runner enumerated zero audio devices and logged WinMM error 2, so this does not establish audible physical playback.",
+    "CTest XML truncates the fault-contract stdout at 1024 bytes; the preserved full LastTest.log supplies all 19 checks."
+  ]
+}

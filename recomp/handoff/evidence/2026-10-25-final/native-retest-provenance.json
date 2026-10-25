@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "platform": "Windows",
+  "source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "build_run_id": "40175408153",
+  "validation_run_id": "40183484388",
+  "packaging_source_commit": "8859ef67289ce90712a44b9c17174de4519a59b3",
+  "diagnostic_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "source_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "native_suite_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "native_suite_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "native_test_definitions_sha256": "26843b6f819c362cb1b2aaed4d87103d1850937c7ed14261e782b147ac72b72b",
+  "original_native_tests_sha256": "afea16054674d1ddfcdfcfafcb10d21cc4b5753cdc2fc84d747670579a75bd23",
+  "command": [
+    "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+    "--test-dir",
+    "D:\\a\\_temp\\native-retest-work\\native",
+    "-C",
+    "Release",
+    "--parallel",
+    "4",
+    "--output-on-failure",
+    "--output-junit",
+    "D:\\a\\_temp\\native-retest\\native-results.xml"
+  ],
+  "ctest_returncode": 0,
+  "retest_native_tests_sha256": "e7e4d65356139615d0e7bf3b2211aaca05f3a52ab074eea518bbdd000c45c513",
+  "tests": 18,
+  "source_inventory_unchanged": true,
+  "executable_unchanged": true,
+  "game_recompilation_performed": false
+}

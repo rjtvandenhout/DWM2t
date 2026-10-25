@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "driver_pack": "45",
+  "endpoint_before": 0,
+  "physical_audibility_assessed": false,
+  "tests_modified": false,
+  "endpoint_after_services": 0,
+  "downloads": [
+    {
+      "url": "https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack45.zip",
+      "sha": "b950e39f01af1d04ea623c8f6d8eb9b6ea5c477c637295fabf20631c85116bfb",
+      "name": "VBCABLE_Driver_Pack45.zip"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mozilla/cubeb/dcd7cddafa4b95776cf5d117549ad58e17f23764/.github/tools/windows/devcon.exe",
+      "sha": "97cff42f8c0fe4fbdf991273159516bf78090625a933c3983ebd6f62284e329a",
+      "name": "devcon.exe"
+    }
+  ],
+  "catalog_signature_before": "Valid",
+  "catalog_subject": "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+  "catalog_thumbprint": "9A4A6CFEE73C6B65945FCAA083DFBCC1E9077E7E",
+  "catalog_signature_after": "Valid",
+  "device_install_exit": 0,
+  "endpoint_after": 1
+}

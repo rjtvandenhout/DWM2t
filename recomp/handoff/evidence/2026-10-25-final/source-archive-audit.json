@@ -1,0 +1,10 @@
+{
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "linux_archive_sha256": "10dee9530d9bc916690b6605d7afc5c54245ddc0ca9d2a5dc397c377a8e582ca",
+  "linux_archive_bytes": 27125760,
+  "native_windows_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "native_windows_archive_bytes": 27443200,
+  "native_archive_exactly_reproduced_with_core_autocrlf_true": true,
+  "different_file_content_beyond_line_endings": 0,
+  "m8_acceptance_implied": false
+}

@@ -1,4 +1,8 @@
-# M8 deferred validation handoff
+# M8 deferred validation handoff (historical)
+
+M8 is now accepted; all deferred work below has been completed within the later
+whole-game authorization. See [M8_RESULT.md](../milestones/M8_RESULT.md) and
+[M8_NEXT.md](M8_NEXT.md). The earlier deferral is preserved as history.
 
 > Historical deferral: the user's later whole-game continuation and finish
 > requests authorize the validation work below. Current progress and remaining

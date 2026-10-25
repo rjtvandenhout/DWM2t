@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="18"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname="runnervmdaln5"
+	time="336"
+	timestamp="2026-10-25T09:46:50"
+	>
+	<testcase name="M1_decoder" classname="M1_decoder" time="0.12503" status="run">
+		<properties/>
+		<system-out>M1 LR35902 decoder: PASS
+  base legal opcodes: 245 / 245
+  base illegal opcodes represented: 11 / 11
+  CB-prefixed opcodes: 256 / 256
+  Bank 0 independent entry decodes: 16384 / 16384
+  Bank 0 offsets decoding as CB prefix: 382
+  Bank 0 offsets decoding as illegal opcode: 276
+</system-out>
+	</testcase>
+	<testcase name="M2_bank0_audit" classname="M2_bank0_audit" time="0.119004" status="run">
+		<properties/>
+		<system-out>Bank 0 static recomp audit
+  entry addresses: 16384
+  base decodes: 15726
+  CB decodes: 382
+  illegal decodes: 276
+  bank-boundary operand fetches: 0
+</system-out>
+	</testcase>
+	<testcase name="M4_renderer" classname="M4_renderer" time="0.125086" status="run">
+		<properties/>
+		<system-out>DWM2t native static recomp - milestone M4
+Target ROM SHA-256: 8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e
+
+M3 mapped hardware regression suite: PASS
+CGB BG/window/OAM/palette software renderer: PASS
+Renderer FNV-1a: 0x284882dc2a98916f
+
+M4 PASS: the native recomp now renders Game Boy Color tilemaps, window layers, OAM sprites and palettes into a deterministic 160x144 host framebuffer and can present it in a Win32 window.
+Next milestone: M5 original DWM2 title screen from recompiled game code.
+</system-out>
+	</testcase>
+	<testcase name="M5_title" classname="M5_title" time="3.24787" status="run">
+		<properties/>
+		<system-out>M5 original-title regression: booting recompiled DWM2 from $0100
+AOT ROMX bank count: 255
+M5_TITLE_REACHED frame=1921 hash=0x49c67a53ef4f8a80 stable_frames=30 C5DB=5 C5DC=0
+M5 PASS: original DWM2 Cobi title framebuffer was produced by the recompiled cartridge boot path.
+</system-out>
+	</testcase>
+	<testcase name="M6_movement" classname="M6_movement" time="6.43853" status="run">
+		<properties/>
+		<system-out>M6 exploration: booting real game path and driving P1 input
+M6_TITLE_READY frame=1921 hash=0x49c67a53ef4f8a80
+M6_FRAME relative=0 absolute=1922 buttons=0x80 hash=0x49c67a53ef4f8a80 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=1 absolute=1923 buttons=0x80 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=2 pc=0x41b5
+M6_FRAME relative=2 absolute=1924 buttons=0x80 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=3 absolute=1925 buttons=0x0 hash=0x1d23c796daf8c7a5 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=4 absolute=1926 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=2 pc=0x419a
+M6_FRAME relative=5 absolute=1927 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=6 absolute=1928 buttons=0x0 hash=0xa34b13ac68349af0 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME relative=7 absolute=1929 buttons=0x0 hash=0x2015da761f596627 C5DB=5 C5DC=1 bank=2 pc=0x4176
+M6_FRAME relative=8 absolute=1930 buttons=0x0 hash=0x2015da761f596627 C5DB=5 C5DC=1 bank=1 pc=0x32c
+M6_FRAME...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="M6_sram" classname="M6_sram" time="0.12543" status="run">
+		<properties/>
+		<system-out>M6_SRAM_PASS bytes=32768 bank2_A321=0xe7 path=D:/a/_temp/native-retest-work/native/local-validation/m6.sav
+</system-out>
+	</testcase>
+	<testcase name="M6_window" classname="M6_window" time="0.0911745" status="run">
+		<properties/>
+		<system-out>M6_WINDOW_SMOKE_PASS frames=4 keydown=1 keyup=1 p1_down=1 p1_up=1 framebuffer_hash=0xb423319be6530b83
+</system-out>
+	</testcase>
+	<testcase name="M7_audio" classname="M7_audio" time="3.28596" status="run">
+		<properties/>
+		<system-out>M7_AUDIO_RESULT sample_values=2138926 stereo_frames=1069463 nonzero=1074861 peak=19200 hash=0x3b50ed7ed79bda0 NR50=0x77 NR51=0x33 NR52=0xf3
+M7_AUDIO_PASS original_game_apu_writes_produced_deterministic_pcm
+</system-out>
+	</testcase>
+	<testcase name="M7_intro_p1" classname="M7_intro_p1" time="61.2875" status="run">
+		<properties/>
+		<system-out>P1_REPLAY_COMPLETE result=0 frame=42472 C5DB=1 C5DC=0 flags=ea/7f/2d hash=9b6a56c9ee1816e3
+</system-out>
+	</testcase>
+	<testcase name="M7_party_p1" classname="M7_party_p1" time="81.1208" status="run">
+		<properties/>
+		<system-out>P1_REPLAY_COMPLETE result=0 frame=59391 C5DB=1 C5DC=0 flags=ee/ff/af hash=fa8488e1217da29d
+</system-out>
+	</testcase>
+	<testcase name="M7_battle" classname="M7_battle" time="85.7479" status="run">
+		<properties/>
+		<system-out>M7_BATTLE_RESULT original_P1_encounter mode=4 original_player_attack frames=282 party_hp=25-&gt;20 enemy_hp=9-&gt;6 control_hp_unchanged=1 before=0x8e2dcfe5df6d1e0 after=0xa220d333e6f055b0 control=0x8e2dcfe5df6d1e0
+M7_BATTLE_PASS original_player_attack_and_equal_time_control
+</system-out>
+	</testcase>
+	<testcase name="M7_save_continue" classname="M7_save_continue" time="88.0687" status="run">
+		<properties/>
+		<system-out>M7_SAVE_CONTINUE_PASS original_Journal_save fresh_Runtime_SRAM_only bytes=32768 changed=317 party_bytes=304 matched_fields=11 sram=0x81daa8e19c019ce4 source_screen=0xe2c568bb82de9659 continued_screen=0xbc6b373672fa22d8
+</system-out>
+	</testcase>
+	<testcase name="M8_trace_contract" classname="M8_trace_contract" time="1.09168" status="run">
+		<properties/>
+		<system-out>M8_TRACE_CONTRACT_PASS controller_only
+M8_TRACE_CONTRACT_PASS reject_checkpoint
+M8_TRACE_CONTRACT_PASS reject_restore
+M8_TRACE_CONTRACT_PASS reject_host_write
+M8_TRACE_CONTRACT_PASS reject_wrong_seed
+M8_TRACE_CONTRACT_PASS reject_state_mismatch
+M8_TRACE_CONTRACT_PASS reject_sram_mismatch
+M8_TRACE_CONTRACT_PASS reject_screen_mismatch
+M8_TRACE_CONTRACT_PASS audio_initial
+M8_TRACE_CONTRACT_PASS reject_audio_mismatch
+M8_TRACE_CONTRACT_PASS reject_invalid_audio
+M8_TRACE_CONTRACT_PASS reject_frame_budget
+M8_TRACE_CONTRACT_PASS reject_partial_failure
+M8_TRACE_CONTRACT_PASS existing_evidence_protected
+M8_TRACE_CONTRACT_PASS recorded_audio_roundtrip
+M8_TRACE_CONTRACT_PASS exact_save_size_required
+M8_TRACE_CONTRACT_PASS reject_unsaved_checkpoint
+M8_TRACE_CONTRACT_PASS total=17 full_game_acceptance=NOT_CLAIMED
+</system-out>
+	</testcase>
+	<testcase name="M8_audio_selection" classname="M8_audio_selection" time="0.014672" status="run">
+		<properties/>
+		<system-out>AUDIO_SELECTION_CONTRACT_PASS cases=6
+</system-out>
+	</testcase>
+	<testcase name="M8_audio_presentation" classname="M8_audio_presentation" time="0.0147039" status="run">
+		<properties/>
+		<system-out>AUDIO_PRESENTATION_CONTRACT_PASS raw_exact quiet mute stereo decay bounded
+</system-out>
+	</testcase>
+	<testcase name="M8_audio_playback" classname="M8_audio_playback" time="1.79411" status="run">
+		<properties/>
+		<system-out>AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=1638
+AUDIO_PLAYBACK_PASS original_pcm_values=16458 nonzero=16458 submitted=16458 premix_peak=2304 exceeds_legacy_pcm=0 played_frames=8229 subjective_hearing=not_assessed
+</system-out>
+	</testcase>
+	<testcase name="M8_audio_stream" classname="M8_audio_stream" time="7.60904" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=0
+AUDIO_STREAM_RESULT buffered=0 queued_frames=98753 played_frames=98753 queue_empty_events=1 injected_jitter_ms=20
+AUDIO_OUTPUT_READY device=-1 rate=32768 mapper_error=0
+AUDIO_PRESENTATION volume=5 smoothing=on prefill_frames=1638
+AUDIO_STREAM_RESULT buffered=1 queued_frames=98753 played_frames=98753 queue_empty_events=1 injected_jitter_ms=20
+AUDIO_STREAM_FAIL incomplete_or_empty_buffered_queue
+</system-out>
+	</testcase>
+	<testcase name="M8_oasis_checkpoint" classname="M8_oasis_checkpoint" time="239.095" status="run">
+		<properties/>
+		<system-out>M8_OASIS_EVIDENCE D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et
+M8_SEED sram=0x81daa8e19c019ce4 source=D:\a\_temp\native-retest-work\native\local-validation\m7_original.sav
+M8_STATE frame=29449 mode=1:0 world=33 region=0,0 pos=80,128 party=2 selector=0xf6 sram=0x79f780ede66cc6d1 screen=0x1db4f63819947a38 image=m8_0.bmp
+M8_AUDIO frame=29449 sample_values=32472324 stereo_frames=16236162 nonzero=17507363 peak=32768 hash=0xdb5294f23001ace6
+M8_TRACE_REPLAY_PASS source=D:\a\_temp\native-retest-work\source\recomp\tests\m8_oasis_town_p1.txt
+M8_SEED sram=0x79f780ede66cc6d1 source=D:\a\_temp\native-retest-work\native\local-validation\m8_oasis\oasis-488ra7et\oasis_original_journal.sav
+M8_STATE frame=2395 mode=1:0 world=33 region=0,0 pos=80,128 party=2 selector=0x0 sram=0x22664e2f7acd5d91 screen=0x38131a3e623d9428 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2717506 stereo_frames=1358753 nonzero=1563355 peak=29184 hash=0x5a71198978dfbbba
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_fla...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

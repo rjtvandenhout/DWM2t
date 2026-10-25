@@ -1,6 +1,12 @@
-# M8 working record (not an acceptance/completion record)
+# M8 working history (archived)
 
-Latest state (2026-10-25): the original main story through Darck, MagicPlug,
+M8 is accepted on 2026-10-25. The controlling completion record is
+[M8_RESULT.md](../milestones/M8_RESULT.md); recovery and playing instructions are
+in [M8_NEXT.md](M8_NEXT.md). The original main story, all 38 Windows checkpoints,
+all 18 original native tests with zero skips, and final package gates pass.
+Entries below preserve the discoveries and pending states at their original dates.
+
+Latest historical state (2026-10-25): the original main story through Darck, MagicPlug,
 complete credits and THE END is finished. Checkpoint 38 passes independent Wine
 replay and fresh Continue from the genuine ending Journal, SHA256
 `0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d`.

@@ -12,74 +12,47 @@ The project does not load an external ROM file in the native build. The exact
 4 MiB matching image is generated from `src/banks/` and embedded for original
 game-data reads and hardware mapping.
 
-## Current milestone: M7 complete; M8 in progress
+## Current milestone: M8 complete
 
-M7 adds genuine original P1 battles and player-attack damage, deterministic
-game audio with live WinMM output, original PLAN > Journal Save, and Continue
-in a new runtime carrying only the exact 32 KiB save file. All twelve local
-Windows gates passed twice; subsequent hosted checks also passed. Actions
-artifact cleanup reclaimed 3,946,430,584 bytes while preserving referenced
-builds and evidence; see [the storage audit](handoff/ACTIONS_STORAGE_2026-10-24.md).
+The original main campaign is accepted on native Windows x64 on 2026-10-25:
+Oasis, Sea, Ice, Sky and Limbo, Darck, MagicPlug, the complete credits, THE END,
+original ending Save and fresh Continue. Fixed bank 0 and all 255 switchable
+ROM banks are statically compiled, with no runtime opcode interpreter.
 
-Run the offline build/validation cycle from the repository root:
+[Download the verified package and view the successful final run](https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388).
+Extract the full package and run `DWM2t-M8/Play.cmd`.
+[Completion record and exact hashes](milestones/M8_RESULT.md),
+[controls, ending-save import and recovery](handoff/M8_NEXT.md), and
+[progress with original screenshots](handoff/M8_PROGRESS_2026-10-25.md).
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File recomp/tools/check_m7_local.ps1
-```
+All 38 later-story Windows checkpoints pass: 4,446,466 recorded frames in
+36m02s with four workers. Every child Journal matches its actual newly replayed
+parent; independent audits verify all 38 links and all 115 archived Journals.
+The final native suite executes and passes all 18 original tests with zero
+failures/skips. Actual Play.cmd passes 21 package checks; original ending GUI
+Journal and fresh-process reload preserve all 17 monsters and all 107 quest
+bytes, with two normal shutdowns. Windows/POSIX persistence fault gates pass.
 
-See `milestones/M7_RESULT.md`, `handoff/M7_LOCAL_WINDOWS.md`, and
-`handoff/M7_NEXT.md`. Recovery: `restore/recomp-m7`. Full-game playability is
-still the final M8 milestone. Ordinary menu mode C5DB=2 is not battle proof;
-the accepted real battle mode is C5DB=4.
+The independently built diagnostic and production binaries share exact source
+`3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba` and identical source archives.
+The final verified package retains the byte-identical tested production EXE;
+validation tools are `8859ef67289ce90712a44b9c17174de4519a59b3`.
+Recovery is `restore/recomp-m8`. M7's fixtures and immutable restore remain
+unchanged; all M1–M7 regressions pass. [M7 record](milestones/M7_RESULT.md).
 
-The M8 development build statically compiles bank 0 and all 255 switchable ROM
-banks, with no runtime opcode interpreter. Original controller-only routes
-have completed Oasis, Kids Class and Sea World. After Squiz finished his story
-role, original breeding produced Liset (Octokid +1), now a trained healer.
-The team also won C Class, completed the linked trades for IceKey and reached
-Norden in Ice World, earned the Crest, defeated BombCrag and AgDevil, and
-restored Norden, Yuna and Queen Helen. Native Windows run
-[40136433795](https://github.com/rjtvandenhout/DWM2t/actions/runs/40136433795)
-passes all twenty later story checkpoints with exact original Journal saves
-and fresh Continue; every archived save independently matches Wine.
-Later Wine replays breed Totum and Nyar to hatch
-Derzo (RayGigas +1). The production candidate's normal GUI also passes a later
-Continue, original Journal and fresh-process reload check under Wine and
-native Windows (run 40144322233). Native
-Windows run 40152139075 has audited twenty archived checkpoints and
-replayed ten later routes through Heaven Sword; all ten new Journal hashes
-match Wine with the full 107-byte quest block verified. A third original
-breeding produces Garon (RayGigas +3). Wine validation now covers 38 checkpoints
-through all Heaven relics, Niterich, Mudou and Sky completion. The party has
-earned Limbo Key and entered the final world. The first guardian attempt and
-original training to level39/37/37 also replay independently. The three-monster
-Limbo guardian is now defeated with all three allies alive; its later Journal
-also passes independent replay. The later supply Journals and complete ending
-also pass independent replay. Garon defeats Darck in the fourth attempt; Slash
-and Derzo faint. The original MagicPlug aftermath, full credits, THE END,
-ending Save and postgame Continue are recorded. The ending Journal preserves
-all 17 monsters and all 107 quest bytes. The historical production player also
-passes original ending Journal and fresh-process reload under Wine.
+Original breeding produces Liset (Octokid +1), Derzo (RayGigas +1), and Garon
+(RayGigas +3). Squiz is reserved until his Sea story role finishes. Garon wins
+the fourth Darck attempt with 91 HP; Slash and Derzo faint. Original story
+healing restores the final party to full HP at levels 40/37/40.
 
-**Final M8 acceptance is pending.** Fresh exact-source diagnostic/production
-builds, combined native Windows regressions and final verified-package checks
-remain outstanding. The optional four-process story executor validates genuine
-Journal inputs and audits every child against its newly replayed parent output.
-The [current progress report](handoff/M8_PROGRESS_2026-10-25.md) includes original
-screenshots and exact evidence. Working notes are in `handoff/M8_WORKING.md`;
-the active draft PR is [#4](https://github.com/rjtvandenhout/DWM2t/pull/4) on
-`work/recomp-m8-dancer-20261023`. The M7 restore remains immutable. Project text
-is English; historical evidence and original game text are retained unchanged.
+CI tests real WinMM streaming through a signed virtual endpoint. Physical
+speaker audibility and every optional postgame branch are not exhaustively
+verified. New builds remain UNTESTED_CANDIDATE until their required checks pass.
+The existing partial development suite alone does not certify a new full game.
 
-After building, run the expanded development checks from the repository root:
-
-```powershell
-ctest --test-dir recomp/build --parallel 4 --output-on-failure
-```
-
-Or build the `check-m8-development` target from the developer prompt. All-green
-development checks are necessary but not sufficient for final M8 acceptance:
-the full original playthrough/ending and later-game checks are still required.
+Actions cleanup reclaimed 3,946,430,584 bytes from 159 unused artifacts while
+preserving referenced evidence; see [the storage audit](handoff/ACTIONS_STORAGE_2026-10-24.md).
+Project text is English; historical evidence and original game text are retained.
 
 ## Retained M6 interactive baseline
 
@@ -118,6 +91,10 @@ Missing native ROMX code remains a hard runtime failure. There is no generic
 runtime LR35902 interpreter fallback.
 
 ## Windows build
+
+For playing, use the verified package above. The commands below create developer
+diagnostic builds. Use the complete-AOT command for later-game work; the smaller
+default retains the earlier regression baseline.
 
 Requirements:
 
@@ -235,7 +212,9 @@ matching RGBDS banks
 6. **M5** original title screen from recompiled game code. ✅
 7. **M6** live input, title/menu transition, real map movement and save RAM. ✅
 8. **M7** real battles, audio and original in-game save/continue. ✅
-9. **M8** fully playable native PC release and optional enhanced patches.
+9. **M8** native Windows release validated through the complete original main campaign. ✅
+
+Optional enhanced patches remain separate future work.
 
 ## Project rules
 

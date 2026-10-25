@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Independent original Actions ZIP preservation, inner package and unchanged executable integrity, exact source/run identities, packaged native evidence and actual38-link Journal byte audit",
+  "reviewed_utc": "2026-10-25T10:21:21.652764+00:00",
+  "overall_m8_acceptance": false,
+  "functional_gate_owner": "Root independently reviews final actual Play.cmd and ending GUI reports before overall M8 acceptance",
+  "artifact": {
+    "id": 12595496311,
+    "name": "DWM2t-M8-VERIFIED-3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+    "metadata_bytes": 130172320,
+    "download_bytes": 130172320,
+    "sha256": "bc36eb1161c8f71e11823d3912c90742026e0ef886764df875b731fdd58642c6",
+    "matches_github_digest": true,
+    "original_actions_zip": "/workspace/scratch/m8-review/final-verified-3d/original.actions.zip"
+  },
+  "inner_zip": {
+    "path": "/workspace/scratch/m8-review/final-verified-3d/extracted/DWM2t-M8-VERIFIED-3d573873ae81.zip",
+    "bytes": 134795975,
+    "sha256": "2e002da616fa5692ba56ba5b91a1d6ace0049fb596fe6b25d56c65fae200e02e",
+    "entries": 26,
+    "crc_integrity": true
+  },
+  "executable": {
+    "path": "/workspace/scratch/m8-review/final-verified-3d/package/DWM2t-M8/DWM2tRecomp.exe",
+    "bytes": 725012480,
+    "sha256": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+    "unchanged_from_original_production_candidate": true,
+    "pe_machine": "0x8664",
+    "pe_optional_magic": "0x20b"
+  },
+  "identities": {
+    "game_source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+    "build_run_id": "40175408153",
+    "story_run_id": "40175408153",
+    "native_run_id": "40183484388",
+    "validation_run_id": "40183484388",
+    "packaging_source_commit": "8859ef67289ce90712a44b9c17174de4519a59b3",
+    "source_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+    "diagnostic_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+    "source_inventory_files": 647,
+    "source_inventory_exact_match": true,
+    "both_original_native_source_archives_match": true,
+    "source_archives_bundled_in_final_zip": false
+  },
+  "manifest": {
+    "sha256": "ef8f5f12c0a02a2440e9bb45b117af07c4a087e9a4573eeb5e6862dd5775987a",
+    "validation_json_sha256": "ee4432780e360566fe413ae7050bd2a32427ade3dded139237fd35645165030f",
+    "root_file_checksums": 7,
+    "evidence_checksums": 18,
+    "external_verified_package_record_exact_match": true,
+    "status": "VERIFIED_M8"
+  },
+  "native_evidence": {
+    "accepted": {
+      "cases": 18,
+      "passed": 18,
+      "failures": 0,
+      "skips": 0,
+      "sha256": "e7e4d65356139615d0e7bf3b2211aaca05f3a52ab074eea518bbdd000c45c513",
+      "byte_identical_to_actual_continuation_raw_xml": true
+    },
+    "initial": {
+      "cases": 18,
+      "executed": 16,
+      "skipped_cases": [
+        "M8_audio_playback",
+        "M8_audio_stream"
+      ],
+      "status": "unaccepted",
+      "sha256": "afea16054674d1ddfcdfcfafcb10d21cc4b5753cdc2fc84d747670579a75bd23",
+      "byte_identical_to_actual_original_raw_xml": true
+    },
+    "provenance_sha256": "0958bf505feaeac9cef81f6b914a33f5b5f692fda4dd07b463afa4789cc226e5",
+    "native_test_definitions_sha256": "26843b6f819c362cb1b2aaed4d87103d1850937c7ed14261e782b147ac72b72b",
+    "unchanged_diagnostic_and_sources": true,
+    "game_recompilation_performed": false,
+    "buffered_stream_queue_empty_events": 0
+  },
+  "story": {
+    "checkpoints": 38,
+    "all_statuses_passed": true,
+    "reported_chain_links": 38,
+    "actual_parent_output_to_child_input_links_independently_hashed": 38,
+    "ending_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+    "ending_journal_bytes": 32768,
+    "ending_completed": true,
+    "original_journal_bundle_sha256": "475418e5574e2bca7c4088e92cdc9cac0239a929a30a8f39414a8cd45e1bd535"
+  },
+  "limitations": [
+    "This artifact audit does not replace root review of the final Play.cmd/ending GUI functional artifact. Those post-packaging checks are external to the inner ZIP.",
+    "The source.tar archives are preserved original build artifacts, referenced and independently checked by hash; they are not duplicated inside the player ZIP.",
+    "Virtual Windows audio validation does not establish audible playback on physical speakers or the exact cause of earlier Pack43 empty events.",
+    "All failed predecessor evidence remains failed and preserved; original run40175408153 did not pass its skipped native suite."
+  ]
+}

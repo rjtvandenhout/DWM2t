@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="2"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="runnervmdaln5"
+	time="0"
+	timestamp="2026-10-25T08:08:34"
+	>
+	<testcase name="M8_save_io_contracts" classname="M8_save_io_contracts" time="0.0353978" status="run">
+		<properties/>
+		<system-out>SAVE_IO_EVIDENCE D:/a/_temp/save-io/evidence\save-io-271590396900
+SAVE_IO_PASS reject_empty_path
+SAVE_IO_PASS reject_null_input
+SAVE_IO_PASS reject_wrong_size
+SAVE_IO_PASS create_exact_sram
+SAVE_IO_PASS replace_exact_sram
+SAVE_IO_PASS create_parent_directory
+SAVE_IO_PASS unicode_save_path
+SAVE_IO_PASS preserve_short_existing_file
+SAVE_IO_PASS preserve_oversized_existing_file
+SAVE_IO_PASS reject_directory_destination
+SAVE_IO_PASS preserve_blocked_parent
+SAVE_IO_PASS preserve_unrelated_temporary_file
+SAVE_IO_PASS cartridge_write_sets_dirty
+SAVE_IO_PASS failed_persistence_keeps_dirty
+SAVE_IO_PASS successful_persistence_clears_dirty
+SAVE_IO_PASS fresh_memory_round_trip
+SAVE_IO_PASS truncated_load_preserves_memory
+SAVE_IO_PASS oversized_load_preserves_memory
+SAVE_IO_PASS missing_optional_save_is_not_created
+SAVE_IO_PASS reject_link_without_replacing_target
+SAVE_IO_PASS denied_windows_replacement_preserves_previous_save
+SAVE_IO_PASS no_new_temporary_files_left
+SAVE_IO_CONTRACTS_PASS checks=22 gameplay_test=false
+</system-out>
+	</testcase>
+	<testcase name="M8_save_io_fault_contracts" classname="M8_save_io_fault_contracts" time="0.0316865" status="run">
+		<properties/>
+		<system-out>SAVE_IO_FAULT_EVIDENCE D:/a/_temp/save-io/evidence\save-io-faults-271621114400
+SAVE_IO_FAULT_PASS create_synthetic_original
+SAVE_IO_FAULT_PASS synthetic_cartridge_write_sets_dirty
+SAVE_IO_FAULT_PASS partial_write_is_reported
+SAVE_IO_FAULT_PASS failure_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS failed_call_removes_its_own_temporary
+SAVE_IO_FAULT_PASS failed_flush_is_reported
+SAVE_IO_FAULT_PASS failure_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS failed_call_removes_its_own_temporary
+SAVE_IO_FAULT_PASS failed_replace_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS set_readonly_fixture
+SAVE_IO_FAULT_PASS clear_readonly_fixture
+SAVE_IO_FAULT_PASS readonly_destination_preserves_previous_save_and_dirty_flag
+SAVE_IO_FAULT_PASS child_stops_during_actual_partial_temporary_write
+SAVE_IO_FAULT_PASS interrupted_write_keeps_original_and_partial_temporary_separate
+SAVE_IO_FAULT_PASS fresh_load_reads_original_instead_of_abandoned_temporary
+SAVE_IO_FAULT_PASS retry_after_exact_temporary_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

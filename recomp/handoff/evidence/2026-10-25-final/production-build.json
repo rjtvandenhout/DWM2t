@@ -1,0 +1,16 @@
+{
+  "created_utc": "20261025T080836Z",
+  "executable_sha256": "08757e37154172ca63c13fd90f20d5ab90cddd64a396b716e4632b77c355d063",
+  "gameplay": "not_run",
+  "generator": "Visual Studio 18 2026",
+  "m8_accepted": false,
+  "native_build": "D:\\a\\_temp\\production-work\\native",
+  "output": "D:\\a\\_temp\\production-output",
+  "source_archive_sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722",
+  "source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "status": "built_untested",
+  "tests": "not_run",
+  "workspace": "D:\\a\\_temp\\production-work",
+  "zip": "D:\\a\\_temp\\production-output\\DWM2t-M8-UNTESTED-3d573873ae81.zip",
+  "zip_sha256": "242aafc83ad2f9089bef2335d88ebfd706b9ca18d6945ffe57ec485412c8b42c"
+}

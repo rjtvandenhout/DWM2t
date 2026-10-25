@@ -1,0 +1,20 @@
+{
+  "status": "passed_read_only_source_audit",
+  "source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "m7_restore": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+  "m7_fixtures_unchanged": [
+    "recomp/tests/m7_continue_p1.txt",
+    "recomp/tests/m7_intro_p1.txt",
+    "recomp/tests/m7_oasis_p1.txt",
+    "recomp/tests/m7_party_p1.txt",
+    "recomp/tests/m7_save_p1.txt"
+  ],
+  "original_rom_banks_unchanged": true,
+  "frozen_native_baseline": "0e59dbd19415cce58393c21c2ede2acd6f60c4d3",
+  "native_changes_since_baseline": [
+    "recomp/player/CMakeLists.txt",
+    "recomp/src/player_main.cpp"
+  ],
+  "native_change_scope": "MSVC /MP4 scheduling and external package validation text only",
+  "m8_acceptance_implied": false
+}

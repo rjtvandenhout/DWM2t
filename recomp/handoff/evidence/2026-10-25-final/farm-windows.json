@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "executable_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "platform": "Windows",
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "stages": [
+    {
+      "stage": "farm",
+      "command": [
+        "D:\\a\\_temp\\diagnostic-output\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\farm-evidence\\farm\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_farm_dancer_p1.txt",
+        "D:\\a\\_temp\\farm-evidence\\farm\\native"
+      ],
+      "frames": 31476,
+      "route_sha256": "49fd72dd7945b0d3cd2e3c53b0bcafd6912cbc9ff817dfb25b3640dd9e8e3f75",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "cef352a25c2322aaea4f1848302ba0e9c80a5326bdd1da2160c36184cd13531e",
+      "active_party_records": [
+        0,
+        3,
+        5
+      ],
+      "hp": [
+        60,
+        33,
+        30
+      ],
+      "persistent_creature_bytes": 154
+    },
+    {
+      "stage": "ready",
+      "command": [
+        "D:\\a\\_temp\\diagnostic-output\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\farm-evidence\\ready\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_farm_dancer_ready_p1.txt",
+        "D:\\a\\_temp\\farm-evidence\\ready\\native"
+      ],
+      "frames": 7275,
+      "route_sha256": "b03e9c4326ad3a8e80e73d7fd7e2ee8345ae213cc5d0baa3ff70bcb7c04bb614",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "ba22e38f13668d4d0c6cde9c1b4c8d4290a410d2a72f91f6e3235002e3bf3059",
+      "active_party_records": [
+        0,
+        5,
+        1
+      ],
+      "hp": [
+        60,
+        30,
+        44
+      ],
+      "persistent_creature_bytes": 154
+    },
+    {
+      "stage": "village",
+      "command": [
+        "D:\\a\\_temp\\diagnostic-output\\DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "D:\\a\\_temp\\farm-evidence\\village\\seed-copy.sav",
+        "D:\\a\\DWM2t\\DWM2t\\recomp\\tests\\m8_sea_dancer_alive_p1.txt",
+        "D:\\a\\_temp\\farm-evidence\\village\\native"
+      ],
+      "frames": 12966,
+      "route_sha256": "da54e09a0330adaa842b44ceaeaa2ac927e0dd3404e67356ebcea0d583861a01",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "5632ab2d6c200ca3c93f768d8d56843f2a9c32fe4f437f9572b4ea843a86e333",
+      "active_party_records": [
+        0,
+        5,
+        1
+      ],
+      "hp": [
+        47,
+        30,
+        42
+      ],
+      "persistent_creature_bytes": 154
+    }
+  ],
+  "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+  "executable_bytes": 725575680,
+  "build_identity": "D:\\a\\_temp\\diagnostic-output\\build-identity.json",
+  "build_identity_sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+  "historical_baseline_windows_run": 39836316030,
+  "historical_seed_windows_run": 39876912500
+}

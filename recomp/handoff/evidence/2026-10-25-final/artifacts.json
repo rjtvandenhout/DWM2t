@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "status": "accepted",
+  "game_source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "validation_tool_source_commit": "8859ef67289ce90712a44b9c17174de4519a59b3",
+  "build_story_run_id": 40175408153,
+  "build_story_run_conclusion": "failure: original final gate correctly rejected two initial audio skips; four artifact producer jobs passed",
+  "accepted_validation_run_id": 40183484388,
+  "accepted_validation_run_conclusion": "success",
+  "original_actions_artifacts": [
+    {
+      "role": "fresh diagnostic",
+      "run_id": 40175408153,
+      "artifact_id": 12594525715,
+      "actions_zip_bytes": 139241574,
+      "actions_zip_sha256": "9690048b14418b0ba5a944f7422f4c100eaa30eb42c3b4692b774e6ad81a5980",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40175408153/artifacts/12594525715"
+    },
+    {
+      "role": "independent production",
+      "run_id": 40175408153,
+      "artifact_id": 12593078775,
+      "actions_zip_bytes": 133239217,
+      "actions_zip_sha256": "2d0eb9d02052f3bc8856d10f751e7a18ede48b7322f9547d5854692818de3bfe",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40175408153/artifacts/12593078775"
+    },
+    {
+      "role": "38-stage original story",
+      "run_id": 40175408153,
+      "artifact_id": 12594545489,
+      "actions_zip_bytes": 2625793,
+      "actions_zip_sha256": "2734ea5d13be5ce3d938199c4cc8bb7c86604aa275154c7fd80c71aaf1706117",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40175408153/artifacts/12594545489"
+    },
+    {
+      "role": "production Journal and package",
+      "run_id": 40175408153,
+      "artifact_id": 12594615851,
+      "actions_zip_bytes": 99614,
+      "actions_zip_sha256": "1e025b118d83b79d116d4476b441ef6e98ff38c5d60fb41dd0206aa79d1d0c9e",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40175408153/artifacts/12594615851"
+    },
+    {
+      "role": "POSIX persistence",
+      "run_id": 40175408153,
+      "artifact_id": 12592037765,
+      "actions_zip_bytes": 2123,
+      "actions_zip_sha256": "1f2b8bc22e3ac3ebe46973130b0e23efaa1f3e467ef5d4038f241d5820579971",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40175408153/artifacts/12592037765"
+    },
+    {
+      "role": "accepted original native suite and final actual Play.cmd/ending checks",
+      "run_id": 40183484388,
+      "artifact_id": 12595366440,
+      "actions_zip_bytes": 2815753,
+      "actions_zip_sha256": "bfba6d0cba59e0292a6b5af1ce45a75c4dcac06fba1c52c89293718b2f6a166b",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388/artifacts/12595366440"
+    },
+    {
+      "role": "success-only verified player",
+      "run_id": 40183484388,
+      "artifact_id": 12595496311,
+      "actions_zip_bytes": 130172320,
+      "actions_zip_sha256": "bc36eb1161c8f71e11823d3912c90742026e0ef886764df875b731fdd58642c6",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388/artifacts/12595496311"
+    },
+    {
+      "role": "current signed driver: five original streams and playback pass",
+      "run_id": 40183245214,
+      "artifact_id": 12595540162,
+      "actions_zip_bytes": 2686483,
+      "actions_zip_sha256": "cb11c2372145e3981cb623f5d1528c62517bf5311624561242a5d5001cc3f8be",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40183245214/artifacts/12595540162"
+    },
+    {
+      "role": "initial real endpoint/startup probe only",
+      "run_id": 40179402038,
+      "artifact_id": 12593580636,
+      "actions_zip_bytes": 2324461,
+      "actions_zip_sha256": "c0838a0b942a2139dd2a2182fca93e691952c8119bb33e25700b01c875652968",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40179402038/artifacts/12593580636"
+    },
+    {
+      "role": "unaccepted legacy driver native17-pass/1-fail suite",
+      "run_id": 40182008944,
+      "artifact_id": 12594881309,
+      "actions_zip_bytes": 2337203,
+      "actions_zip_sha256": "da7ed56d0157c85eee9685ac49c8289859f146a640f938a43c5a892f4d5caa27",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40182008944/artifacts/12594881309"
+    },
+    {
+      "role": "unaccepted legacy driver controlled comparison",
+      "run_id": 40182774086,
+      "artifact_id": 12594627539,
+      "actions_zip_bytes": 2324925,
+      "actions_zip_sha256": "bd2dc2e8e30e9fe14a9323db8042f0219f5adedf6c811bd665b13c534d043a4f",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40182774086/artifacts/12594627539"
+    },
+    {
+      "role": "new driver probe stopped by inventory collector before audio tests",
+      "run_id": 40182774086,
+      "artifact_id": 12594727361,
+      "actions_zip_bytes": 2682091,
+      "actions_zip_sha256": "fe17105877f8d30dc33064e9b0040c8226195bf19dcaff82fb8d79747e2d1016",
+      "url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40182774086/artifacts/12594727361"
+    }
+  ],
+  "inner_verified_player_zip": {
+    "filename": "DWM2t-M8-VERIFIED-3d573873ae81.zip",
+    "bytes": 134795975,
+    "sha256": "2e002da616fa5692ba56ba5b91a1d6ace0049fb596fe6b25d56c65fae200e02e"
+  },
+  "evidence_files": {
+    "README.md": "195fefbe789697a98fc82e31a656eb17a764285d61c808c8de14a3bdf04fcc8f",
+    "audio-driver-comparison-audit.json": "e3ddd5be6a52d1701dd106c37b7d0eeec993251e818e54e3607a45d1403e7b44",
+    "audio-host-probe.json": "651614e3ab04665cc947448d9149d2ffe62b1d489ee4025f2b70abd76e519246",
+    "current-audio-driver-focused-audit.json": "4ef0aa645365b3e64aa5ff426f04a13d4d2a9dcd4f089396ed2f2d9687c7ca5d",
+    "current-audio-driver-host.json": "d9d2a684b0374b26f98f5a774049aa216e9da0081f13bc8c5d806aab5583a699",
+    "current-audio-driver-probe.json": "c10055fa43012dd59eb13b4c289e029f8e94f8fe58406dee9ffa00af833a36bb",
+    "diagnostic-artifact-audit.json": "02618f538bb88c046b36de9716498d7ed03010b684c25b91cb4a1ffdbf6ca6b0",
+    "diagnostic-build.json": "b0202e5a24a465d980f4f2a055cf80654fb89c1095a6e52777bad84a55aa017b",
+    "diagnostic-identity.json": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+    "farm-windows.json": "8845a5cc0c7e38bac2a3b821fdec3ea7e2a5736bc03ef81370ab63bd25d6f1ba",
+    "final-acceptance-audit.json": "3e0d0a527afe315c56aecee7812d199505201f69182d4b3c873454419b696632",
+    "final-audio-host.json": "d9d2a684b0374b26f98f5a774049aa216e9da0081f13bc8c5d806aab5583a699",
+    "final-ending-journal-windows.json": "0ff5c537c545a83726e42667a564e21463a4a3c6c274db93df30b160cc8cfc29",
+    "final-functional-audit.json": "cecc5395efae3dd7d5c29a02ce1b84ce5a621d12b799f6e659005a102027afe1",
+    "final-package-windows.json": "b6e91f75bde7c2dba1a762a23cc018c482e8e4358c8f274b798585ed27861f16",
+    "legacy-audio-native-provenance-failed.json": "bb02159a2f60f15f21381807b279da45c57820fb9ad922cdbd3ea95a02eff04c",
+    "legacy-audio-native-tests-failed.log": "0b3fce7d3ed446d6be545b7f56a29bfee880b2a2cab501dadfd021f4055161b0",
+    "legacy-audio-native-tests-failed.xml": "ad27ed0c9f2910645fd6c9fbd9570a238cbfc9cae8c4843f1677b32449862669",
+    "native-retest-provenance.json": "0958bf505feaeac9cef81f6b914a33f5b5f692fda4dd07b463afa4789cc226e5",
+    "native-tests-windows.log": "b06e0edd4b7a01307981d5f904b7e9e0e38ad6e021361b319c0f3e162d499878",
+    "native-tests-windows.xml": "e7e4d65356139615d0e7bf3b2211aaca05f3a52ab074eea518bbdd000c45c513",
+    "original-native-tests-unaccepted.log": "1a1e0b88a79cecce3da5c67b97528b9a2cb5ef6d5c986b0c88e938afd7ca17d0",
+    "original-native-tests-unaccepted.xml": "afea16054674d1ddfcdfcfafcb10d21cc4b5753cdc2fc84d747670579a75bd23",
+    "pirate-windows.json": "0fa24aad988e827316940662ca4f391904d4c722003f7621ba8b2601f04b5422",
+    "posix-artifact-audit.json": "9ddcb67241285e3610ebc34273ba6b314807a3369032b3d4a9d66058f99a3974",
+    "posix-save-io.log": "bdadee4fadf6aa7c54f3a3074d75f55e45a5be1ac715a346ac971e0666e515f0",
+    "posix-save-io.xml": "ed0ad1fbf6487f7f486a6f272e58764a3f5a958c8dad8064830b7106b0c199a8",
+    "preparation-windows.json": "d31b348728af3d0093ae2c71958bb2aad533dc9113f4baad6ba8cb4ce5bb94f1",
+    "production-artifact-audit.json": "af8fa0cbecabd16691dab02acb081f12a187fca9ac8f9b8e031e41b2c0a52112",
+    "production-birth-journal-windows.json": "10ac8715667915b2bf31e28ff5abbd44ca15388c4c1253e9475b23093fbd7227",
+    "production-build.json": "8fbc35ff1fed1de2b98985ed06d9d81212bceaffcc3a95a1f8878ea50add1f60",
+    "production-default-start-windows.json": "d3158d39f6b66c16ebcf09bc094f355cb96737075cbbe1e09e32fbb2c563540a",
+    "production-ending-journal-windows.json": "105a6537212ab249c37558b140cb1f6890c6fdff916df0157ef95b051a4e02ad",
+    "production-package-windows.json": "724e06c9c9e0860c5f3ebbfab5758e93ee7e1e6d79a2c4b10d0d15c5de4b1a73",
+    "production-profile-start-windows.json": "1f03dfd30ccd827b1a36be456ebf3bbfd2ad3ad1d71903569ff0df246c71d031",
+    "screenshot-provenance-audit.json": "402b4f32a9e58fd5e1017a3b7dd26157f654952dee481587c3300cd8b294a31e",
+    "source-archive-audit.json": "881bd732acb1fff1aff626b8bbd43760b3b6d9ea311a76fdc4ed68cb2b4016fd",
+    "source-invariance-audit.json": "e796d3c7eb527b37cdf6c56074fcf3276193d66f1e89230eecaae11b741e0d97",
+    "story-audit.json": "218523705272fc9ae04efa74b835f5deb31f02eac1a7b687caf77b093f623b9f",
+    "story-windows.json": "3e610ceaf0b784c54b014b928ff8c99864324f4b0f231d3bfdfa4d450bceb9dd",
+    "validation-record.json": "ee4432780e360566fe413ae7050bd2a32427ade3dded139237fd35645165030f",
+    "verified-artifact-audit.json": "b35c5b0c2139a3296e15d9c2c4076ca872955e16ffefe08b381f6af1db2af90a",
+    "verified-manifest.json": "ef8f5f12c0a02a2440e9bb45b117af07c4a087e9a4573eeb5e6862dd5775987a",
+    "verified-package.json": "1209ad838711d996ef439573c0745c77b73b5b2b4a21eb37992cdfbdf6ec3662",
+    "village-windows.json": "f3a4c29fce060bf0eae28bc340161057421a169b528ac042ad72de4540258b7c",
+    "windows-save-io.log": "fe618b15842700ca59e721b00dd72c6af113200c983a4c60de740ba1181cedca",
+    "windows-save-io.xml": "1d38e10f3b23143434a5bb461515b3df4dffa6814a9754ce4dbaabc54569cfb7"
+  }
+}
