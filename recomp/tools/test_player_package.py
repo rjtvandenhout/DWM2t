@@ -188,11 +188,16 @@ def main() -> int:
                 button = api.user.GetDlgItem(dialog, 1)
                 report['duplicate_error_dialog_seen'] = True
                 if not button:
-                    raise RuntimeError('Owned duplicate-instance dialog has no OK button')
+                    # EnumWindows can see the dialog while its controls are
+                    # still being created on the native process's UI thread.
+                    time.sleep(.1)
+                    continue
                 # BM_CLICK sends the normal button notification, including its
                 # control handle; a bare WM_COMMAND can be ignored by MessageBox.
                 if not api.user.PostMessageW(button, 0xF5, 0, 0):
                     raise RuntimeError('Could not click owned duplicate-instance error dialog')
+                api.user.PostMessageW(dialog, 0x111, 1, button)
+                report['duplicate_ok_button_clicked'] = True
                 break
             time.sleep(.1)
         require(duplicate.wait(timeout=15) != 0 and first[1].poll() is None,
