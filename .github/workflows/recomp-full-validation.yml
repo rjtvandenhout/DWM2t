@@ -81,6 +81,11 @@ jobs:
           python recomp/tools/build_m8_diagnostic.py --jobs 2 `
             --workspace "$env:RUNNER_TEMP/diagnostic-work" --output "$env:RUNNER_TEMP/diagnostic-output"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Provide a signed native Windows audio endpoint for the original output gates
+        shell: pwsh
+        run: |
+          & recomp/tools/setup_windows_ci_audio.ps1 -Output "$env:RUNNER_TEMP/diagnostic-audio"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Run the retained M1-M8 development suite
         shell: pwsh
         run: |
@@ -161,6 +166,7 @@ jobs:
             ${{ runner.temp }}/village-evidence/**
             ${{ runner.temp }}/farm-evidence/**
             ${{ runner.temp }}/preparation-evidence/**
+            ${{ runner.temp }}/diagnostic-audio/**
           if-no-files-found: warn
           retention-days: 30
 

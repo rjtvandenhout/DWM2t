@@ -1,0 +1,131 @@
+name: Complete exact-source M8 validation on a native Windows audio host
+
+on:
+  workflow_call:
+    inputs:
+      build_run_id:
+        type: string
+        required: true
+      build_source:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  DWM2T_BUILD_RUN: ${{ inputs.build_run_id }}
+  DWM2T_BUILD_SOURCE: ${{ inputs.build_source }}
+
+jobs:
+  native-suite-and-package:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the exact original build and all successful artifact producer jobs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = process.env.DWM2T_BUILD_RUN;
+            const source = process.env.DWM2T_BUILD_SOURCE;
+            if (!/^[0-9]+$/.test(run) || !/^[0-9a-f]{40}$/.test(source)) throw new Error('Exact source/run required');
+            const query = {...context.repo, run_id: Number(run)};
+            const original = (await github.rest.actions.getWorkflowRun(query)).data;
+            if (original.head_sha !== source || original.status !== 'completed') throw new Error('Original build source/run differs or is unfinished');
+            const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {...query, filter:'latest', per_page:100});
+            for (const name of ['diagnostic', 'production', 'production-journal', 'posix-persistence']) {
+              const matching = jobs.filter(j => j.name.endsWith('/ '+name));
+              if (matching.length !== 1 || matching[0].conclusion !== 'success') throw new Error('Original producer not successful: '+name);
+            }
+            const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {...query, per_page:100});
+            const selected = [];
+            for (const type of ['diagnostic', 'production', 'story', 'production-journal', 'posix-persistence']) {
+              const matching = artifacts.filter(a => a.name === `M8-fresh-${type}-${run}` && !a.expired);
+              if (matching.length !== 1 || !/^sha256:[0-9a-f]{64}$/.test(matching[0].digest ?? '')) throw new Error('Missing exact original artifact: '+type);
+              const a = matching[0];
+              selected.push({id:a.id, name:a.name, bytes:a.size_in_bytes, digest:a.digest});
+            }
+            const record = {schema:1, build_run_id:run, source_commit:source, original_run_conclusion:original.conclusion,
+              validation_run_id:String(context.runId), packaging_source_commit:context.sha, artifacts:selected};
+            require('fs').writeFileSync(require('path').join(process.env.RUNNER_TEMP,'build-run-artifacts.json'), JSON.stringify(record,null,2)+'\n', {flag:'wx'});
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: M8-fresh-*-${{ inputs.build_run_id }}
+          run-id: ${{ inputs.build_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/proof
+      - name: Run continuation packaging contracts
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_native_retest.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Install a genuine signed WinMM render endpoint on this ephemeral host
+        shell: pwsh
+        run: |
+          & recomp/tools/setup_windows_ci_audio.ps1 -Output "$env:RUNNER_TEMP/audio-host"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Rerun all original 18 tests from the archived source on the unchanged diagnostic
+        shell: pwsh
+        run: |
+          python recomp/tools/prepare_m8_native_retest.py --proof-root "$env:RUNNER_TEMP/proof" `
+            --build-run-id "$env:DWM2T_BUILD_RUN" --source "$env:DWM2T_BUILD_SOURCE" `
+            --workspace "$env:RUNNER_TEMP/native-retest-work" --output "$env:RUNNER_TEMP/native-retest"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Package the unchanged tested player with separate build and validation provenance
+        shell: pwsh
+        run: |
+          python recomp/tools/package_verified_m8.py --root "$env:RUNNER_TEMP/proof" `
+            --source "$env:DWM2T_BUILD_SOURCE" --run-id "$env:DWM2T_BUILD_RUN" `
+            --native-retest "$env:RUNNER_TEMP/native-retest" --validation-run-id '${{ github.run_id }}' `
+            --output "$env:RUNNER_TEMP/verified-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/prepare_m8_player_validation.py `
+            --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" --source "$env:DWM2T_BUILD_SOURCE" `
+            --reference recomp/tests/m8_player_ending_journal.json --output "$env:RUNNER_TEMP/verified-ending-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test actual final Play.cmd and original ending Journal with fresh-process reload
+        shell: pwsh
+        run: |
+          $storyRoot = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          python recomp/tools/test_player_package.py --via-cmd `
+            --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" --source "$env:DWM2T_BUILD_SOURCE" `
+            --seed "$storyRoot/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/verified-package-checks"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py `
+            --exe "$env:RUNNER_TEMP/verified-output/DWM2t-M8/DWM2tRecomp.exe" `
+            --seed "$storyRoot/ending-complete/native/checkpoint.sav" `
+            --manifest "$env:RUNNER_TEMP/verified-ending-spec.json" --output "$env:RUNNER_TEMP/verified-ending-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve actual test and packaging evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-final-package-checks-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/native-retest/**
+            ${{ runner.temp }}/audio-host/**
+            ${{ runner.temp }}/verified-package-checks/**
+            ${{ runner.temp }}/verified-ending-journal/**
+            ${{ runner.temp }}/verified-ending-spec.json
+            ${{ runner.temp }}/build-run-artifacts.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish the byte-identical tested player only after all final gates pass
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-M8-VERIFIED-${{ inputs.build_source }}
+          path: |
+            ${{ runner.temp }}/verified-output/*.zip
+            ${{ runner.temp }}/verified-output/verified-package.json
+          if-no-files-found: error
+          retention-days: 30

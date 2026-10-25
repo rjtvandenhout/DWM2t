@@ -1,22 +1,36 @@
 """Package the unchanged tested player only after the complete M8 gates pass.
 
-Inputs are artifacts from one fresh validation run. No build, game-state
-mutation, executable patch, or public release is performed here.
+Inputs retain their original build/story run. An optional full native-suite
+rerun must bind the unchanged diagnostic to its original test sources and a
+separate validation run. No build or executable patch is performed here.
 """
 from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import shutil
+import subprocess
+import tarfile
 import xml.etree.ElementTree as ET
 import zipfile
 
 from m8_build_identity import digest, load_identity
 from m8_package import BASE_FILES, verify_package
 from test_m8_story_checkpoints import verify_ending_witnesses
+
+
+NATIVE_SUITE_TESTS = (
+    'M1_decoder', 'M2_bank0_audit', 'M4_renderer', 'M5_title',
+    'M6_movement', 'M6_sram', 'M6_window', 'M7_audio', 'M7_intro_p1',
+    'M7_party_p1', 'M7_battle', 'M7_save_continue', 'M8_trace_contract',
+    'M8_audio_selection', 'M8_audio_presentation', 'M8_audio_playback',
+    'M8_audio_stream', 'M8_oasis_checkpoint',
+)
 
 
 def one(root: Path, pattern: str) -> Path:
@@ -47,9 +61,102 @@ def passed_ctest(path: Path, minimum: int) -> int:
     return len(cases)
 
 
-def package_run(root: Path, source: str, run: str, output: Path) -> Path:
+def current_packaging_source() -> str:
+    root = Path(__file__).resolve().parents[2]
+    commit = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'],
+                                    text=True, encoding='utf-8', timeout=30).strip()
+    if not re.fullmatch(r'[0-9a-f]{40}', commit):
+        raise ValueError('An exact packaging source commit is required')
+    return commit
+
+
+def native_suite_names(path: Path, *, passing: bool) -> None:
+    root = ET.parse(path).getroot()
+    cases = list(root.iter('testcase'))
+    names = [case.get('name') for case in cases]
+    if (len(names) != len(NATIVE_SUITE_TESTS) or len(set(names)) != len(names)
+            or set(names) != set(NATIVE_SUITE_TESTS)):
+        raise ValueError('The native suite must contain all 18 original test names exactly once')
+    if passing:
+        passed_ctest(path, len(NATIVE_SUITE_TESTS))
+        if (root.tag != 'testsuite' or root.get('tests') != str(len(NATIVE_SUITE_TESTS))
+                or any(case.get('status') != 'run' for case in cases)):
+            raise ValueError('The complete native rerun did not actually run all 18 tests')
+
+
+def verify_native_retest(directory: Path, source: str, build_run: str,
+                         validation_run: str, diagnostic_exe: Path,
+                         source_archive: Path, initial_xml: Path) -> tuple[dict, dict[str, Path]]:
+    if (not re.fullmatch(r'[1-9][0-9]*', validation_run)
+            or validation_run == build_run):
+        raise ValueError('The native rerun needs its distinct actual validation run ID')
+    provenance_path = directory/'native-retest-provenance.json'
+    retest_xml = directory/'native-results.xml'
+    provenance = json.loads(provenance_path.read_text(encoding='utf-8'))
+    packaging_source = current_packaging_source()
+    if (os.environ.get('GITHUB_SHA', packaging_source) != packaging_source
+            or os.environ.get('GITHUB_RUN_ID', validation_run) != validation_run):
+        raise ValueError('The native rerun must match the actual packaging workflow/run')
+    source_sha = digest(source_archive)
+    try:
+        with tarfile.open(source_archive, 'r:') as archived:
+            definitions = [member for member in archived.getmembers()
+                           if member.name == 'recomp/CMakeLists.txt']
+            if (archived.pax_headers.get('comment') != source or len(definitions) != 1
+                    or not definitions[0].isfile()):
+                raise ValueError('Original native CTest definitions are missing from the exact source archive')
+            stream = archived.extractfile(definitions[0])
+            if stream is None:
+                raise ValueError('Original native CTest definitions cannot be read')
+            with stream:
+                definition_bytes = stream.read()
+    except tarfile.TarError as error:
+        raise ValueError('The native rerun requires the actual original source archive') from error
+    definition_names = re.findall(rb'add_test\(NAME\s+([A-Za-z0-9_]+)', definition_bytes)
+    if (len(definition_names) != len(NATIVE_SUITE_TESTS)
+            or {name.decode('ascii') for name in definition_names} != set(NATIVE_SUITE_TESTS)):
+        raise ValueError('The archived original CMake definitions do not declare the complete native suite')
+    required = dict(schema=1, status='passed', platform='Windows', source_commit=source,
+                    build_run_id=build_run, validation_run_id=validation_run,
+                    packaging_source_commit=packaging_source,
+                    diagnostic_sha256=digest(diagnostic_exe), source_archive_sha256=source_sha,
+                    native_suite_source=source, native_suite_archive_sha256=source_sha,
+                    native_test_definitions_sha256=hashlib.sha256(definition_bytes).hexdigest(),
+                    original_native_tests_sha256=digest(initial_xml),
+                    retest_native_tests_sha256=digest(retest_xml),
+                    ctest_returncode=0, tests=len(NATIVE_SUITE_TESTS))
+    if (any(provenance.get(key) != expected for key, expected in required.items())
+            or any(type(provenance.get(key)) is not int for key in ('schema', 'ctest_returncode', 'tests'))):
+        raise ValueError('Native rerun provenance does not bind the actual unchanged binary, sources, XML and runs')
+    command = provenance.get('command')
+    if (not isinstance(command, list) or not command
+            or not all(isinstance(argument, str) and argument for argument in command)
+            or command[0].replace('\\', '/').rsplit('/', 1)[-1].lower() not in ('ctest', 'ctest.exe')
+            or command.count('--output-junit') != 1):
+        raise ValueError('Native rerun provenance needs the actual full CTest command')
+    junit_index = command.index('--output-junit') + 1
+    if (junit_index >= len(command)
+            or command[junit_index].replace('\\', '/').rsplit('/', 1)[-1] != 'native-results.xml'
+            or any(argument in ('-R', '-E', '-I', '--rerun-failed', '--tests-from-file',
+                                '--exclude-from-file', '--tests-regex', '--exclude-regex')
+                   or argument.startswith(('-R', '-E', '-I', '--tests-regex=', '--exclude-regex=',
+                                           '--tests-from-file=', '--exclude-from-file='))
+                   for argument in command[1:])):
+        raise ValueError('The native rerun must run the complete original suite without selection filters')
+    native_suite_names(initial_xml, passing=False)
+    native_suite_names(retest_xml, passing=True)
+    return provenance, {'initial-native-tests.xml': initial_xml,
+                        'native-tests.xml': retest_xml,
+                        'native-retest-provenance.json': provenance_path}
+
+
+def package_run(root: Path, source: str, run: str, output: Path, *,
+                native_retest: Path | None = None,
+                validation_run_id: str | None = None) -> Path:
     if not re.fullmatch(r'[0-9a-f]{40}', source) or not run.isdigit():
         raise ValueError('Exact source and native validation run ID are required')
+    if (native_retest is None) != (validation_run_id is None):
+        raise ValueError('--native-retest and --validation-run-id must be supplied together')
     if output.exists():
         raise ValueError('Verified output must be a new directory')
     diagnostic = root/f'M8-fresh-diagnostic-{run}'
@@ -61,7 +168,8 @@ def package_run(root: Path, source: str, run: str, output: Path) -> Path:
     identity = load_identity(identity_path)
     if identity.source != source:
         raise ValueError('Diagnostic build source differs')
-    identity.verify(one(diagnostic, 'DWM2tRecompFull.exe'))
+    diagnostic_exe = one(diagnostic, 'DWM2tRecompFull.exe')
+    identity.verify(diagnostic_exe)
     production_report = one(production, 'build-report.json')
     built = json.loads(production_report.read_text(encoding='utf-8'))
     if built.get('status') != 'built_untested' or built.get('source_commit') != source:
@@ -81,6 +189,12 @@ def package_run(root: Path, source: str, run: str, output: Path) -> Path:
                 'native-tests.xml': one(diagnostic, 'native-results.xml'),
                 'windows-save-io.xml': one(production, 'save-io.xml'),
                 'posix-save-io.xml': one(posix, 'save-io.xml')}
+    retest_provenance = None
+    if native_retest is not None:
+        retest_provenance, retest_evidence = verify_native_retest(
+            native_retest, source, run, validation_run_id, diagnostic_exe,
+            source_archives[0], evidence['native-tests.xml'])
+        evidence.update(retest_evidence)
     tests = passed_ctest(evidence['native-tests.xml'], 18)
     passed_ctest(evidence['windows-save-io.xml'], 2)
     passed_ctest(evidence['posix-save-io.xml'], 2)
@@ -169,6 +283,17 @@ def package_run(root: Path, source: str, run: str, output: Path) -> Path:
                   limitations=['CI does not establish audible playback on the user\'s physical audio hardware.'],
                   created_utc=datetime.now(timezone.utc).isoformat(),
                   evidence={name:digest(records/name) for name in evidence})
+    if retest_provenance is not None:
+        record.update(build_run_id=run, story_run_id=run,
+                      build_run_url=f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{run}',
+                      story_run_url=f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{run}',
+                      validation_run_id=validation_run_id, native_run_id=validation_run_id,
+                      native_run_url=f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{validation_run_id}',
+                      packaging_source_commit=retest_provenance['packaging_source_commit'],
+                      native_suite_source=source, native_suite_retest=True,
+                      initial_native_tests_status='unaccepted',
+                      initial_native_tests_sha256=retest_provenance['original_native_tests_sha256'],
+                      accepted_native_tests_sha256=retest_provenance['retest_native_tests_sha256'])
     (package/'validation.json').write_text(json.dumps(record, indent=2)+'\n', encoding='utf-8')
     readme = (package/'README.txt').read_text(encoding='utf-8')
     start = readme.index('START\n')
@@ -201,5 +326,10 @@ if __name__ == '__main__':
         parser.add_argument('--'+name, type=Path, required=True)
     for name in ('source', 'run-id'):
         parser.add_argument('--'+name, required=True)
+    parser.add_argument('--native-retest', type=Path,
+                        help='Full native-suite rerun directory; preserves the initial XML as unaccepted')
+    parser.add_argument('--validation-run-id',
+                        help='Actual continuation workflow run; required with --native-retest')
     args = parser.parse_args()
-    print('M8_VERIFIED_PACKAGE', package_run(args.root, args.source, args.run_id, args.output))
+    print('M8_VERIFIED_PACKAGE', package_run(args.root, args.source, args.run_id, args.output,
+        native_retest=args.native_retest, validation_run_id=args.validation_run_id))
