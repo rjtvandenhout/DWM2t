@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "full_game_verified": false,
+  "prefix_run_id": "40136433795",
+  "boundary_stage": "helen-restored",
+  "prefix_checkpoints": 20,
+  "replayed_checkpoints": 7,
+  "prefix_report_sha256": "d21375a841550e510d9448664b7818486ff92bc95c9f82b35056ddd04c447e6a",
+  "prefix_executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "boundary_save_sha256": "bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7",
+  "suffix_manifest_sha256": "47f1c363bc88699b9f2a8a91977526bef4593184e048d05c8a4da59dea20f997",
+  "cumulative_checkpoints": 27
+}

@@ -59,7 +59,7 @@ def main() -> int:
             check_file(stage/'seed-copy.sav', source_hash, 32768)
             check_file(stage/'native/checkpoint.sav', expected['save_sha256'], 32768)
             check_file(stage/expected['route'], expected['route_sha256'])
-            # Reapply the current read-only assertions, including all 64 quest
+            # Reapply the current read-only assertions, including all 107 quest
             # bytes and inherited records, to the archived native captures.
             verify_creatures(stage/'native', stage/'seed-copy.sav', expected)
         audit.update(prefix_checkpoints=count, prefix_report_sha256=digest(report_path),

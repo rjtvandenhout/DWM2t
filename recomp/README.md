@@ -46,9 +46,11 @@ Later Wine replays breed Totum and Nyar to hatch
 Derzo (RayGigas +1). The production candidate's normal GUI also passes a later
 Continue, original Journal and fresh-process reload check under Wine and
 native Windows (run 40144322233). Native
-Windows run 40142961686 has now audited the twenty archived checkpoints and
-replayed four later routes through the Sky Key; all four new Journal hashes
-match Wine. Later Sky World, ending/credits and final acceptance remain pending.
+Windows run 40148369185 has audited twenty archived checkpoints and
+replayed seven later routes through the MadCondor victory; all seven new
+Journal hashes match Wine with the full 107-byte quest block verified. A third
+original breeding produces Garon (RayGigas +3), whose birth Journal also
+passes independent Wine replay. Later Sky World, ending/credits and final acceptance remain pending.
 
 **M8 is incomplete.** Sky World, the later story, ending/credits,
 combined regressions and final production-package acceptance remain unproven.

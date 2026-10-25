@@ -921,5 +921,27 @@
     "source_bmp_sha256": "8bcc14267f371c61561e5a43a5b93a89f20fc105699740f75fb203c5f4e2b172",
     "png_sha256": "ebbd86e3d975abaf47d8b8807bb4592c44dcfdcc51da286d98dea27e9c141bc8",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "garon-birth-name.png",
+    "caption": "Original third breeding: Garon, RayGigas +3, is named after Liset and Varli are consumed.",
+    "source_session": "sky-quest-44",
+    "source_bmp": "m8_730.bmp",
+    "frame": 76146,
+    "native_state": "M8_STATE frame=76146 mode=1:1 world=13 region=1,0 pos=64,64 party=1 selector=0x6a sram=0x26f0170896d25152 screen=0x23aaf46575f7089b image=m8_730.bmp",
+    "source_bmp_sha256": "fac434bcd013cc50c45bb66ff09d320f0ccd05667b9741b9352859ac874edd95",
+    "png_sha256": "07426096438d02bd37da8b573570b4a6ab3f63735e79e0e1b8621e72c67cde00",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "garon-birth-stats.png",
+    "caption": "Original Garon birth stats: level 1, HP59 MP74 ATK65 DEF70 AGI85 INT131 and WLD0.",
+    "source_session": "sky-quest-44",
+    "source_bmp": "m8_800.bmp",
+    "frame": 80878,
+    "native_state": "M8_STATE frame=80878 mode=1:1 world=0 region=1,2 pos=80,48 party=2 selector=0x1c sram=0xf9ad38f3a77914a3 screen=0x71885776930caaf5 image=m8_800.bmp",
+    "source_bmp_sha256": "65920ad8fb14f6afe2c3f1da76dc49e82e109007ac2844130fbe8738a5758f27",
+    "png_sha256": "c1c7185279ac68585fa01248bf4e0a54ce64f5043caa255e1065bd6ac9425311",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

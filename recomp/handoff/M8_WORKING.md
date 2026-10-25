@@ -168,9 +168,26 @@ made its 27th Journal. Its 136,123-frame Wine replay and fresh Continue pass
 to SHA256 `2655aa444fb56f2312e36b48ec446d0e085024ff3e11001fcc282fd3e6814788`,
 including all 107 quest bytes and fourteen owned monsters. The party is
 Derzo/Liset/Slash, level 25/27/24, full HP 176/90/154, with 166G. The live
-continuation in scratch `sky-quest-44` has reached the settlement at world
-124. Its gate guard asks the player to read the king's notice. No observational
-dump is used as a seed.
+continuation has read the royal notice at world 124: Heaven Sword, Armor and
+Helmet are requested for LightOrb. Native Windows run 40148369185 passed all
+seven routes after the audited twenty-checkpoint prefix; all downloaded
+Journals match Wine and independently pass the full 107-byte checks.
+
+The 28th route retains a subsequent travel defeat and Warubou recovery, then
+breeds Liset (base, Octokid +1 female level 27) with Varli (MadCondor male
+level 30). Original 40G hatching produces male Garon, RayGigas +3, WLD0,
+HP59 MP74 ATK65 DEF70 AGI85 INT131 at level 1. The complete 85,603-frame
+Wine replay passes to original Journal SHA256
+`111a2214b78f69882ce8e0a0ddfe9d4391f2fb42511ec03b39b9686e7d3cd720`.
+Party Derzo/Garon/Slash is level 26/1/25, full HP 178/59/155, with thirteen
+owned monsters and 43G. Liset and Varli are consumed through original
+breeding; twelve other identities persist through compaction. Scratch
+`sky-quest-45` starts only from that genuine Journal and is training Garon.
+No observational dump is used as a seed.
+
+Production Windows run 40148371157 also passes the current direct 107-byte
+quest comparison, all twelve original birth-21 monsters, later Journal Save,
+two normal shutdowns and fresh-process Continue on the pinned production EXE.
 
 Journal safety: verify that the original Plan menu actually offers Journal
 before invoking the native Journal helper. Dungeons can offer Info instead
