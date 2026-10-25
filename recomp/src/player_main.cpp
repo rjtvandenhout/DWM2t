@@ -82,7 +82,7 @@ std::wstring run_id() {
 
 void help() {
     std::cout <<
-        "DWM2t native player - M8 candidate (testing pending)\n"
+        "DWM2t native Windows player\n"
         "No arguments: play with %LOCALAPPDATA%/DWM2t/saves/default.sav\n"
         "  --play [save-path]   Play with an explicit save, or the default profile\n"
         "  --profile NAME       Separate profile (letters/digits/underscore/hyphen)\n"
@@ -101,9 +101,9 @@ int wmain(int argc, wchar_t** argv) {
     try {
         if (argc == 2 && std::wstring_view(argv[1]) == L"--help") { help(); return 0; }
         if (argc == 2 && std::wstring_view(argv[1]) == L"--version") {
-            std::cout << "DWM2t M8 UNTESTED_CANDIDATE\nsource=" << DWM2T_SOURCE_REVISION
+            std::cout << "DWM2t native Windows player\nsource=" << DWM2T_SOURCE_REVISION
                       << "\nfixed_banks=1 romx_banks=" << dwm2t::translated_romx_bank_count()
-                      << "\nfull_game_verified=false\n";
+                      << "\nvalidation=external_package_record\n";
             return 0;
         }
         if (argc == 2 && std::wstring_view(argv[1]) == L"--audio-devices")
@@ -159,7 +159,7 @@ int wmain(int argc, wchar_t** argv) {
         if (dwm2t::translated_romx_bank_count() != 255)
             throw std::runtime_error("The production player requires all 255 ROMX banks");
         std::cout << "DWM2T_PLAYER source=" << DWM2T_SOURCE_REVISION
-                  << " status=UNTESTED_CANDIDATE romx_banks=255\n";
+                  << " validation=external_package_record romx_banks=255\n";
         std::wcout << L"Save: " << save.native() << L'\n';
         if (!backup.empty()) std::wcout << L"Backup: " << backup.native() << L'\n';
         // Heap allocation leaves the Windows stack for ordinary rendering.

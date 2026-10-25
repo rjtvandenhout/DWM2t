@@ -39,6 +39,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python recomp/tools/test_m8_handoff.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_package.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build fresh complete-AOT diagnostic from an isolated source archive
         shell: pwsh
         run: |
@@ -202,6 +204,10 @@ jobs:
             --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" --source '${{ github.sha }}' `
             --reference recomp/tests/m8_player_late_journal.json --output "$env:RUNNER_TEMP/fresh-gui-spec.json"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/prepare_m8_player_validation.py `
+            --package "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED" --source '${{ github.sha }}' `
+            --reference recomp/tests/m8_player_ending_journal.json --output "$env:RUNNER_TEMP/fresh-ending-gui-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Test original later Journal Save and fresh production-process Continue
         shell: pwsh
         run: |
@@ -215,6 +221,11 @@ jobs:
             --seed "$env:RUNNER_TEMP/story/raygigas-birth/native/checkpoint.sav" `
             --manifest "$env:RUNNER_TEMP/fresh-gui-spec.json" --output "$env:RUNNER_TEMP/production-journal"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py `
+            --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --seed "$env:RUNNER_TEMP/story/ending-complete/native/checkpoint.sav" `
+            --manifest "$env:RUNNER_TEMP/fresh-ending-gui-spec.json" --output "$env:RUNNER_TEMP/production-ending-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Preserve production GUI evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -222,8 +233,63 @@ jobs:
           name: M8-fresh-production-journal-${{ github.run_id }}
           path: |
             ${{ runner.temp }}/production-journal/**
+            ${{ runner.temp }}/production-ending-journal/**
             ${{ runner.temp }}/player-package/**
             ${{ runner.temp }}/fresh-gui-spec.json
+            ${{ runner.temp }}/fresh-ending-gui-spec.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  verified-package:
+    if: ${{ inputs.preflight_only != true }}
+    needs: [diagnostic, production, production-journal, posix-persistence]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: M8-fresh-*-${{ github.run_id }}
+          path: ${{ runner.temp }}/proof
+      - name: Bind the unchanged tested player to all passing exact-source evidence
+        shell: pwsh
+        run: |
+          python recomp/tools/package_verified_m8.py --root "$env:RUNNER_TEMP/proof" `
+            --source '${{ github.sha }}' --run-id '${{ github.run_id }}' --output "$env:RUNNER_TEMP/verified-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/prepare_m8_player_validation.py `
+            --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" --source '${{ github.sha }}' `
+            --reference recomp/tests/m8_player_ending_journal.json --output "$env:RUNNER_TEMP/verified-ending-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test the final Play.cmd and original ending Journal on the verified package
+        shell: pwsh
+        run: |
+          python recomp/tools/test_player_package.py --via-cmd `
+            --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" --source '${{ github.sha }}' `
+            --seed "$env:RUNNER_TEMP/proof/M8-fresh-story-${{ github.run_id }}/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/verified-package-checks"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py `
+            --exe "$env:RUNNER_TEMP/verified-output/DWM2t-M8/DWM2tRecomp.exe" `
+            --seed "$env:RUNNER_TEMP/proof/M8-fresh-story-${{ github.run_id }}/ending-complete/native/checkpoint.sav" `
+            --manifest "$env:RUNNER_TEMP/verified-ending-spec.json" --output "$env:RUNNER_TEMP/verified-ending-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve the final package and its post-packaging checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-M8-VERIFIED-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/verified-output/*.zip
+            ${{ runner.temp }}/verified-output/verified-package.json
+            ${{ runner.temp }}/verified-package-checks/**
+            ${{ runner.temp }}/verified-ending-journal/**
+            ${{ runner.temp }}/verified-ending-spec.json
           if-no-files-found: warn
           retention-days: 30
 

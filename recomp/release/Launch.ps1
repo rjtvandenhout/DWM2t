@@ -35,9 +35,9 @@ try {
     if ($Profile -match '^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$') { throw 'Reserved Windows profile name.' }
     $manifestPath = Join-Path $PSScriptRoot 'manifest.json'
     $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-    if ($manifest.schema -ne 1 -or $manifest.status -ne 'UNTESTED_CANDIDATE' -or
+    if ($manifest.schema -ne 1 -or $manifest.status -notin @('UNTESTED_CANDIDATE', 'VERIFIED_M8') -or
         $manifest.source_commit -notmatch '^[0-9a-f]{40}$') {
-        throw 'Missing or unsupported package manifest. Use an intact candidate package.'
+        throw 'Missing or unsupported package manifest. Use an intact package.'
     }
     if (@($manifest.romx_banks).Count -ne 255) { throw 'This is not the complete-AOT package.' }
     for ($bank = 1; $bank -le 255; $bank++) {
@@ -45,6 +45,8 @@ try {
     }
     $requiredFiles = @('DWM2tRecomp.exe', 'Launch.ps1', 'Play.cmd', 'README.txt',
         'LICENSE-NOTICE.md', 'source-manifest.json')
+    $verified = $manifest.status -eq 'VERIFIED_M8'
+    if ($verified) { $requiredFiles += 'validation.json' }
     foreach ($name in $requiredFiles) {
         $property = $manifest.files.PSObject.Properties[$name]
         if ($null -eq $property -or $property.Value -notmatch '^[0-9a-f]{64}$') {
@@ -54,6 +56,25 @@ try {
         if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing package file: $name" }
         $actual = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash
         if ($actual -ne $property.Value) { throw "Package file changed: $name. Re-extract the package." }
+    }
+    if ($verified) {
+        $validation = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'validation.json') -Raw | ConvertFrom-Json
+        if ($manifest.full_game_verified -ne $true -or $manifest.m8_accepted -ne $true -or
+            $validation.schema -ne 1 -or $validation.status -ne 'passed' -or
+            $validation.full_game_verified -ne $true -or
+            $validation.source_commit -ne $manifest.source_commit -or
+            $validation.executable_sha256 -ne $manifest.files.'DWM2tRecomp.exe' -or
+            @($validation.evidence.PSObject.Properties).Count -eq 0) {
+            throw 'The M8 validation record does not match this player.'
+        }
+        foreach ($entry in $validation.evidence.PSObject.Properties) {
+            if ($entry.Name -notmatch '^[A-Za-z0-9_-]+\.(json|xml|txt)$' -or
+                $entry.Value -notmatch '^[0-9a-f]{64}$') { throw 'Unsupported evidence entry.' }
+            $path = Join-Path (Join-Path $PSScriptRoot 'validation') $entry.Name
+            if ((Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash -ne $entry.Value) {
+                throw "Validation evidence changed: $($entry.Name)"
+            }
+        }
     }
     if (-not $DataRoot) {
         if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable. Specify -DataRoot explicitly.' }
@@ -71,7 +92,8 @@ try {
     $exe = Join-Path $PSScriptRoot 'DWM2tRecomp.exe'
     $save = Join-Path $saveDirectory "$Profile.sav"
     $backup = $null
-    Write-Host "DWM2t M8 candidate $($manifest.source_commit.Substring(0,12)) - TESTING PENDING"
+    if ($verified) { Write-Host "DWM2t M8 validated $($manifest.source_commit.Substring(0,12))" }
+    else { Write-Host "DWM2t M8 candidate $($manifest.source_commit.Substring(0,12)) - TESTING PENDING" }
     Write-Host 'Use the original Journal in game. Closing the window is not an in-game Save.'
 
     if ($ListAudioDevices) {

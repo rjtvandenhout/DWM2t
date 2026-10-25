@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d",
+  "executable_source": "697647033b4ce6b00dd8e11759cb85e1ae469a65",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "ending-complete",
+      "frames": 210446,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/m8-review/artifacts/player/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/m8-review/ending-complete-check-02/ending-complete/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ending_complete_p1.txt",
+        "Z:/workspace/scratch/m8-review/ending-complete-check-02/ending-complete/native"
+      ],
+      "route_sha256": "d1f7d17480b174372b52b46437e0673396f66853af199d15f68126f4f9f5973b",
+      "native_returncode": 0,
+      "status": "passed",
+      "save_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989,
+      "ending_completed": true,
+      "completion_witnesses": {
+        "darck-defeated": {
+          "frame": 139859,
+          "screen": "7e5387112a69c50b",
+          "source_bmp": "m8_4520.bmp",
+          "source_bmp_sha256": "bb6c13fb567a295ba21761660c78b7e26af98f52405ca5f8e41081e57eb81261"
+        },
+        "credits-start": {
+          "frame": 183818,
+          "screen": "704626832ab56697",
+          "source_bmp": "m8_5188.bmp",
+          "source_bmp_sha256": "fca00eb259558e436b04d64b6dde9d45cae42fc61f6b18edeb76c75bb6596bfd"
+        },
+        "credits-final": {
+          "frame": 200072,
+          "screen": "90f792fcab854f13",
+          "source_bmp": "m8_5296.bmp",
+          "source_bmp_sha256": "e764ba586bae46f93eba0a12367275460c820684c75190effce5bcc58c2bfd4d"
+        },
+        "the-end": {
+          "frame": 204957,
+          "screen": "f4ab679aa287713",
+          "source_bmp": "m8_5386.bmp",
+          "source_bmp_sha256": "4a832bb53120c687649d1af5660b85be5756f5814263e3392014f45be6267785"
+        }
+      }
+    }
+  ],
+  "executable_bytes": 725318144,
+  "ending_completed": true
+}

@@ -52,14 +52,16 @@ def main() -> int:
     env = dict(os.environ, LOCALAPPDATA=str(out / 'user data-\u00e9-\u2603'))
     try:
         for flag, required in [('--help', ['PLAN > Journal', '--profile']),
-                               ('--version', ['romx_banks=255', 'full_game_verified=false',
+                               ('--version', ['romx_banks=255',
                                               'source=' + args.source])]:
             result = subprocess.run([str(exe), flag], env=env, cwd=out,
                                     capture_output=True, text=True, encoding='utf-8',
                                     errors='replace', timeout=30, check=False)
             (out / (flag[2:] + '.stdout.txt')).write_text(result.stdout, encoding='utf-8')
             (out / (flag[2:] + '.stderr.txt')).write_text(result.stderr, encoding='utf-8')
-            require(result.returncode == 0 and all(x in result.stdout for x in required), flag)
+            require(result.returncode == 0 and all(x in result.stdout for x in required) and
+                    (flag != '--version' or any(marker in result.stdout for marker in
+                     ('full_game_verified=false', 'validation=external_package_record'))), flag)
         require(not Path(env['LOCALAPPDATA']).exists(), 'informational_commands_do_not_create_profile')
 
         user = ctypes.WinDLL('user32', use_last_error=True)

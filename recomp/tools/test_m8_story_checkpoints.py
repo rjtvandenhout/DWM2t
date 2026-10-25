@@ -18,6 +18,29 @@ from test_m8_farm_dancer import EXE_SHA, check_file, digest
 from m8_build_identity import load_identity
 
 
+def verify_ending_witnesses(route: Path, expected: dict) -> None:
+    if expected.get('ending_complete') is not True:
+        return
+    witnesses = expected.get('completion_witnesses', {})
+    if set(witnesses) != {'darck-defeated', 'credits-start', 'credits-final', 'the-end'} or 0x25 not in expected['set_flags']:
+        raise ValueError('Ending checkpoint lacks the complete original ending witnesses')
+    frames, screens = 0, {}
+    for line in route.read_text(encoding='utf-8').splitlines():
+        parts = line.split()
+        if not parts:
+            continue
+        if parts[0] in ('A', 'B', 'U', 'D', 'L', 'R', 'Start', 'Select', '-'):
+            frames += int(parts[1])+int(parts[2])
+        elif parts[0] == 'expect_screen':
+            screens.setdefault(frames, set()).add(int(parts[1], 16))
+    ordered = [witnesses[key] for key in ('darck-defeated', 'credits-start', 'credits-final', 'the-end')]
+    if (not all(0 < item['frame'] < expected['frames'] and
+                int(item['screen'], 16) in screens.get(item['frame'], set()) for item in ordered)
+            or [item['frame'] for item in ordered] != sorted(item['frame'] for item in ordered)
+            or frames != expected['frames']):
+        raise ValueError('Ending witnesses do not match the tested original P1 route')
+
+
 def verify_creatures(native: Path, seed: Path, expected: dict) -> None:
     saved = (native / 'checkpoint.sav').read_bytes()
     fresh = (native / 'fresh_continue/m8_0.sram').read_bytes()
@@ -156,6 +179,7 @@ def main() -> int:
                 raise ValueError('Checkpoint names must be unique directory names')
             route = (manifest.parent / expected['route']).resolve(strict=True)
             check_file(route, expected['route_sha256'])
+            verify_ending_witnesses(route, expected)
             immutable.append((route, expected['route_sha256']))
             seed = completed[expected['seed_stage']] if 'seed_stage' in expected else initial
             stage = out / name
@@ -197,10 +221,14 @@ def main() -> int:
             if 'offspring' in expected:
                 entry['offspring'] = expected['offspring']
                 entry['retained_records'] = expected['retained_records']
+            if expected.get('ending_complete') is True:
+                entry.update(ending_completed=True,
+                             completion_witnesses=expected['completion_witnesses'])
         for path, expected_hash in immutable:
             check_file(path, expected_hash)
         identity.verify(exe)
         report['status'] = 'passed'
+        report['ending_completed'] = any(stage.get('ending_completed') is True for stage in report['stages'])
         report['sea_world_completed'] = any(
             {0x22, 0x7F}.issubset(stage.get('set_flags', [])) for stage in data['stages'])
         report['ice_world_completed'] = any(

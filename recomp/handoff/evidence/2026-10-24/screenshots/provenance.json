@@ -1152,5 +1152,82 @@
     "source_bmp_sha256": "0c46d8650208d0674ad92dcebe7f95c46a610331e3e99f9e234d774c2175ae3a",
     "png_sha256": "1bbada52386a26f2aa3653335fd35d202f79779f29e3fe2c257efaf02fb910e2",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "darck-defeated.png",
+    "caption": "Darck is defeated in the fourth original attempt. Garon survives at 91 HP; Slash and Derzo have fainted.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_4520.bmp",
+    "frame": 139859,
+    "native_state": "M8_STATE frame=139859 mode=4:0 world=163 region=0,0 pos=64,64 party=3 selector=0x1 sram=0x56012d346633c3f0 screen=0x7e5387112a69c50b image=m8_4520.bmp",
+    "source_bmp_sha256": "bb6c13fb567a295ba21761660c78b7e26af98f52405ca5f8e41081e57eb81261",
+    "png_sha256": "6798ad1ebc13dc6af283359ce1720a08c63217cb4656a009b021e8100dec4959",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "magicplug-recovered.png",
+    "caption": "Warubou examines the original MagicPlug after Darck's defeat and restores the party.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_4647.bmp",
+    "frame": 144430,
+    "native_state": "M8_STATE frame=144430 mode=1:1 world=5 region=1,0 pos=80,48 party=1 selector=0x1 sram=0xb2112e0b25e06e14 screen=0xbe7e3e70403592b8 image=m8_4647.bmp",
+    "source_bmp_sha256": "c1ac5a3788984ba59f58e9bb4254a2c37f9b5d8da1c4c675a20fe103a349bd23",
+    "png_sha256": "ac1a675e1328cb6479aab0b6e51e1dadb0fb55cc1e0f9d7ef82e6460ed0ef444",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "magicplug-fits.png",
+    "caption": "The original MagicPlug fits the Navel during the ending sequence.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_4661.bmp",
+    "frame": 144962,
+    "native_state": "M8_STATE frame=144962 mode=1:1 world=5 region=1,0 pos=80,48 party=1 selector=0x1 sram=0xb2112e0b25e06e14 screen=0x6544c5bf5c7591eb image=m8_4661.bmp",
+    "source_bmp_sha256": "e401013ebf5ccbcd322a047b7fe68a669b4d9204cf6aa633afb1967f10d9eee1",
+    "png_sha256": "1d8d632fb12393efda6d0ef95b8c7ce200c0bf35ae1a98488611e4e4382b5fba",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "greatlog-celebration.png",
+    "caption": "The original GreatLog court celebrates Cobi after the MagicPlug ending.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_4864.bmp",
+    "frame": 161348,
+    "native_state": "M8_STATE frame=161348 mode=1:0 world=25 region=0,0 pos=64,64 party=3 selector=0x1 sram=0xb2112e0b25e06e14 screen=0x3d5fd4fb7cb5d7c5 image=m8_4864.bmp",
+    "source_bmp_sha256": "c89894283d0cc8f84fc393c1cbafa2fb71c9e7f24966ef54ee350e1d52e68bc4",
+    "png_sha256": "494875d89c8ea137a814d4d8d9c10e01abcdb622c2e2d90e3f867e448e58102f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "ending-credits.png",
+    "caption": "The original credits begin after Tara and Warubou's farewell. All subsequent credit frames are retained without button presses.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_5188.bmp",
+    "frame": 183818,
+    "native_state": "M8_STATE frame=183818 mode=0:8 world=26 region=1,0 pos=80,64 party=3 selector=0x9e sram=0xb2112e0b25e06e14 screen=0x704626832ab56697 image=m8_5188.bmp",
+    "source_bmp_sha256": "fca00eb259558e436b04d64b6dde9d45cae42fc61f6b18edeb76c75bb6596bfd",
+    "png_sha256": "978e668c5f70c9164fa6dab042bf2434163ed0429d8b1dbd737f265be9810839",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "credits-final-page.png",
+    "caption": "The final original copyright page before the game returns to GreatLog; the complete credits have played without skip input.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_5296.bmp",
+    "frame": 200072,
+    "native_state": "M8_STATE frame=200072 mode=0:8 world=26 region=1,0 pos=80,64 party=3 selector=0x9e sram=0xb2112e0b25e06e14 screen=0x90f792fcab854f13 image=m8_5296.bmp",
+    "source_bmp_sha256": "e764ba586bae46f93eba0a12367275460c820684c75190effce5bcc58c2bfd4d",
+    "png_sha256": "48f2b100430c8709e454a02ec20d38f09b4af22a160a3aef60dc45b80b335b42",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "the-end.png",
+    "caption": "The original THE END scene follows the complete credits and the final pie conversation. The original ending Save and fresh Continue follow.",
+    "source_session": "limbo-quest-56",
+    "source_bmp": "m8_5386.bmp",
+    "frame": 204957,
+    "native_state": "M8_STATE frame=204957 mode=1:1 world=5 region=1,0 pos=224,48 party=3 selector=0x9e sram=0xb2112e0b25e06e14 screen=0xf4ab679aa287713 image=m8_5386.bmp",
+    "source_bmp_sha256": "4a832bb53120c687649d1af5660b85be5756f5814263e3392014f45be6267785",
+    "png_sha256": "7f7f902df6e1b3642f78f17e30cf5de0748e5a6b2a9fb228973b61f160c8c4f5",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]

@@ -52,15 +52,21 @@ class Processes:
                 raise RuntimeError('Cannot inspect owned native child processes')
             entry = self.Entry()
             entry.size = c.sizeof(entry)
-            found = []
+            entries = []
             try:
                 more = self.kernel.Process32FirstW(snapshot, c.byref(entry))
                 while more:
-                    if entry.parent == launcher.pid and entry.name.lower() == 'dwm2trecomp.exe':
-                        found.append(entry.pid)
+                    entries.append((entry.pid, entry.parent, entry.name.lower()))
                     more = self.kernel.Process32NextW(snapshot, c.byref(entry))
             finally:
                 self.kernel.CloseHandle(snapshot)
+            owned = {launcher.pid}
+            for _ in range(len(entries)):
+                children = {pid for pid, parent, _ in entries if parent in owned}
+                if children.issubset(owned):
+                    break
+                owned.update(children)
+            found = [pid for pid, _, name in entries if pid in owned and name == 'dwm2trecomp.exe']
             if len(found) == 1:
                 return Child(self.kernel, found[0])
             if len(found) > 1:
@@ -103,6 +109,7 @@ def main() -> int:
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--source', required=True)
     parser.add_argument('--environment', choices=('Windows', 'Wine on Linux'), default='Windows')
+    parser.add_argument('--via-cmd', action='store_true', help='Exercise the actual Play.cmd wrapper, including PowerShell module setup')
     args = parser.parse_args()
     if os.name != 'nt':
         print('PLAYER_PACKAGE_UNAVAILABLE requires Windows APIs and PowerShell')
@@ -110,7 +117,7 @@ def main() -> int:
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     report = dict(status='running', platform=args.environment, source=args.source,
-                  full_game_verified=False, checks=[])
+                  full_game_verified=False, checks=[], via_cmd=args.via_cmd)
     launchers, children = [], []
     api, processes = Window(), Processes()
 
@@ -125,20 +132,22 @@ def main() -> int:
         reference = Path(__file__).resolve().parents[1]/'tests/m8_player_late_journal.json'
         spec = prepare(package, args.source, reference, out/'package-gui-spec.json')
         require(seed.stat().st_size == 32768 and digest(seed) == spec['seed_sha256'], 'authentic_later_journal_seed')
-        immutable = {path: digest(path) for path in package.iterdir() if path.is_file()}
+        immutable = {path: digest(path) for path in package.rglob('*') if path.is_file()}
         powershell = shutil.which('powershell.exe')
         require(bool(powershell), 'windows_powershell_available')
         # A PowerShell 7 Actions parent exports its own module search path.
         # Let Windows PowerShell initialize its standard modules as it does
         # when Play.cmd is started from Explorer or a normal command prompt.
-        launcher_env = {key: value for key, value in os.environ.items()
+        launcher_env = dict(os.environ) if args.via_cmd else {key: value for key, value in os.environ.items()
                         if key.upper() != 'PSMODULEPATH'}
         report['powershell'] = powershell
         data = out/'profiles with spaces-é-☃'
 
         def command(folder, profile, imported=True):
-            result = [powershell, '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass',
-                      '-File', str(folder/'Launch.ps1'), '-Profile', profile, '-DataRoot', str(data), '-Volume', '0']
+            result = ([os.environ['COMSPEC'], '/d', '/c', 'call', str(folder/'Play.cmd')]
+                      if args.via_cmd else [powershell, '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass',
+                      '-File', str(folder/'Launch.ps1')])
+            result += ['-Profile', profile, '-DataRoot', str(data), '-Volume', '0']
             if imported:
                 result += ['-ImportSave', str(seed)]
             return result
@@ -146,7 +155,7 @@ def main() -> int:
         def launch(profile):
             with (out/(profile+'-launcher.log')).open('wb') as log:
                 launcher = subprocess.Popen(command(package, profile), stdout=log, stderr=subprocess.STDOUT,
-                                            env=launcher_env)
+                                            env=launcher_env, stdin=subprocess.DEVNULL)
             launchers.append(launcher)
             child = processes.child(launcher)
             children.append(child)
@@ -217,7 +226,7 @@ def main() -> int:
             require(len(backups) >= 2 and all(digest(path) == spec['seed_sha256'] for path in backups),
                     profile+'_launcher_and_native_prelaunch_backups_are_recoverable')
         old_hash = digest(saved)
-        result = subprocess.run(command(package, 'first'), capture_output=True, timeout=30, env=launcher_env)
+        result = subprocess.run(command(package, 'first'), capture_output=True, timeout=30, env=launcher_env, stdin=subprocess.DEVNULL)
         (out/'refuse-overwrite.log').write_bytes(result.stdout+result.stderr)
         require(result.returncode != 0 and digest(saved) == old_hash, 'import_refuses_existing_profile_without_replacement')
         bad = out/'checksum mismatch package'
@@ -225,11 +234,13 @@ def main() -> int:
         for path in package.iterdir():
             if path.name == 'DWM2tRecomp.exe':
                 os.link(path, bad/path.name)
+            elif path.is_dir():
+                shutil.copytree(path, bad/path.name)
             else:
                 shutil.copyfile(path, bad/path.name)
         with (bad/'README.txt').open('ab') as stream:
             stream.write(b'\nIntentional checksum rejection fixture.\n')
-        result = subprocess.run(command(bad, 'checksum'), capture_output=True, timeout=30, env=launcher_env)
+        result = subprocess.run(command(bad, 'checksum'), capture_output=True, timeout=30, env=launcher_env, stdin=subprocess.DEVNULL)
         (out/'checksum-mismatch.log').write_bytes(result.stdout+result.stderr)
         require(result.returncode != 0 and not (data/'saves/checksum.sav').exists(), 'changed_package_is_refused_before_import')
         require(digest(seed) == spec['seed_sha256'] and all(digest(path) == sha for path, sha in immutable.items()),

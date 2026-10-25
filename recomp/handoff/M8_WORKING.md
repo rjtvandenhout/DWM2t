@@ -1,5 +1,18 @@
 # M8 working record (not an acceptance/completion record)
 
+Latest state (2026-10-25): the original main story through Darck, MagicPlug,
+complete credits and THE END is finished. Checkpoint 38 passes independent Wine
+replay and fresh Continue from the genuine ending Journal, SHA256
+`0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d`.
+The historical production GUI also passes original ending Journal and a
+fresh-process reload under Wine. Source discovery is `limbo-quest-56`, now
+normally closed; all controller frames are in `m8_ending_complete_p1.txt`.
+The final record is world6,0,0,96,96, Garon/Slash/Derzo40/37/40, all fully healed,
+17 owned monsters, 11G and original completion flag 0x25. No RAM dump is a seed.
+Native Windows story coverage remains 30 checkpoints. Fresh exact-source builds,
+all retained/new Windows gates and the final verified package remain pending.
+Do not create M8_RESULT or move/create the M8 restore before those pass.
+
 Current continuation (2026-10-23): the user requested M7 review and M8 work
 for the whole game. The historical stop/continue choice below is answered.
 The continuing report with original screenshots is

@@ -92,6 +92,7 @@ class PackageIdentityContracts(unittest.TestCase):
             (self.package/name).write_bytes(b'Never executed contract fixture: '+name.encode())
         metadata = dict(schema=1, status='UNTESTED_CANDIDATE', source_commit='1'*40,
                         rom_sha256=ROM_SHA, fixed_bank=0, romx_banks=list(range(1, 256)),
+                        full_game_verified=False, m8_accepted=False,
                         files={name: digest(self.package/name) for name in names})
         (self.package/'manifest.json').write_text(json.dumps(metadata), encoding='utf-8')
         for name in ('field', 'menu'):
