@@ -1,0 +1,187 @@
+{
+  "field": "Original owner-name terminator padding, not nickname/stat data",
+  "source_citations": [
+    {
+      "bank": 29,
+      "address": "0x755A",
+      "rom_offset": "0x07755A",
+      "source": "src/banks/bank_029.asm",
+      "line": 856
+    },
+    {
+      "bank": 29,
+      "address": "0x7991",
+      "rom_offset": "0x077991",
+      "source": "src/banks/bank_029.asm",
+      "line": 924
+    },
+    {
+      "bank": 29,
+      "address": "0x7A90",
+      "rom_offset": "0x077A90",
+      "source": "src/banks/bank_029.asm",
+      "line": 940
+    },
+    {
+      "bank": 29,
+      "address": "0x75C7",
+      "rom_offset": "0x0775C7",
+      "source": "src/banks/bank_029.asm",
+      "line": 863
+    }
+  ],
+  "source_logic": "29:7A90 prefills C8CF..C8D9 eleven bytes F0, reconstructs up to5 base glyphs with optional marks.29:755A calls owner-name decoder7991;755F adds0F to monster SRAM base;7569 copies10 bytes via75C7. Original backup restoration therefore canonicalizes bytes after owner-name F0.",
+  "stages": {
+    "newlywed_gift": {
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/newlywed_gift.sav",
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "offset_hex": "0x15",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "offset_hex": "0x16",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "offset_hex": "0x17",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "offset_hex": "0x18",
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "owner_name_before_hex": "0c 32 25 2c 0a f0 00 00 00 00",
+      "owner_name_after_hex": "0c 32 25 2c 0a f0 f0 f0 f0 f0"
+    },
+    "certified_egg": {
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/certified_egg.sav",
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "offset_hex": "0x15",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "offset_hex": "0x16",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "offset_hex": "0x17",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "offset_hex": "0x18",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "offset_hex": "0x15",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "offset_hex": "0x16",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "offset_hex": "0x17",
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "offset_hex": "0x18",
+          "before": 0,
+          "after": 240
+        }
+      ],
+      "owner_name_before_hex": "0c 32 25 2c 0a f0 00 00 00 00",
+      "owner_name_after_hex": "0c 32 25 2c 0a f0 f0 f0 f0 f0"
+    },
+    "postgame_quest_gates": {
+      "journal": "/workspace/scratch/m8-postgame/quest-probe-02/postgame_quest_gates.sav",
+      "continue_byte_transitions": [
+        {
+          "record": 17,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 17,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 21,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 22,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 23,
+          "before": 0,
+          "after": 240
+        },
+        {
+          "record": 18,
+          "offset": 24,
+          "before": 0,
+          "after": 240
+        }
+      ]
+    }
+  }
+}

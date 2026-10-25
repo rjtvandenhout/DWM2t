@@ -1,0 +1,3 @@
+magic_key_prefix_thresholds.csv text eol=lf
+magic_key_suffix_thresholds.csv text eol=lf
+items_data.csv text eol=lf

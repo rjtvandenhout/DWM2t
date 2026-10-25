@@ -1,0 +1,1577 @@
+{
+  "schema": "m8-postgame-original-source-audit-v1",
+  "scope": "Static inventory, not postgame acceptance or played coverage",
+  "repository_head": "207a355ff4c9c8aed42f18fffc4de4512e3380e9",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "original_rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "baseline": {
+    "journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+    "journal_bytes": 32768,
+    "observation_path": "/workspace/scratch/m8-review/final-story-3d/extracted/ending-complete/native/fresh_continue/m8_0.ram",
+    "observation_sha256": "a77c28644fef4de54a23bb54a06e151d7cea264b343a55d65542460a2f788598",
+    "world": 6,
+    "region": [
+      0,
+      0
+    ],
+    "position": [
+      96,
+      96
+    ],
+    "facing": "Down",
+    "ending_flag": "0x25",
+    "owned": 17,
+    "gold": 11,
+    "arena_progress": 2,
+    "catalogue_count": 22,
+    "catalogue_species": [
+      {
+        "core_id": 2,
+        "name": "SpotSlime"
+      },
+      {
+        "core_id": 3,
+        "name": "WingSlime"
+      },
+      {
+        "core_id": 8,
+        "name": "BoxSlime"
+      },
+      {
+        "core_id": 10,
+        "name": "Slime"
+      },
+      {
+        "core_id": 11,
+        "name": "Healer"
+      },
+      {
+        "core_id": 12,
+        "name": "FangSlime"
+      },
+      {
+        "core_id": 49,
+        "name": "Chamelgon"
+      },
+      {
+        "core_id": 80,
+        "name": "Antbear"
+      },
+      {
+        "core_id": 90,
+        "name": "MadGopher"
+      },
+      {
+        "core_id": 115,
+        "name": "Dracky"
+      },
+      {
+        "core_id": 121,
+        "name": "MadCondor"
+      },
+      {
+        "core_id": 145,
+        "name": "CactiBall"
+      },
+      {
+        "core_id": 166,
+        "name": "Eggplaton"
+      },
+      {
+        "core_id": 167,
+        "name": "FooHero"
+      },
+      {
+        "core_id": 185,
+        "name": "ArmyAnt"
+      },
+      {
+        "core_id": 234,
+        "name": "Gigantes"
+      },
+      {
+        "core_id": 246,
+        "name": "Spooky"
+      },
+      {
+        "core_id": 295,
+        "name": "CurseLamp"
+      },
+      {
+        "core_id": 319,
+        "name": "RayGigas"
+      },
+      {
+        "core_id": 322,
+        "name": "Merman"
+      },
+      {
+        "core_id": 323,
+        "name": "Octokid"
+      },
+      {
+        "core_id": 335,
+        "name": "HoodSquid"
+      }
+    ],
+    "catalogue_basis": "Original22:5A7E tests C7CC bit indexed by core ID;133:5B04 sums valid species by original22:5AC0; not current roster count.",
+    "clear_postgame_flags": [
+      "0x26",
+      "0x27",
+      "0x28",
+      "0x29",
+      "0x2A",
+      "0x2B",
+      "0x2C",
+      "0x2D",
+      "0x2E",
+      "0x2F",
+      "0x30",
+      "0x31",
+      "0x32",
+      "0x33",
+      "0x34",
+      "0x35",
+      "0x36",
+      "0x37",
+      "0x38",
+      "0x39",
+      "0x3A",
+      "0x3B",
+      "0x3C",
+      "0x3D",
+      "0x3E",
+      "0xC8",
+      "0xCD",
+      "0x206",
+      "0x207"
+    ]
+  },
+  "finite_objectives": [
+    {
+      "id": "newlyweds",
+      "title": "Newlyweds shared original egg",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending": "0x25 set",
+        "claimed": "0xCD clear",
+        "farm": "free slot"
+      },
+      "reward": "One original egg sent to farm; sets0xCD; both room NPCs share this claim",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x6AD1",
+          "rom_offset": "0x04EAD1",
+          "source": "src/banks/bank_019.asm",
+          "line": 688
+        },
+        {
+          "bank": 19,
+          "address": "0x6AEF",
+          "rom_offset": "0x04EAEF",
+          "source": "src/banks/bank_019.asm",
+          "line": 689
+        },
+        {
+          "bank": 105,
+          "address": "0x7071",
+          "rom_offset": "0x1A7071",
+          "source": "src/banks/bank_105.asm",
+          "line": 778
+        },
+        {
+          "bank": 105,
+          "address": "0x709E",
+          "rom_offset": "0x1A709E",
+          "source": "src/banks/bank_105.asm",
+          "line": 780
+        },
+        {
+          "bank": 135,
+          "address": "0x5DBA",
+          "rom_offset": "0x21DDBA",
+          "source": "src/banks/bank_135.asm",
+          "line": 478
+        },
+        {
+          "bank": 19,
+          "address": "0x5B34",
+          "rom_offset": "0x04DB34",
+          "source": "src/banks/bank_019.asm",
+          "line": 438
+        },
+        {
+          "bank": 133,
+          "address": "0x4A6D",
+          "rom_offset": "0x214A6D",
+          "source": "src/banks/bank_133.asm",
+          "line": 169
+        }
+      ],
+      "npc": {
+        "selector": "0x42",
+        "rooms": [
+          {
+            "world": 15,
+            "position": [
+              32,
+              64
+            ]
+          },
+          {
+            "world": 16,
+            "position": [
+              96,
+              64
+            ]
+          }
+        ]
+      },
+      "route": {
+        "entry": "GreatLog1(1,2)32,48\u2192Residences12(1,0)48,128. Walk to12(0,0)32,16 or112,16; original on-enter selector01 sends both post-ending doors toGuy15 atmatchingx,y128.",
+        "exit": "Guy15 bottom exits return12 atx32 or112,y24.",
+        "version_story_state": "Right door only leadsLady16 beforeending25; post-ending both enter15."
+      }
+    },
+    {
+      "id": "granddaughter",
+      "title": "Granddaughter Arena duel",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending": "0x25 set",
+        "preending_spotslime": "not required by postending branch"
+      },
+      "reward": "Repeatable original duel; win/loss dialogue; no persistent victory flag found",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x68E2",
+          "rom_offset": "0x04E8E2",
+          "source": "src/banks/bank_019.asm",
+          "line": 657
+        },
+        {
+          "bank": 19,
+          "address": "0x6940",
+          "rom_offset": "0x04E940",
+          "source": "src/banks/bank_019.asm",
+          "line": 663
+        },
+        {
+          "bank": 16,
+          "address": "0x5433",
+          "rom_offset": "0x041433",
+          "source": "src/banks/bank_016.asm",
+          "line": 326
+        },
+        {
+          "bank": 133,
+          "address": "0x49FA",
+          "rom_offset": "0x2149FA",
+          "source": "src/banks/bank_133.asm",
+          "line": 162
+        }
+      ],
+      "npc": {
+        "world": 18,
+        "region": [
+          0,
+          0
+        ],
+        "position": [
+          64,
+          64
+        ],
+        "selector": "0x27"
+      },
+      "route": "GreatLog1(1,2)32,48 \u2192 Residences12(1,0)48,128; proceed to12(0,0)112,64 FD\u2192GirlRoom18(0,0)112,128.",
+      "battle_id": 21,
+      "opponents": [
+        "Drygon",
+        "Butch",
+        "Pumpoise"
+      ]
+    },
+    {
+      "id": "evaluator",
+      "title": "Evaluator post-ending introduction",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending": "0x25 set",
+        "intro": "0x28 clear"
+      },
+      "reward": "Sets0x28 then normal original egg service",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x6E71",
+          "rom_offset": "0x04EE71",
+          "source": "src/banks/bank_019.asm",
+          "line": 746
+        },
+        {
+          "bank": 19,
+          "address": "0x6E94",
+          "rom_offset": "0x04EE94",
+          "source": "src/banks/bank_019.asm",
+          "line": 748
+        },
+        {
+          "bank": 16,
+          "address": "0x55A9",
+          "rom_offset": "0x0415A9",
+          "source": "src/banks/bank_016.asm",
+          "line": 349
+        }
+      ],
+      "npc": {
+        "world": 10,
+        "selector": "0x69",
+        "position": [
+          80,
+          48
+        ]
+      },
+      "route": "GreatLog1(2,1)80,80 FD\u2192Evaluator10"
+    },
+    {
+      "id": "certified-egg",
+      "title": "Certified egg gift",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending": "0x25 set",
+        "claimed": "0x29 clear",
+        "farm": "free slot",
+        "choice": "accept original yes/no"
+      },
+      "reward": "Original certified egg to farm; sets0x29",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x78DE",
+          "rom_offset": "0x04F8DE",
+          "source": "src/banks/bank_019.asm",
+          "line": 912
+        },
+        {
+          "bank": 16,
+          "address": "0x580B",
+          "rom_offset": "0x04180B",
+          "source": "src/banks/bank_016.asm",
+          "line": 387
+        }
+      ],
+      "npc": {
+        "world": 10,
+        "selector": "0xB7",
+        "position": [
+          16,
+          96
+        ]
+      }
+    },
+    {
+      "id": "arena",
+      "title": "Remaining grown-up Arena B/A/S and subsequent tiers",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "baseline_class": 2,
+        "sequential": "B then A then S",
+        "fees_gold": {
+          "C": 100,
+          "B": 500,
+          "A": 1000,
+          "S": 5000
+        }
+      },
+      "reward": "Normal wins advance C82C; value5 enables original stronger-master class selection; original repeat tiers award MagicKeys/items",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x6D68",
+          "rom_offset": "0x04ED68",
+          "source": "src/banks/bank_019.asm",
+          "line": 729
+        },
+        {
+          "bank": 19,
+          "address": "0x7708",
+          "rom_offset": "0x04F708",
+          "source": "src/banks/bank_019.asm",
+          "line": 883
+        },
+        {
+          "bank": 12,
+          "address": "0x697E",
+          "rom_offset": "0x03297E",
+          "source": "src/banks/bank_012.asm",
+          "line": 666
+        },
+        {
+          "bank": 12,
+          "address": "0x7871",
+          "rom_offset": "0x033871",
+          "source": "src/banks/bank_012.asm",
+          "line": 906
+        },
+        {
+          "bank": 12,
+          "address": "0x6A8B",
+          "rom_offset": "0x032A8B",
+          "source": "src/banks/bank_012.asm",
+          "line": 683
+        }
+      ],
+      "npc": {
+        "world": 4,
+        "region": [
+          1,
+          0
+        ],
+        "interact_position": [
+          64,
+          48
+        ],
+        "facing": "Up",
+        "event_selector": "0x65",
+        "adjacent_pro_counter_selector": "0x9D"
+      },
+      "route": "GreatLog1(1,2)32,48\u2192Residences12(1,0);12(1,0)64,64\u2192Reception4(2,0). Admission is65 at4(1,0)64,48 Up. Selector61 in Arena24 is only advice.",
+      "coverage": "Finite class tiers can be checked once; repeatable prizes and every generated reward are not finite exhaustive coverage."
+    },
+    {
+      "id": "npc-breeding",
+      "title": "Five NPC parent offers",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "all": "original breeding requirements and suitable real parent",
+        "FunkyBird": "flag32 clear",
+        "Copycat": "catalogue100 and33 clear",
+        "Andreal": "catalogue150 and34 clear",
+        "Skeletor": "35 clear",
+        "StoneMan": "catalogue100 and36 clear"
+      },
+      "reward": "Original breed result; one-time per NPC offer flags32..36; parent is consumed by original rules",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x7E05",
+          "rom_offset": "0x04FE05",
+          "source": "src/banks/bank_019.asm",
+          "line": 995
+        },
+        {
+          "bank": 19,
+          "address": "0x7E9F",
+          "rom_offset": "0x04FE9F",
+          "source": "src/banks/bank_019.asm",
+          "line": 1004
+        },
+        {
+          "bank": 16,
+          "address": "0x581C",
+          "rom_offset": "0x04181C",
+          "source": "src/banks/bank_016.asm",
+          "line": 388
+        },
+        {
+          "bank": 16,
+          "address": "0x585C",
+          "rom_offset": "0x04185C",
+          "source": "src/banks/bank_016.asm",
+          "line": 392
+        }
+      ],
+      "npc": {
+        "initial": [
+          {
+            "world": 23,
+            "position": [
+              64,
+              48
+            ],
+            "selector": "0xF0",
+            "offer": "FunkyBird"
+          },
+          {
+            "world": 4,
+            "region": [
+              2,
+              0
+            ],
+            "position": [
+              80,
+              32
+            ],
+            "selector": "0xF1",
+            "offer": "Skeletor"
+          }
+        ],
+        "branch_context": "CB81 is NPC sprite/context, not world ID; F0 context13 Copycat/17 Andreal; F1 context14 StoneMan"
+      },
+      "baseline_available": [
+        "FunkyBird proposal",
+        "Skeletor proposal"
+      ]
+    },
+    {
+      "id": "kameha-elf",
+      "title": "Kameha first challenge / ElfKey",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue": 50,
+        "won": "0x39",
+        "claimed": "0x3A"
+      },
+      "reward": "Battle47 victory sets39; original key07 ElfKey sets3A when successfully claimed",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x7598",
+          "rom_offset": "0x04F598",
+          "source": "src/banks/bank_019.asm",
+          "line": 860
+        },
+        {
+          "bank": 19,
+          "address": "0x75BE",
+          "rom_offset": "0x04F5BE",
+          "source": "src/banks/bank_019.asm",
+          "line": 862
+        },
+        {
+          "bank": 133,
+          "address": "0x494D",
+          "rom_offset": "0x21494D",
+          "source": "src/banks/bank_133.asm",
+          "line": 151
+        },
+        {
+          "bank": 133,
+          "address": "0x49CE",
+          "rom_offset": "0x2149CE",
+          "source": "src/banks/bank_133.asm",
+          "line": 159
+        }
+      ],
+      "npc": {
+        "world": 25,
+        "selector": "0x99",
+        "staging_position": [
+          208,
+          48
+        ],
+        "entry_event_selector": "0xF3",
+        "entry_event_region": [
+          0,
+          2
+        ],
+        "entry_event_position": [
+          64,
+          0
+        ]
+      },
+      "route": "Castle approach original entry scene; x208 is staged NPC data and is not a proven walk target."
+    },
+    {
+      "id": "kameha-traveler",
+      "title": "Kameha second challenge / TravelerKey",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue": 150,
+        "previous": "0x3A claimed",
+        "won": "0x3B",
+        "claimed": "0x3C"
+      },
+      "reward": "Battle48 victory sets3B; Cobi handler grants09 TravelerKey, then3C; key-full retains unclaimed prize",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x7636",
+          "rom_offset": "0x04F636",
+          "source": "src/banks/bank_019.asm",
+          "line": 870
+        },
+        {
+          "bank": 133,
+          "address": "0x48C8",
+          "rom_offset": "0x2148C8",
+          "source": "src/banks/bank_133.asm",
+          "line": 143
+        },
+        {
+          "bank": 133,
+          "address": "0x4921",
+          "rom_offset": "0x214921",
+          "source": "src/banks/bank_133.asm",
+          "line": 149
+        }
+      ],
+      "version": "Only two rounds in this Cobi handler. LonelyKey/BrawnKey alternative strings do not establish additional local Kameha prizes."
+    },
+    {
+      "id": "oldman-brawn",
+      "title": "Old man original BrawnKey offer",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending": "0x25 set",
+        "intro": "0x2E",
+        "claimed": "0x3D",
+        "living_party_species_any": [
+          353,
+          356,
+          359,
+          361,
+          372
+        ]
+      },
+      "reward": "Original key0A Brawn; sets3D only after genuine claim",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x746A",
+          "rom_offset": "0x04F46A",
+          "source": "src/banks/bank_019.asm",
+          "line": 841
+        },
+        {
+          "bank": 133,
+          "address": "0x5A9D",
+          "rom_offset": "0x215A9D",
+          "source": "src/banks/bank_133.asm",
+          "line": 428
+        },
+        {
+          "bank": 133,
+          "address": "0x5AF8",
+          "rom_offset": "0x215AF8",
+          "source": "src/banks/bank_133.asm",
+          "line": 434
+        },
+        {
+          "bank": 19,
+          "address": "0x7B91",
+          "rom_offset": "0x04FB91",
+          "source": "src/banks/bank_019.asm",
+          "line": 956
+        }
+      ],
+      "npc": {
+        "world": 21,
+        "selector": "0x8F",
+        "position": [
+          80,
+          48
+        ],
+        "reward_selector": "0xDB"
+      },
+      "eligible_species": [
+        "LordDraco",
+        "Genosidoh",
+        "AsuraZoma",
+        "PsychoPiz",
+        "Darck"
+      ],
+      "route": "GreatLog1(0,0)80,80 FD\u2192OldMan21. Hardcoded Cobi branch at19:7BA1 chooses0A; alternate dead branch chooses0B Baffle."
+    },
+    {
+      "id": "oldman-soul",
+      "title": "Old man two-tests completion / SoulKey",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "previous": "0x3D",
+        "both_original_tests": [
+          "0x206",
+          "0x207"
+        ],
+        "offer": "0x3E",
+        "claimed": "0xC8"
+      },
+      "reward": "SoulKey0C when both counterpart tests really complete; claim setsC8",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x74CF",
+          "rom_offset": "0x04F4CF",
+          "source": "src/banks/bank_019.asm",
+          "line": 847
+        },
+        {
+          "bank": 19,
+          "address": "0x7B91",
+          "rom_offset": "0x04FB91",
+          "source": "src/banks/bank_019.asm",
+          "line": 956
+        },
+        {
+          "bank": 115,
+          "address": "0x5282",
+          "rom_offset": "0x1CD282",
+          "source": "src/banks/bank_115.asm",
+          "line": 299
+        },
+        {
+          "bank": 115,
+          "address": "0x5294",
+          "rom_offset": "0x1CD294",
+          "source": "src/banks/bank_115.asm",
+          "line": 300
+        }
+      ],
+      "availability": "One required counterpart key does not exist as this Cobi local reward; valid original link/counterpart acquisition is required. Not covered on solo P1; no fabricated key or completion flag."
+    },
+    {
+      "id": "king-bounties",
+      "title": "Four King criminal-master bounties",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue_thresholds": [
+          100,
+          120,
+          140,
+          160
+        ],
+        "sequential_flag_triplets": [
+          [
+            "0x192",
+            "0x193",
+            "0x194"
+          ],
+          [
+            "0x195",
+            "0x196",
+            "0x197"
+          ],
+          [
+            "0x198",
+            "0x199",
+            "0x19A"
+          ],
+          [
+            "0x19B",
+            "0x19C",
+            "0x19D"
+          ]
+        ]
+      },
+      "reward": "10000/20000/30000/40000G actual claim rewards",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x70D9",
+          "rom_offset": "0x04F0D9",
+          "source": "src/banks/bank_019.asm",
+          "line": 784
+        },
+        {
+          "bank": 19,
+          "address": "0x713A",
+          "rom_offset": "0x04F13A",
+          "source": "src/banks/bank_019.asm",
+          "line": 790
+        },
+        {
+          "bank": 19,
+          "address": "0x7199",
+          "rom_offset": "0x04F199",
+          "source": "src/banks/bank_019.asm",
+          "line": 796
+        },
+        {
+          "bank": 19,
+          "address": "0x71ED",
+          "rom_offset": "0x04F1ED",
+          "source": "src/banks/bank_019.asm",
+          "line": 801
+        },
+        {
+          "bank": 19,
+          "address": "0x7242",
+          "rom_offset": "0x04F242",
+          "source": "src/banks/bank_019.asm",
+          "line": 807
+        }
+      ],
+      "npc": {
+        "world": 25,
+        "region": [
+          0,
+          0
+        ],
+        "selector": "0x81",
+        "position": [
+          64,
+          32
+        ]
+      },
+      "hints": [
+        "merchant / greedy",
+        "priest / injured monsters",
+        "mage / low MP",
+        "warrior / low levels"
+      ],
+      "unknown": "Exact wandering-master generation conditions still require original random-world trace; dialogue hints alone are not spawn proof."
+    },
+    {
+      "id": "terry",
+      "title": "Terry duel then breeding access",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue": 150,
+        "first_attempt": "0x37",
+        "victory": "0x38"
+      },
+      "reward": "Original battle20; win sets38 and C894=1, then breeding invitation",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x7F02",
+          "rom_offset": "0x04FF02",
+          "source": "src/banks/bank_019.asm",
+          "line": 1011
+        },
+        {
+          "bank": 133,
+          "address": "0x4A2B",
+          "rom_offset": "0x214A2B",
+          "source": "src/banks/bank_133.asm",
+          "line": 165
+        },
+        {
+          "bank": 133,
+          "address": "0x4A4A",
+          "rom_offset": "0x214A4A",
+          "source": "src/banks/bank_133.asm",
+          "line": 167
+        },
+        {
+          "bank": 2,
+          "address": "0x62C8",
+          "rom_offset": "0x00A2C8",
+          "source": "src/banks/bank_002.asm",
+          "line": 559
+        }
+      ],
+      "npc": {
+        "selector": "0xF2",
+        "live_appearance": "not present in baseline selected hub NPCs; exact future spawn needs original observation"
+      },
+      "opponents": [
+        "GreatDrak",
+        "Watabou",
+        "Durran"
+      ]
+    },
+    {
+      "id": "petibou",
+      "title": "Petibou collection gift",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue": "250..289",
+        "choice_flags": "2A and2B both clear",
+        "farm": "free slot"
+      },
+      "reward": "Script6D\u2192133:4C24; original giftkind4; Petibou to farm; sets2A",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x659E",
+          "rom_offset": "0x04E59E",
+          "source": "src/banks/bank_019.asm",
+          "line": 604
+        },
+        {
+          "bank": 16,
+          "address": "0x53CE",
+          "rom_offset": "0x0413CE",
+          "source": "src/banks/bank_016.asm",
+          "line": 319
+        },
+        {
+          "bank": 16,
+          "address": "0x4E5F",
+          "rom_offset": "0x040E5F",
+          "source": "src/banks/bank_016.asm",
+          "line": 232
+        },
+        {
+          "bank": 133,
+          "address": "0x4C24",
+          "rom_offset": "0x214C24",
+          "source": "src/banks/bank_133.asm",
+          "line": 197
+        }
+      ],
+      "npc": {
+        "world": 5,
+        "region": [
+          1,
+          0
+        ],
+        "selector": "0x19",
+        "position": [
+          80,
+          32
+        ]
+      },
+      "choice": "Both2A and2B short-circuit future gift branches. Do not assume taking Petibou permits later Warubou from the same NPC."
+    },
+    {
+      "id": "warubou",
+      "title": "Warubou collection gift",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue": 290,
+        "choice_flags": "2A and2B both clear",
+        "farm": "free slot"
+      },
+      "reward": "Script6E\u2192133:4B0F; original giftkind3; Warubou to farm; sets2B; Petibou remains to guard Navel",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x659E",
+          "rom_offset": "0x04E59E",
+          "source": "src/banks/bank_019.asm",
+          "line": 604
+        },
+        {
+          "bank": 16,
+          "address": "0x53D0",
+          "rom_offset": "0x0413D0",
+          "source": "src/banks/bank_016.asm",
+          "line": 320
+        },
+        {
+          "bank": 16,
+          "address": "0x4E66",
+          "rom_offset": "0x040E66",
+          "source": "src/banks/bank_016.asm",
+          "line": 233
+        },
+        {
+          "bank": 133,
+          "address": "0x4B0F",
+          "rom_offset": "0x214B0F",
+          "source": "src/banks/bank_133.asm",
+          "line": 179
+        }
+      ],
+      "npc": {
+        "world": 5,
+        "region": [
+          1,
+          0
+        ],
+        "selector": "0x19",
+        "position": [
+          80,
+          32
+        ]
+      },
+      "choice": "Alternative branch to Petibou; preserve a genuine pre-choice Journal for testing both without fabricating state."
+    },
+    {
+      "id": "medals",
+      "title": "Original Medal Man prize service",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "ending_intro": "0x31",
+        "normal_intro": "0x112",
+        "currency": "genuine TinyMedals"
+      },
+      "reward": "Original monster prize service; exact complete threshold/prize table not yet traced",
+      "sources": [
+        {
+          "bank": 19,
+          "address": "0x6F0F",
+          "rom_offset": "0x04EF0F",
+          "source": "src/banks/bank_019.asm",
+          "line": 755
+        },
+        {
+          "bank": 16,
+          "address": "0x55EC",
+          "rom_offset": "0x0415EC",
+          "source": "src/banks/bank_016.asm",
+          "line": 353
+        }
+      ],
+      "npc": {
+        "world": 22,
+        "selector": "0x72",
+        "position": [
+          96,
+          48
+        ]
+      },
+      "route": "GreatLog1(0,2)96,16 FD\u2192MedalMan22",
+      "status": "Finite prize ladder remains an explicit audit gap; no completion claim."
+    },
+    {
+      "id": "catalogue-eggs-link",
+      "title": "Catalogue milestones / DreamEgg / link and event content",
+      "evidence_kind": "original-ROM static inspection",
+      "played_by_this_audit": false,
+      "gate": {
+        "catalogue_milestone_texts": [
+          100,
+          200,
+          "all"
+        ],
+        "breeding": "normal and link modes distinct",
+        "hardware": "actual original serial peer required for link-only paths"
+      },
+      "reward": "Original dialogue includes Lamia/Dimensaur/Kagebou arrivals and DreamEgg effects; string presence is not a reachable solo acquisition proof",
+      "sources": [
+        {
+          "bank": 22,
+          "address": "0x5AC0",
+          "rom_offset": "0x059AC0",
+          "source": "src/banks/bank_022.asm",
+          "line": 431
+        },
+        {
+          "bank": 22,
+          "address": "0x5A7E",
+          "rom_offset": "0x059A7E",
+          "source": "src/banks/bank_022.asm",
+          "line": 426
+        }
+      ],
+      "status": "Optional collection/egg/link routes not exhaustively mapped or played; mark unknown and counterpart-only separately. No external walkthrough used."
+    }
+  ],
+  "fixed_key_areas": [
+    {
+      "key_area": "ElfKey/Elven",
+      "worlds": [
+        {
+          "world": 164,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 168,
+          "name": "Elven <5C>",
+          "dimensions": [
+            6,
+            6
+          ]
+        },
+        {
+          "world": 169,
+          "name": "Elven <57>",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 170,
+          "name": "W forest",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 171,
+          "name": "Lookout",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 172,
+          "name": "Summit",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 173,
+          "name": "Mt. base",
+          "dimensions": [
+            3,
+            4
+          ]
+        },
+        {
+          "world": 174,
+          "name": "PlatinumMt.",
+          "dimensions": [
+            3,
+            4
+          ]
+        },
+        {
+          "world": 175,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x4600",
+        "rom_offset": "0x044600",
+        "source": "src/banks/bank_017.asm",
+        "line": 99
+      },
+      "played_by_this_audit": false
+    },
+    {
+      "key_area": "Lonely counterpart key",
+      "worlds": [
+        {
+          "world": 176,
+          "name": "Lonely <5C>",
+          "dimensions": [
+            3,
+            2
+          ]
+        },
+        {
+          "world": 177,
+          "name": "Kiral Lab",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 178,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 179,
+          "name": "Lab B1F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 180,
+          "name": "Lab B2F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 181,
+          "name": "Lab B3F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 182,
+          "name": "Barrel rm.",
+          "dimensions": [
+            1,
+            1
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x4618",
+        "rom_offset": "0x044618",
+        "source": "src/banks/bank_017.asm",
+        "line": 100
+      },
+      "played_by_this_audit": false
+    },
+    {
+      "key_area": "TravelerKey",
+      "worlds": [
+        {
+          "world": 184,
+          "name": "Traveler <5C>",
+          "dimensions": [
+            5,
+            5
+          ]
+        },
+        {
+          "world": 185,
+          "name": "Miagen <57>",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 186,
+          "name": "Travel hut",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 187,
+          "name": "N forest",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 188,
+          "name": "Inn",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 189,
+          "name": "<5D> summit",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 190,
+          "name": "Old <5D> 1F",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 191,
+          "name": "Old <5D> 2F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 192,
+          "name": "Old <5D> 3F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 193,
+          "name": "Old <5D> 4F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 194,
+          "name": "Old <5D> 5F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 195,
+          "name": "Old <5D> 6F",
+          "dimensions": [
+            2,
+            2
+          ]
+        },
+        {
+          "world": 196,
+          "name": "Old <5D> 7F",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 197,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x4628",
+        "rom_offset": "0x044628",
+        "source": "src/banks/bank_017.asm",
+        "line": 101
+      },
+      "played_by_this_audit": false
+    },
+    {
+      "key_area": "Brawn/Power",
+      "worlds": [
+        {
+          "world": 200,
+          "name": "Power <5C>",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 201,
+          "name": "Power <5D> 1F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 202,
+          "name": "Power <5D> 2F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 203,
+          "name": "Power <5D> 3F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 204,
+          "name": "Power <5D> 4F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 205,
+          "name": "Power <5D> 5F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 206,
+          "name": "Power <5D> 6F",
+          "dimensions": [
+            1,
+            2
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x4648",
+        "rom_offset": "0x044648",
+        "source": "src/banks/bank_017.asm",
+        "line": 103
+      },
+      "played_by_this_audit": false
+    },
+    {
+      "key_area": "Baffle counterpart",
+      "worlds": [
+        {
+          "world": 208,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 209,
+          "name": "Baffle <5C>",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 210,
+          "name": "Baffle <5D> 1F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 211,
+          "name": "Baffle <5D> 2F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 212,
+          "name": "Baffle <5D> 3F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 213,
+          "name": "Baffle <5D> 4F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 214,
+          "name": "Baffle <5D> 5F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 215,
+          "name": "Baffle <5D> 6F",
+          "dimensions": [
+            1,
+            2
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x4658",
+        "rom_offset": "0x044658",
+        "source": "src/banks/bank_017.asm",
+        "line": 104
+      },
+      "played_by_this_audit": false
+    },
+    {
+      "key_area": "Soul",
+      "worlds": [
+        {
+          "world": 217,
+          "name": "Magic Door <59>",
+          "dimensions": [
+            1,
+            1
+          ]
+        },
+        {
+          "world": 218,
+          "name": "Soul <5C>",
+          "dimensions": [
+            2,
+            1
+          ]
+        },
+        {
+          "world": 219,
+          "name": "Soul <5D> 1F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 220,
+          "name": "Soul <5D> 2F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 221,
+          "name": "Soul <5D> 3F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 222,
+          "name": "Soul <5D> 4F",
+          "dimensions": [
+            1,
+            2
+          ]
+        },
+        {
+          "world": 223,
+          "name": "Soul <5D> 5F",
+          "dimensions": [
+            1,
+            2
+          ]
+        }
+      ],
+      "source": {
+        "bank": 17,
+        "address": "0x466A",
+        "rom_offset": "0x04466A",
+        "source": "src/banks/bank_017.asm",
+        "line": 105
+      },
+      "played_by_this_audit": false
+    }
+  ],
+  "repeatable_systems": [
+    "Procedural MagicKey worlds and reward keys; impossible to claim every generated output from finite sampling",
+    "Arena repeat battles/prizes",
+    "Original normal breeding and catalogue collection",
+    "Egg evaluation, DreamEgg feeding/hatching",
+    "Granddaughter rematches"
+  ],
+  "unavailable_or_unknown": [
+    "Solo Cobi local code grants Brawn0A, counterpart branch Baffle0B is not taken; both206/207 required for Soul",
+    "Lonely-key alternate dialogue is not proof of local Cobi reward; Traveler09 is actual local Kameha second key",
+    "Link-peer and distribution-monster arrival strings are not original single-controller reachability proof",
+    "Exact MedalMan full prize ladder not yet traced"
+  ],
+  "source_only_corrections": [
+    "Selector61 is Arena advice; admission is interact65 atReception4(1,0)64,48 Up.",
+    "World17 is Library, not item merchant. Actual buy/sell merchant isworld2(1,0)selector11 at64,16.",
+    "All bank17 warp records are9bytes; FE/FF records represent seam/boundary entries.",
+    "D7FE is original external script bank context; CB81 is NPC context, not world ID."
+  ],
+  "live_boundary": "Source inventory remains distinct from subsequent isolated quest-probe observations. Parent owns separate random-world probe.",
+  "subsequent_isolated_quest_observations": "quest-evidence/quest-observation-audit.json"
+}

@@ -1,0 +1,24 @@
+{
+  "host": "Linux/Wine10 accepted f93 complete-AOT Windows diagnostic",
+  "seed_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+  "cache_slot": 0,
+  "descriptor_bytes_compared": 404,
+  "descriptor_sha256": "065e1929ea5c0e73f03b310cbf032dccf9b9858e40f6593fad7f9b68c630895b",
+  "exact_saved_descriptor_loaded": true,
+  "key_record": "c0 07 13 08",
+  "stored_seed_hex": "16c0",
+  "world_clear": true,
+  "all_four_area_flags": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "terrain_class": 8,
+  "dimensions": [
+    4,
+    4
+  ],
+  "recipe": 13,
+  "snapshot": "postgame-03/m8_15.ram"
+}

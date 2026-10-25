@@ -1,0 +1,96 @@
+{
+  "label": "arena-B-gold-refusal",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-02",
+  "frame": 14917,
+  "location": [
+    4,
+    1,
+    0,
+    64,
+    48
+  ],
+  "mode": [
+    1,
+    1
+  ],
+  "selector": 101,
+  "gold": 11,
+  "owned_count": 18,
+  "owned_records": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "catalogue_count": 23,
+  "flags": {
+    "0x25": true,
+    "0x28": false,
+    "0x29": false,
+    "0x2A": false,
+    "0x2B": false,
+    "0x2E": false,
+    "0x31": false,
+    "0x32": false,
+    "0x33": false,
+    "0x34": false,
+    "0x35": false,
+    "0x36": false,
+    "0x37": false,
+    "0x38": false,
+    "0x39": false,
+    "0x3A": false,
+    "0x3B": false,
+    "0x3C": false,
+    "0x3D": false,
+    "0x3E": false,
+    "0xC8": false,
+    "0xCD": true,
+    "0x192": false,
+    "0x193": false,
+    "0x194": false,
+    "0x195": false,
+    "0x206": false,
+    "0x207": false
+  },
+  "quest107_hex": "eeffafec3f0000003f07f88770e075fdef9fffbfd1f77f05ff200f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "observations_only": true,
+  "raw": {
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_155.bmp": {
+      "bytes": 92214,
+      "sha256": "3a10bd06e89a67a1d004eb8a055677bdd86961232e804d494e07507fcebafe74"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_155.ram": {
+      "bytes": 65536,
+      "sha256": "719e7f7533bd3d838772d9a7a4e1245b8d6ad668f36415890709511f8ea3a14d"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_155.sram": {
+      "bytes": 32768,
+      "sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d"
+    },
+    "/workspace/scratch/m8-postgame/quest-evidence/arena-B-gold-refusal.png": {
+      "bytes": 3089,
+      "sha256": "ac50c5f3b31a15ffff29d4f73c9e7074e5e2ebe074eab96011dd6eb1f8636fdf"
+    }
+  },
+  "original_journals": {
+    "/workspace/scratch/m8-postgame/quest-probe-02/newlywed_gift.sav": {
+      "bytes": 32768,
+      "sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d"
+    }
+  }
+}

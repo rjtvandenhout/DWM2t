@@ -1,0 +1,105 @@
+{
+  "label": "postgame-quest-journal",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-02",
+  "frame": 44371,
+  "location": [
+    0,
+    1,
+    1,
+    64,
+    16
+  ],
+  "mode": [
+    1,
+    0
+  ],
+  "selector": 25,
+  "gold": 11,
+  "owned_count": 19,
+  "owned_records": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "catalogue_count": 24,
+  "flags": {
+    "0x25": true,
+    "0x28": true,
+    "0x29": true,
+    "0x2A": false,
+    "0x2B": false,
+    "0x2E": true,
+    "0x31": false,
+    "0x32": false,
+    "0x33": false,
+    "0x34": false,
+    "0x35": false,
+    "0x36": false,
+    "0x37": false,
+    "0x38": false,
+    "0x39": false,
+    "0x3A": false,
+    "0x3B": false,
+    "0x3C": false,
+    "0x3D": false,
+    "0x3E": false,
+    "0xC8": false,
+    "0xCD": true,
+    "0x192": false,
+    "0x193": false,
+    "0x194": false,
+    "0x195": false,
+    "0x206": false,
+    "0x207": false
+  },
+  "quest107_hex": "eeffafec3f4300003f07f88770e075fdef9fffbfd1f77f05ff200f00000002002883a7a00080380900000000000000008003038001000000000000003e01020000020000000000000000000000000000000000000000000000000000000000007f3f0e030f010000000000",
+  "observations_only": true,
+  "raw": {
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_553.bmp": {
+      "bytes": 92214,
+      "sha256": "3f541df84f184762081dc7a9d5ee450383d507609f419168df0b62b2cb9d7446"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_553.ram": {
+      "bytes": 65536,
+      "sha256": "cb1921060474836e6a0bfb008419519dd266297b83619e3aff06c97aefdcb0e7"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/m8_553.sram": {
+      "bytes": 32768,
+      "sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba"
+    },
+    "/workspace/scratch/m8-postgame/quest-evidence/postgame-quest-journal.png": {
+      "bytes": 3883,
+      "sha256": "02e16c25816d3dab597cf0ba413b511ea8f648ae166de4eb247bc8f7adbc8f53"
+    }
+  },
+  "original_journals": {
+    "/workspace/scratch/m8-postgame/quest-probe-02/postgame_quest_gates.sav": {
+      "bytes": 32768,
+      "sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/certified_egg.sav": {
+      "bytes": 32768,
+      "sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604"
+    },
+    "/workspace/scratch/m8-postgame/quest-probe-02/newlywed_gift.sav": {
+      "bytes": 32768,
+      "sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d"
+    }
+  }
+}

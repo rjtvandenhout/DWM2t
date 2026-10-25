@@ -1,0 +1,10 @@
+[
+  {
+    "case": "missing_actual_executable",
+    "rejected": true
+  },
+  {
+    "case": "empty_source_manifest",
+    "rejected": true
+  }
+]

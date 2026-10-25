@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "postgame-01 genuine observations",
+      "status": "passed",
+      "source_observation": "/workspace/scratch/m8-postgame/postgame-01/m8_1101.ram",
+      "owned_bytes_checked": 2805,
+      "cache_slots": 20,
+      "platform": "Wine on Linux, existing observations only"
+    },
+    {
+      "case": "postgame-02 genuine observations",
+      "status": "passed",
+      "source_observation": "/workspace/scratch/m8-postgame/postgame-02/m8_382.ram",
+      "owned_bytes_checked": 2805,
+      "cache_slots": 20,
+      "platform": "Wine on Linux, existing observations only"
+    },
+    {
+      "case": "owned gene byte",
+      "status": "rejected",
+      "reason": "Full owned record 0 differs at offset 25"
+    },
+    {
+      "case": "quest byte106",
+      "status": "rejected",
+      "reason": "fresh quest flags: bytes differ (first relative offset 106)"
+    },
+    {
+      "case": "key record31",
+      "status": "rejected",
+      "reason": "fresh all Magic Key records: bytes differ (first relative offset 127)"
+    },
+    {
+      "case": "key seed31",
+      "status": "rejected",
+      "reason": "fresh all Magic Key seeds: bytes differ (first relative offset 63)"
+    },
+    {
+      "case": "saved backup cache19",
+      "status": "rejected",
+      "reason": "Journal working/backup cache slot 19: bytes differ (first relative offset 404)"
+    },
+    {
+      "case": "fresh working cache19",
+      "status": "rejected",
+      "reason": "fresh working cache slot 19: bytes differ (first relative offset 404)"
+    },
+    {
+      "case": "fresh backup cache19",
+      "status": "rejected",
+      "reason": "fresh backup cache slot 19: bytes differ (first relative offset 404)"
+    },
+    {
+      "case": "party",
+      "status": "rejected",
+      "reason": "fresh complete party: bytes differ (first relative offset 1)"
+    },
+    {
+      "case": "exact explicit transition observation",
+      "status": "passed"
+    },
+    {
+      "case": "wrong transition before",
+      "status": "rejected",
+      "reason": "Observed Continue byte transition differs from the explicit pin"
+    },
+    {
+      "case": "wrong transition after",
+      "status": "rejected",
+      "reason": "Observed Continue byte transition differs from the explicit pin"
+    },
+    {
+      "case": "duplicate transition",
+      "status": "rejected",
+      "reason": "Invalid or duplicate exact Continue byte transition"
+    },
+    {
+      "case": "unchanged transition",
+      "status": "rejected",
+      "reason": "Invalid or duplicate exact Continue byte transition"
+    },
+    {
+      "case": "manual workflow YAML and scope",
+      "status": "passed"
+    }
+  ],
+  "game_execution": false,
+  "mutations": "In-memory invalid-observation contracts only; no game inputs written"
+}

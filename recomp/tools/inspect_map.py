@@ -38,11 +38,18 @@ def decompress(number, address):
         offset = low | (high >> 4) << 8
         count = (high & 15) + 4
         if count == 19:
-            count += byte(number, address)
+            # Original ADD A,$13 and DEC use an eight-bit counter. Zero
+            # executes 256 copies; values above 255 wrap before the loop.
+            count = (count + byte(number, address)) & 255
+            if count == 0:
+                count = 256
             address += 1
         for index in range(offset, offset + count):
             if len(result) == length:
                 break
+            # 0:$0D50-$0D77 adjusts the dictionary address on every byte,
+            # including references that cross $FFF -> $000 within a run.
+            index &= 0xFFF
             result.append(result[index] if index < len(result) else 0)
     return bytes(result)
 

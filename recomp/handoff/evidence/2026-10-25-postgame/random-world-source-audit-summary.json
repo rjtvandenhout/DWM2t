@@ -1,0 +1,9114 @@
+{
+  "schema": 1,
+  "status": "passed_static_checks",
+  "scope": "Original-source finite-table/asset/predicate validation, not native gameplay or all-seed world generation",
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "game_executed": false,
+  "save_loaded_or_written": false,
+  "rng_state_written_to_game": false,
+  "findings": [],
+  "limitations": [
+    "No generated world, monster, key, flag, WRAM/SRAM or CPU state is injected or synthesized.",
+    "LCG calculations below are host-side mathematical checks, not executions of the native runtime.",
+    "Full generator topology, placement and event correctness for all seeds is not proven by valid source pointers.",
+    "Individual simple rejection predicates are bounded; the outer variable-length generator restart is not proven to terminate for every seed.",
+    "CGB attribute assets are decoded below, but rendered attributes/palettes and collision semantics need gameplay evidence.",
+    "AOT completeness is entry-address coverage, not an assertion that every translated opcode/path has been dynamically tested."
+  ],
+  "terrain": {
+    "source": {
+      "bank": 96,
+      "cpu_address": "$4CC1",
+      "file": "src/banks/bank_096.asm",
+      "line": 207
+    },
+    "rows": [
+      {
+        "suffix_id": 0,
+        "choices": [
+          1,
+          2,
+          6,
+          0
+        ],
+        "classes": [
+          0,
+          1,
+          5
+        ]
+      },
+      {
+        "suffix_id": 1,
+        "choices": [
+          4,
+          5,
+          7,
+          0
+        ],
+        "classes": [
+          3,
+          4,
+          6
+        ]
+      },
+      {
+        "suffix_id": 2,
+        "choices": [
+          2,
+          3,
+          10,
+          0
+        ],
+        "classes": [
+          1,
+          2,
+          9
+        ]
+      },
+      {
+        "suffix_id": 3,
+        "choices": [
+          5,
+          9,
+          10,
+          0
+        ],
+        "classes": [
+          4,
+          8,
+          9
+        ]
+      },
+      {
+        "suffix_id": 4,
+        "choices": [
+          1,
+          5,
+          10,
+          0
+        ],
+        "classes": [
+          0,
+          4,
+          9
+        ]
+      },
+      {
+        "suffix_id": 5,
+        "choices": [
+          4,
+          8,
+          9,
+          0
+        ],
+        "classes": [
+          3,
+          7,
+          8
+        ]
+      },
+      {
+        "suffix_id": 6,
+        "choices": [
+          6,
+          7,
+          8,
+          0
+        ],
+        "classes": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "suffix_id": 7,
+        "choices": [
+          2,
+          6,
+          8,
+          0
+        ],
+        "classes": [
+          1,
+          5,
+          7
+        ]
+      },
+      {
+        "suffix_id": 8,
+        "choices": [
+          3,
+          4,
+          7,
+          0
+        ],
+        "classes": [
+          2,
+          3,
+          6
+        ]
+      },
+      {
+        "suffix_id": 9,
+        "choices": [
+          1,
+          3,
+          9,
+          0
+        ],
+        "classes": [
+          0,
+          2,
+          8
+        ]
+      },
+      {
+        "suffix_id": 10,
+        "choices": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "classes": [
+          5
+        ]
+      },
+      {
+        "suffix_id": 11,
+        "choices": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "classes": [
+          1
+        ]
+      },
+      {
+        "suffix_id": 12,
+        "choices": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "classes": [
+          8
+        ]
+      },
+      {
+        "suffix_id": 13,
+        "choices": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "classes": [
+          0
+        ]
+      },
+      {
+        "suffix_id": 14,
+        "choices": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "classes": [
+          0
+        ]
+      },
+      {
+        "suffix_id": 15,
+        "choices": [
+          7,
+          7,
+          7,
+          7
+        ],
+        "classes": [
+          6
+        ]
+      },
+      {
+        "suffix_id": 16,
+        "choices": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "classes": [
+          5
+        ]
+      },
+      {
+        "suffix_id": 17,
+        "choices": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "classes": [
+          7
+        ]
+      },
+      {
+        "suffix_id": 18,
+        "choices": [
+          7,
+          7,
+          7,
+          7
+        ],
+        "classes": [
+          6
+        ]
+      },
+      {
+        "suffix_id": 19,
+        "choices": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "classes": [
+          8
+        ]
+      },
+      {
+        "suffix_id": 20,
+        "choices": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "classes": [
+          3
+        ]
+      },
+      {
+        "suffix_id": 21,
+        "choices": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "classes": [
+          4
+        ]
+      },
+      {
+        "suffix_id": 22,
+        "choices": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "classes": [
+          2
+        ]
+      },
+      {
+        "suffix_id": 23,
+        "choices": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "classes": [
+          0
+        ]
+      },
+      {
+        "suffix_id": 24,
+        "choices": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "classes": [
+          5
+        ]
+      },
+      {
+        "suffix_id": 25,
+        "choices": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "classes": [
+          3
+        ]
+      },
+      {
+        "suffix_id": 26,
+        "choices": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "classes": [
+          3
+        ]
+      },
+      {
+        "suffix_id": 27,
+        "choices": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "classes": [
+          2
+        ]
+      },
+      {
+        "suffix_id": 28,
+        "choices": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "classes": [
+          9
+        ]
+      },
+      {
+        "suffix_id": 29,
+        "choices": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "classes": [
+          4
+        ]
+      },
+      {
+        "suffix_id": 30,
+        "choices": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "classes": [
+          0
+        ]
+      },
+      {
+        "suffix_id": 31,
+        "choices": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "classes": [
+          9
+        ]
+      },
+      {
+        "suffix_id": 32,
+        "choices": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "classes": [
+          7
+        ]
+      },
+      {
+        "suffix_id": 33,
+        "choices": [
+          7,
+          7,
+          7,
+          7
+        ],
+        "classes": [
+          6
+        ]
+      },
+      {
+        "suffix_id": 34,
+        "choices": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "classes": [
+          1
+        ]
+      },
+      {
+        "suffix_id": 35,
+        "choices": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "classes": [
+          9
+        ]
+      },
+      {
+        "suffix_id": 36,
+        "choices": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "classes": [
+          4
+        ]
+      },
+      {
+        "suffix_id": 37,
+        "choices": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "classes": [
+          1
+        ]
+      },
+      {
+        "suffix_id": 38,
+        "choices": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "classes": [
+          2
+        ]
+      },
+      {
+        "suffix_id": 39,
+        "choices": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "classes": [
+          4
+        ]
+      },
+      {
+        "suffix_id": 40,
+        "choices": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "classes": [
+          8
+        ]
+      },
+      {
+        "suffix_id": 41,
+        "choices": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "classes": [
+          4
+        ]
+      },
+      {
+        "suffix_id": 42,
+        "choices": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "classes": [
+          9
+        ]
+      },
+      {
+        "suffix_id": 43,
+        "choices": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "classes": [
+          1
+        ]
+      },
+      {
+        "suffix_id": 44,
+        "choices": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "classes": [
+          5
+        ]
+      },
+      {
+        "suffix_id": 45,
+        "choices": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "classes": [
+          8
+        ]
+      },
+      {
+        "suffix_id": 46,
+        "choices": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "classes": [
+          3
+        ]
+      },
+      {
+        "suffix_id": 47,
+        "choices": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "classes": [
+          7
+        ]
+      },
+      {
+        "suffix_id": 48,
+        "choices": [
+          7,
+          7,
+          7,
+          7
+        ],
+        "classes": [
+          6
+        ]
+      },
+      {
+        "suffix_id": 49,
+        "choices": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "classes": [
+          0
+        ]
+      },
+      {
+        "suffix_id": 50,
+        "choices": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "classes": [
+          7
+        ]
+      },
+      {
+        "suffix_id": 51,
+        "choices": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "classes": [
+          5
+        ]
+      },
+      {
+        "suffix_id": 52,
+        "choices": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "classes": [
+          2
+        ]
+      },
+      {
+        "suffix_id": 53,
+        "choices": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "classes": [
+          3
+        ]
+      },
+      {
+        "suffix_id": 54,
+        "choices": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "classes": [
+          1
+        ]
+      },
+      {
+        "suffix_id": 55,
+        "choices": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "classes": [
+          2
+        ]
+      }
+    ],
+    "all_classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "zero_means_retry": true
+  },
+  "recipes": {
+    "pointer_sources": [
+      {
+        "bank": 96,
+        "cpu_address": "$6D0D",
+        "file": "src/banks/bank_096.asm",
+        "line": 723
+      },
+      {
+        "bank": 132,
+        "cpu_address": "$4CCB",
+        "file": "src/banks/bank_132.asm",
+        "line": 207
+      }
+    ],
+    "count": 48,
+    "records": 264,
+    "count_distribution": {
+      "3": 4,
+      "4": 12,
+      "5": 12,
+      "6": 4,
+      "7": 8,
+      "8": 8
+    },
+    "types": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "type_handlers": [
+      {
+        "type": 0,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$406D",
+          "file": "src/banks/bank_132.asm",
+          "line": 9
+        }
+      },
+      {
+        "type": 1,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4072",
+          "file": "src/banks/bank_132.asm",
+          "line": 10
+        }
+      },
+      {
+        "type": 2,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4091",
+          "file": "src/banks/bank_132.asm",
+          "line": 12
+        }
+      },
+      {
+        "type": 3,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$40C2",
+          "file": "src/banks/bank_132.asm",
+          "line": 15
+        }
+      },
+      {
+        "type": 4,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$40F3",
+          "file": "src/banks/bank_132.asm",
+          "line": 18
+        }
+      },
+      {
+        "type": 5,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4156",
+          "file": "src/banks/bank_132.asm",
+          "line": 24
+        }
+      },
+      {
+        "type": 6,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$406E",
+          "file": "src/banks/bank_132.asm",
+          "line": 9
+        }
+      }
+    ],
+    "entries": [
+      {
+        "index": 0,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4D2B",
+          "file": "src/banks/bank_132.asm",
+          "line": 213
+        },
+        "structures": 3,
+        "types": [
+          3,
+          5,
+          6
+        ],
+        "records_hex": [
+          "03 0a 9e e0 c2 00 00 00 00 0a 9e e0 c2 00 00 00",
+          "05 03 03 ff ff ff ff ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "d804c46b8b0debf18c03a634c2a28ec8e4256ad509e9a72b66608835cd5ebf9c"
+      },
+      {
+        "index": 1,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4D5D",
+          "file": "src/banks/bank_132.asm",
+          "line": 216
+        },
+        "structures": 3,
+        "types": [
+          3,
+          4,
+          6
+        ],
+        "records_hex": [
+          "03 a6 09 6a c8 00 00 00 00 a6 09 6a c8 00 00 00",
+          "04 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "52f9f7bbb284f2ec1269e2ad7de955bfdf90f667922a3d62d4caf946e9daa4c0"
+      },
+      {
+        "index": 2,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4D8F",
+          "file": "src/banks/bank_132.asm",
+          "line": 219
+        },
+        "structures": 3,
+        "types": [
+          3,
+          4,
+          6
+        ],
+        "records_hex": [
+          "03 b1 8e 08 c6 00 00 00 00 00 8e 08 c6 00 00 00",
+          "04 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "726de76056819b673410c0fe650fb25717852d7792533f17abbf34f113392a26"
+      },
+      {
+        "index": 3,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4DC1",
+          "file": "src/banks/bank_132.asm",
+          "line": 223
+        },
+        "structures": 3,
+        "types": [
+          2,
+          5,
+          6
+        ],
+        "records_hex": [
+          "02 69 e5 0a 00 bb 92 c9 7b 00 00 00 00 00 00 00",
+          "05 03 03 00 2c 00 00 01 2a 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "2cfdfe8e0616cdc67d7654a74fa2bccdb3d63af303530638027cd48f3e8abf77"
+      },
+      {
+        "index": 4,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4DF3",
+          "file": "src/banks/bank_132.asm",
+          "line": 226
+        },
+        "structures": 4,
+        "types": [
+          3,
+          5,
+          2,
+          6
+        ],
+        "records_hex": [
+          "03 af 09 72 c0 00 00 00 00 af 09 72 c0 00 00 00",
+          "05 04 03 01 03 00 00 02 2c 00 00 00 00 00 00 00",
+          "02 6c e5 b4 de bf 97 d4 66 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "0b6da3056b1ec4a236f4f8b44e85eebdacb03e125bed833ac0dd66940d67d784"
+      },
+      {
+        "index": 5,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4E35",
+          "file": "src/banks/bank_132.asm",
+          "line": 230
+        },
+        "structures": 4,
+        "types": [
+          3,
+          4,
+          2,
+          6
+        ],
+        "records_hex": [
+          "03 a2 93 08 c3 00 00 00 00 a2 93 08 c3 00 00 00",
+          "04 04 03 01 2c 00 00 02 03 00 00 00 00 00 00 00",
+          "02 73 89 b1 d9 ba 84 d5 69 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "9aaf5561afff7e2dd566ded53ae8db30a002a78cefcf2aaa1ab237e93d6cebcf"
+      },
+      {
+        "index": 6,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4E77",
+          "file": "src/banks/bank_132.asm",
+          "line": 234
+        },
+        "structures": 4,
+        "types": [
+          3,
+          4,
+          2,
+          6
+        ],
+        "records_hex": [
+          "03 0a 85 6d ca 00 00 00 00 0a 85 6d ca 00 00 00",
+          "04 04 03 01 03 00 00 02 12 00 00 00 00 00 00 00",
+          "02 7c 97 a3 c4 b9 9e da 77 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "70b25f416652172de935d5947383bab045f55a74f12c7527d4f7ca10a8ae9a65"
+      },
+      {
+        "index": 7,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4EB9",
+          "file": "src/banks/bank_132.asm",
+          "line": 238
+        },
+        "structures": 4,
+        "types": [
+          3,
+          5,
+          2,
+          6
+        ],
+        "records_hex": [
+          "03 a1 09 66 cb 00 00 00 00 a1 09 66 cb 00 00 00",
+          "05 04 03 01 0d 00 00 02 2c 00 00 00 00 00 00 00",
+          "02 76 94 ad cf b6 96 d7 68 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "d0493143e4b20f545ff105e390b2daaaafaf1b354b3cebf1615d37ce35213f52"
+      },
+      {
+        "index": 8,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4EFB",
+          "file": "src/banks/bank_132.asm",
+          "line": 242
+        },
+        "structures": 4,
+        "types": [
+          3,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 b7 90 08 db 00 00 00 00 b7 90 08 db 00 00 00",
+          "04 04 03 01 03 00 00 02 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 04 03 01 0c 00 00 02 11 00 00 00 00 00 00 00"
+        ],
+        "sha256": "8538e695b620947458c3ab1d8dd146ff5123a2c1076cfada6f9237f18c704984"
+      },
+      {
+        "index": 9,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4F3D",
+          "file": "src/banks/bank_132.asm",
+          "line": 246
+        },
+        "structures": 4,
+        "types": [
+          3,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 0a 95 6b ce 00 00 00 00 0a 95 6b ce 00 00 00",
+          "05 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 04 03 01 0c 00 00 02 12 00 00 00 00 00 00 00"
+        ],
+        "sha256": "298d09c99af9bbdb23273c211db79e000ad6c3494aa2665199ecdcd584e8dc9f"
+      },
+      {
+        "index": 10,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4F7F",
+          "file": "src/banks/bank_132.asm",
+          "line": 250
+        },
+        "structures": 4,
+        "types": [
+          1,
+          4,
+          5,
+          6
+        ],
+        "records_hex": [
+          "01 10 31 49 08 00 00 00 00 10 31 49 08 00 00 00",
+          "04 03 03 01 0e 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 04 03 01 0f 00 00 02 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "894438750d1d0f1a636e2e0cf73dad865cf2786716e831e4ea8937e96401615d"
+      },
+      {
+        "index": 11,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$4FC1",
+          "file": "src/banks/bank_132.asm",
+          "line": 255
+        },
+        "structures": 4,
+        "types": [
+          1,
+          5,
+          4,
+          6
+        ],
+        "records_hex": [
+          "01 16 37 08 e1 00 00 00 00 16 37 08 e1 00 00 00",
+          "05 04 03 01 03 00 00 02 10 00 00 00 00 00 00 00",
+          "04 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "913926fb7c17002ab070adf0badba284d711ca1739d0906f1b31d73eb4dc51c0"
+      },
+      {
+        "index": 12,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5003",
+          "file": "src/banks/bank_132.asm",
+          "line": 259
+        },
+        "structures": 4,
+        "types": [
+          2,
+          4,
+          3,
+          6
+        ],
+        "records_hex": [
+          "02 7d 09 a5 d1 b3 99 d8 62 00 00 00 00 00 00 00",
+          "04 04 03 01 05 00 00 02 0c 00 00 00 00 00 00 00",
+          "03 bc 9d 78 c7 00 00 00 00 bc 9d 78 c7 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "437012ac95242286fc744d63781d078666551bc031989ab7bf9df92f69a63035"
+      },
+      {
+        "index": 13,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5045",
+          "file": "src/banks/bank_132.asm",
+          "line": 263
+        },
+        "structures": 4,
+        "types": [
+          1,
+          5,
+          3,
+          6
+        ],
+        "records_hex": [
+          "01 2c 08 34 3c 00 00 00 00 2c 08 34 3c 00 00 00",
+          "05 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 b0 e6 ea cc 00 00 00 00 b0 e6 ea cc 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "160158096ecd5a08c9c149f94d80e506551cfb51a66f0f5310975c3ef4728aff"
+      },
+      {
+        "index": 14,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5087",
+          "file": "src/banks/bank_132.asm",
+          "line": 267
+        },
+        "structures": 4,
+        "types": [
+          1,
+          4,
+          3,
+          6
+        ],
+        "records_hex": [
+          "01 14 42 51 08 00 00 00 00 14 42 51 08 00 00 00",
+          "04 04 03 01 2c 00 00 02 0c 00 00 00 00 00 00 00",
+          "03 bd 8d 6e cd 00 00 00 00 bd 8d 6e cd 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "f1fd5de48aa25518289f4f992f36561aec6556f51b646376d858b5a7438b884d"
+      },
+      {
+        "index": 15,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$50C9",
+          "file": "src/banks/bank_132.asm",
+          "line": 271
+        },
+        "structures": 4,
+        "types": [
+          2,
+          4,
+          1,
+          6
+        ],
+        "records_hex": [
+          "02 08 8a e4 d2 ac 98 d6 65 00 00 00 00 00 00 00",
+          "04 04 03 01 0c 00 00 02 0d 00 00 00 00 00 00 00",
+          "01 1c 32 3a 3b 00 00 00 00 1c 32 3a 3b 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00"
+        ],
+        "sha256": "f19083da16d5c9fabdf2d70e7f9acf62414d8d96e112d57cdb2fcd04c3da0ac3"
+      },
+      {
+        "index": 16,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$510B",
+          "file": "src/banks/bank_132.asm",
+          "line": 275
+        },
+        "structures": 5,
+        "types": [
+          2,
+          4,
+          3,
+          6,
+          4
+        ],
+        "records_hex": [
+          "02 7e 9b 0a d0 a9 8f d3 6f 00 00 00 00 00 00 00",
+          "04 03 03 01 05 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 b2 88 71 df 00 00 00 00 b2 88 71 df 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 05 03 02 2c 00 00 03 12 00 00 00 00 00 00 00"
+        ],
+        "sha256": "bd4279d21803f610f2eeb68f6e2e3730c6bd0fcf3ab3ac12d862cbf93b0ff80b"
+      },
+      {
+        "index": 17,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$515D",
+          "file": "src/banks/bank_132.asm",
+          "line": 280
+        },
+        "structures": 5,
+        "types": [
+          2,
+          4,
+          3,
+          6,
+          5
+        ],
+        "records_hex": [
+          "02 71 09 aa d1 ae 91 dc 62 00 00 00 00 00 00 00",
+          "04 05 03 01 05 00 00 03 0c 00 00 00 00 00 00 00",
+          "03 b5 9c 7a dd 00 00 00 00 b5 9c 7a dd 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 05 03 02 10 00 00 03 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "7fb399e7251ec650dbbb75c298bb91c8ce3e721da1a83cd9bdd8f86a15cdb527"
+      },
+      {
+        "index": 18,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$51AF",
+          "file": "src/banks/bank_132.asm",
+          "line": 285
+        },
+        "structures": 5,
+        "types": [
+          3,
+          5,
+          2,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 be 9a 08 d9 00 00 00 00 be 9a 64 d9 00 00 00",
+          "05 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "02 6a 95 b9 d3 b3 85 c8 01 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 05 03 02 05 00 00 03 0f 00 00 00 00 00 00 00"
+        ],
+        "sha256": "b662e8cde1bc714c18e16253ce4bce4f26d7164a03a2295017462552cc06822f"
+      },
+      {
+        "index": 19,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5201",
+          "file": "src/banks/bank_132.asm",
+          "line": 291
+        },
+        "structures": 5,
+        "types": [
+          3,
+          4,
+          2,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 0a e6 eb cc 00 00 00 00 0a e6 eb cc 00 00 00",
+          "04 05 03 01 11 00 00 03 03 00 00 00 00 00 00 00",
+          "02 69 84 ab d8 a4 8c dd 6d 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 05 03 02 2c 00 00 03 0c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "d7c1f920d6835863764ff52b68d4b407284dddac73c9a3005cf97716e91663f8"
+      },
+      {
+        "index": 20,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5253",
+          "file": "src/banks/bank_132.asm",
+          "line": 296
+        },
+        "structures": 5,
+        "types": [
+          3,
+          4,
+          1,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 a1 09 67 cb 00 00 00 00 a1 09 67 cb 00 00 00",
+          "04 03 03 01 03 00 00 ff ff ff ff 00 00 00 00 00",
+          "01 13 35 e1 47 00 00 00 00 13 35 e1 47 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 05 03 01 2c 00 00 03 0e 00 00 00 00 00 00 00"
+        ],
+        "sha256": "fe9a18e74f873faf209965b938575f29752dfe1bd6b6ce43bcc89d398d3ae0cd"
+      },
+      {
+        "index": 21,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$52A5",
+          "file": "src/banks/bank_132.asm",
+          "line": 301
+        },
+        "structures": 5,
+        "types": [
+          3,
+          5,
+          1,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 a1 89 08 cb 00 00 00 00 a1 89 08 cb 00 00 00",
+          "05 05 03 01 05 00 00 03 03 00 00 00 00 00 00 00",
+          "01 28 38 56 e3 00 00 00 00 28 38 56 e3 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 05 03 02 2c 00 00 03 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "372eb25420f30babbc7756099a792f7a872e0995ada3d052a7edd37103fb59c7"
+      },
+      {
+        "index": 22,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$52F7",
+          "file": "src/banks/bank_132.asm",
+          "line": 306
+        },
+        "structures": 5,
+        "types": [
+          3,
+          2,
+          4,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 0a 8b ea cd 00 00 00 00 0a 8b ea cd 00 00 00",
+          "02 75 e5 ad db ba 8c de 6c 00 00 00 00 00 00 00",
+          "04 04 03 01 0f 00 00 02 0d 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 05 03 02 12 00 00 03 10 00 00 00 00 00 00 00"
+        ],
+        "sha256": "9a54acee367d58cf904df5de00bc8ec03dc93ae30c725728ec01ba5f9cb8d112"
+      },
+      {
+        "index": 23,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5349",
+          "file": "src/banks/bank_132.asm",
+          "line": 311
+        },
+        "structures": 5,
+        "types": [
+          3,
+          2,
+          5,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 a0 09 7e ca 00 00 00 00 a0 09 7e ca 00 00 00",
+          "02 63 94 bb da b3 9b df 72 00 00 00 00 00 00 00",
+          "05 03 03 01 0f 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 06 03 02 2c 00 00 04 05 00 00 00 00 00 00 00"
+        ],
+        "sha256": "6e927781ae56d7ea5055949af514eb1bcc2f530b348fa4413db1ec2400b28eda"
+      },
+      {
+        "index": 24,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$539B",
+          "file": "src/banks/bank_132.asm",
+          "line": 316
+        },
+        "structures": 5,
+        "types": [
+          3,
+          2,
+          1,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 a5 83 08 d7 00 00 00 00 a5 83 08 d7 00 00 00",
+          "02 ef 93 b4 c3 be 99 dc 74 00 00 00 00 00 00 00",
+          "01 15 5f 50 45 00 00 00 00 15 5f 50 45 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 07 03 02 0c 00 00 04 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "8ac95e1a6e5c542adb7be90d941a951e5a5194ef014cf354343d7bc70765cef2"
+      },
+      {
+        "index": 25,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$53ED",
+          "file": "src/banks/bank_132.asm",
+          "line": 321
+        },
+        "structures": 5,
+        "types": [
+          3,
+          2,
+          1,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 0a 8a 6b c2 00 00 00 00 0a 8a 6b c2 00 00 00",
+          "02 71 91 ac d2 b2 98 d5 79 00 00 00 00 00 00 00",
+          "01 23 30 39 4a 00 00 00 00 23 30 39 4a 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 06 03 02 11 00 00 04 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "fbde4720a1c4c2324a06c2c7a3c67fa02aa4ed4ab00801d9746be3963d577300"
+      },
+      {
+        "index": 26,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$543F",
+          "file": "src/banks/bank_132.asm",
+          "line": 326
+        },
+        "structures": 5,
+        "types": [
+          1,
+          4,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 1d 3f e2 08 00 00 00 00 1d 3f e2 08 00 00 00",
+          "04 05 03 01 0e 00 00 03 2c 00 00 00 00 00 00 00",
+          "05 03 03 01 0d 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 08 03 02 2c 00 00 05 05 00 00 00 00 00 00 00"
+        ],
+        "sha256": "b2794d08b46935ffc4dab744c9797db9462db570041a825a0b307cb4b28009d1"
+      },
+      {
+        "index": 27,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5491",
+          "file": "src/banks/bank_132.asm",
+          "line": 332
+        },
+        "structures": 5,
+        "types": [
+          1,
+          5,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "01 19 58 08 4b 00 00 00 00 19 58 08 4b 00 00 00",
+          "05 03 03 01 10 00 00 ff ff ff ff 00 00 00 00 00",
+          "04 04 03 01 0d 00 00 02 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 08 03 02 03 00 00 05 0f 00 00 00 00 00 00 00"
+        ],
+        "sha256": "80caa74c5b89eb454490e4a7aaa397cb2fddbe817a6c475bec28d7403d8c9220"
+      },
+      {
+        "index": 28,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$54E3",
+          "file": "src/banks/bank_132.asm",
+          "line": 337
+        },
+        "structures": 6,
+        "types": [
+          1,
+          5,
+          3,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "01 2d 08 e3 3e 00 00 00 00 2d 08 e3 3e 00 00 00",
+          "05 03 03 01 0e 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 b0 96 7b cf 00 00 00 00 b0 96 7b cf 00 00 00",
+          "04 04 03 01 0d 00 00 02 0c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 08 03 02 11 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "1546e593e95befd8240ad655b2cf8c6c1140c0148400c8499b407cef281d4daf"
+      },
+      {
+        "index": 29,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5545",
+          "file": "src/banks/bank_132.asm",
+          "line": 343
+        },
+        "structures": 6,
+        "types": [
+          1,
+          5,
+          3,
+          4,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 1b 59 4c 08 00 00 00 00 1b 59 4c 08 00 00 00",
+          "05 03 03 01 0e 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 af e7 78 ce 00 00 00 00 af e7 78 ce 00 00 00",
+          "04 04 03 01 0d 00 00 02 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 05 03 02 2c 00 00 03 11 00 00 00 00 00 00 00"
+        ],
+        "sha256": "32ad5464e22027b34a2f0a5430306832a7be6dbc95134f4f9da56101abd7eb7b"
+      },
+      {
+        "index": 30,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$55A7",
+          "file": "src/banks/bank_132.asm",
+          "line": 349
+        },
+        "structures": 6,
+        "types": [
+          1,
+          4,
+          5,
+          3,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 20 5d 08 5a 00 00 00 00 20 5d 08 5a 00 00 00",
+          "04 04 03 01 12 00 00 02 2c 00 00 00 00 00 00 00",
+          "05 03 03 01 0c 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 b1 9e 73 ee 00 00 00 00 b1 9e 73 ee 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 06 03 02 05 00 00 04 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "8093681cc4725ca0f5b7da10f76eb267b910d4bf7a3e582dc0ce4f1692ea7fbc"
+      },
+      {
+        "index": 31,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5609",
+          "file": "src/banks/bank_132.asm",
+          "line": 355
+        },
+        "structures": 6,
+        "types": [
+          1,
+          5,
+          5,
+          3,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 22 08 53 54 00 00 00 00 22 08 53 54 00 00 00",
+          "05 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 03 03 01 05 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 b8 e7 68 d0 00 00 00 00 b8 e7 68 d0 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 09 03 02 2c 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "d82adfed3b1d1b2e21308733a870a16ea71462438f7c18613a6086c66888bb9b"
+      },
+      {
+        "index": 32,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$566B",
+          "file": "src/banks/bank_132.asm",
+          "line": 361
+        },
+        "structures": 7,
+        "types": [
+          3,
+          4,
+          4,
+          2,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 0a 9d 7f cf 00 00 00 00 0a 9d 7f cf 00 00 00",
+          "04 04 03 01 0c 00 00 02 2c 00 00 00 00 00 00 00",
+          "04 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "02 75 82 e4 c1 03 88 c4 6e 00 00 00 00 00 00 00",
+          "04 04 03 01 05 00 00 02 12 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 07 03 01 0f 00 00 04 10 00 00 00 00 00 00 00"
+        ],
+        "sha256": "64f3d10c00eaccadb09f38565ed8c70bff4bed8cc3b26f18d1a633a810157265"
+      },
+      {
+        "index": 33,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$56DD",
+          "file": "src/banks/bank_132.asm",
+          "line": 368
+        },
+        "structures": 7,
+        "types": [
+          3,
+          5,
+          5,
+          2,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 bc 09 7d c9 00 00 00 00 bc 09 7d c9 00 00 00",
+          "05 03 03 01 0c 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "02 70 e6 a9 c0 b7 8f c6 77 00 00 00 00 00 00 00",
+          "05 03 03 01 05 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 06 03 02 2c 00 00 03 0f 00 00 00 00 00 00 00"
+        ],
+        "sha256": "abaae7cb33ed76ae4d1d4409e9310a3eefee9196b0e480e945b791ff66afc2e1"
+      },
+      {
+        "index": 34,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$574F",
+          "file": "src/banks/bank_132.asm",
+          "line": 375
+        },
+        "structures": 7,
+        "types": [
+          3,
+          4,
+          4,
+          4,
+          2,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 b5 95 08 c1 00 00 00 00 b5 95 08 c1 00 00 00",
+          "04 03 03 01 0d 00 00 ff ff ff ff 00 00 00 00 00",
+          "04 04 03 01 0e 00 00 ff ff ff ff 00 00 00 00 00",
+          "04 05 03 01 0f 00 00 03 2c 00 00 00 00 00 00 00",
+          "02 76 87 a7 c7 ae 8e d3 7c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 04 03 01 11 00 00 02 0c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "171e7d4621f22908ce4d7a5a7608d37a7e720cd314e8eadbef91b83243f54fd4"
+      },
+      {
+        "index": 35,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$57C1",
+          "file": "src/banks/bank_132.asm",
+          "line": 383
+        },
+        "structures": 7,
+        "types": [
+          3,
+          5,
+          5,
+          5,
+          2,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 0a e8 7e f1 00 00 00 00 0a e8 7e f1 00 00 00",
+          "05 04 03 01 0d 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 04 03 01 0f 00 00 02 12 00 00 00 00 00 00 00",
+          "02 65 8c a8 c5 b9 92 d2 73 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 07 03 02 2c 00 00 04 0c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "ce2e212f688bf1c0372471cd51ad1cdb1ac9651c317a12141ad6e82f55b8f1c2"
+      },
+      {
+        "index": 36,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5833",
+          "file": "src/banks/bank_132.asm",
+          "line": 390
+        },
+        "structures": 7,
+        "types": [
+          3,
+          4,
+          2,
+          4,
+          1,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 b7 09 7b f0 00 00 00 00 b7 09 7b f0 00 00 00",
+          "04 05 03 01 11 00 00 03 2c 00 00 00 00 00 00 00",
+          "02 6e e8 aa ee b3 93 db 79 00 00 00 00 00 00 00",
+          "04 04 03 01 12 00 00 02 2c 00 00 00 00 00 00 00",
+          "01 2b 4e 55 35 00 00 00 00 2b 4e 55 35 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 06 03 02 2c 00 00 04 0d 00 00 00 00 00 00 00"
+        ],
+        "sha256": "384de2f87b42888db0939dfbac86611559736f6fabfbdc51c72fd99035860b02"
+      },
+      {
+        "index": 37,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$58A5",
+          "file": "src/banks/bank_132.asm",
+          "line": 397
+        },
+        "structures": 7,
+        "types": [
+          3,
+          5,
+          2,
+          5,
+          1,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 b5 99 08 da 00 00 00 00 b5 99 08 da 00 00 00",
+          "05 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "02 64 82 a4 c3 ab 8a d0 6c 00 00 00 00 00 00 00",
+          "05 04 03 01 12 00 00 02 0f 00 00 00 00 00 00 00",
+          "01 2f 33 4a 04 00 00 00 00 2f 33 4a 04 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 07 03 02 2c 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "23851d0ef7bae396ac6a9f36743ae142866a5d498e57af0fa7046f353a56fd31"
+      },
+      {
+        "index": 38,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5917",
+          "file": "src/banks/bank_132.asm",
+          "line": 404
+        },
+        "structures": 7,
+        "types": [
+          3,
+          4,
+          4,
+          4,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 0a e7 ec cf 00 00 00 00 0a e7 ec cf 00 00 00",
+          "04 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "04 05 03 01 0e 00 00 03 11 00 00 00 00 00 00 00",
+          "04 06 03 01 03 00 00 03 2c 00 00 00 00 00 00 00",
+          "04 07 03 01 0c 00 00 03 05 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 04 03 01 12 00 00 02 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "7ddb4821beb0f4f07445c8944a25728a29e8f6aa57b9e635e65a5fed6cb55a17"
+      },
+      {
+        "index": 39,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5989",
+          "file": "src/banks/bank_132.asm",
+          "line": 411
+        },
+        "structures": 7,
+        "types": [
+          3,
+          5,
+          5,
+          5,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 ad 09 71 f0 00 00 00 00 ad 09 71 f0 00 00 00",
+          "05 04 03 01 0d 00 00 02 03 00 00 00 00 00 00 00",
+          "05 04 03 01 0e 00 00 02 2c 00 00 00 00 00 00 00",
+          "05 03 03 01 2c 00 00 ff ff ff ff 00 00 00 00 00",
+          "05 03 03 01 0c 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 07 03 02 2c 00 00 05 11 00 00 00 00 00 00 00"
+        ],
+        "sha256": "a71dcb9986db5e56c676aec3ee5c36ab2eecb10d9dcc06a5a19dcc7d4ea016b0"
+      },
+      {
+        "index": 40,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$59FB",
+          "file": "src/banks/bank_132.asm",
+          "line": 418
+        },
+        "structures": 8,
+        "types": [
+          3,
+          4,
+          4,
+          2,
+          4,
+          1,
+          6,
+          4
+        ],
+        "records_hex": [
+          "03 b8 91 08 f1 00 00 00 00 b8 91 08 f1 00 00 00",
+          "04 06 03 01 0d 00 00 03 2c 00 00 00 00 00 00 00",
+          "04 05 03 01 0e 00 00 03 03 00 00 00 00 00 00 00",
+          "02 62 e9 a5 c2 b1 8b d1 6b 00 00 00 00 00 00 00",
+          "04 03 03 01 12 00 00 ff ff ff ff 00 00 00 00 00",
+          "01 2e 3b 44 3d 00 00 00 00 2e 3b 44 3d 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 07 03 02 05 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "4e0cb7665ef8769f3334184946ea890c859a350df85c9f7aac5fccfb1cd2e874"
+      },
+      {
+        "index": 41,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5A7D",
+          "file": "src/banks/bank_132.asm",
+          "line": 426
+        },
+        "structures": 8,
+        "types": [
+          3,
+          5,
+          5,
+          2,
+          5,
+          1,
+          6,
+          5
+        ],
+        "records_hex": [
+          "03 0a 98 74 d8 00 00 00 00 0a 98 74 d8 00 00 00",
+          "05 07 03 01 0d 00 00 03 2c 00 00 00 00 00 00 00",
+          "05 03 03 01 0c 00 00 ff ff ff ff 00 00 00 00 00",
+          "02 69 96 a2 ca ac 8f d4 6d 00 00 00 00 00 00 00",
+          "05 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "01 2a 43 49 57 00 00 00 00 2a 43 49 57 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 06 03 02 2c 00 00 04 05 00 00 00 00 00 00 00"
+        ],
+        "sha256": "3834c36203c791331fb6a299f7368c4e6e607ed64eb45439a07e88bdb18ef882"
+      },
+      {
+        "index": 42,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5AFF",
+          "file": "src/banks/bank_132.asm",
+          "line": 434
+        },
+        "structures": 8,
+        "types": [
+          1,
+          4,
+          3,
+          1,
+          4,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 2d 5a 5e 08 00 00 00 00 2d 5a 5e 08 00 00 00",
+          "04 03 03 01 11 00 00 ff ff ff ff 00 00 00 00 00",
+          "03 a7 e9 ed c4 00 00 00 00 a7 e9 ed c4 00 00 00",
+          "01 24 45 47 53 00 00 00 00 24 45 47 53 00 00 00",
+          "04 04 03 01 0d 00 00 02 10 00 00 00 00 00 00 00",
+          "05 03 03 01 03 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 07 03 02 2c 00 00 ff ff ff ff 00 00 00 00 00"
+        ],
+        "sha256": "608ca1f5b74c97b2b5d4ea02f2b3bbca485a73d0779b6c02ecdb9c37f4cfb0cf"
+      },
+      {
+        "index": 43,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5B81",
+          "file": "src/banks/bank_132.asm",
+          "line": 443
+        },
+        "structures": 8,
+        "types": [
+          1,
+          5,
+          3,
+          1,
+          5,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "01 29 3a 08 42 00 00 00 00 29 3a 08 42 00 00 00",
+          "05 06 03 01 11 00 00 03 12 00 00 00 00 00 00 00",
+          "03 b4 8d 75 cd 00 00 00 00 b4 8d 75 cd 00 00 00",
+          "01 26 4c 34 58 00 00 00 00 26 4c 34 58 00 00 00",
+          "05 06 03 01 0e 00 00 03 2c 00 00 00 00 00 00 00",
+          "04 03 03 01 03 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 07 03 04 2c 00 00 05 0f 00 00 00 00 00 00 00"
+        ],
+        "sha256": "470a9a751a66e8446ffec1bac4c669e6ffa6f0d626046015902d7f8362c36a7b"
+      },
+      {
+        "index": 44,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5C03",
+          "file": "src/banks/bank_132.asm",
+          "line": 451
+        },
+        "structures": 8,
+        "types": [
+          1,
+          4,
+          3,
+          4,
+          1,
+          4,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 2c 08 52 4d 00 00 00 00 2c 08 52 4d 00 00 00",
+          "04 09 03 01 2c 00 00 03 2c 00 00 00 00 00 00 00",
+          "03 af 9d 7a c7 00 00 00 00 af 9d 7a c7 00 00 00",
+          "04 09 03 01 2c 00 00 03 2c 00 00 00 00 00 00 00",
+          "01 2b 40 3c 54 00 00 00 00 2b 40 3c 54 00 00 00",
+          "04 09 03 01 2c 00 00 03 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 09 03 02 2c 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "b355150de73424afd8a81ec652003f605d25d582b9a9ab5f6a71a6064ace898f"
+      },
+      {
+        "index": 45,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5C85",
+          "file": "src/banks/bank_132.asm",
+          "line": 459
+        },
+        "structures": 8,
+        "types": [
+          1,
+          5,
+          2,
+          5,
+          1,
+          5,
+          6,
+          5
+        ],
+        "records_hex": [
+          "01 17 39 5f 08 00 00 00 00 17 39 5f 08 00 00 00",
+          "05 09 03 01 0d 00 00 03 2c 00 00 00 00 00 00 00",
+          "02 63 88 a3 c8 ba 9f dc 6f 00 00 00 00 00 00 00",
+          "05 09 03 01 2c 00 00 03 10 00 00 00 00 00 00 00",
+          "01 18 50 3e 5d 00 00 00 00 18 50 3e 5d 00 00 00",
+          "05 09 03 01 12 00 00 03 05 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 09 03 02 11 00 00 05 2c 00 00 00 00 00 00 00"
+        ],
+        "sha256": "38263b98f7a10907bf8259cd2c489d2f1cb9b71fb286754e22856599a2510275"
+      },
+      {
+        "index": 46,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5D07",
+          "file": "src/banks/bank_132.asm",
+          "line": 467
+        },
+        "structures": 8,
+        "types": [
+          1,
+          4,
+          4,
+          4,
+          4,
+          4,
+          6,
+          5
+        ],
+        "records_hex": [
+          "01 1f 31 08 56 00 00 00 00 1f 31 08 56 00 00 00",
+          "04 04 03 01 2c 00 00 02 2c 00 00 00 00 00 00 00",
+          "04 04 03 01 0f 00 00 02 12 00 00 00 00 00 00 00",
+          "04 04 03 01 05 00 00 02 11 00 00 00 00 00 00 00",
+          "04 04 03 01 03 00 00 02 10 00 00 00 00 00 00 00",
+          "04 03 03 01 0c 00 00 ff ff ff ff 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "05 09 03 03 0e 00 00 05 0d 00 00 00 00 00 00 00"
+        ],
+        "sha256": "ebdede71972866c278d9b1b98d71efc568b7189f5346bfcfadaa50df27097f73"
+      },
+      {
+        "index": 47,
+        "source": {
+          "bank": 132,
+          "cpu_address": "$5D89",
+          "file": "src/banks/bank_132.asm",
+          "line": 475
+        },
+        "structures": 8,
+        "types": [
+          1,
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          4
+        ],
+        "records_hex": [
+          "01 1e 08 4e 55 00 00 00 00 1e 08 4e 55 00 00 00",
+          "05 04 03 01 0e 00 00 03 03 00 00 00 00 00 00 00",
+          "05 06 03 01 2c 00 00 03 10 00 00 00 00 00 00 00",
+          "05 04 03 01 0d 00 00 03 2c 00 00 00 00 00 00 00",
+          "05 06 03 01 11 00 00 03 12 00 00 00 00 00 00 00",
+          "05 05 03 01 0c 00 00 03 2c 00 00 00 00 00 00 00",
+          "06 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "04 09 03 02 2c 00 00 05 11 00 00 00 00 00 00 00"
+        ],
+        "sha256": "58e5c46a9a5acd19c73776722eace6ba52a1ed9ac4a40c35fad63836410251c6"
+      }
+    ]
+  },
+  "levels": {
+    "dimension_source": {
+      "bank": 96,
+      "cpu_address": "$4BF4",
+      "file": "src/banks/bank_096.asm",
+      "line": 194
+    },
+    "recipe_control_source": {
+      "bank": 96,
+      "cpu_address": "$4C58",
+      "file": "src/banks/bank_096.asm",
+      "line": 200
+    },
+    "tier_source": {
+      "bank": 96,
+      "cpu_address": "$53C3",
+      "file": "src/banks/bank_096.asm",
+      "line": 319
+    },
+    "population_source": {
+      "bank": 96,
+      "cpu_address": "$53B3",
+      "file": "src/banks/bank_096.asm",
+      "line": 318
+    },
+    "all_100_levels_checked": true,
+    "boundaries": [
+      {
+        "level": 0,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 10,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 11,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 1,
+        "population_target": 10
+      },
+      {
+        "level": 15,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 20,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 25,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 30,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 35,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 40,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 45,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 50,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 55,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 60,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 65,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 70,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 75,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 80,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      }
+    ],
+    "all_levels": [
+      {
+        "level": 0,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 1,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 2,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 3,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 4,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 5,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 6,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 7,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 8,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 9,
+        "band": 0,
+        "surface_screens": [
+          4,
+          4
+        ],
+        "recipes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 10,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 0,
+        "population_target": 10
+      },
+      {
+        "level": 11,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 1,
+        "population_target": 10
+      },
+      {
+        "level": 12,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 1,
+        "population_target": 10
+      },
+      {
+        "level": 13,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 1,
+        "population_target": 10
+      },
+      {
+        "level": 14,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 1,
+        "population_target": 10
+      },
+      {
+        "level": 15,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 16,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 17,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 18,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 19,
+        "band": 1,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 2,
+        "population_target": 10
+      },
+      {
+        "level": 20,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 21,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 22,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 23,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 24,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 3,
+        "population_target": 10
+      },
+      {
+        "level": 25,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 26,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 27,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 28,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 29,
+        "band": 2,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "tier": 4,
+        "population_target": 10
+      },
+      {
+        "level": 30,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 31,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 32,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 33,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 34,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 5,
+        "population_target": 10
+      },
+      {
+        "level": 35,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 36,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 37,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 38,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 39,
+        "band": 3,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 6,
+        "population_target": 10
+      },
+      {
+        "level": 40,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 41,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 42,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 43,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 44,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 7,
+        "population_target": 10
+      },
+      {
+        "level": 45,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 46,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 47,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 48,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 49,
+        "band": 4,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 8,
+        "population_target": 15
+      },
+      {
+        "level": 50,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 51,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 52,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 53,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 54,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 9,
+        "population_target": 15
+      },
+      {
+        "level": 55,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 56,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 57,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 58,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 59,
+        "band": 5,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 10,
+        "population_target": 15
+      },
+      {
+        "level": 60,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 61,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 62,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 63,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 64,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 11,
+        "population_target": 15
+      },
+      {
+        "level": 65,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 66,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 67,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 68,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 69,
+        "band": 6,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 12,
+        "population_target": 20
+      },
+      {
+        "level": 70,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 71,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 72,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 73,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 74,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 13,
+        "population_target": 20
+      },
+      {
+        "level": 75,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 76,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 77,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 78,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 79,
+        "band": 7,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 14,
+        "population_target": 20
+      },
+      {
+        "level": 80,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 81,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 82,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 83,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 84,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 85,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 86,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 87,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 88,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 89,
+        "band": 8,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 90,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 91,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 92,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 93,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 94,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 95,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 96,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 97,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 98,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      },
+      {
+        "level": 99,
+        "band": 9,
+        "surface_screens": [
+          8,
+          8
+        ],
+        "recipes": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "tier": 15,
+        "population_target": 20
+      }
+    ],
+    "placement_capacity": {
+      "maximum_structures": 8,
+      "structure_record_bytes": 4,
+      "structure_records_wram": [
+        "$CD88",
+        "$CDA7"
+      ],
+      "terminator_for_eight_at": "$CDAB",
+      "interior_descriptors_wram": [
+        "$CDAC",
+        "$CE2B"
+      ],
+      "interior_descriptor_bytes": 16,
+      "maximum_population_target": 20,
+      "population_record_bytes": 8,
+      "population_buffer_wram": [
+        "$CC48",
+        "$CCE7"
+      ]
+    }
+  },
+  "rng_math": {
+    "source": {
+      "bank": 0,
+      "cpu_address": "$09F3",
+      "file": "src/banks/bank_000.asm",
+      "line": 162
+    },
+    "formula": "next = (5 * state + 11) mod 65536",
+    "period_from_zero": 65536,
+    "all_65536_integer_states_seen_once": true,
+    "mathematical_reason": "Increment11 is odd and multiplier5 is1 mod4 (full-period conditions for a power-of-two modulus)",
+    "single_predicate_bounds": [
+      {
+        "predicate": "(high_byte & 0x7f) < 100",
+        "accepted_states_per_full_cycle": 51200,
+        "max_rejected_draws_before_accept": 9,
+        "max_draws_until_accept": 10
+      },
+      {
+        "predicate": "(high_byte & 0x0f) < 10",
+        "accepted_states_per_full_cycle": 40960,
+        "max_rejected_draws_before_accept": 8,
+        "max_draws_until_accept": 9
+      },
+      {
+        "predicate": "(high_byte & 0x0f) < 4",
+        "accepted_states_per_full_cycle": 16384,
+        "max_rejected_draws_before_accept": 24,
+        "max_draws_until_accept": 25
+      },
+      {
+        "predicate": "(high_byte & 0x0f) < 8",
+        "accepted_states_per_full_cycle": 32768,
+        "max_rejected_draws_before_accept": 17,
+        "max_draws_until_accept": 18
+      },
+      {
+        "predicate": "(high_byte & 7) < 1",
+        "accepted_states_per_full_cycle": 8192,
+        "max_rejected_draws_before_accept": 53,
+        "max_draws_until_accept": 54
+      },
+      {
+        "predicate": "(high_byte & 7) < 2",
+        "accepted_states_per_full_cycle": 16384,
+        "max_rejected_draws_before_accept": 30,
+        "max_draws_until_accept": 31
+      },
+      {
+        "predicate": "(high_byte & 7) < 3",
+        "accepted_states_per_full_cycle": 24576,
+        "max_rejected_draws_before_accept": 14,
+        "max_draws_until_accept": 15
+      },
+      {
+        "predicate": "(high_byte & 7) < 4",
+        "accepted_states_per_full_cycle": 32768,
+        "max_rejected_draws_before_accept": 11,
+        "max_draws_until_accept": 12
+      },
+      {
+        "predicate": "(high_byte & 7) < 5",
+        "accepted_states_per_full_cycle": 40960,
+        "max_rejected_draws_before_accept": 7,
+        "max_draws_until_accept": 8
+      },
+      {
+        "predicate": "(high_byte & 7) < 6",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 6,
+        "max_draws_until_accept": 7
+      },
+      {
+        "predicate": "(high_byte & 7) < 7",
+        "accepted_states_per_full_cycle": 57344,
+        "max_rejected_draws_before_accept": 5,
+        "max_draws_until_accept": 6
+      },
+      {
+        "predicate": "(high_byte & 7) < 8",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      }
+    ],
+    "all_56_terrain_rejection_bounds": [
+      {
+        "suffix": 0,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 1,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 2,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 3,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 4,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 5,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 6,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 7,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 8,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 9,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 49152,
+        "max_rejected_draws_before_accept": 1,
+        "max_draws_until_accept": 2
+      },
+      {
+        "suffix": 10,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 11,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 12,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 13,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 14,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 15,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 16,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 17,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 18,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 19,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 20,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 21,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 22,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 23,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 24,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 25,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 26,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 27,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 28,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 29,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 30,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 31,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 32,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 33,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 34,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 35,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 36,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 37,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 38,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 39,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 40,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 41,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 42,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 43,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 44,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 45,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 46,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 47,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 48,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 49,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 50,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 51,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 52,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 53,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 54,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      },
+      {
+        "suffix": 55,
+        "predicate": "terrain[low_byte&3] != 0",
+        "accepted_states_per_full_cycle": 65536,
+        "max_rejected_draws_before_accept": 0,
+        "max_draws_until_accept": 1
+      }
+    ],
+    "not_proven": "End-to-end generator termination/distribution over all seeds; variable call counts and layout rejection are not one fixed single-draw predicate."
+  },
+  "persistence_bounds": {
+    "cache_allocator": {
+      "bank": 96,
+      "cpu_address": "$6C61",
+      "file": "src/banks/bank_096.asm",
+      "line": 713
+    },
+    "cache_save": {
+      "bank": 96,
+      "cpu_address": "$6C96",
+      "file": "src/banks/bank_096.asm",
+      "line": 716
+    },
+    "cache_load": {
+      "bank": 96,
+      "cpu_address": "$6CD1",
+      "file": "src/banks/bank_096.asm",
+      "line": 720
+    },
+    "inventory_allocator": {
+      "bank": 18,
+      "cpu_address": "$691F",
+      "file": "src/banks/bank_018.asm",
+      "line": 660
+    },
+    "inventory_delete": {
+      "bank": 18,
+      "cpu_address": "$69B0",
+      "file": "src/banks/bank_018.asm",
+      "line": 670
+    },
+    "cache_slots": 20,
+    "record_bytes": 405,
+    "descriptor_bytes": 404,
+    "sram_bank": 2,
+    "cache_end_offset_exclusive": 24484,
+    "sram_bank_capacity": 8192,
+    "bytes_remaining_in_bank": 92,
+    "markers_checked": [
+      {
+        "slot": 0,
+        "marker": 80,
+        "first_cpu_address": 40960,
+        "last_cpu_address": 41364,
+        "absolute_sram_offset": 16384
+      },
+      {
+        "slot": 1,
+        "marker": 81,
+        "first_cpu_address": 41365,
+        "last_cpu_address": 41769,
+        "absolute_sram_offset": 16789
+      },
+      {
+        "slot": 2,
+        "marker": 82,
+        "first_cpu_address": 41770,
+        "last_cpu_address": 42174,
+        "absolute_sram_offset": 17194
+      },
+      {
+        "slot": 3,
+        "marker": 83,
+        "first_cpu_address": 42175,
+        "last_cpu_address": 42579,
+        "absolute_sram_offset": 17599
+      },
+      {
+        "slot": 4,
+        "marker": 84,
+        "first_cpu_address": 42580,
+        "last_cpu_address": 42984,
+        "absolute_sram_offset": 18004
+      },
+      {
+        "slot": 5,
+        "marker": 85,
+        "first_cpu_address": 42985,
+        "last_cpu_address": 43389,
+        "absolute_sram_offset": 18409
+      },
+      {
+        "slot": 6,
+        "marker": 86,
+        "first_cpu_address": 43390,
+        "last_cpu_address": 43794,
+        "absolute_sram_offset": 18814
+      },
+      {
+        "slot": 7,
+        "marker": 87,
+        "first_cpu_address": 43795,
+        "last_cpu_address": 44199,
+        "absolute_sram_offset": 19219
+      },
+      {
+        "slot": 8,
+        "marker": 88,
+        "first_cpu_address": 44200,
+        "last_cpu_address": 44604,
+        "absolute_sram_offset": 19624
+      },
+      {
+        "slot": 9,
+        "marker": 89,
+        "first_cpu_address": 44605,
+        "last_cpu_address": 45009,
+        "absolute_sram_offset": 20029
+      },
+      {
+        "slot": 10,
+        "marker": 90,
+        "first_cpu_address": 45010,
+        "last_cpu_address": 45414,
+        "absolute_sram_offset": 20434
+      },
+      {
+        "slot": 11,
+        "marker": 91,
+        "first_cpu_address": 45415,
+        "last_cpu_address": 45819,
+        "absolute_sram_offset": 20839
+      },
+      {
+        "slot": 12,
+        "marker": 92,
+        "first_cpu_address": 45820,
+        "last_cpu_address": 46224,
+        "absolute_sram_offset": 21244
+      },
+      {
+        "slot": 13,
+        "marker": 93,
+        "first_cpu_address": 46225,
+        "last_cpu_address": 46629,
+        "absolute_sram_offset": 21649
+      },
+      {
+        "slot": 14,
+        "marker": 94,
+        "first_cpu_address": 46630,
+        "last_cpu_address": 47034,
+        "absolute_sram_offset": 22054
+      },
+      {
+        "slot": 15,
+        "marker": 95,
+        "first_cpu_address": 47035,
+        "last_cpu_address": 47439,
+        "absolute_sram_offset": 22459
+      },
+      {
+        "slot": 16,
+        "marker": 96,
+        "first_cpu_address": 47440,
+        "last_cpu_address": 47844,
+        "absolute_sram_offset": 22864
+      },
+      {
+        "slot": 17,
+        "marker": 97,
+        "first_cpu_address": 47845,
+        "last_cpu_address": 48249,
+        "absolute_sram_offset": 23269
+      },
+      {
+        "slot": 18,
+        "marker": 98,
+        "first_cpu_address": 48250,
+        "last_cpu_address": 48654,
+        "absolute_sram_offset": 23674
+      },
+      {
+        "slot": 19,
+        "marker": 99,
+        "first_cpu_address": 48655,
+        "last_cpu_address": 49059,
+        "absolute_sram_offset": 24079
+      }
+    ],
+    "inventory": [
+      {
+        "key": 0,
+        "record_first": 50951,
+        "record_last": 50954,
+        "seed_first": 51079,
+        "seed_last": 51080
+      },
+      {
+        "key": 1,
+        "record_first": 50955,
+        "record_last": 50958,
+        "seed_first": 51081,
+        "seed_last": 51082
+      },
+      {
+        "key": 2,
+        "record_first": 50959,
+        "record_last": 50962,
+        "seed_first": 51083,
+        "seed_last": 51084
+      },
+      {
+        "key": 3,
+        "record_first": 50963,
+        "record_last": 50966,
+        "seed_first": 51085,
+        "seed_last": 51086
+      },
+      {
+        "key": 4,
+        "record_first": 50967,
+        "record_last": 50970,
+        "seed_first": 51087,
+        "seed_last": 51088
+      },
+      {
+        "key": 5,
+        "record_first": 50971,
+        "record_last": 50974,
+        "seed_first": 51089,
+        "seed_last": 51090
+      },
+      {
+        "key": 6,
+        "record_first": 50975,
+        "record_last": 50978,
+        "seed_first": 51091,
+        "seed_last": 51092
+      },
+      {
+        "key": 7,
+        "record_first": 50979,
+        "record_last": 50982,
+        "seed_first": 51093,
+        "seed_last": 51094
+      },
+      {
+        "key": 8,
+        "record_first": 50983,
+        "record_last": 50986,
+        "seed_first": 51095,
+        "seed_last": 51096
+      },
+      {
+        "key": 9,
+        "record_first": 50987,
+        "record_last": 50990,
+        "seed_first": 51097,
+        "seed_last": 51098
+      },
+      {
+        "key": 10,
+        "record_first": 50991,
+        "record_last": 50994,
+        "seed_first": 51099,
+        "seed_last": 51100
+      },
+      {
+        "key": 11,
+        "record_first": 50995,
+        "record_last": 50998,
+        "seed_first": 51101,
+        "seed_last": 51102
+      },
+      {
+        "key": 12,
+        "record_first": 50999,
+        "record_last": 51002,
+        "seed_first": 51103,
+        "seed_last": 51104
+      },
+      {
+        "key": 13,
+        "record_first": 51003,
+        "record_last": 51006,
+        "seed_first": 51105,
+        "seed_last": 51106
+      },
+      {
+        "key": 14,
+        "record_first": 51007,
+        "record_last": 51010,
+        "seed_first": 51107,
+        "seed_last": 51108
+      },
+      {
+        "key": 15,
+        "record_first": 51011,
+        "record_last": 51014,
+        "seed_first": 51109,
+        "seed_last": 51110
+      },
+      {
+        "key": 16,
+        "record_first": 51015,
+        "record_last": 51018,
+        "seed_first": 51111,
+        "seed_last": 51112
+      },
+      {
+        "key": 17,
+        "record_first": 51019,
+        "record_last": 51022,
+        "seed_first": 51113,
+        "seed_last": 51114
+      },
+      {
+        "key": 18,
+        "record_first": 51023,
+        "record_last": 51026,
+        "seed_first": 51115,
+        "seed_last": 51116
+      },
+      {
+        "key": 19,
+        "record_first": 51027,
+        "record_last": 51030,
+        "seed_first": 51117,
+        "seed_last": 51118
+      },
+      {
+        "key": 20,
+        "record_first": 51031,
+        "record_last": 51034,
+        "seed_first": 51119,
+        "seed_last": 51120
+      },
+      {
+        "key": 21,
+        "record_first": 51035,
+        "record_last": 51038,
+        "seed_first": 51121,
+        "seed_last": 51122
+      },
+      {
+        "key": 22,
+        "record_first": 51039,
+        "record_last": 51042,
+        "seed_first": 51123,
+        "seed_last": 51124
+      },
+      {
+        "key": 23,
+        "record_first": 51043,
+        "record_last": 51046,
+        "seed_first": 51125,
+        "seed_last": 51126
+      },
+      {
+        "key": 24,
+        "record_first": 51047,
+        "record_last": 51050,
+        "seed_first": 51127,
+        "seed_last": 51128
+      },
+      {
+        "key": 25,
+        "record_first": 51051,
+        "record_last": 51054,
+        "seed_first": 51129,
+        "seed_last": 51130
+      },
+      {
+        "key": 26,
+        "record_first": 51055,
+        "record_last": 51058,
+        "seed_first": 51131,
+        "seed_last": 51132
+      },
+      {
+        "key": 27,
+        "record_first": 51059,
+        "record_last": 51062,
+        "seed_first": 51133,
+        "seed_last": 51134
+      },
+      {
+        "key": 28,
+        "record_first": 51063,
+        "record_last": 51066,
+        "seed_first": 51135,
+        "seed_last": 51136
+      },
+      {
+        "key": 29,
+        "record_first": 51067,
+        "record_last": 51070,
+        "seed_first": 51137,
+        "seed_last": 51138
+      },
+      {
+        "key": 30,
+        "record_first": 51071,
+        "record_last": 51074,
+        "seed_first": 51139,
+        "seed_last": 51140
+      },
+      {
+        "key": 31,
+        "record_first": 51075,
+        "record_last": 51078,
+        "seed_first": 51141,
+        "seed_last": 51142
+      }
+    ],
+    "random_key_limit": 20,
+    "total_key_limit": 32,
+    "cache_full_behavior": "Allocator returnsFFC6=FF; generation4001 returns before assigning/writing a new slot.",
+    "reentry_behavior": "Existing marker50+slot is required; descriptor is loaded, not regenerated from the seed.",
+    "delete_behavior": "Original18:$69B0 invalidates cached marker and compacts all remaining4-byte records and2-byte seeds; adjusts selected index when needed.",
+    "native_dynamic_boundary_cases_still_needed": [
+      "20 generated worlds",
+      "32 total keys",
+      "full-cache refusal",
+      "delete first/middle/last",
+      "re-enter after save/reload"
+    ]
+  },
+  "aot": {
+    "source_commit": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+    "executable_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321",
+    "accepted_binary_manifest_checked": true,
+    "actual_executable_hashed": true,
+    "source_manifest_sha256": "462752ad7e2fa0e658486cc5524106bb1f121a353d279418dd5cfa75d230ba99",
+    "build_identity_sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02",
+    "build_report": "/workspace/scratch/m8-review/final-diagnostic-3d/extracted/diagnostic-output/build-report.json",
+    "all_255_romx_banks_in_build": true,
+    "entry_addresses_per_romx_bank": 16384,
+    "finite_dynamic_entry_samples_emitted_banks": [
+      96,
+      97,
+      98,
+      99,
+      103,
+      105,
+      106,
+      107,
+      108,
+      132,
+      133,
+      135
+    ],
+    "current_native_sources_match_accepted_build_manifest": true,
+    "native_source_and_rom_files_compared": 292,
+    "manifest_comparison_semantics": "Exact file hash or exact hash after LF->CRLF Windows-checkout conversion; no other content normalization.",
+    "windows_checkout_newline_conversion_files": 292,
+    "source_files": [
+      "recomp/CMakeLists.txt",
+      "recomp/tools/recompile_romx_bank.py",
+      "recomp/tools/generate_romx_dispatch.py",
+      "recomp/src/runtime.cpp",
+      "recomp/src/hram_exec.cpp"
+    ],
+    "runtime_policy": "Compiled Bank0/ROMX entries and signature-checked original HRAM DMA only; other RAM execution traps.",
+    "finding": "No postgame-specific missing ROMX bank or reachable-entry filter in the full build. Dynamic correctness of every postgame path remains a gameplay-validation question."
+  },
+  "surface_assets": {
+    "sources": [
+      {
+        "bank": 96,
+        "cpu_address": "$5EE1",
+        "file": "src/banks/bank_096.asm",
+        "line": 497
+      },
+      {
+        "bank": 97,
+        "cpu_address": "$5443",
+        "file": "src/banks/bank_097.asm",
+        "line": 327
+      }
+    ],
+    "template_roll_rows_checked": 128,
+    "distinct_templates": 64,
+    "screen_visual_and_attribute_pairs_checked": 2304,
+    "distinct_visual_headers": 210,
+    "distinct_attribute_maps": 210,
+    "every_decoded_layer_has_360_bytes": true,
+    "no_out_of_bounds_rom_pointer": true,
+    "dictionary_wrap_model": "Original per-byte4KB normalization; outside-destination bytes arezero; true forward references inside destination aremarked unknown."
+  },
+  "interior_assets": {
+    "header_table": {
+      "bank": 97,
+      "cpu_address": "$60D8",
+      "file": "src/banks/bank_097.asm",
+      "line": 528
+    },
+    "populated_ids": 37,
+    "reserved_zero_headers": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96
+    ],
+    "screens_checked": 83,
+    "terrain_class_castle_map_ids": [
+      0,
+      0,
+      3,
+      1,
+      0,
+      0,
+      4,
+      5,
+      2,
+      0
+    ],
+    "terrain_class_other_map_offsets": [
+      0,
+      6,
+      3,
+      1,
+      7,
+      8,
+      4,
+      5,
+      2,
+      9
+    ],
+    "all_10_terrain_map_variants_reference_populated_headers": true,
+    "caveat": "Mode4/5 multi-floor layouts are built from these assets; this validates assets, not every composite layout."
+  },
+  "dungeon_layouts": {
+    "generation_source": {
+      "bank": 132,
+      "cpu_address": "$41F2",
+      "file": "src/banks/bank_132.asm",
+      "line": 34
+    },
+    "loader_source": {
+      "bank": 97,
+      "cpu_address": "$4533",
+      "file": "src/banks/bank_097.asm",
+      "line": 86
+    },
+    "layout_pointer_table": {
+      "bank": 114,
+      "cpu_address": "$4001",
+      "file": "src/banks/bank_114.asm",
+      "line": 3
+    },
+    "stair_transition_table": {
+      "bank": 132,
+      "cpu_address": "$42C7",
+      "file": "src/banks/bank_132.asm",
+      "line": 47
+    },
+    "floor_array_start": "$CE2C",
+    "next_reserved_field": "$CE7C",
+    "capacity_pairs": 40,
+    "maximum_pairs_across_all48_recipes": 32,
+    "maximum_pair_end_exclusive": "$CE6C",
+    "recipe_pair_counts": [
+      {
+        "recipe": 0,
+        "requested_floor_counts": [
+          3
+        ],
+        "stored_floor_pairs": 2
+      },
+      {
+        "recipe": 1,
+        "requested_floor_counts": [
+          3
+        ],
+        "stored_floor_pairs": 2
+      },
+      {
+        "recipe": 2,
+        "requested_floor_counts": [
+          3
+        ],
+        "stored_floor_pairs": 2
+      },
+      {
+        "recipe": 3,
+        "requested_floor_counts": [
+          3
+        ],
+        "stored_floor_pairs": 2
+      },
+      {
+        "recipe": 4,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 5,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 6,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 7,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 8,
+        "requested_floor_counts": [
+          4,
+          4
+        ],
+        "stored_floor_pairs": 6
+      },
+      {
+        "recipe": 9,
+        "requested_floor_counts": [
+          3,
+          4
+        ],
+        "stored_floor_pairs": 5
+      },
+      {
+        "recipe": 10,
+        "requested_floor_counts": [
+          3,
+          4
+        ],
+        "stored_floor_pairs": 5
+      },
+      {
+        "recipe": 11,
+        "requested_floor_counts": [
+          4,
+          3
+        ],
+        "stored_floor_pairs": 5
+      },
+      {
+        "recipe": 12,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 13,
+        "requested_floor_counts": [
+          3
+        ],
+        "stored_floor_pairs": 2
+      },
+      {
+        "recipe": 14,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 15,
+        "requested_floor_counts": [
+          4
+        ],
+        "stored_floor_pairs": 3
+      },
+      {
+        "recipe": 16,
+        "requested_floor_counts": [
+          3,
+          5
+        ],
+        "stored_floor_pairs": 6
+      },
+      {
+        "recipe": 17,
+        "requested_floor_counts": [
+          5,
+          5
+        ],
+        "stored_floor_pairs": 8
+      },
+      {
+        "recipe": 18,
+        "requested_floor_counts": [
+          3,
+          5
+        ],
+        "stored_floor_pairs": 6
+      },
+      {
+        "recipe": 19,
+        "requested_floor_counts": [
+          5,
+          5
+        ],
+        "stored_floor_pairs": 8
+      },
+      {
+        "recipe": 20,
+        "requested_floor_counts": [
+          3,
+          5
+        ],
+        "stored_floor_pairs": 6
+      },
+      {
+        "recipe": 21,
+        "requested_floor_counts": [
+          5,
+          5
+        ],
+        "stored_floor_pairs": 8
+      },
+      {
+        "recipe": 22,
+        "requested_floor_counts": [
+          4,
+          5
+        ],
+        "stored_floor_pairs": 7
+      },
+      {
+        "recipe": 23,
+        "requested_floor_counts": [
+          3,
+          6
+        ],
+        "stored_floor_pairs": 7
+      },
+      {
+        "recipe": 24,
+        "requested_floor_counts": [
+          7
+        ],
+        "stored_floor_pairs": 6
+      },
+      {
+        "recipe": 25,
+        "requested_floor_counts": [
+          6
+        ],
+        "stored_floor_pairs": 5
+      },
+      {
+        "recipe": 26,
+        "requested_floor_counts": [
+          5,
+          3,
+          8
+        ],
+        "stored_floor_pairs": 13
+      },
+      {
+        "recipe": 27,
+        "requested_floor_counts": [
+          3,
+          4,
+          8
+        ],
+        "stored_floor_pairs": 12
+      },
+      {
+        "recipe": 28,
+        "requested_floor_counts": [
+          3,
+          4,
+          8
+        ],
+        "stored_floor_pairs": 12
+      },
+      {
+        "recipe": 29,
+        "requested_floor_counts": [
+          3,
+          4,
+          5
+        ],
+        "stored_floor_pairs": 9
+      },
+      {
+        "recipe": 30,
+        "requested_floor_counts": [
+          4,
+          3,
+          6
+        ],
+        "stored_floor_pairs": 10
+      },
+      {
+        "recipe": 31,
+        "requested_floor_counts": [
+          3,
+          3,
+          9
+        ],
+        "stored_floor_pairs": 12
+      },
+      {
+        "recipe": 32,
+        "requested_floor_counts": [
+          4,
+          3,
+          4,
+          7
+        ],
+        "stored_floor_pairs": 14
+      },
+      {
+        "recipe": 33,
+        "requested_floor_counts": [
+          3,
+          3,
+          3,
+          6
+        ],
+        "stored_floor_pairs": 11
+      },
+      {
+        "recipe": 34,
+        "requested_floor_counts": [
+          3,
+          4,
+          5,
+          4
+        ],
+        "stored_floor_pairs": 12
+      },
+      {
+        "recipe": 35,
+        "requested_floor_counts": [
+          4,
+          3,
+          4,
+          7
+        ],
+        "stored_floor_pairs": 14
+      },
+      {
+        "recipe": 36,
+        "requested_floor_counts": [
+          5,
+          4,
+          6
+        ],
+        "stored_floor_pairs": 12
+      },
+      {
+        "recipe": 37,
+        "requested_floor_counts": [
+          3,
+          4,
+          7
+        ],
+        "stored_floor_pairs": 11
+      },
+      {
+        "recipe": 38,
+        "requested_floor_counts": [
+          3,
+          5,
+          6,
+          7,
+          4
+        ],
+        "stored_floor_pairs": 20
+      },
+      {
+        "recipe": 39,
+        "requested_floor_counts": [
+          4,
+          4,
+          3,
+          3,
+          7
+        ],
+        "stored_floor_pairs": 16
+      },
+      {
+        "recipe": 40,
+        "requested_floor_counts": [
+          6,
+          5,
+          3,
+          7
+        ],
+        "stored_floor_pairs": 17
+      },
+      {
+        "recipe": 41,
+        "requested_floor_counts": [
+          7,
+          3,
+          3,
+          6
+        ],
+        "stored_floor_pairs": 15
+      },
+      {
+        "recipe": 42,
+        "requested_floor_counts": [
+          3,
+          4,
+          3,
+          7
+        ],
+        "stored_floor_pairs": 13
+      },
+      {
+        "recipe": 43,
+        "requested_floor_counts": [
+          6,
+          6,
+          3,
+          7
+        ],
+        "stored_floor_pairs": 18
+      },
+      {
+        "recipe": 44,
+        "requested_floor_counts": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "stored_floor_pairs": 32
+      },
+      {
+        "recipe": 45,
+        "requested_floor_counts": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "stored_floor_pairs": 32
+      },
+      {
+        "recipe": 46,
+        "requested_floor_counts": [
+          4,
+          4,
+          4,
+          4,
+          3,
+          9
+        ],
+        "stored_floor_pairs": 22
+      },
+      {
+        "recipe": 47,
+        "requested_floor_counts": [
+          4,
+          6,
+          4,
+          6,
+          5,
+          9
+        ],
+        "stored_floor_pairs": 28
+      }
+    ],
+    "first_type4_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71
+    ],
+    "first_type5_ids": [
+      160,
+      161,
+      162,
+      163,
+      164,
+      168,
+      169,
+      170,
+      171,
+      172,
+      176,
+      177,
+      178,
+      179,
+      180,
+      184,
+      185,
+      186,
+      187,
+      188
+    ],
+    "intermediate_transitions": [
+      {
+        "incoming_stair_id": 0,
+        "original_base_choices": [
+          0,
+          8,
+          16,
+          24,
+          32,
+          40,
+          48,
+          56,
+          64,
+          72
+        ],
+        "possible_layout_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      },
+      {
+        "incoming_stair_id": 1,
+        "original_base_choices": [
+          0,
+          8,
+          16,
+          24,
+          80,
+          88,
+          96,
+          104,
+          112,
+          120
+        ],
+        "possible_layout_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      },
+      {
+        "incoming_stair_id": 2,
+        "original_base_choices": [
+          0,
+          32,
+          40,
+          48,
+          80,
+          88,
+          96,
+          128,
+          136,
+          144
+        ],
+        "possible_layout_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      },
+      {
+        "incoming_stair_id": 3,
+        "original_base_choices": [
+          8,
+          32,
+          56,
+          64,
+          80,
+          104,
+          112,
+          128,
+          136,
+          152
+        ],
+        "possible_layout_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      },
+      {
+        "incoming_stair_id": 4,
+        "original_base_choices": [
+          16,
+          40,
+          56,
+          72,
+          88,
+          104,
+          120,
+          128,
+          144,
+          152
+        ],
+        "possible_layout_ids": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      },
+      {
+        "incoming_stair_id": 5,
+        "original_base_choices": [
+          24,
+          48,
+          64,
+          72,
+          96,
+          112,
+          120,
+          136,
+          144,
+          152
+        ],
+        "possible_layout_ids": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "each_layout_contains_incoming_and_two_distinct_exits": true
+      }
+    ],
+    "populated_layouts": 180,
+    "unused_null_layout_ids": [
+      165,
+      166,
+      167,
+      173,
+      174,
+      175,
+      181,
+      182,
+      183,
+      189,
+      190,
+      191
+    ],
+    "all_selected_layouts_non_null": true,
+    "every_layout_has_three_distinct_stair_ids_0_to_5": true,
+    "all_six_incoming_stair_classes_have_compatible_next_layouts": true,
+    "all_selected_and_intermediate_layouts_checked": true,
+    "screen_layer_pairs_checked": 2880,
+    "distinct_visual_maps": 166,
+    "distinct_attribute_maps": 166,
+    "terrain_styles": {
+      "source_type4": {
+        "bank": 132,
+        "cpu_address": "$41CA",
+        "file": "src/banks/bank_132.asm",
+        "line": 31
+      },
+      "type4_choices": [
+        0,
+        11,
+        0,
+        11,
+        0,
+        2,
+        0,
+        2,
+        2,
+        3,
+        11,
+        2,
+        2,
+        4,
+        2,
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        3,
+        0,
+        4,
+        0,
+        4,
+        1,
+        4,
+        1,
+        4,
+        1,
+        3,
+        11,
+        1,
+        0,
+        11,
+        0,
+        11
+      ],
+      "source_type5": {
+        "bank": 132,
+        "cpu_address": "$41C2",
+        "file": "src/banks/bank_132.asm",
+        "line": 31
+      },
+      "type5_choices": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        5,
+        7,
+        9
+      ],
+      "original_style_table": {
+        "bank": 97,
+        "cpu_address": "$42DD",
+        "file": "src/banks/bank_097.asm",
+        "line": 48
+      }
+    },
+    "caveat": "Stair-ID compatibility and source/map bounds are checked; no claim of complete collision reachability, overlays or dynamic boss execution for all generated floor sequences."
+  },
+  "map_compression": {
+    "source": [
+      {
+        "bank": 0,
+        "cpu_address": "$0D50",
+        "file": "src/banks/bank_000.asm",
+        "line": 216
+      },
+      {
+        "bank": 0,
+        "cpu_address": "$0D60",
+        "file": "src/banks/bank_000.asm",
+        "line": 217
+      },
+      {
+        "bank": 0,
+        "cpu_address": "$0D74",
+        "file": "src/banks/bank_000.asm",
+        "line": 218
+      },
+      {
+        "bank": 0,
+        "cpu_address": "$0D8E",
+        "file": "src/banks/bank_000.asm",
+        "line": 219
+      }
+    ],
+    "distinct_compressed_assets_checked": 833,
+    "assets_with_unknown_prior_destination_reads": 0,
+    "assets_using_dictionary_wrap": 173,
+    "wrapped_copy_bytes": 5667,
+    "assets_with_original_zero_fills": 188,
+    "extended_length_source": {
+      "bank": 0,
+      "cpu_address": "$0D39",
+      "file": "src/banks/bank_000.asm",
+      "line": 214
+    },
+    "extended_length_byte_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      37,
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      47,
+      49,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77
+    ],
+    "extended_counter_semantics": "8bit ADD19; zero executes256 copies, values beyond255 wrap before the loop",
+    "model": "For each copied byte normalize source index to12bits; sources outside the complete360-byte output window emit zero. Source indices within that window but ahead of emitted data are explicitly unknown, never invented as valid tiles.",
+    "all_833_assets_match_repaired_repository_decoder": true
+  },
+  "full_receipt": {
+    "sha256": "5c1d0e00da2f76f09af99230db3e32d2a2f9b3168172a1e8380ee6cb842f2ea6",
+    "bytes": 3874417,
+    "local_path": "/workspace/scratch/m8-postgame/repository-static-audit-verified.json",
+    "reproduce": "python3 recomp/tools/audit_magic_worlds.py --diagnostic PATH_TO_ACCEPTED_DIAGNOSTIC --output NEW_REPORT.json"
+  }
+}

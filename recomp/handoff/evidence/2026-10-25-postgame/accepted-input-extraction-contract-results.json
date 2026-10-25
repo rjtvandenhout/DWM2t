@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "scope": "Offline verification of unchanged original Actions ZIPs and exact member extraction; no game execution",
+  "raw_archives": [
+    {
+      "kind": "diagnostic",
+      "path": "/workspace/scratch/m8-review/final-diagnostic-3d/actions-original.zip",
+      "bytes": 139241574,
+      "sha256": "9690048b14418b0ba5a944f7422f4c100eaa30eb42c3b4692b774e6ad81a5980"
+    },
+    {
+      "kind": "story",
+      "path": "/workspace/scratch/m8-review/final-story-3d/actions-story-12594545489.zip",
+      "bytes": 2625793,
+      "sha256": "2734ea5d13be5ce3d938199c4cc8bb7c86604aa275154c7fd80c71aaf1706117"
+    }
+  ],
+  "members": [
+    {
+      "member": "diagnostic-output/DWM2tRecompFull.exe",
+      "bytes": 725575680,
+      "sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "member": "diagnostic-output/build-identity.json",
+      "bytes": 2829,
+      "sha256": "06e441bb3668c41633b2946a5819715dc2ae27d7977bbb1bf5ea7400d9d0fe02"
+    },
+    {
+      "member": "diagnostic-output/source-manifest.json",
+      "bytes": 73193,
+      "sha256": "462752ad7e2fa0e658486cc5524106bb1f121a353d279418dd5cfa75d230ba99"
+    },
+    {
+      "member": "diagnostic-work/source.tar",
+      "bytes": 27443200,
+      "sha256": "c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722"
+    },
+    {
+      "member": "ending-complete/native/checkpoint.sav",
+      "bytes": 32768,
+      "sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d"
+    }
+  ]
+}

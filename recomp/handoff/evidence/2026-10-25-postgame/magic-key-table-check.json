@@ -1,0 +1,11 @@
+{
+  "status": "extracted_static_only",
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "output": null,
+  "check_passed": true,
+  "prefix_threshold_mismatches": 0,
+  "suffix_threshold_mismatches": 0,
+  "suffix_stride": 60,
+  "suffix_logical_ids": 56,
+  "roll_cases_checked": 2000
+}

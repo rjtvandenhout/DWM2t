@@ -1,0 +1,152 @@
+{
+  "host": "Linux/Wine10; original P1 inputs; accepted complete-AOT Windows diagnostic",
+  "screenshots": [
+    {
+      "filename": "key-appraised.png",
+      "caption": "Original Key Shop appraises QuietSea for90G.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-01/m8_1048.bmp",
+      "bmp_sha256": "a514a797ca56abecf41d0ae0e31e215e25c14c60c2f215436500ea5ff51912ce",
+      "png_sha256": "8acea2ca74646f562e759ea0f5f31edeffee7006d6d4cbbd02827a902fe63f79",
+      "snapshot_sha256": "ebfa501808404fc60b29dcbf95b2acf5b0b15d4bf07b6365463d41e39898fd8b",
+      "native_state": "M8_STATE frame=62592 mode=1:1 world=9 region=0,0 pos=48,48 party=3 selector=0x92 sram=0x9e00657823b8fe17 screen=0x8bf89805f4ab3e96 image=m8_1048.bmp",
+      "native_mode": [
+        1,
+        1
+      ],
+      "random_context": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-shrine.png",
+      "caption": "First use generates the original QuietSea Door Shrine.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_37.bmp",
+      "bmp_sha256": "44648e8235a63adf3f483a67523e6615f7233e7eab40f859a43dfeca481562dd",
+      "png_sha256": "051541a1b90f48c1304a2060c74f990cacf693b641fc5ba39ce5fb559abc43ca",
+      "snapshot_sha256": "6a077b5b543f7662b21a0e3d32a500a0ff3db248b7fb18ed9091e5dc935d8d45",
+      "native_state": "M8_STATE frame=6577 mode=1:5 world=3 region=0,0 pos=64,64 party=3 selector=0xe7 sram=0xc8e02349ae6120d2 screen=0x15aca76eb777e623 image=m8_37.bmp",
+      "native_mode": [
+        1,
+        5
+      ],
+      "random_context": [
+        0,
+        0,
+        135,
+        0
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-surface.png",
+      "caption": "QuietSea: class8,4\u00d74 original surface.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_43.bmp",
+      "bmp_sha256": "9f8f77a2a42253529e078f3dddeebd4d38fefecda6d3a45efbd8010952286dfb",
+      "png_sha256": "61b582a38e5f15b4f384b1f965c232bcc61b631fd785eb9e0362860f34b938b9",
+      "snapshot_sha256": "78cbe196690dab37a8d28a9f2081f9604a0b84840a57e7dc872f015ab00b9fda",
+      "native_state": "M8_STATE frame=8084 mode=1:5 world=3 region=2,2 pos=16,16 party=3 selector=0xe7 sram=0xc8e02349ae6120d2 screen=0x86d599a70df0335e image=m8_43.bmp",
+      "native_mode": [
+        1,
+        5
+      ],
+      "random_context": [
+        0,
+        0,
+        128,
+        0
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-tower.png",
+      "caption": "Generated castle interior and original ordinary NPC.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_56.bmp",
+      "bmp_sha256": "f080be8e6e780e2ab02126c4c737ffae09c9832e5088e1450582ef2ab9888803",
+      "png_sha256": "363bc946d4cee8c33c1e60911aeb2230edba80cf72d686c623fe6f89184c5ea7",
+      "snapshot_sha256": "d6741b9bf9b5c27ea4bc0b3c9e8c101ee6bf4bd3bf5f26ab23301e3e4a57e60a",
+      "native_state": "M8_STATE frame=9136 mode=1:5 world=3 region=0,0 pos=64,48 party=3 selector=0xe7 sram=0xc8e02349ae6120d2 screen=0xb620989dacdb68a8 image=m8_56.bmp",
+      "native_mode": [
+        1,
+        5
+      ],
+      "random_context": [
+        0,
+        0,
+        131,
+        0
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-dungeon.png",
+      "caption": "Generated dungeon floor loaded through original P1.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_128.bmp",
+      "bmp_sha256": "aa1733e8d1216a4dd5eb4b9c85857d259f8607b15b360fa7bef2f8d81695f102",
+      "png_sha256": "ae30cd9dcba6051b73008cef06d1d114a743d4f2e876421c9810fb215fda0b7b",
+      "snapshot_sha256": "fd2a59f59a755b7a4901ffe7b9cb603fab40e6dea4ecab872e957df32e50b2d1",
+      "native_state": "M8_STATE frame=13265 mode=1:5 world=3 region=1,3 pos=64,128 party=3 selector=0x0 sram=0xc8e02349ae6120d2 screen=0xff2458f598acc912 image=m8_128.bmp",
+      "native_mode": [
+        1,
+        5
+      ],
+      "random_context": [
+        0,
+        0,
+        133,
+        1
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-world-boss.png",
+      "caption": "Original final world boss and two allies before combat.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_298.bmp",
+      "bmp_sha256": "e30a9eda64006d2bf3a41a0b82de6a8d046c9e2029fc2261be476569bb3b8c7b",
+      "png_sha256": "99bc50ead5a59a81665a439e6822dd46b64fcfe6b917eb2f7265334178c78b9e",
+      "snapshot_sha256": "3089e8acb7858c076f5042772ece053fba70da357cc69d71f72c3d32f91629cf",
+      "native_state": "M8_STATE frame=23779 mode=4:0 world=3 region=0,0 pos=80,32 party=3 selector=0x0 sram=0xa92b1ac086629a0f screen=0x6e1d6a8ea0058747 image=m8_298.bmp",
+      "native_mode": [
+        4,
+        0
+      ],
+      "random_context": [
+        0,
+        0,
+        131,
+        3
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-cleared.png",
+      "caption": "The original game confirms that the evil force faded away.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-02/m8_314.bmp",
+      "bmp_sha256": "277153547f68cf0050cca344c0c4e634731e7cf2d0e72c8238d6703f924f5eef",
+      "png_sha256": "7c65e8f11aad054e34b9d79aa5dbc9b6be3305191dcc67f08184ca8b12912c6b",
+      "snapshot_sha256": "e04ac30a9124f7fdcfda62d9c7edb8b03955d28544cd5e45a5eec36de4fe8d44",
+      "native_state": "M8_STATE frame=26648 mode=1:1 world=3 region=0,0 pos=80,32 party=3 selector=0x0 sram=0x10872879e2ebed2a screen=0xe1dfb92524c410f8 image=m8_314.bmp",
+      "native_mode": [
+        1,
+        1
+      ],
+      "random_context": [
+        0,
+        0,
+        131,
+        3
+      ],
+      "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
+      "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    }
+  ]
+}

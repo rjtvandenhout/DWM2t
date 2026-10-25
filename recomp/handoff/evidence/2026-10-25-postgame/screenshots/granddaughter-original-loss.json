@@ -1,0 +1,13 @@
+{
+  "label": "granddaughter-original-loss",
+  "probe": "/workspace/scratch/m8-postgame/quest-probe-01",
+  "source_snapshot": "/workspace/scratch/m8-postgame/quest-probe-01/m8_330",
+  "frame": 14360,
+  "original_loss_only": true,
+  "raw_sha256": {
+    ".bmp": "174df695f6b3cbbda8b730c3db592255df3b2c1ce733f6355f5585747e769c40",
+    ".ram": "f6245392c61aa1a5e0d8e14161e132ef3c49c02a15621ea083ed054c90418cdf",
+    ".sram": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d"
+  },
+  "png_sha256": "cc51adcaa5964ce96835db5063a35126c4864c92e3e48743131070fd58f8a87a"
+}
