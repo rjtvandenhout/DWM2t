@@ -49,12 +49,13 @@ native Windows (run 40144322233). Native
 Windows run 40152139075 has audited twenty archived checkpoints and
 replayed ten later routes through Heaven Sword; all ten new Journal hashes
 match Wine with the full 107-byte quest block verified. A third original
-breeding produces Garon (RayGigas +3). Wine validation now covers35 checkpoints
+breeding produces Garon (RayGigas +3). Wine validation now covers37 checkpoints
 through all Heaven relics, Niterich, Mudou and Sky completion. The party has
 earned Limbo Key and entered the final world. The first guardian attempt and
 original training to level39/37/37 also replay independently. The three-monster
 Limbo guardian is now defeated with all three allies alive; its later Journal
-also passes independent replay. The party is approaching Darck.
+also passes independent replay. Two later supply Journals also pass independent replay. Darck remains
+unbeaten; the current team is retrying with original confusion cures.
 
 **M8 is incomplete.** Limbo's remaining story, ending/credits,
 combined regressions and final production-package acceptance remain unproven.

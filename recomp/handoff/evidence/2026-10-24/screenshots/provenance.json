@@ -1119,5 +1119,38 @@
     "source_bmp_sha256": "c223f1c80370d2f0a071d57a6c51693af4de43e1f3ed0932d6868a6d346ae902",
     "png_sha256": "09443444e52532179496e966f9d0e6cef40860e007f0c97173f1a6af57886af5",
     "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "darck-battle.png",
+    "caption": "The original 4000-HP Darck encounter begins with all three allies fully healed.",
+    "source_session": "limbo-quest-52",
+    "source_bmp": "m8_365.bmp",
+    "frame": 24759,
+    "native_state": "M8_STATE frame=24759 mode=4:0 world=163 region=0,0 pos=64,64 party=3 selector=0x1 sram=0x8e363e81f6977357 screen=0x3b25c78d8bab3fe8 image=m8_365.bmp",
+    "source_bmp_sha256": "cf058b79ac52f4f10e90d4e3811eb8d0c2f7451ab34f9b74e546f6d110f3db14",
+    "png_sha256": "fe9fcd232e1f97510ede4839ef2f143f4ff19ab951a39ef649a579686ac7a6d9",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "aqua-wall-description.png",
+    "caption": "The original learned AquaWall description: creates a barrier that blocks an attack.",
+    "source_session": "limbo-quest-52",
+    "source_bmp": "m8_1985.bmp",
+    "frame": 80539,
+    "native_state": "M8_STATE frame=80539 mode=2:2 world=5 region=1,0 pos=80,64 party=3 selector=0x1a sram=0xfbce06a2ddffee06 screen=0xd2f2762df32b7986 image=m8_1985.bmp",
+    "source_bmp_sha256": "a228bb0dea23ac1e007bdfd493421911552d6c2683d7fd861cc6edb1e444d975",
+    "png_sha256": "0b525b150ae86359fd0df8994933c92f41b736732071aeb5dd04fe54f61c0c9f",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
+  },
+  {
+    "file": "aqua-wall-blocks-gigaslash.png",
+    "caption": "Garon's original AquaWall reacts to Darck's GigaSlash; the following page confirms the barrier disappears, with Garon's HP unchanged at 215.",
+    "source_session": "limbo-quest-52",
+    "source_bmp": "m8_2760.bmp",
+    "frame": 110116,
+    "native_state": "M8_STATE frame=110116 mode=4:0 world=163 region=0,0 pos=64,64 party=3 selector=0x1 sram=0xf25fc23efe38f72d screen=0xd49c4e9dc78044cd image=m8_2760.bmp",
+    "source_bmp_sha256": "0c46d8650208d0674ad92dcebe7f95c46a610331e3e99f9e234d774c2175ae3a",
+    "png_sha256": "1bbada52386a26f2aa3653335fd35d202f79779f29e3fe2c257efaf02fb910e2",
+    "pixels": "Original 160x144 framebuffer, lossless PNG encoding; no retouching."
   }
 ]
