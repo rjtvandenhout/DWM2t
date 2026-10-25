@@ -147,6 +147,24 @@
       ],
       "pixel_conversion": "BMP RGB pixels exactly equal PNG RGB pixels; no visual edits",
       "source_exe_sha256": "f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321"
+    },
+    {
+      "filename": "quietsea-inworld-journal.png",
+      "caption": "Original PLAN Journal prompt inside the generated world.",
+      "original_bmp": "/workspace/scratch/m8-postgame/postgame-03/m8_696.bmp",
+      "bmp_sha256": "f9136bdba85bfdb121101e3e7dffaed257852419734803921936cb50e8842b29",
+      "png_sha256": "24caab3a2fe0586d8547c965c0f8a49bab216e59c0e359bb405cae494392fec3",
+      "pixel_conversion": "Exact BMP-to-PNG RGB equality; no visual edits",
+      "host": "Linux/Wine10"
+    },
+    {
+      "filename": "quietsea-inworld-continue.png",
+      "caption": "Native Windows fresh Continue inside the saved random-world castle.",
+      "original_bmp": "/workspace/scratch/m8-postgame/native-windows-03/extracted/postgame-replay/quietsea-reload-dungeon/native/fresh_continue/m8_0.bmp",
+      "bmp_sha256": "e1884f160a63990a6465c58feb00544df1ccc90c7ef162ea8c4fb3f67336cbe7",
+      "png_sha256": "e0f6a5c8824252d5cc68db968dd6589f3bbba434ce9f3bd0121ccc6e5e725b26",
+      "pixel_conversion": "Exact BMP-to-PNG RGB equality; no visual edits",
+      "host": "Windows"
     }
   ]
 }

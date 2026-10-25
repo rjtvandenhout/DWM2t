@@ -11,9 +11,9 @@ has 24. A refusal checks a gate and does not complete its reward path.
 | Evaluator introduction and certified egg | Ending; introduction `28`, claim `29`, farm capacity | Original Lionex egg received; both flags and all owned data checked. |
 | Granddaughter duel | Ending; earlier SpotSlime request is bypassed in this branch | Original battle 21 reached; attempt lost. |
 | Arena B/A/S | Sequential progress; fees 500/1000/5000G | Actual B refusal and fee display at 11G. No later-class win claimed. S unlocks repeatable stronger-master prizes. |
-| FunkyBird NPC breeding | Ending, adult owned parent, first offer unclaimed | Separate original-P1 service check in progress. |
-| Skeletor NPC breeding | Ending, adult owned parent, first offer unclaimed | Separate original-P1 service check in progress. |
-| Copycat and StoneMan offers | 100 species plus previous offer progression | Source gates/spawn chains checked. |
+| FunkyBird NPC breeding | Ending, adult owned parent, first offer unclaimed | Original NPC breed completed without a fee. |
+| Skeletor NPC breeding | Ending, adult owned parent, first offer unclaimed | Original NPC breed completed without a fee. |
+| Copycat and StoneMan offers | 100 species plus previous offer progression | Original re-entry flags `C9/CB` and catalogue-gated dialogue witnessed after both breeds. |
 | Andreal offer | 150 species plus previous offer progression | Source gate/spawn chain checked. |
 | Kameha / ElfKey | 50 species; victory `39`, key claim `3A` | Actual collection gate inspected at 24 species; reward route source-audited. |
 | Kameha / TravelerKey | 150 species, prior key claim; victory `3B`, claim `3C` | Source-audited. |
@@ -23,7 +23,7 @@ has 24. A refusal checks a gate and does not complete its reward path.
 | Terry duel / later breeding | 150 species and completed Reception offer progression | Source-audited; first attempt `37`, victory `38`. |
 | Petibou / Warubou | 250–289 / 290 species, both gift flags clear, farm capacity | Source-audited alternative gift branches. Claiming either flag `2A/2B` prevents a later second gift from this service. |
 | Medal Man | Real TinyMedal currency and capacity | Exact seven-prize service checked in source; actual minimum refusal at one banked medal. |
-| DreamEgg | Actual DreamEgg state `CECE == 1` at farm interaction | Real trigger traced. Obtaining, feeding and hatching remain unverified. Ordinary farm egg gifts are separate. |
+| DreamEgg | Actual DreamEgg state `CECE == 1` at farm interaction | Actual interaction at `CECE == 0` returns to the ordinary menu. Obtaining, feeding and hatching remain unverified. Ordinary farm egg gifts are separate. |
 | Lamia / Dimensaur / Kagebou arrivals | Exact legitimate acquisition paths unresolved | Arrival strings alone establish neither solo nor link-only acquisition. No completion claim. |
 
 NPC breeding requires a selected owned parent at level 10 or above. The original

@@ -2,6 +2,8 @@
 
 This package was extracted directly from the supplied USA ROM. The original ROM is intentionally **not** included in this package.
 
+Validation scope as of 2026-10-25: the key thresholds, item records and random-world map assets are reproducibly checked against original code. Other datasets retain their historical provenance; this audit does not certify every legacy export.
+
 ## ROM identity
 
 - Size: 4,194,304 bytes (4 MiB)

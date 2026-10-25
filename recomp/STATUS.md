@@ -48,9 +48,9 @@ verified by CI.
 
 ## Supplemental postgame checks
 
-The accepted executable passes six further native Windows original-P1
-checkpoints (228,921 frames): key appraisal, QuietSea generation and world boss,
-cache/re-entry, a three-floor dungeon, two postgame egg gifts and direct Journal
+The accepted executable passes seven further native Windows original-P1
+checkpoints (270,152 frames in 2m07s with four isolated processes): key appraisal, QuietSea generation and world boss,
+cache/re-entry, a three-floor dungeon, two postgame egg gifts, two NPC breeds and direct Journal
 Continue inside a random world. Full owned, quest, key, seed and cache comparisons
 are recorded in the [postgame report with screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md).
 Finite source checks cover all 10 terrains, 100 key levels, 48 recipes and 833

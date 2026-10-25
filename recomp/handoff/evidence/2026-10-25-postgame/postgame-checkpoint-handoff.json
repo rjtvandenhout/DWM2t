@@ -1,0 +1,33 @@
+{
+  "native_windows_run": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40206283890",
+  "game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "independent_branches": true,
+  "files": [
+    {
+      "file": "QuietSea-cleared-inside.sav",
+      "stage": "quietsea-reload-dungeon",
+      "bytes": 32768,
+      "sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+      "source_native_windows_checkpoint": "/workspace/scratch/m8-postgame/native-windows-03/extracted/postgame-replay/quietsea-reload-dungeon/native/checkpoint.sav"
+    },
+    {
+      "file": "Postgame-gifts.sav",
+      "stage": "quest-gates",
+      "bytes": 32768,
+      "sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+      "source_native_windows_checkpoint": "/workspace/scratch/m8-postgame/native-windows-03/extracted/postgame-replay/quest-gates/native/checkpoint.sav"
+    },
+    {
+      "file": "Postgame-NPC-breeding.sav",
+      "stage": "npc-offers",
+      "bytes": 32768,
+      "sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
+      "source_native_windows_checkpoint": "/workspace/scratch/m8-postgame/native-windows-03/extracted/postgame-replay/npc-offers/native/checkpoint.sav"
+    }
+  ],
+  "zip": {
+    "workspace_path": "/workspace/DWM2t/outputs/Postgame-checkpoints-2026-10-25.zip",
+    "bytes": 9354,
+    "sha256": "8a2d05e40efde5c1aabe2cde8e5efe800cec95d508e978aaf6dbe072380c5f0a"
+  }
+}

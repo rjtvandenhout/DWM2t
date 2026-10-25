@@ -1,0 +1,27 @@
+{
+  "accepted_milestone_refs_unchanged": {
+    "restore/recomp-m0": "ac588dc73f59020efc69a53d17c46db6c7286acd",
+    "restore/recomp-m1": "68bf911c5845021db140575bdae721edda572965",
+    "restore/recomp-m2": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+    "restore/recomp-m3": "8ec0c1e80b5cea3df8f9581d1424fae319ec67d6",
+    "restore/recomp-m4": "29c4c8249f5a77a17ea8194d624d20af52da3e6b",
+    "restore/recomp-m5": "9d0b9830ea6542def717a8cde726691cd0421cc2",
+    "restore/recomp-m6": "70628e9a6f210f494ace326c51d1ac295a36c023",
+    "restore/recomp-m7": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+    "restore/recomp-m8": "e44b41394c23f63f55b6d5255bc065696ba554c2"
+  },
+  "active_workflow_files": [
+    ".github/workflows/recomp-candidate.yml",
+    ".github/workflows/recomp-finish-validation.yml",
+    ".github/workflows/recomp-full-validation.yml",
+    ".github/workflows/recomp-player-validation.yml",
+    ".github/workflows/recomp-windows.yml",
+    ".github/workflows/verify.yml"
+  ],
+  "active_workflow_count": 6,
+  "dispatcher_restored_byte_for_byte": true,
+  "dispatcher_sha256": "b8b69e9af20c9b4a3e7f630d14c0db6bb3f2364bb1a4ebe9225b1a682f318fbc",
+  "native_engine_rom_change_paths": [],
+  "final_native_run": "40206283890",
+  "retired_temporary_mode_source": "e1a14de3e3410903756d3e14c205642d12c002f9"
+}
