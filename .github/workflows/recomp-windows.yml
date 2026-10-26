@@ -66,6 +66,7 @@ jobs:
               ('magic-key-tables', ['recomp/tools/inspect_magic_keys.py', '--check']),
               ('original-items', ['recomp/tools/inspect_items.py', '--check']),
               ('magic-world-source', ['recomp/tools/audit_magic_worlds.py', '--output', str(logs / 'magic-world-source.json')]),
+              ('full-rom-source-inventory', ['recomp/tools/inventory_full_rom.py', '--output', str(logs / 'full-rom-source-inventory.json')]),
               ('lr35902', ['recomp/tools/test_lr35902.py', '--bank0', 'src/banks/bank_000.asm']),
               ('bank0-audit', ['recomp/tools/recompile_bank0.py', '--bank', 'src/banks/bank_000.asm', '--audit-only']),
           ]

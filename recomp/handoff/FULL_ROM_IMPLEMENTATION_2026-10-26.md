@@ -1,9 +1,12 @@
 # Full-ROM implementation inventory — 2026-10-26
 
-**Implementation is in progress. No new builds, tests or gameplay validation
-have been run for this implementation phase.** Existing M8 and supplemental
-postgame results remain historical evidence for their exact accepted binaries.
-They do not validate the new hardware/runtime changes.
+**Implementation is complete; acceptance of the new binary is pending.** The
+first complete native Windows validation built all 256 original ROM banks and
+passed 15 of the retained 18 tests. Three failures are being investigated or
+corrected before a fresh acceptance run. Five hardware/runtime contract tests
+pass on Windows and Linux, and 199 host contract cases pass. Existing accepted
+M8/postgame evidence still identifies the earlier exact binaries; the new
+implementation has not replaced the accepted player.
 
 The target is the original **Cobi ROM on the native CGB hardware model**:
 4 MiB, 256 banks, SHA256
@@ -27,10 +30,15 @@ branches. The embedded ROM generator requires the original Cobi SHA256 above.
 This preserves original story, NPC, battle, breeding, item, map and generator
 logic instead of replacing those systems with native approximations.
 
-The accepted Windows package was built with `DWM2T_ALL_ROMX=ON`. At the start of
-this phase the plain CMake option still defaulted to `OFF`, retaining the older
-limited discovery configuration. Making complete AOT the default product build
-is an implementation item; limited discovery should require an explicit choice.
+The normal CMake product build now defaults to `DWM2T_ALL_ROMX=ON`; limited
+discovery requires an explicit `OFF`. The new complete diagnostic at
+`81cfb26e2e30815640a5c80463c662eaf2f11ead` successfully compiled fixed bank 0 and
+all 255 ROMX banks. Compiled address coverage does not mean that every original
+instruction, content path or random output has been exercised.
+
+The execution column below records historical accepted/observed content. The
+current native run's narrower observations are recorded separately under
+“Validation in progress.”
 
 | Content | Implementation/source status | Existing execution evidence |
 | --- | --- | --- |
@@ -79,8 +87,8 @@ The completed implementation pass adds serial hardware and local dual-runtime
 peer execution, alongside CPU/AOT edge handling and renderer/window corrections.
 Each player must retain a separate genuine Journal, runtime and P1 state.
 The host transport must carry serial bits/clock behavior; it must not manufacture
-monsters, keys, rewards or completion flags. Final validation is pending at this
-document's creation.
+monsters, keys, rewards or completion flags. The new hardware contracts have
+passed; final campaign, postgame, GUI and package acceptance remains pending.
 
 ## DreamEgg is an original solo feature
 
@@ -127,10 +135,29 @@ remain explicit when describing “full ROM.” An infrared-register implementat
 likewise does not prove an original IR gameplay feature: the confirmed `$FF56`
 write at `0:$01C9` is boot initialization, and no IR content exchange is claimed.
 
-## Reproducible ROM-bank inventory contract
+## Retained source inventory and static checks
 
-The root implementation will provide a source-only inventory command and a
-retained receipt. Its evidence must include:
+The source-only command
+`python recomp/tools/audit_magic_worlds.py --output <new-report.json>` has run.
+Its retained [receipt](/workspace/scratch/full-rom-2026-10-26/host-contracts-01/worlds.json)
+reports `passed_static_checks`, no findings, and the unchanged original ROM
+SHA256. It parses all 256 raw banks as 16,384 bytes each and checks the
+reconstructed 4,194,304-byte image. The finite checks cover ten terrain classes,
+48 recipes, 264 structure records, 64 surface templates, 180 selectable dungeon
+layouts and 833 compressed assets. The receipt identifies its AOT checks as
+source/emission checks, not an acceptance of a diagnostic executable.
+
+The actual [build identity](/workspace/scratch/full-rom-2026-10-26/native-failure-01/extracted/diagnostic-output/build-identity.json)
+separately records fixed bank 0, ROMX banks 1–255 and the same ROM SHA256 for the
+compiled Windows diagnostic. The retained failure audit verifies all 844
+archived source-manifest file hashes and the Git archive's `81cfb26` commit.
+Source-manifest hashes identify the raw assembly files; they should not be
+mistaken for per-bank hashes of their reconstructed binary bytes.
+
+The new static command
+`python recomp/tools/inventory_full_rom.py --output <new-report.json>` also
+provides a [draft per-bank receipt](/workspace/scratch/full-rom-2026-10-26/original-bank-inventory-draft.json).
+It records:
 
 - Exactly `src/banks/bank_000.asm` through `bank_255.asm`, each parsed as 16,384
   original bytes; per-bank byte count, SHA256, source path and CPU window.
@@ -144,15 +171,108 @@ retained receipt. Its evidence must include:
 - The source commit and output hashes needed to rerun and compare the inventory
   after the implementation is committed.
 
-This specification is recorded in the JSON inventory. It is not a claim that
-the new inventory command, new native build or validation has already run.
+The draft reconstructs the same 256-bank, 4,194,304-byte ROM and records every
+bank's original-byte SHA256, assembly-source SHA256, cartridge offset and CPU
+window. It explicitly sets runtime execution, dynamic coverage and native
+build verification to false. Its `source_inputs_match_commit=false` reflects
+the new inventory tool being uncommitted when the draft was made; a clean
+committed receipt is still pending. The JSON inventory retains this provenance
+instead of treating the draft as exact-commit acceptance.
 
-## Validation phase remains deferred
+## Validation in progress
 
-After implementation is complete, validation must cover the new hardware and
-CPU/renderer contracts, original no-peer cancellation, two-runtime serial
-communication through original menus, and the retained main-story/postgame
-Journal regressions. Collection rewards, DreamEgg feeding/hatching, rare arrival
-reachability, additional generated worlds, cache capacity/deletion and the
-counterpart campaign remain distinct gameplay coverage items. A hardware-unit
-pass must not be presented as completion of those original content routes.
+Implementation was committed as `195ca680b2805339bff86c690c25c99aea6688a2`.
+The first final-validation source is
+`81cfb26e2e30815640a5c80463c662eaf2f11ead`, which additionally checks total DMA
+stall time across linked scheduler slices. Its
+[Windows run 40355244285](https://github.com/rjtvandenhout/DWM2t/actions/runs/40355244285)
+produced the complete diagnostic SHA256
+`b1c141d5b3cbb9640ae0af8831e7d369560a3785097cc6834f1734417b2538b3`.
+The original ROM SHA256 remains unchanged.
+
+The retained [native failure audit](/workspace/scratch/full-rom-2026-10-26/native-failure-01/native-failure-audit.json)
+preserves the original artifact, job log, source archive, build identity, XML
+and observed save/screen comparisons. Native job `121685836009` ran all 18
+tests: 15 passed, three failed, none skipped:
+
+- `M4_renderer`: the renderer component passes and its BMP matches the old
+  build. The mapped-hardware harness still expected effective bank `$100`
+  instead of the correct mirrored physical bank 0 for this 4 MiB ROM. The
+  working-tree harness correction is not yet a passing rerun.
+- `M7_audio`: the unchanged APU now includes the original boot's correct
+  32-T-cycle GDMA stall. A subsequent controlled four-variant
+  [causal comparison](evidence/2026-10-26-full-rom/PCM_CAUSALITY.md) reproduces
+  the historical PCM byte-for-byte only when that stall is omitted. Restoring
+  the former timer behavior alone has no effect. The exact M7 pin has been
+  corrected in the working tree; a fresh native acceptance run is still needed.
+- `M8_oasis_checkpoint`: the first exact audio pin fails in the enemy-feeding
+  side route after the preceding game-state assertions pass. That route's item
+  throw and subsequent checkpoint were not reached by that failed native run.
+  A separate original-P1 observation subsequently completed all 19,508 frames
+  and matched all 76 non-audio assertions. Its three measured audio references
+  still require strict replay on the final source.
+
+Reference migration preserves the original controller bytes, frame positions,
+state/Save assertions and manifest expectations. A working-tree draft ledger
+freezes all 58 audio-bearing routes and 375 exact PCM boundaries. Its unfinished
+guard and measurements are not included in this intermediate evidence commit;
+the complete sealed migration must precede final acceptance. A
+subsequent Kids Class observation found one intermediate screenshot difference
+at frame 14,370: `9a38ae3eef2d8568` versus `be55670a278cea50`. The original binary
+reproduces the old image; only the first 16 pixel rows differ, and the original
+SRAM and exposed game-memory bytes match. The live-Memory renderer comparison
+is still pending. That reference is explicitly blocked; no screen check is
+being removed or treated as an audio-only change.
+
+The seven completed Oasis/Inn/story Journal outputs before that failure are
+byte-identical to the accepted baseline, as is the earlier original M7 Journal.
+Seven corresponding 64 KiB observation snapshots differ only at six hardware
+register reads: `FF02`, `FF4D`, `FF52`, `FF54`, `FF55`, `FF56`; all other 65,530
+bytes match. These are partial regression observations, not the separate
+seven-stage postgame acceptance replay. The full 38-stage campaign and fresh
+seven-stage postgame jobs were skipped after the native-suite failure.
+
+Additional results already available:
+
+- Exact-source Windows and Linux standalone core reports each pass all five
+  named memory, runtime, serial, renderer and generated-AOT tests. The reports
+  bind 35 source inputs and three test binaries. See the
+  [Windows report](/workspace/scratch/full-rom-2026-10-26/fresh-production-01/runtime-core-windows/runtime-core-validation.json)
+  and [Linux report](/workspace/scratch/full-rom-2026-10-26/runtime-core-linux-02/runtime-core-validation.json).
+- The [host-contract results](/workspace/scratch/full-rom-2026-10-26/host-contracts-01/results.json)
+  record 199 passing unit cases across ten suites, plus successful decoder,
+  bank-0, key, item and finite-world static checks. Synthetic evidence fixtures
+  in these suites are not gameplay proof.
+- The separate [independent core audit](/workspace/scratch/full-rom-2026-10-26/independent-core-audit/independent-core-audit.json)
+  preserves the provenance of Windows PR run `40355216796` at merge source
+  `e793442b8431b5f207dea098003e3f36df318a49`, and Linux evidence from the full
+  run. Its comparison establishes matching branch/merge source inputs while
+  retaining their distinct commit identities and LF/CRLF archive hashes.
+- A separate original-P1 two-peer VS probe completed the `$B7/$D3` handshake,
+  actual party exchange and a four-turn original Free Battle without a wager.
+  Player 1 won and Player 2 lost consistently. Both returned to the original
+  menu and closed normally. Fresh, separate production processes then continued
+  each actual post-match Journal; both complete 32-KiB files returned exactly
+  to the genuine ending seed, including all 17 full monster records and all
+  107 quest bytes. The [retained receipt](evidence/2026-10-26-full-rom/original-vs-link-observation.json)
+  identifies the actual `81cfb26` production EXE and Wine platform. It does not
+  certify all other link services or a later binary. Important captured screens:
+  [rules](evidence/2026-10-26-full-rom/screenshots/p1-first-vs-confirm.bmp),
+  [battle](evidence/2026-10-26-full-rom/screenshots/p1-battle-exchange-wait5.bmp),
+  [winner](evidence/2026-10-26-full-rom/screenshots/p1-turn4-result.bmp),
+  [loser](evidence/2026-10-26-full-rom/screenshots/p2-turn4-result.bmp).
+
+The earlier authorized Actions cleanup also removed 144 superseded build/probe
+artifacts, reclaiming 482,264,078 bytes. All 23 deliberately preserved artifacts
+were verified afterward, including the accepted M8 package. The immutable
+M0–M8 branches and `main` were unchanged. The
+[cleanup receipt](evidence/2026-10-26-full-rom/actions-artifact-cleanup.json)
+retains the exact deleted/preserved identities and remote branch commits.
+
+Acceptance still requires resolving the three native failures and completing
+the retained main-story/postgame chains, production GUI/persistence checks and
+strict package gates on the final exact source. Original no-peer cancellation
+and successful original-menu linked transactions remain separate execution
+claims. Collection rewards, DreamEgg feeding/hatching, rare arrivals,
+additional worlds, cache capacity/deletion, Tara and SGB scope retain the
+limitations above. No whole-ROM exhaustive gameplay validation is claimed.
