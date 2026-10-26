@@ -161,6 +161,19 @@ void timer_overflow_reload_and_write_edges() {
 
 void general_vram_dma() {
     auto memory = std::make_unique<Memory>();
+    auto require_queued_stall = [&](unsigned expected, const char* message) {
+        unsigned total = 0;
+        const unsigned maximum_chunk = memory->double_speed() ? 16u : 8u;
+        for (unsigned pulls = 0; pulls < expected; ++pulls) {
+            const auto chunk = memory->take_cpu_stall_mcycles();
+            if (chunk == 0) break;
+            require(chunk <= maximum_chunk && chunk <= expected-total,
+                    "DMA stall chunks remain bounded without exceeding the requested total");
+            total += chunk;
+        }
+        require(total == expected && memory->take_cpu_stall_mcycles() == 0
+                && memory->take_cpu_stall_mcycles() == 0, message);
+    };
     for (unsigned i = 0; i < 32; ++i)
         memory->write8(static_cast<std::uint16_t>(0xC110u+i), static_cast<std::uint8_t>(0x60u+i));
     memory->write8(0xFF4F, 1);
@@ -171,14 +184,14 @@ void general_vram_dma() {
         require(memory->vram_bank_data(0)[i] == 0, "GDMA respects the selected VRAM bank");
     }
     require(memory->read8(0xFF55) == 0xFF, "completed GDMA reports no remaining blocks");
-    require(memory->take_cpu_stall_mcycles() == 16 && memory->take_cpu_stall_mcycles() == 0,
+    require_queued_stall(16,
             "two GDMA blocks queue sixteen normal M-cycles exactly once");
     memory->write8(0xFF4D, 1);
     require(memory->perform_speed_switch(), "prepare double-speed GDMA fixture");
     dma_registers(*memory, 0xC110, 0x8040);
     memory->write8(0xFF55, 0);
-    require(memory->take_cpu_stall_mcycles() == 16,
-            "one double-speed GDMA block queues sixteen CPU M-cycles");
+    require_queued_stall(16,
+            "one double-speed GDMA block queues sixteen CPU M-cycles exactly once");
     for (unsigned i = 0; i < 16; ++i)
         require(memory->vram_bank_data(1)[0x40+i] == 0x60u+i,
                 "double-speed GDMA preserves copied data");
@@ -379,13 +392,28 @@ void runtime_dma_stall_and_interrupt() {
     cpu.ime = true;
     cpu.ime_delay = 1;
     const auto before = memory.total_tcycles();
-    require(runtime->step() == StepResult::Continue && cpu.last_mcycles == 1024,
-            "maximum GDMA stall does not truncate to an eight-bit cycle count");
-    require(cpu.pc == 0x2345 && cpu.sp == 0xD000 && cpu.ime && cpu.ime_delay == 1
-            && memory.total_tcycles()-before == 4096 && serial_irq(memory),
-            "GDMA stalls before interrupt arbitration without finishing an instruction");
-    require(runtime->step() == StepResult::Continue && cpu.pc == 0x58 && !cpu.ime,
-            "queued serial IRQ is accepted after the DMA stall ends");
+    const auto dispatch_before = dwm2t::test_stubs::dispatch_calls;
+    unsigned total_stall = 0;
+    for (unsigned steps = 0; steps < 1024 && total_stall < 1024; ++steps) {
+        const auto step_before = memory.total_tcycles();
+        require(runtime->step() == StepResult::Continue,
+                "each pending GDMA stall chunk continues without dispatching an instruction");
+        const auto chunk = cpu.last_mcycles;
+        require(chunk > 0 && chunk <= 8 && chunk <= 1024-total_stall
+                && memory.total_tcycles()-step_before == chunk*4u,
+                "Runtime consumes a bounded fair DMA chunk with its exact CPU clocks");
+        total_stall += chunk;
+        require(cpu.pc == 0x2345 && cpu.sp == 0xD000 && cpu.ime && cpu.ime_delay == 1
+                && serial_irq(memory) && dwm2t::test_stubs::dispatch_calls == dispatch_before,
+                "every DMA chunk preserves PC, stack, IME delay and pending IRQ without instruction progress");
+    }
+    require(total_stall == 1024 && memory.total_tcycles()-before == 4096,
+            "maximum GDMA preserves all1024 M-cycles across bounded scheduler chunks");
+    const auto irq_before = memory.total_tcycles();
+    require(runtime->step() == StepResult::Continue && cpu.pc == 0x58 && !cpu.ime
+            && cpu.ime_delay == 0 && cpu.last_mcycles == 5
+            && memory.total_tcycles()-irq_before == 20 && !serial_irq(memory),
+            "the first post-stall step services the queued serial IRQ with its exact five M-cycles");
     require(memory.read8(0xCFFE) == 0x45 && memory.read8(0xCFFF) == 0x23,
             "post-DMA interrupt preserves the unexecuted PC");
 
