@@ -55,7 +55,13 @@ profile first, close that session, then select that profile with -LinkProfile:
 
 Focus either window to control that player with the normal keys. Player 1
 supplies audio; both original APUs continue running. Use the original in-game
-link menus on both sides. Save with PLAN > Journal in each game. Closing either
+link menus on both sides. At the saved-game menu, highlight the same service
+in BOTH windows before confirming. For example, highlight VS MODE on each
+side, then confirm on one side to start the original negotiation. A partner
+on another menu item produces the game's normal "Game Link is not ready"
+message; acknowledge both message pages to return to the menu.
+
+Save with PLAN > Journal in each game. Closing either
 window closes both games and flushes each cartridge's pending SRAM separately.
 Both players run this same Cobi version; no other ROM is loaded. The cable is
 local to these two windows. It does not connect to another PC or physical GBC.

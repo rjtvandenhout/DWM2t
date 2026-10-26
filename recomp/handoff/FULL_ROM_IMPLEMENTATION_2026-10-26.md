@@ -2,8 +2,9 @@
 
 **Implementation is complete; acceptance of the new binary is pending.** The
 first complete native Windows validation built all 256 original ROM banks and
-passed 15 of the retained 18 tests. Three failures are being investigated or
-corrected before a fresh acceptance run. Five hardware/runtime contract tests
+passed 15 of the retained 18 tests. The three failure causes are identified;
+their test-reference corrections require a fresh acceptance run. Five
+hardware/runtime contract tests
 pass on Windows and Linux, and 199 host contract cases pass. Existing accepted
 M8/postgame evidence still identifies the earlier exact binaries; the new
 implementation has not replaced the accepted player.
@@ -177,7 +178,11 @@ window. It explicitly sets runtime execution, dynamic coverage and native
 build verification to false. Its `source_inputs_match_commit=false` reflects
 the new inventory tool being uncommitted when the draft was made; a clean
 committed receipt is still pending. The JSON inventory retains this provenance
-instead of treating the draft as exact-commit acceptance.
+instead of treating the draft as exact-commit acceptance. A subsequent
+[clean committed receipt](evidence/2026-10-26-full-rom/original-bank-inventory.json)
+at `b4e9587ba574cdd3b55f9fd8a366404fd4a0cd2c` verifies all 256 banks with
+`source_inputs_match_commit=true`. It remains source-preservation evidence,
+separate from native execution coverage.
 
 ## Validation in progress
 
@@ -213,16 +218,30 @@ tests: 15 passed, three failed, none skipped:
   still require strict replay on the final source.
 
 Reference migration preserves the original controller bytes, frame positions,
-state/Save assertions and manifest expectations. A working-tree draft ledger
-freezes all 58 audio-bearing routes and 375 exact PCM boundaries. Its unfinished
-guard and measurements are not included in this intermediate evidence commit;
-the complete sealed migration must precede final acceptance. A
+state/Save assertions and manifest expectations. The reference ledger freezes
+all 58 audio-bearing routes and 375 exact PCM boundaries. Complete measurements
+now cover 5,338,451 original P1 frames on separately identified Windows and
+Linux discovery executables. The sealed migration and strict final-source
+replay remain separate acceptance steps. A
 subsequent Kids Class observation found one intermediate screenshot difference
 at frame 14,370: `9a38ae3eef2d8568` versus `be55670a278cea50`. The original binary
 reproduces the old image; only the first 16 pixel rows differ, and the original
-SRAM and exposed game-memory bytes match. The live-Memory renderer comparison
-is still pending. That reference is explicitly blocked; no screen check is
-being removed or treated as an audio-only change.
+SRAM and exposed game-memory bytes match. The subsequent
+[same-live-Memory comparison](evidence/2026-10-26-full-rom/RENDERER_CAUSALITY.md)
+isolates the feature: both the old renderer and the current renderer with only
+scroll history disabled reproduce the old image exactly. Actual completed SCY
+history is 2 on rows 0–16, then 0; the current bitmap is byte-identical on Linux
+and Windows. Memory remains unchanged across all three renders. This exact
+one-line screen-reference update is approved and retained in the guard; every
+other non-audio route byte remains frozen. No screen check is removed.
+
+The [strict reference guard](evidence/2026-10-26-full-rom/reference-integrity-guard.json)
+and a separate [root diff audit](evidence/2026-10-26-full-rom/reference-migration-independent-diff.json)
+pass. The exact 428 changed lines comprise 375 audio references, this one
+approved screen reference, 45 manifest route hashes and seven active wrapper
+route hashes. All other bytes in the 64 target files are unchanged. A further
+local run passes all ten existing host suites (199 cases) and the new reference
+guard. These are validation-tool checks, not final Windows game acceptance.
 
 The seven completed Oasis/Inn/story Journal outputs before that failure are
 byte-identical to the accepted baseline, as is the earlier original M7 Journal.
@@ -261,6 +280,12 @@ Additional results already available:
   [battle](evidence/2026-10-26-full-rom/screenshots/p1-battle-exchange-wait5.bmp),
   [winner](evidence/2026-10-26-full-rom/screenshots/p1-turn4-result.bmp),
   [loser](evidence/2026-10-26-full-rom/screenshots/p2-turn4-result.bmp).
+- A fully detached, single-window original VS probe also passed: the ROM
+  displayed its two normal not-ready message pages, B returned to the menu,
+  and original Continue restored the complete ending save byte-for-byte.
+  The [detached receipt](evidence/2026-10-26-full-rom/detached-vs-observation.json)
+  records the actual 53-second Wine run, normal exit and unchanged source seed.
+  No connected peer or fabricated serial response was supplied.
 
 The earlier authorized Actions cleanup also removed 144 superseded build/probe
 artifacts, reclaiming 482,264,078 bytes. All 23 deliberately preserved artifacts
@@ -269,7 +294,7 @@ M0–M8 branches and `main` were unchanged. The
 [cleanup receipt](evidence/2026-10-26-full-rom/actions-artifact-cleanup.json)
 retains the exact deleted/preserved identities and remote branch commits.
 
-Acceptance still requires resolving the three native failures and completing
+Acceptance still requires a fresh pass of all 18 retained native tests and completing
 the retained main-story/postgame chains, production GUI/persistence checks and
 strict package gates on the final exact source. Original no-peer cancellation
 and successful original-menu linked transactions remain separate execution

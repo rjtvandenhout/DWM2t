@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "exact_reference_migration_and_strict_guard_passed",
+  "plan_sha256": "297901d601ea2da6ad7d83e90c189a13ae1a95f6272ec49a59e300b51aa59419",
+  "pre_migration_seal_sha256": "e823662d2f5f729e3526ea84cd98852ddbc74ac6fe4063c9307fdd32606937b8",
+  "applied_migration_sha256": "35dc9a2850515366df92dfe98ff6caa8d598ff929ee1209269a6620a38cde522",
+  "ledger_sha256": "56a79bed49f675901c657e4969b173228a9fe05d1f86af905d5aac8686033f78",
+  "guard_sha256": "7e7478eb02e21584058adfccfb91a20f8ffcf8a2fe829b44212261d3f58d3e97",
+  "strict_guard_invocation_observed": {
+    "command": [
+      "python",
+      "recomp/tools/test_full_rom_audio_references.py"
+    ],
+    "returncode": 0,
+    "status": "passed_reference_integrity"
+  },
+  "changed_reference_files": 64,
+  "exact_replaced_lines": 428,
+  "measured_audio_pins": 375,
+  "approved_screen_pins": 1,
+  "manifest_route_hashes": 45,
+  "active_wrapper_route_hashes": 7,
+  "actual_after_files_match_immutable_plan": true,
+  "git_diff_whitespace_check": "passed",
+  "all_other_p1_state_save_screen_manifest_and_wrapper_bytes_preserved": true,
+  "acceptance_claimed": false,
+  "final_full_255_bank_windows_strict_replay_required": true
+}

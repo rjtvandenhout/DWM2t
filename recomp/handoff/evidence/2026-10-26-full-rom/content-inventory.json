@@ -1,7 +1,7 @@
 {
   "schema": "full-rom-content-inventory-v1",
   "date": "2026-10-26",
-  "phase": "implementation_complete_reference_migration_and_acceptance_pending",
+  "phase": "implementation_complete_fresh_exact_source_acceptance_pending",
   "audit_repository_mutations": "Only the two assigned handoff/inventory files; no runtime, ROM, golden fixture, save or game-state edits by this documentation audit agent",
   "baseline_commit": "b349cc9bdd8d3f61821fd4ca52d52261789eaf93",
   "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
@@ -461,10 +461,13 @@
     "draft_source_input_changes": [
       "?? recomp/tools/inventory_full_rom.py"
     ],
-    "clean_committed_receipt_pending": true,
+    "clean_committed_receipt_pending": false,
     "draft_runtime_execution_performed": false,
     "draft_dynamic_coverage_claimed": false,
-    "draft_native_build_verified_by_this_receipt": false
+    "draft_native_build_verified_by_this_receipt": false,
+    "retained_clean_committed_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/original-bank-inventory.json",
+    "clean_receipt_source_commit": "b4e9587ba574cdd3b55f9fd8a366404fd4a0cd2c",
+    "clean_source_inputs_match_commit": true
   },
   "deferred_validation": [
     "Final acceptance after resolving all3 native-suite failures and completing fresh exact-build campaign/postgame/GUI/package gates",
@@ -687,24 +690,42 @@
       "fresh_continue_complete_file_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d"
     },
     "reference_migration": {
+      "status": "exact_migration_applied_reference_guard_passed",
+      "original_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
       "original_routes": 58,
+      "original_p1_frames": 5338451,
       "exact_audio_pins": 375,
-      "original_fixtures_still_unchanged": true,
-      "one_intermediate_screen_blocked": {
+      "non_audio_comparisons": 27632,
+      "non_audio_comparisons_matching_original": 27631,
+      "approved_exact_screen_changes": 1,
+      "manifest_route_hash_updates": 45,
+      "active_wrapper_route_hash_updates": 7,
+      "changed_lines": 428,
+      "all_other_target_bytes_preserved": true,
+      "windows_routes": 38,
+      "windows_pcm_pins": 267,
+      "linux_routes": 20,
+      "linux_pcm_pins": 108,
+      "failed_sparse_discovery_prefixes_retained_and_excluded": 36,
+      "baseline_route_seal": "79f7b8e5df69022e3864815f7f36d6b98ac065ddda374a7d48a4d7feef83fa57",
+      "baseline_consumer_seal": "9c1234ae2fb6f6080cd946515feaf701075bc7e4d55d05cf51f5017532e32d3d",
+      "measured_seal": "65ceb2828e8bfd8e105c678e5d830697e5b64a01f9788f78dba49977bce4e63a",
+      "ledger": "recomp/tests/full_rom_audio_references.json",
+      "strict_guard": "recomp/tools/test_full_rom_audio_references.py",
+      "guard_result": "recomp/handoff/evidence/2026-10-26-full-rom/reference-integrity-guard.json",
+      "root_independent_diff": "recomp/handoff/evidence/2026-10-26-full-rom/reference-migration-independent-diff.json",
+      "screen_change": {
         "route": "m8_kids_class_victory_p1.txt",
         "line": 535,
         "frame": 14370,
-        "old_fnv": "9a38ae3eef2d8568",
-        "new_fnv": "be55670a278cea50",
-        "old_binary_control_reproduced": true,
-        "changed_pixels": 688,
-        "changed_rows": [
-          0,
-          15
-        ],
-        "same_runtime_renderer_AB_pending": true
+        "before": "9a38ae3eef2d8568",
+        "after": "be55670a278cea50",
+        "cause": "Actual completed SCY2 on rows0..16; only scroll-history ablation exactly restores old image on unchanged live Memory",
+        "causal_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/same-memory-renderer-causality.json",
+        "memory_before_and_after": "a67263790addbf05"
       },
-      "strict_final_source_replay_required": true
+      "strict_fresh_all255_windows_acceptance_required": true,
+      "game_acceptance_claimed": false
     },
     "ending_observation": {
       "frames": 210446,
@@ -713,6 +734,18 @@
       "darck_credits_and_the_end_witnesses_byte_identical_to_historical": true,
       "retained_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/ending-observation-witnesses.json",
       "strict_final_source_acceptance": false
+    },
+    "detached_original_vs": {
+      "status": "passed_original_no_peer_refusal_cancel_continue",
+      "platform": "Wine on Linux",
+      "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+      "executable_sha256": "5f50797b3047978ed098b852a50aa7f63dd64fadae2ddeb5015f0621fd8a5b58",
+      "single_game_window": true,
+      "connected_peer": false,
+      "original_p1_only": true,
+      "normal_shutdown": true,
+      "fresh_complete_save_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "receipt": "recomp/handoff/evidence/2026-10-26-full-rom/detached-vs-observation.json"
     }
   },
   "actions_cleanup": {

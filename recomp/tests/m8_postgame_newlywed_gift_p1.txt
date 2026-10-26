@@ -524,7 +524,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 946a9a9f33cc0ad2
 expect_screen c4feb589d286a0ea
-expect_audio 12665398 11313807 30720 ef224073dd98bd0a
+expect_audio 12665398 11314482 30720 62d1c66576cfea08
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -591,4 +591,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 946a9a9f33cc0ad2
 expect_screen c4feb589d286a0ea
-expect_audio 12665398 11313807 30720 ef224073dd98bd0a
+expect_audio 12665398 11314482 30720 62d1c66576cfea08

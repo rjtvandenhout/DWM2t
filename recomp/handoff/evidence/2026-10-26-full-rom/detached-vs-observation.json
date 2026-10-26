@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "kind": "fully_detached_original_vs_refusal_cancel_continue",
+  "platform": "Wine on Linux",
+  "source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "executable_sha256": "5f50797b3047978ed098b852a50aa7f63dd64fadae2ddeb5015f0621fd8a5b58",
+  "players": 1,
+  "owned_game_windows": [
+    {
+      "hwnd": 327814,
+      "pid": 776,
+      "kind": "DWM2tRecompWindow",
+      "title": "DWM2t Native Recomp"
+    }
+  ],
+  "native_command": [
+    "Z:\\workspace\\scratch\\full-rom-2026-10-26\\player-candidate-01\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+    "--play",
+    "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-02\\detached-vs-02\\profiles\\player1.sav",
+    "--scale",
+    "1",
+    "--audio-volume",
+    "0"
+  ],
+  "native_command_has_no_link_options": true,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "external_clock_or_peer_reply_fabricated": false,
+  "original_no_peer_refusal_observed": true,
+  "original_second_page_observed": "Please check and try again.",
+  "original_refusal_cancelled": true,
+  "original_Continue_after_cancellation": true,
+  "normal_shutdown": true,
+  "normal_shutdowns": 1,
+  "final_entire32768_bytes_identical_to_original_ending": true,
+  "final_save_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "all17_full165_byte_records_identical": true,
+  "quest107_identical": true,
+  "party": [
+    "Garon",
+    "Slash",
+    "Derzo"
+  ],
+  "hp": [
+    220,
+    180,
+    207
+  ],
+  "levels": [
+    40,
+    37,
+    40
+  ],
+  "gold": 11,
+  "immutable_inputs_unchanged": true,
+  "started_utc": "2026-10-26T18:19:22.122025+00:00",
+  "finished_utc": "2026-10-26T18:20:15.544107+00:00",
+  "elapsed_seconds": 53.421000000002095,
+  "raw_report": {
+    "path": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/detached-vs-02/original-vs-repeat.json",
+    "sha256": "a175d4b70e570056469a80f17c66cdf97f194167795ba646b8380458fffea211"
+  },
+  "method_files": {
+    "used-repeat_vs_probe.py": "ba522f7fa519467e075117cd214285d8c007c0b31d5996626d4cf87ea68f6ff6",
+    "used-detached_vs_smoke.py": "272f6010b3a2f8693c72c94edf9649a08f75e6108cacd01b61aefb87359de7eb",
+    "used-reference-manifest.json": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2"
+  },
+  "screenshots": [
+    {
+      "path": "original-Game-Link-is-not-ready-player1.bmp",
+      "sha256": "b5b7cc06b7dbdda93a03966f405c76cd339186410dec3527075ce34e7041f86e"
+    },
+    {
+      "path": "original-please-check-and-try-again-player1.bmp",
+      "sha256": "e45fa0164f0f7756271dea2d72bd8e257aa4aa9d3262400c7578ed900c3815f6"
+    },
+    {
+      "path": "original-second-page-cancel-to-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "path": "actual-detached-Journal-card-player1.bmp",
+      "sha256": "a9fb5b9041053ed895555fbdc472745e60753a4e9463dbc1dfbd0ac19673d49d"
+    },
+    {
+      "path": "detached-original-ending-field-player1.bmp",
+      "sha256": "b221619677a7cfe71d223f98b32630f785cbfbdc07d46fd3e7323388d6178619"
+    },
+    {
+      "path": "detached-original-full-party-and-11G-player1.bmp",
+      "sha256": "25c660c1553c69a6f4eb0e54f592335f78c1148f443803bcf178473b3e0fab0a"
+    }
+  ],
+  "preserved_earlier_wrapper_failure": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/detached-vs-01/original-vs-repeat.json",
+  "note": "The passing route preserved an intermediate immediate-menu wait mismatch, then recognized the actual second original dialogue page before acknowledging it. This was not a native game/runtime failure.",
+  "limits": [
+    "Actual Windows production EXE under Wine, not native Windows execution",
+    "No linked transaction or battle is claimed by this detached test",
+    "Only a copied genuine ending Journal was used; no original Journal operation was performed"
+  ]
+}

@@ -18,13 +18,13 @@ EXE_SHA = '4a12bd3197b414c888f50c606ccf3cb2ede030543f8058df83e0fcd67359e95d'
 SEED_SHA = 'acf128eeeb75c5cb130c58bf692f39eb20c2129306bcb647bde784e7a14a770a'
 # stage, argument, fixture SHA, original Journal SHA, frames, party, HP, location
 STAGES = (
-    ('farm', 'route', '49fd72dd7945b0d3cd2e3c53b0bcafd6912cbc9ff817dfb25b3640dd9e8e3f75',
+    ('farm', 'route', 'bf0d4f4294bea732b06cd80e6c27c3faeca3dcb258a5d0b37b5c09f0f602a080',
      'cef352a25c2322aaea4f1848302ba0e9c80a5326bdd1da2160c36184cd13531e',
      31476, (0, 3, 5), (60, 33, 30), 'world=0 region=1,2 pos=112,48'),
-    ('ready', 'ready_route', 'b03e9c4326ad3a8e80e73d7fd7e2ee8345ae213cc5d0baa3ff70bcb7c04bb614',
+    ('ready', 'ready_route', '0d015ee3d7c81775a545cc0551e831a0b469c74e00c8ea1cb25ac042cf7f20e8',
      'ba22e38f13668d4d0c6cde9c1b4c8d4290a410d2a72f91f6e3235002e3bf3059',
      7275, (0, 5, 1), (60, 30, 44), 'world=0 region=1,2 pos=112,48'),
-    ('village', 'village_route', 'da54e09a0330adaa842b44ceaeaa2ac927e0dd3404e67356ebcea0d583861a01',
+    ('village', 'village_route', '2afb1dfd2697a92b60f0763c9359833959122464e6988dda51fcc63880841a24',
      '5632ab2d6c200ca3c93f768d8d56843f2a9c32fe4f437f9572b4ea843a86e333',
      12966, (0, 5, 1), (47, 30, 42), 'world=60 region=0,0 pos=96,48'),
 )

@@ -20,11 +20,11 @@ SEED_SHA = '5632ab2d6c200ca3c93f768d8d56843f2a9c32fe4f437f9572b4ea843a86e333'
 # name, argument, fixture SHA, Journal SHA, frames, levels, HP, owned count, gold, location
 STAGES = (
     ('support', 'support_route',
-     '0f320ec0fb9ea82740d01c7d20f124506abffc1f00a38c48cb56084afce49b48',
+     '70057a78eaad42f9494593950607bb3dcd273fc48db9a550220954e12df51dec',
      'c92dda4a93ca169af62704e17b33bb9aef3f75f1dc5779ed3e70a67dacf92249',
      40825, (6, 8, 5), (60, 44, 54), 8, 0, 'world=0 region=1,2 pos=64,48'),
     ('training', 'training_route',
-     '7119278fe4fa7feae2df9020c1ec88d6a803d2d0c55e58207b983473066e8bc0',
+     'f6f96a362d85ee57e509f483023ebc4022ddcedb1c3fef5abe019034c1501ef8',
      'eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03',
      395984, (10, 12, 12), (97, 60, 69), 9, 40, 'world=5 region=1,0 pos=80,64'),
 )

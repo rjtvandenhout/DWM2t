@@ -946,7 +946,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram a7541134f4f080f4
 expect_screen 38dc90da2b50741a
-expect_audio 64139220 61478731 32768 94b2010a4244b54a
+expect_audio 64139220 61477882 32768 1ba51961437436a0
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1013,7 +1013,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram a7541134f4f080f4
 expect_screen 38dc90da2b50741a
-expect_audio 64139220 61478731 32768 94b2010a4244b54a
+expect_audio 64139220 61477882 32768 1ba51961437436a0
 U 225 0
 - 120 0
 U 48 0
@@ -1321,7 +1321,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 6207cdc14ac2dc3
 expect_screen 2c7043fdda6b44a0
-expect_audio 76813708 73298077 32768 e6c8d4817984dcea
+expect_audio 76813708 73296562 32768 9357f01e3c49bde0
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1388,7 +1388,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 6207cdc14ac2dc3
 expect_screen 2c7043fdda6b44a0
-expect_audio 76813708 73298077 32768 e6c8d4817984dcea
+expect_audio 76813708 73296562 32768 9357f01e3c49bde0
 U 96 0
 - 120 0
 D 64 0
@@ -1571,7 +1571,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 57977fe98ad2b8fa
 expect_screen d69e5a31e90d1383
-expect_audio 81088570 77386521 32768 9aad0735da4419fa
+expect_audio 81088570 77385132 32768 7fc5b1dd4a7cd0c4
 expect c5db 1
 expect c5dc 3
 expect c6fd 3
@@ -1638,7 +1638,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 57977fe98ad2b8fa
 expect_screen d69e5a31e90d1383
-expect_audio 81088570 77386521 32768 9aad0735da4419fa
+expect_audio 81088570 77385132 32768 7fc5b1dd4a7cd0c4
 - 181 0
 - 9 0
 D 6 0
@@ -2137,7 +2137,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram b04efe43df0a6f6e
 expect_screen f3eb6ba37922a696
-expect_audio 91392148 87351981 32768 52edaacbed359b32
+expect_audio 91392148 87350426 32768 d0a3138cb07d4088
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -2204,7 +2204,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram b04efe43df0a6f6e
 expect_screen f3eb6ba37922a696
-expect_audio 91392148 87351981 32768 52edaacbed359b32
+expect_audio 91392148 87350426 32768 d0a3138cb07d4088
 L 176 0
 - 24 0
 D 16 0
@@ -2921,7 +2921,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 62ee6226e4cdaee8
 expect_screen 10224fb0f2d613f2
-expect_audio 117461394 111418125 32768 23946cfc4d2bcd2a
+expect_audio 117461394 111417018 32768 88c8f5c8d605bfc8
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -2988,7 +2988,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 62ee6226e4cdaee8
 expect_screen 10224fb0f2d613f2
-expect_audio 117461394 111418125 32768 23946cfc4d2bcd2a
+expect_audio 117461394 111417018 32768 88c8f5c8d605bfc8
 L 48 0
 - 120 0
 R 48 0
@@ -3721,7 +3721,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram f0aabbb8f9375e57
 expect_screen 7eef324bbe4c017
-expect_audio 139958526 132738727 32768 115bd37cfab17582
+expect_audio 139958526 132737630 32768 dc94186bdd9946c4
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -3788,7 +3788,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram f0aabbb8f9375e57
 expect_screen 7eef324bbe4c017
-expect_audio 139958526 132738727 32768 115bd37cfab17582
+expect_audio 139958526 132737630 32768 dc94186bdd9946c4
 A 6 0
 - 180 0
 R 6 0
@@ -4126,7 +4126,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 7ace58144f6bafe7
 expect_screen bc6fa430e5071fec
-expect_audio 150849330 142862167 32768 ebc342010ce07786
+expect_audio 150849330 142861416 32768 c2de4013e09e4834
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -4193,7 +4193,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 7ace58144f6bafe7
 expect_screen bc6fa430e5071fec
-expect_audio 150849330 142862167 32768 ebc342010ce07786
+expect_audio 150849330 142861416 32768 c2de4013e09e4834
 D 16 0
 - 24 0
 A 6 0
@@ -4294,7 +4294,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram f21561e6abca90c1
 expect_screen 7884020ad9782b3
-expect_audio 152284534 144256969 32768 8e0f7ce4ccbb7636
+expect_audio 152284534 144256412 32768 3a486d7336fa562c
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -4361,4 +4361,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram f21561e6abca90c1
 expect_screen 7884020ad9782b3
-expect_audio 152284534 144256969 32768 8e0f7ce4ccbb7636
+expect_audio 152284534 144256412 32768 3a486d7336fa562c

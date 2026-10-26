@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "changes": {
+    "audio": 375,
+    "screen": 1,
+    "manifest_hashes": 45,
+    "consumer_hashes": 7
+  },
+  "all_other_target_bytes_preserved": true
+}
