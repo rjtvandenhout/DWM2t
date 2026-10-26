@@ -1,0 +1,236 @@
+{
+  "schema": "full-rom-content-inventory-v1",
+  "date": "2026-10-26",
+  "phase": "implementation_complete_validation_pending",
+  "new_builds_run_in_this_audit": false,
+  "new_tests_run_in_this_audit": false,
+  "new_gameplay_run_in_this_audit": false,
+  "audit_repository_mutations": "Only the two newly assigned handoff/inventory files; no runtime, original ROM, save or state edits by this audit agent",
+  "baseline_commit": "b349cc9bdd8d3f61821fd4ca52d52261789eaf93",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "rom": {
+    "scope": "Original Cobi ROM, active native CGB hardware model",
+    "title": "DWM2-C",
+    "manufacturer_game_code": "BQLE",
+    "sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+    "bytes": 4194304,
+    "banks": 256,
+    "bytes_per_bank": 16384,
+    "cgb_header": "80",
+    "sgb_header": "03",
+    "cartridge_header": "1B",
+    "mapper": "MBC5 with RAM and battery",
+    "rtc_required_by_cartridge_type": false,
+    "rumble_required_by_cartridge_type": false,
+    "tara_campaign_covered": false
+  },
+  "classification": {
+    "A": "Original code/data present and included by full AOT; dynamic coverage may be partial or absent",
+    "B": "Actual native host capability or build-default gap at the baseline; implementation is complete and final validation is pending",
+    "C": "Original-content reachability or external-input uncertainty; do not invent a host feature or a completion claim"
+  },
+  "source_inventory": {
+    "embedded_rom_generator": "recomp/tools/generate_rom_image.py",
+    "embedded_rom_identity_line": 22,
+    "full_aot_selection": "recomp/CMakeLists.txt:152",
+    "full_aot_romx_range": [1, 255],
+    "romx_generator": "recomp/tools/recompile_romx_bank.py:163",
+    "entries_per_romx_bank": 16384,
+    "entry_policy": "Every byte offset, not only branches discovered through gameplay",
+    "baseline_default_all_romx": false,
+    "accepted_player_all_romx": true,
+    "root_change_implemented": "Normal builds default to complete AOT; limited discovery requires explicit DWM2T_ALL_ROMX=OFF"
+  },
+  "content": [
+    {
+      "id": "main-campaign",
+      "class": "A",
+      "source_status": "Original code/data present; accepted complete AOT",
+      "execution_status": "Main campaign, Darck, MagicPlug, full credits, THE END and original Journal/Continue accepted on the earlier exact binary",
+      "evidence": "recomp/milestones/M8_RESULT.md"
+    },
+    {
+      "id": "random-worlds",
+      "class": "A",
+      "source_status": "Original generation, naming, 10 terrains, 48 recipes, layouts, encounters, rewards, cache and deletion included",
+      "source_addresses": ["96:$4001", "96:$4CC1", "96:$6D0D", "132:$4CCB", "96:$6C61", "96:$6C96", "96:$6CD1", "18:$69B0"],
+      "execution_status": "One genuine QuietSea world cleared and revisited; original in-world Journal and fresh Continue accepted",
+      "pending_execution": ["Additional genuine keys/terrain classes", "Difficulty boundaries", "Cache capacity", "First/middle/last deletion", "Additional boss/reward sequences"],
+      "evidence": "recomp/handoff/POSTGAME_PROGRESS_2026-10-25.md",
+      "all_seed_native_coverage_claimed": false
+    },
+    {
+      "id": "arena",
+      "class": "A",
+      "source_addresses": ["19:$6D68", "19:$7708", "12:$697E"],
+      "source_status": "Original B/A/S/pro admission, fees, battles and prizes present",
+      "execution_status": "B-class fee refusal observed; remaining victories unplayed"
+    },
+    {
+      "id": "npc-gifts-duel",
+      "class": "A",
+      "source_addresses": ["19:$6AD1", "19:$78DE", "19:$68E2", "16:$5433"],
+      "execution_status": "Newlywed and evaluator eggs claimed; granddaughter battle reached and lost"
+    },
+    {
+      "id": "npc-breeding-terry",
+      "class": "A",
+      "source_addresses": ["19:$7E05", "19:$7E9F", "13:$722A", "13:$740F", "19:$7F02", "133:$4A2B"],
+      "execution_status": "Original FunkyBird and Skeletor breeding completed; Copycat/StoneMan collection gates observed; remaining offers and Terry victory unplayed"
+    },
+    {
+      "id": "catalogue-rewards-bounties",
+      "class": "A",
+      "source_addresses": ["19:$70D9", "19:$713A", "19:$7598", "19:$7636", "19:$659E", "133:$5B04"],
+      "catalogue_gates": [50, 100, 120, 140, 150, 160, 250, 290],
+      "execution_status": "Original refusal gates observed; reward playthroughs unplayed",
+      "warning": "A refusal or copied catalogue mask is not an earned reward completion"
+    },
+    {
+      "id": "medal-man",
+      "class": "A",
+      "source_addresses": ["13:$710E", "13:$6D09", "19:$6F0F"],
+      "prizes": [
+        {"name": "MeteOrb", "medals": 3},
+        {"name": "MadCat", "medals": 3},
+        {"name": "HornBeet", "medals": 4},
+        {"name": "SkyDragon", "medals": 4},
+        {"name": "Octogon", "medals": 5},
+        {"name": "Servant", "medals": 5},
+        {"name": "Darck", "medals": 10, "additional_gate": "C837!=0"}
+      ],
+      "execution_status": "Minimum-fee refusal observed; full ladder unclaimed"
+    },
+    {
+      "id": "local-fixed-postgame-worlds",
+      "class": "A",
+      "worlds": ["Elf/Elven", "Traveler", "Brawn/Power"],
+      "source_addresses": ["19:$75BE", "19:$7636", "19:$7BA1"],
+      "source_status": "Original local Cobi key grants, maps and event/battle code present",
+      "execution_status": "Legitimate key acquisition and full world playthroughs pending"
+    },
+    {
+      "id": "counterpart-worlds-soul",
+      "class": "A+B+C",
+      "worlds": ["Lonely", "Baffle", "Soul"],
+      "source_addresses": ["19:$7BA1", "19:$74CF", "19:$7B91", "115:$5282"],
+      "source_status": "Maps and original prerequisite/event code present; local Cobi rewards do not grant every counterpart key",
+      "host_dependency": "Original serial key exchange through a valid peer",
+      "external_dependency": "Corresponding original counterpart ROM/input for a legitimately generated counterpart-only key",
+      "execution_status": "No original counterpart exchange or complete route accepted",
+      "soul_prerequisites": ["0x206", "0x207"],
+      "fabricated_key_or_flag_substitution_allowed": false
+    },
+    {
+      "id": "dream-egg",
+      "class": "A",
+      "source_status": "Original solo acquisition, feeding/item effects, egg-state factory and serial exchange paths present",
+      "execution_status": "Actual empty-egg refusal observed; acquisition/feeding/hatching/exchange unplayed",
+      "solo_acquisition_requires_serial_peer": false,
+      "chain": [
+        {"source": "96:$50E5..$5157", "behavior": "Eligible type4/5 dungeon reward draw<5 sets descriptor state3 and reward81"},
+        {"source": "18:$6295..$630D", "behavior": "Reward81 checks CECE; existing egg uses original MagicKey fallback; otherwise starts egg event"},
+        {"source": "18:$621F", "behavior": "Calls original egg factory240:$7D0A"},
+        {"source": "240:$7D0A", "behavior": "Clears CE9B..CF72, sets CECE=1 and creates original data"},
+        {"source": "19:$7D45", "behavior": "Original field interaction requires an actual egg"},
+        {"source": "133:$4717", "behavior": "Opens original item-feeding menu2:0C"},
+        {"source": "241:$4187..$41A5", "behavior": "Calls240:$7284 for feeding effect and removes selected original inventory item"},
+        {"source": "240:$527B,240:$52C0", "behavior": "Distinct serial egg-data exchange prepares peer transfer pointers/count"}
+      ],
+      "ordinary_npc_farm_eggs_are_different_state": true
+    },
+    {
+      "id": "rare-arrivals",
+      "class": "A+C",
+      "species": [
+        {"id": 380, "name": "Lamia", "definition": "53:$7E2A", "arrival_text": "137:$61F6"},
+        {"id": 381, "name": "Dimensaur", "definition": "53:$7E59", "arrival_text": "137:$620F"},
+        {"id": 382, "name": "Kagebou", "definition": "53:$7E88", "arrival_text": "137:$622C"}
+      ],
+      "source_status": "Original definitions and arrival text included by full AOT/data image",
+      "reachability_status": "Legitimate local or distribution arrival paths unresolved",
+      "warning": "No host grant, fabricated distribution, solo-acquisition or completed-link claim follows from string/definition presence"
+    }
+  ],
+  "host_work": [
+    {
+      "id": "serial-local-dual",
+      "class": "B",
+      "baseline_gap": "FF01/FF02 generic IO storage, no transfer shift clock, no connected peer and no completion IRQ producer",
+      "baseline_native_sources": ["recomp/src/memory.cpp:182", "recomp/src/memory.cpp:356", "recomp/src/memory.cpp:469", "recomp/src/runtime.cpp:13"],
+      "original_contract": [
+        {"source": "0:$0058", "behavior": "Serial vector JP255B"},
+        {"source": "0:$255B", "behavior": "Saves registers and far-calls27:$4001"},
+        {"source": "27:$4001", "behavior": "Original received-byte/protocol dispatcher"},
+        {"source": "0:$08AD", "behavior": "Starts internal normal-clock transfer SC81 after writing SB"},
+        {"source": "0:$08BA", "behavior": "Starts external-clock transfer SC80"},
+        {"source": "0:$08C7", "behavior": "Resets SC then writes outgoing SB byte"},
+        {"source": "0:$07D1", "behavior": "Waits for SC bit7 to clear"}
+      ],
+      "implementation_phase_status": "Serial hardware and local dual-runtime host implemented; final validation pending",
+      "guest_must_own_rewards_and_state": true,
+      "separate_original_saves_and_p1_per_player": true,
+      "detached_internal_clock_contract": "Complete transfer with high input bits and appropriate serial IRQ; do not leave SC bit7 permanently set"
+    },
+    {
+      "id": "cpu-renderer-edges",
+      "class": "B",
+      "implementation_phase_status": "CPU/AOT edge and renderer/window corrections implemented; final validation pending",
+      "original_ram_execution_scope": "Known original HRAM DMA helper; arbitrary RAM execution remains outside AOT policy and must fail closed unless an exact original helper is identified"
+    },
+    {
+      "id": "default-full-aot",
+      "class": "B",
+      "baseline_gap": "Plain CMake default was discovery-sized while accepted/candidate builds explicitly enabled complete ROMX",
+      "implementation_phase_status": "Complete-AOT product build now defaults to ON"
+    }
+  ],
+  "other_hardware_and_version_scope": {
+    "active_mode": "CGB",
+    "tara": "Separate original counterpart ROM identity and campaign comparison; alternate strings/branches in Cobi do not establish a Tara build",
+    "sgb": {
+      "header_advertised": true,
+      "original_detection": "0:$05E2",
+      "original_p1_packet_emitter": "31:$5040",
+      "native_surface": [160, 144],
+      "scope": "SGB packet receiver/SNES border is separate legacy hardware presentation, not the active native CGB mode",
+      "sgb_host_completion_claimed": false
+    },
+    "infrared": {
+      "confirmed_original_access": "0:$01C9 resets FF56 at CGB boot",
+      "original_gameplay_exchange_path_proven": false,
+      "warning": "Register support alone does not establish an original infrared gameplay feature"
+    }
+  },
+  "reproducible_rom_bank_inventory_specification": {
+    "provider": "Root implementation tool and retained source-only receipt; not executed by this audit",
+    "inputs": "src/banks/bank_000.asm through src/banks/bank_255.asm",
+    "per_bank_fields": ["bank", "source_path", "cpu_window", "byte_count", "sha256"],
+    "per_bank_bytes": 16384,
+    "bank_count": 256,
+    "reconstructed_rom_bytes": 4194304,
+    "expected_rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+    "build_fields": ["source_commit", "fixed_bank", "selected_romx_banks", "entry_addresses_per_bank", "receipt_sha256"],
+    "normal_selected_romx_banks": "1..255",
+    "entry_addresses_per_romx_bank": 16384,
+    "bank0_switchable_alias": "Runtime mapping contract, not an extra cartridge bank",
+    "coverage_boundary": "Inventory/emission is separate from executed instruction/gameplay coverage"
+  },
+  "deferred_validation": [
+    "New hardware/CPU/renderer contracts after implementation completes",
+    "Original no-peer cancellation and original-menu dual-runtime serial exchange",
+    "Retained accepted main-story and supplemental Journal chains on the new exact build",
+    "Legitimate collection rewards and fixed/counterpart key-world playthroughs",
+    "Actual DreamEgg acquisition, item feeding, hatch and exchange",
+    "Rare arrival/distribution reachability",
+    "Additional random worlds and key/cache lifecycle boundaries"
+  ],
+  "existing_evidence_references": [
+    "recomp/milestones/M8_RESULT.md",
+    "recomp/handoff/POSTGAME_PROGRESS_2026-10-25.md",
+    "recomp/handoff/POSTGAME_CONTENT_AUDIT_2026-10-25.md",
+    "recomp/handoff/evidence/2026-10-25-postgame/postgame-source-gap-addendum.json",
+    "recomp/handoff/evidence/2026-10-25-postgame/random-world-source-audit-summary.json",
+    "recomp/handoff/evidence/2026-10-25-postgame/native-windows-7-stage.json"
+  ]
+}

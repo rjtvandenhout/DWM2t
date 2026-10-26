@@ -28,6 +28,8 @@ inline StepResult classify_bank0_step(const Cpu& cpu) {
 
 void load_bank0_image(Memory& memory);
 StepResult execute_bank0_instruction(Cpu& cpu, Memory& memory);
+// MBC5 also permits physical bank 0 in the switchable $4000-$7FFF window.
+StepResult execute_bank0_romx_instruction(Cpu& cpu, Memory& memory);
 StepResult run_bank0(Cpu& cpu, Memory& memory, std::size_t max_steps);
 std::size_t bank0_translated_entry_count();
 

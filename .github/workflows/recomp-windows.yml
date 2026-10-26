@@ -58,6 +58,9 @@ jobs:
               ('package', ['recomp/tools/test_m8_package.py']),
               ('parallel-replay', ['recomp/tools/test_m8_story_parallel_contracts.py']),
               ('postgame-names', ['recomp/tools/test_m8_postgame_name_contracts.py']),
+              ('postgame-build-identity', ['recomp/tools/test_postgame_build_identity_contracts.py']),
+              ('hardware-proof-contracts', ['recomp/tools/test_full_rom_validation.py']),
+              ('whole-rom-package-gates', ['recomp/tools/test_full_rom_package_gates.py']),
               ('native-retest', ['recomp/tools/test_m8_native_retest.py']),
               ('original-map-decoder', ['recomp/tools/test_inspect_map.py']),
               ('magic-key-tables', ['recomp/tools/inspect_magic_keys.py', '--check']),
@@ -109,6 +112,17 @@ jobs:
           if ({case.get('name') for case in cases} != expected or len(cases) != len(expected)
                   or any(case.find(tag) is not None for case in cases for tag in ('failure', 'error', 'skipped'))):
               raise SystemExit('Both actual SaveIO cases must run and pass without skips.')
+      - name: Build and run the standalone full hardware contracts
+        shell: python
+        run: |
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          output = Path(os.environ['RUNNER_TEMP']) / 'native-hardware-validation'
+          subprocess.run([sys.executable, 'recomp/tools/validate_runtime_core.py',
+                          '--source', os.environ['GITHUB_SHA'], '--output', str(output)], check=True)
       - name: Preserve actual tooling and persistence logs (no full-game acceptance)
         if: always()
         uses: actions/upload-artifact@v4
@@ -117,5 +131,6 @@ jobs:
           path: |
             ${{ runner.temp }}/native-host-validation/**
             ${{ runner.temp }}/native-save-io-build/Testing/Temporary/LastTest.log
+            ${{ runner.temp }}/native-hardware-validation/**
           if-no-files-found: warn
           retention-days: 7

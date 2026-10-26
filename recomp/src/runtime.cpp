@@ -75,10 +75,6 @@ bool Runtime::service_interrupt_if_needed() {
     if (cpu_.halted && pending != 0) {
         cpu_.halted = false;
     }
-    if (cpu_.stopped && (pending & (1u << 4)) != 0) {
-        cpu_.stopped = false;
-    }
-
     if (!cpu_.ime || pending == 0) return false;
 
     const unsigned bit = first_pending_interrupt(pending);
@@ -87,8 +83,13 @@ bool Runtime::service_interrupt_if_needed() {
     cpu_.ime = false;
     cpu_.ime_delay = 0;
     cpu_.halted = false;
+    // EI; HALT with an already pending interrupt consumes the suppressed
+    // fetch increment on interrupt entry. RETI must return to that HALT.
+    const auto return_pc = static_cast<std::uint16_t>(
+        cpu_.pc - (cpu_.halt_bug ? 1u : 0u));
+    cpu_.halt_bug = false;
     memory_.clear_interrupt(static_cast<std::uint8_t>(bit));
-    lr35902::push16(cpu_, memory_, cpu_.pc);
+    lr35902::push16(cpu_, memory_, return_pc);
     cpu_.pc = kInterruptVectors[bit];
     cpu_.last_mcycles = 5;
     memory_.tick_mcycles(5);
@@ -102,6 +103,9 @@ StepResult Runtime::execute_current_instruction() {
     }
 
     if (cpu_.pc < 0x8000) {
+        if (memory_.current_rom_bank() == 0) {
+            return execute_bank0_romx_instruction(cpu_, memory_);
+        }
         return execute_translated_romx(cpu_, memory_);
     }
 
@@ -114,6 +118,25 @@ StepResult Runtime::execute_current_instruction() {
 }
 
 StepResult Runtime::step() {
+    if (cpu_.trapped) return StepResult::Trapped;
+
+    if (cpu_.stopped) {
+        // STOP gates the CPU clock. A new joypad edge wakes it independently
+        // of IE/IME; ordinary interrupt arbitration happens after that wake.
+        if (!memory_.consume_stop_wake()) {
+            cpu_.last_mcycles = 0;
+            return StepResult::Stopped;
+        }
+        cpu_.stopped = false;
+    }
+
+    const std::uint32_t stall_mcycles = memory_.take_cpu_stall_mcycles();
+    if (stall_mcycles != 0) {
+        cpu_.last_mcycles = stall_mcycles;
+        memory_.tick_mcycles(stall_mcycles);
+        return StepResult::Continue;
+    }
+
     if (service_interrupt_if_needed()) {
         return StepResult::Continue;
     }
@@ -122,12 +145,6 @@ StepResult Runtime::step() {
         cpu_.last_mcycles = 1;
         memory_.tick_mcycles(1);
         return StepResult::Continue;
-    }
-
-    if (cpu_.stopped) {
-        cpu_.last_mcycles = 1;
-        memory_.tick_mcycles(1);
-        return StepResult::Stopped;
     }
 
     return execute_current_instruction();

@@ -149,7 +149,7 @@ set(BANK_FILE_163 "bank_163.asm")
 set(BANK_FILE_226 "bank_226.asm")
 set(BANK_FILE_240 "bank_240.asm")
 
-option(DWM2T_ALL_ROMX "Ahead-of-time compile all original switchable ROM banks (larger build)" OFF)
+option(DWM2T_ALL_ROMX "Ahead-of-time compile all original switchable ROM banks (larger build)" ON)
 if(DWM2T_ALL_ROMX)
     set(NATIVE_ROMX_BANKS)
     foreach(BANK RANGE 1 255)

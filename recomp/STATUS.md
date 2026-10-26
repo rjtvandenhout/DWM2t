@@ -1,5 +1,10 @@
 # Native recomp status
 
+The 2026-10-26 whole-ROM implementation pass adds local serial peers, original
+scanline scrolling and CPU/memory edge handling, and makes full AOT the default.
+Its final validation is pending; the accepted M8 binary below remains the
+previous verified package. See the [implementation inventory](handoff/FULL_ROM_IMPLEMENTATION_2026-10-26.md).
+
 **M8 is complete and accepted on native Windows x64 as of 2026-10-25.**
 `main` contains the finished game and maintenance. Accepted milestones retain
 their immutable `restore/recomp-mN` branches; see [exact commits](RESTORE_POINTS.md).
@@ -55,8 +60,10 @@ Continue inside a random world. Full owned, quest, key, seed and cache compariso
 are recorded in the [postgame report with screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md).
 Finite source checks cover all 10 terrains, 100 key levels, 48 recipes and 833
 map assets. Collection-gated reward playthroughs remain pending, and the runtime
-has no serial-peer transport for actual link exchanges. These supplemental
-checks leave the verified player and M0–M8 snapshots unchanged.
+had no serial-peer transport at that accepted baseline. The new source adds a
+local two-player cable; its original transaction coverage is reported separately
+in the new implementation inventory. These historical supplemental checks leave
+the verified player and M0–M8 snapshots unchanged.
 
 ## Maintenance boundary
 

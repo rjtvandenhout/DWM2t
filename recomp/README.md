@@ -14,6 +14,11 @@ game-data reads and hardware mapping.
 
 ## Current milestone: M8 complete
 
+The 2026-10-26 implementation pass adds local two-player serial hosting, original
+per-line scrolling and CPU/memory edge fixes. Full-ROM AOT is now the default.
+New binary validation is pending; the download below is still the accepted M8
+baseline. See the [whole-ROM inventory](handoff/FULL_ROM_IMPLEMENTATION_2026-10-26.md).
+
 The original main campaign is accepted on native Windows x64 on 2026-10-25:
 Oasis, Sea, Ice, Sky and Limbo, Darck, MagicPlug, the complete credits, THE END,
 original ending Save and fresh Continue. Fixed bank 0 and all 255 switchable
@@ -104,8 +109,7 @@ runtime LR35902 interpreter fallback.
 ## Windows build
 
 For playing, use the verified package above. The commands below create developer
-diagnostic builds. Use the complete-AOT command for later-game work; the smaller
-default retains the earlier regression baseline.
+diagnostic builds. The default compiles fixed bank 0 and all 255 ROMX banks.
 
 Requirements:
 
@@ -120,10 +124,9 @@ cmake -S recomp -B recomp/build -A x64
 cmake --build recomp/build --config Release --parallel 4
 ```
 
-For later-game development, an optional complete AOT build translates all
-255 switchable banks, rather than only the banks already reached in tests.
-Use a separate build directory; this needs substantially more time, RAM and
-disk space. From an x64 Visual Studio developer prompt, with Ninja installed:
+For an isolated complete AOT build, use a separate directory. Full compilation
+needs substantial time, RAM and disk space. From an x64 Visual Studio developer
+prompt, with Ninja installed:
 
 ```powershell
 cmake -S recomp -B recomp/build-all -G Ninja -DCMAKE_BUILD_TYPE=Release -DDWM2T_ALL_ROMX=ON -DDWM2T_OUTPUT_NAME=DWM2tRecompFull
@@ -135,8 +138,9 @@ This remains ahead-of-time native code with no runtime instruction-interpreter
 fallback. Compiling every bank is not proof of full-game playability or M8
 completion; the original gameplay, ending and Save/Continue gates still apply.
 The extended Kids Class regression is enabled only with `DWM2T_ALL_ROMX=ON`.
-The smaller default build retains the proven earlier Oasis/home tests; it is
-not the build for later-game testing. CMake prints the selected coverage mode.
+An explicit `-DDWM2T_ALL_ROMX=OFF` retains the limited discovery build for earlier
+Oasis/home development. CMake prints its coverage mode, and the production
+packager continues to require all 255 ROMX banks.
 
 Run the live game:
 

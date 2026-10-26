@@ -354,7 +354,10 @@ inline void exec_base(Cpu& cpu, Memory& memory,
                 memory.write8(static_cast<std::uint16_t>(imm16 + 1),
                               static_cast<std::uint8_t>(cpu.sp >> 8));
             } else if constexpr (y == 2) {
-                cpu.stopped = true;
+                if (!memory.perform_speed_switch()) {
+                    memory.begin_stop();
+                    cpu.stopped = true;
+                }
             } else if constexpr (y == 3) {
                 cpu.pc = add_signed(cpu.pc, imm8);
             } else {

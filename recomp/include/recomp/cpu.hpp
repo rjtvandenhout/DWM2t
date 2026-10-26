@@ -31,7 +31,8 @@ struct Cpu {
     std::uint16_t trap_pc = 0;
     std::uint8_t trap_opcode = 0;
 
-    std::uint8_t last_mcycles = 0;
+    // A runtime step can also consume a batch of VRAM-DMA stall cycles.
+    std::uint32_t last_mcycles = 0;
     std::uint16_t missing_bank = 0xFFFF;
 
     [[nodiscard]] std::uint16_t af() const {
@@ -104,7 +105,9 @@ struct Cpu {
     }
 
     void schedule_ime_enable() {
-        ime_delay = 2;
+        // A second EI must not postpone an enable already due after this
+        // instruction. DI and interrupt entry explicitly cancel this delay.
+        if (!ime && ime_delay == 0) ime_delay = 2;
     }
 
     void finish_instruction() {

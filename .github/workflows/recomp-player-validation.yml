@@ -13,6 +13,11 @@ on:
         required: false
         default: ''
         type: string
+      postgame_journals_base64:
+        description: Optional base64 tar.xz of pinned original postgame Journals for parallel replay
+        required: false
+        default: ''
+        type: string
       fresh_build_run_id:
         description: Required for finish-fresh-build; exact original build/story artifact run
         required: false
@@ -38,6 +43,7 @@ jobs:
     uses: ./.github/workflows/recomp-full-validation.yml
     with:
       story_journals_base64: ${{ inputs.story_journals_base64 || '' }}
+      postgame_journals_base64: ${{ inputs.postgame_journals_base64 || '' }}
 
   finish-validation:
     if: ${{ inputs.validation_mode == 'finish-fresh-build' }}

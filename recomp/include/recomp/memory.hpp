@@ -1,6 +1,7 @@
 #pragma once
 
 #include "recomp/apu.hpp"
+#include "recomp/serial.hpp"
 
 #include <array>
 #include <cstddef>
@@ -44,7 +45,8 @@ public:
     [[nodiscard]] std::uint8_t read8(std::uint16_t address) const;
     void write8(std::uint16_t address, std::uint8_t value);
 
-    [[nodiscard]] std::uint16_t current_rom_bank() const { return rom_bank_ & 0x01FFu; }
+    // This cartridge has eight physical ROM bank address lines (4 MiB).
+    [[nodiscard]] std::uint16_t current_rom_bank() const { return rom_bank_ & 0x00FFu; }
     [[nodiscard]] std::uint8_t current_ram_bank() const { return static_cast<std::uint8_t>(ram_bank_ & 0x0Fu); }
     [[nodiscard]] bool ram_enabled() const { return ram_enabled_; }
 
@@ -55,9 +57,18 @@ public:
     void request_interrupt(std::uint8_t bit);
     void clear_interrupt(std::uint8_t bit);
 
+    void connect_link_peer(Memory& peer) { serial_.connect(peer.serial_); }
+    void disconnect_link_peer() { serial_.disconnect(); }
+    [[nodiscard]] bool perform_speed_switch();
+    [[nodiscard]] bool double_speed() const { return double_speed_; }
+    void begin_stop();
+    [[nodiscard]] bool consume_stop_wake();
+    [[nodiscard]] std::uint32_t take_cpu_stall_mcycles();
+
     void tick_mcycles(std::uint32_t mcycles);
     void tick_tcycles(std::uint32_t tcycles);
     [[nodiscard]] std::uint64_t total_tcycles() const { return total_tcycles_; }
+    [[nodiscard]] std::uint64_t total_base_tcycles() const { return total_base_tcycles_; }
 
     [[nodiscard]] std::uint8_t* vram_bank_data(std::uint8_t bank) {
         return vram_[bank & 1u].data();
@@ -75,6 +86,13 @@ public:
     [[nodiscard]] std::uint16_t ppu_dot() const { return ppu_dot_; }
     [[nodiscard]] std::uint8_t ly() const { return io_[0x44]; }
     [[nodiscard]] std::uint64_t frame_counter() const { return frame_counter_; }
+    [[nodiscard]] bool has_scanline_scroll() const { return scanline_scroll_ready_; }
+    [[nodiscard]] std::uint8_t scanline_scx(unsigned line) const {
+        return line < 144 ? completed_scx_[line] : io_[0x43];
+    }
+    [[nodiscard]] std::uint8_t scanline_scy(unsigned line) const {
+        return line < 144 ? completed_scy_[line] : io_[0x42];
+    }
     [[nodiscard]] Apu& apu() { return apu_; }
     [[nodiscard]] const Apu& apu() const { return apu_; }
 
@@ -98,6 +116,9 @@ private:
     void tick_ppu_one_tcycle();
     void update_stat_interrupt_line();
     void do_oam_dma(std::uint8_t page);
+    void start_vram_dma(std::uint8_t value);
+    void transfer_vram_dma_block();
+    void invalidate_scanline_scroll();
 
     std::vector<std::uint8_t> rom_;
     std::array<std::array<std::uint8_t, VramBankSize>, 2> vram_{};
@@ -118,14 +139,30 @@ private:
 
     std::uint8_t joypad_pressed_ = 0;
     std::uint8_t joypad_select_ = 0x30;
+    bool stop_wake_ = false;
 
     std::uint16_t div_counter_ = 0;
     int tima_reload_delay_ = -1;
     std::uint64_t total_tcycles_ = 0;
+    std::uint64_t total_base_tcycles_ = 0;
+    bool double_speed_ = false;
+    bool base_clock_phase_ = false;
+    SerialPort serial_{};
+    std::uint16_t vram_dma_source_ = 0;
+    std::uint16_t vram_dma_destination_ = 0x8000;
+    unsigned vram_dma_blocks_ = 0;
+    bool vram_dma_active_ = false;
+    std::uint32_t cpu_stall_mcycles_ = 0;
 
     std::uint16_t ppu_dot_ = 0;
     std::uint64_t frame_counter_ = 0;
     bool stat_irq_line_ = false;
+    std::array<std::uint8_t, 144> pending_scx_{};
+    std::array<std::uint8_t, 144> pending_scy_{};
+    std::array<std::uint8_t, 144> completed_scx_{};
+    std::array<std::uint8_t, 144> completed_scy_{};
+    unsigned scroll_lines_captured_ = 0;
+    bool scanline_scroll_ready_ = false;
     Apu apu_{};
 };
 

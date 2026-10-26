@@ -11,6 +11,8 @@ namespace dwm2t {
 namespace {
 
 constexpr std::uint16_t kAddrP1   = 0xFF00;
+constexpr std::uint16_t kAddrSB   = 0xFF01;
+constexpr std::uint16_t kAddrSC   = 0xFF02;
 constexpr std::uint16_t kAddrDIV  = 0xFF04;
 constexpr std::uint16_t kAddrTIMA = 0xFF05;
 constexpr std::uint16_t kAddrTMA  = 0xFF06;
@@ -21,7 +23,10 @@ constexpr std::uint16_t kAddrSTAT = 0xFF41;
 constexpr std::uint16_t kAddrLY   = 0xFF44;
 constexpr std::uint16_t kAddrLYC  = 0xFF45;
 constexpr std::uint16_t kAddrDMA  = 0xFF46;
+constexpr std::uint16_t kAddrKEY1 = 0xFF4D;
 constexpr std::uint16_t kAddrVBK  = 0xFF4F;
+constexpr std::uint16_t kAddrHDMA5 = 0xFF55;
+constexpr std::uint16_t kAddrRP   = 0xFF56;
 constexpr std::uint16_t kAddrBGPI = 0xFF68;
 constexpr std::uint16_t kAddrBGPD = 0xFF69;
 constexpr std::uint16_t kAddrOBPI = 0xFF6A;
@@ -59,14 +64,25 @@ void Memory::clear() {
 
     joypad_pressed_ = 0;
     joypad_select_ = 0x30;
+    stop_wake_ = false;
 
     div_counter_ = 0;
     tima_reload_delay_ = -1;
     total_tcycles_ = 0;
+    total_base_tcycles_ = 0;
+    double_speed_ = false;
+    base_clock_phase_ = false;
+    serial_.reset();
+    vram_dma_source_ = 0;
+    vram_dma_destination_ = 0x8000;
+    vram_dma_blocks_ = 0;
+    vram_dma_active_ = false;
+    cpu_stall_mcycles_ = 0;
 
     ppu_dot_ = 0;
     frame_counter_ = 0;
     stat_irq_line_ = false;
+    invalidate_scanline_scroll();
     apu_.reset();
 
     io_[io_index(kAddrP1)] = 0xCF;
@@ -79,6 +95,7 @@ void Memory::clear() {
     io_[io_index(kAddrBGPI)] = 0;
     io_[io_index(kAddrOBPI)] = 0;
     io_[io_index(kAddrSVBK)] = 1;
+    io_[io_index(kAddrHDMA5)] = 0xFF;
 }
 
 void Memory::load_rom(const std::uint8_t* data, std::size_t size) {
@@ -151,7 +168,7 @@ std::uint8_t Memory::read8(std::uint16_t address) const {
         return rom_[address];
     }
     if (address < 0x8000) {
-        const std::size_t bank = static_cast<std::size_t>(rom_bank_ & 0x01FFu);
+        const std::size_t bank = current_rom_bank();
         const std::size_t offset = bank * RomBankSize + (address - 0x4000u);
         return offset < rom_.size() ? rom_[offset] : 0xFF;
     }
@@ -183,13 +200,21 @@ std::uint8_t Memory::read8(std::uint16_t address) const {
         if (address >= 0xFF10 && address <= 0xFF3F) return apu_.read(address);
         switch (address) {
             case kAddrP1:   return read_joypad();
+            case kAddrSB:   return serial_.data();
+            case kAddrSC:   return serial_.control();
             case kAddrDIV:  return static_cast<std::uint8_t>(div_counter_ >> 8);
-            case kAddrIF:   return static_cast<std::uint8_t>(0xE0u | (io_[0x0F] & 0x1Fu));
+            case kAddrIF:   return static_cast<std::uint8_t>(
+                0xE0u | (io_[0x0F] & 0x1Fu) | (serial_.interrupt_pending() ? 8u : 0u));
             case kAddrSTAT: return read_stat();
             case kAddrLY:   return io_[0x44];
+            case kAddrKEY1: return static_cast<std::uint8_t>(
+                0x7Eu | (double_speed_ ? 0x80u : 0u) | (io_[0x4D] & 1u));
             case kAddrVBK:  return static_cast<std::uint8_t>(0xFEu | (io_[0x4F] & 1u));
             case kAddrBGPD: return bg_palette_[io_[0x68] & 0x3Fu];
             case kAddrOBPD: return obj_palette_[io_[0x6A] & 0x3Fu];
+            // The original cartridge disables IR at boot. With no optical
+            // receiver attached the input is high; unused bits read as ones.
+            case kAddrRP:   return static_cast<std::uint8_t>(0x3Eu | (io_[0x56] & 0xC1u));
             case kAddrSVBK: return static_cast<std::uint8_t>(0xF8u | (io_[0x70] & 0x07u));
             default:        return io_[address - 0xFF00u];
         }
@@ -205,6 +230,65 @@ void Memory::do_oam_dma(std::uint8_t page) {
     for (std::uint16_t i = 0; i < 0xA0; ++i) {
         oam_[i] = read8(static_cast<std::uint16_t>(source + i));
     }
+}
+
+void Memory::transfer_vram_dma_block() {
+    if (vram_dma_blocks_ == 0) return;
+    const auto bank = static_cast<std::uint8_t>(io_[0x4F] & 1u);
+    for (unsigned i = 0; i < 16; ++i) {
+        vram_[bank][(vram_dma_destination_ - 0x8000u + i) & 0x1FFFu] =
+            read8(static_cast<std::uint16_t>(vram_dma_source_ + i));
+    }
+    vram_dma_source_ = static_cast<std::uint16_t>(vram_dma_source_ + 16u);
+    vram_dma_destination_ = static_cast<std::uint16_t>(
+        0x8000u | ((vram_dma_destination_ + 16u) & 0x1FF0u));
+    io_[0x51] = static_cast<std::uint8_t>(vram_dma_source_ >> 8);
+    io_[0x52] = static_cast<std::uint8_t>(vram_dma_source_ & 0xF0u);
+    io_[0x53] = static_cast<std::uint8_t>((vram_dma_destination_ >> 8) & 0x1Fu);
+    io_[0x54] = static_cast<std::uint8_t>(vram_dma_destination_ & 0xF0u);
+    cpu_stall_mcycles_ += double_speed_ ? 16u : 8u;
+    if (--vram_dma_blocks_ == 0) {
+        vram_dma_active_ = false;
+        io_[0x55] = 0xFF;
+    } else {
+        io_[0x55] = static_cast<std::uint8_t>(vram_dma_blocks_ - 1u);
+    }
+}
+
+void Memory::start_vram_dma(std::uint8_t value) {
+    if (vram_dma_active_) {
+        if ((value & 0x80u) == 0) {
+            vram_dma_active_ = false;
+            io_[0x55] = static_cast<std::uint8_t>(0x80u | (vram_dma_blocks_ - 1u));
+        }
+        return;
+    }
+    vram_dma_source_ = static_cast<std::uint16_t>((io_[0x51] << 8) | (io_[0x52] & 0xF0u));
+    vram_dma_destination_ = static_cast<std::uint16_t>(
+        0x8000u | ((io_[0x53] & 0x1Fu) << 8) | (io_[0x54] & 0xF0u));
+    vram_dma_blocks_ = (value & 0x7Fu) + 1u;
+    vram_dma_active_ = (value & 0x80u) != 0;
+    io_[0x55] = static_cast<std::uint8_t>(vram_dma_blocks_ - 1u);
+    if (!vram_dma_active_ || (io_[0x40] & 0x80u) == 0) {
+        while (vram_dma_blocks_ != 0) transfer_vram_dma_block();
+    } else if (io_[0x44] < 144 && ppu_dot_ >= 252) {
+        transfer_vram_dma_block();
+    }
+}
+
+std::uint32_t Memory::take_cpu_stall_mcycles() {
+    const std::uint32_t chunk = std::min(cpu_stall_mcycles_, double_speed_ ? 16u : 8u);
+    cpu_stall_mcycles_ -= chunk;
+    return chunk;
+}
+
+void Memory::invalidate_scanline_scroll() {
+    pending_scx_.fill(0);
+    pending_scy_.fill(0);
+    completed_scx_.fill(0);
+    completed_scy_.fill(0);
+    scroll_lines_captured_ = 0;
+    scanline_scroll_ready_ = false;
 }
 
 void Memory::write8(std::uint16_t address, std::uint8_t value) {
@@ -274,10 +358,19 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
                 const std::uint8_t before = static_cast<std::uint8_t>(read_joypad() & 0x0Fu);
                 joypad_select_ = static_cast<std::uint8_t>(value & 0x30u);
                 const std::uint8_t after = static_cast<std::uint8_t>(read_joypad() & 0x0Fu);
-                if ((before & static_cast<std::uint8_t>(~after)) != 0) request_interrupt(4);
+                if ((before & static_cast<std::uint8_t>(~after)) != 0) {
+                    request_interrupt(4);
+                    stop_wake_ = true;
+                }
                 io_[idx] = static_cast<std::uint8_t>(0xC0u | joypad_select_ | 0x0Fu);
                 return;
             }
+            case kAddrSB:
+                serial_.write_data(value);
+                return;
+            case kAddrSC:
+                serial_.write_control(value);
+                return;
             case kAddrDIV:
                 write_div();
                 return;
@@ -293,6 +386,7 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
                 return;
             case kAddrIF:
                 io_[idx] = static_cast<std::uint8_t>(value & 0x1Fu);
+                if ((value & 8u) == 0) serial_.clear_interrupt();
                 return;
             case kAddrLCDC: {
                 const bool was_on = (io_[idx] & 0x80u) != 0;
@@ -302,6 +396,10 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
                     ppu_dot_ = 0;
                     io_[0x44] = 0;
                     stat_irq_line_ = false;
+                    invalidate_scanline_scroll();
+                    if (vram_dma_active_) {
+                        while (vram_dma_blocks_ != 0) transfer_vram_dma_block();
+                    }
                 }
                 update_stat_interrupt_line();
                 return;
@@ -313,6 +411,7 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
             case kAddrLY:
                 io_[idx] = 0;
                 ppu_dot_ = 0;
+                invalidate_scanline_scroll();
                 update_stat_interrupt_line();
                 return;
             case kAddrLYC:
@@ -322,6 +421,24 @@ void Memory::write8(std::uint16_t address, std::uint8_t value) {
             case kAddrDMA:
                 io_[idx] = value;
                 do_oam_dma(value);
+                return;
+            case kAddrKEY1:
+                io_[idx] = static_cast<std::uint8_t>(value & 1u);
+                return;
+            case 0xFF51:
+            case 0xFF52:
+            case 0xFF53:
+            case 0xFF54:
+                if (vram_dma_active_) return;
+                io_[idx] = static_cast<std::uint8_t>(value &
+                    ((address == 0xFF52 || address == 0xFF54) ? 0xF0u :
+                     address == 0xFF53 ? 0x1Fu : 0xFFu));
+                return;
+            case kAddrHDMA5:
+                start_vram_dma(value);
+                return;
+            case kAddrRP:
+                io_[idx] = static_cast<std::uint8_t>(value & 0xC1u);
                 return;
             case kAddrVBK:
                 io_[idx] = static_cast<std::uint8_t>(value & 1u);
@@ -369,11 +486,34 @@ void Memory::set_joypad_state(std::uint8_t pressed_mask) {
     const std::uint8_t before = static_cast<std::uint8_t>(read_joypad() & 0x0Fu);
     joypad_pressed_ = pressed_mask;
     const std::uint8_t after = static_cast<std::uint8_t>(read_joypad() & 0x0Fu);
-    if ((before & static_cast<std::uint8_t>(~after)) != 0) request_interrupt(4);
+    if ((before & static_cast<std::uint8_t>(~after)) != 0) {
+        request_interrupt(4);
+        stop_wake_ = true;
+    }
+}
+
+bool Memory::perform_speed_switch() {
+    if ((io_[0x4D] & 1u) == 0) return false;
+    double_speed_ = !double_speed_;
+    io_[0x4D] = 0;
+    base_clock_phase_ = false;
+    write_div();
+    return true;
+}
+
+void Memory::begin_stop() {
+    stop_wake_ = false;
+    write_div();
+}
+
+bool Memory::consume_stop_wake() {
+    const bool wake = stop_wake_;
+    stop_wake_ = false;
+    return wake;
 }
 
 std::uint8_t Memory::pending_interrupts() const {
-    return static_cast<std::uint8_t>(ie_ & io_[0x0F] & 0x1Fu);
+    return static_cast<std::uint8_t>(ie_ & read8(kAddrIF) & 0x1Fu);
 }
 
 void Memory::request_interrupt(std::uint8_t bit) {
@@ -382,6 +522,7 @@ void Memory::request_interrupt(std::uint8_t bit) {
 
 void Memory::clear_interrupt(std::uint8_t bit) {
     if (bit < 5) io_[0x0F] = static_cast<std::uint8_t>(io_[0x0F] & ~(1u << bit));
+    if (bit == 3) serial_.clear_interrupt();
 }
 
 bool Memory::timer_input() const {
@@ -451,14 +592,29 @@ void Memory::tick_ppu_one_tcycle() {
     }
 
     ++ppu_dot_;
+    if (ppu_dot_ == 80 && io_[0x44] < 144) {
+        const unsigned line = io_[0x44];
+        pending_scx_[line] = io_[0x43];
+        pending_scy_[line] = io_[0x42];
+        if (line == scroll_lines_captured_) ++scroll_lines_captured_;
+    }
+    if (ppu_dot_ == 252 && io_[0x44] < 144 && vram_dma_active_) {
+        transfer_vram_dma_block();
+    }
     if (ppu_dot_ >= 456) {
         ppu_dot_ = 0;
         std::uint8_t next = static_cast<std::uint8_t>(io_[0x44] + 1);
         if (next == 144) {
+            if (scroll_lines_captured_ == 144) {
+                completed_scx_ = pending_scx_;
+                completed_scy_ = pending_scy_;
+                scanline_scroll_ready_ = true;
+            }
             request_interrupt(0);
             ++frame_counter_;
         } else if (next > 153) {
             next = 0;
+            scroll_lines_captured_ = 0;
         }
         io_[0x44] = next;
     }
@@ -467,12 +623,13 @@ void Memory::tick_ppu_one_tcycle() {
 }
 
 void Memory::tick_one_tcycle() {
+    const bool reload_was_pending = tima_reload_delay_ >= 0;
     const bool old_timer = timer_input();
     ++div_counter_;
     const bool new_timer = timer_input();
     if (old_timer && !new_timer) timer_falling_edge();
 
-    if (tima_reload_delay_ >= 0) {
+    if (reload_was_pending) {
         --tima_reload_delay_;
         if (tima_reload_delay_ == 0) {
             io_[0x05] = io_[0x06];
@@ -481,8 +638,13 @@ void Memory::tick_one_tcycle() {
         }
     }
 
-    tick_ppu_one_tcycle();
-    apu_.tick_tcycle();
+    serial_.tick_tcycle();
+    base_clock_phase_ = !base_clock_phase_;
+    if (!double_speed_ || !base_clock_phase_) {
+        tick_ppu_one_tcycle();
+        apu_.tick_tcycle();
+        ++total_base_tcycles_;
+    }
     ++total_tcycles_;
 }
 
@@ -499,6 +661,9 @@ std::uint8_t Memory::io(std::uint8_t offset) const {
 }
 
 void Memory::set_io_direct(std::uint8_t offset, std::uint8_t value) {
+    if (offset == 0x01) { serial_.write_data(value); return; }
+    if (offset == 0x02) { serial_.write_control(value); return; }
+    if (offset == 0x0F && (value & 8u) == 0) serial_.clear_interrupt();
     io_[offset & 0x7Fu] = value;
 }
 

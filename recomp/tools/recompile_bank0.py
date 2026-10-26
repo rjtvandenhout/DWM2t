@@ -59,23 +59,24 @@ def cpp_u16(value: int) -> str:
     return f"0x{value & 0xFFFF:04X}u"
 
 
-def byte_expr(bank: bytes, address: int) -> str:
-    if 0 <= address < BANK_SIZE:
-        return cpp_u8(bank[address])
+def byte_expr(bank: bytes, address: int, cpu_base: int = 0) -> str:
+    offset = address - cpu_base
+    if 0 <= offset < BANK_SIZE:
+        return cpp_u8(bank[offset])
     return f"memory.read8({cpp_u16(address)})"
 
 
-def shifted_byte_expr(bank: bytes, normal_address: int) -> str:
-    normal = byte_expr(bank, normal_address)
-    bugged = byte_expr(bank, normal_address - 1)
+def shifted_byte_expr(bank: bytes, normal_address: int, cpu_base: int = 0) -> str:
+    normal = byte_expr(bank, normal_address, cpu_base)
+    bugged = byte_expr(bank, normal_address - 1, cpu_base)
     return f"(halt_bug ? {bugged} : {normal})"
 
 
-def word_expr(bank: bytes, address: int) -> str:
-    normal_lo = byte_expr(bank, address)
-    normal_hi = byte_expr(bank, address + 1)
-    bug_lo = byte_expr(bank, address - 1)
-    bug_hi = byte_expr(bank, address)
+def word_expr(bank: bytes, address: int, cpu_base: int = 0) -> str:
+    normal_lo = byte_expr(bank, address, cpu_base)
+    normal_hi = byte_expr(bank, address + 1, cpu_base)
+    bug_lo = byte_expr(bank, address - 1, cpu_base)
+    bug_hi = byte_expr(bank, address, cpu_base)
     return (
         "static_cast<std::uint16_t>("
         f"static_cast<std::uint16_t>(halt_bug ? {bug_lo} : {normal_lo}) | "
@@ -95,40 +96,50 @@ def cycle_line_for_base(op: int) -> str:
     )
 
 
-def emit_case(bank: bytes, pc: int) -> str:
-    ins = decode_one(bank, pc)
+def emit_case(bank: bytes, offset: int, cpu_base: int = 0) -> str:
+    ins = decode_one(bank, offset)
+    pc = cpu_base + offset
     lines = [f"        case {cpp_u16(pc)}: {{"]
     lines.append("            const bool halt_bug = cpu.halt_bug;")
     lines.append("            cpu.halt_bug = false;")
 
     if ins.kind is Kind.CB:
         assert ins.cb_opcode is not None
-        normal_cb = byte_expr(bank, pc + 1)
-        bug_cb = byte_expr(bank, pc)
+        normal_cb = byte_expr(bank, pc + 1, cpu_base)
+        bug_cb = byte_expr(bank, pc, cpu_base)
         lines.append(
             f"            const std::uint8_t cb = halt_bug ? {bug_cb} : {normal_cb};"
         )
-        lines.append(
-            f"            cpu.last_mcycles = halt_bug "
-            f"? lr35902::cb_mcycles_dynamic(cb) "
-            f": {cb_opcode_mcycles(ins.cb_opcode)}u;"
-        )
+        crosses_window = offset + 1 >= BANK_SIZE
+        if crosses_window:
+            # The next mapped window supplies the actual CB opcode. The
+            # decoder's zero padding is metadata, never an executable byte.
+            lines.append("            cpu.last_mcycles = lr35902::cb_mcycles_dynamic(cb);")
+        else:
+            lines.append(
+                f"            cpu.last_mcycles = halt_bug "
+                f"? lr35902::cb_mcycles_dynamic(cb) "
+                f": {cb_opcode_mcycles(ins.cb_opcode)}u;"
+            )
         lines.append(
             f"            cpu.pc = static_cast<std::uint16_t>({cpp_u16(pc)} + "
             "(halt_bug ? 1u : 2u));"
         )
-        lines.append("            if (halt_bug) {")
-        lines.append("                lr35902::exec_cb_dynamic(cpu, memory, cb);")
-        lines.append("            } else {")
-        lines.append(
-            f"                lr35902::exec_cb<{cpp_u8(ins.cb_opcode)}>(cpu, memory);"
-        )
-        lines.append("            }")
+        if crosses_window:
+            lines.append("            lr35902::exec_cb_dynamic(cpu, memory, cb);")
+        else:
+            lines.append("            if (halt_bug) {")
+            lines.append("                lr35902::exec_cb_dynamic(cpu, memory, cb);")
+            lines.append("            } else {")
+            lines.append(
+                f"                lr35902::exec_cb<{cpp_u8(ins.cb_opcode)}>(cpu, memory);"
+            )
+            lines.append("            }")
     else:
         op = ins.opcode
         size = base_opcode_size(op)
-        imm8 = shifted_byte_expr(bank, pc + 1) if size >= 2 else "0u"
-        imm16 = word_expr(bank, pc + 1) if size >= 3 else "0u"
+        imm8 = shifted_byte_expr(bank, pc + 1, cpu_base) if size >= 2 else "0u"
+        imm16 = word_expr(bank, pc + 1, cpu_base) if size >= 3 else "0u"
         lines.append(cycle_line_for_base(op))
         lines.append(
             f"            cpu.pc = static_cast<std::uint16_t>({cpp_u16(pc)} + "
@@ -141,7 +152,13 @@ def emit_case(bank: bytes, pc: int) -> str:
 
     lines.append("            cpu.finish_instruction();")
     lines.append("            memory.tick_mcycles(cpu.last_mcycles);")
-    lines.append("            return classify_bank0_step(cpu);")
+    if cpu_base == 0:
+        lines.append("            return classify_bank0_step(cpu);")
+    else:
+        lines.append("            if (cpu.trapped) return StepResult::Trapped;")
+        lines.append("            if (cpu.stopped) return StepResult::Stopped;")
+        lines.append("            if (cpu.halted) return StepResult::Halted;")
+        lines.append("            return StepResult::Continue;")
     lines.append("        }")
     return "\n".join(lines)
 
@@ -150,6 +167,7 @@ def emit_chunk(bank: bytes, chunk: int) -> str:
     begin = chunk * CHUNK_SIZE
     end = begin + CHUNK_SIZE
     body = "\n".join(emit_case(bank, pc) for pc in range(begin, end))
+    alias_body = "\n".join(emit_case(bank, pc, BANK_SIZE) for pc in range(begin, end))
     return f"""// AUTO-GENERATED. DO NOT EDIT.
 // Fixed Bank 0 native translation chunk {chunk}: 0x{begin:04X}-0x{end - 1:04X}
 
@@ -161,6 +179,18 @@ namespace dwm2t {{
 StepResult execute_bank0_chunk_{chunk}(Cpu& cpu, Memory& memory) {{
     switch (cpu.pc) {{
 {body}
+        default:
+            cpu.trap(cpu.pc, memory.read8(cpu.pc));
+            return StepResult::Trapped;
+    }}
+}}
+
+// Physical ROM bank 0 is also selectable in MBC5's ROMX window. Compile the
+// same original bytes at their real CPU addresses so JR and CALL/RET retain
+// their correct $4000-window semantics without relocating CPU state at runtime.
+StepResult execute_bank0_romx_chunk_{chunk}(Cpu& cpu, Memory& memory) {{
+    switch (cpu.pc) {{
+{alias_body}
         default:
             cpu.trap(cpu.pc, memory.read8(cpu.pc));
             return StepResult::Trapped;
@@ -179,11 +209,18 @@ def emit_master(bank: bytes) -> str:
     image = "\n".join(rows)
 
     decls = "\n".join(
-        f"StepResult execute_bank0_chunk_{i}(Cpu&, Memory&);" for i in range(CHUNK_COUNT)
+        f"StepResult execute_bank0_chunk_{i}(Cpu&, Memory&);\n"
+        f"StepResult execute_bank0_romx_chunk_{i}(Cpu&, Memory&);"
+        for i in range(CHUNK_COUNT)
     )
     dispatch = "\n".join(
         f"    if (cpu.pc < {cpp_u16((i + 1) * CHUNK_SIZE)}) "
         f"return execute_bank0_chunk_{i}(cpu, memory);"
+        for i in range(CHUNK_COUNT)
+    )
+    alias_dispatch = "\n".join(
+        f"    if (cpu.pc < {cpp_u16(BANK_SIZE + (i + 1) * CHUNK_SIZE)}) "
+        f"return execute_bank0_romx_chunk_{i}(cpu, memory);"
         for i in range(CHUNK_COUNT)
     )
 
@@ -214,6 +251,15 @@ void load_bank0_image(Memory& memory) {{
 StepResult execute_bank0_instruction(Cpu& cpu, Memory& memory) {{
     if (cpu.pc >= 0x4000) return StepResult::LeftBank0;
 {dispatch}
+    cpu.trap(cpu.pc, memory.read8(cpu.pc));
+    return StepResult::Trapped;
+}}
+
+StepResult execute_bank0_romx_instruction(Cpu& cpu, Memory& memory) {{
+    if (cpu.pc < 0x4000 || cpu.pc >= 0x8000 || memory.current_rom_bank() != 0) {{
+        return StepResult::Continue;
+    }}
+{alias_dispatch}
     cpu.trap(cpu.pc, memory.read8(cpu.pc));
     return StepResult::Trapped;
 }}
