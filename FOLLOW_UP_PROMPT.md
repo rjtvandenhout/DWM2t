@@ -11,7 +11,7 @@ Resume only when the user asks. The user stopped work on 2026-10-29 and asked to
 
 ## Latest results at the user-requested stop
 
-Fresh validation https://github.com/rjtvandenhout/DWM2t/actions/runs/40799717118 was cancelled at the user's request. The cancellation request was accepted while the farm exchange, party preparation and key training replay was running; check the final run status and preserved artifacts before resuming. Cancellation is not a test failure.
+Fresh validation https://github.com/rjtvandenhout/DWM2t/actions/runs/40799717118 was cancelled at the user's request while the farm exchange, party preparation and key training replay was running. The diagnostic and final jobs concluded cancelled; the diagnostic artifact was preserved as ID `12868495154`. Check final run status and artifact contents before resuming. Cancellation is not a test failure.
 
 - The complete full-bank Windows diagnostic build and the retained 18-test M1–M8 native suite passed. Original Sea-entry and village replays passed. The later story, postgame, production Journal and verified-package gates had not completed at the stop.
 - Windows production build, five hardware-core checks, two save checks, and direct/profile startup passed. Linux core and persistence tests passed 7/7, zero skips. Independent audit files are `/workspace/scratch/full-rom-2026-10-26/r3-audit/production-audit.json` and `posix-audit.json`; production artifact ID `12867312469`, POSIX artifact ID `12864983814`.
