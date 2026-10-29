@@ -1,0 +1,138 @@
+{
+  "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "scope": "DIAGNOSTIC CAUSAL COMPARISON ONLY; not complete255bank or acceptance evidence",
+  "runs": [
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/build/pcm_current",
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/capture_current"
+      ],
+      "executable_sha256": "60479b10b3db0dc5b7b248f6d6ad581ef06f26fcb19eb989e9e0b87e3ea68cb8",
+      "executable_bytes": 17235184,
+      "returncode": 0,
+      "elapsed_seconds": 4.758744797989493,
+      "not_acceptance": true,
+      "observations": {
+        "diagnostic_only": true,
+        "sample_values": 2138928,
+        "stereo_frames": 1069464,
+        "nonzero": 1075360,
+        "peak": 19200,
+        "hash": "0x7807be6a3e82c89a",
+        "first_title_frame": 1892,
+        "endpoint_frame": 1921,
+        "stable_frames": 30,
+        "total_cpu_T": 136891392,
+        "total_base_T": 136891392,
+        "steps": 24927784,
+        "dma_stall_steps": 1,
+        "dma_stall_T": 32,
+        "NR50": 119,
+        "NR51": 51,
+        "NR52": 243
+      },
+      "pcm_sha256": "828c5e4610841fa0ad6648ac2000b06fc98c6db9c7eee5c3be629b1d9cc095b3",
+      "title_bmp_sha256": "b065cc3eda9ffa600bc125edaefc7dec77e399327c01b764ca79745c497a8e5b"
+    },
+    {
+      "variant": "no_dma_stall",
+      "command": [
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/build/pcm_no_dma_stall",
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/capture_no_dma_stall"
+      ],
+      "executable_sha256": "e63c8cf54d5c7f0efbfd9bf8ce6756225a746716dba22837ed2895445142a56a",
+      "executable_bytes": 17235184,
+      "returncode": 0,
+      "elapsed_seconds": 4.786550760996761,
+      "not_acceptance": true,
+      "observations": {
+        "diagnostic_only": true,
+        "sample_values": 2138926,
+        "stereo_frames": 1069463,
+        "nonzero": 1074861,
+        "peak": 19200,
+        "hash": "0x3b50ed7ed79bda0",
+        "first_title_frame": 1892,
+        "endpoint_frame": 1921,
+        "stable_frames": 30,
+        "total_cpu_T": 136891360,
+        "total_base_T": 136891360,
+        "steps": 24927783,
+        "dma_stall_steps": 0,
+        "dma_stall_T": 0,
+        "NR50": 119,
+        "NR51": 51,
+        "NR52": 243
+      },
+      "pcm_sha256": "61b3823288176ad860ce064bb4f08e947ca22114a4afdad2f5dc1c4fdf8c888d",
+      "title_bmp_sha256": "b065cc3eda9ffa600bc125edaefc7dec77e399327c01b764ca79745c497a8e5b"
+    },
+    {
+      "variant": "old_timer",
+      "command": [
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/build/pcm_old_timer",
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/capture_old_timer"
+      ],
+      "executable_sha256": "a9d1489f63857f9f6537926c2aa3272fcad81fc0c0d5ee2fe1eea9d11e953509",
+      "executable_bytes": 17235184,
+      "returncode": 0,
+      "elapsed_seconds": 4.856387079998967,
+      "not_acceptance": true,
+      "observations": {
+        "diagnostic_only": true,
+        "sample_values": 2138928,
+        "stereo_frames": 1069464,
+        "nonzero": 1075360,
+        "peak": 19200,
+        "hash": "0x7807be6a3e82c89a",
+        "first_title_frame": 1892,
+        "endpoint_frame": 1921,
+        "stable_frames": 30,
+        "total_cpu_T": 136891392,
+        "total_base_T": 136891392,
+        "steps": 24927784,
+        "dma_stall_steps": 1,
+        "dma_stall_T": 32,
+        "NR50": 119,
+        "NR51": 51,
+        "NR52": 243
+      },
+      "pcm_sha256": "828c5e4610841fa0ad6648ac2000b06fc98c6db9c7eee5c3be629b1d9cc095b3",
+      "title_bmp_sha256": "b065cc3eda9ffa600bc125edaefc7dec77e399327c01b764ca79745c497a8e5b"
+    },
+    {
+      "variant": "both_reverted",
+      "command": [
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/build/pcm_both_reverted",
+        "/workspace/scratch/full-rom-2026-10-26/cpu/pcm-causality-81cfb/capture_both_reverted"
+      ],
+      "executable_sha256": "323ca1e855add5995276d8e06609a5fb098fc343154a6faa0daa4ab63c96c3c8",
+      "executable_bytes": 17235192,
+      "returncode": 0,
+      "elapsed_seconds": 4.816693127999315,
+      "not_acceptance": true,
+      "observations": {
+        "diagnostic_only": true,
+        "sample_values": 2138926,
+        "stereo_frames": 1069463,
+        "nonzero": 1074861,
+        "peak": 19200,
+        "hash": "0x3b50ed7ed79bda0",
+        "first_title_frame": 1892,
+        "endpoint_frame": 1921,
+        "stable_frames": 30,
+        "total_cpu_T": 136891360,
+        "total_base_T": 136891360,
+        "steps": 24927783,
+        "dma_stall_steps": 0,
+        "dma_stall_T": 0,
+        "NR50": 119,
+        "NR51": 51,
+        "NR52": 243
+      },
+      "pcm_sha256": "61b3823288176ad860ce064bb4f08e947ca22114a4afdad2f5dc1c4fdf8c888d",
+      "title_bmp_sha256": "b065cc3eda9ffa600bc125edaefc7dec77e399327c01b764ca79745c497a8e5b"
+    }
+  ]
+}

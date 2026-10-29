@@ -348,4 +348,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 5fe465082e40e700
 expect_screen 7ede2afe6e41251b
-expect_audio 22594090 21020929 32768 84ffc3080845927a
+expect_audio 22594090 21021596 32768 42a9716dbfe95fe0

@@ -1,0 +1,1038 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "started_utc": "2026-10-26T17:29:07Z",
+  "finished_utc": "2026-10-26T17:32:52Z",
+  "deleted_bytes": 482264078,
+  "remaining_count": 23,
+  "remaining_bytes": 757274978,
+  "preserved_set_verified": true,
+  "delete_branches": false,
+  "delete_runs": false,
+  "scope": "Earlier authorized cleanup: superseded prototypes, duplicate builds and obsolete test artifacts; accepted package and immutable milestone source branches preserved",
+  "deleted": [
+    {
+      "id": 12605140520,
+      "name": "native-tooling-persistence-Linux-40207863144-1",
+      "bytes": 305879,
+      "digest": "sha256:8d1631a9d418485ffa26147728b37f29c5fc538df04080bbfc71f37e1fd34a44"
+    },
+    {
+      "id": 12605135626,
+      "name": "native-tooling-persistence-Windows-40207863144-1",
+      "bytes": 309593,
+      "digest": "sha256:c3bbaff137b12159fc8950473104beec4e5012f76797c8a79cfdefaf053a4592"
+    },
+    {
+      "id": 12604012231,
+      "name": "native-tooling-persistence-Windows-40207587404-1",
+      "bytes": 309576,
+      "digest": "sha256:25a649aebc4760094b47b016875be62512bcdc7677536e0a52b8f03c3fa0e048"
+    },
+    {
+      "id": 12603929953,
+      "name": "native-tooling-persistence-Linux-40207587404-1",
+      "bytes": 305875,
+      "digest": "sha256:7ebec3a005a140b4845fd8b820c8bc105a1886ac08c2b4cf9d3932ea8fd7dec6"
+    },
+    {
+      "id": 12603906050,
+      "name": "native-tooling-persistence-Windows-40205170102-1",
+      "bytes": 309358,
+      "digest": "sha256:9c27a5d76b6a3a7172fad5eb9975b2594a9ae0a53de16e446c6ffe25b6b8f0b8"
+    },
+    {
+      "id": 12603882927,
+      "name": "native-tooling-persistence-Windows-40206155225-1",
+      "bytes": 309582,
+      "digest": "sha256:8a85909456255eefe40021142a62dea8c32cb789ded1379e72afbc3ed28d4480"
+    },
+    {
+      "id": 12603840655,
+      "name": "native-tooling-persistence-Linux-40204827845-1",
+      "bytes": 305648,
+      "digest": "sha256:36e9cf67ef18024ee31303733dfe2a0976ae50c0ac8f9242df94f3fa1936ce2d"
+    },
+    {
+      "id": 12603806331,
+      "name": "native-tooling-persistence-Windows-40204827845-1",
+      "bytes": 309348,
+      "digest": "sha256:93b9059f7085945396d50d14e351ee3d6179387950588c407650d5e4a9d90c61"
+    },
+    {
+      "id": 12603481921,
+      "name": "native-tooling-persistence-Linux-40205170102-1",
+      "bytes": 305635,
+      "digest": "sha256:36d3dd6ea0c25d84c82cfd406d8d2d54a42fead7ecbb4dfc5b165ef8f7fd2df7"
+    },
+    {
+      "id": 12603120799,
+      "name": "native-tooling-persistence-Windows-40203449136-1",
+      "bytes": 309366,
+      "digest": "sha256:35676f0a24e8d4ac74de3ec5319d54db3709c7b1dc50c8c8b07af0fce2f3d105"
+    },
+    {
+      "id": 12603038493,
+      "name": "M8-supplemental-postgame-40205236671",
+      "bytes": 502032,
+      "digest": "sha256:311b91e014a673e9c802b522490f9de744d0d3db1f51d1e0799c53d8d5656769"
+    },
+    {
+      "id": 12602939650,
+      "name": "native-tooling-persistence-Linux-40206155225-1",
+      "bytes": 305877,
+      "digest": "sha256:822b97a56f3e775d76aeb4270da431435b09e88591e3d013bd7cb317f034ec37"
+    },
+    {
+      "id": 12602478668,
+      "name": "native-tooling-persistence-Linux-40203449136-1",
+      "bytes": 305654,
+      "digest": "sha256:4c4b3d93da070c1e1588fe435e4916536a2db53d47f649b062513ab7b338fb92"
+    },
+    {
+      "id": 12602053600,
+      "name": "M8-supplemental-postgame-40202234497",
+      "bytes": 416187,
+      "digest": "sha256:6e91bee4675ff79192df66973e0ec62528912d2a4563b215d6c7d4010c37b049"
+    },
+    {
+      "id": 12597308905,
+      "name": "native-tooling-persistence-Linux-40189515907-1",
+      "bytes": 6696,
+      "digest": "sha256:9c46b6ed1300d1ad6ff03a8bd4038ecbcd7367dbff6f0821e4b9eaa3227f40b0"
+    },
+    {
+      "id": 12597164083,
+      "name": "native-tooling-persistence-Windows-40189353988-1",
+      "bytes": 7511,
+      "digest": "sha256:b4bef5b168b2b6d0bb66b215e6ce9f53c057ca0f2d195cf8a1de3f8a59eeb6c9"
+    },
+    {
+      "id": 12596538262,
+      "name": "native-tooling-persistence-Linux-40189353988-1",
+      "bytes": 6697,
+      "digest": "sha256:1aac138c42c97321eaf3f99be6ab5fa28e3f66e171615252e507126c9d84a16c"
+    },
+    {
+      "id": 12596498648,
+      "name": "native-tooling-persistence-Windows-40189515907-1",
+      "bytes": 7507,
+      "digest": "sha256:8818d77b1c5fc8ee741dd15a71563fa628a8eaacf1851394050f0faf4fc530be"
+    },
+    {
+      "id": 12594881309,
+      "name": "M8-final-package-checks-40182008944",
+      "bytes": 2337203,
+      "digest": "sha256:da7ed56d0157c85eee9685ac49c8289859f146a640f938a43c5a892f4d5caa27"
+    },
+    {
+      "id": 12594727361,
+      "name": "M8-native-audio-comparison-45-40182774086",
+      "bytes": 2682091,
+      "digest": "sha256:fe17105877f8d30dc33064e9b0040c8226195bf19dcaff82fb8d79747e2d1016"
+    },
+    {
+      "id": 12594627539,
+      "name": "M8-native-audio-comparison-43-40182774086",
+      "bytes": 2324925,
+      "digest": "sha256:bd2dc2e8e30e9fe14a9323db8042f0219f5adedf6c811bd665b13c534d043a4f"
+    },
+    {
+      "id": 12593580636,
+      "name": "M8-native-audio-host-probe-40179402038",
+      "bytes": 2324461,
+      "digest": "sha256:c0838a0b942a2139dd2a2182fca93e691952c8119bb33e25700b01c875652968"
+    },
+    {
+      "id": 12592120047,
+      "name": "M8-fresh-production-40174839138",
+      "bytes": 3063343,
+      "digest": "sha256:ca57efcec08eff118fd82bfde8af455dad7f8b615801fb865fd087e7f79f16f6"
+    },
+    {
+      "id": 12591752371,
+      "name": "M8-fresh-posix-persistence-40174839138",
+      "bytes": 2118,
+      "digest": "sha256:85bd6ad4de20eeb4e022a80cd019daa83f8292d8c4245b09c38c192f0fcb3ee1"
+    },
+    {
+      "id": 12591517973,
+      "name": "M8-fresh-diagnostic-40174839138",
+      "bytes": 15939,
+      "digest": "sha256:07aaf4cb34154f68f2f7426ca82e5c9acb638d9d3bfea27b869c33f9326a35ac"
+    },
+    {
+      "id": 12591245150,
+      "name": "M8-fresh-posix-persistence-40171984163",
+      "bytes": 2123,
+      "digest": "sha256:187ed4b90cd07e2fdd876fd15cde7842a4a31e2baebf529311ec5dc4a66cf86a"
+    },
+    {
+      "id": 12590931545,
+      "name": "M8-fresh-production-40171984163",
+      "bytes": 3052750,
+      "digest": "sha256:6127445bbbec429b37801af13b5714ac8b9b11a4431c26b4354ef706f23781fd"
+    },
+    {
+      "id": 12590468664,
+      "name": "M8-fresh-diagnostic-40171984163",
+      "bytes": 3082856,
+      "digest": "sha256:fbd1370a0c2f855713103fff9e249bca483ab5c7d6f40a8f0a2fadc1c01fe241"
+    },
+    {
+      "id": 12587635252,
+      "name": "M8-historical-package-preflight-40162619614",
+      "bytes": 22446,
+      "digest": "sha256:59df97adfc433a541ab56a3afcd2486ce5372848d08b9d8159363243255ca1bb"
+    },
+    {
+      "id": 12587210616,
+      "name": "M8-historical-package-preflight-40162303241",
+      "bytes": 21867,
+      "digest": "sha256:f81e1a8dd87e7134418ff5caccd049e11abd9b67d8e721a2bdecf9021f57a3d3"
+    },
+    {
+      "id": 12587170478,
+      "name": "M8-fresh-posix-persistence-40162303241",
+      "bytes": 2121,
+      "digest": "sha256:14bf9a304b0b33e866297b6aa638fb994b8884ae5cdaa52561e357163c6da8f0"
+    },
+    {
+      "id": 12587116500,
+      "name": "M8-historical-package-preflight-40162781175",
+      "bytes": 45917,
+      "digest": "sha256:903313fc17ebc3bf2b1676e70492289c8deb8120c00ff79c8e8e8e0aabfcb4b0"
+    },
+    {
+      "id": 12587001629,
+      "name": "M8-fresh-posix-persistence-40162781175",
+      "bytes": 2122,
+      "digest": "sha256:dda5bf5020ee3e607f67799c6e316fcb7b20a6f77090dbfbffa2eb4c0e2a7b8c"
+    },
+    {
+      "id": 12586902063,
+      "name": "M8-fresh-posix-persistence-40161678123",
+      "bytes": 2123,
+      "digest": "sha256:7f1666afe9341467ad36b5d6d65cdc76637c732bd362f0c17ec81e5d02858c5f"
+    },
+    {
+      "id": 12586868271,
+      "name": "M8-fresh-posix-persistence-40162619614",
+      "bytes": 2121,
+      "digest": "sha256:bef50a94685b34f0603cfb911e8e1a7916f2716f8a2b0a9a41fa5639b423e5d9"
+    },
+    {
+      "id": 12586821882,
+      "name": "M8-historical-package-preflight-40161472626",
+      "bytes": 6419,
+      "digest": "sha256:a141d0721262fda37f9c32b8c441ef015772c3f4bc54cffd84d996432f8439f1"
+    },
+    {
+      "id": 12586752528,
+      "name": "M8-historical-package-preflight-40161866155",
+      "bytes": 21854,
+      "digest": "sha256:6462d74ee068e47f09b2b31dc0fee0b8537cabd142173a14c04a72266aa8fc45"
+    },
+    {
+      "id": 12586751690,
+      "name": "M8-historical-package-preflight-40161226704",
+      "bytes": 2225,
+      "digest": "sha256:cabb873a5255e4792fb3bd5869d3a457e47fb7a77f15db4e330668380a75d2b6"
+    },
+    {
+      "id": 12586724228,
+      "name": "M8-fresh-posix-persistence-40162046230",
+      "bytes": 2119,
+      "digest": "sha256:8b9be6340339f8aaef3526171661ce83f045a441218b52dc138e173cf3447856"
+    },
+    {
+      "id": 12586627638,
+      "name": "M8-fresh-posix-persistence-40161866155",
+      "bytes": 2123,
+      "digest": "sha256:2d2d9de5058a978fdc97b9dca401d24e8320ba3479e9b95c4e3a4a4c253c310a"
+    },
+    {
+      "id": 12586362588,
+      "name": "M8-historical-package-preflight-40161678123",
+      "bytes": 6455,
+      "digest": "sha256:2018502c6c01f7d257cef864fa269af3d0c69e15cd676a5aaa0b70206951d3b0"
+    },
+    {
+      "id": 12586279742,
+      "name": "M8-historical-package-preflight-40162046230",
+      "bytes": 22882,
+      "digest": "sha256:d7c8117c8c641263c2cd24421711787e2a5900b949bda2c898243b31aaf6949f"
+    },
+    {
+      "id": 12586232094,
+      "name": "M8-fresh-posix-persistence-40161226704",
+      "bytes": 2126,
+      "digest": "sha256:dc0963a40523427bae8d7b6ed86f8e1a2fcd41cc33ac6bbc3ee451658b020af5"
+    },
+    {
+      "id": 12585829188,
+      "name": "M8-fresh-posix-persistence-40161472626",
+      "bytes": 2121,
+      "digest": "sha256:c277a9bc814fac33834fbda0fc0b7c77503da0b8382c2e78793950216348d8c6"
+    },
+    {
+      "id": 12584475629,
+      "name": "DWM2t-Sea-Story-native-evidence-40152139075-1",
+      "bytes": 673140,
+      "digest": "sha256:a863a8f68d01724c0f928b2bd294a302224b86ee5d0053af3e3f7c67a4e48fe7"
+    },
+    {
+      "id": 12582107420,
+      "name": "DWM2t-Sea-Story-native-evidence-40148369185-1",
+      "bytes": 468999,
+      "digest": "sha256:807cf60ac51d2c1f571ec0e3b2040ccc8fff0a2092f61a6b373b1f81f2ad8f09"
+    },
+    {
+      "id": 12581700440,
+      "name": "DWM2t-production-late-evidence-40148371157-1",
+      "bytes": 19527,
+      "digest": "sha256:ea8079ccf57471b0f467b42557009377a9f229fcc2d8a3371ce0df2a432a1cc7"
+    },
+    {
+      "id": 12579284927,
+      "name": "DWM2t-production-late-evidence-40144322233-1",
+      "bytes": 19530,
+      "digest": "sha256:6f53406c3a5cfb173967c905503e1cab722776536b3b724d0ae90f232da7346d"
+    },
+    {
+      "id": 12579134999,
+      "name": "DWM2t-Sea-Story-native-evidence-40142961686-1",
+      "bytes": 269528,
+      "digest": "sha256:27aaf91b98cca87b5d5c29e6cfbdec56b00eb5236f789032daa5e41fb952c1c9"
+    },
+    {
+      "id": 12578840932,
+      "name": "DWM2t-Sea-Story-native-evidence-40136433795-1",
+      "bytes": 1331824,
+      "digest": "sha256:58b6db7bf6f06434648df590bb63d3a7b994a6454b69798559a80ab47691aa53"
+    },
+    {
+      "id": 12578785951,
+      "name": "DWM2t-Sea-Village-native-evidence-40136433795-1",
+      "bytes": 59539,
+      "digest": "sha256:e882429b98bf1e8b2c91cb0c86f235b7c1f19d026ef99cd12e24119c5b487d3e"
+    },
+    {
+      "id": 12578566270,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40136433795-1",
+      "bytes": 183086,
+      "digest": "sha256:d450d33ee405b683c4f6b7a87b2b40c76c6f24af04bdde3761dc53843d45398e"
+    },
+    {
+      "id": 12578546261,
+      "name": "DWM2t-Sea-World-native-evidence-40136433795-1",
+      "bytes": 62638,
+      "digest": "sha256:f7b00231f1959171ad97a8047b1e5dd1b984f77f95c16d4784e3f3fceef9cb9e"
+    },
+    {
+      "id": 12578391482,
+      "name": "DWM2t-Party-Preparation-native-evidence-40136433795-1",
+      "bytes": 130174,
+      "digest": "sha256:77e48cce1253b6f914ccca42134e29a02b8cd50713cca44f9eedd1ffcfbaf8a0"
+    },
+    {
+      "id": 12575663721,
+      "name": "DWM2t-Sea-Story-native-evidence-40130993635-1",
+      "bytes": 1128844,
+      "digest": "sha256:b4bdc27b86f81a046eb9e4fc1a3056492980c5f448aabd7ba7be4e087e9199ef"
+    },
+    {
+      "id": 12575618945,
+      "name": "DWM2t-Party-Preparation-native-evidence-40130993635-1",
+      "bytes": 130174,
+      "digest": "sha256:ea7f483a9f69f2616e8560a2b5da190963ad4ef0ac80abd95c63ee488d45f819"
+    },
+    {
+      "id": 12575488966,
+      "name": "DWM2t-Sea-Village-native-evidence-40130993635-1",
+      "bytes": 59539,
+      "digest": "sha256:718bf1ab83f8edd0ed9fea617a92dad1e81723fa9062bfb7541ead64feed0bba"
+    },
+    {
+      "id": 12575288989,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40130993635-1",
+      "bytes": 183086,
+      "digest": "sha256:b64cbdb06778289e74e12502cdc9964fb1254d51c18a2e63f425823543422fe7"
+    },
+    {
+      "id": 12575284022,
+      "name": "DWM2t-Sea-World-native-evidence-40130993635-1",
+      "bytes": 62638,
+      "digest": "sha256:c278c520acc922ba94d2972dc7a472d82756b87593eeed4a02882ade1f9b4f8c"
+    },
+    {
+      "id": 12572491637,
+      "name": "DWM2t-Party-Preparation-native-evidence-40121439217-1",
+      "bytes": 130174,
+      "digest": "sha256:a8d2a0cb9fb42a76b4cefc6a885070051fe22b8f0337371fec7b5ac60517dc7a"
+    },
+    {
+      "id": 12572491627,
+      "name": "DWM2t-Sea-World-native-evidence-40121439217-1",
+      "bytes": 62638,
+      "digest": "sha256:5788f4b40f265d29b8d40530262cbf4b769d241064abaf751b9e83ee851621b4"
+    },
+    {
+      "id": 12572251661,
+      "name": "DWM2t-Sea-Village-native-evidence-40121439217-1",
+      "bytes": 59539,
+      "digest": "sha256:2530deed3f654cbc933965ca717717c7e1b1a814d06c20067192de5ac9e73686"
+    },
+    {
+      "id": 12571886922,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40121439217-1",
+      "bytes": 183086,
+      "digest": "sha256:f4705e28e7810916ba8cdbe70cfed9852d9b3f17105f72bf94d6f3260a5d80f0"
+    },
+    {
+      "id": 12571886913,
+      "name": "DWM2t-Sea-Story-native-evidence-40121439217-1",
+      "bytes": 855652,
+      "digest": "sha256:6eaf61fae3caafbf54c7493a7d8f662c11c2c10257a7fd1d9344caff37bc4849"
+    },
+    {
+      "id": 12570447866,
+      "name": "DWM2t-Sea-Story-native-evidence-40115888033-1",
+      "bytes": 594055,
+      "digest": "sha256:79727e2b210bc0d5d9105f81dddd78862312d19bec3a0f071f3d26b4d61e421e"
+    },
+    {
+      "id": 12570397841,
+      "name": "DWM2t-Party-Preparation-native-evidence-40115888033-1",
+      "bytes": 130174,
+      "digest": "sha256:6b436a3d661e692b273e166d907ccfb63eda140e49726e508b4f561fccf42deb"
+    },
+    {
+      "id": 12570292781,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40115888033-1",
+      "bytes": 183086,
+      "digest": "sha256:767016291187a4ec421ea52b1a6d2f75b91b98283bbff11fbbaf5df110d52b05"
+    },
+    {
+      "id": 12570202912,
+      "name": "DWM2t-Sea-World-native-evidence-40115888033-1",
+      "bytes": 62638,
+      "digest": "sha256:4ab6de7b5b83f6fa5d32765dde316a7fc274461b9efb59ff3ccecc25f73dbd1b"
+    },
+    {
+      "id": 12569542973,
+      "name": "DWM2t-Sea-Village-native-evidence-40115888033-1",
+      "bytes": 59539,
+      "digest": "sha256:38cecf00544a561a9b5dae2f4c820771136a6b105059d971ba9efe5583acb742"
+    },
+    {
+      "id": 12568387470,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40113953600-1",
+      "bytes": 183086,
+      "digest": "sha256:079493a8f20af3ada6b59e9e2563e372501e844d248ba2c4c7aa8456d417084b"
+    },
+    {
+      "id": 12568337648,
+      "name": "DWM2t-Party-Preparation-native-evidence-40113953600-1",
+      "bytes": 130174,
+      "digest": "sha256:dbbb03ba6200ee48e406de1936ef99e77d3f3a7c87384aad60441ed60646da74"
+    },
+    {
+      "id": 12568272861,
+      "name": "DWM2t-Sea-World-native-evidence-40113953600-1",
+      "bytes": 62638,
+      "digest": "sha256:8f7d76a9a8602610cef85b8fc8218f1f4b1ca83d1afe9950ceff0d0204e0c899"
+    },
+    {
+      "id": 12568228016,
+      "name": "DWM2t-Sea-Story-native-evidence-40113953600-1",
+      "bytes": 401620,
+      "digest": "sha256:bb5e81cab1349c340762e4480e93ac7c7c11d687e19392ee734e18ef5857475a"
+    },
+    {
+      "id": 12568158277,
+      "name": "DWM2t-Sea-Village-native-evidence-40113953600-1",
+      "bytes": 59539,
+      "digest": "sha256:30c672ce3429b2aa7d1b74ae01e5e2499369a691fb317832cbf0bf50fc610f58"
+    },
+    {
+      "id": 12567065383,
+      "name": "DWM2t-Sea-Village-native-evidence-40109654218-1",
+      "bytes": 59539,
+      "digest": "sha256:d53a4f551eae180bc8c34b3889fd3b53388756348d5e507baf537d128937ea68"
+    },
+    {
+      "id": 12566930835,
+      "name": "DWM2t-Sea-Story-native-evidence-40109654218-1",
+      "bytes": 330199,
+      "digest": "sha256:84666ff8b6c24fc2486a084726195a9609a6e8c956fd7a16da2dadd73ccc7c0b"
+    },
+    {
+      "id": 12566711721,
+      "name": "DWM2t-Sea-World-native-evidence-40109654218-1",
+      "bytes": 62638,
+      "digest": "sha256:345b3eab02947372139605cdf05573b849229b5243d40ca399a28fb67b5c86fd"
+    },
+    {
+      "id": 12566153101,
+      "name": "DWM2t-Party-Preparation-native-evidence-40109654218-1",
+      "bytes": 130174,
+      "digest": "sha256:1d4a039e53af8a8322428f247af307eaed1f612e2daaad6cefddb799d9f41577"
+    },
+    {
+      "id": 12565973890,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40109654218-1",
+      "bytes": 183086,
+      "digest": "sha256:e0d5825a1a0b59f1775119591a9d3e02689ca06b2d3acf0c081ab9e41e6f145e"
+    },
+    {
+      "id": 12564071740,
+      "name": "DWM2t-Sea-World-native-evidence-40102961243-1",
+      "bytes": 62638,
+      "digest": "sha256:5b5994808b77b2f749dae8f64fba8af3ee310d7943e479a8cc1b616fd52331ad"
+    },
+    {
+      "id": 12563987001,
+      "name": "DWM2t-Sea-Village-native-evidence-40102961243-1",
+      "bytes": 59539,
+      "digest": "sha256:fe35f4ce5cbbb05cb196d61611a9f20a49487d34b3b206842e507938a1e8a897"
+    },
+    {
+      "id": 12563758169,
+      "name": "DWM2t-Party-Preparation-native-evidence-40102961243-1",
+      "bytes": 130174,
+      "digest": "sha256:c9c22f03c91a7d6e494f661e91eb7119c12d131d6016eebcc1bc408f72396af6"
+    },
+    {
+      "id": 12563748293,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40102961243-1",
+      "bytes": 183086,
+      "digest": "sha256:b1c38d794f62ed5d7fca73e562c0c46179af9adfa589cb18beddad0323b7a628"
+    },
+    {
+      "id": 12563713478,
+      "name": "DWM2t-Sea-Story-native-evidence-40102961243-1",
+      "bytes": 134990,
+      "digest": "sha256:200453385b33f21fcaa6e50497b25b38f4b56fe15244a38260e030c436898b77"
+    },
+    {
+      "id": 12562262630,
+      "name": "DWM2t-Farm-Dancer-native-evidence-40098604498-1",
+      "bytes": 183086,
+      "digest": "sha256:d040a78ba99da924ee1b095b0143d537ea26a5437d4e15473c7635fed822760a"
+    },
+    {
+      "id": 12562252552,
+      "name": "DWM2t-Party-Preparation-native-evidence-40098604498-1",
+      "bytes": 130174,
+      "digest": "sha256:bee975476c8093c87cdf80007ddb887cfd56c7855f6ac20d80654a25a07e23a5"
+    },
+    {
+      "id": 12561918707,
+      "name": "DWM2t-Sea-Village-native-evidence-40098604498-1",
+      "bytes": 59539,
+      "digest": "sha256:cb6965bf92fb74b69e58d26ecf56e710160e6075c15d524cbdaa192009fa9a26"
+    },
+    {
+      "id": 12561893941,
+      "name": "DWM2t-Sea-World-native-evidence-40098604498-1",
+      "bytes": 62638,
+      "digest": "sha256:bbc8d8596fd23a9a5a51fd195fcac789abef09ec4b266aec8ac1255c451e23d8"
+    },
+    {
+      "id": 12474970681,
+      "name": "DWM2t-Sea-World-native-evidence-39890528113-1",
+      "bytes": 62638,
+      "digest": "sha256:68d0cdc282c1a21e61ea8990b0da1addca6d4e1bb4290d91f9d9c4832c92891b"
+    },
+    {
+      "id": 12474657420,
+      "name": "DWM2t-Farm-Dancer-native-evidence-39890528113-1",
+      "bytes": 183086,
+      "digest": "sha256:cbdfaf424902ab14f2358c8693e869ed1ddcf462313e5ea843c827941f81e94f"
+    },
+    {
+      "id": 12474617224,
+      "name": "DWM2t-Sea-Village-native-evidence-39890308467-1",
+      "bytes": 59539,
+      "digest": "sha256:d0cf68d3e8ffcb036d92b1629a157565e6219d45fd784be1d024d595a5c93ac6"
+    },
+    {
+      "id": 12474328590,
+      "name": "DWM2t-Sea-Village-native-evidence-39890528113-1",
+      "bytes": 59539,
+      "digest": "sha256:da48a014d8a4f1e369ddca27fb414e861156eecbb002d125cd1904472f91c6d6"
+    },
+    {
+      "id": 12474099116,
+      "name": "DWM2t-Farm-Dancer-native-evidence-39890308467-1",
+      "bytes": 398,
+      "digest": "sha256:005e3ae8fca2147529633a42702c68739da7b2407d0cceecb577e0576b2dbd6b"
+    },
+    {
+      "id": 12474029278,
+      "name": "DWM2t-Sea-World-native-evidence-39890308467-1",
+      "bytes": 62638,
+      "digest": "sha256:1fa3ada0a17139a081457fab68dae93ee313fa9e02dd9dfe613e3a23f8adb1cd"
+    },
+    {
+      "id": 12469075458,
+      "name": "DWM2t-Sea-World-native-evidence-39876912500-1",
+      "bytes": 62638,
+      "digest": "sha256:d245269b024bb7ce8bc8149ceb7a374f760fb3c0bccde8d60618969f186cd758"
+    },
+    {
+      "id": 12467988802,
+      "name": "DWM2t-Sea-Village-native-evidence-39876912500-1",
+      "bytes": 59539,
+      "digest": "sha256:94b120db9787380aa99d3ad577cb6ad21be6375c1789e6f2cafcf9ca5ce3099f"
+    },
+    {
+      "id": 12455681262,
+      "name": "DWM2t-player-candidate-bfc591146659964740f6958add5f8e8b8ed14d5f",
+      "bytes": 130120355,
+      "digest": "sha256:51bf94c6dca67ad2212a10955ad91643629335b3606f4bd9048d7308825153b2"
+    },
+    {
+      "id": 12454469586,
+      "name": "DWM2t-Sea-World-native-evidence-39846303155-1",
+      "bytes": 62638,
+      "digest": "sha256:f2f96bea78f205f0b4b9c0696649534a15f65b2236cd5b99ff771a21b509c46e"
+    },
+    {
+      "id": 12454411082,
+      "name": "DWM2t-M8-development-Windows-x64-697647033b4ce6b00dd8e11759cb85e1ae469a65",
+      "bytes": 134714810,
+      "digest": "sha256:7900b2dc3b72271f5d696a5aa254e795df89144d1ec42e01f6aa3acdea997884"
+    },
+    {
+      "id": 12454290715,
+      "name": "DWM2t-M8-development-evidence-39836316030-1",
+      "bytes": 780869,
+      "digest": "sha256:ca0c4953fded229f8d234e7d765f5c77721352d7e8977d4de69419ec2471435b"
+    },
+    {
+      "id": 12453904537,
+      "name": "DWM2t-player-validation-39840204359-1",
+      "bytes": 48548,
+      "digest": "sha256:f789dd6045e959e7de2189c368e7d87cbc32eb7496c867d429d298b910c914da"
+    },
+    {
+      "id": 12453844571,
+      "name": "DWM2t-Sea-World-native-evidence-39845925522-1",
+      "bytes": 534,
+      "digest": "sha256:edf15fee40bd0853e1eccb46191f2baa858326f97629cd749b3d3d0ffca3d9f9"
+    },
+    {
+      "id": 12451853721,
+      "name": "DWM2t-player-validation-39839894980-1",
+      "bytes": 1681,
+      "digest": "sha256:da148101d86479d78c065ca6200028a560ef16e18847d9296dfab79fb3fab887"
+    },
+    {
+      "id": 12450268071,
+      "name": "DWM2t-native-source-9f13d594efa87795c187ec04d6fe53414f78a949",
+      "bytes": 2520618,
+      "digest": "sha256:fc26d62958688fc95e027b99957b7c835f170371c27ec0853743a03b0c8db820"
+    },
+    {
+      "id": 12450219071,
+      "name": "DWM2t-native-source-697647033b4ce6b00dd8e11759cb85e1ae469a65",
+      "bytes": 2520850,
+      "digest": "sha256:59837119ea33303282968cd9f82165bdb02b996914788638f436610a678869a5"
+    },
+    {
+      "id": 12022670893,
+      "name": "DWM2tRecomp-M6-Probe-Windows-x64",
+      "bytes": 21483439,
+      "digest": "sha256:eb5dd14ddaaae9ebd03656e64d8ddb2725381138462cbfc79b846e5bbeb7303e"
+    },
+    {
+      "id": 12022280550,
+      "name": "DWM2tRecomp-M6-Probe-Windows-x64",
+      "bytes": 21483439,
+      "digest": "sha256:5992166ec20d68e112b95e4d9b46159cfe8be6080b6609956570a15763bbc490"
+    },
+    {
+      "id": 12015416766,
+      "name": "DWM2tRecomp-M5-Windows-x64",
+      "bytes": 6222969,
+      "digest": "sha256:310871bc84e7537394182018a7f271a15bf0b9daafbb6bfe87b8f7971f8323a3"
+    },
+    {
+      "id": 12015343118,
+      "name": "DWM2tRecomp-M5-Windows-x64",
+      "bytes": 6222968,
+      "digest": "sha256:b3ef93f4e8fbf01eacf61370505d045fc5695346eb6bcfff4d21163bac7913fe"
+    },
+    {
+      "id": 12015058047,
+      "name": "DWM2tRecomp-M5-Windows-x64",
+      "bytes": 6222968,
+      "digest": "sha256:9e43ce8602c448886e86a7bd99bfc5a9156b4e98b4fcfc1e19deca69339dbb5b"
+    },
+    {
+      "id": 12015007173,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 6210846,
+      "digest": "sha256:964ae9cb8f7414af5d21b5accfa279f572514ed6ced0d6e43f23391bc32e0764"
+    },
+    {
+      "id": 12014701283,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 6249514,
+      "digest": "sha256:b7d4865816325482de0ccca272b9636abfb8312834ece556664950b7c140af9d"
+    },
+    {
+      "id": 12014115164,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411211,
+      "digest": "sha256:f4775b7d5510adaa03b961d31d36e226c80f48aac60f552ed7982c0aa32efb97"
+    },
+    {
+      "id": 12014075231,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396959,
+      "digest": "sha256:3dde93ff7e0507d3d3071992da294b0ec1e937446f382f10d55672f1861615cf"
+    },
+    {
+      "id": 12014070074,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:cf056aa675ac26f010c2ce2f8006c3f7f7aa615c1d104d54b75d54d74b09af77"
+    },
+    {
+      "id": 12013900422,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396915,
+      "digest": "sha256:7c2884428f62a05b2856bfb9bf53d95cfd85724b4a419118b68f16917676e68a"
+    },
+    {
+      "id": 12013885535,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396914,
+      "digest": "sha256:3139e73f03bd89b9a543639afa7e538d59c9b982bdaae99b70524f9fe8a56da2"
+    },
+    {
+      "id": 12013783169,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 5348862,
+      "digest": "sha256:14e6423e26e9ecad716d213bef32e6913ef7fcd91255c2ff2d9b3ce6d793de66"
+    },
+    {
+      "id": 12013676887,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 5340493,
+      "digest": "sha256:87271d6076f71a6bafcbf1877108cc16b163aff6016db8b3ca683f124f4328d4"
+    },
+    {
+      "id": 12013622048,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411212,
+      "digest": "sha256:bb9fd918a582fd91ab12b7748a3b7d26058ad429c5877cc1d794d0736b489bb5"
+    },
+    {
+      "id": 12013621391,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396915,
+      "digest": "sha256:80db173a67d8d5912f4e7d2216f19c0514b5f4d24cfd62315f2a12e9a390d3fd"
+    },
+    {
+      "id": 12013592893,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 5339574,
+      "digest": "sha256:2805c10c198afbd1e99889254407b9b90dc5503ba8d868f6efeab11325ae2ee8"
+    },
+    {
+      "id": 12013543151,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 5327097,
+      "digest": "sha256:ef973154f0eef9ca4b07c227124672461072d81a2a73c43005dc00b7d7103a04"
+    },
+    {
+      "id": 12013542524,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411212,
+      "digest": "sha256:2103387c85d22ef19c529513ad7911d6121b9969382329e6b42a7038d88c9643"
+    },
+    {
+      "id": 12013381818,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:4581db8025d9e930a149bc51f441474e957888211490e49820fd65c11619d6d9"
+    },
+    {
+      "id": 12013347756,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411211,
+      "digest": "sha256:2e4d392a16d08e4539d8688e00a352f24dce8fb4349d9796a12b0f8739603fd7"
+    },
+    {
+      "id": 12013316207,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:510f929e1603fc411ec1eb20c490a8f17f31554ae7de3c90b98e10c1a3cb8b10"
+    },
+    {
+      "id": 12013248998,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 6230475,
+      "digest": "sha256:498679c24606d751bccd462523908659470bde9bc4f9af79ff61edac75d74a9e"
+    },
+    {
+      "id": 12013136405,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396915,
+      "digest": "sha256:10c6b19c0687e42020173006f3c8015d48ceab0ce8730b1a573083888f8d0358"
+    },
+    {
+      "id": 12012914525,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 6230476,
+      "digest": "sha256:1ce20d2000941c66506ecba4722886dab3ba4cf9c489187350057885cd7451be"
+    },
+    {
+      "id": 12012831770,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:295e004043483518fb0519741614aaf89cbaf1f27ff9da400ce9f1c82f1310ed"
+    },
+    {
+      "id": 12012818801,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 5340494,
+      "digest": "sha256:0aebf999195fd9c6c616cbbec3ff9e842095c551419985bc547cf2631dad89b4"
+    },
+    {
+      "id": 12012766875,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:dc0664d26e1fbb32f363676f40addac2118020f4e11916fd57982acd4f09e7fd"
+    },
+    {
+      "id": 12012747976,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411212,
+      "digest": "sha256:9285d0fe55044fc3e5cf4f91defaa81a5f034e0ec629cdfb43a2c662cb248cc8"
+    },
+    {
+      "id": 12012738815,
+      "name": "DWM2tRecomp-M5-Probe-Windows-x64",
+      "bytes": 5340494,
+      "digest": "sha256:05da26ddd8499a68efaf81d6788dbee9d10e721f119c025d35f654a0369a01b6"
+    },
+    {
+      "id": 12012687258,
+      "name": "DWM2tRecomp-Windows-x64",
+      "bytes": 3396916,
+      "digest": "sha256:32d9cb168c5ae6233ba823872fe0dd10cbde7c75216863dd34f35f8b407f5eaa"
+    },
+    {
+      "id": 12012683137,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "bytes": 3411212,
+      "digest": "sha256:ad27841357ed85c9b9289545e083d6ecb0ad62efc54545035ee9596d27f43f3b"
+    },
+    {
+      "id": 12012103231,
+      "name": "DWM2tRecomp-M2-Windows-x64",
+      "bytes": 360767,
+      "digest": "sha256:bd8534ea8f75c8cef31623a93e6ea724b5f138fbfd4f6c8606dce7da6119ac03"
+    },
+    {
+      "id": 12011892573,
+      "name": "DWM2tRecomp-M0-Windows-x64",
+      "bytes": 7273,
+      "digest": "sha256:7809e5411ebacf2f7d45572ef15dfebf063a71bbbbeda626468a9dc849cf2744"
+    },
+    {
+      "id": 12011804058,
+      "name": "DWM2tRecomp-M2-Windows-x64",
+      "bytes": 360767,
+      "digest": "sha256:494e3513f45ba2598d6fcdddc3e180a3ece1db52e4616d026b7b3e591ad2d2e2"
+    },
+    {
+      "id": 12011577757,
+      "name": "DWM2tRecomp-M0-Windows-x64",
+      "bytes": 7273,
+      "digest": "sha256:476020c16a93527fcb7aedf407a0c47e914e9726f6f624b01a839ad48f04e0d5"
+    },
+    {
+      "id": 12011492987,
+      "name": "DWM2tRecomp-M0-Windows-x64",
+      "bytes": 7273,
+      "digest": "sha256:7809e5411ebacf2f7d45572ef15dfebf063a71bbbbeda626468a9dc849cf2744"
+    },
+    {
+      "id": 12011398965,
+      "name": "DWM2tRecomp-M2-Windows-x64",
+      "bytes": 360767,
+      "digest": "sha256:9131c50a720e8240e85cb930864c4948dd78567debff1066d440a901cdbdd7be"
+    },
+    {
+      "id": 12011004941,
+      "name": "DWM2tRecomp-M0-Windows-x64",
+      "bytes": 7273,
+      "digest": "sha256:0367fe347d56357993ebf324c3669c8959c4f1949d4ccf68ed70323400db7fb7"
+    }
+  ],
+  "preserved": [
+    {
+      "id": 12668379583,
+      "name": "M8-fresh-diagnostic-40355244285",
+      "size_in_bytes": 142993278,
+      "digest": "sha256:de603a9dafdd2839e5c39f16b7d4c073b7f7eb744f3ae93a492f445bd348d423"
+    },
+    {
+      "id": 12668078381,
+      "name": "M8-fresh-production-40355244285",
+      "size_in_bytes": 136446217,
+      "digest": "sha256:b9bc231271f84aa64611af5cc549da05d2f980e264ee4920c24b95a7007cb280"
+    },
+    {
+      "id": 12666110441,
+      "name": "M8-fresh-posix-persistence-40355244285",
+      "size_in_bytes": 704258,
+      "digest": "sha256:eee85d6199823f6baf248ca8822f91f55274c9a2f182dd49200cd2e1c8050e30"
+    },
+    {
+      "id": 12665901143,
+      "name": "native-tooling-persistence-Linux-40355216796-1",
+      "size_in_bytes": 1014514,
+      "digest": "sha256:a95792e2421e08304543859d822cdfeb74b51d8e3a79c55c1e17bfd6997e033b"
+    },
+    {
+      "id": 12665233481,
+      "name": "native-tooling-persistence-Windows-40355216796-1",
+      "size_in_bytes": 1573556,
+      "digest": "sha256:a2a27cd92327b2c0a696e880c7798f81781f816b7f410802daff89f5e18a493a"
+    },
+    {
+      "id": 12603813190,
+      "name": "M8-supplemental-postgame-40206283890",
+      "size_in_bytes": 505039,
+      "digest": "sha256:5e16427c5ab43dfb716b2640acbc8fb0b451eaa0c7b727d0e1e64aef585ca035"
+    },
+    {
+      "id": 12595540162,
+      "name": "M8-native-audio-comparison-45-40183245214",
+      "size_in_bytes": 2686483,
+      "digest": "sha256:cb11c2372145e3981cb623f5d1528c62517bf5311624561242a5d5001cc3f8be"
+    },
+    {
+      "id": 12595496311,
+      "name": "DWM2t-M8-VERIFIED-3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+      "size_in_bytes": 130172320,
+      "digest": "sha256:bc36eb1161c8f71e11823d3912c90742026e0ef886764df875b731fdd58642c6"
+    },
+    {
+      "id": 12595366440,
+      "name": "M8-final-package-checks-40183484388",
+      "size_in_bytes": 2815753,
+      "digest": "sha256:bfba6d0cba59e0292a6b5af1ce45a75c4dcac06fba1c52c89293718b2f6a166b"
+    },
+    {
+      "id": 12594615851,
+      "name": "M8-fresh-production-journal-40175408153",
+      "size_in_bytes": 99614,
+      "digest": "sha256:1e025b118d83b79d116d4476b441ef6e98ff38c5d60fb41dd0206aa79d1d0c9e"
+    },
+    {
+      "id": 12594545489,
+      "name": "M8-fresh-story-40175408153",
+      "size_in_bytes": 2625793,
+      "digest": "sha256:2734ea5d13be5ce3d938199c4cc8bb7c86604aa275154c7fd80c71aaf1706117"
+    },
+    {
+      "id": 12594525715,
+      "name": "M8-fresh-diagnostic-40175408153",
+      "size_in_bytes": 139241574,
+      "digest": "sha256:9690048b14418b0ba5a944f7422f4c100eaa30eb42c3b4692b774e6ad81a5980"
+    },
+    {
+      "id": 12593078775,
+      "name": "M8-fresh-production-40175408153",
+      "size_in_bytes": 133239217,
+      "digest": "sha256:2d0eb9d02052f3bc8856d10f751e7a18ede48b7322f9547d5854692818de3bfe"
+    },
+    {
+      "id": 12592037765,
+      "name": "M8-fresh-posix-persistence-40175408153",
+      "size_in_bytes": 2123,
+      "digest": "sha256:1f2b8bc22e3ac3ebe46973130b0e23efaa1f3e467ef5d4038f241d5820579971"
+    },
+    {
+      "id": 12450467299,
+      "name": "actions-cleanup-39822793568-3",
+      "size_in_bytes": 2177,
+      "digest": "sha256:86592f1cf6fcf622cbd8c0a1d353d50d5fcd950a6439b988a645235482f0c401"
+    },
+    {
+      "id": 12121429944,
+      "name": "DWM2tRecomp-M7-Discovery-Windows-x64",
+      "size_in_bytes": 25440018,
+      "digest": "sha256:453a1f9a878b599e171fbdeb03e782b211d01cfea9b2ab45650aec212f581f66"
+    },
+    {
+      "id": 12043274426,
+      "name": "DWM2tRecomp-M6-Probe-Windows-x64",
+      "size_in_bytes": 21483439,
+      "digest": "sha256:6f49d866b39e090684d0a17c03e0f2f7fb324f910f1ae63360afea5855a67189"
+    },
+    {
+      "id": 12015239045,
+      "name": "DWM2tRecomp-M5-Windows-x64",
+      "size_in_bytes": 6222969,
+      "digest": "sha256:21e85e89800c2adcec50030a7dba3edf34fe1b7b9359ae0fcd892ad005b213bf"
+    },
+    {
+      "id": 12014857572,
+      "name": "DWM2tRecomp-M4-Windows-x64",
+      "size_in_bytes": 6220894,
+      "digest": "sha256:33271fa0fd003af13971f91c6298a510ee01476b64e55480b17e6efdc26ecf7b"
+    },
+    {
+      "id": 12012827140,
+      "name": "DWM2tRecomp-Windows-x64",
+      "size_in_bytes": 3410429,
+      "digest": "sha256:b7b8f5deab024d049b1c2cdd54a823653f8b2da1af89a6cb054f8cfbf0897a4c"
+    },
+    {
+      "id": 12011877658,
+      "name": "DWM2tRecomp-M1-Windows-x64",
+      "size_in_bytes": 7273,
+      "digest": "sha256:9e5ec507d2cc5ec740c5b48690bfab63dd7cbed4263a9a389898b1e02883fba3"
+    },
+    {
+      "id": 12011759251,
+      "name": "DWM2tRecomp-M2-Windows-x64",
+      "size_in_bytes": 360767,
+      "digest": "sha256:757233885babe3b31d760df35a8f90ecc85f2bbadc5f6342a1eabdcb5b281ab1"
+    },
+    {
+      "id": 12011508297,
+      "name": "DWM2tRecomp-M0-Windows-x64",
+      "size_in_bytes": 7273,
+      "digest": "sha256:da8e2034f4fba713f1a7c5e6afe24acf39d14a2ef5513b7e09ec4d4946bdd150"
+    }
+  ],
+  "remote_heads_after_cleanup": {
+    "refs/heads/main": "b349cc9bdd8d3f61821fd4ca52d52261789eaf93",
+    "refs/heads/restore/recomp-m0": "ac588dc73f59020efc69a53d17c46db6c7286acd",
+    "refs/heads/restore/recomp-m1": "68bf911c5845021db140575bdae721edda572965",
+    "refs/heads/restore/recomp-m2": "e68bd3e1136f93982a33d755d20bd3b093a6f7b5",
+    "refs/heads/restore/recomp-m3": "8ec0c1e80b5cea3df8f9581d1424fae319ec67d6",
+    "refs/heads/restore/recomp-m4": "29c4c8249f5a77a17ea8194d624d20af52da3e6b",
+    "refs/heads/restore/recomp-m5": "9d0b9830ea6542def717a8cde726691cd0421cc2",
+    "refs/heads/restore/recomp-m6": "70628e9a6f210f494ace326c51d1ac295a36c023",
+    "refs/heads/restore/recomp-m7": "3bb1e18170fc928f372f9cc72cc433d85c0666ca",
+    "refs/heads/restore/recomp-m8": "e44b41394c23f63f55b6d5255bc065696ba554c2",
+    "refs/heads/work/recomp-complete-rom": "81cfb26e2e30815640a5c80463c662eaf2f11ead"
+  },
+  "raw_evidence_sha256": {
+    "inventory-before.json": "5e9df779bde39b276273db6f34f6f876442fb0aa80fc1263d7d5db08386a1c23",
+    "cleanup-plan.json": "4a56646fb18628c2b80f7293b5fa8f0c18ede74c00a4c1671e3cc394e9d55359",
+    "cleanup-result.json": "b2efe7bbee0ee125150c82174529aea42d3bee362119b787ff33fec085001eaf",
+    "inventory-after.json": "5aab18d84218d47fd45d8f20990e21f5c8fb308b39d2cdd9d6794320090fb461"
+  }
+}

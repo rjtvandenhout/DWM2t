@@ -1,0 +1,176 @@
+name: Resume exact-build validation with separate GUI provenance
+
+on:
+  workflow_call:
+    inputs:
+      build_run_id:
+        type: string
+        required: true
+      build_source:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  DWM2T_BUILD_RUN: ${{ inputs.build_run_id }}
+  DWM2T_BUILD_SOURCE: ${{ inputs.build_source }}
+
+jobs:
+  verify-original-player:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore only successful original build and campaign artifacts
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python recomp/tools/restore_original_validation.py `
+            --run-id "$env:DWM2T_BUILD_RUN" --source "$env:DWM2T_BUILD_SOURCE" `
+            --output "$env:RUNNER_TEMP/proof" --manifest "$env:RUNNER_TEMP/gui/original-artifact-manifest.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Prepare the unchanged original player and GUI specifications
+        shell: pwsh
+        run: |
+          $production = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-production-" + $env:DWM2T_BUILD_RUN)
+          $archives = @(Get-ChildItem -LiteralPath "$production/production-output" -Filter 'DWM2t-M8-UNTESTED-*.zip')
+          if ($archives.Count -ne 1) { throw 'Expected exactly one original production package' }
+          Expand-Archive -LiteralPath $archives[0].FullName -DestinationPath "$env:RUNNER_TEMP/package with spaces-é"
+          $candidate = "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED"
+          python recomp/tools/prepare_m8_player_validation.py --package "$candidate" --source "$env:DWM2T_BUILD_SOURCE" `
+            --reference recomp/tests/m8_player_late_journal.json --output "$env:RUNNER_TEMP/gui/fresh-gui-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/prepare_m8_player_validation.py --package "$candidate" --source "$env:DWM2T_BUILD_SOURCE" `
+            --reference recomp/tests/m8_player_ending_journal.json --output "$env:RUNNER_TEMP/gui/fresh-ending-gui-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Run original two-window, save-lock and input-isolation gate
+        shell: pwsh
+        run: |
+          $story = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          $exe = "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe"
+          python recomp/tools/test_player_local_link.py --exe "$exe" --source "$env:DWM2T_BUILD_SOURCE" `
+            --seed "$story/ending-complete/native/checkpoint.sav" --output "$env:RUNNER_TEMP/gui/production-local-link"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Run original package and fresh Journal/Continue gates
+        shell: pwsh
+        run: |
+          $story = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          $candidate = "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED"
+          python recomp/tools/test_player_package.py --package "$candidate" --source "$env:DWM2T_BUILD_SOURCE" `
+            --seed "$story/raygigas-birth/native/checkpoint.sav" --output "$env:RUNNER_TEMP/gui/player-package"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py --exe "$candidate/DWM2tRecomp.exe" `
+            --seed "$story/raygigas-birth/native/checkpoint.sav" --manifest "$env:RUNNER_TEMP/gui/fresh-gui-spec.json" `
+            --output "$env:RUNNER_TEMP/gui/production-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py --exe "$candidate/DWM2tRecomp.exe" `
+            --seed "$story/ending-complete/native/checkpoint.sav" --manifest "$env:RUNNER_TEMP/gui/fresh-ending-gui-spec.json" `
+            --output "$env:RUNNER_TEMP/gui/production-ending-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Bind the new GUI evidence to the original executable and tooling
+        shell: pwsh
+        run: |
+          $story = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          $production = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-production-" + $env:DWM2T_BUILD_RUN)
+          python recomp/tools/attest_revalidated_gui.py --build-run-id "$env:DWM2T_BUILD_RUN" `
+            --build-source "$env:DWM2T_BUILD_SOURCE" --gui-root "$env:RUNNER_TEMP/gui" `
+            --exe "$env:RUNNER_TEMP/package with spaces-é/DWM2t-M8-UNTESTED/DWM2tRecomp.exe" `
+            --source-archive "$production/production-work/source.tar" `
+            --ending-seed "$story/ending-complete/native/checkpoint.sav" `
+            --late-seed "$story/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/gui/gui-attestation.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Run split-provenance and native rerun contract checks
+        shell: pwsh
+        run: |
+          python recomp/tools/test_m8_package.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_native_retest.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_m8_split_gui_provenance.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_full_rom_package_gates.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Provide signed native Windows audio
+        shell: pwsh
+        run: |
+          & recomp/tools/setup_windows_ci_audio.ps1 -Output "$env:RUNNER_TEMP/audio-host"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Rerun all original 18 native tests on the archived diagnostic
+        shell: pwsh
+        run: |
+          python recomp/tools/prepare_m8_native_retest.py --proof-root "$env:RUNNER_TEMP/proof" `
+            --build-run-id "$env:DWM2T_BUILD_RUN" --source "$env:DWM2T_BUILD_SOURCE" `
+            --workspace "$env:RUNNER_TEMP/native-retest-work" --output "$env:RUNNER_TEMP/native-retest"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Package the unchanged original player with separate GUI provenance
+        shell: pwsh
+        run: |
+          python recomp/tools/package_verified_m8.py --root "$env:RUNNER_TEMP/proof" `
+            --source "$env:DWM2T_BUILD_SOURCE" --run-id "$env:DWM2T_BUILD_RUN" `
+            --native-retest "$env:RUNNER_TEMP/native-retest" --validation-run-id '${{ github.run_id }}' `
+            --production-journal-root "$env:RUNNER_TEMP/gui" `
+            --production-journal-attestation "$env:RUNNER_TEMP/gui/gui-attestation.json" `
+            --output "$env:RUNNER_TEMP/verified-output"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/prepare_m8_player_validation.py `
+            --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" --source "$env:DWM2T_BUILD_SOURCE" `
+            --reference recomp/tests/m8_player_ending_journal.json --output "$env:RUNNER_TEMP/verified-ending-spec.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test final Play.cmd and original ending Journal
+        shell: pwsh
+        run: |
+          $story = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          python recomp/tools/test_player_package.py --via-cmd --package "$env:RUNNER_TEMP/verified-output/DWM2t-M8" `
+            --source "$env:DWM2T_BUILD_SOURCE" --seed "$story/raygigas-birth/native/checkpoint.sav" `
+            --output "$env:RUNNER_TEMP/verified-package-checks"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python recomp/tools/test_player_late_journal.py --exe "$env:RUNNER_TEMP/verified-output/DWM2t-M8/DWM2tRecomp.exe" `
+            --seed "$story/ending-complete/native/checkpoint.sav" --manifest "$env:RUNNER_TEMP/verified-ending-spec.json" `
+            --output "$env:RUNNER_TEMP/verified-ending-journal"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Prepare the verified download and genuine ending Journal
+        shell: pwsh
+        run: |
+          $story = Join-Path "$env:RUNNER_TEMP/proof" ("M8-fresh-story-" + $env:DWM2T_BUILD_RUN)
+          New-Item -ItemType Directory -Path "$env:RUNNER_TEMP/release" | Out-Null
+          Copy-Item -LiteralPath "$story/ending-complete/native/checkpoint.sav" -Destination "$env:RUNNER_TEMP/release/ending_complete.sav"
+          if ((Get-FileHash "$env:RUNNER_TEMP/release/ending_complete.sav" -Algorithm SHA256).Hash.ToLowerInvariant() -ne '0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d') {
+            throw 'The ending Journal does not match the genuine campaign result'
+          }
+          $verified = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/verified-output" -Filter '*.zip')
+          if ($verified.Count -ne 1) { throw 'Expected exactly one verified player ZIP' }
+          Copy-Item -LiteralPath $verified[0].FullName -Destination "$env:RUNNER_TEMP/release"
+          Copy-Item -LiteralPath "$env:RUNNER_TEMP/verified-output/verified-package.json" -Destination "$env:RUNNER_TEMP/release"
+      - name: Preserve actual validation evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: M8-resumed-package-checks-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/gui/**
+            ${{ runner.temp }}/audio-host/**
+            ${{ runner.temp }}/native-retest/**
+            ${{ runner.temp }}/verified-package-checks/**
+            ${{ runner.temp }}/verified-ending-journal/**
+            ${{ runner.temp }}/verified-ending-spec.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish verified player after all gates pass
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DWM2t-M8-VERIFIED-${{ inputs.build_source }}
+          path: ${{ runner.temp }}/release/*
+          if-no-files-found: error
+          retention-days: 30

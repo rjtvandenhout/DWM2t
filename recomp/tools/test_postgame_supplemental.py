@@ -1,4 +1,4 @@
-"""Replay pinned original P1 with the unchanged accepted M8 diagnostic.
+"""Replay pinned original P1 with the accepted or an explicit fresh diagnostic.
 
 This supplemental evidence does not certify every postgame quest/random seed,
 change the accepted player, rebuild game code, or provide new binary acceptance.
@@ -14,17 +14,88 @@ import re
 import subprocess
 import sys
 
+from m8_build_identity import BuildIdentity, load_identity
+
 SOURCE = '3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba'
 EXE_SHA = 'f93b7f96212559f65f05e09f8443a224bbda7d124047047fbf53510e16ae0321'
 EXE_BYTES = 725575680
 ENDING_SHA = '0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d'
 SOURCE_ARCHIVE_SHA = 'c75ba57b296c1b2038cd5cc3789059eb4513f79831d64cfb6f4b855a22d72722'
 SOURCE_MANIFEST_SHA = '462752ad7e2fa0e658486cc5524106bb1f121a353d279418dd5cfa75d230ba99'
+BUILD_RUN_ID = '40175408153'
+BASELINE_VALIDATION_RUN_ID = '40183484388'
+POSTGAME_STAGE_NAMES = ('key-appraisal', 'quietsea-clear', 'newlywed-gift',
+                        'certified-egg', 'quest-gates', 'quietsea-reload-dungeon',
+                        'npc-offers')
 
 
 def digest(path: Path) -> str:
     with path.open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def validate_build_identity(exe: Path, path: Path, *, fresh_build: bool = False,
+                            build_run_id: str | None = None) -> tuple[BuildIdentity, dict]:
+    """Bind provenance to actual files; fresh builds require an explicit opt-in."""
+    raw = path.read_bytes()
+    data = json.loads(raw.decode('utf-8'))
+    if not isinstance(data, dict):
+        raise ValueError('Diagnostic build identity must be an object')
+    # The shared validator checks the exact ROM, fixed bank, all 255 ROMX banks,
+    # build-testing mode, source revision and all three required SHA256 fields.
+    identity = load_identity(path)
+    if identity.manifest_sha256 != hashlib.sha256(raw).hexdigest():
+        raise ValueError('Diagnostic build identity changed while it was read')
+    if not fresh_build:
+        required = {'source_commit': SOURCE, 'executable_sha256': EXE_SHA,
+                    'executable_bytes': EXE_BYTES, 'source_archive_sha256': SOURCE_ARCHIVE_SHA,
+                    'source_manifest_sha256': SOURCE_MANIFEST_SHA}
+        if any(data.get(key) != value for key, value in required.items()):
+            raise ValueError('Expected unchanged accepted diagnostic/source identity differs')
+    elif build_run_id is not None and (
+            not isinstance(build_run_id, str) or not re.fullmatch(r'[0-9]+', build_run_id)):
+        raise ValueError('Fresh build run ID must be the actual numeric workflow run ID')
+    identity.verify(exe)
+    provenance = identity.report()
+    provenance.update(
+        diagnostic_build_mode='fresh_diagnostic' if fresh_build else 'unchanged_accepted_diagnostic',
+        build_run_id=build_run_id if fresh_build else BUILD_RUN_ID,
+        source_archive_sha256=data['source_archive_sha256'],
+        source_manifest_sha256=data['source_manifest_sha256'],
+        new_binary_accepted=False,
+        accepted_baseline=dict(executable_source=SOURCE, executable_sha256=EXE_SHA,
+                               executable_bytes=EXE_BYTES, build_run_id=BUILD_RUN_ID,
+                               source_archive_sha256=SOURCE_ARCHIVE_SHA,
+                               source_manifest_sha256=SOURCE_MANIFEST_SHA,
+                               validation_run_id=BASELINE_VALIDATION_RUN_ID))
+    return identity, provenance
+
+
+def verify_replay_provenance(base: dict, stages: list[dict], provenance: dict,
+                             platform: str, returncode: int) -> None:
+    """Require seven passing native checkpoints bound to the actual build/chain."""
+    if (type(returncode) is not int or returncode != 0
+            or not isinstance(base, dict) or base.get('status') != 'passed'
+            or base.get('platform') != platform
+            or any(base.get(key) != provenance[key] for key in
+                   ('executable_source', 'executable_sha256', 'executable_bytes',
+                    'build_identity_sha256'))
+            or base.get('seed_chain_audited') is not True
+            or type(base.get('seed_chain_links')) is not int
+            or base['seed_chain_links'] != len(POSTGAME_STAGE_NAMES)
+            or tuple(stage['name'] for stage in stages) != POSTGAME_STAGE_NAMES):
+        raise ValueError('Original replay/actual-parent chain provenance is incomplete')
+    actual = base.get('stages')
+    if not isinstance(actual, list) or len(actual) != len(stages):
+        raise ValueError('Original replay must retain every postgame checkpoint result')
+    for expected, entry in zip(stages, actual, strict=True):
+        if (not isinstance(entry, dict) or entry.get('stage') != expected['name']
+                or entry.get('status') != 'passed'
+                or type(entry.get('native_returncode')) is not int
+                or entry['native_returncode'] != 0
+                or any(entry.get(key) != expected[key] for key in
+                       ('frames', 'route_sha256', 'save_sha256'))):
+            raise ValueError('Original replay checkpoint result differs from its pinned stage')
 
 
 def equal(actual: bytes, expected: bytes, label: str) -> None:
@@ -142,6 +213,8 @@ def main() -> int:
     parser.add_argument('--seed-bundle', type=Path,
                         help='Pinned genuine original Journals for bounded parallel replay')
     parser.add_argument('--tool-source', default=os.environ.get('GITHUB_SHA'))
+    parser.add_argument('--fresh-build', action='store_true',
+                        help='Validate the actual fresh complete-AOT identity instead of the historical diagnostic')
     parser.add_argument('--story-runner', type=Path,
                         default=Path(__file__).with_name('test_m8_story_checkpoints.py'))
     args = parser.parse_args()
@@ -149,8 +222,11 @@ def main() -> int:
     report = {'schema': 1, 'status': 'running',
               'scope': 'Supplemental pinned original-P1 postgame replay and fresh Continue only',
               'platform': 'Wine on Linux' if args.wine else 'Windows',
-              'executable_source': SOURCE, 'executable_sha256': EXE_SHA,
-              'build_run_id': '40175408153', 'accepted_baseline_validation_run_id': '40183484388',
+              'executable_source': None if args.fresh_build else SOURCE,
+              'executable_sha256': None if args.fresh_build else EXE_SHA,
+              'diagnostic_build_mode': 'fresh_diagnostic' if args.fresh_build else 'unchanged_accepted_diagnostic',
+              'build_run_id': os.environ.get('GITHUB_RUN_ID') if args.fresh_build else BUILD_RUN_ID,
+              'accepted_baseline_validation_run_id': BASELINE_VALIDATION_RUN_ID,
               'supplemental_validation_run_id': os.environ.get('GITHUB_RUN_ID'),
               'tooling_source_commit': args.tool_source, 'full_postgame_verified': False,
               'all_random_seeds_verified': False, 'new_binary_accepted': False,
@@ -169,22 +245,21 @@ def main() -> int:
         exe, seed, manifest, identity_path, runner = [p.resolve(strict=True) for p in
             (args.exe, args.seed, args.manifest, args.build_identity, args.story_runner)]
         data = json.loads(manifest.read_text(encoding='utf-8'))
-        if not isinstance(data.get('stages'), list) or not data['stages']:
-            raise ValueError('Supplemental manifest must contain observed original-P1 stages')
-        identity = json.loads(identity_path.read_text(encoding='utf-8'))
-        required = {'source_commit': SOURCE, 'executable_sha256': EXE_SHA,
-                    'executable_bytes': EXE_BYTES, 'source_archive_sha256': SOURCE_ARCHIVE_SHA,
-                    'source_manifest_sha256': SOURCE_MANIFEST_SHA}
-        if any(identity.get(k) != v for k, v in required.items()):
-            raise ValueError('Expected unchanged accepted diagnostic/source identity differs')
-        if exe.stat().st_size != EXE_BYTES or digest(exe) != EXE_SHA:
-            raise ValueError('Expected unchanged accepted diagnostic executable differs')
+        if (not isinstance(data, dict) or not isinstance(data.get('stages'), list)
+                or any(not isinstance(stage, dict) for stage in data['stages'])
+                or tuple(stage.get('name') for stage in data['stages']) != POSTGAME_STAGE_NAMES):
+            raise ValueError('Supplemental manifest must retain all seven pinned original-P1 stages')
+        identity, provenance = validate_build_identity(
+            exe, identity_path, fresh_build=args.fresh_build,
+            build_run_id=os.environ.get('GITHUB_RUN_ID'))
+        report.update(provenance)
         if seed.stat().st_size != 32768 or digest(seed) != ENDING_SHA or data['seed_sha256'] != ENDING_SHA:
             raise ValueError('Initial input must be the genuine accepted ending Journal')
         immutable = {p: digest(p) for p in (exe, seed, manifest, identity_path, runner)}
         report.update(manifest_sha256=immutable[manifest], build_identity_sha256=immutable[identity_path],
                       runner_sha256=immutable[runner], seed_sha256=ENDING_SHA,
-                      source_archive_sha256=SOURCE_ARCHIVE_SHA)
+                      source_archive_sha256=provenance['source_archive_sha256'],
+                      source_manifest_sha256=provenance['source_manifest_sha256'])
         command = [sys.executable, str(runner), '--exe', str(exe), '--seed', str(seed),
                    '--manifest', str(manifest), '--output', str(out),
                    '--build-identity', str(identity_path)]
@@ -205,11 +280,8 @@ def main() -> int:
         if result.returncode:
             raise ValueError(f'Original checkpoint replay failed: {result.returncode}')
         base = json.loads((out/'story-checkpoints-validation.json').read_text(encoding='utf-8'))
-        if (base.get('status') != 'passed' or base.get('platform') != report['platform']
-                or base.get('executable_source') != SOURCE or base.get('executable_sha256') != EXE_SHA
-                or base.get('seed_chain_audited') is not True
-                or base.get('seed_chain_links') != len(data['stages'])):
-            raise ValueError('Original replay/actual-parent chain provenance is incomplete')
+        verify_replay_provenance(base, data['stages'], provenance,
+                                 report['platform'], result.returncode)
         report['seed_chain_links'] = base['seed_chain_links']
         for expected in data['stages']:
             native = out/expected['name']/'native'
@@ -219,13 +291,15 @@ def main() -> int:
                 raise ValueError('New original Journal differs from the pinned observation')
             entry = verify_buffers(*(p.read_bytes() for p in paths), expected)
             entry.update(stage=expected['name'], save_sha256=expected['save_sha256'],
-                         observation_sha256={str(p.relative_to(out)): digest(p) for p in paths})
+                         observation_sha256={p.relative_to(out).as_posix(): digest(p) for p in paths})
             report['stages'].append(entry)
         for path, before in immutable.items():
             if digest(path) != before:
                 raise ValueError('Supplemental immutable input changed: '+str(path))
+        identity.verify(exe)
         report['status'] = 'passed'
-        print('POSTGAME_SUPPLEMENTAL_PASS unchanged_accepted_diagnostic original_P1 fresh_Continue')
+        print('POSTGAME_SUPPLEMENTAL_PASS', provenance['diagnostic_build_mode'],
+              'original_P1 fresh_Continue')
         return 0
     except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
         report.update(status='failed', error=str(error), error_type=type(error).__name__)

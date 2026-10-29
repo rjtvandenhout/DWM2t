@@ -1,8 +1,15 @@
 # Native recomp status
 
-**M8 is complete and accepted on native Windows x64 as of 2026-10-25.**
-`main` contains the finished game and maintenance. Accepted milestones retain
-their immutable `restore/recomp-mN` branches; see [exact commits](RESTORE_POINTS.md).
+The full-ROM Cobi/CGB player has passed the recorded main campaign, seven
+postgame checkpoints and final native Windows package gates. The [current result
+and playing guide](handoff/FULL_ROM_RESULT_2026-10-29.md) identifies the exact
+game source, separate validation tooling, downloadable player and evidence.
+These checks do not establish every optional path or random world. The
+[implementation inventory](handoff/FULL_ROM_IMPLEMENTATION_2026-10-26.md) retains
+the earlier failed tests and the reference migration.
+
+The M0–M8 milestone snapshots remain available as immutable
+`restore/recomp-mN` branches; see [exact commits](RESTORE_POINTS.md).
 
 | Milestone | Goal | Status |
 | --- | --- | --- |
@@ -16,7 +23,7 @@ their immutable `restore/recomp-mN` branches; see [exact commits](RESTORE_POINTS
 | M7 | Genuine battles, audio, original Save/Continue | Complete; original regressions retained in M8 |
 | M8 | Complete native Windows main campaign and verified package | Accepted |
 
-## Accepted M8 evidence
+## Historical accepted M8 evidence — 2026-10-25
 
 Original controller input completes Oasis, Sea, Ice, Sky and Limbo, defeats
 Darck, recovers the MagicPlug, plays the complete credits and reaches THE END.
@@ -46,7 +53,7 @@ Older failed/skipped attempts remain preserved and explicitly unaccepted.
 Physical speaker audibility and optional postgame paths are not exhaustively
 verified by CI.
 
-## Supplemental postgame checks
+## Historical supplemental postgame checks
 
 The accepted executable passes seven further native Windows original-P1
 checkpoints (270,152 frames in 2m07s with four isolated processes): key appraisal, QuietSea generation and world boss,
@@ -55,16 +62,20 @@ Continue inside a random world. Full owned, quest, key, seed and cache compariso
 are recorded in the [postgame report with screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md).
 Finite source checks cover all 10 terrains, 100 key levels, 48 recipes and 833
 map assets. Collection-gated reward playthroughs remain pending, and the runtime
-has no serial-peer transport for actual link exchanges. These supplemental
-checks leave the verified player and M0–M8 snapshots unchanged.
+had no serial-peer transport at that accepted baseline. The new source adds a
+local two-player cable; its original transaction coverage is reported separately
+in the new implementation inventory. These historical supplemental checks leave
+the verified player and M0–M8 snapshots unchanged.
 
 ## Maintenance boundary
 
-Branch/documentation/CI housekeeping keeps the accepted game, ROM banks,
-controller fixtures and golden values unchanged. Routine CI checks tooling and
-filesystem contracts; a newly built executable still requires the full manual
-campaign/package gates before it can be labeled verified. Build-only outputs
-remain `UNTESTED_CANDIDATE`.
+Immutable M0–M8 snapshots and the original ROM remain unchanged. The later
+reference migration is limited to 375 measured PCM boundaries, one raster
+screenshot, 45 manifest route hashes and seven wrapper hashes; the original
+controller inputs and other state assertions remain guarded. Routine CI checks
+tooling and filesystem contracts; a newly built executable still requires the
+full manual campaign/package gates before it can be labeled verified.
+Build-only outputs remain `UNTESTED_CANDIDATE`.
 
 M7's immutable restore remains `3bb1e18170fc928f372f9cc72cc433d85c0666ca`.
 Its original values and accepted battle mode remain documented in

@@ -1,0 +1,37 @@
+# Follow-up: complete and validate the Cobi full-ROM recompilation
+
+> **Historical stop handoff.** The user resumed the work and the recorded
+> campaign, production GUI and package gates subsequently passed. The current
+> download, evidence and remaining coverage limits are in the
+> [2026-10-29 result and playing guide](recomp/handoff/FULL_ROM_RESULT_2026-10-29.md).
+> The text below preserves the earlier stopped state and is not the current
+> release status.
+
+Resume only when the user asks. The user stopped work on 2026-10-29 and asked to save progress. Their earlier goal was to finish the whole supplied ROM recompilation, then validate it, document progress with screenshots, and provide the result. Keep the original game inputs and genuine saves intact; do not fabricate game state, party, RNG, rewards or quest flags. Squiz must remain available until the story no longer needs him. Preserve `main` and the milestone restore refs `restore/recomp-m0` through `restore/recomp-m8`.
+
+## Source and scope
+
+- Game source tested: `1351bcd058e491455a477045a2ff86bbc3bd7b1c`, branch `work/recomp-complete-rom`, draft PR https://github.com/rjtvandenhout/DWM2t/pull/6. This handoff is a later documentation-only commit; do not relabel it as the tested game source.
+- The current implementation translates all 256 banks of the supplied 4 MiB Cobi ROM ahead of time, with an original-game-specific CGB hardware runtime. Original ROM SHA-256: `8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e`. See [the implementation inventory](recomp/handoff/FULL_ROM_IMPLEMENTATION_2026-10-26.md).
+- Full-bank translation does not prove every optional path or generated world works. Authentic Tara ROM and SGB presentation are not established. The runtime executes the known original HRAM DMA routine; no other required RAM-executed routine was found, but absence has not been proved.
+- `main` at the last check remained `b349cc9bdd8d3f61821fd4ca52d52261789eaf93`. The earlier accepted M8 player remains the old package from https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388. Do not describe the new candidate as verified or replace the old player until every final gate is satisfied.
+
+## Latest results at the user-requested stop
+
+Fresh validation https://github.com/rjtvandenhout/DWM2t/actions/runs/40799717118 was cancelled at the user's request while the farm exchange, party preparation and key training replay was running. The diagnostic and final jobs concluded cancelled; the diagnostic artifact was preserved as ID `12868495154`. Check final run status and artifact contents before resuming. Cancellation is not a test failure.
+
+- The complete full-bank Windows diagnostic build and the retained 18-test M1–M8 native suite passed. Original Sea-entry and village replays passed. The later story, postgame, production Journal and verified-package gates had not completed at the stop.
+- Windows production build, five hardware-core checks, two save checks, and direct/profile startup passed. Linux core and persistence tests passed 7/7, zero skips. Independent audit files are `/workspace/scratch/full-rom-2026-10-26/r3-audit/production-audit.json` and `posix-audit.json`; production artifact ID `12867312469`, POSIX artifact ID `12864983814`.
+- Fresh production candidate EXE SHA-256 `829e95842cea5a0cc9d13f601ae89b814c4fd2109ca08065bf50a9d944378ec1`; candidate remains **UNTESTED** as a complete package. Its actual no-wager two-player battle, normal shutdown and fresh Continue for both players passed under Wine. Both resulting genuine 32 KiB saves matched their original ending Journal byte-for-byte. See [receipt and screenshots](recomp/handoff/evidence/2026-10-26-full-rom/vs-r3-2026-10-29/README.md). An independently built earlier candidate from the same source also passed: [evidence](recomp/handoff/evidence/2026-10-26-full-rom/vs-s1-2026-10-29/README.md). These checks do not establish every link feature.
+- Earlier R2 run https://github.com/rjtvandenhout/DWM2t/actions/runs/40383618615 was also cancelled by the user. Its diagnostic artifact `12684896587` contains the genuine story/postgame Journal bundles and partial diagnostic evidence. Retain the historic 15/18 native result on earlier source `81cfb26`; its three causes were investigated and corrected with independently recorded timing/raster references, not erased. The new R3 18-test step passed.
+
+## Resume instructions
+
+1. Read the managed cloud runtime skill and repository instructions, inspect the branch and the final cancelled run state, and preserve all unrelated work. Re-establish the exact source provenance. Do not start work until the user asks to continue.
+2. Inspect whether the cancelled diagnostic artifact retained the full native JUnit XML and seed bundles. `recomp-finish-validation.yml` requires successful original producer jobs and cannot blindly consume a cancelled/incomplete run. Use an independently reviewed continuation only if it preserves every gate and proves exact source, executable and parent-Journal provenance; otherwise rerun the fresh campaign workflow on the exact tested game source, with the genuine original bundles. Do not weaken gates or relabel artifacts.
+3. Genuine story bundle `/workspace/scratch/m8-review/final-diagnostic-3d/extracted/story-seed-journals.tar.xz`, SHA-256 `475418e5574e2bca7c4088e92cdc9cac0239a929a30a8f39414a8cd45e1bd535`; postgame bundle `/workspace/scratch/m8-postgame/postgame-genuine-journals.tar.xz`, SHA-256 `8240d1e4b7b1a698a248407f0b7900530283856064e7ac1ef942fa47a273f6df`. Retrieve the original bundles from R2 diagnostic artifact if scratch is unavailable. The genuine ending Journal is `/workspace/DWM2t/outputs/M8-ending-3d573873ae81/ending_complete.sav`, SHA-256 `0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d`. Never commit saves or the encoded workflow input file.
+4. Complete and independently verify all 18 native tests, 38 original story checkpoints, seven postgame checkpoints, fresh production Journal/GUI/launcher gates, and the final package. Check actual test XML, source archives, EXE and ZIP hashes and every parent Journal link. Report the evidence and limitations honestly; coverage of these paths does not establish every random seed or optional route.
+5. After successful validation, update current README/status and result documentation without rewriting the historical M8 records. Add actual run and artifact links, screenshots and clear instructions for direct EXE, `Play.cmd`, nested Actions ZIP and importing the original Journal. Existing draft plans are in `/workspace/scratch/full-rom-2026-10-26/final-doc-plan/`; replace their old run references and pending fields with actual results.
+6. Once all gates pass, publish the verified package and genuine ending save through the actual workflow artifacts, update the draft PR, and merge with a regular merge commit so the exact tested source remains reachable. Clean only redundant temporary branches after the merge with exact leases; retain `main` and M0–M8 restore refs. User previously authorized completion and cleanup.
+
+For context, the user also asked what a full decompilation would take. The answer explained that readable, faithful C/C++ recovery is separate work and its duration is uncertain; no decompilation was requested to start.

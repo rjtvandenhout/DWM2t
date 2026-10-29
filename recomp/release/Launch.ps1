@@ -2,6 +2,7 @@
 [CmdletBinding()]
 param(
     [ValidatePattern('^[A-Za-z0-9_-]{1,48}$')][string]$Profile = 'default',
+    [ValidatePattern('^[A-Za-z0-9_-]{1,48}$')][string]$LinkProfile,
     [ValidateRange(0, 100)][int]$Volume = 5,
     [ValidateRange(-1, 1024)][int]$AudioDevice = -1,
     [switch]$RawAudio,
@@ -12,6 +13,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $lock = $null
+$linkLock = $null
 $process = $null
 
 function Copy-OriginalSave([string]$Source, [string]$Destination) {
@@ -33,6 +35,11 @@ function Copy-OriginalSave([string]$Source, [string]$Destination) {
 
 try {
     if ($Profile -match '^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$') { throw 'Reserved Windows profile name.' }
+    if ($LinkProfile) {
+        if ($LinkProfile -match '^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$') { throw 'Reserved Windows link profile name.' }
+        if ($LinkProfile -eq $Profile) { throw 'Local link requires two different profiles.' }
+        if ($ListAudioDevices) { throw 'Do not combine -ListAudioDevices with -LinkProfile.' }
+    }
     $manifestPath = Join-Path $PSScriptRoot 'manifest.json'
     $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
     if ($manifest.schema -ne 1 -or $manifest.status -notin @('UNTESTED_CANDIDATE', 'VERIFIED_M8') -or
@@ -92,6 +99,9 @@ try {
     $exe = Join-Path $PSScriptRoot 'DWM2tRecomp.exe'
     $save = Join-Path $saveDirectory "$Profile.sav"
     $backup = $null
+    $linkSave = $null
+    $linkBackup = $null
+    if ($LinkProfile) { $linkSave = Join-Path $saveDirectory "$LinkProfile.sav" }
     if ($verified) { Write-Host "DWM2t M8 validated $($manifest.source_commit.Substring(0,12))" }
     else { Write-Host "DWM2t M8 candidate $($manifest.source_commit.Substring(0,12)) - TESTING PENDING" }
     Write-Host 'Use the original Journal in game. Closing the window is not an in-game Save.'
@@ -104,6 +114,10 @@ try {
         # cannot use the same profile; different profiles have independent locks.
         $lock = [IO.File]::Open((Join-Path $saveDirectory "$Profile.lock"),
             [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+        if ($LinkProfile) {
+            $linkLock = [IO.File]::Open((Join-Path $saveDirectory "$LinkProfile.lock"),
+                [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+        }
         if ($ImportSave) {
             $source = (Get-Item -LiteralPath $ImportSave).FullName
             if (Test-Path -LiteralPath $save) { throw 'The profile already has a save. Use a NEW -Profile to import.' }
@@ -120,12 +134,24 @@ try {
             Copy-OriginalSave $save $backup
             Write-Host "Pre-launch backup: $backup"
         }
+        if ($LinkProfile -and (Test-Path -LiteralPath $linkSave)) {
+            $info = Get-Item -LiteralPath $linkSave
+            if ($info.PSIsContainer -or ($info.Attributes -band [IO.FileAttributes]::ReparsePoint) -or
+                $info.Length -ne 32768) { throw 'The link profile save is malformed or linked. Refusing to overwrite it.' }
+            $linkBackupDirectory = Join-Path (Join-Path $saveDirectory 'backups') $LinkProfile
+            [IO.Directory]::CreateDirectory($linkBackupDirectory) | Out-Null
+            $linkBackup = Join-Path $linkBackupDirectory "$stamp.sav"
+            Copy-OriginalSave $linkSave $linkBackup
+            Write-Host "Player 2 pre-launch backup: $linkBackup"
+        }
         # Windows filenames cannot contain a double quote; explicit quoting
         # preserves paths with spaces when Start-Process builds its command line.
         $nativeArguments = '--play "' + $save + '" --audio-volume ' + $Volume
+        if ($LinkProfile) { $nativeArguments += ' --link-save "' + $linkSave + '"' }
         if ($AudioDevice -ge 0) { $nativeArguments += ' --audio-device ' + $AudioDevice }
         if ($RawAudio) { $nativeArguments += ' --audio-raw' }
         Write-Host "Profile: $Profile | Save: $save | Volume: $Volume%"
+        if ($LinkProfile) { Write-Host "Player 2 profile: $LinkProfile | Save: $linkSave | Audio: Player 1 only" }
     }
     $session = [ordered]@{
         source_commit = $manifest.source_commit
@@ -133,6 +159,9 @@ try {
         profile = $Profile
         save = $save
         backup = $backup
+        link_profile = $LinkProfile
+        link_save = $linkSave
+        link_backup = $linkBackup
         started_utc = [DateTime]::UtcNow.ToString('o')
         stdout = $logPath
         stderr = $errorPath
@@ -153,6 +182,7 @@ try {
     if ($code -ne 0) {
         Write-Host "The native game exited with code $code. Diagnostics: $errorPath"
         if ($backup) { Write-Host "Preserved backup: $backup" }
+        if ($linkBackup) { Write-Host "Preserved Player 2 backup: $linkBackup" }
     }
     exit $code
 } catch {
@@ -164,4 +194,5 @@ try {
     # while its child still runs. Forced process termination cannot be guarded.
     if ($process -and -not $process.HasExited) { $process.WaitForExit() }
     if ($lock) { $lock.Dispose() }
+    if ($linkLock) { $linkLock.Dispose() }
 }

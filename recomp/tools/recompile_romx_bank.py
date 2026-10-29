@@ -111,21 +111,30 @@ def emit_case(bank: bytes, offset: int) -> str:
         lines.append(
             f"            const std::uint8_t cb = halt_bug ? {bug_cb} : {normal_cb};"
         )
-        lines.append(
-            f"            cpu.last_mcycles = halt_bug "
-            f"? lr35902::cb_mcycles_dynamic(cb) : {cb_opcode_mcycles(ins.cb_opcode)}u;"
-        )
+        crosses_window = offset + 1 >= BANK_SIZE
+        if crosses_window:
+            # $8000 is a different mapped window; decode_one's padding byte
+            # cannot stand in for the byte the CPU actually fetches there.
+            lines.append("            cpu.last_mcycles = lr35902::cb_mcycles_dynamic(cb);")
+        else:
+            lines.append(
+                f"            cpu.last_mcycles = halt_bug "
+                f"? lr35902::cb_mcycles_dynamic(cb) : {cb_opcode_mcycles(ins.cb_opcode)}u;"
+            )
         lines.append(
             f"            cpu.pc = static_cast<std::uint16_t>({u16(pc)} + "
             "(halt_bug ? 1u : 2u));"
         )
-        lines.append("            if (halt_bug) {")
-        lines.append("                lr35902::exec_cb_dynamic(cpu, memory, cb);")
-        lines.append("            } else {")
-        lines.append(
-            f"                lr35902::exec_cb<{u8(ins.cb_opcode)}>(cpu, memory);"
-        )
-        lines.append("            }")
+        if crosses_window:
+            lines.append("            lr35902::exec_cb_dynamic(cpu, memory, cb);")
+        else:
+            lines.append("            if (halt_bug) {")
+            lines.append("                lr35902::exec_cb_dynamic(cpu, memory, cb);")
+            lines.append("            } else {")
+            lines.append(
+                f"                lr35902::exec_cb<{u8(ins.cb_opcode)}>(cpu, memory);"
+            )
+            lines.append("            }")
     else:
         op = ins.opcode
         size = base_opcode_size(op)

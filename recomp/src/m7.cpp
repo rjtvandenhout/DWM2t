@@ -8456,9 +8456,13 @@ int run_m7_audio_probe() {
               << " NR52=0x" << static_cast<unsigned>(memory.read8(0xFF26))
               << std::dec << "\n";
 
-    constexpr std::uint64_t kExpectedAudioHash = 0x03b50ed7ed79bda0ull;
-    if (samples.size() != 2138926u ||
-        nonzero != 1074861u ||
+    // Original boot writes HDMA5=0: one 16-byte GDMA block stalls 32 base
+    // clocks. The APU sample grid includes those clocks even while powered
+    // off. A controlled single-change comparison reproduces the old PCM only
+    // when that hardware stall is omitted; the corrected clock has this pin.
+    constexpr std::uint64_t kExpectedAudioHash = 0x7807be6a3e82c89aull;
+    if (samples.size() != 2138928u ||
+        nonzero != 1075360u ||
         peak != 19200 ||
         hash != kExpectedAudioHash) {
         std::cout << "M7_AUDIO_FAIL deterministic_pcm_mismatch"

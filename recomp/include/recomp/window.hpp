@@ -19,6 +19,20 @@ int run_live_window(
     int audio_volume = 5,
     bool audio_smooth = true);
 
+// Two original cartridges on one local serial cable. Each window receives
+// only its own focused keyboard input; each runtime retains its own SRAM.
+int run_linked_windows(
+    Runtime& first,
+    Renderer& first_renderer,
+    const std::filesystem::path& first_save,
+    Runtime& second,
+    Renderer& second_renderer,
+    const std::filesystem::path& second_save,
+    int scale = 4,
+    int audio_device = -1,
+    int audio_volume = 5,
+    bool audio_smooth = true);
+
 int list_audio_devices();
 int run_audio_playback_test(int device = -1);
 int run_audio_stream_test();

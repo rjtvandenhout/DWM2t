@@ -7,9 +7,14 @@ on:
         description: Run a fresh campaign or finish an exact archived build
         type: choice
         default: fresh-campaign
-        options: [fresh-campaign, finish-fresh-build]
+        options: [fresh-campaign, finish-fresh-build, resume-verified-build]
       story_journals_base64:
         description: Optional base64 tar.xz of pinned original Journals for parallel campaign replay
+        required: false
+        default: ''
+        type: string
+      postgame_journals_base64:
+        description: Optional base64 tar.xz of pinned original postgame Journals for parallel replay
         required: false
         default: ''
         type: string
@@ -38,10 +43,18 @@ jobs:
     uses: ./.github/workflows/recomp-full-validation.yml
     with:
       story_journals_base64: ${{ inputs.story_journals_base64 || '' }}
+      postgame_journals_base64: ${{ inputs.postgame_journals_base64 || '' }}
 
   finish-validation:
     if: ${{ inputs.validation_mode == 'finish-fresh-build' }}
     uses: ./.github/workflows/recomp-finish-validation.yml
+    with:
+      build_run_id: ${{ inputs.fresh_build_run_id }}
+      build_source: ${{ inputs.fresh_build_source }}
+
+  resume-verified-build:
+    if: ${{ inputs.validation_mode == 'resume-verified-build' }}
+    uses: ./.github/workflows/recomp-resume-verified.yml
     with:
       build_run_id: ${{ inputs.fresh_build_run_id }}
       build_source: ${{ inputs.fresh_build_source }}

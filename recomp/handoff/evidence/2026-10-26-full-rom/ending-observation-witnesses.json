@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "scope": "Original P1 discovery replay; all 1143 non-audio assertions match; strict final-source replay pending",
+  "acceptance": false,
+  "receipt_sha256": "240f950753447c966ba70f46cef38cb3565d8cc0d5595b07ba9d83d4f5816780",
+  "witnesses": [
+    {
+      "witness": "darck-defeated",
+      "frame": 139859,
+      "screen_fnv": "7e5387112a69c50b",
+      "source": "/workspace/scratch/full-rom-2026-10-26/audio-observations/run-01/output/story/ending-complete/native/m8_4196.bmp",
+      "retained_path": "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/ending-darck-defeated.bmp",
+      "sha256": "bb6c13fb567a295ba21761660c78b7e26af98f52405ca5f8e41081e57eb81261",
+      "byte_identical_to_historical_witness": true
+    },
+    {
+      "witness": "credits-start",
+      "frame": 183818,
+      "screen_fnv": "704626832ab56697",
+      "source": "/workspace/scratch/full-rom-2026-10-26/audio-observations/run-01/output/story/ending-complete/native/m8_4767.bmp",
+      "retained_path": "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/ending-credits-start.bmp",
+      "sha256": "fca00eb259558e436b04d64b6dde9d45cae42fc61f6b18edeb76c75bb6596bfd",
+      "byte_identical_to_historical_witness": true
+    },
+    {
+      "witness": "credits-final",
+      "frame": 200072,
+      "screen_fnv": "90f792fcab854f13",
+      "source": "/workspace/scratch/full-rom-2026-10-26/audio-observations/run-01/output/story/ending-complete/native/m8_4823.bmp",
+      "retained_path": "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/ending-credits-final.bmp",
+      "sha256": "e764ba586bae46f93eba0a12367275460c820684c75190effce5bcc58c2bfd4d",
+      "byte_identical_to_historical_witness": true
+    },
+    {
+      "witness": "the-end",
+      "frame": 204957,
+      "screen_fnv": "f4ab679aa287713",
+      "source": "/workspace/scratch/full-rom-2026-10-26/audio-observations/run-01/output/story/ending-complete/native/m8_4890.bmp",
+      "retained_path": "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/ending-the-end.bmp",
+      "sha256": "4a832bb53120c687649d1af5660b85be5756f5814263e3392014f45be6267785",
+      "byte_identical_to_historical_witness": true
+    }
+  ]
+}

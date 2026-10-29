@@ -49,7 +49,11 @@ bool test_embedded_rom_and_mbc5() {
 
     memory.write8(0x2000, 0x00);
     memory.write8(0x3000, 0x01);
-    const bool high_bit_ok = memory.current_rom_bank() == 0x100;
+    // The 4 MiB cartridge has eight physical bank address lines: the
+    // mapper's ninth bit mirrors bank 0 into the switchable ROM window.
+    const bool high_bit_ok =
+        memory.current_rom_bank() == 0 &&
+        memory.read8(0x4000) == memory.rom()[0];
 
     memory.write8(0x3000, 0x00);
     memory.write8(0x0000, 0x0A);

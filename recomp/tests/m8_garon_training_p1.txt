@@ -73,7 +73,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 46db1e4f0da9f901
 expect_screen e057645306bd398f
-expect_audio 2717678 1562491 29184 a25168da4d6a1b22
+expect_audio 2717680 1563106 29184 df05b1d05bd3128
 U 16 0
 - 120 0
 D 16 0
@@ -3748,7 +3748,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 2a10527ad6af6775
 expect_screen e37eb1e83a3e19ab
-expect_audio 95639116 84316175 32768 1ab9eb7f098ccea6
+expect_audio 95639116 84316514 32768 1b3f2e949aae5da0
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -3815,4 +3815,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 2a10527ad6af6775
 expect_screen e37eb1e83a3e19ab
-expect_audio 95639116 84316175 32768 1ab9eb7f098ccea6
+expect_audio 95639116 84316514 32768 1b3f2e949aae5da0

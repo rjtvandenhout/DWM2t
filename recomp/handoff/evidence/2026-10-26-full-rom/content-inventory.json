@@ -1,0 +1,759 @@
+{
+  "schema": "full-rom-content-inventory-v1",
+  "date": "2026-10-26",
+  "phase": "implementation_complete_fresh_exact_source_acceptance_pending",
+  "audit_repository_mutations": "Only the two assigned handoff/inventory files; no runtime, ROM, golden fixture, save or game-state edits by this documentation audit agent",
+  "baseline_commit": "b349cc9bdd8d3f61821fd4ca52d52261789eaf93",
+  "accepted_game_source": "3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba",
+  "rom": {
+    "scope": "Original Cobi ROM, active native CGB hardware model",
+    "title": "DWM2-C",
+    "manufacturer_game_code": "BQLE",
+    "sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+    "bytes": 4194304,
+    "banks": 256,
+    "bytes_per_bank": 16384,
+    "cgb_header": "80",
+    "sgb_header": "03",
+    "cartridge_header": "1B",
+    "mapper": "MBC5 with RAM and battery",
+    "rtc_required_by_cartridge_type": false,
+    "rumble_required_by_cartridge_type": false,
+    "tara_campaign_covered": false
+  },
+  "classification": {
+    "A": "Original code/data present and included by full AOT; dynamic coverage may be partial or absent",
+    "B": "Actual native host capability or build-default gap at baseline; implementation is complete, contract checks pass, and exact-binary acceptance is pending three native-suite failures",
+    "C": "Original-content reachability or external-input uncertainty; do not invent a host feature or a completion claim"
+  },
+  "source_inventory": {
+    "embedded_rom_generator": "recomp/tools/generate_rom_image.py",
+    "embedded_rom_identity_line": 22,
+    "full_aot_selection": "recomp/CMakeLists.txt:152",
+    "full_aot_romx_range": [
+      1,
+      255
+    ],
+    "romx_generator": "recomp/tools/recompile_romx_bank.py:166",
+    "entries_per_romx_bank": 16384,
+    "entry_policy": "Every byte offset, not only branches discovered through gameplay",
+    "baseline_default_all_romx": false,
+    "accepted_player_all_romx": true,
+    "root_change_implemented": "Normal builds default to complete AOT; limited discovery requires explicit DWM2T_ALL_ROMX=OFF",
+    "current_default_all_romx": true,
+    "compiled_fixed_bank": 0,
+    "compiled_total_original_banks": 256,
+    "compiled_validation_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+    "execution_coverage_boundary": "All original banks compiled; no assertion that every emitted entry, branch, content route or generated output was executed",
+    "retained_static_receipt": {
+      "command": [
+        "python",
+        "recomp/tools/audit_magic_worlds.py",
+        "--output",
+        "<new-report.json>"
+      ],
+      "receipt": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/host-contracts-01/worlds.json",
+        "bytes": 3873212,
+        "sha256": "51511126d987a5251e7aecd1c2a91b9d3b8d35f32fa5007d83d9833150dc97e9"
+      },
+      "status": "passed_static_checks",
+      "findings": [],
+      "all_256_raw_banks_parsed": true,
+      "bytes_per_bank": 16384,
+      "reconstructed_rom_bytes": 4194304,
+      "reconstructed_rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+      "terrain_classes": 10,
+      "recipes": 48,
+      "structure_records": 264,
+      "surface_templates": 64,
+      "selectable_dungeon_layouts": 180,
+      "compressed_assets": 833,
+      "game_executed": false,
+      "save_loaded_or_written": false,
+      "diagnostic_executable_verified_by_this_static_receipt": false
+    },
+    "per_bank_inventory_tool": "recomp/tools/inventory_full_rom.py",
+    "compiled_romx_range": [
+      1,
+      255
+    ],
+    "compiled_romx_count": 255
+  },
+  "content": [
+    {
+      "id": "main-campaign",
+      "class": "A",
+      "source_status": "Original code/data present; accepted complete AOT",
+      "execution_status": "Main campaign, Darck, MagicPlug, full credits, THE END and original Journal/Continue accepted on the earlier exact binary",
+      "evidence": "recomp/milestones/M8_RESULT.md"
+    },
+    {
+      "id": "random-worlds",
+      "class": "A",
+      "source_status": "Original generation, naming, 10 terrains, 48 recipes, layouts, encounters, rewards, cache and deletion included",
+      "source_addresses": [
+        "96:$4001",
+        "96:$4CC1",
+        "96:$6D0D",
+        "132:$4CCB",
+        "96:$6C61",
+        "96:$6C96",
+        "96:$6CD1",
+        "18:$69B0"
+      ],
+      "execution_status": "One genuine QuietSea world cleared and revisited; original in-world Journal and fresh Continue accepted",
+      "pending_execution": [
+        "Additional genuine keys/terrain classes",
+        "Difficulty boundaries",
+        "Cache capacity",
+        "First/middle/last deletion",
+        "Additional boss/reward sequences"
+      ],
+      "evidence": "recomp/handoff/POSTGAME_PROGRESS_2026-10-25.md",
+      "all_seed_native_coverage_claimed": false
+    },
+    {
+      "id": "arena",
+      "class": "A",
+      "source_addresses": [
+        "19:$6D68",
+        "19:$7708",
+        "12:$697E"
+      ],
+      "source_status": "Original B/A/S/pro admission, fees, battles and prizes present",
+      "execution_status": "B-class fee refusal observed; remaining victories unplayed"
+    },
+    {
+      "id": "npc-gifts-duel",
+      "class": "A",
+      "source_addresses": [
+        "19:$6AD1",
+        "19:$78DE",
+        "19:$68E2",
+        "16:$5433"
+      ],
+      "execution_status": "Newlywed and evaluator eggs claimed; granddaughter battle reached and lost"
+    },
+    {
+      "id": "npc-breeding-terry",
+      "class": "A",
+      "source_addresses": [
+        "19:$7E05",
+        "19:$7E9F",
+        "13:$722A",
+        "13:$740F",
+        "19:$7F02",
+        "133:$4A2B"
+      ],
+      "execution_status": "Original FunkyBird and Skeletor breeding completed; Copycat/StoneMan collection gates observed; remaining offers and Terry victory unplayed"
+    },
+    {
+      "id": "catalogue-rewards-bounties",
+      "class": "A",
+      "source_addresses": [
+        "19:$70D9",
+        "19:$713A",
+        "19:$7598",
+        "19:$7636",
+        "19:$659E",
+        "133:$5B04"
+      ],
+      "catalogue_gates": [
+        50,
+        100,
+        120,
+        140,
+        150,
+        160,
+        250,
+        290
+      ],
+      "execution_status": "Original refusal gates observed; reward playthroughs unplayed",
+      "warning": "A refusal or copied catalogue mask is not an earned reward completion"
+    },
+    {
+      "id": "medal-man",
+      "class": "A",
+      "source_addresses": [
+        "13:$710E",
+        "13:$6D09",
+        "19:$6F0F"
+      ],
+      "prizes": [
+        {
+          "name": "MeteOrb",
+          "medals": 3
+        },
+        {
+          "name": "MadCat",
+          "medals": 3
+        },
+        {
+          "name": "HornBeet",
+          "medals": 4
+        },
+        {
+          "name": "SkyDragon",
+          "medals": 4
+        },
+        {
+          "name": "Octogon",
+          "medals": 5
+        },
+        {
+          "name": "Servant",
+          "medals": 5
+        },
+        {
+          "name": "Darck",
+          "medals": 10,
+          "additional_gate": "C837!=0"
+        }
+      ],
+      "execution_status": "Minimum-fee refusal observed; full ladder unclaimed"
+    },
+    {
+      "id": "local-fixed-postgame-worlds",
+      "class": "A",
+      "worlds": [
+        "Elf/Elven",
+        "Traveler",
+        "Brawn/Power"
+      ],
+      "source_addresses": [
+        "19:$75BE",
+        "19:$7636",
+        "19:$7BA1"
+      ],
+      "source_status": "Original local Cobi key grants, maps and event/battle code present",
+      "execution_status": "Legitimate key acquisition and full world playthroughs pending"
+    },
+    {
+      "id": "counterpart-worlds-soul",
+      "class": "A+B+C",
+      "worlds": [
+        "Lonely",
+        "Baffle",
+        "Soul"
+      ],
+      "source_addresses": [
+        "19:$7BA1",
+        "19:$74CF",
+        "19:$7B91",
+        "115:$5282"
+      ],
+      "source_status": "Maps and original prerequisite/event code present; local Cobi rewards do not grant every counterpart key",
+      "host_dependency": "Original serial key exchange through a valid peer",
+      "external_dependency": "Corresponding original counterpart ROM/input for a legitimately generated counterpart-only key",
+      "execution_status": "No original counterpart exchange or complete route accepted",
+      "soul_prerequisites": [
+        "0x206",
+        "0x207"
+      ],
+      "fabricated_key_or_flag_substitution_allowed": false
+    },
+    {
+      "id": "dream-egg",
+      "class": "A",
+      "source_status": "Original solo acquisition, feeding/item effects, egg-state factory and serial exchange paths present",
+      "execution_status": "Actual empty-egg refusal observed; acquisition/feeding/hatching/exchange unplayed",
+      "solo_acquisition_requires_serial_peer": false,
+      "chain": [
+        {
+          "source": "96:$50E5..$5157",
+          "behavior": "Eligible type4/5 dungeon reward draw<5 sets descriptor state3 and reward81"
+        },
+        {
+          "source": "18:$6295..$630D",
+          "behavior": "Reward81 checks CECE; existing egg uses original MagicKey fallback; otherwise starts egg event"
+        },
+        {
+          "source": "18:$621F",
+          "behavior": "Calls original egg factory240:$7D0A"
+        },
+        {
+          "source": "240:$7D0A",
+          "behavior": "Clears CE9B..CF72, sets CECE=1 and creates original data"
+        },
+        {
+          "source": "19:$7D45",
+          "behavior": "Original field interaction requires an actual egg"
+        },
+        {
+          "source": "133:$4717",
+          "behavior": "Opens original item-feeding menu2:0C"
+        },
+        {
+          "source": "241:$4187..$41A5",
+          "behavior": "Calls240:$7284 for feeding effect and removes selected original inventory item"
+        },
+        {
+          "source": "240:$527B,240:$52C0",
+          "behavior": "Distinct serial egg-data exchange prepares peer transfer pointers/count"
+        }
+      ],
+      "ordinary_npc_farm_eggs_are_different_state": true
+    },
+    {
+      "id": "rare-arrivals",
+      "class": "A+C",
+      "species": [
+        {
+          "id": 380,
+          "name": "Lamia",
+          "definition": "53:$7E2A",
+          "arrival_text": "137:$61F6"
+        },
+        {
+          "id": 381,
+          "name": "Dimensaur",
+          "definition": "53:$7E59",
+          "arrival_text": "137:$620F"
+        },
+        {
+          "id": 382,
+          "name": "Kagebou",
+          "definition": "53:$7E88",
+          "arrival_text": "137:$622C"
+        }
+      ],
+      "source_status": "Original definitions and arrival text included by full AOT/data image",
+      "reachability_status": "Legitimate local or distribution arrival paths unresolved",
+      "warning": "No host grant, fabricated distribution, solo-acquisition or completed-link claim follows from string/definition presence"
+    }
+  ],
+  "host_work": [
+    {
+      "id": "serial-local-dual",
+      "class": "B",
+      "baseline_gap": "FF01/FF02 generic IO storage, no transfer shift clock, no connected peer and no completion IRQ producer",
+      "baseline_native_sources": [
+        "recomp/src/memory.cpp:182",
+        "recomp/src/memory.cpp:356",
+        "recomp/src/memory.cpp:469",
+        "recomp/src/runtime.cpp:13"
+      ],
+      "original_contract": [
+        {
+          "source": "0:$0058",
+          "behavior": "Serial vector JP255B"
+        },
+        {
+          "source": "0:$255B",
+          "behavior": "Saves registers and far-calls27:$4001"
+        },
+        {
+          "source": "27:$4001",
+          "behavior": "Original received-byte/protocol dispatcher"
+        },
+        {
+          "source": "0:$08AD",
+          "behavior": "Starts internal normal-clock transfer SC81 after writing SB"
+        },
+        {
+          "source": "0:$08BA",
+          "behavior": "Starts external-clock transfer SC80"
+        },
+        {
+          "source": "0:$08C7",
+          "behavior": "Resets SC then writes outgoing SB byte"
+        },
+        {
+          "source": "0:$07D1",
+          "behavior": "Waits for SC bit7 to clear"
+        }
+      ],
+      "implementation_phase_status": "Implemented; five standalone host/core tests pass on Windows/Linux; original-menu transaction and production-host final acceptance remain separate",
+      "guest_must_own_rewards_and_state": true,
+      "separate_original_saves_and_p1_per_player": true,
+      "detached_internal_clock_contract": "Complete transfer with high input bits and appropriate serial IRQ; do not leave SC bit7 permanently set"
+    },
+    {
+      "id": "cpu-renderer-edges",
+      "class": "B",
+      "implementation_phase_status": "Implemented; standalone core tests pass, but retained native suite has stale mapper harness and unresolved deterministic PCM failures",
+      "original_ram_execution_scope": "Known original HRAM DMA helper; arbitrary RAM execution remains outside AOT policy and must fail closed unless an exact original helper is identified"
+    },
+    {
+      "id": "default-full-aot",
+      "class": "B",
+      "baseline_gap": "Plain CMake default was discovery-sized while accepted/candidate builds explicitly enabled complete ROMX",
+      "implementation_phase_status": "Complete-AOT product build now defaults to ON"
+    }
+  ],
+  "other_hardware_and_version_scope": {
+    "active_mode": "CGB",
+    "tara": "Separate original counterpart ROM identity and campaign comparison; alternate strings/branches in Cobi do not establish a Tara build",
+    "sgb": {
+      "header_advertised": true,
+      "original_detection": "0:$05E2",
+      "original_p1_packet_emitter": "31:$5040",
+      "native_surface": [
+        160,
+        144
+      ],
+      "scope": "SGB packet receiver/SNES border is separate legacy hardware presentation, not the active native CGB mode",
+      "sgb_host_completion_claimed": false
+    },
+    "infrared": {
+      "confirmed_original_access": "0:$01C9 resets FF56 at CGB boot",
+      "original_gameplay_exchange_path_proven": false,
+      "warning": "Register support alone does not establish an original infrared gameplay feature"
+    }
+  },
+  "reproducible_rom_bank_inventory_specification": {
+    "provider": "recomp/tools/inventory_full_rom.py is implemented; retained draft receipt has all256 original-byte/source hashes. Clean committed-source receipt is pending.",
+    "inputs": "src/banks/bank_000.asm through src/banks/bank_255.asm",
+    "per_bank_fields": [
+      "bank",
+      "source",
+      "cpu_window",
+      "rom_offset",
+      "bytes",
+      "source_sha256",
+      "original_bytes_sha256"
+    ],
+    "per_bank_bytes": 16384,
+    "bank_count": 256,
+    "reconstructed_rom_bytes": 4194304,
+    "expected_rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+    "build_fields": [
+      "source_commit",
+      "fixed_bank",
+      "selected_romx_banks",
+      "entry_addresses_per_bank",
+      "receipt_sha256"
+    ],
+    "normal_selected_romx_banks": "1..255",
+    "entry_addresses_per_romx_bank": 16384,
+    "bank0_switchable_alias": "Runtime mapping contract, not an extra cartridge bank",
+    "coverage_boundary": "Inventory/emission is separate from executed instruction/gameplay coverage",
+    "retained_source_receipt": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/host-contracts-01/worlds.json",
+      "bytes": 3873212,
+      "sha256": "51511126d987a5251e7aecd1c2a91b9d3b8d35f32fa5007d83d9833150dc97e9"
+    },
+    "retained_build_identity": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/native-failure-01/extracted/diagnostic-output/build-identity.json",
+      "bytes": 2829,
+      "sha256": "eab9a83d3c72e042f552fe1f43f55541f412e14c2bd189b9755b4b66889f9b9f"
+    },
+    "retained_source_manifest": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/native-failure-01/extracted/diagnostic-output/source-manifest.json",
+      "bytes": 101420,
+      "sha256": "71a3e6d76cbc49a0ccc1c5dd7938ca3f609e73485c5a80fcdc319800c98636cc"
+    },
+    "standalone_per_bank_reconstructed_byte_sha_receipt_claimed": true,
+    "command": [
+      "python",
+      "recomp/tools/inventory_full_rom.py",
+      "--output",
+      "<new-report.json>"
+    ],
+    "retained_per_bank_draft_receipt": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/original-bank-inventory-draft.json",
+      "bytes": 97774,
+      "sha256": "ced863e5eb4f5e123723056741c6f780dd4e789387484071235c20d1ea7e0d70"
+    },
+    "draft_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+    "draft_source_inputs_match_commit": false,
+    "draft_source_input_changes": [
+      "?? recomp/tools/inventory_full_rom.py"
+    ],
+    "clean_committed_receipt_pending": false,
+    "draft_runtime_execution_performed": false,
+    "draft_dynamic_coverage_claimed": false,
+    "draft_native_build_verified_by_this_receipt": false,
+    "retained_clean_committed_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/original-bank-inventory.json",
+    "clean_receipt_source_commit": "b4e9587ba574cdd3b55f9fd8a366404fd4a0cd2c",
+    "clean_source_inputs_match_commit": true
+  },
+  "deferred_validation": [
+    "Final acceptance after resolving all3 native-suite failures and completing fresh exact-build campaign/postgame/GUI/package gates",
+    "Original no-peer cancellation and original-menu dual-runtime serial exchange",
+    "Legitimate collection rewards and fixed/counterpart key-world playthroughs",
+    "Actual DreamEgg acquisition, item feeding, hatch and exchange",
+    "Rare arrival/distribution reachability",
+    "Additional random worlds and key/cache lifecycle boundaries",
+    "Separate Tara source/input and campaign; SGB host presentation is outside activeCGB scope"
+  ],
+  "existing_evidence_references": [
+    "recomp/milestones/M8_RESULT.md",
+    "recomp/handoff/POSTGAME_PROGRESS_2026-10-25.md",
+    "recomp/handoff/POSTGAME_CONTENT_AUDIT_2026-10-25.md",
+    "recomp/handoff/evidence/2026-10-25-postgame/postgame-source-gap-addendum.json",
+    "recomp/handoff/evidence/2026-10-25-postgame/random-world-source-audit-summary.json",
+    "recomp/handoff/evidence/2026-10-25-postgame/native-windows-7-stage.json"
+  ],
+  "implementation_commit": "195ca680b2805339bff86c690c25c99aea6688a2",
+  "validation_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "new_builds_run_in_this_phase": true,
+  "new_tests_run_in_this_phase": true,
+  "new_gameplay_run_in_this_phase": true,
+  "audit_agent_executed_builds_tests_or_gameplay": false,
+  "new_binary_accepted": false,
+  "whole_rom_exhaustive_execution_claimed": false,
+  "validation_in_progress": {
+    "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+    "run_id": "40355244285",
+    "run_url": "https://github.com/rjtvandenhout/DWM2t/actions/runs/40355244285",
+    "native_job_id": "121685836009",
+    "status": "not_accepted",
+    "diagnostic_executable": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/native-failure-01/extracted/diagnostic-output/DWM2tRecompFull.exe",
+      "bytes": 730169344,
+      "sha256": "b1c141d5b3cbb9640ae0af8831e7d369560a3785097cc6834f1734417b2538b3"
+    },
+    "source_archive": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/native-failure-01/extracted/diagnostic-work/source.tar",
+      "bytes": 30310400,
+      "sha256": "73d17e3ac79ab2ee1017b332d6e9691d593ebcb15c0eed8112df859d7b8d8090"
+    },
+    "source_manifest_files_verified": 844,
+    "original_rom_sha256_unchanged": true,
+    "native_suite": {
+      "required": 18,
+      "passed": 15,
+      "failed": 3,
+      "skipped": 0,
+      "failed_names": [
+        "M4_renderer",
+        "M7_audio",
+        "M8_oasis_checkpoint"
+      ],
+      "failure_audit": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/native-failure-01/native-failure-audit.json",
+        "bytes": 45941,
+        "sha256": "e42dbe638b28a59560000c27174a39975fac263e63cdc692ec27dc93255e2760"
+      },
+      "failure_details": [
+        {
+          "name": "M4_renderer",
+          "status": "working_tree_harness_fix_not_yet_rerun",
+          "finding": "Stale effective bank0x100 assertion conflicts with correct physical bank0 mirroring of the original4MiB ROM; renderer component and historical BMP match"
+        },
+        {
+          "name": "M7_audio",
+          "status": "32T_DMA_cause_proven_corrected_reference_waiting_strict_native_rerun",
+          "finding": "Four controlled original-boot variants prove the exact historical/current PCM difference is solely the added32T GDMA stall for this stimulus. Reverting timer timing alone has no effect; all title BMPs identical. Working-tree pin corrected, no passing new full-native run yet.",
+          "initial_finding": "Deterministic PCM differs; APU source unchanged; original CGB boot GDMA now adds32T. Sole cause of all differences not yet proven by preserved evidence",
+          "causal_results": "recomp/handoff/evidence/2026-10-26-full-rom/pcm-causality-results.json"
+        },
+        {
+          "name": "M8_oasis_checkpoint",
+          "status": "failed_first_enemy_feeding_audio_pin",
+          "finding": "Preceding game-state assertions passed; item throw and subsequent checkpoint were not reached",
+          "subsequent_observation": {
+            "frames": 19508,
+            "non_audio_comparisons": 76,
+            "non_audio_differences": 0,
+            "measured_changed_audio_pins": 3,
+            "strict_acceptance": false
+          }
+        }
+      ]
+    },
+    "observed_journal_regressions": {
+      "completed_oasis_inn_story_outputs_identical": 7,
+      "earlier_m7_journal_identical": true,
+      "full_38_stage_campaign_completed": false,
+      "fresh_7_stage_postgame_completed": false,
+      "full_campaign_and_postgame_steps": "Skipped after the retained18-test native gate failed",
+      "observed_ram_snapshots_compared": 7,
+      "identical_bytes_per_65536_snapshot": 65530,
+      "only_differing_hardware_register_addresses": [
+        "FF02",
+        "FF4D",
+        "FF52",
+        "FF54",
+        "FF55",
+        "FF56"
+      ],
+      "not_seven_stage_postgame_acceptance": true
+    },
+    "runtime_core": {
+      "tests_per_platform": 5,
+      "platforms": {
+        "Windows": {
+          "status": "passed",
+          "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+          "tests": 5,
+          "test_names": [
+            "FullROM_memory_contracts",
+            "FullROM_runtime_contracts",
+            "FullROM_serial_contracts",
+            "FullROM_renderer_contracts",
+            "FullROM_generated_aot_contracts"
+          ],
+          "input_files": 35,
+          "binaries": 3,
+          "report": {
+            "path": "/workspace/scratch/full-rom-2026-10-26/fresh-production-01/runtime-core-windows/runtime-core-validation.json",
+            "bytes": 11868,
+            "sha256": "67c1a602a86f1d5c5e16231e16b2c3ada09e45aa2d6b1484dbfb4963cdc9c02c"
+          },
+          "xml": {
+            "path": "/workspace/scratch/full-rom-2026-10-26/fresh-production-01/runtime-core-windows/runtime-core-tests.xml",
+            "bytes": 2757,
+            "sha256": "f40d7d1703613141938c4d63b8cc63c8ff8623aadf504a0c48b8382fe457bde5"
+          }
+        },
+        "Linux": {
+          "status": "passed",
+          "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+          "tests": 5,
+          "test_names": [
+            "FullROM_memory_contracts",
+            "FullROM_runtime_contracts",
+            "FullROM_serial_contracts",
+            "FullROM_renderer_contracts",
+            "FullROM_generated_aot_contracts"
+          ],
+          "input_files": 35,
+          "binaries": 3,
+          "report": {
+            "path": "/workspace/scratch/full-rom-2026-10-26/runtime-core-linux-02/runtime-core-validation.json",
+            "bytes": 11802,
+            "sha256": "210a646c452d95af8789a3893d49b9cfc5657511806ee061b0d8fcd9bf377671"
+          },
+          "xml": {
+            "path": "/workspace/scratch/full-rom-2026-10-26/runtime-core-linux-02/runtime-core-tests.xml",
+            "bytes": 2698,
+            "sha256": "9f0e7d8b5488acbd67e96ba3cf7d06af5ca0e4812a70a51db00e33a7a1834ef8"
+          }
+        }
+      },
+      "scope": "Standalone synthetic/stub host memory/runtime/serial/renderer/generated-AOT contracts, not original campaign completion"
+    },
+    "host_contracts": {
+      "unit_cases_passed": 199,
+      "unit_suites_passed": 10,
+      "additional_static_commands_passed": [
+        "key-tables",
+        "items",
+        "worlds",
+        "decoder",
+        "aot-audit"
+      ],
+      "results": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/host-contracts-01/results.json",
+        "bytes": 3368,
+        "sha256": "6380beaa9e8e3543c8a7033d1d9ca22101e3d341aa97dd48893ad510a9506e86"
+      },
+      "synthetic_fixtures_are_gameplay_proof": false
+    },
+    "remaining_acceptance": [
+      "Resolve and rerun all18 retained native tests",
+      "Complete38-stage main-story and7-stage fresh postgame chains on final exact build",
+      "Complete production GUI, save/persistence and strict packaging acceptance gates",
+      "Distinguish original no-peer cancellation and successful original-menu link transactions from host contracts"
+    ],
+    "independent_core_provenance_audit": {
+      "receipt": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/independent-core-audit/independent-core-audit.json",
+        "bytes": 33498,
+        "sha256": "4779ce4414f5ba3092bffaaed9e281cd7794aa24024bed44df7ff93a92a8207a"
+      },
+      "windows_pr_run_id": "40355216796",
+      "actual_windows_pr_merge_source": "e793442b8431b5f207dea098003e3f36df318a49",
+      "branch_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+      "compared_source_files": 844,
+      "branch_merge_input_inventories_identical": true,
+      "commit_identity_and_lf_crlf_archive_hashes_retained_separately": true
+    },
+    "original_vs_link_probe": {
+      "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+      "executable_sha256": "5f50797b3047978ed098b852a50aa7f63dd64fadae2ddeb5015f0621fd8a5b58",
+      "controller_session": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/controller-session.json",
+      "players": 2,
+      "original_p1_only": true,
+      "game_memory_edits": false,
+      "input_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "observation": "Original B7/D3 handshake, complete monster-record exchange and four-turn no-wager Free Battle; consistent P1 victory/P2 loss; normal close and two independent fresh Continues restore exact original 32768-byte ending file",
+      "handshake_and_menu_observed": true,
+      "vs_battle_completed": true,
+      "original_transaction_and_save_cycle_completed": true,
+      "all_original_link_modes_verified": false,
+      "observation_session_still_in_progress": false,
+      "screenshots": [
+        "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/p1-first-vs-confirm.bmp",
+        "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/p1-battle-exchange-wait5.bmp",
+        "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/p1-turn4-result.bmp",
+        "recomp/handoff/evidence/2026-10-26-full-rom/screenshots/p2-turn4-result.bmp"
+      ],
+      "provenance_limit": "Actual81cfb production executable under Wine; no later-binary, all-link-mode or native-Windows GUI acceptance claimed",
+      "platform": "Wine on Linux",
+      "retained_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/original-vs-link-observation.json",
+      "full_17_monster_records_preserved": true,
+      "quest_bytes_preserved": 107,
+      "fresh_continue_complete_file_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d"
+    },
+    "reference_migration": {
+      "status": "exact_migration_applied_reference_guard_passed",
+      "original_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+      "original_routes": 58,
+      "original_p1_frames": 5338451,
+      "exact_audio_pins": 375,
+      "non_audio_comparisons": 27632,
+      "non_audio_comparisons_matching_original": 27631,
+      "approved_exact_screen_changes": 1,
+      "manifest_route_hash_updates": 45,
+      "active_wrapper_route_hash_updates": 7,
+      "changed_lines": 428,
+      "all_other_target_bytes_preserved": true,
+      "windows_routes": 38,
+      "windows_pcm_pins": 267,
+      "linux_routes": 20,
+      "linux_pcm_pins": 108,
+      "failed_sparse_discovery_prefixes_retained_and_excluded": 36,
+      "baseline_route_seal": "79f7b8e5df69022e3864815f7f36d6b98ac065ddda374a7d48a4d7feef83fa57",
+      "baseline_consumer_seal": "9c1234ae2fb6f6080cd946515feaf701075bc7e4d55d05cf51f5017532e32d3d",
+      "measured_seal": "65ceb2828e8bfd8e105c678e5d830697e5b64a01f9788f78dba49977bce4e63a",
+      "ledger": "recomp/tests/full_rom_audio_references.json",
+      "strict_guard": "recomp/tools/test_full_rom_audio_references.py",
+      "guard_result": "recomp/handoff/evidence/2026-10-26-full-rom/reference-integrity-guard.json",
+      "root_independent_diff": "recomp/handoff/evidence/2026-10-26-full-rom/reference-migration-independent-diff.json",
+      "screen_change": {
+        "route": "m8_kids_class_victory_p1.txt",
+        "line": 535,
+        "frame": 14370,
+        "before": "9a38ae3eef2d8568",
+        "after": "be55670a278cea50",
+        "cause": "Actual completed SCY2 on rows0..16; only scroll-history ablation exactly restores old image on unchanged live Memory",
+        "causal_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/same-memory-renderer-causality.json",
+        "memory_before_and_after": "a67263790addbf05"
+      },
+      "strict_fresh_all255_windows_acceptance_required": true,
+      "game_acceptance_claimed": false
+    },
+    "ending_observation": {
+      "frames": 210446,
+      "non_audio_comparisons": 1143,
+      "non_audio_differences": 0,
+      "darck_credits_and_the_end_witnesses_byte_identical_to_historical": true,
+      "retained_receipt": "recomp/handoff/evidence/2026-10-26-full-rom/ending-observation-witnesses.json",
+      "strict_final_source_acceptance": false
+    },
+    "detached_original_vs": {
+      "status": "passed_original_no_peer_refusal_cancel_continue",
+      "platform": "Wine on Linux",
+      "source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+      "executable_sha256": "5f50797b3047978ed098b852a50aa7f63dd64fadae2ddeb5015f0621fd8a5b58",
+      "single_game_window": true,
+      "connected_peer": false,
+      "original_p1_only": true,
+      "normal_shutdown": true,
+      "fresh_complete_save_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "receipt": "recomp/handoff/evidence/2026-10-26-full-rom/detached-vs-observation.json"
+    }
+  },
+  "actions_cleanup": {
+    "artifacts_removed": 144,
+    "bytes_reclaimed": 482264078,
+    "preserved_artifact_count": 23,
+    "all_preserved_artifacts_verified": true,
+    "main_and_m0_through_m8_restore_branches_unchanged": true,
+    "receipt": "recomp/handoff/evidence/2026-10-26-full-rom/actions-artifact-cleanup.json"
+  }
+}

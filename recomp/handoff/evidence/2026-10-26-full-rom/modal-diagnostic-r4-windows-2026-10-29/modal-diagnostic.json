@@ -1,0 +1,1466 @@
+{
+  "schema": 1,
+  "kind": "player_modal_diagnostic",
+  "acceptance_gate": false,
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "thread_desktop": "Default",
+  "input_desktop": "Default",
+  "cases": [
+    {
+      "method": "button_click",
+      "pid": 8300,
+      "observations": [
+        {
+          "seconds": 0.0,
+          "windows": [],
+          "foreground": 131540,
+          "stderr_bytes": 0
+        },
+        {
+          "seconds": 0.047,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 1.079,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 2.094,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 3.11,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 4.141,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 5.157,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 6.188,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 7.204,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 8.219,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 9.235,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 10.266,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 11.282,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 12.297,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 13.329,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 14.344,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 15.36,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 16.391,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 17.407,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 18.422,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 19.438,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 20.454,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 21.485,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 22.5,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 23.516,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 24.532,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 25.563,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 26.579,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 27.594,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 28.625,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        },
+        {
+          "seconds": 29.641,
+          "windows": [
+            {
+              "hwnd": 458770,
+              "pid": 8300,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 9116,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": false,
+              "post_error": 0,
+              "message": 245
+            },
+            {
+              "hwnd": 131422,
+              "pid": 8300,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 196732,
+              "pid": 8300,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 9116,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 458770,
+          "stderr_bytes": 66
+        }
+      ],
+      "finished": false,
+      "exit_code": null,
+      "windows_at_timeout": [
+        {
+          "hwnd": 458770,
+          "pid": 8300,
+          "kind": "#32770",
+          "title": "DWM2t player"
+        },
+        {
+          "hwnd": 131422,
+          "pid": 8300,
+          "kind": "MSCTFIME UI",
+          "title": "MSCTFIME UI"
+        },
+        {
+          "hwnd": 196732,
+          "pid": 8300,
+          "kind": "IME",
+          "title": "Default IME"
+        }
+      ],
+      "terminated_after_timeout": true,
+      "stderr": "DWM2t player error: Local link requires two different save files\n",
+      "refusal_observed": true,
+      "seed_copy_unchanged": true,
+      "source_seed_unchanged": true,
+      "game_window_seen": false
+    },
+    {
+      "method": "dialog_close",
+      "pid": 6868,
+      "observations": [
+        {
+          "seconds": 0.0,
+          "windows": [],
+          "foreground": 131540,
+          "stderr_bytes": 0
+        },
+        {
+          "seconds": 0.047,
+          "windows": [
+            {
+              "hwnd": 262268,
+              "pid": 6868,
+              "kind": "#32770",
+              "title": "DWM2t player",
+              "visible": true,
+              "enabled": true,
+              "thread": 7844,
+              "desktop": "Default",
+              "button": null,
+              "button_id": null,
+              "button_visible": null,
+              "button_enabled": null,
+              "focus_result": "success",
+              "post_result": true,
+              "post_error": 0,
+              "message": 16
+            },
+            {
+              "hwnd": 196930,
+              "pid": 6868,
+              "kind": "MSCTFIME UI",
+              "title": "MSCTFIME UI",
+              "visible": false,
+              "enabled": false,
+              "thread": 7844,
+              "desktop": "Default"
+            },
+            {
+              "hwnd": 327994,
+              "pid": 6868,
+              "kind": "IME",
+              "title": "Default IME",
+              "visible": false,
+              "enabled": false,
+              "thread": 7844,
+              "desktop": "Default"
+            }
+          ],
+          "foreground": 262268,
+          "stderr_bytes": 66
+        }
+      ],
+      "finished": true,
+      "exit_code": 1,
+      "stderr": "DWM2t player error: Local link requires two different save files\n",
+      "refusal_observed": true,
+      "seed_copy_unchanged": true,
+      "source_seed_unchanged": true,
+      "game_window_seen": false
+    }
+  ]
+}

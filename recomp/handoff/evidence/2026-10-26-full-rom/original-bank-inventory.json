@@ -1,0 +1,3103 @@
+{
+  "schema": 1,
+  "kind": "original_cartridge_source_inventory",
+  "source_commit": "b4e9587ba574cdd3b55f9fd8a366404fd4a0cd2c",
+  "source_inputs_match_commit": true,
+  "source_input_changes": [],
+  "runtime_execution_performed": false,
+  "dynamic_coverage_claimed": false,
+  "native_build_verified_by_this_receipt": false,
+  "target": "Original Cobi USA cartridge in the native CGB target",
+  "rom_bytes": 4194304,
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "bank_count": 256,
+  "bytes_per_bank": 16384,
+  "default_all_romx": true,
+  "intended_aot_entries_per_bank": 16384,
+  "original_byte_entry_addresses": 4194304,
+  "bank_zero_alias": "The switchable window may mirror physical bank 0; this adds no cartridge bytes",
+  "source_tool_sha256": "23c77ac479aeebf1aede69cf69e21bdcea1c468349749c956e3fc99e748cd603",
+  "translation_inputs": {
+    "recomp/CMakeLists.txt": "f4346f16ac02b77918313cda40f80185dcdaaa696ea3bab0a0f5c47c0071ba53",
+    "recomp/tools/generate_rom_image.py": "58e8140e8334124dce47d259ae3f3611ee3ed97e2ee76442fa60c5ade0cd0d1c",
+    "recomp/tools/recompile_bank0.py": "b7dd5d7baf6aa006c808283c12e03568c18e48c3b98d8929aff3d8b83e8bba7a",
+    "recomp/tools/recompile_romx_bank.py": "446faaf0416dd8f147272c37a52f2f86d3c9521b6bb4cb9e7cf282fbc5512e72",
+    "recomp/tools/generate_romx_dispatch.py": "94bd3c7d6cface2ab6209621d3ac33a3506203bba265b23ff8b31aae98a39221",
+    "recomp/tools/lr35902.py": "c95a3ff5e2e8bf72dca4e7cfe20c30f3e4135266a328cc244e6b77c204952914",
+    "recomp/tools/inventory_full_rom.py": "23c77ac479aeebf1aede69cf69e21bdcea1c468349749c956e3fc99e748cd603"
+  },
+  "banks": [
+    {
+      "bank": 0,
+      "source": "src/banks/bank_000.asm",
+      "bytes": 16384,
+      "source_sha256": "331420602c080832ad2350a82eef5aa2d49e312af233f7e96e0a39a06f27e7a3",
+      "original_bytes_sha256": "d4b42b8b32359f261b78004ae68da53e64d5f3be84c0a136c1c9bf9549ad65e2",
+      "rom_offset": 0,
+      "cpu_window": [
+        "0000",
+        "3FFF"
+      ]
+    },
+    {
+      "bank": 1,
+      "source": "src/banks/bank_001.asm",
+      "bytes": 16384,
+      "source_sha256": "a6b5f204bba4815c61d5219176b51f4235235cc84e0618e86e9ab6305b09b1a9",
+      "original_bytes_sha256": "23fc38be891641b89c67973b6510352b3e0cd2978ac4f29673e26653c55fbae5",
+      "rom_offset": 16384,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 2,
+      "source": "src/banks/bank_002.asm",
+      "bytes": 16384,
+      "source_sha256": "94306ed21bfaa043dafaf13ab52d8785ad06040b68bc923d343d9d416af21962",
+      "original_bytes_sha256": "e7d6a0a56ff9ea69325d62173e7b3edde5ea230932141bf0c7a249753623486e",
+      "rom_offset": 32768,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 3,
+      "source": "src/banks/bank_003.asm",
+      "bytes": 16384,
+      "source_sha256": "f7873b0d30e92f152db8bae35aaa84eb6ba0c4da293ab200307383ac46101352",
+      "original_bytes_sha256": "e3b69657c395394ae250342503c2be4c194a13544ccb5cb8b6068766e8fff22c",
+      "rom_offset": 49152,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 4,
+      "source": "src/banks/bank_004.asm",
+      "bytes": 16384,
+      "source_sha256": "563d45adc5705b6f743785bc1eae4b1a9b096e5f2bc85febd2587dc71a464ab7",
+      "original_bytes_sha256": "a970ef1c837d6839feaea5dcf357ef3e8c54da6ec596fe9327ad8becc789b36c",
+      "rom_offset": 65536,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 5,
+      "source": "src/banks/bank_005.asm",
+      "bytes": 16384,
+      "source_sha256": "04844fe4363a4eeb98a04cef5cb68696c692dbec6f14b4d60b7acfe3873cfbfb",
+      "original_bytes_sha256": "d4ccd1b4ed180672d40e61ad3d674d69b5e6ae0c3df85bbc75aa6d95c548a10b",
+      "rom_offset": 81920,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 6,
+      "source": "src/banks/bank_006.asm",
+      "bytes": 16384,
+      "source_sha256": "47470b95e1095d976881f997e2d3713415c057866b9806b0e2961edbc9a8623c",
+      "original_bytes_sha256": "151f787cac7b095b69c3ba7c03aaac7b738a52410a3aa7fa76e61b539e16b9a5",
+      "rom_offset": 98304,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 7,
+      "source": "src/banks/bank_007.asm",
+      "bytes": 16384,
+      "source_sha256": "833a4001efb6b652400fcfad40934875d89f0b5fc9d9723dcaaf57c5806e1839",
+      "original_bytes_sha256": "bb516a828564c2dbe80d51543a606f16689a3ee820006d868a2b0c397e8b2efb",
+      "rom_offset": 114688,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 8,
+      "source": "src/banks/bank_008.asm",
+      "bytes": 16384,
+      "source_sha256": "738c11145d42a4cfe686812fea7d5d6b6cc53b6e0fa2cfb5d015217c469c49b1",
+      "original_bytes_sha256": "74ed36ab730ed979d96f214708b658dfe1345fb3db0330f1df0241f72de53681",
+      "rom_offset": 131072,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 9,
+      "source": "src/banks/bank_009.asm",
+      "bytes": 16384,
+      "source_sha256": "2c78337778b4ceeafbc05e072bc5a17776f2007e95ef0c06044479048a49bd2a",
+      "original_bytes_sha256": "ba2d50844957a196bcabb1e00e3f9b030d06bec4fce2c9c95e9130a70d19218d",
+      "rom_offset": 147456,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 10,
+      "source": "src/banks/bank_010.asm",
+      "bytes": 16384,
+      "source_sha256": "f75442e119a535f90927e9b9abeda6528739ccf9aeff73cd44198de22cabc60d",
+      "original_bytes_sha256": "c818aa170fe311295f420be2fd6d8ddd2c2c7d784e825a72831b0c428f29ef54",
+      "rom_offset": 163840,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 11,
+      "source": "src/banks/bank_011.asm",
+      "bytes": 16384,
+      "source_sha256": "fedbf55fe48b80b3cefe75556b6c8a439fddece29c9fd71577dffbd7fc465c1c",
+      "original_bytes_sha256": "7cd87b86bb5c881090a89b54cd0e1ee5302629a410ee117e87a982c6e6c59efb",
+      "rom_offset": 180224,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 12,
+      "source": "src/banks/bank_012.asm",
+      "bytes": 16384,
+      "source_sha256": "a5efbc342feeb12a32a1f9a9343a347f36f80cbc7f841aa22448bcb3a7212622",
+      "original_bytes_sha256": "8665ee2ec2fb4011fc27d585ef63c69767cd3715c563cd734fcac92d9d02276e",
+      "rom_offset": 196608,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 13,
+      "source": "src/banks/bank_013.asm",
+      "bytes": 16384,
+      "source_sha256": "dfb2414c4d7247b7b8401e2375f0c98d94851da73a14aa372fdd21e20dac0b25",
+      "original_bytes_sha256": "2041453d2913c9ebf59f490d30c9e64ae6710d59a0b2484d18ea209e40a8a384",
+      "rom_offset": 212992,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 14,
+      "source": "src/banks/bank_014.asm",
+      "bytes": 16384,
+      "source_sha256": "e9cf5c514f10ee015f81e5f80a5365443b927f54250c4fb5ebe9dfd337c543d3",
+      "original_bytes_sha256": "7a24be79986f54a35e549631919ae2e1b22c2036fc4c9ccac899c3514a03a55b",
+      "rom_offset": 229376,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 15,
+      "source": "src/banks/bank_015.asm",
+      "bytes": 16384,
+      "source_sha256": "03f15168c30de958e576b2dc636ba3dd2fbf8839bfa5fd40121c9fae4fb456a2",
+      "original_bytes_sha256": "b150119282c0eb4aabb61157ae0940acb6a9f31e24955ae87e579e4259fa24f0",
+      "rom_offset": 245760,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 16,
+      "source": "src/banks/bank_016.asm",
+      "bytes": 16384,
+      "source_sha256": "f2204d36f40a8133387dfde6e863106f1585abee100a853db5eeebf67b62127b",
+      "original_bytes_sha256": "fa1dacfe0a2ada6cfe57bae2d9a5c34b38e68397ea51a6dc7cd8a6182f14bf08",
+      "rom_offset": 262144,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 17,
+      "source": "src/banks/bank_017.asm",
+      "bytes": 16384,
+      "source_sha256": "974337d92936fda022ee8ad9a007aada54854af5455f7136436d0193555d3ab8",
+      "original_bytes_sha256": "a8a969ee560b3f7ebba76236fe31a79ba0f4e1bf647b3df011e8b013ef9a2381",
+      "rom_offset": 278528,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 18,
+      "source": "src/banks/bank_018.asm",
+      "bytes": 16384,
+      "source_sha256": "589b9fe7f02c3426860b3e361baa5785f3ad5bddfdbbd7671303915967a2cd23",
+      "original_bytes_sha256": "c355e277d8d0723be0648d6850d7d5d5f1d8e2e26d62f22a079b2eb4655e3c67",
+      "rom_offset": 294912,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 19,
+      "source": "src/banks/bank_019.asm",
+      "bytes": 16384,
+      "source_sha256": "421918dcb386b959a9c30e6d14035d90efc6d3e376c6862f95ab149b636aab23",
+      "original_bytes_sha256": "d5023742ac7893e754e3b4b98f7d1e0a64393cf2468eef3571d95cbec217ac88",
+      "rom_offset": 311296,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 20,
+      "source": "src/banks/bank_020.asm",
+      "bytes": 16384,
+      "source_sha256": "d1fbf6cc7616c6ef0f1a33574e39e8c6a28eb914c78e221899adb04e91729460",
+      "original_bytes_sha256": "b1948a6c4506693e2afaef329aed8f36aaef51e2ba78a46dc0b70d46c7e71d4e",
+      "rom_offset": 327680,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 21,
+      "source": "src/banks/bank_021.asm",
+      "bytes": 16384,
+      "source_sha256": "e86f1fa5caebbc4cc4af16a65de452ccfcc6ce1e15080e8c008782fdda027026",
+      "original_bytes_sha256": "28bbca1305b1d76026d79a6692bfa31608ca2f35048428ae23c4ad89c41bab7c",
+      "rom_offset": 344064,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 22,
+      "source": "src/banks/bank_022.asm",
+      "bytes": 16384,
+      "source_sha256": "caf9e2ea77425f122d8fe418034bb08b63b03d87dafbecd8e2ba281dc885b787",
+      "original_bytes_sha256": "a4f761f843c7ec39870570e6b7942a0d50c588b31d8a2151f95bdb8c4ec02bc2",
+      "rom_offset": 360448,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 23,
+      "source": "src/banks/bank_023.asm",
+      "bytes": 16384,
+      "source_sha256": "e9758a66acf1d53162e3a321d8c30a6c5414fa2a59a85bcd3fb86b992d0d874e",
+      "original_bytes_sha256": "612b040762559aab2b2539b9a4c06ec60b9d0c50dd5c0ba981efd6a0c2731021",
+      "rom_offset": 376832,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 24,
+      "source": "src/banks/bank_024.asm",
+      "bytes": 16384,
+      "source_sha256": "1ae6d9f1a2484de99d05c94b777130f881045efb354c0ffefc298583386bcaf3",
+      "original_bytes_sha256": "6b60ee3b074c22917082b152bd9146786f6703981a0afedd0e9c340e67d00709",
+      "rom_offset": 393216,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 25,
+      "source": "src/banks/bank_025.asm",
+      "bytes": 16384,
+      "source_sha256": "93f37f7270f62ddc421cac141f3d911eef56439942ccde1315f25c4432e86118",
+      "original_bytes_sha256": "846b891570c1b1a4206458c977953f06e2e210e96eacbe6d2c1e3af1a2ac3c96",
+      "rom_offset": 409600,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 26,
+      "source": "src/banks/bank_026.asm",
+      "bytes": 16384,
+      "source_sha256": "0dd02c36cc99da12f095533e5b913fe7287d9f0a5aefee12960b6d9e636508ea",
+      "original_bytes_sha256": "247918d3daed79153911d40bc65b61579c2e12c75fdbcd737b58af8c94601940",
+      "rom_offset": 425984,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 27,
+      "source": "src/banks/bank_027.asm",
+      "bytes": 16384,
+      "source_sha256": "8ce44ac12efced607b6d1dac4838101a1b7fb763a1a67af2f8aa45b3c6843ae2",
+      "original_bytes_sha256": "e6b063632c962789d4451774e56a5670e34b765b6bb70483593286a357cd97a8",
+      "rom_offset": 442368,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 28,
+      "source": "src/banks/bank_028.asm",
+      "bytes": 16384,
+      "source_sha256": "dda573620d43e863539c1893329be86f7e3440670cc3a5aa6859e314ebb4e66b",
+      "original_bytes_sha256": "9bd93f1b45295de5da36b9763cf60f9ad0762fc3713e4fa39e43fda9cc905e25",
+      "rom_offset": 458752,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 29,
+      "source": "src/banks/bank_029.asm",
+      "bytes": 16384,
+      "source_sha256": "374390b123288f398b9a4a63755bc403c38fc894468e1e211a0a03514949219e",
+      "original_bytes_sha256": "53e624858968ee57fbe22d69688e5362527a056b6bc870672a4cec6ec7496b6e",
+      "rom_offset": 475136,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 30,
+      "source": "src/banks/bank_030.asm",
+      "bytes": 16384,
+      "source_sha256": "c7f5929fdaa6f0a6eff1713cb30a8ba1ea7fd16fb4fb9f9b2151579befd2a40b",
+      "original_bytes_sha256": "709cca74e337a485c7eb44440eb2331baae22e9b18f44eb1ec7228a1fd366dde",
+      "rom_offset": 491520,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 31,
+      "source": "src/banks/bank_031.asm",
+      "bytes": 16384,
+      "source_sha256": "0ef277636b7e1c4829d1192bc15f05436c5957f92a82859797bb7ebf575a3aec",
+      "original_bytes_sha256": "64af875c06adde24f8336ba9f727c62209febca02c198cdfa003324157c60f5d",
+      "rom_offset": 507904,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 32,
+      "source": "src/banks/bank_032.asm",
+      "bytes": 16384,
+      "source_sha256": "23121a1ef7fe671a87984a696e7cadbc4adb13dc1db65015098fef42d115394e",
+      "original_bytes_sha256": "f08056fdb2183fec6663440f7a63d7b1281d9eab8490efc093df242f5c3e6fe4",
+      "rom_offset": 524288,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 33,
+      "source": "src/banks/bank_033.asm",
+      "bytes": 16384,
+      "source_sha256": "323906a0b2776d6fdd9b5aa343cbda215aadff2f900cd90cc2f8e6105fb1618e",
+      "original_bytes_sha256": "83309e481f7dad3afd8d8f8e89bc3e6981e8622a433ab95d0cf713d7c8b68ff8",
+      "rom_offset": 540672,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 34,
+      "source": "src/banks/bank_034.asm",
+      "bytes": 16384,
+      "source_sha256": "e49fb0f6d6dce53ad3c1cc86215e08054e902e8b457afc93117ba63f1a9a7dfd",
+      "original_bytes_sha256": "257933898020df491f925eedb8eca3d75b5ee3ef43df21af8535d884254b37b6",
+      "rom_offset": 557056,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 35,
+      "source": "src/banks/bank_035.asm",
+      "bytes": 16384,
+      "source_sha256": "41534281180e29d324c5ddf2748db10bb0e659e3735c81b645b54ccaf4569d7d",
+      "original_bytes_sha256": "404b6638bb435213f591c3f471eaa4176d7f50a7bce6789d8212a820e880fb79",
+      "rom_offset": 573440,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 36,
+      "source": "src/banks/bank_036.asm",
+      "bytes": 16384,
+      "source_sha256": "283987c04f7a373f260e05e008ed6260f043faf6a1cc15c36eab47336bc37713",
+      "original_bytes_sha256": "a178a5ff43f9620508ea5c2e084138cdcb24ebc63aaabe6f3e39b9b978cf7d82",
+      "rom_offset": 589824,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 37,
+      "source": "src/banks/bank_037.asm",
+      "bytes": 16384,
+      "source_sha256": "ed83c211488198f685a04e353a534cd113d76468ddfc18880a7289e8a0e13f62",
+      "original_bytes_sha256": "ae3010999714a57284dbf62bdd94c3f0f388c70080ee60aee76ec25e2bcc6b63",
+      "rom_offset": 606208,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 38,
+      "source": "src/banks/bank_038.asm",
+      "bytes": 16384,
+      "source_sha256": "bd5319a305688b80d970d46a15bffbca7894db141ed0ecfbe3c256af5c4a2392",
+      "original_bytes_sha256": "7ef26e83539384d5a175fbeb8b83d4aa5d865f5cffcf1b2485c8c953720d152d",
+      "rom_offset": 622592,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 39,
+      "source": "src/banks/bank_039.asm",
+      "bytes": 16384,
+      "source_sha256": "de13619cdca399ef6e61318f4db0adc6bc9deaec9726575f2f2895b2c8db3ab0",
+      "original_bytes_sha256": "46b3a9c19d63d49ac9adc114c8c1e7b4cf6d3f5759b1fdc0767a1657ee953242",
+      "rom_offset": 638976,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 40,
+      "source": "src/banks/bank_040.asm",
+      "bytes": 16384,
+      "source_sha256": "17c2e04ccfec58c645203ec91d812374a5cc99b8ff701935a93cee9c4fed9366",
+      "original_bytes_sha256": "b0725aa9e7c1909b1c4e9bbcbe04eb7e962648ab58192bf3a53719c2e2295e4a",
+      "rom_offset": 655360,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 41,
+      "source": "src/banks/bank_041.asm",
+      "bytes": 16384,
+      "source_sha256": "164e54cf66ce561c970412c5d4ebd75b2c6d95ff4520ca8733ec4428080f5c46",
+      "original_bytes_sha256": "d945096f81b5b605af35ade6cef851e7cff6fc5f88cd48c05578bc379f6c5ec3",
+      "rom_offset": 671744,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 42,
+      "source": "src/banks/bank_042.asm",
+      "bytes": 16384,
+      "source_sha256": "50b28d9c14fbe318e87a9cf7de9202121babee9cfc4041703010d22638d26f9b",
+      "original_bytes_sha256": "2dd390c1a056b9a24f52df029c37e4a534e68f215564e1fd0205cd8e467a7d99",
+      "rom_offset": 688128,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 43,
+      "source": "src/banks/bank_043.asm",
+      "bytes": 16384,
+      "source_sha256": "878e875877168044b100866c4e45e992f9d7b11d7a54d1c53ea8d20d0083dce9",
+      "original_bytes_sha256": "0a1c9b86869019ba45373adb21f90e8b79a1c9dcbd15fc23bcb5ae8d7f8d9ca5",
+      "rom_offset": 704512,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 44,
+      "source": "src/banks/bank_044.asm",
+      "bytes": 16384,
+      "source_sha256": "bc97ce76591c82ebb08fd6e35cb4b585341fec54020afbb78020b7f57031642a",
+      "original_bytes_sha256": "0130ed91571458db537456d4686a70fd47edbde800756570b50d8bb7c7daf0f7",
+      "rom_offset": 720896,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 45,
+      "source": "src/banks/bank_045.asm",
+      "bytes": 16384,
+      "source_sha256": "74cb3256811d1cd77e11d73899d439b1b508832e02920cdd06fe916a72856928",
+      "original_bytes_sha256": "8c2e49eb04ce76bab294229ace2c7be29df3e75fc85eeafcadf7cb938c52d452",
+      "rom_offset": 737280,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 46,
+      "source": "src/banks/bank_046.asm",
+      "bytes": 16384,
+      "source_sha256": "c54bf078aeeef7259f7efc7338293c2a19768d6f8db599229136c79264b5cba4",
+      "original_bytes_sha256": "836279219a68d037ad955a77fab36e7cbd1ecdc7a66bd37eef6f2c1d315490f8",
+      "rom_offset": 753664,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 47,
+      "source": "src/banks/bank_047.asm",
+      "bytes": 16384,
+      "source_sha256": "869a985793586d55f016dac447af537ca181ee5d902760b7d8d517850c057b53",
+      "original_bytes_sha256": "f41ea23dd75454f422786daadd1721722652415eb59cbebcff3aac11c8fed9c7",
+      "rom_offset": 770048,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 48,
+      "source": "src/banks/bank_048.asm",
+      "bytes": 16384,
+      "source_sha256": "bf713de80debc8a143a11299e55b14025cf0fab180d10cdc22598a1fc4b0686f",
+      "original_bytes_sha256": "50aa31e3a1975fe2b31b5980c1394c00c6239b12257e2774e63e334814abbbf1",
+      "rom_offset": 786432,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 49,
+      "source": "src/banks/bank_049.asm",
+      "bytes": 16384,
+      "source_sha256": "17d1e6f969041d56ffeece820480e04af6a9fbf4a8c898b37d1a458767734ccc",
+      "original_bytes_sha256": "5bb8176f3373f957f5f75eb83fd9f10d71debc51a07711f724aacdd89123b6cc",
+      "rom_offset": 802816,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 50,
+      "source": "src/banks/bank_050.asm",
+      "bytes": 16384,
+      "source_sha256": "65d763d262f85eefcdd0bee791919d28f3c16ffb79c621a5765c47ff35867c02",
+      "original_bytes_sha256": "1069ff41b8ea7703b027f2c54baa83163aa3f30c8f26581154d3ef8a7e3f6f7d",
+      "rom_offset": 819200,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 51,
+      "source": "src/banks/bank_051.asm",
+      "bytes": 16384,
+      "source_sha256": "19761d3af14776917e38e0cfea7051813c5b8ce06aa270aef0cf8e073678e2a7",
+      "original_bytes_sha256": "c91b3426946c64134743d50a47eb2197e9e488199e6a2e5d261ea0f1fae5939f",
+      "rom_offset": 835584,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 52,
+      "source": "src/banks/bank_052.asm",
+      "bytes": 16384,
+      "source_sha256": "3c9f948d6cd2b0923acc7aa87469d2c36fcf40b7517390b94f4691f3776fc2e4",
+      "original_bytes_sha256": "3664286af91e9d6ea9d8d0e366e103e11ac4c353a5ecee569d1e8d9c28ee29a1",
+      "rom_offset": 851968,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 53,
+      "source": "src/banks/bank_053.asm",
+      "bytes": 16384,
+      "source_sha256": "f5f0208f132942773f0602f2aaa033ce9ecbdb483f517c6d8698efa4f5703a10",
+      "original_bytes_sha256": "ac63e3470047e55542c2367152f3b10eedb10e380df6383cc28855c2afc2bd42",
+      "rom_offset": 868352,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 54,
+      "source": "src/banks/bank_054.asm",
+      "bytes": 16384,
+      "source_sha256": "97fc5fe17988cdae24bf2224b1bbc1420c0bccecdc62deac6472aa4dd8dba56e",
+      "original_bytes_sha256": "c49b47fb6cac3eef2572cfaf4b5268596ccbf8d47468eb7cd74b62e7a4ade94a",
+      "rom_offset": 884736,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 55,
+      "source": "src/banks/bank_055.asm",
+      "bytes": 16384,
+      "source_sha256": "7f4567c27e29cc587193104fe557463e19518a5f96300487f959b1a9167ce0bc",
+      "original_bytes_sha256": "b98487d2a2c6ebe7268a00eeebd64223dfb879cd02070930741bb67ddd2999be",
+      "rom_offset": 901120,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 56,
+      "source": "src/banks/bank_056.asm",
+      "bytes": 16384,
+      "source_sha256": "a0b81325a6bb627929142457dd6f7c76ee5baaa7581d028f974329bb54237758",
+      "original_bytes_sha256": "4bf58eecb83287784c04a6c25703197690d47415e1d0504fd68c9cf718cf5af9",
+      "rom_offset": 917504,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 57,
+      "source": "src/banks/bank_057.asm",
+      "bytes": 16384,
+      "source_sha256": "bfc7cf6cb8a1e5d7814dca49a3ebbdeb8bc2e7b40870bac775fc8fa6bc39314d",
+      "original_bytes_sha256": "0b8d9edc59d7a9c971bb21131bc522e1f8e4cae9f5483cc10e795e3e62c83a4e",
+      "rom_offset": 933888,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 58,
+      "source": "src/banks/bank_058.asm",
+      "bytes": 16384,
+      "source_sha256": "b45d9db448a67ad4ca908d13d8177645a0d630f8e60c3b721226a5bce2543668",
+      "original_bytes_sha256": "03c66aa83d05a99133156a17d35c3f62d2ed959aa68bceec68d789073f15f805",
+      "rom_offset": 950272,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 59,
+      "source": "src/banks/bank_059.asm",
+      "bytes": 16384,
+      "source_sha256": "36818071782b9ed72a962b5c30292710d1961c91636a416e7514a989bf9c91e8",
+      "original_bytes_sha256": "f852d09fd852bce1c51f982d50827a5104d5768e541e022ba282b7535841485d",
+      "rom_offset": 966656,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 60,
+      "source": "src/banks/bank_060.asm",
+      "bytes": 16384,
+      "source_sha256": "d0fea99128d8aff80c1c86783b01c12d0333074085f5c5cb6224aa70ed30778c",
+      "original_bytes_sha256": "a11aea724e73962fa6c2845903f5fc7d62fb1ca75c218fc1e5e3258bb05b6df0",
+      "rom_offset": 983040,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 61,
+      "source": "src/banks/bank_061.asm",
+      "bytes": 16384,
+      "source_sha256": "20785bae39dcc1819d0c3d74097486a10bd39cb4304f76bb607b339b999949b7",
+      "original_bytes_sha256": "412ca4cfee66db18e6a404edae0f8aec87dc69fc4e446ec077c87afcccb73c91",
+      "rom_offset": 999424,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 62,
+      "source": "src/banks/bank_062.asm",
+      "bytes": 16384,
+      "source_sha256": "28664f44a09eb0ef64b4a3a70e7ed5eaf68f1dd30d6f0a3bd8112cf204c1f542",
+      "original_bytes_sha256": "5b9c65e79068126db9d04256e8180a4d82c8528a750ca4893433f7c6e1557236",
+      "rom_offset": 1015808,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 63,
+      "source": "src/banks/bank_063.asm",
+      "bytes": 16384,
+      "source_sha256": "2bac8fb623001e9a69e34b33ff6173d6915cf5b48aa59733dfb8a7025cd35eee",
+      "original_bytes_sha256": "539b26cd602f66796b7a9133ea18f0d8d66ccf50f4eead3bcf98bf4a655e60ff",
+      "rom_offset": 1032192,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 64,
+      "source": "src/banks/bank_064.asm",
+      "bytes": 16384,
+      "source_sha256": "1e79f041d2c35d823ec0daa6e9287f4426e2b1e743cf03dd432335a8ee7cfdb6",
+      "original_bytes_sha256": "1191ed0b245ab4888a1fe0d7021fd43065840a7143dd6dea733e9b3c5fe486a0",
+      "rom_offset": 1048576,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 65,
+      "source": "src/banks/bank_065.asm",
+      "bytes": 16384,
+      "source_sha256": "80c922414363a5b9ad7eae213a70c42aa13face99f19f6393662b2477096d5b7",
+      "original_bytes_sha256": "60550513ec0d86b0dc4ca2b7558e1b07a2865c4c1f3ae94da9c33e369b4873c8",
+      "rom_offset": 1064960,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 66,
+      "source": "src/banks/bank_066.asm",
+      "bytes": 16384,
+      "source_sha256": "2b843570a8259e175cb3763bf702e116540a83f0abb91ad3c3551ebb1338c516",
+      "original_bytes_sha256": "de16fe52cdc635980f7576ae84af281d081ea654d01e788e2b9386d3e771152f",
+      "rom_offset": 1081344,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 67,
+      "source": "src/banks/bank_067.asm",
+      "bytes": 16384,
+      "source_sha256": "250a7c5b70486ac92d392e43a00b178f41c010c121227908a8de2f440ec6cf8a",
+      "original_bytes_sha256": "b356b78acd26b33f35d37557f7abf50a2b055c6c584ba25d18556c76b36782e1",
+      "rom_offset": 1097728,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 68,
+      "source": "src/banks/bank_068.asm",
+      "bytes": 16384,
+      "source_sha256": "93568d3ae1b03cffa48dc077062d48c056042f2589c817ad8d1f0c08c2265e59",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 1114112,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 69,
+      "source": "src/banks/bank_069.asm",
+      "bytes": 16384,
+      "source_sha256": "6865761b11a59438f9d4376d1c83da2a75ba3dc3bdd7e929c136f65c260f789f",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 1130496,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 70,
+      "source": "src/banks/bank_070.asm",
+      "bytes": 16384,
+      "source_sha256": "2d5dd7a0b6c7e6fe6cb5c32b281409726e111cdfba2c438a19759f9a68909721",
+      "original_bytes_sha256": "0cccd0fd15f27ea85ec1f5fa7b06658f8ada34eb7476056247099d29060e1368",
+      "rom_offset": 1146880,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 71,
+      "source": "src/banks/bank_071.asm",
+      "bytes": 16384,
+      "source_sha256": "54d82a4e05bd74fa2c3abf8685e88bf954f044bd1be319d6bc5123f17cb6bdbb",
+      "original_bytes_sha256": "4537cf9abdbd9a6e282cae3d5fba4d1ba2a79158a8eba669fa5218f71a4c0b13",
+      "rom_offset": 1163264,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 72,
+      "source": "src/banks/bank_072.asm",
+      "bytes": 16384,
+      "source_sha256": "0c42fb652037e133b5656691871ee256bc7233e0c29e167bb1da746294dcbd6a",
+      "original_bytes_sha256": "3a8d19e4adb15973e2704e2d372007a027339fde354336dbaeca10a74f965f4b",
+      "rom_offset": 1179648,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 73,
+      "source": "src/banks/bank_073.asm",
+      "bytes": 16384,
+      "source_sha256": "df50f685ee33eece7c7ba9dcd3c54584c79d4aa71d9b898eb248edb5da10d99e",
+      "original_bytes_sha256": "40a9bab272ba3379c8f0ce54a42a7b92473a2fb7d0c0b45ce8b3ae7c19a66b99",
+      "rom_offset": 1196032,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 74,
+      "source": "src/banks/bank_074.asm",
+      "bytes": 16384,
+      "source_sha256": "5a33b998ab7d8dfa5dd430a0aef60972e517ed616866468b558aa1363f821278",
+      "original_bytes_sha256": "bf4408bdf92ec92dd86a78e4e06b4599ca6235fdcc6ebf920c0a4fc7451db2db",
+      "rom_offset": 1212416,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 75,
+      "source": "src/banks/bank_075.asm",
+      "bytes": 16384,
+      "source_sha256": "5f9cb6d3decbe1b531fc8a38665540adbab372963cf7ad98da44566fb6bd458a",
+      "original_bytes_sha256": "c9a8ce26b46659582a0b6e9f37b775f1da621d6dcf8ea3d52de12296b7f6a431",
+      "rom_offset": 1228800,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 76,
+      "source": "src/banks/bank_076.asm",
+      "bytes": 16384,
+      "source_sha256": "46b16582a8529b4891d09dd51d0e2ec90bb315d35db9d693680e8e392b87f89b",
+      "original_bytes_sha256": "640b16932c9f1e83eb738ac77b612683781752edfedbe4db2c5fa7a1680891c0",
+      "rom_offset": 1245184,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 77,
+      "source": "src/banks/bank_077.asm",
+      "bytes": 16384,
+      "source_sha256": "0ae4168615c6e7ebf03b3a6d389f0cb4c7a9be40284fa002f18ecf61b04d8be3",
+      "original_bytes_sha256": "0b378968f92ddf0b99106264a1b108873d04969e4ba86242e24aef986eac965a",
+      "rom_offset": 1261568,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 78,
+      "source": "src/banks/bank_078.asm",
+      "bytes": 16384,
+      "source_sha256": "784d374c18885ac11a35f8021d72b50bef60de5afda1bd696bdd56fed7d156b5",
+      "original_bytes_sha256": "391a86d17da4758f29959641864252ecaf33916ae2c08739eafbada1e459f3f7",
+      "rom_offset": 1277952,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 79,
+      "source": "src/banks/bank_079.asm",
+      "bytes": 16384,
+      "source_sha256": "7a07c454d1ac1aa1e820472a78bbaf66a324c9abbdf214070bbc3e002cecadf1",
+      "original_bytes_sha256": "7531b86836412433b8416d02f71ec72565a492974c6b11a396ce8bedcf8e5ded",
+      "rom_offset": 1294336,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 80,
+      "source": "src/banks/bank_080.asm",
+      "bytes": 16384,
+      "source_sha256": "4802c06ed64fabdfa6ffa1b00292c42a459807d01cde0fafab1d01567c67fe3d",
+      "original_bytes_sha256": "b0738b68f4d9757a0d64041df0e93a352b242e10ba1e743ef1d7cfb466c62b7c",
+      "rom_offset": 1310720,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 81,
+      "source": "src/banks/bank_081.asm",
+      "bytes": 16384,
+      "source_sha256": "7a5bf0111d3eea70bc6df57040af169d08c896cb1322aeb55220f946c04bf610",
+      "original_bytes_sha256": "0392e8d4306d0be950922f3d5b7781ef802e699faef914b34e256df7cc3eba70",
+      "rom_offset": 1327104,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 82,
+      "source": "src/banks/bank_082.asm",
+      "bytes": 16384,
+      "source_sha256": "297d73e3286c6e80cf10ca376de097439d5cb6e353d89fffc236ef78f94b13da",
+      "original_bytes_sha256": "89f96d3ed6cda70333e827fce1977da938d98f6df7237bf4c66ff653231377d6",
+      "rom_offset": 1343488,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 83,
+      "source": "src/banks/bank_083.asm",
+      "bytes": 16384,
+      "source_sha256": "3c5b1de1c5cc94ebed16123151278e189ac9908214667a7cf2ef0f83f81c35d2",
+      "original_bytes_sha256": "6161f3cd926f9f2b9ce726a54d16a64ee5e60b47e96f5b28a831b814c0d7bf14",
+      "rom_offset": 1359872,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 84,
+      "source": "src/banks/bank_084.asm",
+      "bytes": 16384,
+      "source_sha256": "59141fc18a1fb4837cc4acc78f2167361b815eb0f71ad4dedea36bbc13e726d7",
+      "original_bytes_sha256": "a412c885bc8467720d3f042f257babee5480361e1dda69e242ece30526c872aa",
+      "rom_offset": 1376256,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 85,
+      "source": "src/banks/bank_085.asm",
+      "bytes": 16384,
+      "source_sha256": "85ca81f2f15041c23a850c4e44c4b002610534d99b3a12fac81c459813397dca",
+      "original_bytes_sha256": "5e79140e278ca65a28ca2be163c07743414384229cc8b770312760a56bb2b31f",
+      "rom_offset": 1392640,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 86,
+      "source": "src/banks/bank_086.asm",
+      "bytes": 16384,
+      "source_sha256": "74ee047721ee835690995b1fa08c380cab208031775721cd4df06a5481112b43",
+      "original_bytes_sha256": "fd1038159fca571e5935fd73e3c660096a465c66f81684593290467adee2b368",
+      "rom_offset": 1409024,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 87,
+      "source": "src/banks/bank_087.asm",
+      "bytes": 16384,
+      "source_sha256": "65b46b9ad39ad366acd2f797569ef89c84adc62995a0ce8e69f803e2717610df",
+      "original_bytes_sha256": "d818b41c6a1ca1af7a84d4106e2ec1d049d85196c6c500cfe229ebaf6035e877",
+      "rom_offset": 1425408,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 88,
+      "source": "src/banks/bank_088.asm",
+      "bytes": 16384,
+      "source_sha256": "7c4c332bc6f99c48eee557e75d77448194d3ff969378d23c6f00ffd012ad922f",
+      "original_bytes_sha256": "d56d678cb62e80b30de388fc34b5a05386b20822ef36b865a66b5ebe8d9b5133",
+      "rom_offset": 1441792,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 89,
+      "source": "src/banks/bank_089.asm",
+      "bytes": 16384,
+      "source_sha256": "5a1e0aa49794817ffced94dba3d12453487f849cdf2ea32bac1d3cfa181e0d04",
+      "original_bytes_sha256": "957adfa3107a09824e91a01b48967e4e98c5c893e1f06c6d8b80b788412cfe4b",
+      "rom_offset": 1458176,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 90,
+      "source": "src/banks/bank_090.asm",
+      "bytes": 16384,
+      "source_sha256": "d4faff352f6b0a24f60fca69034c2618a005528075bbbd441088ccc4814594ca",
+      "original_bytes_sha256": "4aba33bff2755558cc1f3dd9e20b5ea86e7e2bb6430564f0fd157e1a2715f41c",
+      "rom_offset": 1474560,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 91,
+      "source": "src/banks/bank_091.asm",
+      "bytes": 16384,
+      "source_sha256": "3e3e1140453f4965ecf80c444d6a869e380d1d013e0a8a4ad0de90a74ca64057",
+      "original_bytes_sha256": "d38131828a229a06cc69a9b4298e6b8e1ae08c34a66a0274ed10a2daeaf4abf2",
+      "rom_offset": 1490944,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 92,
+      "source": "src/banks/bank_092.asm",
+      "bytes": 16384,
+      "source_sha256": "4e9e727b977b82d13d09ff17e0a505b90289e24942c6c87eb08e06a33d879090",
+      "original_bytes_sha256": "a084dd92468c596be3ec94d990c48add5030f23f54bb5485540ea0a9299188fe",
+      "rom_offset": 1507328,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 93,
+      "source": "src/banks/bank_093.asm",
+      "bytes": 16384,
+      "source_sha256": "dbe0508de9d4780efb5ac260afac23ea9362fc06a81669ba8aebeac689cfde4e",
+      "original_bytes_sha256": "cf8cf383940d2c6d497badfa6d78e10fc16dedc5d585e0792f026fa0205d2f8c",
+      "rom_offset": 1523712,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 94,
+      "source": "src/banks/bank_094.asm",
+      "bytes": 16384,
+      "source_sha256": "cca367a89e0775d8d560f6424238cb520c584abc16294b19e007aaffc4e5d3fa",
+      "original_bytes_sha256": "aa3481247e32f975213d0456a1b42778ab3abb26273a437e41abafb2c81018b3",
+      "rom_offset": 1540096,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 95,
+      "source": "src/banks/bank_095.asm",
+      "bytes": 16384,
+      "source_sha256": "b7be2c284d873ce95e25b690b8546c23420db37b3ade37767589fbf2bf4e6e83",
+      "original_bytes_sha256": "332c89143db59c71f74f32e22685abae688433326c7fc4831397e761342818fe",
+      "rom_offset": 1556480,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 96,
+      "source": "src/banks/bank_096.asm",
+      "bytes": 16384,
+      "source_sha256": "971808a110728b03cd5ba55af867072f07b45d4902cd8018d5a4ff9010b37d04",
+      "original_bytes_sha256": "eca43b827ad788bcfb2c0f707fa08abad68f2fcb30082f769f10fd02816dd33a",
+      "rom_offset": 1572864,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 97,
+      "source": "src/banks/bank_097.asm",
+      "bytes": 16384,
+      "source_sha256": "a32f7e0b667a35aa3b418d0b2f7d5243b5dec95b0c1061a69adf926a23f951a3",
+      "original_bytes_sha256": "b30cdc2784952c40f86ba6c21b0ae17f050ce59ea12174655122d61b5c5495a8",
+      "rom_offset": 1589248,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 98,
+      "source": "src/banks/bank_098.asm",
+      "bytes": 16384,
+      "source_sha256": "5a2ddd659791560398b1c9ce5c0f6c88e4c0bd66d940260543e89339a58747ba",
+      "original_bytes_sha256": "31e91d5f23256ce11f1a87f2d3470f270bb64f10561af0461ff5e75b0c56c408",
+      "rom_offset": 1605632,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 99,
+      "source": "src/banks/bank_099.asm",
+      "bytes": 16384,
+      "source_sha256": "c1a4ec58f3a1304deae77e1a7a7a02d528cb828365f8874547810a00c5546945",
+      "original_bytes_sha256": "eb0c51a462c9606fb94f0e8cb0f2004ef4398fb5d0cd771792461f49ce1cdc59",
+      "rom_offset": 1622016,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 100,
+      "source": "src/banks/bank_100.asm",
+      "bytes": 16384,
+      "source_sha256": "955bc89c4440e7ab16f806daf04070b7dd6f913e0bbf78c2a591f31893bbca69",
+      "original_bytes_sha256": "417d2982c63d0c25729459e6cce305be0bc15298f8c58483df4d05e1b2c779d4",
+      "rom_offset": 1638400,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 101,
+      "source": "src/banks/bank_101.asm",
+      "bytes": 16384,
+      "source_sha256": "bedfde402da90b3a815fe77c9802da89dd7b24e3b615f8796f83e87b1086c086",
+      "original_bytes_sha256": "e56d227b55c4d97e78b1be5005d1e133c373a3fd21109bd0dd5f0d5260cc591f",
+      "rom_offset": 1654784,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 102,
+      "source": "src/banks/bank_102.asm",
+      "bytes": 16384,
+      "source_sha256": "1ae8541d4474e33a1b0c8615eebc630066b70af86492f51cb068b3255133b4d2",
+      "original_bytes_sha256": "63081af90d0f15d0998ab10577b3d040fcb9bc4a21956ad59463efeb39d14c20",
+      "rom_offset": 1671168,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 103,
+      "source": "src/banks/bank_103.asm",
+      "bytes": 16384,
+      "source_sha256": "02863260e96ebb34a57e96214cf8ad98b79dcf8a3786e9bf2a7962b3d1aed5d1",
+      "original_bytes_sha256": "14c7f1d19c7f8be0b6fb8695e033500b95a937f2039ee9e72c72e20ba19e8e3c",
+      "rom_offset": 1687552,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 104,
+      "source": "src/banks/bank_104.asm",
+      "bytes": 16384,
+      "source_sha256": "17f726a236678562622ea507c7fd42fd928422b03ab680b882480ce4eac223e2",
+      "original_bytes_sha256": "b5a6d40cffb6aee624d6d61275efe7fdadc0da741cbfa4a99241af34b4d32b2d",
+      "rom_offset": 1703936,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 105,
+      "source": "src/banks/bank_105.asm",
+      "bytes": 16384,
+      "source_sha256": "1cdfebbba0680d154ef2ad9f77f14a24be5a6c83368a15f26b942a5c238d0d45",
+      "original_bytes_sha256": "d4a251e1ef414e523824876ad33a50ea387534b06b2c1f92fef3b39040ff640f",
+      "rom_offset": 1720320,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 106,
+      "source": "src/banks/bank_106.asm",
+      "bytes": 16384,
+      "source_sha256": "47b279e65e62b8ab905fb42af4f72c84f6ac4dbbe086e5aa21b0fd8668755c68",
+      "original_bytes_sha256": "2f579676e05c655924b0bef54a051b1090c8d263fdde4b01b603293babd4435d",
+      "rom_offset": 1736704,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 107,
+      "source": "src/banks/bank_107.asm",
+      "bytes": 16384,
+      "source_sha256": "8704ef35c0e55638615999b7b01f4a4cc137f59ebfed1bc8027bc55976a00233",
+      "original_bytes_sha256": "b2971ccce5e5ce0b9444e1998aac4ae9d7de82cd5a21a51297c14d2ed7029647",
+      "rom_offset": 1753088,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 108,
+      "source": "src/banks/bank_108.asm",
+      "bytes": 16384,
+      "source_sha256": "55060549d7bd89b186704a8f59fd1f52da2304718263b653017ea983c63b3803",
+      "original_bytes_sha256": "affe139a16338313f8c660c657fb699861d2123456f847fa793c0f6aa1400960",
+      "rom_offset": 1769472,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 109,
+      "source": "src/banks/bank_109.asm",
+      "bytes": 16384,
+      "source_sha256": "0ad1ff83b2e0a5bb5b47f1ac6671c4370d568f9ce0b50f8ef59fc0aab1b9af13",
+      "original_bytes_sha256": "970089fa2e2413dffa91731b7bb37871ff365418d728f1a6732b4c8872e6c4b6",
+      "rom_offset": 1785856,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 110,
+      "source": "src/banks/bank_110.asm",
+      "bytes": 16384,
+      "source_sha256": "923b2f85a5fa7cdcaff6dcb5ee748c6c4ab2f245e1734dbcdfa0306dd850ab17",
+      "original_bytes_sha256": "d4e3d6c33185e271466ca4a1d2503abf8ca5d4cb9f23b1d7319c786532529cb5",
+      "rom_offset": 1802240,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 111,
+      "source": "src/banks/bank_111.asm",
+      "bytes": 16384,
+      "source_sha256": "2306779caab89b5df54519dcc0edebe42052650da3ab1f39c722bcdc93afb03f",
+      "original_bytes_sha256": "1898b3a18dd05368500882b4995cd602fec536a9ff0570f44bc258512f08f5e2",
+      "rom_offset": 1818624,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 112,
+      "source": "src/banks/bank_112.asm",
+      "bytes": 16384,
+      "source_sha256": "25dabdeedc8464cfcf90ecd4adb94429f957e794c0ea4161c7784f80159be341",
+      "original_bytes_sha256": "51e9873d5cd326c4dc61622c83b1dd2ae1655373cb68ffb907bc1bd33f866270",
+      "rom_offset": 1835008,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 113,
+      "source": "src/banks/bank_113.asm",
+      "bytes": 16384,
+      "source_sha256": "399c6122123ff4370ae01a5f0a0f7887519452927d7e459075d5fd500ebe02b8",
+      "original_bytes_sha256": "afd4896c91ebd01d6f3aa6738f205dc0f31ebb9e1bdf09137d39c1d324c8aa5e",
+      "rom_offset": 1851392,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 114,
+      "source": "src/banks/bank_114.asm",
+      "bytes": 16384,
+      "source_sha256": "7d45b07d595b660d3f1b3b0c62ad6da2f4ca545f509fa2a122924b6f2186d249",
+      "original_bytes_sha256": "63fc163725af66ebb4353701bdc14d5637b67ebe5414be8561cc33c35d7f8228",
+      "rom_offset": 1867776,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 115,
+      "source": "src/banks/bank_115.asm",
+      "bytes": 16384,
+      "source_sha256": "6aeafe379390ef203b91e7368b8db2bb263591a64c62b38ec055a377033bfe20",
+      "original_bytes_sha256": "1056be98c80591d41b149c5009b631ebe162e5a1a23936e55376a225f7149b9f",
+      "rom_offset": 1884160,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 116,
+      "source": "src/banks/bank_116.asm",
+      "bytes": 16384,
+      "source_sha256": "b94358c0f6a06e8fbcc7bd6f7f90d38f5686ee54bc9a989a4e81d1cdf6e9fa13",
+      "original_bytes_sha256": "d3c96df2aa33bf4b2c7630132f42bdc4b69adc26e601c78b71372bfbae30baef",
+      "rom_offset": 1900544,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 117,
+      "source": "src/banks/bank_117.asm",
+      "bytes": 16384,
+      "source_sha256": "77f9a74fe17f869eee8b3841e23c70eb9129114fb47ed46554e5891632cb2432",
+      "original_bytes_sha256": "e16c15dc35418d40fd709ac7a02e005a0fd96514b004b7bd754a6d68bd110914",
+      "rom_offset": 1916928,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 118,
+      "source": "src/banks/bank_118.asm",
+      "bytes": 16384,
+      "source_sha256": "753d560593287e6bef58de9bac1d7a264e549cf6030755f8691de900ca09cf18",
+      "original_bytes_sha256": "46f0a91b4c6cbb263c0548a81b3e4e6f2c05c7e56f3aa9e0391aa60adedd9ab4",
+      "rom_offset": 1933312,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 119,
+      "source": "src/banks/bank_119.asm",
+      "bytes": 16384,
+      "source_sha256": "14093b772097277567223328df01ad201e656265160609afe8f69539955873bd",
+      "original_bytes_sha256": "aa6e4d61994a4e22d3f15949c39ad60e761303149feaa614f781d0ad984f0883",
+      "rom_offset": 1949696,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 120,
+      "source": "src/banks/bank_120.asm",
+      "bytes": 16384,
+      "source_sha256": "7cb22fdcd5d5386e3ed4262190e7940cf8b1685c255df95ca97450549ea90959",
+      "original_bytes_sha256": "53707da6fab7828cd44d6add26b1692adf8318b4fe441a8248c04cb9b889a527",
+      "rom_offset": 1966080,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 121,
+      "source": "src/banks/bank_121.asm",
+      "bytes": 16384,
+      "source_sha256": "1c631b9dcb62023d97f8b005a18f0e0626708dc0c224a906be386b1a3d1a5018",
+      "original_bytes_sha256": "2ccd398308dcc312b7477043eacdde51914100b74e740bcea84e549037f379ab",
+      "rom_offset": 1982464,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 122,
+      "source": "src/banks/bank_122.asm",
+      "bytes": 16384,
+      "source_sha256": "8c1b0056e4f274c5bc001f07790d1139464fe7c77a2b57d1201f56a996e813cf",
+      "original_bytes_sha256": "13121befb2b42a5ab1200d1d955de4dfe7d81f081fafe988b92a3996b14b1b45",
+      "rom_offset": 1998848,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 123,
+      "source": "src/banks/bank_123.asm",
+      "bytes": 16384,
+      "source_sha256": "473e98b6182c81f7084ba1df67c571bd64aa13ec590ca9866c65177b279762ce",
+      "original_bytes_sha256": "448017babfff8fe472a55a289f36555d51567b57beca1509b645b59ed7ec7652",
+      "rom_offset": 2015232,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 124,
+      "source": "src/banks/bank_124.asm",
+      "bytes": 16384,
+      "source_sha256": "92af39674efc064e25568caaa42e4e0eeb03635f0c4162486323df6eaedcd4ca",
+      "original_bytes_sha256": "07bf4b5787944930ab48a1798369972427c726e22870c68c7272dfa0e9a56468",
+      "rom_offset": 2031616,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 125,
+      "source": "src/banks/bank_125.asm",
+      "bytes": 16384,
+      "source_sha256": "6f4839ee7bd1979b28575c580b671b86930b4b711295c558a42d2c502226104b",
+      "original_bytes_sha256": "00f8eea30d6224042b7ae810c5a53bf1c265c6650b5ea2639c16582bd5917132",
+      "rom_offset": 2048000,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 126,
+      "source": "src/banks/bank_126.asm",
+      "bytes": 16384,
+      "source_sha256": "05978d322c37bb623ddb7a9a0d2099b86b327b1e685bfbdca641bc2ef4752752",
+      "original_bytes_sha256": "6e5ca69c855aaca09b8298d35b30125ecd2918088f99899e15549ab049b186c0",
+      "rom_offset": 2064384,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 127,
+      "source": "src/banks/bank_127.asm",
+      "bytes": 16384,
+      "source_sha256": "6001e765cc40bfd8dc84709eaabf651c25470501adbabe9a72b9134aa53c3084",
+      "original_bytes_sha256": "a8414cd2979ec87a0e830e1bcc66110e3911ff0d1a208153e789ec93c3c84699",
+      "rom_offset": 2080768,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 128,
+      "source": "src/banks/bank_128.asm",
+      "bytes": 16384,
+      "source_sha256": "a3df1b2a7b266dbb84be6e922448e4f47a64cd94a026e0d6990ea03d8bb80385",
+      "original_bytes_sha256": "1b90d115cc6cf48efd040dfa61efab23f728cb53c2a450c877afcc56d93cddb2",
+      "rom_offset": 2097152,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 129,
+      "source": "src/banks/bank_129.asm",
+      "bytes": 16384,
+      "source_sha256": "ce7a8942ca1e266b0ff148690dd75f8ee9a2d62371fb137a6d5b5903ecd7bea0",
+      "original_bytes_sha256": "a0af7eadca1de1cdeba845e5a28abde4f9e8c3a52e2751f6c4c5f2f331eaee70",
+      "rom_offset": 2113536,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 130,
+      "source": "src/banks/bank_130.asm",
+      "bytes": 16384,
+      "source_sha256": "d26631fbed658000059be2544c54c8d91b4079cd083e1991a18bb8114a9be93b",
+      "original_bytes_sha256": "d6f2d6a8f61ed1a6d00bebbfc247f025bfa7510eb73e497f4084b127f6db0905",
+      "rom_offset": 2129920,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 131,
+      "source": "src/banks/bank_131.asm",
+      "bytes": 16384,
+      "source_sha256": "d2298fd83c37c435c22ecbe9a578dd44f19a54aeb182130b94164d1a6e6dddfd",
+      "original_bytes_sha256": "4a52c07ee49eee9e9bc2ddbde80591054044d845a28edb77ee37bbf81929bc7f",
+      "rom_offset": 2146304,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 132,
+      "source": "src/banks/bank_132.asm",
+      "bytes": 16384,
+      "source_sha256": "31f85c83343d34912ac94cc4dddeae654abdb26cec2993d3750a59aeaabc4f81",
+      "original_bytes_sha256": "73b487240c4c26d541a032a5838d892a9f8de91f95f3c9090bd7892af3d45472",
+      "rom_offset": 2162688,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 133,
+      "source": "src/banks/bank_133.asm",
+      "bytes": 16384,
+      "source_sha256": "87c2666d5f201de3bc58fc62e8d98786fbc5c83100efabc1c77b8439c869ddfa",
+      "original_bytes_sha256": "ce701bb6baca82db553030cd5133a99cf2a5c884fcc40121c2d186fdcb434448",
+      "rom_offset": 2179072,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 134,
+      "source": "src/banks/bank_134.asm",
+      "bytes": 16384,
+      "source_sha256": "f9efe8cd5dea60564263dfe320b78c02ec6874fe8d38d52f09407ae815b19fe3",
+      "original_bytes_sha256": "fa1e071f7c5d68fa258f2623dc1e46b06e6d150c870933288c1fc8898dfc069e",
+      "rom_offset": 2195456,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 135,
+      "source": "src/banks/bank_135.asm",
+      "bytes": 16384,
+      "source_sha256": "f0dae7b042d533c46854f15ca28e00ddbbf026af84ebfad5df3c4b9bc7b45300",
+      "original_bytes_sha256": "ceb7478caf4b0ec22aaa63c2b6763550e0068e79f8b87d12185bfa0b03cbda43",
+      "rom_offset": 2211840,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 136,
+      "source": "src/banks/bank_136.asm",
+      "bytes": 16384,
+      "source_sha256": "18c3d8759c10ba3886a77245390b98529d2d1d1b45f5aea5b077a731c85c7309",
+      "original_bytes_sha256": "52614d29e314dd36a130ae2866a3ad5ec00c7a706e0492c099dcc1e0679d9824",
+      "rom_offset": 2228224,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 137,
+      "source": "src/banks/bank_137.asm",
+      "bytes": 16384,
+      "source_sha256": "c02eb51b1fbfa4134f7d57c8d8a349f7cc5417c2a05348c6aea8646e274bec59",
+      "original_bytes_sha256": "f079f5f315e2d029df4506ff3ec25bbdd989daca35525fe7aa9ecba7924e4b89",
+      "rom_offset": 2244608,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 138,
+      "source": "src/banks/bank_138.asm",
+      "bytes": 16384,
+      "source_sha256": "3c7c90f31be100e0b881ec0eb3462d1406a7cadb075490825290494b5feee8e8",
+      "original_bytes_sha256": "a0aec98b8ddfc8f70cf7df28c6bc750b7c85f86527d4ce0b2dcd6bae01f90ddb",
+      "rom_offset": 2260992,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 139,
+      "source": "src/banks/bank_139.asm",
+      "bytes": 16384,
+      "source_sha256": "f7d6158ced2b774ac6755d9d5c9bc5dc23570a691eb692b0c3193cb699113baa",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2277376,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 140,
+      "source": "src/banks/bank_140.asm",
+      "bytes": 16384,
+      "source_sha256": "bb78690eb49ec8a9596e9e820c2d93d519e647de11818f272e06acc343e7b5d3",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2293760,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 141,
+      "source": "src/banks/bank_141.asm",
+      "bytes": 16384,
+      "source_sha256": "69d97e1704d4d4ce829e53ff2e0c068b397a63f89b1adf5d722f39626d56b3f0",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2310144,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 142,
+      "source": "src/banks/bank_142.asm",
+      "bytes": 16384,
+      "source_sha256": "cc68e31fd5611037fae1a5b25aedce542db84c7ece77c381f6c193a7d9c962c9",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2326528,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 143,
+      "source": "src/banks/bank_143.asm",
+      "bytes": 16384,
+      "source_sha256": "78cf65238b3a1f6f08e1f5e9448a4bae81c0131d5a402810daf44501c32173a5",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2342912,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 144,
+      "source": "src/banks/bank_144.asm",
+      "bytes": 16384,
+      "source_sha256": "f128053f9320c2367bebde6b6f84075f8d439004a8ca7ec6c3a859886080852d",
+      "original_bytes_sha256": "de4c62c3755ff66007a3529cee278e151b64282e7d71fd0bf0aefdb1341063cd",
+      "rom_offset": 2359296,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 145,
+      "source": "src/banks/bank_145.asm",
+      "bytes": 16384,
+      "source_sha256": "fedca1b8857f1b1d2aec893453242d99f015b4cfe057a2d2b7d09f60c25ae01e",
+      "original_bytes_sha256": "38e3895a172321ebda70d37869838549477c6c59d7040af7565bf1165e340c86",
+      "rom_offset": 2375680,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 146,
+      "source": "src/banks/bank_146.asm",
+      "bytes": 16384,
+      "source_sha256": "a8c70e560a8021ca08d66338ee7e5c2dc90be4129a26962302fe2898c90490f9",
+      "original_bytes_sha256": "be425fcbe2596af3add4b96d5f56b28eb82b1ec147ed65f0d99ac1ce8cb65915",
+      "rom_offset": 2392064,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 147,
+      "source": "src/banks/bank_147.asm",
+      "bytes": 16384,
+      "source_sha256": "7c935f8f06c049ade12dc01e260d233725aa5357e65e0fc099c0584a7725de79",
+      "original_bytes_sha256": "6bff8de0fd003b36c8219c42b574d9cd40f47fe9afc0f855fc19b3a6db3b543e",
+      "rom_offset": 2408448,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 148,
+      "source": "src/banks/bank_148.asm",
+      "bytes": 16384,
+      "source_sha256": "373eafef9a477ba6054e67a5c98e087674e638cc523525ce7de9632e3ee5254c",
+      "original_bytes_sha256": "16de08d5cfb9477c626e5720869bc19c5e5d54dbc7ca945288163348e1b80806",
+      "rom_offset": 2424832,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 149,
+      "source": "src/banks/bank_149.asm",
+      "bytes": 16384,
+      "source_sha256": "44bcecd0ca357bee78507c62ba6fc7164e6334002fc7a1ca3cf8b0e0ab2699b5",
+      "original_bytes_sha256": "f2a2966b0a62d13333559fc1bc63105e2f6ec087b4139f2fc0c1886d4d5ff7db",
+      "rom_offset": 2441216,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 150,
+      "source": "src/banks/bank_150.asm",
+      "bytes": 16384,
+      "source_sha256": "25100f496f09977c4a1c8a61fb61ef0257a2c804b1b14d6bf9c0e9c0d462b471",
+      "original_bytes_sha256": "39e9ca886e45ecaf56cc31211d9c4e2b8fda54a43cfdf385e339cd3ab6d9513e",
+      "rom_offset": 2457600,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 151,
+      "source": "src/banks/bank_151.asm",
+      "bytes": 16384,
+      "source_sha256": "f843a0a4e9ceaf36f604b96d5b2c30e862665066f8638b0e0f7d9190e9f28703",
+      "original_bytes_sha256": "6aebb3cd15ecebcd0230cffea1a7f11609380fafcdfd0266dafdd37ac74a2a45",
+      "rom_offset": 2473984,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 152,
+      "source": "src/banks/bank_152.asm",
+      "bytes": 16384,
+      "source_sha256": "6844ab0df4511f509863ab0535e117fae3515409e6c046fc615a99d7226520d9",
+      "original_bytes_sha256": "eb7f09e009ba8f6039ecdd7e6e69e9b74d478a37c01607e7aef1836c704bd32d",
+      "rom_offset": 2490368,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 153,
+      "source": "src/banks/bank_153.asm",
+      "bytes": 16384,
+      "source_sha256": "a93f6a83c3b60985b18f2c2f70dc7cf589d0134c7a5156cdb433977c64109e55",
+      "original_bytes_sha256": "e7c01b5f9249e4bf2652bf2bd675ff6b7b82cf3f7fafcad1a7c7f1db891fa252",
+      "rom_offset": 2506752,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 154,
+      "source": "src/banks/bank_154.asm",
+      "bytes": 16384,
+      "source_sha256": "7a9cb60cdd5a15dd30d2a2e8d8e51d72f2a4b965a4eff62e1f6b5ff5af3b8205",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2523136,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 155,
+      "source": "src/banks/bank_155.asm",
+      "bytes": 16384,
+      "source_sha256": "f5456e5182d874970d62d6e11cd049729af3ac0568a93b5e7a2b201552a66958",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2539520,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 156,
+      "source": "src/banks/bank_156.asm",
+      "bytes": 16384,
+      "source_sha256": "78a74a56a048c6a4a97d3947a60431473c4245cc380e75b497f09ce4e3fc282d",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2555904,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 157,
+      "source": "src/banks/bank_157.asm",
+      "bytes": 16384,
+      "source_sha256": "c0104aafd065c99dc30b6c72db806b30de5620999a52ccf87369b50810e12e87",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2572288,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 158,
+      "source": "src/banks/bank_158.asm",
+      "bytes": 16384,
+      "source_sha256": "72a6899025dcf1307e5801949d10dbf3d7484e337e3b3806df6c005c6f171748",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2588672,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 159,
+      "source": "src/banks/bank_159.asm",
+      "bytes": 16384,
+      "source_sha256": "f40c0da32aec74f0cf913320250bd53f2223d4668a1392f1cdff84fb5f17c49a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2605056,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 160,
+      "source": "src/banks/bank_160.asm",
+      "bytes": 16384,
+      "source_sha256": "0e523ae4a1f7a2dbf23fb75aed9da667a5265a0b4b6419fb1dea9c5449870114",
+      "original_bytes_sha256": "2d9a66a4614415bea71d43be23061cac310a6dc0e4ae9dd6f64d2956be4b4045",
+      "rom_offset": 2621440,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 161,
+      "source": "src/banks/bank_161.asm",
+      "bytes": 16384,
+      "source_sha256": "6c0e67fda5d98e44a3b3fdb12d54e246cd1bd7371416ea512a23812ca75bc7ec",
+      "original_bytes_sha256": "0432282a57b8c55c1ccf02c9cb0ae0499809032cd54c9a3bb2050fdb373c6023",
+      "rom_offset": 2637824,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 162,
+      "source": "src/banks/bank_162.asm",
+      "bytes": 16384,
+      "source_sha256": "0210601d63d08f60796293e4cee21dd3450ea876e88252930d0b40ed94e395c6",
+      "original_bytes_sha256": "c5a3b877c7e80a0974cc3c2b1e70023e317462595d930709cb3053e526d799aa",
+      "rom_offset": 2654208,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 163,
+      "source": "src/banks/bank_163.asm",
+      "bytes": 16384,
+      "source_sha256": "9ada8e6071c292dbb07489106a1265cd1d9c2dff70a8b05cf49320ac6f6f9855",
+      "original_bytes_sha256": "ee1146c0fc7dca438f513ae2878de396c7078d86b7f98bcb3960b1bff4e1bc73",
+      "rom_offset": 2670592,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 164,
+      "source": "src/banks/bank_164.asm",
+      "bytes": 16384,
+      "source_sha256": "a84eb1ae9d6fc2785180794ea0b7a4ad5611af69a0c087f1bc384ebcadc59623",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2686976,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 165,
+      "source": "src/banks/bank_165.asm",
+      "bytes": 16384,
+      "source_sha256": "2c30934a749f8d35d2e2da8c7cafc3075f1d939f6fa7d6e2df62d0a0a7698397",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2703360,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 166,
+      "source": "src/banks/bank_166.asm",
+      "bytes": 16384,
+      "source_sha256": "53b408f2253e2982e80764b973aebd4997d8c26e1f5c467f1def231653c3ad67",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2719744,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 167,
+      "source": "src/banks/bank_167.asm",
+      "bytes": 16384,
+      "source_sha256": "639f92c6a3678bca86679bd15761e3f8917b3daf8ead86c8e74165fc1b622a20",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2736128,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 168,
+      "source": "src/banks/bank_168.asm",
+      "bytes": 16384,
+      "source_sha256": "b4625a3887502d93df802759af78f353f231bbbb8444d3dd3138d636f4bda5a9",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2752512,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 169,
+      "source": "src/banks/bank_169.asm",
+      "bytes": 16384,
+      "source_sha256": "320d42cc4412d2b869a872e76b94f1eb35ca6eaed187215a5d8ce92e09c48432",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2768896,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 170,
+      "source": "src/banks/bank_170.asm",
+      "bytes": 16384,
+      "source_sha256": "7851b6b422494c484648f0aa80fdc3ce2590e96f3e1656a08b33975bd3ebb10f",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2785280,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 171,
+      "source": "src/banks/bank_171.asm",
+      "bytes": 16384,
+      "source_sha256": "5ca413a2ded62023deb333f8260f5eb7e767eb7cd2f305d952fb21b0a4b3fbcc",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2801664,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 172,
+      "source": "src/banks/bank_172.asm",
+      "bytes": 16384,
+      "source_sha256": "d06984b758fa0ae46706c5a303fc23a0e801f45174b8f31c5e7cfe6f207ee542",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2818048,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 173,
+      "source": "src/banks/bank_173.asm",
+      "bytes": 16384,
+      "source_sha256": "ebc08fd80d90f87585eaead200712a521525ca30663875b5d0b1942d362a64ba",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2834432,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 174,
+      "source": "src/banks/bank_174.asm",
+      "bytes": 16384,
+      "source_sha256": "aecefa2620d6ab5ca417a17c49e22779e450cb1b461cc661d24df2ce35a5ba49",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2850816,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 175,
+      "source": "src/banks/bank_175.asm",
+      "bytes": 16384,
+      "source_sha256": "60d9b10e0e9da07287c21ba23845241c40002c71da63a4627658b781592cfa21",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2867200,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 176,
+      "source": "src/banks/bank_176.asm",
+      "bytes": 16384,
+      "source_sha256": "d64930ff9c33636db5fec65ed20aa560b412c42e4b533944bae925cc934e4b2c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2883584,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 177,
+      "source": "src/banks/bank_177.asm",
+      "bytes": 16384,
+      "source_sha256": "da9cd3aca7de05d3371137108cea8ec5988bf54dfa717a4002ffd420be99b299",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2899968,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 178,
+      "source": "src/banks/bank_178.asm",
+      "bytes": 16384,
+      "source_sha256": "46db2e18922b2c971181623fe5ac79f3c53e78ae24d8470beed100a76a0a0d5c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2916352,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 179,
+      "source": "src/banks/bank_179.asm",
+      "bytes": 16384,
+      "source_sha256": "f42138ca5c6596dd5d9475e1d3ddb302c72aa1ef270d1abedf4d706d3541a8c3",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2932736,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 180,
+      "source": "src/banks/bank_180.asm",
+      "bytes": 16384,
+      "source_sha256": "e77dab2a48a5ed0b628b13f236d90be165b96f50e7ade5dd88bb29db8480c781",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2949120,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 181,
+      "source": "src/banks/bank_181.asm",
+      "bytes": 16384,
+      "source_sha256": "c04a94aff13732a32749bfb489faa49478192c4fbe899163dce4799ae59e717e",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2965504,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 182,
+      "source": "src/banks/bank_182.asm",
+      "bytes": 16384,
+      "source_sha256": "eb05496c563a6596709c28fb2d578180ff211539c861e829d8a167059f5a8f01",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2981888,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 183,
+      "source": "src/banks/bank_183.asm",
+      "bytes": 16384,
+      "source_sha256": "3b0361c5afa2b8bf7b8afdfd99ee8ba84cdd7bbb7f7005d530541eb026343d6c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 2998272,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 184,
+      "source": "src/banks/bank_184.asm",
+      "bytes": 16384,
+      "source_sha256": "78d1cb373377d4f53ae8c6d3b51dbeff3992effcc7795009211b30702a46c1a7",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3014656,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 185,
+      "source": "src/banks/bank_185.asm",
+      "bytes": 16384,
+      "source_sha256": "5049061eac6aaccee01cdeaf954793850ea86272bd7055f60686a4ffcb633852",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3031040,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 186,
+      "source": "src/banks/bank_186.asm",
+      "bytes": 16384,
+      "source_sha256": "f28453544f6c68d14f9631c48234b39fdeb0ed64b65720543138624c62988d87",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3047424,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 187,
+      "source": "src/banks/bank_187.asm",
+      "bytes": 16384,
+      "source_sha256": "40b8e7d9d35cdfd0a5ae9c1996a6022d0e43236f2e2421b24d5ba68257ff5c2c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3063808,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 188,
+      "source": "src/banks/bank_188.asm",
+      "bytes": 16384,
+      "source_sha256": "bc8ceee3da2f44e2915d4c75e7e781385cc497f0f00a34ddcc2af98a1e06cd0e",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3080192,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 189,
+      "source": "src/banks/bank_189.asm",
+      "bytes": 16384,
+      "source_sha256": "8ba6ec200094e7a54a3d3638125ac4f35d1e6d46ff1751134b633dc0de27502b",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3096576,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 190,
+      "source": "src/banks/bank_190.asm",
+      "bytes": 16384,
+      "source_sha256": "0cd6c3e9cde48957e77e54649338ea9e6a186525491168548d11c19bc4ec320e",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3112960,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 191,
+      "source": "src/banks/bank_191.asm",
+      "bytes": 16384,
+      "source_sha256": "63fd640bdc362dcfbdc21890449c7b07eac68800b6e99c3e8d0e7c1d7f658bbd",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3129344,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 192,
+      "source": "src/banks/bank_192.asm",
+      "bytes": 16384,
+      "source_sha256": "3a7631ded41c4fd03432c717728314cba58f93e23b4c65c3967417b413b62d31",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3145728,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 193,
+      "source": "src/banks/bank_193.asm",
+      "bytes": 16384,
+      "source_sha256": "370ff2980ec3f30aacb3ffd480d6ccf34871426733d0c42e8944a0fa6fd6c219",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3162112,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 194,
+      "source": "src/banks/bank_194.asm",
+      "bytes": 16384,
+      "source_sha256": "b98559b1c959326434b104315e1b1f905135eea2347c9d7f382884939cc5cb3a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3178496,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 195,
+      "source": "src/banks/bank_195.asm",
+      "bytes": 16384,
+      "source_sha256": "d6008d1431c2f25bc365ec8352718d61f1701d31aff1685e20e56cf28f1d319f",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3194880,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 196,
+      "source": "src/banks/bank_196.asm",
+      "bytes": 16384,
+      "source_sha256": "85a9f7d1b5078044287d19817318622f7db0344a35a3e29f9e2febb89e4d8ca6",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3211264,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 197,
+      "source": "src/banks/bank_197.asm",
+      "bytes": 16384,
+      "source_sha256": "7a22888589fb7e06965eb7c3a22a4e6782c0e92bcc3e498c93999bcd10c9cd0b",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3227648,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 198,
+      "source": "src/banks/bank_198.asm",
+      "bytes": 16384,
+      "source_sha256": "b39aa355851053bada095929fd950b9c3ade77782281eff1959b6a41314625b7",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3244032,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 199,
+      "source": "src/banks/bank_199.asm",
+      "bytes": 16384,
+      "source_sha256": "15ab4a759ec3c9fafd4455e92e885c4453ae1546feb44efeed272ef05af353ba",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3260416,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 200,
+      "source": "src/banks/bank_200.asm",
+      "bytes": 16384,
+      "source_sha256": "91de8cd87939ce9f2ae290915b0ebad012eacc14dd00d4056f9d549209de8856",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3276800,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 201,
+      "source": "src/banks/bank_201.asm",
+      "bytes": 16384,
+      "source_sha256": "564c28ca354b37b2d81a0b2c7611d1a9189683cd28616d4d3958ffe47e163a11",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3293184,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 202,
+      "source": "src/banks/bank_202.asm",
+      "bytes": 16384,
+      "source_sha256": "dae16afec901951e8ce1ffe7bfc09f1942957e4ca7b2ef9ddc06d1e466d7cfcc",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3309568,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 203,
+      "source": "src/banks/bank_203.asm",
+      "bytes": 16384,
+      "source_sha256": "c92f076609626e73566013073b16e68ff8a41844f07e71d6f9635a6da597e692",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3325952,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 204,
+      "source": "src/banks/bank_204.asm",
+      "bytes": 16384,
+      "source_sha256": "d604e82e1b2f72a557afc8bfd08282a93be7b1db0ada8389537f0b51711faa67",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3342336,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 205,
+      "source": "src/banks/bank_205.asm",
+      "bytes": 16384,
+      "source_sha256": "a50799690925f89c3596e749449f8af07a99ae4ac1210e394427fe39aee1d7b7",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3358720,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 206,
+      "source": "src/banks/bank_206.asm",
+      "bytes": 16384,
+      "source_sha256": "933123270282cf1af908a618989af612c2faddf446189d7eb33fbf15754669cc",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3375104,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 207,
+      "source": "src/banks/bank_207.asm",
+      "bytes": 16384,
+      "source_sha256": "da78aab7745169aa0c4d292f62135e8f29da46bb8ae94a1886aae0cd3db1888a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3391488,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 208,
+      "source": "src/banks/bank_208.asm",
+      "bytes": 16384,
+      "source_sha256": "821b07dffbae07d8cece9fad3d53c37b018a2db109670dc089cde143f54c50d4",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3407872,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 209,
+      "source": "src/banks/bank_209.asm",
+      "bytes": 16384,
+      "source_sha256": "a539c42e89fb89d076e72b73e14eb7f7a5c06f71c04d507c00a5a755dcec7ae0",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3424256,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 210,
+      "source": "src/banks/bank_210.asm",
+      "bytes": 16384,
+      "source_sha256": "1a5be1a60a0cf16ed4ef0e0233a419e2e2cef874afad496549f7da9142d42cb7",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3440640,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 211,
+      "source": "src/banks/bank_211.asm",
+      "bytes": 16384,
+      "source_sha256": "86d4c4d3dc4b6ba8354ff5f83595ac2d635abaf3bce9c4cc68d1402381e5dbb9",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3457024,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 212,
+      "source": "src/banks/bank_212.asm",
+      "bytes": 16384,
+      "source_sha256": "e32d1899142ca2e939266cc8a867378589e5b4b18567a5c6533a4905b7e6f042",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3473408,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 213,
+      "source": "src/banks/bank_213.asm",
+      "bytes": 16384,
+      "source_sha256": "f6faf09930b95c317e7c1acdbe1beb2fe5a28a49ed93ecc190b682ab8731371d",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3489792,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 214,
+      "source": "src/banks/bank_214.asm",
+      "bytes": 16384,
+      "source_sha256": "470c19a6b629bfd80a3b6b3784138e168df19b32d500868cfd96330d7d0eafe4",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3506176,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 215,
+      "source": "src/banks/bank_215.asm",
+      "bytes": 16384,
+      "source_sha256": "44bd2b71f63651a07b4b1ff0f9345a3402c15e86c13d39578aed8cfa20d771aa",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3522560,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 216,
+      "source": "src/banks/bank_216.asm",
+      "bytes": 16384,
+      "source_sha256": "0d81966b392667ff3774efc43b349263fdfc1a0e01493c0df09443dde693aa1a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3538944,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 217,
+      "source": "src/banks/bank_217.asm",
+      "bytes": 16384,
+      "source_sha256": "f3cfc448f8dc4622cbf7fc2c30654dcd3a90fe615596f89be911e5633b2bdc8c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3555328,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 218,
+      "source": "src/banks/bank_218.asm",
+      "bytes": 16384,
+      "source_sha256": "ac9b427f12687fa8f2f8fa97e255c03716e29ddf7659a9a5ddb9d7c554c109fd",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3571712,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 219,
+      "source": "src/banks/bank_219.asm",
+      "bytes": 16384,
+      "source_sha256": "a263538fb1115b48808aa7cb1ad70c18d4c6e2295a1e534b616439de51b411a4",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3588096,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 220,
+      "source": "src/banks/bank_220.asm",
+      "bytes": 16384,
+      "source_sha256": "4c7ff8b2863d87a6d57e8d4337e7a9654a74a53ffbac1b5f2a808bb7d9678c45",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3604480,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 221,
+      "source": "src/banks/bank_221.asm",
+      "bytes": 16384,
+      "source_sha256": "3f5d226cc7e09a29bca1c18e2c3eee794d3ff396ae8cdbdab53949ad3f28c77c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3620864,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 222,
+      "source": "src/banks/bank_222.asm",
+      "bytes": 16384,
+      "source_sha256": "b62b53727088fac121c4d6dd1a0b682fdd7c9cbb9a3032c9dbe8a335ffbeee79",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3637248,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 223,
+      "source": "src/banks/bank_223.asm",
+      "bytes": 16384,
+      "source_sha256": "df971fb565c3a608b903efef25f559946a6670f08501e4c1b7dc00db5d9a5e47",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3653632,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 224,
+      "source": "src/banks/bank_224.asm",
+      "bytes": 16384,
+      "source_sha256": "140bbee8f205aeed92b8fa98890ec46a1dcba426a0b44cbeacc50d7b60308f9e",
+      "original_bytes_sha256": "de2f44fae207b0d9ba8ab8bc8860396ff5dd07e56b8d289a8c32fe0ad93673a5",
+      "rom_offset": 3670016,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 225,
+      "source": "src/banks/bank_225.asm",
+      "bytes": 16384,
+      "source_sha256": "46e571ba728581dd6654dce10f2dbb49c2da6dd305722aeba616d1c10a835ef8",
+      "original_bytes_sha256": "4b5c6ff2a4e9367511a7588c10c94554520d511696d2c9be9b6fbc0d04e34422",
+      "rom_offset": 3686400,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 226,
+      "source": "src/banks/bank_226.asm",
+      "bytes": 16384,
+      "source_sha256": "4bb9f408972da21919757572b8b43ca332772dd48d53e592d61711a16541c822",
+      "original_bytes_sha256": "def9f235b59a57feb6af9a1c44275f3cb62a02c97337992b7a1268e44cb4a0b5",
+      "rom_offset": 3702784,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 227,
+      "source": "src/banks/bank_227.asm",
+      "bytes": 16384,
+      "source_sha256": "084dce6e7da4d86d8c7cef96f413fead5a8a70be598f8b26a9522ca393a7198f",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3719168,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 228,
+      "source": "src/banks/bank_228.asm",
+      "bytes": 16384,
+      "source_sha256": "4b0d730b1cadb2e03e5f3022e39dff8a562729c9dd67261c839b8208e117d561",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3735552,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 229,
+      "source": "src/banks/bank_229.asm",
+      "bytes": 16384,
+      "source_sha256": "c8963e04764d33dda065a688615a8313d56ab188684c1259195af598fd8b842a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3751936,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 230,
+      "source": "src/banks/bank_230.asm",
+      "bytes": 16384,
+      "source_sha256": "e8d154ed5753cc90b616317e9f62fd55a357aaf84fe9e6c1956fa1db912f575b",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3768320,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 231,
+      "source": "src/banks/bank_231.asm",
+      "bytes": 16384,
+      "source_sha256": "3c99302326fdd72bb1d282fa4a4e2c8babacdcb06337a680c13ce84ab2a6e805",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3784704,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 232,
+      "source": "src/banks/bank_232.asm",
+      "bytes": 16384,
+      "source_sha256": "94c2f106a7f3dff1d0b00db89ae19c376b5beae8fba2a20cbf969f98a4ee5b9c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3801088,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 233,
+      "source": "src/banks/bank_233.asm",
+      "bytes": 16384,
+      "source_sha256": "ab69fa2cfd0353e291e120e644d36fd7d41cc99b01c38fc5475e232b29b2585f",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3817472,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 234,
+      "source": "src/banks/bank_234.asm",
+      "bytes": 16384,
+      "source_sha256": "f9bc4df11b79e6099935ee9b7fb0c7f6268dbd9b5176b9beca91eb4808f1c5ea",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3833856,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 235,
+      "source": "src/banks/bank_235.asm",
+      "bytes": 16384,
+      "source_sha256": "a04b2083800c5213b6864ee6e5f7369f09ed5c04fe844dcd12a6179c09d09f54",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3850240,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 236,
+      "source": "src/banks/bank_236.asm",
+      "bytes": 16384,
+      "source_sha256": "57d2ea1295d8c98da0e41e0fd00437f48545aeb923de7aaff978e373446078b4",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3866624,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 237,
+      "source": "src/banks/bank_237.asm",
+      "bytes": 16384,
+      "source_sha256": "5f4f59a8ff519ffefdfc0f6858c094b5075a457ae52a24bd6978e17f39d9e21c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3883008,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 238,
+      "source": "src/banks/bank_238.asm",
+      "bytes": 16384,
+      "source_sha256": "7a136d848c3664ebc2784d15c071169290a7ec6f1b9e7aeb245ed75a8a1fe75a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3899392,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 239,
+      "source": "src/banks/bank_239.asm",
+      "bytes": 16384,
+      "source_sha256": "aaba3e75f68120b03976c3484dd848942efa48aa4ea21dead25498361ff3804c",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3915776,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 240,
+      "source": "src/banks/bank_240.asm",
+      "bytes": 16384,
+      "source_sha256": "ebdfd33115dd7e57e50e65e0b742b4febd48f14be59de1b30d8bd98daf85c7fc",
+      "original_bytes_sha256": "055ae7e3a2ef2dec24a3bac05a7def71c0f11a6ba76154570f6956e904c9d076",
+      "rom_offset": 3932160,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 241,
+      "source": "src/banks/bank_241.asm",
+      "bytes": 16384,
+      "source_sha256": "9ca081ab03fe4fc5872ac1610c1ff188824717680f757d1a235794a2ddd4bd50",
+      "original_bytes_sha256": "1631b28ffdbf2e80755fd0b6e17e69f1d658203676b8c71bb5a1003d2b650f32",
+      "rom_offset": 3948544,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 242,
+      "source": "src/banks/bank_242.asm",
+      "bytes": 16384,
+      "source_sha256": "d834c32a92ba30833ba25681be1e5acaa862976e35a3a64906b0e8cf02d7cf5f",
+      "original_bytes_sha256": "b1ead339b4bb8212133e4c16425193cd7d48b251ecc1521e512df9e26cd44888",
+      "rom_offset": 3964928,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 243,
+      "source": "src/banks/bank_243.asm",
+      "bytes": 16384,
+      "source_sha256": "9af04b9dff53fd4e6be6c0dfee7b94c7b3f26b9897768562c38a71b704d68388",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3981312,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 244,
+      "source": "src/banks/bank_244.asm",
+      "bytes": 16384,
+      "source_sha256": "fa83a6204e0a7289f6429112fc29ca8cbe5205ce0a837e6ca9db64193905eb9a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 3997696,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 245,
+      "source": "src/banks/bank_245.asm",
+      "bytes": 16384,
+      "source_sha256": "e88ad9d1590613ed83cf0c8ced42cc78150e49aad21d5eb9ff34bc2c7143a350",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4014080,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 246,
+      "source": "src/banks/bank_246.asm",
+      "bytes": 16384,
+      "source_sha256": "12a688a3c26ef6d45bbe6275c489866eaa558451e1fcd053a942cbefe3f8e0ca",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4030464,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 247,
+      "source": "src/banks/bank_247.asm",
+      "bytes": 16384,
+      "source_sha256": "8485c487de8a7fa8cf17ac8c837660b5c29e84b822c96254d2ec104d0387a3b4",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4046848,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 248,
+      "source": "src/banks/bank_248.asm",
+      "bytes": 16384,
+      "source_sha256": "ed2f7067e0cf5326178befcb6112c251a02e90807df5b2fa08135b8748584176",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4063232,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 249,
+      "source": "src/banks/bank_249.asm",
+      "bytes": 16384,
+      "source_sha256": "8a9b31295826d41e21d9099efbda2a0d48d0b5324792f5ea3566da10a3020dd1",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4079616,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 250,
+      "source": "src/banks/bank_250.asm",
+      "bytes": 16384,
+      "source_sha256": "e91f4f378f16cad03c63e6e233df2a02822a221356297d8c018eb7c08c386513",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4096000,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 251,
+      "source": "src/banks/bank_251.asm",
+      "bytes": 16384,
+      "source_sha256": "25b25691f9ec8b120b43015b5ac0117bc867b37d483e3a24791bb8d7179f4524",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4112384,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 252,
+      "source": "src/banks/bank_252.asm",
+      "bytes": 16384,
+      "source_sha256": "9f4e4bd5b9bd740c109fd835d3544b69ac9837bd9a3f7a2e8047ab9c572c8895",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4128768,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 253,
+      "source": "src/banks/bank_253.asm",
+      "bytes": 16384,
+      "source_sha256": "2b446006825da4539a6c2fc2bc4f5ca1838fe78fe1cd061714fafcad5afeea5a",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4145152,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 254,
+      "source": "src/banks/bank_254.asm",
+      "bytes": 16384,
+      "source_sha256": "04461d7890c7ac4a4a8b7a4162d6e5281cff49c9e14f4d3b52f4cdce5c751e04",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4161536,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    },
+    {
+      "bank": 255,
+      "source": "src/banks/bank_255.asm",
+      "bytes": 16384,
+      "source_sha256": "2bfac6783e6adabef88ce0885c5defe029b11330dc097429adc0730ffe506066",
+      "original_bytes_sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "rom_offset": 4177920,
+      "cpu_window": [
+        "4000",
+        "7FFF"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "passed_reference_integrity",
+  "baseline_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "measured_source_commit": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "windows_reference_executable_sha256": "b1c141d5b3cbb9640ae0af8831e7d369560a3785097cc6834f1734417b2538b3",
+  "producer_route_counts": {
+    "windows-full-aot-b1c141d5b3cb": 38,
+    "linux-sparse-aot-a1e90298be1d": 0,
+    "linux-sparse-aot-847f0346cd01": 10,
+    "linux-sparse-aot-80c0abca093a": 10
+  },
+  "original_routes": 58,
+  "exact_audio_pins": 375,
+  "manifest_stages": 45,
+  "active_wrapper_route_tokens": 7,
+  "all_other_wrapper_bytes_preserved": true,
+  "non_audio_route_bytes_preserved": false,
+  "approved_raster_screen_reference_changes": 1,
+  "all_other_p1_state_save_screen_bytes_preserved": true,
+  "original_observation_non_audio_mismatches": 1,
+  "manifest_expectations_preserved": true,
+  "strict_native_replay_still_required": true,
+  "game_acceptance_claimed": false,
+  "ledger_sha256": "56a79bed49f675901c657e4969b173228a9fe05d1f86af905d5aac8686033f78"
+}

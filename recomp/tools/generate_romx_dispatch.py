@@ -44,6 +44,7 @@ def main() -> int:
 // AOT ROMX bank registry: {", ".join(map(str, banks))}
 
 #include "recomp/romx.hpp"
+#include "recomp/bank0.hpp"
 
 namespace dwm2t {{
 
@@ -52,6 +53,7 @@ namespace dwm2t {{
 StepResult execute_translated_romx(Cpu& cpu, Memory& memory) {{
     const std::uint16_t bank = memory.current_rom_bank();
     switch (bank) {{
+        case 0: return execute_bank0_romx_instruction(cpu, memory);
 {cases}
         default:
             cpu.missing_bank = bank;
@@ -61,6 +63,7 @@ StepResult execute_translated_romx(Cpu& cpu, Memory& memory) {{
 
 bool romx_bank_is_translated(std::uint16_t bank) {{
     switch (bank) {{
+        case 0: return true; // Physical Bank 0 also maps in the ROMX window.
 {membership}
         default: return false;
     }}

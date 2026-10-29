@@ -190,7 +190,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram eca0678401ac1819
 expect_screen a77ff18fe6cf7aa7
-expect_audio 10014546 8607583 32768 689a9b80ccebe86a
+expect_audio 10014546 8608704 32768 b48551f822ffca68
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -257,7 +257,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram eca0678401ac1819
 expect_screen a77ff18fe6cf7aa7
-expect_audio 10014546 8607583 32768 689a9b80ccebe86a
+expect_audio 10014546 8608704 32768 b48551f822ffca68
 D 80 0
 - 120 0
 D 64 0
@@ -665,7 +665,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 4d7d5fd08297e2c8
 expect_screen bc3f1c305631288f
-expect_audio 24445008 22320729 32768 d8b68aec5066056e
+expect_audio 24445008 22322176 32768 3ae3b04cab0e9794
 expect c5db 4
 expect c5dc 0
 expect c6fd 3
@@ -732,7 +732,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 4d7d5fd08297e2c8
 expect_screen bc3f1c305631288f
-expect_audio 24445008 22320729 32768 d8b68aec5066056e
+expect_audio 24445008 22322176 32768 3ae3b04cab0e9794
 - 9 0
 R 6 0
 - 24 0
@@ -1569,7 +1569,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 23d014ed873ae94e
 expect_screen b423319be6530b83
-expect_audio 43635910 40549649 32768 714342e560cee23e
+expect_audio 43635910 40551356 32768 c119d84865117908
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1636,7 +1636,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 23d014ed873ae94e
 expect_screen b423319be6530b83
-expect_audio 43635910 40549649 32768 714342e560cee23e
+expect_audio 43635910 40551356 32768 c119d84865117908
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1703,7 +1703,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 23d014ed873ae94e
 expect_screen b423319be6530b83
-expect_audio 43635910 40549649 32768 714342e560cee23e
+expect_audio 43635910 40551356 32768 c119d84865117908
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1770,7 +1770,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 23d014ed873ae94e
 expect_screen b423319be6530b83
-expect_audio 43635910 40549649 32768 714342e560cee23e
+expect_audio 43635910 40551356 32768 c119d84865117908
 - 181 0
 A 6 0
 - 180 0
@@ -1872,7 +1872,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 85d79af1387d84ab
 expect_screen 56c86cbd04d9e321
-expect_audio 44838496 41612737 32768 c97872d243b1b246
+expect_audio 44838496 41614618 32768 90f8d38e4e0bd2f8
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -1939,7 +1939,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 85d79af1387d84ab
 expect_screen 56c86cbd04d9e321
-expect_audio 44838496 41612737 32768 c97872d243b1b246
+expect_audio 44838496 41614618 32768 90f8d38e4e0bd2f8
 R 16 0
 - 24 0
 L 16 0
@@ -2254,7 +2254,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 5b49c81058051b4e
 expect_screen 97810ca67d1bc10b
-expect_audio 60018546 56331985 32768 5968a5e1f6850d5a
+expect_audio 60018546 56334602 32768 5925bf2b3fc6f82c
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -2321,7 +2321,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 5b49c81058051b4e
 expect_screen 97810ca67d1bc10b
-expect_audio 60018546 56331985 32768 5968a5e1f6850d5a
+expect_audio 60018546 56334602 32768 5925bf2b3fc6f82c
 D 32 0
 - 120 0
 R 96 0
@@ -2612,7 +2612,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 5b49c81058051b4e
 expect_screen 11c345ac2f4874de
-expect_audio 69609608 65675007 32768 3add1d8e20fd769e
+expect_audio 69609608 65677348 32768 c96cebb219b31798
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -2679,7 +2679,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 5b49c81058051b4e
 expect_screen 11c345ac2f4874de
-expect_audio 69609608 65675007 32768 3add1d8e20fd769e
+expect_audio 69609608 65677348 32768 c96cebb219b31798
 D 16 0
 - 24 0
 A 6 0
@@ -2780,7 +2780,7 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 586ab16a1a644149
 expect_screen 80317d371085663d
-expect_audio 71044812 67072461 32768 3bb4b5b35d4ba096
+expect_audio 71044812 67074942 32768 c8fe2efa4177f458
 expect c5db 1
 expect c5dc 0
 expect c6fd 3
@@ -2847,4 +2847,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram 586ab16a1a644149
 expect_screen 80317d371085663d
-expect_audio 71044812 67072461 32768 3bb4b5b35d4ba096
+expect_audio 71044812 67074942 32768 c8fe2efa4177f458

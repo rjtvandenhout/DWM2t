@@ -1,0 +1,202 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "kind": "original_vs_link_battle_and_fresh_journal_observation",
+  "platform": "Wine on Linux",
+  "source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "executable_sha256": "5f50797b3047978ed098b852a50aa7f63dd64fadae2ddeb5015f0621fd8a5b58",
+  "executable_bytes": 729611264,
+  "input_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "input_journal_bytes": 32768,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "ram_or_rng_patches": false,
+  "players": 2,
+  "serial_protocol_success_verified": true,
+  "completed_vs_match": true,
+  "rule": "Free Battle",
+  "turns": 4,
+  "winner_player": 1,
+  "loser_player": 2,
+  "prize_or_wager": false,
+  "prize_navigation": {
+    "prize_chooser_entered": true,
+    "prize_selected": false,
+    "prize_confirmed": false,
+    "cancelled_with_original_B": true,
+    "original_third_member_reselected": true,
+    "final_prompt_answer": "No"
+  },
+  "normal_linked_process_shutdown": true,
+  "linked_process_exit_code": 0,
+  "both_linked_windows_closed": true,
+  "both_native_save_locks_released": true,
+  "postmatch_menu_return_observed": true,
+  "controller_initial_ready_utc": "2026-10-26T17:06:32.509823+00:00",
+  "controller_normal_close_utc": "2026-10-26T17:30:34.526467+00:00",
+  "original_key_pulses": 66,
+  "raw_controller_report": {
+    "path": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/controller-session.json",
+    "sha256": "b069bcd991092e5f18462c936a3c36da22b46e60736eefd802ce90055b4aa4fd",
+    "note": "Raw controller always retains serial_protocol_success_verified=false; this separately source-bound observation assesses the witnessed complete original match. Its author_validation describes the earlier write-only stage; this session was executed under root authorization."
+  },
+  "original_route_source": {
+    "path": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/original-link-route-used.md",
+    "sha256": "a825fbb92e337072764520ccb8d684bd6de37fd513cec83a17b5c44c24de428d",
+    "handshake": "Original7:6CAB sends D3;7:6CB8..6CCC waits for receivedD3 before observed four-option rules menu",
+    "party_transfer": "Original27:6C61 transmits165byte genuine records plus ownername using original01/FE acknowledgements"
+  },
+  "postmatch_working_cache": {
+    "sha256": "2784b5ffdba670b3815e71c64817695be3e6a91b3f251d7944e80e13533e3368",
+    "changed_bytes": 2668,
+    "changed_offset_min": "0000",
+    "changed_offset_max": "1353",
+    "all_bytes_2000_through_7FFF_unchanged": true,
+    "quest107_identical": true,
+    "naive_live_roster_comparison_pass": false,
+    "naive_comparison_explanation": "Original title/menu cache is cleared; this is also the exact hash from root01 without a successful handshake or battle. No lost Journal is inferred from the unpopulated working cache.",
+    "root01_baseline_report": {
+      "path": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-01/controller-session.json",
+      "sha256": "fdf8d9f8e23d6ce8834a12ca8a7570afb682f5d222969c68df177506546c59e1"
+    },
+    "actual_postmatch_files_preserved": [
+      "fresh-continue/actual-postmatch-player1.sav",
+      "fresh-continue/actual-postmatch-player2.sav"
+    ]
+  },
+  "fresh_continue": {
+    "status": "passed",
+    "report": "/workspace/scratch/full-rom-2026-10-26/original-vs-link-02/fresh-continue/fresh-vs-persistence.json",
+    "sha256": "35904f9f06c6b5289c7f8bc512aff2c2663f91c9270ef43245c975da6153c737",
+    "seed_reset_performed": false,
+    "separate_actual_save_processes": 2,
+    "normal_shutdowns": 2,
+    "each_final_entire_32768_bytes_identical_to_original_seed": true,
+    "all17_owned_full165_byte_records_identical": true,
+    "quest107_identical": true,
+    "all_original_keys_items_money_party_and_quest_data_preserved_by_entire_file_identity": true,
+    "party": [
+      "Garon",
+      "Slash",
+      "Derzo"
+    ],
+    "hp": [
+      220,
+      180,
+      207
+    ],
+    "levels": [
+      40,
+      37,
+      40
+    ],
+    "gold": 11,
+    "ending_flag_preserved": true
+  },
+  "source_journal_unchanged": true,
+  "production_executable_unchanged": true,
+  "screenshots": [
+    {
+      "path": "p1-down4.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+      "observation": "Player1 originalVSrowselected"
+    },
+    {
+      "path": "p2-down4.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+      "observation": "Player2 originalVSrowselected"
+    },
+    {
+      "path": "p1-first-vs-confirm.bmp",
+      "sha256": "854e49ea6b2eea9d77ff50b694eaab5e27b5e7df204f29b833ab2671a1920648",
+      "observation": "Player1 after originalD3 handshake: four rules choices"
+    },
+    {
+      "path": "p2-after-first-vs-confirm.bmp",
+      "sha256": "854e49ea6b2eea9d77ff50b694eaab5e27b5e7df204f29b833ab2671a1920648",
+      "observation": "Player2 after originalD3 handshake: four rules choices"
+    },
+    {
+      "path": "p1-prize-default-no.bmp",
+      "sha256": "b30d2099151498c23c7fba38f89cdcc2f7cd0e77352eebc0df8f219f091e7f5a",
+      "observation": "Both teams selected; original prize prompt defaultNo"
+    },
+    {
+      "path": "p2-party-transfer-wait5.bmp",
+      "sha256": "11b4215b50b980465caf5b4a932009baef961c5342418bdf7e56637331eb8456",
+      "observation": "Original party exchange completed: Begin battle menu"
+    },
+    {
+      "path": "p1-battle-exchange-wait5.bmp",
+      "sha256": "bf92962af67cb4d72a575c24b15dd5824592134c75ba409de95a134acc327cdf",
+      "observation": "Player1 full linked battle UI, original full party"
+    },
+    {
+      "path": "p2-battle-exchange-wait5.bmp",
+      "sha256": "b9c071ebc6ed055bb00601a78581bd9e0b75b13dc0cc48cbf7fa1241935516a6",
+      "observation": "Player2 full linked battle UI, original full party"
+    },
+    {
+      "path": "p1-turn1-late.bmp",
+      "sha256": "772809713c5e4f163ed98215fba74971b69882a12de5339f4b936a937bc13282",
+      "observation": "Round1 actual damage/fainting; returned Fight menu"
+    },
+    {
+      "path": "p1-turn2-result.bmp",
+      "sha256": "95938e8915595e172d4ffcc949a8ad3672a6b8402999b9c3cea8c7c11ff21d98",
+      "observation": "Player1 Derzo transientH80"
+    },
+    {
+      "path": "p2-turn2-result.bmp",
+      "sha256": "50cbef77a4ecd24cd08a057353411c5e26612c797652cdf76579e5ed53add406",
+      "observation": "Player2 Derzo transientH88; distinct side observation"
+    },
+    {
+      "path": "p1-turn4-result.bmp",
+      "sha256": "3d50451483d56a52fb3b9a9488fd300b3ad82ef0da26c4c69b81d8ad28f18e69",
+      "observation": "WinnerPlayer1: enemy CobiA party wiped out, GaronH104 alive"
+    },
+    {
+      "path": "p2-turn4-result.bmp",
+      "sha256": "ef880456a78545c0360622dc5d1f890b168b534b88664ba27f12e1487d8988b8",
+      "observation": "LoserPlayer2: Your party was wiped out, all ownHP0"
+    },
+    {
+      "path": "p1-postmatch-01.bmp",
+      "sha256": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c",
+      "observation": "Player1 original saved-game menu after acknowledging result"
+    },
+    {
+      "path": "p2-postmatch-01.bmp",
+      "sha256": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c",
+      "observation": "Player2 original saved-game menu after acknowledging result"
+    },
+    {
+      "path": "fresh-continue/player1-fresh-field.bmp",
+      "sha256": "ad805a7e24bbf27a841537941e479e41dda292d74a9f8e0c8412c92d02d0c967",
+      "observation": "ActualPlayer1 postmatch save freshContinued to original ending field"
+    },
+    {
+      "path": "fresh-continue/player2-fresh-field.bmp",
+      "sha256": "ad805a7e24bbf27a841537941e479e41dda292d74a9f8e0c8412c92d02d0c967",
+      "observation": "ActualPlayer2 postmatch save freshContinued to original ending field"
+    },
+    {
+      "path": "fresh-continue/player1-fresh-menu.bmp",
+      "sha256": "25c660c1553c69a6f4eb0e54f592335f78c1148f443803bcf178473b3e0fab0a",
+      "observation": "Player1 restored Garon/Slash/Derzo fullHP220/180/207 and11G"
+    },
+    {
+      "path": "fresh-continue/player2-fresh-menu.bmp",
+      "sha256": "25c660c1553c69a6f4eb0e54f592335f78c1148f443803bcf178473b3e0fab0a",
+      "observation": "Player2 restored Garon/Slash/Derzo fullHP220/180/207 and11G"
+    }
+  ],
+  "limits": [
+    "One local same-Cobi-version Free Battle with cloned genuine ending Journals; not all linked operations or all optional game content",
+    "Original outcome and preservation were observed in the actual Windows production executable under Wine, not a native Windows original-battle run",
+    "No prize or monster wager and no original Journal operation was used during this VS probe",
+    "Physical audio quality was not measured; Wine had no playback endpoint",
+    "No Tara-ROM, counterpart-version, network or physical-console link was tested"
+  ]
+}

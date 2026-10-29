@@ -225,7 +225,7 @@ expect d8c1 23
 expect d8c3 1e
 expect d8c7 dc
 expect d8c8 0
-expect_audio 17160508 15186209 32768 3e7ef3e87af0f1fe
+expect_audio 17160510 15185948 32768 727492b89ee0a8a8
 A 6 0
 - 120 0
 A 2 0
@@ -499,7 +499,7 @@ expect d8c1 23
 expect d8c3 7
 expect d8c7 0
 expect d8c8 0
-expect_audio 21908310 19819005 32768 e1d66c50cd09358e
+expect_audio 21908310 19818588 32768 c24ad1c641899ab8
 - 23 0
 A 2 0
 - 30 0
@@ -843,4 +843,4 @@ expect cc0d 0
 expect cc0e 0
 expect_sram dd87953eae7f0643
 expect_screen ef1c684e3b7c39db
-expect_audio 33781652 29596905 32768 1a5c1d118fa6663e
+expect_audio 33781652 29596330 32768 aaf1baaf727cf4cc

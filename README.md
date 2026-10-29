@@ -28,15 +28,18 @@ That means the repository can already be edited, rebuilt and regression-tested w
 
 ## Native Windows player
 
-The native Windows x64 recompilation has completed M8: all 256 ROM banks are
-statically translated, and the original main story, complete credits, THE END,
-ending Save and Continue pass native validation. The final package passes all
-18 original native tests with zero skips and 21 actual launcher checks.
+The native Windows x64 player statically translates all 256 Cobi ROM banks.
+The recorded main campaign, seven postgame checkpoints and final package checks
+pass on the [successful validation run](https://github.com/rjtvandenhout/DWM2t/actions/runs/40821196055).
 
-See the [native overview](recomp/README.md), [M8 completion record](recomp/milestones/M8_RESULT.md)
-and [playthrough report with screenshots](recomp/handoff/M8_PROGRESS_2026-10-25.md).
-`main` holds the current finished game; accepted M0–M8 snapshots remain in the
-[immutable milestone branches](recomp/RESTORE_POINTS.md).
+[Download the player and genuine ending save](https://github.com/rjtvandenhout/DWM2t/actions/runs/40821196055/artifacts/12875666985),
+then extract the Actions download and the player ZIP inside it. Start `Play.cmd`
+or `DWM2tRecomp.exe` in the extracted `DWM2t-M8` folder. The
+[current result and playing guide](recomp/handoff/FULL_ROM_RESULT_2026-10-29.md)
+contains hashes, save import instructions, screenshots and coverage limits.
+
+The historical [M8 completion record](recomp/milestones/M8_RESULT.md) and
+[immutable M0–M8 milestone branches](recomp/RESTORE_POINTS.md) remain available.
 
 ## What “decompilation” means here
 

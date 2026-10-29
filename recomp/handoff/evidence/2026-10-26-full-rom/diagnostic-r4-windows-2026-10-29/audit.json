@@ -1,0 +1,393 @@
+{
+  "run_id": 40806942912,
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "fixed_bank": 0,
+  "romx_banks": 255,
+  "verified_artifacts": {
+    "audit-diagnostic": {
+      "artifact_id": 12872168462,
+      "artifact_name": "M8-fresh-diagnostic-40806942912",
+      "outer_zip_bytes": 143911357,
+      "outer_zip_sha256": "70952237440d5fca263c36f298f525b539d3fbfc5617f8de2d326e31d66e8d95"
+    },
+    "audit-story": {
+      "artifact_id": 12872502085,
+      "artifact_name": "M8-fresh-story-40806942912",
+      "outer_zip_bytes": 2626163,
+      "outer_zip_sha256": "e8a0031e927aa46b873c5bb37193e65a7677dc23e0a3efc599c5af0183144d30"
+    },
+    "audit-postgame": {
+      "artifact_id": 12872298001,
+      "artifact_name": "M8-fresh-postgame-40806942912",
+      "outer_zip_bytes": 499785,
+      "outer_zip_sha256": "d85df805babc635a55928165be60e468b1c5f1a9683ad1ff5d60debcf7bf4630"
+    }
+  },
+  "source_archive_sha256": "74b9a2573533d36fb0dcff527323c3271f3f1d8b418ede0b4bceb42b7eed6f82",
+  "source_manifest_members": 869,
+  "diagnostic_exe_sha256": "61a0e6d3ff84b5322b101247fc93ff6889f123a1bcd94df663135757fb3b9855",
+  "junit_sha256": "400e5b1342be495e0d50127f4bfc08dc7a4f06f0be44c1dd4cfcfd338f6413ea",
+  "native_tests": 18,
+  "native_failures": 0,
+  "native_skipped": 0,
+  "test_names": [
+    "M1_decoder",
+    "M2_bank0_audit",
+    "M4_renderer",
+    "M5_title",
+    "M6_movement",
+    "M6_sram",
+    "M6_window",
+    "M7_audio",
+    "M7_intro_p1",
+    "M7_party_p1",
+    "M7_battle",
+    "M7_save_continue",
+    "M8_trace_contract",
+    "M8_audio_selection",
+    "M8_audio_presentation",
+    "M8_audio_playback",
+    "M8_audio_stream",
+    "M8_oasis_checkpoint"
+  ],
+  "diagnostic_parent_links": 6,
+  "seed_bundle_sha256": {
+    "story-seed-journals.tar.xz": "475418e5574e2bca7c4088e92cdc9cac0239a929a30a8f39414a8cd45e1bd535",
+    "postgame-seed-journals.tar.xz": "8240d1e4b7b1a698a248407f0b7900530283856064e7ac1ef942fa47a273f6df"
+  },
+  "story": {
+    "report_sha256": "00de2e2504058df3b47a1d610ab76fd4a64ac4dae77576fbf2606a449c43b65e",
+    "initial_sha256": "eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03",
+    "stage_count": 38,
+    "parent_links": [
+      {
+        "stage": "hood-tales",
+        "parent": "initial",
+        "seed_sha256": "eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03",
+        "output_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
+        "route_sha256": "bcec373e2cc8434197e0d87a6073feffd5f7cd4dbc965d5550df62d8d2314c9c"
+      },
+      {
+        "stage": "mermaid-palace",
+        "parent": "initial",
+        "seed_sha256": "eea6fd3aa19fc34f3bef52ea38af5e1e8fc7f19c0e0bb28e8460fc4d44225a03",
+        "output_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+        "route_sha256": "10091514964d09a5a7629bcfcaa244652c2a46a4fe95ea88a558a609a6fac84f"
+      },
+      {
+        "stage": "strong-party",
+        "parent": "mermaid-palace",
+        "seed_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+        "output_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+        "route_sha256": "45e41ec0d18fa4b67ff2e96d28b413f505de7fa9f30ecbf923790ac135587f4f"
+      },
+      {
+        "stage": "captain-preparation",
+        "parent": "mermaid-palace",
+        "seed_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+        "output_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+        "route_sha256": "419544992221361ddef0e3be80f210eaf50c0b340a264bd02729e4ff47bffd57"
+      },
+      {
+        "stage": "moonrock",
+        "parent": "captain-preparation",
+        "seed_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+        "output_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+        "route_sha256": "1b531c769ce96365569a128588d09d2ff489dbd80ca503ef1aca71b1084a6930"
+      },
+      {
+        "stage": "lighthouse-recovery",
+        "parent": "captain-preparation",
+        "seed_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+        "output_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+        "route_sha256": "430772738fa7070345667dff0c89c74bf73e7644ad7f6d1fd54482309a0975cd"
+      },
+      {
+        "stage": "sea-treasure",
+        "parent": "lighthouse-recovery",
+        "seed_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+        "output_sha256": "046ef944cc794c4f8272cb306f82f7cefa44b3dd53908de7bc6267ec7a779074",
+        "route_sha256": "a9308bdeb55f136986380b2cbbd4a23b7e5b9e4ad4596653dcab3772a7f8db66"
+      },
+      {
+        "stage": "octokid-birth",
+        "parent": "lighthouse-recovery",
+        "seed_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+        "output_sha256": "e1151817365e74414719f21e274f137150bbe5e3d54c3c8f63b823dadc184ce7",
+        "route_sha256": "910c6a3237f68dac5f25c0a85193159e45a4a3d890ce93031032da2e8653618f"
+      },
+      {
+        "stage": "octokid-training",
+        "parent": "octokid-birth",
+        "seed_sha256": "e1151817365e74414719f21e274f137150bbe5e3d54c3c8f63b823dadc184ce7",
+        "output_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+        "route_sha256": "7c28fa7fcb137a85f8a8119bb93bf2a21a855809d66bf559434778135fea98ea"
+      },
+      {
+        "stage": "c-class-victory",
+        "parent": "octokid-training",
+        "seed_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+        "output_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+        "route_sha256": "21d7013b901b7b50e60e8d1c845ad6b7e85478e8308d70c5a7a39563a3741cd8"
+      },
+      {
+        "stage": "madgopher-ready",
+        "parent": "c-class-victory",
+        "seed_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+        "output_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+        "route_sha256": "07f7b592e0f55c935ece2f18390a922f8e1e0edd5eca9ddfdc7c9bbc8d16ec3b"
+      },
+      {
+        "stage": "ice-key",
+        "parent": "madgopher-ready",
+        "seed_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+        "output_sha256": "1b41e7df21a346ddb2cf21f2906e345d30c5b5f1ca8269581be31835f6afc108",
+        "route_sha256": "083c324824510ba26acb13f91ed67208ae806748c92434fc41fb2c91f4175875"
+      },
+      {
+        "stage": "ice-world-entry",
+        "parent": "madgopher-ready",
+        "seed_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+        "output_sha256": "e28221938470fd287f3ec4952e7b3336282feeb344169c7fdc0a20a241caebe3",
+        "route_sha256": "7b241595320483736cde1695ce8be64decd273bd99503685ca9e4c557b2b6c4b"
+      },
+      {
+        "stage": "ice-training",
+        "parent": "ice-world-entry",
+        "seed_sha256": "e28221938470fd287f3ec4952e7b3336282feeb344169c7fdc0a20a241caebe3",
+        "output_sha256": "d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1",
+        "route_sha256": "c3408a37b22aba9c292ad7c0f5ee147fb49a50141c0ffcd9c1716b2fa2bf4596"
+      },
+      {
+        "stage": "ice-crest",
+        "parent": "ice-training",
+        "seed_sha256": "d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1",
+        "output_sha256": "c20f93ffdc1a7a282cc5903d36ae56bd0838df89daaece1088e169e0e143bec1",
+        "route_sha256": "2fc2b05603fa6dcc51092e31851a955e77c89066b654441e5f8101e4922ca0e1"
+      },
+      {
+        "stage": "bombcrag-jail-escape",
+        "parent": "ice-crest",
+        "seed_sha256": "c20f93ffdc1a7a282cc5903d36ae56bd0838df89daaece1088e169e0e143bec1",
+        "output_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+        "route_sha256": "42a2b6ff4dcb9fbd0782805e60c2f807adcbda07fa9773ce096e29a50d0200df"
+      },
+      {
+        "stage": "norden-restored",
+        "parent": "bombcrag-jail-escape",
+        "seed_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+        "output_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+        "route_sha256": "ec3f0a8212fd2c68a1aa4cba1d0001c7a2e958824ffd3b775b58f4dafba0d2b3"
+      },
+      {
+        "stage": "westania-performance",
+        "parent": "norden-restored",
+        "seed_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+        "output_sha256": "7324097161189f30ada19a2577750b36b98bafe14a7e67bebf5d87566bff0f8c",
+        "route_sha256": "4c654ffa2fa04b5105b930676d88ca5801068fbcee1ca0da1235a3134e42df4d"
+      },
+      {
+        "stage": "yuna-restored",
+        "parent": "westania-performance",
+        "seed_sha256": "7324097161189f30ada19a2577750b36b98bafe14a7e67bebf5d87566bff0f8c",
+        "output_sha256": "c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a",
+        "route_sha256": "d2dff440750e1ae684b0d708714b2c30a32e6598550954201a31d430f22e1b7b"
+      },
+      {
+        "stage": "helen-restored",
+        "parent": "yuna-restored",
+        "seed_sha256": "c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a",
+        "output_sha256": "bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7",
+        "route_sha256": "9f3c9ee81340909e0ee744885550be62a3067b3c77dd97b4a773350275988e38"
+      },
+      {
+        "stage": "raygigas-birth",
+        "parent": "helen-restored",
+        "seed_sha256": "bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7",
+        "output_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+        "route_sha256": "ba3bdf443e119a49d5f052e317c73144bf5ac3a0bfe78151e372a1302ffc9665"
+      },
+      {
+        "stage": "derzo-training",
+        "parent": "raygigas-birth",
+        "seed_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+        "output_sha256": "62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24",
+        "route_sha256": "6b993c973fcb6bfbacf9bec940912253e1b382da237fd549b3f30eca1b7333e6"
+      },
+      {
+        "stage": "sky-shield",
+        "parent": "derzo-training",
+        "seed_sha256": "62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24",
+        "output_sha256": "8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3",
+        "route_sha256": "1bd4ca2cceafd4ce9dfe9aad68ce02c488d0a541caab9ef84cf1e999d238682b"
+      },
+      {
+        "stage": "sky-key",
+        "parent": "sky-shield",
+        "seed_sha256": "8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3",
+        "output_sha256": "48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f",
+        "route_sha256": "03f75b4a794595dc118fe16e480678b0575d29335aa47277b2d4f08ef55cffd7"
+      },
+      {
+        "stage": "change-staff",
+        "parent": "sky-key",
+        "seed_sha256": "48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f",
+        "output_sha256": "dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626",
+        "route_sha256": "3c8ed937ce6b67efcedb66bb71da681f01be8e284e4f3d2e06e51974400aff0b"
+      },
+      {
+        "stage": "pei-inn",
+        "parent": "change-staff",
+        "seed_sha256": "dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626",
+        "output_sha256": "fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736",
+        "route_sha256": "81fab8423866581816a087eb32ffbfef538ef592b8d1263c1cf389f8f59f22bb"
+      },
+      {
+        "stage": "madcondor-nest",
+        "parent": "pei-inn",
+        "seed_sha256": "fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736",
+        "output_sha256": "2655aa444fb56f2312e36b48ec446d0e085024ff3e11001fcc282fd3e6814788",
+        "route_sha256": "7ccc1f35f77199861caf61a3ef4ad7d436b691e29c9697f241575c5a1e3cb444"
+      },
+      {
+        "stage": "garon-birth",
+        "parent": "madcondor-nest",
+        "seed_sha256": "2655aa444fb56f2312e36b48ec446d0e085024ff3e11001fcc282fd3e6814788",
+        "output_sha256": "111a2214b78f69882ce8e0a0ddfe9d4391f2fb42511ec03b39b9686e7d3cd720",
+        "route_sha256": "398f70263435ca4c0f1a29c76bc6aa72ea0b1bb9a716a744f55b05639be18697"
+      },
+      {
+        "stage": "garon-training",
+        "parent": "garon-birth",
+        "seed_sha256": "111a2214b78f69882ce8e0a0ddfe9d4391f2fb42511ec03b39b9686e7d3cd720",
+        "output_sha256": "5d309edcf0c35048b7883efdee62216243a81555893d0e5031ffe5d78c5d5cc8",
+        "route_sha256": "d89faab3594d78fac7de50e546d152197d344dedf8f78cc986789da122357713"
+      },
+      {
+        "stage": "heaven-sword",
+        "parent": "garon-training",
+        "seed_sha256": "5d309edcf0c35048b7883efdee62216243a81555893d0e5031ffe5d78c5d5cc8",
+        "output_sha256": "94d024c3d3aa146f246136b0c7107d69b4a05bf67f784aaafbbe68344bccd06d",
+        "route_sha256": "9e76427df1d930e06609665696aec711bc5264ab07f12e8eb5f49751a62ef971"
+      },
+      {
+        "stage": "heaven-armor",
+        "parent": "heaven-sword",
+        "seed_sha256": "94d024c3d3aa146f246136b0c7107d69b4a05bf67f784aaafbbe68344bccd06d",
+        "output_sha256": "97d1fe94ec209aa00f55fa0169d852061b65bd3c30c3df731bbc9e8b2c31f46b",
+        "route_sha256": "d203786499ec3edc15beec06888001c1b63902e51e3a07cb102cf085cc29995a"
+      },
+      {
+        "stage": "heaven-helmet",
+        "parent": "heaven-armor",
+        "seed_sha256": "97d1fe94ec209aa00f55fa0169d852061b65bd3c30c3df731bbc9e8b2c31f46b",
+        "output_sha256": "a825958b8e9c8aee2cd3c176187f853d7390c3ba728e7cdbe746723ec4b06b1e",
+        "route_sha256": "a8b6260129525ed4dc31acb09e3f43a4b9357aa27bdc951892c8b66b73f762ab"
+      },
+      {
+        "stage": "sky-complete",
+        "parent": "heaven-helmet",
+        "seed_sha256": "a825958b8e9c8aee2cd3c176187f853d7390c3ba728e7cdbe746723ec4b06b1e",
+        "output_sha256": "11deaaa8784a7f79c24132173a2fb2cbd221281f2314c9da97f058f9fca51a0b",
+        "route_sha256": "b976e5f71f98f93f5faa8f85ad7d5b4e2e36582af45149172ee2226c3bc3b82a"
+      },
+      {
+        "stage": "limbo-training",
+        "parent": "sky-complete",
+        "seed_sha256": "11deaaa8784a7f79c24132173a2fb2cbd221281f2314c9da97f058f9fca51a0b",
+        "output_sha256": "9d0f97079957d0d47d6b2114b51b590dd1a46b10d6690711914ae0cfc639b2b1",
+        "route_sha256": "d6c61536688012682eecc53f5edf7307dfccf83873b92f03cf5c04cdabf88525"
+      },
+      {
+        "stage": "limbo-guardian",
+        "parent": "limbo-training",
+        "seed_sha256": "9d0f97079957d0d47d6b2114b51b590dd1a46b10d6690711914ae0cfc639b2b1",
+        "output_sha256": "842eb6339d3e139312897180d876274e402c7a911acb90104e493d276f5b7854",
+        "route_sha256": "47a505b1fcd8eef67193e596d636447146e76b04afa5bdc1fb043461c278d7b3"
+      },
+      {
+        "stage": "darck-preparation",
+        "parent": "limbo-guardian",
+        "seed_sha256": "842eb6339d3e139312897180d876274e402c7a911acb90104e493d276f5b7854",
+        "output_sha256": "087b316af434d4289585281db9d31337d714a93026f5cd8ee2474ad4cb9894fb",
+        "route_sha256": "a4e0de06177c96fd3f75db98d7957f40419abc249bc268e84f499e41e3e70642"
+      },
+      {
+        "stage": "darck-supplies",
+        "parent": "darck-preparation",
+        "seed_sha256": "087b316af434d4289585281db9d31337d714a93026f5cd8ee2474ad4cb9894fb",
+        "output_sha256": "c20b9fff9de0f3a8e7dff9a49a23c6098e2b7b5dcd4c61b7d05529589755acba",
+        "route_sha256": "07dd84182e954c99275a22140138abbcf9e7c6be52077b6af0428d337b240b99"
+      },
+      {
+        "stage": "ending-complete",
+        "parent": "darck-supplies",
+        "seed_sha256": "c20b9fff9de0f3a8e7dff9a49a23c6098e2b7b5dcd4c61b7d05529589755acba",
+        "output_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+        "route_sha256": "2367e5d0bf1c27388c60cadab6aa3c438f94c2c5331f815e81efe15f2e6cc642"
+      }
+    ],
+    "ending_completed": true
+  },
+  "postgame": {
+    "report_sha256": "0debec7abe512b562f4e8919da5d8927e90bbbda6b93f3a86a080fb9ffc33b29",
+    "initial_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+    "stage_count": 7,
+    "parent_links": [
+      {
+        "stage": "key-appraisal",
+        "parent": "initial",
+        "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+        "output_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+        "route_sha256": "11cfa5f64f7d58a44a5579c31a09c4e8c7004c8b3225a5456454be0c5374faf6"
+      },
+      {
+        "stage": "quietsea-clear",
+        "parent": "key-appraisal",
+        "seed_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+        "output_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+        "route_sha256": "5ffbe428d7fc48925bceb40acc315052fd6ca85871349f31541d3ef5fbd99800"
+      },
+      {
+        "stage": "newlywed-gift",
+        "parent": "initial",
+        "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+        "output_sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+        "route_sha256": "55ee565f11831ecfda52b9da24b90f44b555fa73ef7ca5f6468eeff9569baac3"
+      },
+      {
+        "stage": "certified-egg",
+        "parent": "initial",
+        "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+        "output_sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+        "route_sha256": "3809825af430f984de9316815b32770883faf01a8b4f72c9fad7a857b705ebab"
+      },
+      {
+        "stage": "quest-gates",
+        "parent": "initial",
+        "seed_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+        "output_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+        "route_sha256": "5ced2550a9b6e3b64e9c6810ed8b446c3901aa0d110ae120738f8b17c43a5d1e"
+      },
+      {
+        "stage": "quietsea-reload-dungeon",
+        "parent": "quietsea-clear",
+        "seed_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+        "output_sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+        "route_sha256": "3a5aa7effaa3375169ba833457a7c75a3b35777201e17d4d2151e715105f6f98"
+      },
+      {
+        "stage": "npc-offers",
+        "parent": "quest-gates",
+        "seed_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+        "output_sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
+        "route_sha256": "a21ab0c819e881e22c1c289a082be99d7edff027ccc7b9da4d973bc93c78a6e2"
+      }
+    ],
+    "ending_completed": false
+  },
+  "postgame_supplemental_report_sha256": "43522cf13530bf31a3aa78aade489bc67b49d2e0b2616e8bf5fa8d77bb7ec3c6",
+  "production_exe_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "overall_game_or_package_acceptance_claimed": false
+}

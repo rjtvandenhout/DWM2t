@@ -5,7 +5,7 @@
     {
       "name": "key-appraisal",
       "route": "m8_postgame_key_appraisal_p1.txt",
-      "route_sha256": "86797737999aa444b5bdb6cf5b7d7ca050b63fa534704e6a95c872b52237ff2e",
+      "route_sha256": "11cfa5f64f7d58a44a5579c31a09c4e8c7004c8b3225a5456454be0c5374faf6",
       "save_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
       "frames": 64720,
       "party": [
@@ -348,7 +348,7 @@
     {
       "name": "quietsea-clear",
       "route": "m8_postgame_quietsea_clear_p1.txt",
-      "route_sha256": "a29bef02a228416bad2eae94ca8373e943550229c2f269835b149fb72c45e2dd",
+      "route_sha256": "5ffbe428d7fc48925bceb40acc315052fd6ca85871349f31541d3ef5fbd99800",
       "save_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
       "frames": 33190,
       "party": [
@@ -787,7 +787,7 @@
     {
       "name": "newlywed-gift",
       "route": "m8_postgame_newlywed_gift_p1.txt",
-      "route_sha256": "6892523ff00a53d99c117f269435bb03617798e2a2af10ff8fb85f7ca8af049f",
+      "route_sha256": "55ee565f11831ecfda52b9da24b90f44b555fa73ef7ca5f6468eeff9569baac3",
       "save_sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
       "frames": 11462,
       "party": [
@@ -1160,7 +1160,7 @@
     {
       "name": "certified-egg",
       "route": "m8_postgame_certified_egg_p1.txt",
-      "route_sha256": "220c9ed58671f8eb8162ce0cfdacb16b5e87fc4a78c1edb2c8aafe6d5ecf6444",
+      "route_sha256": "3809825af430f984de9316815b32770883faf01a8b4f72c9fad7a857b705ebab",
       "save_sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
       "frames": 23853,
       "party": [
@@ -1571,7 +1571,7 @@
     {
       "name": "quest-gates",
       "route": "m8_postgame_quest_gates_p1.txt",
-      "route_sha256": "000e4119f9b3c9893758cbd7557984771a9bf244a29fd3280d25eb8a466d0955",
+      "route_sha256": "5ced2550a9b6e3b64e9c6810ed8b446c3901aa0d110ae120738f8b17c43a5d1e",
       "save_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
       "frames": 44371,
       "party": [
@@ -1983,7 +1983,7 @@
     {
       "name": "quietsea-reload-dungeon",
       "route": "m8_postgame_quietsea_reload_dungeon_p1.txt",
-      "route_sha256": "4a84b81d7f6ed08d353c1216c29784760f7becabd68057517263a6d9f559b517",
+      "route_sha256": "3a5aa7effaa3375169ba833457a7c75a3b35777201e17d4d2151e715105f6f98",
       "save_sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
       "frames": 51325,
       "party": [
@@ -2451,7 +2451,7 @@
     {
       "name": "npc-offers",
       "route": "m8_postgame_npc_offers_p1.txt",
-      "route_sha256": "0073aee573182654c3085e105e77a08142d382b5f66459eb729c2974732ff74f",
+      "route_sha256": "a21ab0c819e881e22c1c289a082be99d7edff027ccc7b9da4d973bc93c78a6e2",
       "save_sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
       "frames": 41231,
       "party": [

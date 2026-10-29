@@ -1,0 +1,11 @@
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+M8_SEED sram=0x547c61507835d3aa source=Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ending-complete/seed-copy.sav
+M8_STATE frame=210446 mode=1:0 world=6 region=0,0 pos=96,96 party=3 selector=0x0 sram=0xe069cfa7dd6b06df screen=0x1a5c4ec44be97d01 image=m8_0.bmp
+M8_AUDIO frame=210446 sample_values=231258056 stereo_frames=115629028 nonzero=222379988 peak=32768 hash=0x486bc00057bfaf49
+M8_TRACE_REPLAY_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ending_complete_p1.txt
+M8_SEED sram=0xe069cfa7dd6b06df source=Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ending-complete/native\checkpoint.sav
+M8_STATE frame=2395 mode=1:0 world=6 region=0,0 pos=96,96 party=3 selector=0x0 sram=0xe069cfa7dd6b06df screen=0xc5353bee858ded37 image=m8_0.bmp
+M8_AUDIO frame=2395 sample_values=2716632 stereo_frames=1358316 nonzero=1563066 peak=29184 hash=0xa6dacb0858e407f0
+M8_FRESH_CONTINUE_PASS party_bytes=304 quest_flag_bytes=56 location_fields=5 creature_bytes=66 source=Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ending-complete/native\checkpoint.sav
+M8_CHECKPOINT_PASS source=Z:/workspace/DWM2t/recomp/tests/m8_ending_complete_p1.txt ending_credits=NOT_YET_PROVEN

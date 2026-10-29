@@ -44,7 +44,7 @@ expect ff8e 40
 expect ff91 40
 expect_sram ba6325d737e4ec90
 expect_screen 78e66f5efe325124
-expect_audio 4172028 2926003 29184 22e66aa3db66086a
+expect_audio 4172028 2926622 29184 e0decce81b0905a0
 A 2 30
 A 2 30
 A 2 30
@@ -87,7 +87,7 @@ expect ff8e 40
 expect ff91 40
 expect_sram ba6325d737e4ec90
 expect_screen 9f3721bf6c904863
-expect_audio 4831476 3566713 32768 b65031e908ab3786
+expect_audio 4831476 3567266 32768 8ce81947c06adc5c
 - 7 0
 A 2 30
 A 2 30
@@ -127,7 +127,7 @@ expect ff8e 40
 expect ff91 40
 expect_sram 6945430773c4b3e6
 expect_screen 42ffe69c0644397d
-expect_audio 6179996 3958963 32768 a52cffe818946616
+expect_audio 6179996 3959558 32768 aa306192ad5e8734
 U 128 24
 U 16 24
 - 180 0
@@ -166,7 +166,7 @@ expect ff8e 70
 expect ff91 30
 expect_sram 881e9c6479d1ead1
 expect_screen 2b0526253ae1f2f
-expect_audio 7806120 5522611 32768 814afea1a49ca2fe
+expect_audio 7806120 5523444 32768 46e78c609e5c035c
 D 2 12
 A 6 96
 R 6 24
@@ -195,4 +195,4 @@ expect ff8e 70
 expect ff91 30
 expect_sram 19e27ab94d838894
 expect_screen 6041a7ba5ccff3b7
-expect_audio 9212794 6896237 32768 92b7944fcac7246e
+expect_audio 9212796 6897210 32768 d88caeb3c1feaefc

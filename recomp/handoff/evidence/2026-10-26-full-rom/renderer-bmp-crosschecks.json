@@ -1,0 +1,12 @@
+{
+  "diagnostic_only": true,
+  "acceptance": false,
+  "current_same_bmp_bytes_as_windows_production_observation": true,
+  "old3d_same_bmp_bytes_as_current_global_scroll_ablation": true,
+  "sha256": {
+    "/workspace/scratch/full-rom-2026-10-26/renderer-causality/run-03/renderer_causality/current.bmp": "96dbaad0e2ab58589ba0defa7d0f35326584d00e0db31d88cbd276db2f2de1fe",
+    "/workspace/scratch/full-rom-2026-10-26/audio-early-observations/output/early/kids_class_victory/native/m8_315.bmp": "96dbaad0e2ab58589ba0defa7d0f35326584d00e0db31d88cbd276db2f2de1fe",
+    "/workspace/scratch/full-rom-2026-10-26/renderer-causality/run-03/renderer_causality/legacy-3d.bmp": "723b981d59c86d9a3b76a07144081e155e7f99b187890a9c7a9ca49ee883d5aa",
+    "/workspace/scratch/full-rom-2026-10-26/renderer-causality/run-03/renderer_causality/current-global-scroll-only.bmp": "723b981d59c86d9a3b76a07144081e155e7f99b187890a9c7a9ca49ee883d5aa"
+  }
+}

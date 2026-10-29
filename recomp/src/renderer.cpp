@@ -96,6 +96,7 @@ const Renderer::Framebuffer& Renderer::render(const Memory& memory, bool cgb_mod
     const std::uint8_t scx = memory.read8(0xFF43);
     const std::uint8_t wy = memory.read8(0xFF4A);
     const std::uint8_t wx = memory.read8(0xFF4B);
+    const bool scanline_scroll = memory.has_scanline_scroll();
 
     const bool window_enable = (lcdc & 0x20u) != 0;
     const std::size_t bg_map = (lcdc & 0x08u) ? 0x1C00u : 0x1800u;
@@ -104,10 +105,14 @@ const Renderer::Framebuffer& Renderer::render(const Memory& memory, bool cgb_mod
     const bool bg_priority_master = (lcdc & 0x01u) != 0;
 
     for (int sy = 0; sy < Height; ++sy) {
+        const std::uint8_t line_scx = scanline_scroll
+            ? memory.scanline_scx(static_cast<unsigned>(sy)) : scx;
+        const std::uint8_t line_scy = scanline_scroll
+            ? memory.scanline_scy(static_cast<unsigned>(sy)) : scy;
         for (int sx = 0; sx < Width; ++sx) {
             bool use_window = false;
-            unsigned px = static_cast<unsigned>(sx + scx) & 0xFFu;
-            unsigned py = static_cast<unsigned>(sy + scy) & 0xFFu;
+            unsigned px = static_cast<unsigned>(sx + line_scx) & 0xFFu;
+            unsigned py = static_cast<unsigned>(sy + line_scy) & 0xFFu;
             std::size_t map_base = bg_map;
 
             const int window_left = static_cast<int>(wx) - 7;
@@ -185,12 +190,19 @@ const Renderer::Framebuffer& Renderer::render(const Memory& memory, bool cgb_mod
             }
         }
 
-        // On CGB, lower OAM index wins. Paint low priority first.
-        for (int selected_index = static_cast<int>(count) - 1;
-             selected_index >= 0;
-             --selected_index) {
+        // CGB uses OAM order. DMG gives the leftmost selected OBJ priority,
+        // retaining OAM order for equal X positions.
+        if (!cgb_mode) {
+            std::stable_sort(selected.begin(), selected.begin() + count,
+                [oam](unsigned first, unsigned second) {
+                    return oam[first * 4 + 1] < oam[second * 4 + 1];
+                });
+        }
 
-            const unsigned sprite = selected[static_cast<unsigned>(selected_index)];
+        std::array<bool, Width> obj_claimed{};
+        for (unsigned selected_index = 0; selected_index < count; ++selected_index) {
+
+            const unsigned sprite = selected[selected_index];
             const int y = static_cast<int>(oam[sprite * 4]) - 16;
             const int x = static_cast<int>(oam[sprite * 4 + 1]) - 8;
             std::uint8_t tile = oam[sprite * 4 + 2];
@@ -220,13 +232,18 @@ const Renderer::Framebuffer& Renderer::render(const Memory& memory, bool cgb_mod
 
                 const std::uint8_t color = tile_pixel(
                     tile_bank, tile_offset, tx, static_cast<unsigned>(row));
-                if (color == 0) continue;
+                if (color == 0 || obj_claimed[static_cast<unsigned>(sx)]) continue;
+
+                // OBJ-to-OBJ arbitration precedes BG priority. An opaque
+                // winning OBJ still blocks lower-priority OBJs when the BG
+                // subsequently hides its pixel.
+                obj_claimed[static_cast<unsigned>(sx)] = true;
 
                 const unsigned index = static_cast<unsigned>(sy * Width + sx);
                 const bool bg_nonzero = bg_color_index_[index] != 0;
                 const bool obj_behind_bg = (attr & 0x80u) != 0;
 
-                if (bg_nonzero &&
+                if ((!cgb_mode || bg_priority_master) && bg_nonzero &&
                     (obj_behind_bg || bg_priority_[index] != 0)) {
                     continue;
                 }

@@ -12,58 +12,35 @@ The project does not load an external ROM file in the native build. The exact
 4 MiB matching image is generated from `src/banks/` and embedded for original
 game-data reads and hardware mapping.
 
-## Current milestone: M8 complete
+## Current full-ROM player
 
-The original main campaign is accepted on native Windows x64 on 2026-10-25:
-Oasis, Sea, Ice, Sky and Limbo, Darck, MagicPlug, the complete credits, THE END,
-original ending Save and fresh Continue. Fixed bank 0 and all 255 switchable
-ROM banks are statically compiled, with no runtime opcode interpreter.
+The Cobi/CGB player has passed the recorded main campaign, seven postgame
+checkpoints, native Windows tests and production package checks. Fixed bank 0
+and all 255 switchable ROM banks are statically compiled, with no runtime
+opcode interpreter. The implementation also includes local two-player hosting,
+per-line scrolling and CPU/memory edge handling.
 
-[Download the verified package and view the successful final run](https://github.com/rjtvandenhout/DWM2t/actions/runs/40183484388).
-Extract the full package and run `DWM2t-M8/Play.cmd`.
-`DWM2tRecomp.exe` also starts directly with the same default save; the launcher
-adds integrity checks, logs and convenient import options.
-[Completion record and exact hashes](milestones/M8_RESULT.md),
-[controls, ending-save import and recovery](handoff/M8_NEXT.md), and
-[progress with original screenshots](handoff/M8_PROGRESS_2026-10-25.md).
+[Download the verified player and ending save](https://github.com/rjtvandenhout/DWM2t/actions/runs/40821196055/artifacts/12875666985).
+Extract the Actions download and then the inner player ZIP; start `Play.cmd` or
+`DWM2tRecomp.exe` from the resulting `DWM2t-M8` folder. The
+[current result and playing guide](handoff/FULL_ROM_RESULT_2026-10-29.md)
+provides save import steps, controls, exact hashes and screenshots.
 
-All 38 later-story Windows checkpoints pass: 4,446,466 recorded frames in
-36m02s with four workers. Every child Journal matches its actual newly replayed
-parent; independent audits verify all 38 links and all 115 archived Journals.
-The final native suite executes and passes all 18 original tests with zero
-failures/skips. Actual Play.cmd passes 21 package checks; original ending GUI
-Journal and fresh-process reload preserve all 17 monsters and all 107 quest
-bytes, with two normal shutdowns. Windows/POSIX persistence fault gates pass.
+The original game/build source is `1351bcd058e491455a477045a2ff86bbc3bd7b1c`;
+the successful continuation uses validation and packaging tools from
+`2e4057a190e626c4f1fe8118668f45a0d89bafb3`. The earlier archived build run and
+later validation run have separate identities; see the current result. The
+38 story stages and seven postgame stages are recorded coverage, not a proof of
+every optional path or generated world. Tara and SGB presentation are outside
+this Cobi/CGB result.
 
-The independently built diagnostic and production binaries share exact source
-`3d573873ae8122cbb10fcd5d0f7ae7a33a7609ba` and identical source archives.
-The final verified package retains the byte-identical tested production EXE;
-validation tools are `8859ef67289ce90712a44b9c17174de4519a59b3`.
-Recovery is `restore/recomp-m8`. M7's fixtures and immutable restore remain
-unchanged; all M1–M7 regressions pass. [M7 record](milestones/M7_RESULT.md).
-
-`main` is the current finished-game branch. The accepted M0–M8 snapshots are
-listed in [RESTORE_POINTS.md](RESTORE_POINTS.md); see the
-[branch cleanup record](handoff/BRANCH_CLEANUP_2026-10-25.md) for retired refs.
-Routine CI checks tooling and persistence. Full native builds and campaign
-validation run manually, so documentation and branch maintenance do not rebuild
-the entire game.
-
-Original breeding produces Liset (Octokid +1), Derzo (RayGigas +1), and Garon
-(RayGigas +3). Squiz is reserved until his Sea story role finishes. Garon wins
-the fourth Darck attempt with 91 HP; Slash and Derzo faint. Original story
-healing restores the final party to full HP at levels 40/37/40.
-
-CI tests real WinMM streaming through a signed virtual endpoint. Physical
-speaker audibility and every optional postgame branch are not exhaustively
-verified. New builds remain UNTESTED_CANDIDATE until their required checks pass.
-See the [postgame checks and screenshots](handoff/POSTGAME_PROGRESS_2026-10-25.md)
-for the additional key-world/egg/persistence replays and finite generator audit.
-The existing partial development suite alone does not certify a new full game.
-
-Actions cleanup reclaimed 3,946,430,584 bytes from 159 unused artifacts while
-preserving referenced evidence; see [the storage audit](handoff/ACTIONS_STORAGE_2026-10-24.md).
-Project text is English; historical evidence and original game text are retained.
+The prior accepted [M8 completion record](milestones/M8_RESULT.md),
+[playthrough screenshots](handoff/M8_PROGRESS_2026-10-25.md),
+[postgame report](handoff/POSTGAME_PROGRESS_2026-10-25.md) and
+[immutable M0–M8 restore points](RESTORE_POINTS.md) retain their original
+identities. Original breeding produced Liset, Derzo and Garon; Squiz was
+reserved until his Sea story role finished. The original Actions storage cleanup
+is recorded in [the storage audit](handoff/ACTIONS_STORAGE_2026-10-24.md).
 
 ## Retained M6 interactive baseline
 
@@ -104,8 +81,7 @@ runtime LR35902 interpreter fallback.
 ## Windows build
 
 For playing, use the verified package above. The commands below create developer
-diagnostic builds. Use the complete-AOT command for later-game work; the smaller
-default retains the earlier regression baseline.
+diagnostic builds. The default compiles fixed bank 0 and all 255 ROMX banks.
 
 Requirements:
 
@@ -120,10 +96,9 @@ cmake -S recomp -B recomp/build -A x64
 cmake --build recomp/build --config Release --parallel 4
 ```
 
-For later-game development, an optional complete AOT build translates all
-255 switchable banks, rather than only the banks already reached in tests.
-Use a separate build directory; this needs substantially more time, RAM and
-disk space. From an x64 Visual Studio developer prompt, with Ninja installed:
+For an isolated complete AOT build, use a separate directory. Full compilation
+needs substantial time, RAM and disk space. From an x64 Visual Studio developer
+prompt, with Ninja installed:
 
 ```powershell
 cmake -S recomp -B recomp/build-all -G Ninja -DCMAKE_BUILD_TYPE=Release -DDWM2T_ALL_ROMX=ON -DDWM2T_OUTPUT_NAME=DWM2tRecompFull
@@ -135,8 +110,9 @@ This remains ahead-of-time native code with no runtime instruction-interpreter
 fallback. Compiling every bank is not proof of full-game playability or M8
 completion; the original gameplay, ending and Save/Continue gates still apply.
 The extended Kids Class regression is enabled only with `DWM2T_ALL_ROMX=ON`.
-The smaller default build retains the proven earlier Oasis/home tests; it is
-not the build for later-game testing. CMake prints the selected coverage mode.
+An explicit `-DDWM2T_ALL_ROMX=OFF` retains the limited discovery build for earlier
+Oasis/home development. CMake prints its coverage mode, and the production
+packager continues to require all 255 ROMX banks.
 
 Run the live game:
 

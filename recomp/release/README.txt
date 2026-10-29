@@ -44,6 +44,28 @@ Native writes use a separate temporary file, flush, then same-directory
 replacement. Storage errors leave writes pending rather than marking success.
 Filesystem/hardware failures and later-game behavior still require testing.
 
+LOCAL TWO-PLAYER LINK
+Run two independent games connected by a local serial cable in one process:
+  Play.cmd -Profile rick -LinkProfile friend
+
+Each profile has its own save, lock and pre-launch backups. A new profile starts
+a new game. To use an existing original save for Player 2, import it into a new
+profile first, close that session, then select that profile with -LinkProfile:
+  Play.cmd -Profile friend -ImportSave "C:\My Games\friend.sav"
+
+Focus either window to control that player with the normal keys. Player 1
+supplies audio; both original APUs continue running. Use the original in-game
+link menus on both sides. At the saved-game menu, highlight the same service
+in BOTH windows before confirming. For example, highlight VS MODE on each
+side, then confirm on one side to start the original negotiation. A partner
+on another menu item produces the game's normal "Game Link is not ready"
+message; acknowledge both message pages to return to the menu.
+
+Save with PLAN > Journal in each game. Closing either
+window closes both games and flushes each cartridge's pending SRAM separately.
+Both players run this same Cobi version; no other ROM is loaded. The cable is
+local to these two windows. It does not connect to another PC or physical GBC.
+
 AUDIO
 Default game volume: 5%, with smoothing and the retained playback prebuffer.
 These options do not change Windows system settings:
@@ -57,6 +79,8 @@ DIRECT EXECUTABLE
   DWM2tRecomp.exe --version
   DWM2tRecomp.exe --profile rick --scale 4
   DWM2tRecomp.exe --play "C:\My Games\copy.sav" --audio-volume 5
+  DWM2tRecomp.exe --profile rick --link-profile friend
+  DWM2tRecomp.exe --play "C:\My Games\first.sav" --link-save "C:\My Games\second.sav"
 
 Use either --profile or an explicit save path. Direct launch retains native
 save locking/backups but not the launcher's package checks and session logs.
