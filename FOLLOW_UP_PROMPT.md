@@ -1,5 +1,12 @@
 # Follow-up: complete and validate the Cobi full-ROM recompilation
 
+> **Historical stop handoff.** The user resumed the work and the recorded
+> campaign, production GUI and package gates subsequently passed. The current
+> download, evidence and remaining coverage limits are in the
+> [2026-10-29 result and playing guide](recomp/handoff/FULL_ROM_RESULT_2026-10-29.md).
+> The text below preserves the earlier stopped state and is not the current
+> release status.
+
 Resume only when the user asks. The user stopped work on 2026-10-29 and asked to save progress. Their earlier goal was to finish the whole supplied ROM recompilation, then validate it, document progress with screenshots, and provide the result. Keep the original game inputs and genuine saves intact; do not fabricate game state, party, RNG, rewards or quest flags. Squiz must remain available until the story no longer needs him. Preserve `main` and the milestone restore refs `restore/recomp-m0` through `restore/recomp-m8`.
 
 ## Source and scope

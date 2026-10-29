@@ -1,13 +1,10 @@
 # Full-ROM implementation inventory — 2026-10-26
 
-**Implementation is complete; acceptance of the new binary is pending.** The
-first complete native Windows validation built all 256 original ROM banks and
-passed 15 of the retained 18 tests. The three failure causes are identified;
-their test-reference corrections require a fresh acceptance run. Five
-hardware/runtime contract tests
-pass on Windows and Linux, and 199 host contract cases pass. Existing accepted
-M8/postgame evidence still identifies the earlier exact binaries; the new
-implementation has not replaced the accepted player.
+**The recorded Cobi/CGB campaign, postgame checkpoints and package gates now
+pass.** The [current result and playing guide](FULL_ROM_RESULT_2026-10-29.md)
+identifies the exact game source, separate continuation tooling, downloads and
+coverage limits. The initial 15/18 Windows run and its corrections remain below
+as historical evidence; later successful validation does not erase that result.
 
 The target is the original **Cobi ROM on the native CGB hardware model**:
 4 MiB, 256 banks, SHA256
@@ -38,8 +35,8 @@ all 255 ROMX banks. Compiled address coverage does not mean that every original
 instruction, content path or random output has been exercised.
 
 The execution column below records historical accepted/observed content. The
-current native run's narrower observations are recorded separately under
-“Validation in progress.”
+earlier native run's narrower observations are recorded separately under
+“Initial validation history.”
 
 | Content | Implementation/source status | Existing execution evidence |
 | --- | --- | --- |
@@ -71,16 +68,16 @@ vector existed, but that did not implement a cable.
 
 The original game demonstrates the required contract directly:
 
-- [Bank 0 `$0058`](../../src/banks/bank_000.asm:8) jumps to `$255B`, which saves
+- [Bank 0 `$0058`](../../src/banks/bank_000.asm#L8) jumps to `$255B`, which saves
   registers and far-calls bank 27 `$4001`, the original serial protocol handler.
-- [Bank 0 `$08AD`](../../src/banks/bank_000.asm:141) writes a byte and starts an
+- [Bank 0 `$08AD`](../../src/banks/bank_000.asm#L141) writes a byte and starts an
   internal-clock transfer with SC `$81`; `$08BA` starts external-clock SC `$80`.
   The common `$08C7` routine resets SC and writes SB.
-- [Bank 0 `$07D1`](../../src/banks/bank_000.asm:128) waits for SC bit 7 to clear.
+- [Bank 0 `$07D1`](../../src/banks/bank_000.asm#L128) waits for SC bit 7 to clear.
   Consequently even a detached internal-clock transfer needs real completion
   behavior, receiving high input bits, before original error/cancellation flow
   can continue. Keeping the bit set indefinitely is a native hardware defect.
-- [Bank 27 `$4001`](../../src/banks/bank_027.asm:3) handles received command bytes
+- [Bank 27 `$4001`](../../src/banks/bank_027.asm#L3) handles received command bytes
   and protocol state. The guest ROM, rather than the host, must decide trades,
   battles, breeding, egg exchange and the resulting saves.
 
@@ -88,29 +85,30 @@ The completed implementation pass adds serial hardware and local dual-runtime
 peer execution, alongside CPU/AOT edge handling and renderer/window corrections.
 Each player must retain a separate genuine Journal, runtime and P1 state.
 The host transport must carry serial bits/clock behavior; it must not manufacture
-monsters, keys, rewards or completion flags. The new hardware contracts have
-passed; final campaign, postgame, GUI and package acceptance remains pending.
+monsters, keys, rewards or completion flags. The new hardware contracts passed;
+later campaign, postgame, GUI and package validation is identified in the
+current result.
 
 ## DreamEgg is an original solo feature
 
 DreamEgg does not need an invented native acquisition service or a serial peer
 for its initial acquisition:
 
-1. [Bank 96 `$50E5`](../../src/banks/bank_096.asm:273) processes type 4/5 dungeon
+1. [Bank 96 `$50E5`](../../src/banks/bank_096.asm#L273) processes type 4/5 dungeon
    rewards. An eligible ordinary reward draw below 5 sets the structure's
    descriptor state to 3 and its reward byte to `$81`.
-2. [Bank 18 `$6295`](../../src/banks/bank_018.asm:556) recognizes reward `$81`
+2. [Bank 18 `$6295`](../../src/banks/bank_018.asm#L556) recognizes reward `$81`
    and reaches `$62FC`. If `CECE == 1`, the game uses the original Magic Key
    fallback; otherwise it starts the egg event.
-3. [Bank 18 `$621F`](../../src/banks/bank_018.asm:548) calls bank 240 `$7D0A`.
-   [That factory](../../src/banks/bank_240.asm:979) clears `CE9B..CF72`, sets
+3. [Bank 18 `$621F`](../../src/banks/bank_018.asm#L548) calls bank 240 `$7D0A`.
+   [That factory](../../src/banks/bank_240.asm#L979) clears `CE9B..CF72`, sets
    `CECE = 1`, and creates the original egg data.
-4. [Bank 19 `$7D45`](../../src/banks/bank_019.asm:983) checks for the real egg.
-   [Bank 133 `$4717`](../../src/banks/bank_133.asm:116) opens original item-feeding
-   menu `2:0C`; [bank 241 `$4187`](../../src/banks/bank_241.asm:27) calls the
+4. [Bank 19 `$7D45`](../../src/banks/bank_019.asm#L983) checks for the real egg.
+   [Bank 133 `$4717`](../../src/banks/bank_133.asm#L116) opens original item-feeding
+   menu `2:0C`; [bank 241 `$4187`](../../src/banks/bank_241.asm#L27) calls the
    original item-effect code at bank 240 `$7284` and consumes the selected item.
 5. Egg exchange is a distinct serial-dependent path. For example,
-   [bank 240 `$527B`](../../src/banks/bank_240.asm:298) prepares the serial data
+   [bank 240 `$527B`](../../src/banks/bank_240.asm#L298) prepares the serial data
    pointers/count, and `$52C0` supplies the complete original egg-state block.
 
 This chain establishes original acquisition/feeding implementation and a
@@ -127,8 +125,8 @@ actual counterpart peer remain separate from Cobi feature coverage. A complete
 Tara campaign is not claimed without the corresponding original source/input.
 
 SGB is also a separate hardware mode. The header advertises it; original
-[bank 0 `$05E2`](../../src/banks/bank_000.asm:97) performs SGB detection and
-[bank 31 `$5040`](../../src/banks/bank_031.asm:263) emits SGB packets through P1.
+[bank 0 `$05E2`](../../src/banks/bank_000.asm#L97) performs SGB detection and
+[bank 31 `$5040`](../../src/banks/bank_031.asm#L263) emits SGB packets through P1.
 The current native target boots CGB and renders a 160×144 game surface; an SGB
 packet receiver/SNES border is not part of that active native mode. Compiling
 the legacy SGB guest code does not prove an SGB host implementation. This must
@@ -184,7 +182,10 @@ at `b4e9587ba574cdd3b55f9fd8a366404fd4a0cd2c` verifies all 256 banks with
 `source_inputs_match_commit=true`. It remains source-preservation evidence,
 separate from native execution coverage.
 
-## Validation in progress
+## Initial validation history
+
+The observations and pending actions in this section describe the earlier
+validation stage. The later passing runs are recorded in the current result.
 
 Implementation was committed as `195ca680b2805339bff86c690c25c99aea6688a2`.
 The first final-validation source is

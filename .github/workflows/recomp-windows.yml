@@ -61,6 +61,7 @@ jobs:
               ('postgame-build-identity', ['recomp/tools/test_postgame_build_identity_contracts.py']),
               ('hardware-proof-contracts', ['recomp/tools/test_full_rom_validation.py']),
               ('whole-rom-package-gates', ['recomp/tools/test_full_rom_package_gates.py']),
+              ('split-gui-provenance', ['recomp/tools/test_m8_split_gui_provenance.py']),
               ('full-rom-reference-integrity', ['recomp/tools/test_full_rom_audio_references.py']),
               ('native-retest', ['recomp/tools/test_m8_native_retest.py']),
               ('original-map-decoder', ['recomp/tools/test_inspect_map.py']),
