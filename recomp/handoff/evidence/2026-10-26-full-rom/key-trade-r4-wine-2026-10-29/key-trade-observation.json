@@ -1,0 +1,306 @@
+{
+  "kind": "original_link_key_trade_observation",
+  "status": "observed_trade_and_fresh_continue",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "production_exe_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+  "identical_seed_copies": true,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "trade_pair": "QuietSea for identical QuietSea",
+  "key_seed_hex": "c016 (little-endian 0x16c0)",
+  "linked_exit_code": 0,
+  "fresh_exit_codes": [
+    0,
+    0
+  ],
+  "players": [
+    {
+      "player": 1,
+      "post_trade_sha256": "d4e3d407baf67df7d9d945161c0862179e3904cf1f8a55704cc92c00bfe419a6",
+      "post_continue_sha256": "eebcc387fa037cbdb248740ac55438e9f735374578592f1922a6e4e6d06d5850",
+      "full_40_monster_records_and_party_match_seed": true,
+      "all_107_quest_bytes_match_seed": true,
+      "observed_changes": {
+        "key_records": [
+          {
+            "offset": "0x3c16",
+            "before": "c0",
+            "after": "44"
+          },
+          {
+            "offset": "0x3c17",
+            "before": "07",
+            "after": "ff"
+          },
+          {
+            "offset": "0x3c18",
+            "before": "13",
+            "after": "ff"
+          },
+          {
+            "offset": "0x3c19",
+            "before": "08",
+            "after": "80"
+          },
+          {
+            "offset": "0x3c1a",
+            "before": "44",
+            "after": "45"
+          },
+          {
+            "offset": "0x3c1e",
+            "before": "45",
+            "after": "46"
+          },
+          {
+            "offset": "0x3c22",
+            "before": "46",
+            "after": "80"
+          },
+          {
+            "offset": "0x3c23",
+            "before": "ff",
+            "after": "07"
+          },
+          {
+            "offset": "0x3c24",
+            "before": "ff",
+            "after": "13"
+          },
+          {
+            "offset": "0x3c25",
+            "before": "80",
+            "after": "08"
+          }
+        ],
+        "key_seeds": [
+          {
+            "offset": "0x3c90",
+            "before": "c0",
+            "after": "00"
+          },
+          {
+            "offset": "0x3c91",
+            "before": "16",
+            "after": "00"
+          },
+          {
+            "offset": "0x3c96",
+            "before": "00",
+            "after": "c0"
+          },
+          {
+            "offset": "0x3c97",
+            "before": "00",
+            "after": "16"
+          }
+        ],
+        "working_cache": [
+          {
+            "offset": "0x4001",
+            "before": "80",
+            "after": "00"
+          },
+          {
+            "offset": "0x4178",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x417c",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x4180",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x4184",
+            "before": "01",
+            "after": "00"
+          }
+        ],
+        "backup_cache": [
+          {
+            "offset": "0x6001",
+            "before": "80",
+            "after": "00"
+          },
+          {
+            "offset": "0x6178",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x617c",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x6180",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x6184",
+            "before": "01",
+            "after": "00"
+          }
+        ]
+      }
+    },
+    {
+      "player": 2,
+      "post_trade_sha256": "d4e3d407baf67df7d9d945161c0862179e3904cf1f8a55704cc92c00bfe419a6",
+      "post_continue_sha256": "eebcc387fa037cbdb248740ac55438e9f735374578592f1922a6e4e6d06d5850",
+      "full_40_monster_records_and_party_match_seed": true,
+      "all_107_quest_bytes_match_seed": true,
+      "observed_changes": {
+        "key_records": [
+          {
+            "offset": "0x3c16",
+            "before": "c0",
+            "after": "44"
+          },
+          {
+            "offset": "0x3c17",
+            "before": "07",
+            "after": "ff"
+          },
+          {
+            "offset": "0x3c18",
+            "before": "13",
+            "after": "ff"
+          },
+          {
+            "offset": "0x3c19",
+            "before": "08",
+            "after": "80"
+          },
+          {
+            "offset": "0x3c1a",
+            "before": "44",
+            "after": "45"
+          },
+          {
+            "offset": "0x3c1e",
+            "before": "45",
+            "after": "46"
+          },
+          {
+            "offset": "0x3c22",
+            "before": "46",
+            "after": "80"
+          },
+          {
+            "offset": "0x3c23",
+            "before": "ff",
+            "after": "07"
+          },
+          {
+            "offset": "0x3c24",
+            "before": "ff",
+            "after": "13"
+          },
+          {
+            "offset": "0x3c25",
+            "before": "80",
+            "after": "08"
+          }
+        ],
+        "key_seeds": [
+          {
+            "offset": "0x3c90",
+            "before": "c0",
+            "after": "00"
+          },
+          {
+            "offset": "0x3c91",
+            "before": "16",
+            "after": "00"
+          },
+          {
+            "offset": "0x3c96",
+            "before": "00",
+            "after": "c0"
+          },
+          {
+            "offset": "0x3c97",
+            "before": "00",
+            "after": "16"
+          }
+        ],
+        "working_cache": [
+          {
+            "offset": "0x4001",
+            "before": "80",
+            "after": "00"
+          },
+          {
+            "offset": "0x4178",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x417c",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x4180",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x4184",
+            "before": "01",
+            "after": "00"
+          }
+        ],
+        "backup_cache": [
+          {
+            "offset": "0x6001",
+            "before": "80",
+            "after": "00"
+          },
+          {
+            "offset": "0x6178",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x617c",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x6180",
+            "before": "01",
+            "after": "00"
+          },
+          {
+            "offset": "0x6184",
+            "before": "01",
+            "after": "00"
+          }
+        ]
+      }
+    }
+  ],
+  "screenshots_sha256": {
+    "fresh-quietsea-player1.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-quietsea-player2.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "key-chooser-player1.bmp": "caf0fb9955947a1a068c103753310fcdf6c01055ba28b037daa6b0556dbc0799",
+    "keys-now-traded-player2.bmp": "0120d1408dad7a17977b69a57b2a392107e0892b4e9b6cddefcbaad739772f25",
+    "proposed-quietsea-player1.bmp": "92def37b31b3556cafd7b7c665a789580eaf52575886783346e675bc358195f8",
+    "proposed-quietsea-player2.bmp": "92def37b31b3556cafd7b7c665a789580eaf52575886783346e675bc358195f8",
+    "record-result-player1.bmp": "d60812f633944edba02589c1ed1a378c89b9c8d1d52f6108bde846781a349a41",
+    "returned-title-player1.bmp": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c",
+    "returned-title-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+  },
+  "limit": "Not compared to an independent original-ROM emulator; same seed on both sides; no different world or Tara peer proven."
+}

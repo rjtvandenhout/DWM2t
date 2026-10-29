@@ -183,6 +183,135 @@ def _newline_variants(data: bytes) -> dict[str, bytes]:
     return {_sha_bytes(item): item for item in (data, lf, lf.replace(b'\n', b'\r\n'))}
 
 
+SPLIT_GUI_SCRIPTS = (
+    'recomp/tools/test_player_local_link.py',
+    'recomp/tools/test_player_late_journal.py',
+    'recomp/tools/test_player_package.py',
+    'recomp/tools/prepare_m8_player_validation.py',
+    'recomp/tools/package_verified_m8.py',
+    'recomp/tools/restore_original_validation.py',
+    'recomp/tools/attest_revalidated_gui.py',
+    'recomp/tools/prepare_m8_native_retest.py',
+    'recomp/tools/setup_windows_ci_audio.ps1',
+    '.github/workflows/recomp-resume-verified.yml',
+    '.github/workflows/recomp-player-validation.yml',
+)
+SPLIT_GUI_REPORTS = (
+    'production-local-link/player-local-link.json',
+    'player-package/player-package.json',
+    'production-journal/player-late-journal.json',
+    'production-ending-journal/player-late-journal.json',
+    'production-local-link/same-file-alias.stderr.log',
+    'production-local-link/competing-player2.stderr.log',
+)
+
+
+def committed_tooling_script_hashes(tooling_source: str) -> dict[str, str]:
+    """Bind the executed checkout files to the named committed tooling source."""
+    root = Path(__file__).resolve().parents[2]
+    result = {}
+    for name in SPLIT_GUI_SCRIPTS:
+        path = root/name
+        actual = path.read_bytes()
+        try:
+            committed = subprocess.check_output(
+                ['git', '-C', str(root), 'show', tooling_source+':'+name], timeout=30)
+        except (OSError, subprocess.SubprocessError) as error:
+            raise ValueError('Cannot read the committed GUI tooling script: '+name) from error
+        if not _newline_equivalent(actual, committed):
+            raise ValueError('GUI tooling checkout differs from its committed source: '+name)
+        result[name] = _sha_bytes(actual)
+    return result
+
+
+def verify_original_build_artifact_manifest(path: Path, source: str, build_run: str) -> dict:
+    """Require the recorded successful original producers and exact artifact metadata."""
+    manifest = json.loads(path.read_text(encoding='utf-8'))
+    required = dict(schema=1, kind='original_build_artifacts', status='passed',
+                    build_run_id=build_run, build_source_commit=source)
+    if (any(manifest.get(key) != value or type(manifest.get(key)) is not type(value)
+            for key, value in required.items())
+            or manifest.get('run_conclusion') not in ('success', 'failure', 'cancelled')):
+        raise ValueError('Original build artifact manifest has the wrong source, run or status')
+    jobs = manifest.get('producer_jobs')
+    if not isinstance(jobs, dict) or set(jobs) != {'diagnostic', 'production', 'posix-persistence'}:
+        raise ValueError('Original successful producer jobs are incomplete')
+    job_ids = []
+    for job in jobs.values():
+        if (not isinstance(job, dict) or type(job.get('id')) is not int or job['id'] <= 0
+                or job.get('conclusion') != 'success'):
+            raise ValueError('An original producer job did not succeed')
+        job_ids.append(job['id'])
+    if len(set(job_ids)) != len(job_ids):
+        raise ValueError('Original producer jobs must be distinct')
+    artifacts = manifest.get('artifacts')
+    expected = {'diagnostic', 'production', 'story', 'postgame', 'posix-persistence'}
+    if not isinstance(artifacts, dict) or set(artifacts) != expected:
+        raise ValueError('Original build artifact metadata is incomplete')
+    artifact_ids = []
+    for kind, artifact in artifacts.items():
+        if (not isinstance(artifact, dict) or type(artifact.get('id')) is not int
+                or artifact['id'] <= 0 or type(artifact.get('size_bytes')) is not int
+                or artifact['size_bytes'] <= 0
+                or artifact.get('name') != f'M8-fresh-{kind}-{build_run}'
+                or not isinstance(artifact.get('sha256'), str)
+                or re.fullmatch(r'[0-9a-f]{64}', artifact['sha256']) is None):
+            raise ValueError('Original artifact ID, name, size or ZIP digest is invalid: '+kind)
+        artifact_ids.append(artifact['id'])
+    if len(set(artifact_ids)) != len(artifact_ids):
+        raise ValueError('Original build artifacts must be distinct')
+    return manifest
+
+
+def verify_production_journal_attestation(
+        path: Path, gui: Path, *, source: str, build_run: str, validation_run: str,
+        retest: dict, executable_sha: str, executable_bytes: int, source_archive: Path,
+        ending: Path, ending_sha: str, late: Path, late_sha: str) -> tuple[dict, dict[str, Path]]:
+    """Bind fresh production GUI gates to original bytes and a separate tooling run."""
+    attestation = json.loads(path.read_text(encoding='utf-8'))
+    tooling_source = current_packaging_source()
+    if (retest.get('packaging_source_commit') != tooling_source
+            or os.environ.get('GITHUB_SHA', tooling_source) != tooling_source
+            or os.environ.get('GITHUB_RUN_ID', validation_run) != validation_run):
+        raise ValueError('GUI validation must match the actual native-retest tooling run')
+    if (ending.stat().st_size != 32768 or digest(ending) != ending_sha
+            or late.stat().st_size != 32768 or digest(late) != late_sha):
+        raise ValueError('GUI validation inputs are not the actual original story Journals')
+    required = dict(schema=1, kind='production_journal_revalidation', status='passed',
+                    platform='Windows', build_run_id=build_run, build_source_commit=source,
+                    validation_run_id=validation_run, tooling_source_commit=tooling_source,
+                    production_executable_sha256=executable_sha,
+                    production_executable_bytes=executable_bytes,
+                    source_archive_sha256=digest(source_archive),
+                    ending_journal_sha256=ending_sha, late_journal_sha256=late_sha)
+    if any(attestation.get(key) != value or type(attestation.get(key)) is not type(value)
+           for key, value in required.items()):
+        raise ValueError('Production Journal attestation differs from the actual build or validation run')
+    original_manifest = gui/'original-artifact-manifest.json'
+    if (not original_manifest.is_file()
+            or attestation.get('original_artifact_manifest_sha256') != digest(original_manifest)):
+        raise ValueError('Original producer/artifact metadata differs from the GUI attestation')
+    verify_original_build_artifact_manifest(original_manifest, source, build_run)
+    scripts = attestation.get('scripts')
+    if not isinstance(scripts, dict) or scripts != committed_tooling_script_hashes(tooling_source):
+        raise ValueError('GUI validation scripts differ from the actual committed tooling checkout')
+    reports = attestation.get('reports')
+    if not isinstance(reports, dict) or set(reports) != set(SPLIT_GUI_REPORTS):
+        raise ValueError('GUI attestation must bind each original production gate report')
+    for name in SPLIT_GUI_REPORTS:
+        report = gui/name
+        if not report.is_file() or reports[name] != digest(report):
+            raise ValueError('Production GUI report differs from its attestation: '+name)
+    link = json.loads((gui/SPLIT_GUI_REPORTS[0]).read_text(encoding='utf-8'))
+    if (link.get('gate_script_sha256') != scripts[SPLIT_GUI_SCRIPTS[0]]
+            or link.get('gui_helper_sha256') != scripts[SPLIT_GUI_SCRIPTS[1]]):
+        raise ValueError('Production link report used different GUI gate or helper scripts')
+    return attestation, {'production-journal-attestation.json':path,
+                         'original-build-artifacts.json':original_manifest,
+                         'same-file-alias.stderr.log':gui/SPLIT_GUI_REPORTS[4],
+                         'competing-player2.stderr.log':gui/SPLIT_GUI_REPORTS[5]}
+
+
 def full_rom_source_inputs(candidate: Path, archive: Path, source: str,
                            identity: dict) -> tuple[dict[str, str], dict[str, bytes]] | None:
     """Detect new sources and bind their complete inventory to the real Git tar.
@@ -321,7 +450,8 @@ def verify_postgame_gate(directory: Path, source: str, run: str, identity: dict,
 
 
 def verify_local_link_gate(path: Path, source: str, executable_sha: str,
-                           executable_bytes: int, ending: Path, ending_sha: str) -> dict:
+                           executable_bytes: int, ending: Path, ending_sha: str, *,
+                           require_alias_rejection: bool = False) -> dict:
     """Require actual two-window production lifecycle, without a protocol claim."""
     from test_player_late_journal import verify_saved_roster
 
@@ -354,9 +484,44 @@ def verify_local_link_gate(path: Path, source: str, executable_sha: str,
             expected_checks.update(f'{round_name}_player{player}_'+suffix for suffix in (
                 'native_save_lock_held', 'native_save_lock_released',
                 'original_ending_continue', 'original_ending_party_hud'))
+    if require_alias_rejection:
+        expected_checks.update({'same-file-alias_refused_for_expected_reason',
+                                'same-file-alias_left_no_owned_windows',
+                                'same-file-alias_owned_expected_error_dialog_observed',
+                                'same-file-alias_error_dialog_close_message_delivered',
+                                'same_file_rejection_preserves_both_original_copies',
+                                'competing-player2_owned_expected_error_dialog_observed',
+                                'competing-player2_error_dialog_close_message_delivered',
+                                'competing-player2_left_no_owned_windows'})
     if (not isinstance(checks, list) or any(not isinstance(value, str) for value in checks)
             or not expected_checks.issubset(checks)):
         raise ValueError('Missing original Continue, input isolation, lock or normal-close checks')
+    if require_alias_rejection:
+        rejected = report.get('rejections')
+        for label, reason in (('same-file-alias', 'two different save'), ('competing-player2', 'locked')):
+            matches = ([item for item in rejected
+                        if isinstance(item, dict) and item.get('label') == label]
+                       if isinstance(rejected, list) else [])
+            if len(matches) != 1:
+                raise ValueError('Production rejection process evidence is incomplete: '+label)
+            item = matches[0]
+            dialog, attempts = item.get('dialog'), item.get('close_attempts')
+            if (type(item.get('exit_code')) is not int or item['exit_code'] != 1
+                    or item.get('reason') != reason or item.get('dialog_observed') is not True
+                    or item.get('stderr_reason_matched') is not True
+                    or item.get('error_dialog_dismissed') is not True
+                    or not isinstance(dialog, dict) or dialog.get('kind') != '#32770'
+                    or dialog.get('title') != 'DWM2t player'
+                    or type(dialog.get('hwnd')) is not int or dialog['hwnd'] <= 0
+                    or not isinstance(attempts, list) or len(attempts) != 1
+                    or not isinstance(attempts[0], dict)
+                    or attempts[0].get('message') != 'WM_CLOSE'
+                    or attempts[0].get('hwnd') != dialog['hwnd']
+                    or attempts[0].get('delivered') is not True):
+                raise ValueError('Production rejection dialog or exit evidence is incomplete: '+label)
+            stderr = (path.parent/(label+'.stderr.log')).read_text(encoding='utf-8', errors='replace')
+            if reason not in stderr.lower():
+                raise ValueError('Production rejection stderr lacks the original refusal: '+label)
     pairs = report.get('window_pairs')
     if (not isinstance(pairs, list) or len(pairs) != 2
             or [item.get('round') for item in pairs if isinstance(item, dict)] != ['continue', 'reload']
@@ -412,7 +577,9 @@ def verify_local_link_gate(path: Path, source: str, executable_sha: str,
 
 def verify_full_rom_gates(root: Path, source: str, run: str, executable_sha: str,
                           identity: dict, source_archive: Path, candidate: Path, *,
-                          ending: Path, ending_sha: str) -> tuple[dict, dict[str, Path]]:
+                          ending: Path, ending_sha: str,
+                          production_journal_root: Path | None = None,
+                          require_alias_rejection: bool = False) -> tuple[dict, dict[str, Path]]:
     """Conditionally extend M8 acceptance for sources with the new serial host."""
     inventory = full_rom_source_inputs(candidate, source_archive, source, identity)
     if inventory is None:
@@ -441,9 +608,12 @@ def verify_full_rom_gates(root: Path, source: str, run: str, executable_sha: str
         ending, ending_sha, Path(__file__).resolve().parents[1]/'tests/m8_postgame_supplemental.json')
     fields.update(postgame_fields)
     evidence.update(postgame_evidence)
-    gui_path = one(root/f'M8-fresh-production-journal-{run}', 'player-local-link.json')
+    gui = (production_journal_root if production_journal_root is not None
+           else root/f'M8-fresh-production-journal-{run}')
+    gui_path = one(gui, 'player-local-link.json')
     verify_local_link_gate(gui_path, source, executable_sha,
-                           (candidate/'DWM2tRecomp.exe').stat().st_size, ending, ending_sha)
+                           (candidate/'DWM2tRecomp.exe').stat().st_size, ending, ending_sha,
+                           require_alias_rejection=require_alias_rejection)
     evidence['production-local-link.json'] = gui_path
     fields.update(local_link_host_verified=True, original_linked_transactions_verified=False,
                   full_postgame_verified=False, all_random_seeds_verified=False,
@@ -464,17 +634,31 @@ def verify_full_rom_gates(root: Path, source: str, run: str, executable_sha: str
 
 def package_run(root: Path, source: str, run: str, output: Path, *,
                 native_retest: Path | None = None,
-                validation_run_id: str | None = None) -> Path:
+                validation_run_id: str | None = None,
+                production_journal_root: Path | None = None,
+                production_journal_attestation: Path | None = None) -> Path:
     if not re.fullmatch(r'[0-9a-f]{40}', source) or not run.isdigit():
         raise ValueError('Exact source and native validation run ID are required')
     if (native_retest is None) != (validation_run_id is None):
         raise ValueError('--native-retest and --validation-run-id must be supplied together')
+    split_gui = production_journal_root is not None or production_journal_attestation is not None
+    if split_gui and (production_journal_root is None or production_journal_attestation is None
+                      or native_retest is None or validation_run_id is None):
+        raise ValueError('Separate production Journal evidence requires its attestation and native retest/run')
     if output.exists():
         raise ValueError('Verified output must be a new directory')
     diagnostic = root/f'M8-fresh-diagnostic-{run}'
     production = root/f'M8-fresh-production-{run}'
     story = root/f'M8-fresh-story-{run}'
-    gui = root/f'M8-fresh-production-journal-{run}'
+    original_gui = root/f'M8-fresh-production-journal-{run}'
+    gui = original_gui
+    if split_gui:
+        gui = production_journal_root.resolve(strict=True)
+        original_gui = original_gui.resolve(strict=False)
+        attestation_path = production_journal_attestation.resolve(strict=True)
+        if (not gui.is_dir() or gui == original_gui or original_gui in gui.parents
+                or gui in original_gui.parents or original_gui in attestation_path.parents):
+            raise ValueError('Separate GUI evidence must not replace or reuse the original run artifact')
     posix = root/f'M8-fresh-posix-persistence-{run}'
     identity_path = one(diagnostic, 'build-identity.json')
     identity = load_identity(identity_path)
@@ -503,6 +687,8 @@ def package_run(root: Path, source: str, run: str, output: Path, *,
                 'posix-save-io.xml': one(posix, 'save-io.xml')}
     retest_provenance = None
     if native_retest is not None:
+        if split_gui:
+            native_suite_names(evidence['native-tests.xml'], passing=True)
         retest_provenance, retest_evidence = verify_native_retest(
             native_retest, source, run, validation_run_id, diagnostic_exe,
             source_archives[0], evidence['native-tests.xml'])
@@ -537,6 +723,23 @@ def package_run(root: Path, source: str, run: str, output: Path, *,
     if ending.get('ending_complete') is not True or campaign['stages'][-1].get('ending_completed') is not True:
         raise ValueError('Final checkpoint is not the complete original ending')
     evidence.update({'campaign-result.json': story_path, 'campaign-manifest.json': manifest_path})
+    gui_attestation = None
+    if split_gui:
+        with zipfile.ZipFile(archive) as zipped:
+            executables = [item for item in zipped.infolist()
+                           if item.filename == 'DWM2t-M8-UNTESTED/DWM2tRecomp.exe']
+        if len(executables) != 1 or executables[0].is_dir() or executables[0].file_size <= 0:
+            raise ValueError('The original production archive must contain exactly one player executable')
+        late_stage = next(stage for stage in manifest['stages'] if stage['name'] == 'raygigas-birth')
+        gui_attestation, gui_evidence = verify_production_journal_attestation(
+            attestation_path, gui, source=source, build_run=run, validation_run=validation_run_id,
+            retest=retest_provenance, executable_sha=executable, executable_bytes=executables[0].file_size,
+            source_archive=source_archives[1],
+            ending=story_path.parent/'ending-complete/native/checkpoint.sav',
+            ending_sha=ending['save_sha256'],
+            late=story_path.parent/'raygigas-birth/native/checkpoint.sav',
+            late_sha=late_stage['save_sha256'])
+        evidence.update(gui_evidence)
     for label, folder, no_arguments in [('direct-start', 'direct-start', True), ('profile-start', 'profile-start', False)]:
         path = one(production/folder, 'player-startup.json')
         report = passed_json(path, source, executable)
@@ -578,7 +781,10 @@ def package_run(root: Path, source: str, run: str, output: Path, *,
     full_rom_fields, full_rom_evidence = verify_full_rom_gates(
         root, source, run, executable, dict(identity_data, build_identity_sha256=digest(identity_path)),
         source_archives[0], candidate, ending=story_path.parent/'ending-complete/native/checkpoint.sav',
-        ending_sha=ending['save_sha256'])
+        ending_sha=ending['save_sha256'], production_journal_root=gui if split_gui else None,
+        require_alias_rejection=split_gui)
+    if split_gui and not full_rom_fields:
+        raise ValueError('Separate production GUI evidence requires the complete full-ROM gates')
     evidence.update(full_rom_evidence)
     package = output/'DWM2t-M8'
     candidate.rename(package)
@@ -613,9 +819,16 @@ def package_run(root: Path, source: str, run: str, output: Path, *,
                       native_run_url=f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{validation_run_id}',
                       packaging_source_commit=retest_provenance['packaging_source_commit'],
                       native_suite_source=source, native_suite_retest=True,
-                      initial_native_tests_status='unaccepted',
+                      initial_native_tests_status='passed' if split_gui else 'unaccepted',
                       initial_native_tests_sha256=retest_provenance['original_native_tests_sha256'],
                       accepted_native_tests_sha256=retest_provenance['retest_native_tests_sha256'])
+    if gui_attestation is not None:
+        record.update(production_journal_validation_run_id=validation_run_id,
+                      production_journal_validation_url=
+                          f'https://github.com/rjtvandenhout/DWM2t/actions/runs/{validation_run_id}',
+                      production_journal_tooling_source_commit=gui_attestation['tooling_source_commit'],
+                      production_journal_attestation_sha256=digest(attestation_path),
+                      original_artifact_manifest_sha256=gui_attestation['original_artifact_manifest_sha256'])
     (package/'validation.json').write_text(json.dumps(record, indent=2)+'\n', encoding='utf-8')
     readme = (package/'README.txt').read_text(encoding='utf-8')
     start = readme.index('START\n')
@@ -652,6 +865,12 @@ if __name__ == '__main__':
                         help='Full native-suite rerun directory; preserves the initial XML as unaccepted')
     parser.add_argument('--validation-run-id',
                         help='Actual continuation workflow run; required with --native-retest')
+    parser.add_argument('--production-journal-root', type=Path,
+                        help='Separate successful production GUI evidence, never the original failed artifact')
+    parser.add_argument('--production-journal-attestation', type=Path,
+                        help='Exact-source/tooling attestation for the separate GUI evidence')
     args = parser.parse_args()
     print('M8_VERIFIED_PACKAGE', package_run(args.root, args.source, args.run_id, args.output,
-        native_retest=args.native_retest, validation_run_id=args.validation_run_id))
+        native_retest=args.native_retest, validation_run_id=args.validation_run_id,
+        production_journal_root=args.production_journal_root,
+        production_journal_attestation=args.production_journal_attestation))

@@ -1,0 +1,328 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4d96e9c8d0318c0018057469365588e6becbdf2505def77d55cd967c1f4df11e",
+  "executable_source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "full_game_verified": false,
+  "sea_world_completed": false,
+  "ice_world_completed": false,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "key-appraisal",
+      "frames": 64720,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/key-appraisal/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_key_appraisal_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/key-appraisal/native"
+      ],
+      "route_sha256": "11cfa5f64f7d58a44a5579c31a09c4e8c7004c8b3225a5456454be0c5374faf6",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "3fe8357b9dd47550f22baca2818a47bb565654cbd268bd460970f0c4f9b05009",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        38,
+        40
+      ],
+      "hp": [
+        220,
+        181,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "quietsea-clear",
+      "frames": 33190,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quietsea-clear/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_quietsea_clear_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quietsea-clear/native"
+      ],
+      "route_sha256": "5ffbe428d7fc48925bceb40acc315052fd6ca85871349f31541d3ef5fbd99800",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        38,
+        40
+      ],
+      "hp": [
+        220,
+        181,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "newlywed-gift",
+      "frames": 11462,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/newlywed-gift/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_newlywed_gift_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/newlywed-gift/native"
+      ],
+      "route_sha256": "55ee565f11831ecfda52b9da24b90f44b555fa73ef7ca5f6468eeff9569baac3",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "612a9bdc430299f47b553d29afd218cfed7153988588d0e247df2038a55ed66d",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 18,
+      "additional_persistent_creature_bytes": 2106
+    },
+    {
+      "stage": "certified-egg",
+      "frames": 23853,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/certified-egg/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_certified_egg_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/certified-egg/native"
+      ],
+      "route_sha256": "3809825af430f984de9316815b32770883faf01a8b4f72c9fad7a857b705ebab",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "cc7dede06d03f6e8d08707561deb3ea0ed8382ad008b7b8847100ad951971604",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 19,
+      "additional_persistent_creature_bytes": 2223
+    },
+    {
+      "stage": "quest-gates",
+      "frames": 44371,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quest-gates/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_quest_gates_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quest-gates/native"
+      ],
+      "route_sha256": "5ced2550a9b6e3b64e9c6810ed8b446c3901aa0d110ae120738f8b17c43a5d1e",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "00123d86a9678ccdec84058303521ed16fb0c1a9abcbe29fd73315d1a94a7dba",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 19,
+      "additional_persistent_creature_bytes": 2223
+    },
+    {
+      "stage": "quietsea-reload-dungeon",
+      "frames": 51325,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quietsea-reload-dungeon/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_quietsea_reload_dungeon_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/quietsea-reload-dungeon/native"
+      ],
+      "route_sha256": "3a5aa7effaa3375169ba833457a7c75a3b35777201e17d4d2151e715105f6f98",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "719f1f71f75bc04605991d523296ddd62cca2552c5da7f023b7a0b29e6620c9d",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        38,
+        40
+      ],
+      "hp": [
+        217,
+        167,
+        206
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "npc-offers",
+      "frames": 41231,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/npc-offers/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_postgame_npc_offers_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-postgame-r3-01/npc-offers/native"
+      ],
+      "route_sha256": "a21ab0c819e881e22c1c289a082be99d7edff027ccc7b9da4d973bc93c78a6e2",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "2f2e44c8cf0f85060500cf9c9bb9c906f8cf5b84262ef5f27acdcd1a9b8c2ee5",
+      "active_party_records": [
+        11,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 19,
+      "additional_persistent_creature_bytes": 2223,
+      "offspring": {
+        "record": 17,
+        "plus": 3,
+        "gender": 1,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "188353b1e5c225d5d4fdfe41b0ad61263aed23a693e94ccab30c9c287018219b"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        "10": 10,
+        "12": 11,
+        "13": 12,
+        "14": 13,
+        "16": 14,
+        "17": 15,
+        "18": 16
+      }
+    }
+  ],
+  "workers": 1,
+  "seed_chain_audited": true,
+  "executable_bytes": 730169344,
+  "build_identity": "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/build-identity.json",
+  "build_identity_sha256": "6a44d28aff1e2596b0420ef2aaee2ee3e88fdf069fd4f16d40a312f4e234c9dc",
+  "seed_bundle_sha256": "8240d1e4b7b1a698a248407f0b7900530283856064e7ac1ef942fa47a273f6df",
+  "seed_chain_links": 7,
+  "ending_completed": false
+}

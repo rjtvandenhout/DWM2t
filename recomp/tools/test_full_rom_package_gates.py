@@ -336,10 +336,11 @@ class LocalLinkPackageContracts(unittest.TestCase):
                     'native_save_lock_held', 'native_save_lock_released',
                     'original_ending_continue', 'original_ending_party_hud'))
 
-    def verify(self):
+    def verify(self, *, require_alias_rejection=False):
         write_json(self.path, self.report)
         return packaging.verify_local_link_gate(self.path, self.source, self.executable,
-                                                100, self.ending, self.seed)
+                                                100, self.ending, self.seed,
+                                                require_alias_rejection=require_alias_rejection)
 
     def test_two_player_host_can_pass_without_claiming_original_link_transaction(self):
         self.assertFalse(self.verify()['serial_protocol_success_verified'])
@@ -383,6 +384,56 @@ class LocalLinkPackageContracts(unittest.TestCase):
         put(self.saves[1], data)
         with self.assertRaises(ValueError):
             self.verify()
+
+    def enable_alias_evidence(self):
+        self.report['checks'].extend((
+            'same-file-alias_refused_for_expected_reason',
+            'same-file-alias_left_no_owned_windows',
+            'same-file-alias_owned_expected_error_dialog_observed',
+            'same-file-alias_error_dialog_close_message_delivered',
+            'same_file_rejection_preserves_both_original_copies',
+            'competing-player2_owned_expected_error_dialog_observed',
+            'competing-player2_error_dialog_close_message_delivered',
+            'competing-player2_left_no_owned_windows'))
+        self.report['rejections'] = []
+        for label, reason, hwnd in (('same-file-alias', 'two different save', 60),
+                                    ('competing-player2', 'locked', 61)):
+            self.report['rejections'].append(dict(label=label, exit_code=1,
+                error_dialog_dismissed=True, reason=reason, dialog_observed=True,
+                stderr_reason_matched=True, dialog=dict(kind='#32770', title='DWM2t player', hwnd=hwnd),
+                close_attempts=[dict(message='WM_CLOSE', hwnd=hwnd, delivered=True)]))
+        put(self.root/'same-file-alias.stderr.log', b'Two different save files are required.\n')
+        put(self.root/'competing-player2.stderr.log', b'This save is locked.\n')
+
+    def test_split_gui_requires_a_real_recorded_same_file_rejection(self):
+        with self.assertRaises(ValueError):
+            self.verify(require_alias_rejection=True)
+        self.enable_alias_evidence()
+        self.assertEqual(self.verify(require_alias_rejection=True)['rejections'][0]['exit_code'], 1)
+
+    def test_split_gui_rejects_missing_or_false_alias_evidence(self):
+        self.enable_alias_evidence()
+        for changed in (dict(exit_code=0), dict(reason='unrelated error'),
+                        dict(error_dialog_dismissed='yes')):
+            with self.subTest(changed=changed):
+                before = self.report['rejections'][0].copy()
+                self.report['rejections'][0].update(changed)
+                with self.assertRaises(ValueError):
+                    self.verify(require_alias_rejection=True)
+                self.report['rejections'][0] = before
+        put(self.root/'same-file-alias.stderr.log', b'Unrelated error\n')
+        with self.assertRaises(ValueError):
+            self.verify(require_alias_rejection=True)
+
+    def test_split_gui_rejects_false_peer_lock_dialog_and_stderr(self):
+        self.enable_alias_evidence()
+        self.report['rejections'][1]['close_attempts'][0]['hwnd'] = 12345
+        with self.assertRaises(ValueError):
+            self.verify(require_alias_rejection=True)
+        self.report['rejections'][1]['close_attempts'][0]['hwnd'] = 61
+        put(self.root/'competing-player2.stderr.log', b'Unrelated error\n')
+        with self.assertRaises(ValueError):
+            self.verify(require_alias_rejection=True)
 
 
 if __name__ == '__main__':

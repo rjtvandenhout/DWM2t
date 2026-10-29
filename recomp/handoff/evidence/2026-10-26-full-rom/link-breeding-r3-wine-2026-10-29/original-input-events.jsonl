@@ -1,0 +1,101 @@
+{"event": "launched", "utc": "2026-10-29T03:03:41.250727+00:00", "monotonic": 112172.446, "command": ["Z:\\workspace\\scratch\\full-rom-2026-10-26\\r3-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe", "--play", "Z:\\workspace\\scratch\\full-rom-2026-10-26\\link-breeding-explore\\run-02\\profiles\\player1.sav", "--link-save", "Z:\\workspace\\scratch\\full-rom-2026-10-26\\link-breeding-explore\\run-02\\profiles\\player2.sav", "--scale", "1", "--audio-volume", "0"], "label": "linked", "pid": 92}
+{"event": "observed", "utc": "2026-10-29T03:04:13.414825+00:00", "monotonic": 112204.609, "player": 1, "label": "linked-p1-title", "screenshot": "linked-p1-title-player1.bmp", "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:14.330050+00:00", "monotonic": 112205.524, "player": 1, "virtual_key": 13, "idle": 0.6}
+{"event": "observed", "utc": "2026-10-29T03:04:14.463342+00:00", "monotonic": 112205.658, "player": 1, "label": "linked-p1-saved-menu", "screenshot": "linked-p1-saved-menu-player1.bmp", "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"}
+{"event": "observed", "utc": "2026-10-29T03:04:14.571536+00:00", "monotonic": 112205.766, "player": 2, "label": "linked-p2-title", "screenshot": "linked-p2-title-player2.bmp", "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:15.483201+00:00", "monotonic": 112206.677, "player": 2, "virtual_key": 13, "idle": 0.6}
+{"event": "observed", "utc": "2026-10-29T03:04:15.591752+00:00", "monotonic": 112206.786, "player": 2, "label": "linked-p2-saved-menu", "screenshot": "linked-p2-saved-menu-player2.bmp", "sha256": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:16.255071+00:00", "monotonic": 112207.449, "player": 1, "virtual_key": 40, "idle": 0.35}
+{"event": "observed", "utc": "2026-10-29T03:04:16.579320+00:00", "monotonic": 112207.774, "player": 1, "label": "p1-down1", "screenshot": "p1-down1-player1.bmp", "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:17.244347+00:00", "monotonic": 112208.439, "player": 1, "virtual_key": 40, "idle": 0.35}
+{"event": "observed", "utc": "2026-10-29T03:04:17.552109+00:00", "monotonic": 112208.746, "player": 1, "label": "p1-down2", "screenshot": "p1-down2-player1.bmp", "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:18.213584+00:00", "monotonic": 112209.408, "player": 2, "virtual_key": 40, "idle": 0.35}
+{"event": "observed", "utc": "2026-10-29T03:04:18.516207+00:00", "monotonic": 112209.71, "player": 2, "label": "p2-down1", "screenshot": "p2-down1-player2.bmp", "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:19.167180+00:00", "monotonic": 112210.361, "player": 2, "virtual_key": 40, "idle": 0.35}
+{"event": "observed", "utc": "2026-10-29T03:04:19.477496+00:00", "monotonic": 112210.672, "player": 2, "label": "p2-down2", "screenshot": "p2-down2-player2.bmp", "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"}
+{"event": "READY_BREEDING", "utc": "2026-10-29T03:04:19.478039+00:00", "monotonic": 112210.672}
+{"event": "original_p1", "utc": "2026-10-29T03:04:46.788290+00:00", "monotonic": 112237.982, "player": 1, "virtual_key": 90, "idle": 5.0}
+{"event": "observed", "utc": "2026-10-29T03:04:50.932810+00:00", "monotonic": 112242.126, "player": 1, "label": "after1", "screenshot": "after1-player1.bmp", "sha256": "84cab6ab9180ec42fc9712a9bfea0a3ab6c5091d6ef6d86edff19043e9c1e632"}
+{"event": "observed", "utc": "2026-10-29T03:04:51.037118+00:00", "monotonic": 112242.23, "player": 2, "label": "after1", "screenshot": "after1-player2.bmp", "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"}
+{"event": "original_p1", "utc": "2026-10-29T03:04:59.953865+00:00", "monotonic": 112251.147, "player": 1, "virtual_key": 90, "idle": 0.8}
+{"event": "observed", "utc": "2026-10-29T03:05:01.356845+00:00", "monotonic": 112252.55, "player": 1, "label": "after2", "screenshot": "after2-player1.bmp", "sha256": "5505bb15ffc065b84ade9cd50dab832ea2a0bee10c96431ca235380ba9b772ee"}
+{"event": "observed", "utc": "2026-10-29T03:05:01.470825+00:00", "monotonic": 112252.664, "player": 2, "label": "after2", "screenshot": "after2-player2.bmp", "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"}
+{"event": "original_p1", "utc": "2026-10-29T03:05:08.324623+00:00", "monotonic": 112259.517, "player": 1, "virtual_key": 90, "idle": 0.5}
+{"event": "original_p1", "utc": "2026-10-29T03:05:13.796303+00:00", "monotonic": 112264.989, "player": 2, "virtual_key": 90, "idle": 2.0}
+{"event": "observed", "utc": "2026-10-29T03:05:14.158037+00:00", "monotonic": 112265.35, "player": 1, "label": "after3", "screenshot": "after3-player1.bmp", "sha256": "5a49a802c3843434732901b7ed3b582998c29ce4eb338831a617f8253db41089"}
+{"event": "observed", "utc": "2026-10-29T03:05:14.272303+00:00", "monotonic": 112265.465, "player": 2, "label": "after3", "screenshot": "after3-player2.bmp", "sha256": "5a49a802c3843434732901b7ed3b582998c29ce4eb338831a617f8253db41089"}
+{"event": "original_p1", "utc": "2026-10-29T03:05:26.491519+00:00", "monotonic": 112277.684, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:05:27.916603+00:00", "monotonic": 112279.109, "player": 1, "label": "after4", "screenshot": "after4-player1.bmp", "sha256": "12e18136b05ad0d58fc5b7cc0540577ceae4dedb7ab0a015c3d3970484264d52"}
+{"event": "observed", "utc": "2026-10-29T03:05:28.023933+00:00", "monotonic": 112279.216, "player": 2, "label": "after4", "screenshot": "after4-player2.bmp", "sha256": "1889ac17a2f107e5cdc1aef100fdc9b43ce562f5905bfc19be4b6a01e092c86f"}
+{"event": "original_p1", "utc": "2026-10-29T03:05:34.975137+00:00", "monotonic": 112286.167, "player": 2, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:05:38.604684+00:00", "monotonic": 112289.796, "player": 1, "label": "after5", "screenshot": "after5-player1.bmp", "sha256": "d11cac3e7299fa6a1d09a2d1c1a9db2e6dbd482b69fa12d35ee6bd633286de69"}
+{"event": "observed", "utc": "2026-10-29T03:05:38.717633+00:00", "monotonic": 112289.909, "player": 2, "label": "after5", "screenshot": "after5-player2.bmp", "sha256": "937ff7bc9b133d11e5d69ebc8406f6a7cf7293b9c8d4b9694f85ae4146426df5"}
+{"event": "original_p1", "utc": "2026-10-29T03:05:48.924279+00:00", "monotonic": 112300.116, "player": 2, "virtual_key": 40, "idle": 0.4}
+{"event": "observed", "utc": "2026-10-29T03:05:50.972222+00:00", "monotonic": 112302.163, "player": 1, "label": "chooser2", "screenshot": "chooser2-player1.bmp", "sha256": "937ff7bc9b133d11e5d69ebc8406f6a7cf7293b9c8d4b9694f85ae4146426df5"}
+{"event": "observed", "utc": "2026-10-29T03:05:51.088884+00:00", "monotonic": 112302.28, "player": 2, "label": "chooser2", "screenshot": "chooser2-player2.bmp", "sha256": "d704abc45d720005b5440cc714c24123113e846e1ce77711850ce079b8e2224b"}
+{"event": "original_p1", "utc": "2026-10-29T03:05:57.849023+00:00", "monotonic": 112309.04, "player": 1, "virtual_key": 90, "idle": 0.4}
+{"event": "observed", "utc": "2026-10-29T03:06:00.078939+00:00", "monotonic": 112311.27, "player": 1, "label": "p1-selected", "screenshot": "p1-selected-player1.bmp", "sha256": "a7ac3073639e7097715eb7f0fdbc89dade7b229f9c86a8862b5778edfa37002b"}
+{"event": "observed", "utc": "2026-10-29T03:06:00.182368+00:00", "monotonic": 112311.373, "player": 2, "label": "p1-selected", "screenshot": "p1-selected-player2.bmp", "sha256": "d704abc45d720005b5440cc714c24123113e846e1ce77711850ce079b8e2224b"}
+{"event": "original_p1", "utc": "2026-10-29T03:06:12.586277+00:00", "monotonic": 112323.777, "player": 1, "virtual_key": 40, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:06:16.011225+00:00", "monotonic": 112327.202, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "original_p1", "utc": "2026-10-29T03:06:18.491748+00:00", "monotonic": 112329.682, "player": 2, "virtual_key": 90, "idle": 0.6}
+{"event": "observed", "utc": "2026-10-29T03:06:20.622593+00:00", "monotonic": 112331.813, "player": 1, "label": "selection", "screenshot": "selection-player1.bmp", "sha256": "981865100633fac13afe3ac6f87e85021d5f970fc55dee96dac8942928981bcf"}
+{"event": "observed", "utc": "2026-10-29T03:06:20.742228+00:00", "monotonic": 112331.933, "player": 2, "label": "selection", "screenshot": "selection-player2.bmp", "sha256": "c936480f6eb32180c1f56f85667b61bacb8ae07b46003710f49622c380ce82ac"}
+{"event": "original_p1", "utc": "2026-10-29T03:06:42.500809+00:00", "monotonic": 112353.69, "player": 1, "virtual_key": 90, "idle": 0.3}
+{"event": "original_p1", "utc": "2026-10-29T03:06:45.281059+00:00", "monotonic": 112356.471, "player": 2, "virtual_key": 88, "idle": 0.3}
+{"event": "observed", "utc": "2026-10-29T03:06:48.081560+00:00", "monotonic": 112359.271, "player": 1, "label": "farmselection", "screenshot": "farmselection-player1.bmp", "sha256": "937ff7bc9b133d11e5d69ebc8406f6a7cf7293b9c8d4b9694f85ae4146426df5"}
+{"event": "observed", "utc": "2026-10-29T03:06:48.180482+00:00", "monotonic": 112359.37, "player": 2, "label": "farmselection", "screenshot": "farmselection-player2.bmp", "sha256": "84af17237c226255da5a2df53701b9075c30f2d40133fe418d4e1a78e0bab46d"}
+{"event": "original_p1", "utc": "2026-10-29T03:06:54.708603+00:00", "monotonic": 112365.898, "player": 1, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:06:57.720445+00:00", "monotonic": 112368.91, "player": 1, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:07:00.568401+00:00", "monotonic": 112371.757, "player": 1, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:07:03.433125+00:00", "monotonic": 112374.622, "player": 2, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:07:06.793881+00:00", "monotonic": 112377.983, "player": 2, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:07:09.573958+00:00", "monotonic": 112380.763, "player": 2, "virtual_key": 40, "idle": 0.2}
+{"event": "original_p1", "utc": "2026-10-29T03:07:12.337340+00:00", "monotonic": 112383.526, "player": 2, "virtual_key": 40, "idle": 0.2}
+{"event": "observed", "utc": "2026-10-29T03:07:14.947324+00:00", "monotonic": 112386.136, "player": 1, "label": "farm-choices", "screenshot": "farm-choices-player1.bmp", "sha256": "bfbe6ee6a3524a3e09733bdd72f40061a30bc3513f5eb80be474b593ef82f364"}
+{"event": "observed", "utc": "2026-10-29T03:07:15.058891+00:00", "monotonic": 112386.247, "player": 2, "label": "farm-choices", "screenshot": "farm-choices-player2.bmp", "sha256": "937ff7bc9b133d11e5d69ebc8406f6a7cf7293b9c8d4b9694f85ae4146426df5"}
+{"event": "original_p1", "utc": "2026-10-29T03:07:22.163386+00:00", "monotonic": 112393.352, "player": 2, "virtual_key": 39, "idle": 0.4}
+{"event": "observed", "utc": "2026-10-29T03:07:24.729572+00:00", "monotonic": 112395.918, "player": 1, "label": "page2", "screenshot": "page2-player1.bmp", "sha256": "bfbe6ee6a3524a3e09733bdd72f40061a30bc3513f5eb80be474b593ef82f364"}
+{"event": "observed", "utc": "2026-10-29T03:07:24.830018+00:00", "monotonic": 112396.018, "player": 2, "label": "page2", "screenshot": "page2-player2.bmp", "sha256": "7bf6d08ddade3254685f062bf5cf4f5f3b12b2ccdfb717fd75bbf033f8ebde49"}
+{"event": "original_p1", "utc": "2026-10-29T03:07:31.757069+00:00", "monotonic": 112402.945, "player": 1, "virtual_key": 90, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:07:34.654392+00:00", "monotonic": 112405.842, "player": 1, "virtual_key": 40, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:07:38.283950+00:00", "monotonic": 112409.472, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "original_p1", "utc": "2026-10-29T03:07:40.715430+00:00", "monotonic": 112411.903, "player": 2, "virtual_key": 90, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:07:43.861322+00:00", "monotonic": 112415.049, "player": 2, "virtual_key": 40, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:07:47.295018+00:00", "monotonic": 112418.483, "player": 2, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:07:49.174091+00:00", "monotonic": 112420.362, "player": 1, "label": "parents", "screenshot": "parents-player1.bmp", "sha256": "6f65cb4531db202e5edc34bc210d58bb584135d06100c079ef2da9b69447af4c"}
+{"event": "observed", "utc": "2026-10-29T03:07:49.274122+00:00", "monotonic": 112420.462, "player": 2, "label": "parents", "screenshot": "parents-player2.bmp", "sha256": "85f13f27350c7ab8a3e8ecc1bc95405c39e1e91902d7dbf76304468e1944f88d"}
+{"event": "observed", "utc": "2026-10-29T03:08:01.767816+00:00", "monotonic": 112432.955, "player": 1, "label": "parents-after-wait", "screenshot": "parents-after-wait-player1.bmp", "sha256": "c6a77f0f2fe22016e3ebf6185bc6bf1608b8022ecb271aaa84fa0717221c8600"}
+{"event": "observed", "utc": "2026-10-29T03:08:01.872350+00:00", "monotonic": 112433.06, "player": 2, "label": "parents-after-wait", "screenshot": "parents-after-wait-player2.bmp", "sha256": "db79ee66354a8e96a30fcc5799dd2fbfb1133d8f2f3188927c4374b364d0f9a1"}
+{"event": "original_p1", "utc": "2026-10-29T03:08:14.799339+00:00", "monotonic": 112445.986, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:08:16.565214+00:00", "monotonic": 112447.752, "player": 1, "label": "proceed", "screenshot": "proceed-player1.bmp", "sha256": "3cf86212538618f2b3e0ff44b0670865c420df1a044d0da94868635157b40345"}
+{"event": "observed", "utc": "2026-10-29T03:08:16.665228+00:00", "monotonic": 112447.852, "player": 2, "label": "proceed", "screenshot": "proceed-player2.bmp", "sha256": "b0376da87f8efcb090cf445f12113a09b89f9620a8f842ff5b7305fffaea51e0"}
+{"event": "original_p1", "utc": "2026-10-29T03:08:25.146544+00:00", "monotonic": 112456.333, "player": 2, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:08:28.418708+00:00", "monotonic": 112459.605, "player": 1, "label": "confirm", "screenshot": "confirm-player1.bmp", "sha256": "8c62a179e7fbdd6674410c0f45fcf4bae80c9cdbec12952cb7e7c96610f7e698"}
+{"event": "observed", "utc": "2026-10-29T03:08:28.538094+00:00", "monotonic": 112459.724, "player": 2, "label": "confirm", "screenshot": "confirm-player2.bmp", "sha256": "f431d6f7f4b11a9733cd54e7993f183ddeb2f9915485e1f1850f2b924d0ea11e"}
+{"event": "original_p1", "utc": "2026-10-29T03:08:35.077347+00:00", "monotonic": 112466.263, "player": 1, "virtual_key": 90, "idle": 0.5}
+{"event": "original_p1", "utc": "2026-10-29T03:08:42.264937+00:00", "monotonic": 112473.451, "player": 2, "virtual_key": 90, "idle": 3.0}
+{"event": "observed", "utc": "2026-10-29T03:08:42.381477+00:00", "monotonic": 112473.567, "player": 1, "label": "after-confirm", "screenshot": "after-confirm-player1.bmp", "sha256": "dd2ccd87bfc35f0649123c2eb803017b0ee31a9c2a8766924aa5877a12fe79ca"}
+{"event": "observed", "utc": "2026-10-29T03:08:42.480440+00:00", "monotonic": 112473.666, "player": 2, "label": "after-confirm", "screenshot": "after-confirm-player2.bmp", "sha256": "16f0485c4afca5fa8637dd732b919dcfb2d594e766b8d7a6846d3de18825db3a"}
+{"event": "original_p1", "utc": "2026-10-29T03:08:52.151631+00:00", "monotonic": 112483.337, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "original_p1", "utc": "2026-10-29T03:08:55.353074+00:00", "monotonic": 112486.539, "player": 2, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:08:57.284974+00:00", "monotonic": 112488.47, "player": 1, "label": "breeding-event", "screenshot": "breeding-event-player1.bmp", "sha256": "69e5e454d7c7b38e453355c2c00781eaee275068aa7eb7834867a4a19a1a6fc8"}
+{"event": "observed", "utc": "2026-10-29T03:08:57.398677+00:00", "monotonic": 112488.584, "player": 2, "label": "breeding-event", "screenshot": "breeding-event-player2.bmp", "sha256": "69e5e454d7c7b38e453355c2c00781eaee275068aa7eb7834867a4a19a1a6fc8"}
+{"event": "observed", "utc": "2026-10-29T03:09:23.821930+00:00", "monotonic": 112515.007, "player": 1, "label": "animation", "screenshot": "animation-player1.bmp", "sha256": "6c645aab114681288809e9ac67bd3ab404141069ae4db7e0926fbc1eab67d3e7"}
+{"event": "observed", "utc": "2026-10-29T03:09:23.937406+00:00", "monotonic": 112515.122, "player": 2, "label": "animation", "screenshot": "animation-player2.bmp", "sha256": "6e8d8c12ad8f3f1ce90fb366d58c80643f30eed48c27ab914ab18288511a1504"}
+{"event": "original_p1", "utc": "2026-10-29T03:09:35.989171+00:00", "monotonic": 112527.173, "player": 1, "virtual_key": 90, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:09:39.252522+00:00", "monotonic": 112530.437, "player": 2, "virtual_key": 90, "idle": 0.4}
+{"event": "observed", "utc": "2026-10-29T03:09:41.750157+00:00", "monotonic": 112532.934, "player": 1, "label": "after-away", "screenshot": "after-away-player1.bmp", "sha256": "e6a23d4b1d02dd4c9084303081f5aa91a9f91334a68498411a97345461d7bf60"}
+{"event": "observed", "utc": "2026-10-29T03:09:41.851122+00:00", "monotonic": 112533.035, "player": 2, "label": "after-away", "screenshot": "after-away-player2.bmp", "sha256": "d2bb1492f42d6fdb1952ff688edd9d4530637c30424e1aa0d07cf4215fff7539"}
+{"event": "observed", "utc": "2026-10-29T03:10:02.661131+00:00", "monotonic": 112553.845, "player": 1, "label": "offspring", "screenshot": "offspring-player1.bmp", "sha256": "2637c747596977b0df0f10eb5479248d2cfae34932a2ae840e6d550d95cba99c"}
+{"event": "observed", "utc": "2026-10-29T03:10:02.761148+00:00", "monotonic": 112553.945, "player": 2, "label": "offspring", "screenshot": "offspring-player2.bmp", "sha256": "cd756196438ccabde58af7e1f681102d41d31ae0f777e7cae953d7e8406e3a3c"}
+{"event": "observed", "utc": "2026-10-29T03:10:21.236088+00:00", "monotonic": 112572.419, "player": 1, "label": "offspring-full", "screenshot": "offspring-full-player1.bmp", "sha256": "af3a3203fb9c9e315c6d92ef43e475a4517fbb8dd60876d013efa5b3c0b0fa74"}
+{"event": "observed", "utc": "2026-10-29T03:10:21.345384+00:00", "monotonic": 112572.528, "player": 2, "label": "offspring-full", "screenshot": "offspring-full-player2.bmp", "sha256": "b74740ed73da975965c4fa4ec00e07525673626e29d91d0fd66fc3d61a0d91b0"}
+{"event": "original_p1", "utc": "2026-10-29T03:10:38.319578+00:00", "monotonic": 112589.502, "player": 1, "virtual_key": 90, "idle": 1.0}
+{"event": "original_p1", "utc": "2026-10-29T03:10:41.915626+00:00", "monotonic": 112593.098, "player": 2, "virtual_key": 90, "idle": 1.0}
+{"event": "observed", "utc": "2026-10-29T03:10:46.431704+00:00", "monotonic": 112597.614, "player": 1, "label": "after-egg", "screenshot": "after-egg-player1.bmp", "sha256": "b6333efee14f83a2469df9bd5e2f8365284bdfcaddfb7f7db17ce6f4207c5d8a"}
+{"event": "observed", "utc": "2026-10-29T03:10:46.544282+00:00", "monotonic": 112597.726, "player": 2, "label": "after-egg", "screenshot": "after-egg-player2.bmp", "sha256": "b6333efee14f83a2469df9bd5e2f8365284bdfcaddfb7f7db17ce6f4207c5d8a"}
+{"event": "original_p1", "utc": "2026-10-29T03:10:54.696287+00:00", "monotonic": 112605.878, "player": 1, "virtual_key": 90, "idle": 0.4}
+{"event": "original_p1", "utc": "2026-10-29T03:11:00.944942+00:00", "monotonic": 112612.127, "player": 2, "virtual_key": 90, "idle": 3.0}
+{"event": "observed", "utc": "2026-10-29T03:11:01.244841+00:00", "monotonic": 112612.427, "player": 1, "label": "after-care", "screenshot": "after-care-player1.bmp", "sha256": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c"}
+{"event": "observed", "utc": "2026-10-29T03:11:01.346080+00:00", "monotonic": 112612.528, "player": 2, "label": "after-care", "screenshot": "after-care-player2.bmp", "sha256": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c"}

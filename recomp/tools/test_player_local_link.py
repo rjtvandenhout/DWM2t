@@ -221,7 +221,9 @@ def main() -> int:
         def rejected(command: list[str], label: str, reason: str) -> None:
             process = launch(command, label)
             deadline = time.monotonic() + 30
-            saw_dialog = False
+            rejection = dict(label=label, reason=reason, dialog_observed=False,
+                             dialog=None, close_attempts=[], exit_code=None)
+            report.setdefault('rejections', []).append(rejection)
             while time.monotonic() < deadline and process.poll() is None:
                 owned = api.owned(process)
                 if any(entry['kind'] == 'DWM2tRecompWindow' for entry in owned):
@@ -229,18 +231,34 @@ def main() -> int:
                 for entry in owned:
                     if entry['kind'] != '#32770':
                         continue
-                    api.focus(entry['hwnd'])
-                    button = api.user.GetDlgItem(entry['hwnd'], 1)
-                    if button and api.user.PostMessageW(button, 0xF5, 0, 0):
-                        saw_dialog = True
+                    if entry['title'] != 'DWM2t player':
+                        raise RuntimeError(label + '_unexpected_error_dialog')
+                    if rejection['dialog_observed']:
+                        continue
+                    rejection['dialog_observed'] = True
+                    rejection['dialog'] = entry
+                    # Native Windows can show the owned message box without
+                    # exposing an IDOK child to GetDlgItem. WM_CLOSE dismisses
+                    # that same modal without depending on its control layout.
+                    c.set_last_error(0)
+                    delivered = bool(api.user.PostMessageW(entry['hwnd'], 0x10, 0, 0))
+                    rejection['close_attempts'].append(dict(message='WM_CLOSE', hwnd=entry['hwnd'],
+                                                             delivered=delivered, error=c.get_last_error()))
+                    if not delivered:
+                        raise RuntimeError(label + '_error_dialog_close_message_failed')
                 time.sleep(.05)
-            if process.poll() is None:
+            rejection['exit_code'] = process.poll()
+            if rejection['exit_code'] is None:
                 raise RuntimeError(label + '_did_not_exit_after_its_error_dialog_was_dismissed')
             text = (out / (label + '.stderr.log')).read_text(encoding='utf-8', errors='replace')
-            require(process.returncode != 0 and reason in text.lower(), label + '_refused_for_expected_reason')
+            rejection['stderr_reason_matched'] = reason in text.lower()
+            require(rejection['dialog_observed'], label + '_owned_expected_error_dialog_observed')
+            require(bool(rejection['close_attempts']) and rejection['close_attempts'][0]['delivered'],
+                    label + '_error_dialog_close_message_delivered')
+            require(process.returncode == 1 and rejection['stderr_reason_matched'],
+                    label + '_refused_for_expected_reason')
             require(not api.owned(process), label + '_left_no_owned_windows')
-            report.setdefault('rejections', []).append(dict(label=label, exit_code=process.returncode,
-                                                            error_dialog_dismissed=saw_dialog, reason=reason))
+            rejection['error_dialog_dismissed'] = True
 
         # This alias resolves to the same file after native parent/path
         # normalization. The rejection must occur before any game window.
@@ -297,9 +315,14 @@ def main() -> int:
         for round_name, closing_player in (('continue', 2), ('reload', 1)):
             process = launch(command, round_name)
             windows = api.pair(process)
+            owned = api.owned(process)
+            game_windows = [entry for entry in owned if entry['kind'] == 'DWM2tRecompWindow']
             report.setdefault('window_pairs', []).append(dict(round=round_name, pid=process.pid,
-                                                              windows=api.owned(process)))
-            require(len(set(windows)) == 2, round_name + '_two_distinct_windows_share_one_owned_process')
+                windows=game_windows, other_owned_windows=[entry for entry in owned if entry not in game_windows]))
+            require(process.poll() is None and len(game_windows) == 2 and
+                    {entry['hwnd'] for entry in game_windows} == set(windows) and
+                    not any(entry['kind'] == '#32770' for entry in owned),
+                    round_name + '_two_distinct_windows_share_one_owned_process')
             for player, save in enumerate(saves, 1):
                 require(api.save_lock(save, True) == 32, f'{round_name}_player{player}_native_save_lock_held')
             # Same original production boot wait as the retained Journal GUI
@@ -332,7 +355,11 @@ def main() -> int:
                 before = digest(saves[1])
                 rejected([str(exe), '--play', str(saves[1]), '--scale', '1', '--audio-volume', '0'],
                          'competing-player2', 'locked')
-                require(process.poll() is None and len(api.owned(process)) == 2,
+                owned = api.owned(process)
+                game_windows = [entry for entry in owned if entry['kind'] == 'DWM2tRecompWindow']
+                require(process.poll() is None and len(game_windows) == 2 and
+                        {entry['hwnd'] for entry in game_windows} == set(windows) and
+                        not any(entry['kind'] == '#32770' for entry in owned),
                         'peer_lock_rejection_keeps_both_original_games_running')
                 require(digest(saves[1]) == before, 'competing_process_does_not_replace_player2_save')
 

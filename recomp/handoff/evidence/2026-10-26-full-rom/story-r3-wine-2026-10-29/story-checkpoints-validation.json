@@ -1,0 +1,1613 @@
+{
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "executable_sha256": "4d96e9c8d0318c0018057469365588e6becbdf2505def77d55cd967c1f4df11e",
+  "executable_source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "full_game_verified": false,
+  "sea_world_completed": true,
+  "ice_world_completed": true,
+  "quest_bytes": 107,
+  "stages": [
+    {
+      "stage": "hood-tales",
+      "frames": 64544,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/hood-tales/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_hood_squid_tales_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/hood-tales/native"
+      ],
+      "route_sha256": "bcec373e2cc8434197e0d87a6073feffd5f7cd4dbc965d5550df62d8d2314c9c",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c1c08b994e7efcfdf8b0afea76f11aca1da20575f649c7222d2b5ac456165baf",
+      "active_party_records": [
+        9,
+        4,
+        1
+      ],
+      "levels": [
+        12,
+        12,
+        13
+      ],
+      "hp": [
+        88,
+        52,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "mermaid-palace",
+      "frames": 93727,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/mermaid-palace/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_mermaid_palace_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/mermaid-palace/native"
+      ],
+      "route_sha256": "10091514964d09a5a7629bcfcaa244652c2a46a4fe95ea88a558a609a6fac84f",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "4b8c3fa641af2ed9d76ea6da7963b3c280243dbe2233c8a34a6727c9857f2154",
+      "active_party_records": [
+        9,
+        4,
+        5
+      ],
+      "levels": [
+        12,
+        12,
+        8
+      ],
+      "hp": [
+        89,
+        68,
+        21
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "strong-party",
+      "frames": 58319,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/strong-party/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_strong_party_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/strong-party/native"
+      ],
+      "route_sha256": "45e41ec0d18fa4b67ff2e96d28b413f505de7fa9f30ecbf923790ac135587f4f",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c83ab756355ee300158dfd0035afc2ae23e94d457f5ef04343957517385b1aee",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        12,
+        11
+      ],
+      "hp": [
+        89,
+        69,
+        102
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 10,
+      "additional_persistent_creature_bytes": 320
+    },
+    {
+      "stage": "captain-preparation",
+      "frames": 138371,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/captain-preparation/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_captain_preparation_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/captain-preparation/native"
+      ],
+      "route_sha256": "419544992221361ddef0e3be80f210eaf50c0b340a264bd02729e4ff47bffd57",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "2f8ef50a95e66c1a40c7454af774347bbbb5e184fdb5249b9146b2c9ce4a4be7",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        12,
+        13,
+        11
+      ],
+      "hp": [
+        89,
+        72,
+        102
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 352
+    },
+    {
+      "stage": "moonrock",
+      "frames": 50283,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/moonrock/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_moonrock_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/moonrock/native"
+      ],
+      "route_sha256": "1b531c769ce96365569a128588d09d2ff489dbd80ca503ef1aca71b1084a6930",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "870a898d5e2264f8b489b7084cb2643d140d9132c4f414aa1b73323c69524197",
+      "active_party_records": [
+        9,
+        4,
+        0
+      ],
+      "levels": [
+        13,
+        14,
+        11
+      ],
+      "hp": [
+        40,
+        56,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 0,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 352
+    },
+    {
+      "stage": "lighthouse-recovery",
+      "frames": 110161,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/lighthouse-recovery/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_lighthouse_recovery_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/lighthouse-recovery/native"
+      ],
+      "route_sha256": "430772738fa7070345667dff0c89c74bf73e7644ad7f6d1fd54482309a0975cd",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "61fc465f2270d966abf761d96a062517b676a7e6ccacbd5fab221592fb774d90",
+      "active_party_records": [
+        0,
+        4,
+        9
+      ],
+      "levels": [
+        12,
+        15,
+        13
+      ],
+      "hp": [
+        107,
+        74,
+        92
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 384
+    },
+    {
+      "stage": "sea-treasure",
+      "frames": 28012,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sea-treasure/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sea_treasure_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sea-treasure/native"
+      ],
+      "route_sha256": "a9308bdeb55f136986380b2cbbd4a23b7e5b9e4ad4596653dcab3772a7f8db66",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "046ef944cc794c4f8272cb306f82f7cefa44b3dd53908de7bc6267ec7a779074",
+      "active_party_records": [
+        4,
+        9,
+        0
+      ],
+      "levels": [
+        15,
+        13,
+        12
+      ],
+      "hp": [
+        74,
+        92,
+        107
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 384
+    },
+    {
+      "stage": "octokid-birth",
+      "frames": 69744,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/octokid-birth/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_octokid_birth_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/octokid-birth/native"
+      ],
+      "route_sha256": "910c6a3237f68dac5f25c0a85193159e45a4a3d890ce93031032da2e8653618f",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "e1151817365e74414719f21e274f137150bbe5e3d54c3c8f63b823dadc184ce7",
+      "active_party_records": [
+        0,
+        9,
+        10
+      ],
+      "levels": [
+        12,
+        12,
+        1
+      ],
+      "hp": [
+        107,
+        80,
+        41
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 60,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287,
+      "offspring": {
+        "record": 10,
+        "species": 323,
+        "plus": 1,
+        "gender": 1,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "8fa0d22c2c8a1d2ab15960e6d3ac01cb17e945362b98866adac33bd8949512d5"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "5": 4,
+        "6": 5,
+        "7": 6,
+        "8": 7,
+        "10": 8,
+        "11": 9
+      }
+    },
+    {
+      "stage": "octokid-training",
+      "frames": 130852,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/octokid-training/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_octokid_training_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/octokid-training/native"
+      ],
+      "route_sha256": "7c28fa7fcb137a85f8a8119bb93bf2a21a855809d66bf559434778135fea98ea",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+      "active_party_records": [
+        0,
+        9,
+        10
+      ],
+      "levels": [
+        13,
+        12,
+        10
+      ],
+      "hp": [
+        115,
+        80,
+        58
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 360,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287
+    },
+    {
+      "stage": "c-class-victory",
+      "frames": 40179,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/c-class-victory/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_c_class_victory_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/c-class-victory/native"
+      ],
+      "route_sha256": "21d7013b901b7b50e60e8d1c845ad6b7e85478e8308d70c5a7a39563a3741cd8",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+      "active_party_records": [
+        10,
+        0,
+        9
+      ],
+      "levels": [
+        10,
+        13,
+        12
+      ],
+      "hp": [
+        58,
+        115,
+        80
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 11,
+      "additional_persistent_creature_bytes": 1287
+    },
+    {
+      "stage": "madgopher-ready",
+      "frames": 60818,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/madgopher-ready/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_madgopher_ready_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/madgopher-ready/native"
+      ],
+      "route_sha256": "07f7b592e0f55c935ece2f18390a922f8e1e0edd5eca9ddfdc7c9bbc8d16ec3b",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "b7c01f29ab715f15e75a5357a7884f2fa9759558c4da8aa50479e009781bb525",
+      "active_party_records": [
+        9,
+        0,
+        10
+      ],
+      "levels": [
+        11,
+        13,
+        10
+      ],
+      "hp": [
+        61,
+        115,
+        38
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "ice-key",
+      "frames": 13977,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-key/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ice_key_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-key/native"
+      ],
+      "route_sha256": "083c324824510ba26acb13f91ed67208ae806748c92434fc41fb2c91f4175875",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "1b41e7df21a346ddb2cf21f2906e345d30c5b5f1ca8269581be31835f6afc108",
+      "active_party_records": [
+        9,
+        0
+      ],
+      "levels": [
+        11,
+        13
+      ],
+      "hp": [
+        61,
+        115
+      ],
+      "status_bytes": [
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "ice-world-entry",
+      "frames": 24821,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-world-entry/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ice_world_entry_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-world-entry/native"
+      ],
+      "route_sha256": "7b241595320483736cde1695ce8be64decd273bd99503685ca9e4c557b2b6c4b",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "e28221938470fd287f3ec4952e7b3336282feeb344169c7fdc0a20a241caebe3",
+      "active_party_records": [
+        9,
+        0,
+        8
+      ],
+      "levels": [
+        11,
+        13,
+        12
+      ],
+      "hp": [
+        61,
+        115,
+        80
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 160,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "ice-training",
+      "frames": 295304,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-training/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ice_training_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-training/native"
+      ],
+      "route_sha256": "c3408a37b22aba9c292ad7c0f5ee147fb49a50141c0ffcd9c1716b2fa2bf4596",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "d8e8e6992d67bf03df63edd302b36d02778084b680bdb7ad9831b60fae97bbd1",
+      "active_party_records": [
+        0,
+        8,
+        9
+      ],
+      "levels": [
+        16,
+        17,
+        17
+      ],
+      "hp": [
+        138,
+        113,
+        73
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 80,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "ice-crest",
+      "frames": 61681,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-crest/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ice_crest_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ice-crest/native"
+      ],
+      "route_sha256": "2fc2b05603fa6dcc51092e31851a955e77c89066b654441e5f8101e4922ca0e1",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c20f93ffdc1a7a282cc5903d36ae56bd0838df89daaece1088e169e0e143bec1",
+      "active_party_records": [
+        0,
+        8,
+        9
+      ],
+      "levels": [
+        16,
+        18,
+        17
+      ],
+      "hp": [
+        138,
+        116,
+        73
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 70,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "bombcrag-jail-escape",
+      "frames": 75754,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/bombcrag-jail-escape/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_bombcrag_jail_escape_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/bombcrag-jail-escape/native"
+      ],
+      "route_sha256": "42a2b6ff4dcb9fbd0782805e60c2f807adcbda07fa9773ce096e29a50d0200df",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "494ed3a48672d938c986a8ce96fc21c5e3359e6387f75195087190592bc7ee48",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        18,
+        18,
+        16
+      ],
+      "hp": [
+        63,
+        70,
+        0
+      ],
+      "status_bytes": [
+        0,
+        0,
+        128
+      ],
+      "gold": 460,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "norden-restored",
+      "frames": 37976,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/norden-restored/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_norden_restored_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/norden-restored/native"
+      ],
+      "route_sha256": "ec3f0a8212fd2c68a1aa4cba1d0001c7a2e958824ffd3b775b58f4dafba0d2b3",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "16a86744a4e6416083a49b371d5b9071faae0036318306ac6364f2b79938cdd0",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        19,
+        18,
+        16
+      ],
+      "hp": [
+        118,
+        76,
+        138
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 355,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "westania-performance",
+      "frames": 63864,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/westania-performance/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_westania_performance_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/westania-performance/native"
+      ],
+      "route_sha256": "4c654ffa2fa04b5105b930676d88ca5801068fbcee1ca0da1235a3134e42df4d",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "7324097161189f30ada19a2577750b36b98bafe14a7e67bebf5d87566bff0f8c",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        19,
+        19,
+        17
+      ],
+      "hp": [
+        86,
+        58,
+        109
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 945,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "yuna-restored",
+      "frames": 57587,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/yuna-restored/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_yuna_restored_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/yuna-restored/native"
+      ],
+      "route_sha256": "d2dff440750e1ae684b0d708714b2c30a32e6598550954201a31d430f22e1b7b",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c186ec00dc3cb19e00fa7cc5951e3d3ba8baeb0447b3f5843d6cc4f24fcbee1a",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        20,
+        19,
+        17
+      ],
+      "hp": [
+        74,
+        64,
+        140
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 935,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "helen-restored",
+      "frames": 75268,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/helen-restored/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_helen_restored_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/helen-restored/native"
+      ],
+      "route_sha256": "9f3c9ee81340909e0ee744885550be62a3067b3c77dd97b4a773350275988e38",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "bc02bc19997678687215aafcc50bd7761f61533e95b48897da939123f4c924d7",
+      "active_party_records": [
+        8,
+        9,
+        0
+      ],
+      "levels": [
+        21,
+        20,
+        18
+      ],
+      "hp": [
+        119,
+        79,
+        143
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 905,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "raygigas-birth",
+      "frames": 87794,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/raygigas-birth/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_raygigas_birth_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/raygigas-birth/native"
+      ],
+      "route_sha256": "ba3bdf443e119a49d5f052e317c73144bf5ac3a0bfe78151e372a1302ffc9665",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "8bdc0713a519207c2e4536b2748c5c5fe803df331a6b85a596c33ff7a69aa70c",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        21,
+        18,
+        1
+      ],
+      "hp": [
+        79,
+        143,
+        46
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404,
+      "offspring": {
+        "record": 11,
+        "plus": 1,
+        "gender": 0,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "90b08e988245342d1d4a36cbb1c4ac297fbc11edf5bc30ec34aa3b1dec4e9814"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "9": 7,
+        "10": 8,
+        "11": 9,
+        "12": 10
+      }
+    },
+    {
+      "stage": "derzo-training",
+      "frames": 658627,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/derzo-training/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_derzo_training_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/derzo-training/native"
+      ],
+      "route_sha256": "6b993c973fcb6bfbacf9bec940912253e1b382da237fd549b3f30eca1b7333e6",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "62d2f2a5b77748dd0d79d29e4814cd3600e2c60993d66f67306bf16ae49eed24",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        23,
+        20,
+        20
+      ],
+      "hp": [
+        84,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "sky-shield",
+      "frames": 36980,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-shield/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sky_shield_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-shield/native"
+      ],
+      "route_sha256": "1bd4ca2cceafd4ce9dfe9aad68ce02c488d0a541caab9ef84cf1e999d238682b",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "8297929d8dc38948f3cfec4bf1e94865220215aa10d2913fcf46d7ce2f6364f3",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        24,
+        21,
+        21
+      ],
+      "hp": [
+        87,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "sky-key",
+      "frames": 20034,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-key/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sky_key_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-key/native"
+      ],
+      "route_sha256": "03f75b4a794595dc118fe16e480678b0575d29335aa47277b2d4f08ef55cffd7",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "48f169d790414fea04e028a437dfaec06567c7558f55cdcc6e2163d72be6bb4f",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        24,
+        21,
+        21
+      ],
+      "hp": [
+        87,
+        146,
+        167
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 206,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "change-staff",
+      "frames": 87492,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/change-staff/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_change_staff_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/change-staff/native"
+      ],
+      "route_sha256": "3c8ed937ce6b67efcedb66bb71da681f01be8e284e4f3d2e06e51974400aff0b",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "dd9b5864e04c93be97c1b6513718dab84e734b8ef0012625b14110683ae74626",
+      "active_party_records": [
+        7,
+        0,
+        11
+      ],
+      "levels": [
+        25,
+        22,
+        22
+      ],
+      "hp": [
+        87,
+        121,
+        169
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 196,
+      "owned": 12,
+      "additional_persistent_creature_bytes": 1404
+    },
+    {
+      "stage": "pei-inn",
+      "frames": 156892,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/pei-inn/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_pei_inn_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/pei-inn/native"
+      ],
+      "route_sha256": "81fab8423866581816a087eb32ffbfef538ef592b8d1263c1cf389f8f59f22bb",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "fc4be98a84c03cd273c4ab422f9d85af911b9d828afe07e8c6f77e469fd9e736",
+      "active_party_records": [
+        0,
+        11,
+        7
+      ],
+      "levels": [
+        23,
+        24,
+        26
+      ],
+      "hp": [
+        151,
+        175,
+        90
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 186,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "madcondor-nest",
+      "frames": 136123,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/madcondor-nest/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_madcondor_nest_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/madcondor-nest/native"
+      ],
+      "route_sha256": "7ccc1f35f77199861caf61a3ef4ad7d436b691e29c9697f241575c5a1e3cb444",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "2655aa444fb56f2312e36b48ec446d0e085024ff3e11001fcc282fd3e6814788",
+      "active_party_records": [
+        11,
+        7,
+        0
+      ],
+      "levels": [
+        25,
+        27,
+        24
+      ],
+      "hp": [
+        176,
+        90,
+        154
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 166,
+      "owned": 14,
+      "additional_persistent_creature_bytes": 1638
+    },
+    {
+      "stage": "garon-birth",
+      "frames": 85603,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/garon-birth/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_garon_birth_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/garon-birth/native"
+      ],
+      "route_sha256": "398f70263435ca4c0f1a29c76bc6aa72ea0b1bb9a716a744f55b05639be18697",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "111a2214b78f69882ce8e0a0ddfe9d4391f2fb42511ec03b39b9686e7d3cd720",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        26,
+        1,
+        25
+      ],
+      "hp": [
+        178,
+        59,
+        155
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 43,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521,
+      "offspring": {
+        "record": 12,
+        "plus": 3,
+        "gender": 0,
+        "skills": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "genes_sha256": "189f73a2e99cf40318c3971525ddcf92929d9fec2c6816b341def2f1a8ad09e2"
+      },
+      "retained_records": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "8": 7,
+        "9": 8,
+        "10": 9,
+        "11": 10,
+        "12": 11
+      }
+    },
+    {
+      "stage": "garon-training",
+      "frames": 86481,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/garon-training/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_garon_training_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/garon-training/native"
+      ],
+      "route_sha256": "d89faab3594d78fac7de50e546d152197d344dedf8f78cc986789da122357713",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "5d309edcf0c35048b7883efdee62216243a81555893d0e5031ffe5d78c5d5cc8",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        27,
+        17,
+        25
+      ],
+      "hp": [
+        178,
+        174,
+        155
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 43,
+      "owned": 13,
+      "additional_persistent_creature_bytes": 1521
+    },
+    {
+      "stage": "heaven-sword",
+      "frames": 131651,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-sword/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_heaven_sword_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-sword/native"
+      ],
+      "route_sha256": "9e76427df1d930e06609665696aec711bc5264ab07f12e8eb5f49751a62ef971",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "94d024c3d3aa146f246136b0c7107d69b4a05bf67f784aaafbbe68344bccd06d",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        29,
+        24,
+        27
+      ],
+      "hp": [
+        184,
+        188,
+        157
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 33,
+      "owned": 16,
+      "additional_persistent_creature_bytes": 1872
+    },
+    {
+      "stage": "heaven-armor",
+      "frames": 97722,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-armor/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_heaven_armor_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-armor/native"
+      ],
+      "route_sha256": "d203786499ec3edc15beec06888001c1b63902e51e3a07cb102cf085cc29995a",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "97d1fe94ec209aa00f55fa0169d852061b65bd3c30c3df731bbc9e8b2c31f46b",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        30,
+        25,
+        28
+      ],
+      "hp": [
+        187,
+        189,
+        160
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 23,
+      "owned": 16,
+      "additional_persistent_creature_bytes": 1872
+    },
+    {
+      "stage": "heaven-helmet",
+      "frames": 157612,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-helmet/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_heaven_helmet_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/heaven-helmet/native"
+      ],
+      "route_sha256": "a8b6260129525ed4dc31acb09e3f43a4b9357aa27bdc951892c8b66b73f762ab",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "a825958b8e9c8aee2cd3c176187f853d7390c3ba728e7cdbe746723ec4b06b1e",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        32,
+        29,
+        31
+      ],
+      "hp": [
+        191,
+        197,
+        168
+      ],
+      "status_bytes": [
+        4,
+        0,
+        0
+      ],
+      "gold": 13,
+      "owned": 16,
+      "additional_persistent_creature_bytes": 1872
+    },
+    {
+      "stage": "sky-complete",
+      "frames": 114894,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-complete/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_sky_complete_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/sky-complete/native"
+      ],
+      "route_sha256": "b976e5f71f98f93f5faa8f85ad7d5b4e2e36582af45149172ee2226c3bc3b82a",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "11deaaa8784a7f79c24132173a2fb2cbd221281f2314c9da97f058f9fca51a0b",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        33,
+        30,
+        32
+      ],
+      "hp": [
+        193,
+        200,
+        170
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 13,
+      "owned": 16,
+      "additional_persistent_creature_bytes": 1872
+    },
+    {
+      "stage": "limbo-training",
+      "frames": 528900,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/limbo-training/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_limbo_training_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/limbo-training/native"
+      ],
+      "route_sha256": "d6c61536688012682eecc53f5edf7307dfccf83873b92f03cf5c04cdabf88525",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "9d0f97079957d0d47d6b2114b51b590dd1a46b10d6690711914ae0cfc639b2b1",
+      "active_party_records": [
+        10,
+        12,
+        0
+      ],
+      "levels": [
+        39,
+        37,
+        37
+      ],
+      "hp": [
+        204,
+        214,
+        180
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 3,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "limbo-guardian",
+      "frames": 105365,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/limbo-guardian/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_limbo_guardian_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/limbo-guardian/native"
+      ],
+      "route_sha256": "47a505b1fcd8eef67193e596d636447146e76b04afa5bdc1fb043461c278d7b3",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "842eb6339d3e139312897180d876274e402c7a911acb90104e493d276f5b7854",
+      "active_party_records": [
+        0,
+        10,
+        12
+      ],
+      "levels": [
+        37,
+        40,
+        38
+      ],
+      "hp": [
+        180,
+        207,
+        215
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 0,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "darck-preparation",
+      "frames": 149478,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/darck-preparation/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_darck_preparation_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/darck-preparation/native"
+      ],
+      "route_sha256": "a4e0de06177c96fd3f75db98d7957f40419abc249bc268e84f499e41e3e70642",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "087b316af434d4289585281db9d31337d714a93026f5cd8ee2474ad4cb9894fb",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        38,
+        37,
+        40
+      ],
+      "hp": [
+        215,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 162,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "darck-supplies",
+      "frames": 43130,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/darck-supplies/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_darck_supplies_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/darck-supplies/native"
+      ],
+      "route_sha256": "07dd84182e954c99275a22140138abbcf9e7c6be52077b6af0428d337b240b99",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "c20b9fff9de0f3a8e7dff9a49a23c6098e2b7b5dcd4c61b7d05529589755acba",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        38,
+        37,
+        40
+      ],
+      "hp": [
+        215,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 22,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989
+    },
+    {
+      "stage": "ending-complete",
+      "frames": 210446,
+      "command": [
+        "/workspace/.tools/wine-run",
+        "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/DWM2tRecompFull.exe",
+        "--m8-checkpoint-test",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ending-complete/seed-copy.sav",
+        "Z:/workspace/DWM2t/recomp/tests/m8_ending_complete_p1.txt",
+        "Z:/workspace/scratch/full-rom-2026-10-26/independent-story-r3-01/ending-complete/native"
+      ],
+      "route_sha256": "2367e5d0bf1c27388c60cadab6aa3c438f94c2c5331f815e81efe15f2e6cc642",
+      "status": "passed",
+      "native_returncode": 0,
+      "save_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "active_party_records": [
+        12,
+        0,
+        10
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "status_bytes": [
+        0,
+        0,
+        0
+      ],
+      "gold": 11,
+      "owned": 17,
+      "additional_persistent_creature_bytes": 1989,
+      "ending_completed": true,
+      "completion_witnesses": {
+        "darck-defeated": {
+          "frame": 139859,
+          "screen": "7e5387112a69c50b",
+          "source_bmp": "m8_4520.bmp",
+          "source_bmp_sha256": "bb6c13fb567a295ba21761660c78b7e26af98f52405ca5f8e41081e57eb81261"
+        },
+        "credits-start": {
+          "frame": 183818,
+          "screen": "704626832ab56697",
+          "source_bmp": "m8_5188.bmp",
+          "source_bmp_sha256": "fca00eb259558e436b04d64b6dde9d45cae42fc61f6b18edeb76c75bb6596bfd"
+        },
+        "credits-final": {
+          "frame": 200072,
+          "screen": "90f792fcab854f13",
+          "source_bmp": "m8_5296.bmp",
+          "source_bmp_sha256": "e764ba586bae46f93eba0a12367275460c820684c75190effce5bcc58c2bfd4d"
+        },
+        "the-end": {
+          "frame": 204957,
+          "screen": "f4ab679aa287713",
+          "source_bmp": "m8_5386.bmp",
+          "source_bmp_sha256": "4a832bb53120c687649d1af5660b85be5756f5814263e3392014f45be6267785"
+        }
+      }
+    }
+  ],
+  "workers": 2,
+  "seed_chain_audited": true,
+  "executable_bytes": 730169344,
+  "build_identity": "/workspace/scratch/full-rom-2026-10-26/r3-audit/diagnostic/extracted/diagnostic-output/build-identity.json",
+  "build_identity_sha256": "6a44d28aff1e2596b0420ef2aaee2ee3e88fdf069fd4f16d40a312f4e234c9dc",
+  "seed_bundle_sha256": "475418e5574e2bca7c4088e92cdc9cac0239a929a30a8f39414a8cd45e1bd535",
+  "seed_chain_links": 38,
+  "ending_completed": true
+}
