@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "kind": "independent_R3_POSIX_artifact_audit",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "run_id": 40799717118,
+  "artifact_download": {
+    "schema": 1,
+    "run_id": 40799717118,
+    "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+    "artifact_id": 12864983814,
+    "artifact_name": "M8-fresh-posix-persistence-40799717118",
+    "outer_zip_bytes": 709856,
+    "outer_zip_sha256": "5a2874e8327e0d7ce6f9a85d65c5cb7c746b42694d3c02f4fdd133a949d701fc",
+    "members": 329,
+    "original_zip": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/original-actions.zip",
+    "extracted": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted",
+    "contents_executed": false
+  },
+  "actual_Git_source_archives": [
+    {
+      "core_autocrlf": "false",
+      "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+      "PAX_comment_verified": true,
+      "archive": "/workspace/scratch/full-rom-2026-10-26/r2-artifact-audit-1351/git-source-autocrlf-false.tar",
+      "bytes": 31549440,
+      "sha256": "a9a60383c597b5ffff30c0a081d31c85e98eecbb93c91289d6493f2f2ff46881",
+      "actual_regular_files": 869
+    },
+    {
+      "core_autocrlf": "true",
+      "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+      "PAX_comment_verified": true,
+      "archive": "/workspace/scratch/full-rom-2026-10-26/r2-artifact-audit-1351/git-source-autocrlf-true.tar",
+      "bytes": 31969280,
+      "sha256": "74b9a2573533d36fb0dcff527323c3271f3f1d8b418ede0b4bceb42b7eed6f82",
+      "actual_regular_files": 869
+    }
+  ],
+  "runtime_core": {
+    "platform": "Linux",
+    "test_names": [
+      "FullROM_memory_contracts",
+      "FullROM_runtime_contracts",
+      "FullROM_serial_contracts",
+      "FullROM_renderer_contracts",
+      "FullROM_generated_aot_contracts"
+    ],
+    "tests": 5,
+    "skipped": 0,
+    "failures": 0,
+    "actual_source_files_verified": 35,
+    "binaries_verified": 3,
+    "binary_architecture": {
+      "DWM2tGeneratedAotContracts": "ELF64 little-endian x86-64",
+      "DWM2tRendererContracts": "ELF64 little-endian x86-64",
+      "DWM2tRuntimeCoreContracts": "ELF64 little-endian x86-64"
+    },
+    "actual_LF_archive_raw_input_matches": 35,
+    "actual_CRLF_archive_raw_input_matches": 0,
+    "uniform_line_ending_conversion_only_verified_against_both_archives": true,
+    "report_sha256": "e9283c349750ef461ad4bd490fb0853f63de9a0e5a02852142d7d7db6785f12d",
+    "XML_sha256": "5f6fe97a775fdc5cc052aa920b210d20946e4bc69ef7b4f44e791847d2bcfe9e",
+    "binaries": {
+      "DWM2tGeneratedAotContracts": {
+        "bytes": 111488,
+        "path": "bin/DWM2tGeneratedAotContracts",
+        "sha256": "3f313bf0671dfac6ff45301d91ffcc9b48fa929f43d13bdd0cbe82c12003db61"
+      },
+      "DWM2tRendererContracts": {
+        "bytes": 94184,
+        "path": "bin/DWM2tRendererContracts",
+        "sha256": "a71435ae6487cda29b581400cabec48bc5167ba5140927f6b3f1c475cba65f33"
+      },
+      "DWM2tRuntimeCoreContracts": {
+        "bytes": 138872,
+        "path": "bin/DWM2tRuntimeCoreContracts",
+        "sha256": "6ee8f80d5e4b76aad5d35ccbfebb3522eda7571bd8188e1041a3040f4f56abd8"
+      }
+    },
+    "receipts": {
+      "FullROM_memory_contracts": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted/runtime-core-posix/evidence/FullROM_memory_contracts.json",
+        "sha256": "698f22dd56839565c61a938db01b7e221f342f35b1ff51ba7a5bac0113940f77",
+        "checks": 148,
+        "cases": 5,
+        "contracts": null,
+        "status": "passed"
+      },
+      "FullROM_runtime_contracts": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted/runtime-core-posix/evidence/FullROM_runtime_contracts.json",
+        "sha256": "a0605203aa3501ccf9ac6705ac8ba6775cd7de119369589ba9651d424497d184",
+        "checks": 444,
+        "cases": 8,
+        "contracts": null,
+        "status": "passed"
+      },
+      "FullROM_serial_contracts": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted/runtime-core-posix/evidence/FullROM_serial_contracts.json",
+        "sha256": "41a6cb79c3a0e40a821092137beda01c67c6b00e1ddb73c247b4082b225ccf48",
+        "checks": 37,
+        "cases": 7,
+        "contracts": null,
+        "status": "passed"
+      },
+      "FullROM_renderer_contracts": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted/runtime-core-posix/evidence/FullROM_renderer_contracts.json",
+        "sha256": "35d6c1afc2b961600f8be601bc77d99ba09a7851f8457fc7991fcf6aa53e0b81",
+        "checks": null,
+        "cases": 0,
+        "contracts": [
+          "cgb-object-priority",
+          "dmg-object-priority",
+          "per-line-scroll-publication"
+        ],
+        "status": "passed"
+      },
+      "FullROM_generated_aot_contracts": {
+        "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/posix/extracted/runtime-core-posix/evidence/FullROM_generated_aot_contracts.json",
+        "sha256": "44a023da0f525d599b6013176ebd643ec33118e8801af23c578e6e898c1fa6d9",
+        "checks": 19,
+        "cases": 0,
+        "contracts": null,
+        "status": "passed"
+      }
+    }
+  },
+  "save_io": {
+    "actual_test_names": [
+      "M8_save_io_contracts",
+      "M8_save_io_fault_contracts"
+    ],
+    "tests": 2,
+    "skipped": 0,
+    "failures": 0,
+    "XML_sha256": "70eae3d5d0a9118e95caa301756b3bcf98405628fe8932f8c7a73044727c27f3",
+    "LastTest_sha256": "761e11153c45fbf8411a248df84726ac8e396d2d378c3ea82fb0a3e8577f4e86"
+  },
+  "contents_executed_by_this_auditor": false,
+  "overall_game_or_package_acceptance_claimed": false
+}

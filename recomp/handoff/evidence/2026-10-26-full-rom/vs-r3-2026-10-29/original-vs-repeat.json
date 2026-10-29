@@ -1,0 +1,1424 @@
+{
+  "schema": 1,
+  "kind": "original_vs_repeat_and_fresh_continue",
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "829e95842cea5a0cc9d13f601ae89b814c4fd2109ca08065bf50a9d944378ec1",
+  "input_journal_sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+  "players": 2,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "serial_protocol_success_verified": true,
+  "completed_vs_match": true,
+  "prize_or_wager": false,
+  "full_game_verified": false,
+  "normal_shutdowns": 3,
+  "fresh_process_reload": true,
+  "events": [
+    {
+      "event": "launched",
+      "utc": "2026-10-29T02:10:06.603195+00:00",
+      "monotonic": 108957.908,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r3-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player1.sav",
+        "--link-save",
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player2.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "linked",
+      "pid": 80
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:38.756561+00:00",
+      "monotonic": 108990.06,
+      "player": 1,
+      "label": "linked-p1-title",
+      "screenshot": "linked-p1-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:39.669330+00:00",
+      "monotonic": 108990.973,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:39.803378+00:00",
+      "monotonic": 108991.107,
+      "player": 1,
+      "label": "linked-p1-saved-menu",
+      "screenshot": "linked-p1-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:39.932102+00:00",
+      "monotonic": 108991.236,
+      "player": 2,
+      "label": "linked-p2-title",
+      "screenshot": "linked-p2-title-player2.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:40.859203+00:00",
+      "monotonic": 108992.163,
+      "player": 2,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:40.982954+00:00",
+      "monotonic": 108992.287,
+      "player": 2,
+      "label": "linked-p2-saved-menu",
+      "screenshot": "linked-p2-saved-menu-player2.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:41.301524+00:00",
+      "monotonic": 108992.605,
+      "player": 1,
+      "label": "p1-continue-selected",
+      "screenshot": "p1-continue-selected-player1.bmp",
+      "sha256": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:41.965142+00:00",
+      "monotonic": 108993.268,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:42.289017+00:00",
+      "monotonic": 108993.593,
+      "player": 1,
+      "label": "p1-down1-visible",
+      "screenshot": "p1-down1-visible-player1.bmp",
+      "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:42.952215+00:00",
+      "monotonic": 108994.256,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:43.275633+00:00",
+      "monotonic": 108994.579,
+      "player": 1,
+      "label": "p1-down2-visible",
+      "screenshot": "p1-down2-visible-player1.bmp",
+      "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:43.939454+00:00",
+      "monotonic": 108995.243,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:44.264933+00:00",
+      "monotonic": 108995.568,
+      "player": 1,
+      "label": "p1-down3-visible",
+      "screenshot": "p1-down3-visible-player1.bmp",
+      "sha256": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:44.928564+00:00",
+      "monotonic": 108996.232,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:45.251016+00:00",
+      "monotonic": 108996.554,
+      "player": 1,
+      "label": "p1-down4-visible",
+      "screenshot": "p1-down4-visible-player1.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:45.769351+00:00",
+      "monotonic": 108997.073,
+      "player": 2,
+      "label": "p2-continue-selected",
+      "screenshot": "p2-continue-selected-player2.bmp",
+      "sha256": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:46.433058+00:00",
+      "monotonic": 108997.736,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:46.756877+00:00",
+      "monotonic": 108998.06,
+      "player": 2,
+      "label": "p2-down1-visible",
+      "screenshot": "p2-down1-visible-player2.bmp",
+      "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:47.422324+00:00",
+      "monotonic": 108998.726,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:47.744428+00:00",
+      "monotonic": 108999.048,
+      "player": 2,
+      "label": "p2-down2-visible",
+      "screenshot": "p2-down2-visible-player2.bmp",
+      "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:48.408546+00:00",
+      "monotonic": 108999.712,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:48.731489+00:00",
+      "monotonic": 109000.035,
+      "player": 2,
+      "label": "p2-down3-visible",
+      "screenshot": "p2-down3-visible-player2.bmp",
+      "sha256": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:49.397578+00:00",
+      "monotonic": 109000.701,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:49.718539+00:00",
+      "monotonic": 109001.022,
+      "player": 2,
+      "label": "p2-down4-visible",
+      "screenshot": "p2-down4-visible-player2.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:49.839366+00:00",
+      "monotonic": 109001.143,
+      "player": 1,
+      "label": "both-ready-vs",
+      "screenshot": "both-ready-vs-player1.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:49.952865+00:00",
+      "monotonic": 109001.256,
+      "player": 2,
+      "label": "both-ready-vs",
+      "screenshot": "both-ready-vs-player2.bmp",
+      "sha256": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:50.619546+00:00",
+      "monotonic": 109001.923,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:50.745094+00:00",
+      "monotonic": 109002.048,
+      "player": 1,
+      "label": "original-D3-rules-menu",
+      "screenshot": "original-D3-rules-menu-player1.bmp",
+      "sha256": "854e49ea6b2eea9d77ff50b694eaab5e27b5e7df204f29b833ab2671a1920648"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:50.876181+00:00",
+      "monotonic": 109002.179,
+      "player": 2,
+      "label": "original-D3-rules-menu",
+      "screenshot": "original-D3-rules-menu-player2.bmp",
+      "sha256": "6631ec496afbb348ec3aa016c26689911491f2f4799e254105402ba25d1af6a1"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:51.540189+00:00",
+      "monotonic": 109002.843,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:51.679035+00:00",
+      "monotonic": 109002.982,
+      "player": 1,
+      "label": "free-battle-configuration",
+      "screenshot": "free-battle-configuration-player1.bmp",
+      "sha256": "dd2b84a204a73a984773e9f3d53446fb0c2b58b086a111cc94532d34596cc970"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:51.795965+00:00",
+      "monotonic": 109003.099,
+      "player": 2,
+      "label": "free-battle-configuration",
+      "screenshot": "free-battle-configuration-player2.bmp",
+      "sha256": "ec01c3fd94611f12cfb19c4dd7e2efdea6e572ed2cfbf4e84003c950fc2b042f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:52.461400+00:00",
+      "monotonic": 109003.765,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:53.131129+00:00",
+      "monotonic": 109004.434,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:54.457384+00:00",
+      "monotonic": 109005.76,
+      "player": 1,
+      "label": "original-member-chooser",
+      "screenshot": "original-member-chooser-player1.bmp",
+      "sha256": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:55.175717+00:00",
+      "monotonic": 109006.479,
+      "player": 2,
+      "label": "original-member-chooser",
+      "screenshot": "original-member-chooser-player2.bmp",
+      "sha256": "783dfeb625945691589b5acf2b3e94ab0130eb054a85ce331db58e712eb1f247"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:55.695500+00:00",
+      "monotonic": 109006.999,
+      "player": 1,
+      "label": "Garon-chooser",
+      "screenshot": "Garon-chooser-player1.bmp",
+      "sha256": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:56.360802+00:00",
+      "monotonic": 109007.664,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:56.483799+00:00",
+      "monotonic": 109007.787,
+      "player": 1,
+      "label": "Garon-info-popup",
+      "screenshot": "Garon-info-popup-player1.bmp",
+      "sha256": "fedab88bfb3a4487b8a01ead16935cf3a40e322b37c6032c539a7d835a0eb727"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:57.148865+00:00",
+      "monotonic": 109008.452,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:57.269503+00:00",
+      "monotonic": 109008.572,
+      "player": 1,
+      "label": "Garon-OK-visible",
+      "screenshot": "Garon-OK-visible-player1.bmp",
+      "sha256": "01dcf44c56d32179873da0b223e226ae15db194911f512a4651a5d0cae427dc4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:57.936052+00:00",
+      "monotonic": 109009.239,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:58.256502+00:00",
+      "monotonic": 109009.559,
+      "player": 1,
+      "label": "Garon-choose-one-more",
+      "screenshot": "Garon-choose-one-more-player1.bmp",
+      "sha256": "90df0b45ca16b13fe05586c436d1d56dbee41d4055d7ba9d38ffd9d5e6aa275c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:10:58.923093+00:00",
+      "monotonic": 109010.226,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:10:59.845863+00:00",
+      "monotonic": 109011.149,
+      "player": 1,
+      "label": "Slash-chooser",
+      "screenshot": "Slash-chooser-player1.bmp",
+      "sha256": "4bd4708054111fd0296b73124bc271d24991e8404d2db75b979bc7b064b33df0"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:00.514510+00:00",
+      "monotonic": 109011.817,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:00.631020+00:00",
+      "monotonic": 109011.934,
+      "player": 1,
+      "label": "Slash-info-popup",
+      "screenshot": "Slash-info-popup-player1.bmp",
+      "sha256": "e04972c4b546ebff91ae189a9939c59b4656fffb7166e167706cc97552625d78"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:01.300811+00:00",
+      "monotonic": 109012.604,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:01.422693+00:00",
+      "monotonic": 109012.725,
+      "player": 1,
+      "label": "Slash-OK-visible",
+      "screenshot": "Slash-OK-visible-player1.bmp",
+      "sha256": "4b7f51f3d581db9cd7260279e66a7a085b1e28463a4aeb3c7e2e9dfbbad3395f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:02.087795+00:00",
+      "monotonic": 109013.391,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:02.408318+00:00",
+      "monotonic": 109013.711,
+      "player": 1,
+      "label": "Slash-choose-one-more",
+      "screenshot": "Slash-choose-one-more-player1.bmp",
+      "sha256": "19238385e3a1b81b63acd72a06a9364aa7d38a86f21a9105cf975df4e8a021e2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:03.078110+00:00",
+      "monotonic": 109014.381,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:04.000049+00:00",
+      "monotonic": 109015.303,
+      "player": 1,
+      "label": "Derzo-chooser",
+      "screenshot": "Derzo-chooser-player1.bmp",
+      "sha256": "6decf7249f5047fa36f42de04a0c000bf0de293c6610a8b12748d4ac4937782e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:04.666916+00:00",
+      "monotonic": 109015.97,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:04.786218+00:00",
+      "monotonic": 109016.089,
+      "player": 1,
+      "label": "Derzo-info-popup",
+      "screenshot": "Derzo-info-popup-player1.bmp",
+      "sha256": "b5f0cea71f24fea9e88279f058188438d65fcaf35c9c4380d112b2eb64f1913e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:05.453035+00:00",
+      "monotonic": 109016.756,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:05.584072+00:00",
+      "monotonic": 109016.887,
+      "player": 1,
+      "label": "Derzo-OK-visible",
+      "screenshot": "Derzo-OK-visible-player1.bmp",
+      "sha256": "b59da9f2674bec7bff87050cb91365e5a622faeed8a27e90e5dc5bcbc7b8c46a"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:06.259171+00:00",
+      "monotonic": 109017.562,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:06.584193+00:00",
+      "monotonic": 109017.887,
+      "player": 1,
+      "label": "correct-three-members-prize-default-No",
+      "screenshot": "correct-three-members-prize-default-No-player1.bmp",
+      "sha256": "a83a4f802fcf1b75cf08e7bd83003c0ec53074a4ea80f8ec2625b92d9382351e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:07.261910+00:00",
+      "monotonic": 109018.565,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:07.784112+00:00",
+      "monotonic": 109019.087,
+      "player": 2,
+      "label": "Garon-chooser",
+      "screenshot": "Garon-chooser-player2.bmp",
+      "sha256": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:08.450990+00:00",
+      "monotonic": 109019.754,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:08.573205+00:00",
+      "monotonic": 109019.876,
+      "player": 2,
+      "label": "Garon-info-popup",
+      "screenshot": "Garon-info-popup-player2.bmp",
+      "sha256": "fedab88bfb3a4487b8a01ead16935cf3a40e322b37c6032c539a7d835a0eb727"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:09.237092+00:00",
+      "monotonic": 109020.54,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:09.356170+00:00",
+      "monotonic": 109020.659,
+      "player": 2,
+      "label": "Garon-OK-visible",
+      "screenshot": "Garon-OK-visible-player2.bmp",
+      "sha256": "01dcf44c56d32179873da0b223e226ae15db194911f512a4651a5d0cae427dc4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:10.024403+00:00",
+      "monotonic": 109021.327,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:10.346582+00:00",
+      "monotonic": 109021.649,
+      "player": 2,
+      "label": "Garon-choose-one-more",
+      "screenshot": "Garon-choose-one-more-player2.bmp",
+      "sha256": "90df0b45ca16b13fe05586c436d1d56dbee41d4055d7ba9d38ffd9d5e6aa275c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:11.012324+00:00",
+      "monotonic": 109022.315,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:11.939189+00:00",
+      "monotonic": 109023.242,
+      "player": 2,
+      "label": "Slash-chooser",
+      "screenshot": "Slash-chooser-player2.bmp",
+      "sha256": "8e035350058c505d84a84a1b6e95f61ed681ffc482177804fb4d5611764c67c4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:12.602535+00:00",
+      "monotonic": 109023.905,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:12.721743+00:00",
+      "monotonic": 109024.024,
+      "player": 2,
+      "label": "Slash-info-popup",
+      "screenshot": "Slash-info-popup-player2.bmp",
+      "sha256": "e04972c4b546ebff91ae189a9939c59b4656fffb7166e167706cc97552625d78"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:13.388850+00:00",
+      "monotonic": 109024.691,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:13.510970+00:00",
+      "monotonic": 109024.813,
+      "player": 2,
+      "label": "Slash-OK-visible",
+      "screenshot": "Slash-OK-visible-player2.bmp",
+      "sha256": "4b7f51f3d581db9cd7260279e66a7a085b1e28463a4aeb3c7e2e9dfbbad3395f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:14.175498+00:00",
+      "monotonic": 109025.478,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:14.495770+00:00",
+      "monotonic": 109025.798,
+      "player": 2,
+      "label": "Slash-choose-one-more",
+      "screenshot": "Slash-choose-one-more-player2.bmp",
+      "sha256": "19238385e3a1b81b63acd72a06a9364aa7d38a86f21a9105cf975df4e8a021e2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:15.165371+00:00",
+      "monotonic": 109026.468,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:16.089617+00:00",
+      "monotonic": 109027.392,
+      "player": 2,
+      "label": "Derzo-chooser",
+      "screenshot": "Derzo-chooser-player2.bmp",
+      "sha256": "f25ea8378dde8e5ce0a370262f6e2038ccfc8273be64438f968ce381b67c5990"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:16.755135+00:00",
+      "monotonic": 109028.057,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:16.873651+00:00",
+      "monotonic": 109028.176,
+      "player": 2,
+      "label": "Derzo-info-popup",
+      "screenshot": "Derzo-info-popup-player2.bmp",
+      "sha256": "b5f0cea71f24fea9e88279f058188438d65fcaf35c9c4380d112b2eb64f1913e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:17.540570+00:00",
+      "monotonic": 109028.843,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:17.660382+00:00",
+      "monotonic": 109028.963,
+      "player": 2,
+      "label": "Derzo-OK-visible",
+      "screenshot": "Derzo-OK-visible-player2.bmp",
+      "sha256": "b59da9f2674bec7bff87050cb91365e5a622faeed8a27e90e5dc5bcbc7b8c46a"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:18.328991+00:00",
+      "monotonic": 109029.631,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:18.649423+00:00",
+      "monotonic": 109029.952,
+      "player": 2,
+      "label": "correct-three-members-prize-default-No",
+      "screenshot": "correct-three-members-prize-default-No-player2.bmp",
+      "sha256": "a83a4f802fcf1b75cf08e7bd83003c0ec53074a4ea80f8ec2625b92d9382351e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:19.315086+00:00",
+      "monotonic": 109030.617,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:22.451581+00:00",
+      "monotonic": 109033.754,
+      "player": 1,
+      "label": "begin-battle-No-prize",
+      "screenshot": "begin-battle-No-prize-player1.bmp",
+      "sha256": "11b4215b50b980465caf5b4a932009baef961c5342418bdf7e56637331eb8456"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:22.570403+00:00",
+      "monotonic": 109033.873,
+      "player": 2,
+      "label": "begin-battle-No-prize",
+      "screenshot": "begin-battle-No-prize-player2.bmp",
+      "sha256": "11b4215b50b980465caf5b4a932009baef961c5342418bdf7e56637331eb8456"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:23.234857+00:00",
+      "monotonic": 109034.537,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:23.904408+00:00",
+      "monotonic": 109035.206,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:29.497080+00:00",
+      "monotonic": 109040.799,
+      "player": 1,
+      "label": "actual-linked-battle-start",
+      "screenshot": "actual-linked-battle-start-player1.bmp",
+      "sha256": "bf92962af67cb4d72a575c24b15dd5824592134c75ba409de95a134acc327cdf"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:29.615202+00:00",
+      "monotonic": 109040.917,
+      "player": 2,
+      "label": "actual-linked-battle-start",
+      "screenshot": "actual-linked-battle-start-player2.bmp",
+      "sha256": "b9c071ebc6ed055bb00601a78581bd9e0b75b13dc0cc48cbf7fa1241935516a6"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:29.731895+00:00",
+      "monotonic": 109041.034,
+      "player": 1,
+      "label": "turn1-fight-ready",
+      "screenshot": "turn1-fight-ready-player1.bmp",
+      "sha256": "b9c071ebc6ed055bb00601a78581bd9e0b75b13dc0cc48cbf7fa1241935516a6"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:29.850498+00:00",
+      "monotonic": 109041.152,
+      "player": 2,
+      "label": "turn1-fight-ready",
+      "screenshot": "turn1-fight-ready-player2.bmp",
+      "sha256": "bf92962af67cb4d72a575c24b15dd5824592134c75ba409de95a134acc327cdf"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:30.515795+00:00",
+      "monotonic": 109041.818,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:30.637409+00:00",
+      "monotonic": 109041.939,
+      "player": 1,
+      "label": "turn1-peer-move-wait",
+      "screenshot": "turn1-peer-move-wait-player1.bmp",
+      "sha256": "e3c531ef5e422b0f808cd44fc91ef605e79e5ac8f0c68539381c4978551d3100"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:31.287217+00:00",
+      "monotonic": 109042.589,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:49.995009+00:00",
+      "monotonic": 109061.296,
+      "player": 1,
+      "label": "turn1-complete",
+      "screenshot": "turn1-complete-player1.bmp",
+      "sha256": "f2943e92ae7ccea3a5092faafbed93fa878f2c13129af1854b3ef6d5f28288f3"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:49.996930+00:00",
+      "monotonic": 109061.298,
+      "player": 2,
+      "label": "turn1-complete",
+      "screenshot": "turn1-complete-player2.bmp",
+      "sha256": "ef631c504185e4fde867406c0f73cd1ee555c37827ebbfa5ff63a39d41b1fca0"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:50.123317+00:00",
+      "monotonic": 109061.425,
+      "player": 1,
+      "label": "turn2-fight-ready",
+      "screenshot": "turn2-fight-ready-player1.bmp",
+      "sha256": "d74dfd2227f47067f596f73128ca060c0817caa9d8e387f7ce96d78e319990f3"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:50.242418+00:00",
+      "monotonic": 109061.544,
+      "player": 2,
+      "label": "turn2-fight-ready",
+      "screenshot": "turn2-fight-ready-player2.bmp",
+      "sha256": "4f8755e3f19574e3eec28968bd31371c3d5615b016b6c3ce16adc172cac1a6c7"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:50.908241+00:00",
+      "monotonic": 109062.209,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:11:51.027697+00:00",
+      "monotonic": 109062.329,
+      "player": 1,
+      "label": "turn2-peer-move-wait",
+      "screenshot": "turn2-peer-move-wait-player1.bmp",
+      "sha256": "1b47f136bd4c07e67e5110d7cdea58624f11562353cb9485bcdf4ed361187360"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:11:51.696072+00:00",
+      "monotonic": 109062.997,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:04.661693+00:00",
+      "monotonic": 109075.962,
+      "player": 1,
+      "label": "turn2-complete",
+      "screenshot": "turn2-complete-player1.bmp",
+      "sha256": "b7262bef0f19bccec2d7f14965002631e88932f2b23d6f4bcbdf6aa661da9ddb"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:04.663680+00:00",
+      "monotonic": 109075.964,
+      "player": 2,
+      "label": "turn2-complete",
+      "screenshot": "turn2-complete-player2.bmp",
+      "sha256": "b8db472097801bbef3890080512f993c54071b78a51c17877aa31f9a3f6e6fe4"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:04.792983+00:00",
+      "monotonic": 109076.094,
+      "player": 1,
+      "label": "turn3-fight-ready",
+      "screenshot": "turn3-fight-ready-player1.bmp",
+      "sha256": "33e4e10a5f27080415c199f28a86de9253a1adee11981de1a5da76276e18adb1"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:04.907519+00:00",
+      "monotonic": 109076.208,
+      "player": 2,
+      "label": "turn3-fight-ready",
+      "screenshot": "turn3-fight-ready-player2.bmp",
+      "sha256": "8ebd4bdf925729b376e310d5764f26b2f534a04515baca904f4de10e340db86d"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:05.576884+00:00",
+      "monotonic": 109076.878,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:05.696071+00:00",
+      "monotonic": 109076.997,
+      "player": 1,
+      "label": "turn3-peer-move-wait",
+      "screenshot": "turn3-peer-move-wait-player1.bmp",
+      "sha256": "e1584e521b6db8d5f63c2a4bf72ad39c264b5f58b1fb8b097820471353c40770"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:06.363146+00:00",
+      "monotonic": 109077.664,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:16.463472+00:00",
+      "monotonic": 109087.764,
+      "player": 1,
+      "label": "turn3-consistent-loss",
+      "screenshot": "turn3-consistent-loss-player1.bmp",
+      "sha256": "17c037774ee9cb840f8efb61ac7f7474896235483f36ad0443ada6500a09ca47"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:16.465505+00:00",
+      "monotonic": 109087.766,
+      "player": 2,
+      "label": "turn3-consistent-win",
+      "screenshot": "turn3-consistent-win-player2.bmp",
+      "sha256": "293302c5ed2caa027e44764a0a639d427350feed30629121999edc3596098d3c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:17.127803+00:00",
+      "monotonic": 109088.428,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:17.798898+00:00",
+      "monotonic": 109089.099,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:23.178307+00:00",
+      "monotonic": 109094.478,
+      "player": 1,
+      "label": "original-final-result-screen",
+      "screenshot": "original-final-result-screen-player1.bmp",
+      "sha256": "198a1a923d7ad759633c07fa3663891ccf642c589884478fe82c8464614748d2"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:23.296738+00:00",
+      "monotonic": 109094.597,
+      "player": 2,
+      "label": "original-final-result-screen",
+      "screenshot": "original-final-result-screen-player2.bmp",
+      "sha256": "2ee5dfefd3aca36b7dadf71ee43657393dbc49e0cbbbcb99ba0da9ea7b92d2d3"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:23.958817+00:00",
+      "monotonic": 109095.259,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:24.629753+00:00",
+      "monotonic": 109095.93,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:24.751887+00:00",
+      "monotonic": 109096.052,
+      "player": 1,
+      "label": "original-postmatch-menu",
+      "screenshot": "original-postmatch-menu-player1.bmp",
+      "sha256": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:24.867695+00:00",
+      "monotonic": 109096.168,
+      "player": 2,
+      "label": "original-postmatch-menu",
+      "screenshot": "original-postmatch-menu-player2.bmp",
+      "sha256": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+    },
+    {
+      "event": "launched",
+      "utc": "2026-10-29T02:12:25.186941+00:00",
+      "monotonic": 109096.487,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r3-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player1.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "fresh-player1",
+      "pid": 108
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:57.057774+00:00",
+      "monotonic": 109128.357,
+      "player": 1,
+      "label": "fresh-p1-title",
+      "screenshot": "fresh-p1-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:57.973238+00:00",
+      "monotonic": 109129.272,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:58.094123+00:00",
+      "monotonic": 109129.393,
+      "player": 1,
+      "label": "fresh-p1-saved-menu",
+      "screenshot": "fresh-p1-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:58.211861+00:00",
+      "monotonic": 109129.511,
+      "player": 1,
+      "label": "fresh-Continue-selected",
+      "screenshot": "fresh-Continue-selected-player1.bmp",
+      "sha256": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:58.878678+00:00",
+      "monotonic": 109130.178,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:12:59.015407+00:00",
+      "monotonic": 109130.314,
+      "player": 1,
+      "label": "actual-Journal-Continue-card",
+      "screenshot": "actual-Journal-Continue-card-player1.bmp",
+      "sha256": "a9fb5b9041053ed895555fbdc472745e60753a4e9463dbc1dfbd0ac19673d49d"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:12:59.682003+00:00",
+      "monotonic": 109130.981,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:00.818292+00:00",
+      "monotonic": 109132.117,
+      "player": 1,
+      "label": "actual-original-ending-field",
+      "screenshot": "actual-original-ending-field-player1.bmp",
+      "sha256": "b221619677a7cfe71d223f98b32630f785cbfbdc07d46fd3e7323388d6178619"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:13:01.840413+00:00",
+      "monotonic": 109133.139,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.7
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:01.980069+00:00",
+      "monotonic": 109133.279,
+      "player": 1,
+      "label": "actual-full-party-and-11G",
+      "screenshot": "actual-full-party-and-11G-player1.bmp",
+      "sha256": "8655b725db240235030646ff12df9f2efe530b06e89ccb3d374938431759164a"
+    },
+    {
+      "event": "launched",
+      "utc": "2026-10-29T02:13:02.261219+00:00",
+      "monotonic": 109133.56,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r3-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player2.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "fresh-player2",
+      "pid": 120
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:34.153745+00:00",
+      "monotonic": 109165.451,
+      "player": 2,
+      "label": "fresh-p2-title",
+      "screenshot": "fresh-p2-title-player2.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:13:35.077938+00:00",
+      "monotonic": 109166.376,
+      "player": 2,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:35.199790+00:00",
+      "monotonic": 109166.497,
+      "player": 2,
+      "label": "fresh-p2-saved-menu",
+      "screenshot": "fresh-p2-saved-menu-player2.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:35.324887+00:00",
+      "monotonic": 109166.623,
+      "player": 2,
+      "label": "fresh-Continue-selected",
+      "screenshot": "fresh-Continue-selected-player2.bmp",
+      "sha256": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:13:35.999384+00:00",
+      "monotonic": 109167.297,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:36.122701+00:00",
+      "monotonic": 109167.42,
+      "player": 2,
+      "label": "actual-Journal-Continue-card",
+      "screenshot": "actual-Journal-Continue-card-player2.bmp",
+      "sha256": "a9fb5b9041053ed895555fbdc472745e60753a4e9463dbc1dfbd0ac19673d49d"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:13:36.785331+00:00",
+      "monotonic": 109168.083,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:37.912409+00:00",
+      "monotonic": 109169.21,
+      "player": 2,
+      "label": "actual-original-ending-field",
+      "screenshot": "actual-original-ending-field-player2.bmp",
+      "sha256": "b221619677a7cfe71d223f98b32630f785cbfbdc07d46fd3e7323388d6178619"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-10-29T02:13:38.926837+00:00",
+      "monotonic": 109170.224,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 0.7
+    },
+    {
+      "event": "observed",
+      "utc": "2026-10-29T02:13:39.048277+00:00",
+      "monotonic": 109170.346,
+      "player": 2,
+      "label": "actual-full-party-and-11G",
+      "screenshot": "actual-full-party-and-11G-player2.bmp",
+      "sha256": "8655b725db240235030646ff12df9f2efe530b06e89ccb3d374938431759164a"
+    },
+    {
+      "event": "passed",
+      "utc": "2026-10-29T02:13:39.576268+00:00",
+      "monotonic": 109170.874,
+      "complete_match": true,
+      "fresh_actual_journals_identical": true
+    }
+  ],
+  "executable_bytes": 729611264,
+  "seed_bytes": 32768,
+  "reference_manifest_sha256": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2",
+  "reference_game_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "script_sha256": "b2fd9e63f2dd9c5ea5e27cdf21b60b0bf84b78f0ee5ce3f98dcf3a52805e09bf",
+  "gui_helper_sha256": "ba3e3c6fe7e068e6ba553ccc30cf6d1097779708736eea835182b9f3bb704350",
+  "original_D3_handshake_verified": true,
+  "turns": 3,
+  "winner_player": 2,
+  "loser_player": 1,
+  "rule": "Free Battle",
+  "actual_postmatch_sha256": {
+    "1": "2784b5ffdba670b3815e71c64817695be3e6a91b3f251d7944e80e13533e3368",
+    "2": "2784b5ffdba670b3815e71c64817695be3e6a91b3f251d7944e80e13533e3368"
+  },
+  "seed_reset_performed": false,
+  "fresh_actual_save_results": [
+    {
+      "player": 1,
+      "actual_save": "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player1.sav",
+      "bytes": 32768,
+      "sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "entire_save_identical_to_original": true,
+      "all17_full165_byte_owned_records_identical": true,
+      "quest107_identical": true,
+      "party": [
+        "Garon",
+        "Slash",
+        "Derzo"
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "gold": 11,
+      "normal_shutdown": true
+    },
+    {
+      "player": 2,
+      "actual_save": "Z:\\workspace\\scratch\\full-rom-2026-10-26\\original-vs-link-r3-1351-02\\profiles\\player2.sav",
+      "bytes": 32768,
+      "sha256": "0649c4ef78867d2e55f352ddb0fea811fea6e3cf7407f8451220cc2bf01df95d",
+      "entire_save_identical_to_original": true,
+      "all17_full165_byte_owned_records_identical": true,
+      "quest107_identical": true,
+      "party": [
+        "Garon",
+        "Slash",
+        "Derzo"
+      ],
+      "hp": [
+        220,
+        180,
+        207
+      ],
+      "levels": [
+        40,
+        37,
+        40
+      ],
+      "gold": 11,
+      "normal_shutdown": true
+    }
+  ],
+  "immutable_inputs_unchanged": true,
+  "screenshots": {
+    "actual-full-party-and-11G-player1.bmp": "8655b725db240235030646ff12df9f2efe530b06e89ccb3d374938431759164a",
+    "actual-full-party-and-11G-player2.bmp": "8655b725db240235030646ff12df9f2efe530b06e89ccb3d374938431759164a",
+    "actual-Journal-Continue-card-player1.bmp": "a9fb5b9041053ed895555fbdc472745e60753a4e9463dbc1dfbd0ac19673d49d",
+    "actual-Journal-Continue-card-player2.bmp": "a9fb5b9041053ed895555fbdc472745e60753a4e9463dbc1dfbd0ac19673d49d",
+    "actual-linked-battle-start-player1.bmp": "bf92962af67cb4d72a575c24b15dd5824592134c75ba409de95a134acc327cdf",
+    "actual-linked-battle-start-player2.bmp": "b9c071ebc6ed055bb00601a78581bd9e0b75b13dc0cc48cbf7fa1241935516a6",
+    "actual-original-ending-field-player1.bmp": "b221619677a7cfe71d223f98b32630f785cbfbdc07d46fd3e7323388d6178619",
+    "actual-original-ending-field-player2.bmp": "b221619677a7cfe71d223f98b32630f785cbfbdc07d46fd3e7323388d6178619",
+    "begin-battle-No-prize-player1.bmp": "11b4215b50b980465caf5b4a932009baef961c5342418bdf7e56637331eb8456",
+    "begin-battle-No-prize-player2.bmp": "11b4215b50b980465caf5b4a932009baef961c5342418bdf7e56637331eb8456",
+    "both-ready-vs-player1.bmp": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+    "both-ready-vs-player2.bmp": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+    "correct-three-members-prize-default-No-player1.bmp": "a83a4f802fcf1b75cf08e7bd83003c0ec53074a4ea80f8ec2625b92d9382351e",
+    "correct-three-members-prize-default-No-player2.bmp": "a83a4f802fcf1b75cf08e7bd83003c0ec53074a4ea80f8ec2625b92d9382351e",
+    "Derzo-chooser-player1.bmp": "6decf7249f5047fa36f42de04a0c000bf0de293c6610a8b12748d4ac4937782e",
+    "Derzo-chooser-player2.bmp": "f25ea8378dde8e5ce0a370262f6e2038ccfc8273be64438f968ce381b67c5990",
+    "Derzo-info-popup-player1.bmp": "b5f0cea71f24fea9e88279f058188438d65fcaf35c9c4380d112b2eb64f1913e",
+    "Derzo-info-popup-player2.bmp": "b5f0cea71f24fea9e88279f058188438d65fcaf35c9c4380d112b2eb64f1913e",
+    "Derzo-OK-visible-player1.bmp": "b59da9f2674bec7bff87050cb91365e5a622faeed8a27e90e5dc5bcbc7b8c46a",
+    "Derzo-OK-visible-player2.bmp": "b59da9f2674bec7bff87050cb91365e5a622faeed8a27e90e5dc5bcbc7b8c46a",
+    "free-battle-configuration-player1.bmp": "dd2b84a204a73a984773e9f3d53446fb0c2b58b086a111cc94532d34596cc970",
+    "free-battle-configuration-player2.bmp": "ec01c3fd94611f12cfb19c4dd7e2efdea6e572ed2cfbf4e84003c950fc2b042f",
+    "fresh-Continue-selected-player1.bmp": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c",
+    "fresh-Continue-selected-player2.bmp": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c",
+    "fresh-p1-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "fresh-p1-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "fresh-p2-saved-menu-player2.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "fresh-p2-title-player2.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "Garon-choose-one-more-player1.bmp": "90df0b45ca16b13fe05586c436d1d56dbee41d4055d7ba9d38ffd9d5e6aa275c",
+    "Garon-choose-one-more-player2.bmp": "90df0b45ca16b13fe05586c436d1d56dbee41d4055d7ba9d38ffd9d5e6aa275c",
+    "Garon-chooser-player1.bmp": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa",
+    "Garon-chooser-player2.bmp": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa",
+    "Garon-info-popup-player1.bmp": "fedab88bfb3a4487b8a01ead16935cf3a40e322b37c6032c539a7d835a0eb727",
+    "Garon-info-popup-player2.bmp": "fedab88bfb3a4487b8a01ead16935cf3a40e322b37c6032c539a7d835a0eb727",
+    "Garon-OK-visible-player1.bmp": "01dcf44c56d32179873da0b223e226ae15db194911f512a4651a5d0cae427dc4",
+    "Garon-OK-visible-player2.bmp": "01dcf44c56d32179873da0b223e226ae15db194911f512a4651a5d0cae427dc4",
+    "linked-p1-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "linked-p1-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "linked-p2-saved-menu-player2.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "linked-p2-title-player2.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "original-D3-rules-menu-player1.bmp": "854e49ea6b2eea9d77ff50b694eaab5e27b5e7df204f29b833ab2671a1920648",
+    "original-D3-rules-menu-player2.bmp": "6631ec496afbb348ec3aa016c26689911491f2f4799e254105402ba25d1af6a1",
+    "original-final-result-screen-player1.bmp": "198a1a923d7ad759633c07fa3663891ccf642c589884478fe82c8464614748d2",
+    "original-final-result-screen-player2.bmp": "2ee5dfefd3aca36b7dadf71ee43657393dbc49e0cbbbcb99ba0da9ea7b92d2d3",
+    "original-member-chooser-player1.bmp": "ece66b9f2ed7644c619a0f0fcdafda89fa778670f3b6dd319e64b570968fd4aa",
+    "original-member-chooser-player2.bmp": "783dfeb625945691589b5acf2b3e94ab0130eb054a85ce331db58e712eb1f247",
+    "original-postmatch-menu-player1.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "original-postmatch-menu-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "p1-continue-selected-player1.bmp": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c",
+    "p1-down1-visible-player1.bmp": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2",
+    "p1-down2-visible-player1.bmp": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293",
+    "p1-down3-visible-player1.bmp": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6",
+    "p1-down4-visible-player1.bmp": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+    "p2-continue-selected-player2.bmp": "f6f8ad723b103d6520ed5a704b26138cf206e1f9771b2277ba9efa65bae8bd9c",
+    "p2-down1-visible-player2.bmp": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2",
+    "p2-down2-visible-player2.bmp": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293",
+    "p2-down3-visible-player2.bmp": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6",
+    "p2-down4-visible-player2.bmp": "98d3def909c4840655aa81e01309fd7c7d1112c16889f994df527cd6c4139972",
+    "Slash-choose-one-more-player1.bmp": "19238385e3a1b81b63acd72a06a9364aa7d38a86f21a9105cf975df4e8a021e2",
+    "Slash-choose-one-more-player2.bmp": "19238385e3a1b81b63acd72a06a9364aa7d38a86f21a9105cf975df4e8a021e2",
+    "Slash-chooser-player1.bmp": "4bd4708054111fd0296b73124bc271d24991e8404d2db75b979bc7b064b33df0",
+    "Slash-chooser-player2.bmp": "8e035350058c505d84a84a1b6e95f61ed681ffc482177804fb4d5611764c67c4",
+    "Slash-info-popup-player1.bmp": "e04972c4b546ebff91ae189a9939c59b4656fffb7166e167706cc97552625d78",
+    "Slash-info-popup-player2.bmp": "e04972c4b546ebff91ae189a9939c59b4656fffb7166e167706cc97552625d78",
+    "Slash-OK-visible-player1.bmp": "4b7f51f3d581db9cd7260279e66a7a085b1e28463a4aeb3c7e2e9dfbbad3395f",
+    "Slash-OK-visible-player2.bmp": "4b7f51f3d581db9cd7260279e66a7a085b1e28463a4aeb3c7e2e9dfbbad3395f",
+    "turn1-complete-player1.bmp": "f2943e92ae7ccea3a5092faafbed93fa878f2c13129af1854b3ef6d5f28288f3",
+    "turn1-complete-player2.bmp": "ef631c504185e4fde867406c0f73cd1ee555c37827ebbfa5ff63a39d41b1fca0",
+    "turn1-fight-ready-player1.bmp": "b9c071ebc6ed055bb00601a78581bd9e0b75b13dc0cc48cbf7fa1241935516a6",
+    "turn1-fight-ready-player2.bmp": "bf92962af67cb4d72a575c24b15dd5824592134c75ba409de95a134acc327cdf",
+    "turn1-peer-move-wait-player1.bmp": "e3c531ef5e422b0f808cd44fc91ef605e79e5ac8f0c68539381c4978551d3100",
+    "turn2-complete-player1.bmp": "b7262bef0f19bccec2d7f14965002631e88932f2b23d6f4bcbdf6aa661da9ddb",
+    "turn2-complete-player2.bmp": "b8db472097801bbef3890080512f993c54071b78a51c17877aa31f9a3f6e6fe4",
+    "turn2-fight-ready-player1.bmp": "d74dfd2227f47067f596f73128ca060c0817caa9d8e387f7ce96d78e319990f3",
+    "turn2-fight-ready-player2.bmp": "4f8755e3f19574e3eec28968bd31371c3d5615b016b6c3ce16adc172cac1a6c7",
+    "turn2-peer-move-wait-player1.bmp": "1b47f136bd4c07e67e5110d7cdea58624f11562353cb9485bcdf4ed361187360",
+    "turn3-consistent-loss-player1.bmp": "17c037774ee9cb840f8efb61ac7f7474896235483f36ad0443ada6500a09ca47",
+    "turn3-consistent-win-player2.bmp": "293302c5ed2caa027e44764a0a639d427350feed30629121999edc3596098d3c",
+    "turn3-fight-ready-player1.bmp": "33e4e10a5f27080415c199f28a86de9253a1adee11981de1a5da76276e18adb1",
+    "turn3-fight-ready-player2.bmp": "8ebd4bdf925729b376e310d5764f26b2f534a04515baca904f4de10e340db86d",
+    "turn3-peer-move-wait-player1.bmp": "e1584e521b6db8d5f63c2a4bf72ad39c264b5f58b1fb8b097820471353c40770"
+  }
+}

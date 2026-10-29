@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "kind": "independent_R3_production_artifact_audit",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "run_id": 40799717118,
+  "artifact": {
+    "schema": 1,
+    "run_id": 40799717118,
+    "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+    "artifact_id": 12867312469,
+    "artifact_name": "M8-fresh-production-40799717118",
+    "outer_zip_bytes": 136607024,
+    "outer_zip_sha256": "02628a2f9488eed9db22f514c5c1d918ec50a39ed6b0b89e9195815a5c345864",
+    "members": 224,
+    "original_zip": "/workspace/scratch/full-rom-2026-10-26/r3-audit/production/original-actions.zip",
+    "extracted": "/workspace/scratch/full-rom-2026-10-26/r3-audit/production/extracted",
+    "contents_executed": false
+  },
+  "source_archive": {
+    "bytes": 31969280,
+    "sha256": "74b9a2573533d36fb0dcff527323c3271f3f1d8b418ede0b4bceb42b7eed6f82",
+    "PAX_comment": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+    "actual_member_hashes_verified": 869,
+    "independent_git_archive_autocrlf": "true"
+  },
+  "production_executable": {
+    "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/production/candidate/DWM2t-M8-UNTESTED/DWM2tRecomp.exe",
+    "bytes": 729611264,
+    "sha256": "829e95842cea5a0cc9d13f601ae89b814c4fd2109ca08065bf50a9d944378ec1",
+    "architecture": "nativePE32+ x86-64"
+  },
+  "original_inner_candidate_ZIP": {
+    "path": "/workspace/scratch/full-rom-2026-10-26/r3-audit/production/extracted/production-output/DWM2t-M8-UNTESTED-1351bcd058e4.zip",
+    "bytes": 136177818,
+    "sha256": "76a78f6441802f332f4ff28fefb12764cd41866417f7605a966bf44ff07409e0"
+  },
+  "candidate_manifest_sha256": "4eff9d3056148a8f4f47bd02038c24df76ca922021d2c2893613b71aa33efbab",
+  "candidate_base_file_checksums_verified": true,
+  "startup": [
+    {
+      "mode": "direct-start",
+      "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+      "no_argument_start": true,
+      "actual_checks": [
+        "--help",
+        "--version",
+        "informational_commands_do_not_create_profile",
+        "real_production_window_created",
+        "window_message_loop_responsive",
+        "native_save_lock_blocks_competing_access",
+        "close_message_delivered",
+        "normal_player_shutdown",
+        "native_save_lock_released",
+        "any_original_boot_sram_is_exact_size",
+        "no_pending_save_temporaries",
+        "player_binary_unchanged"
+      ],
+      "report_sha256": "7e46f0e5678f6d49ac360e07c9c279c91b2d06a983b0b5528755b06768814628"
+    },
+    {
+      "mode": "profile-start",
+      "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+      "no_argument_start": false,
+      "actual_checks": [
+        "--help",
+        "--version",
+        "informational_commands_do_not_create_profile",
+        "real_production_window_created",
+        "window_message_loop_responsive",
+        "native_save_lock_blocks_competing_access",
+        "close_message_delivered",
+        "normal_player_shutdown",
+        "native_save_lock_released",
+        "any_original_boot_sram_is_exact_size",
+        "no_pending_save_temporaries",
+        "player_binary_unchanged"
+      ],
+      "report_sha256": "8eed272784ca62243d01826117da9b1622098c9473a24fcb316366c3aa5200ca"
+    }
+  ],
+  "Windows_SaveIO": {
+    "tests": 2,
+    "names": [
+      "M8_save_io_contracts",
+      "M8_save_io_fault_contracts"
+    ],
+    "skipped": 0,
+    "failures": 0,
+    "XML_sha256": "817194027c06a11dbc7441be424a079a64a081b69ca6250426f0e5a35eeb52f6"
+  },
+  "Windows_runtime_core": {
+    "tests": 5,
+    "names": [
+      "FullROM_memory_contracts",
+      "FullROM_runtime_contracts",
+      "FullROM_serial_contracts",
+      "FullROM_renderer_contracts",
+      "FullROM_generated_aot_contracts"
+    ],
+    "actual_source_inputs": 35,
+    "actual_binaries": {
+      "DWM2tGeneratedAotContracts": {
+        "bytes": 114176,
+        "path": "bin/DWM2tGeneratedAotContracts.exe",
+        "sha256": "5ef4f6b3aadee57a3a9de66ecc568f8d18a68018f04c95db9287a128dc40d9dc"
+      },
+      "DWM2tRendererContracts": {
+        "bytes": 84480,
+        "path": "bin/DWM2tRendererContracts.exe",
+        "sha256": "cc3003684f7809e6f5628c5a9869a4a2168652edc91b8191649f669eec71174b"
+      },
+      "DWM2tRuntimeCoreContracts": {
+        "bytes": 120320,
+        "path": "bin/DWM2tRuntimeCoreContracts.exe",
+        "sha256": "0e3dcf3b01126686f34d81e58ee922d402a34138985e2056fc6254aa56c1ac1f"
+      }
+    },
+    "architectures": {
+      "DWM2tGeneratedAotContracts": "nativePE32+ x86-64",
+      "DWM2tRendererContracts": "nativePE32+ x86-64",
+      "DWM2tRuntimeCoreContracts": "nativePE32+ x86-64"
+    },
+    "uniform_LF_CRLF_only": true,
+    "report_sha256": "974651f84fdaf07606ae76c1ca4408ec2f29a6105191883edd14f0d52c5fec30"
+  },
+  "executed_by_this_auditor": false,
+  "overall_game_or_package_acceptance_claimed": false
+}
