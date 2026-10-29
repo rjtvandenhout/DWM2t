@@ -4,12 +4,14 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
 
 import package_verified_m8 as packaging
-from m8_build_identity import digest
+from m8_build_identity import ROM_SHA, digest
+from m8_package import BASE_FILES, verify_package
 
 
 class SplitGuiProvenanceContracts(unittest.TestCase):
@@ -90,6 +92,34 @@ class SplitGuiProvenanceContracts(unittest.TestCase):
         self.assertEqual(attestation['validation_run_id'], self.validation_run)
         self.assertEqual(evidence['original-build-artifacts.json'], self.manifest_path)
         self.assertEqual(evidence['production-journal-attestation.json'], self.attestation_path)
+
+    def test_all_split_evidence_names_and_bytes_pass_verified_package_integrity(self):
+        _, evidence = self.verify()
+        self.assertEqual(set(evidence), {
+            'production-journal-attestation.json', 'original-build-artifacts.json',
+            'same-file-alias-stderr.txt', 'competing-player2-stderr.txt'})
+        package = self.root/'verified-package'
+        (package/'validation').mkdir(parents=True)
+        for name in BASE_FILES:
+            (package/name).write_bytes(('Synthetic package contract: '+name).encode())
+        for name, source in evidence.items():
+            shutil.copyfile(source, package/'validation'/name)
+            self.assertEqual((package/'validation'/name).read_bytes(), source.read_bytes())
+        record = dict(schema=1, status='passed', full_game_verified=True,
+                      source_commit=self.source, executable_sha256=digest(package/'DWM2tRecomp.exe'),
+                      evidence={name:digest(package/'validation'/name) for name in evidence})
+        (package/'validation.json').write_text(json.dumps(record), encoding='utf-8')
+        metadata = dict(schema=1, status='VERIFIED_M8', source_commit=self.source, rom_sha256=ROM_SHA,
+                        fixed_bank=0, romx_banks=list(range(1,256)), full_game_verified=True,
+                        m8_accepted=True,
+                        files={name:digest(package/name) for name in (*BASE_FILES, 'validation.json')})
+        (package/'manifest.json').write_text(json.dumps(metadata), encoding='utf-8')
+        self.assertTrue(verify_package(package, self.source)['m8_accepted'])
+        (package/'validation/same-file-alias-stderr.txt').write_bytes(b'tampered')
+        with self.assertRaises(ValueError):
+            verify_package(package, self.source)
+        self.assertEqual(digest(evidence['same-file-alias-stderr.txt']),
+                         self.reports[packaging.SPLIT_GUI_REPORTS[4]])
 
     def test_wrong_build_tooling_run_executable_or_seed_is_rejected(self):
         changes = {
@@ -177,6 +207,33 @@ class SplitGuiProvenanceContracts(unittest.TestCase):
                 self.write_attestation()
                 with self.assertRaises(ValueError):
                     self.verify()
+
+    def test_split_package_gate_requires_the_real_late_seed_and_all_launcher_checks(self):
+        checks = ['authentic_later_journal_seed', 'windows_powershell_available',
+                  'first_native_window_created', 'second_native_window_created',
+                  'separate_profiles_run_concurrently', 'actual_duplicate_native_instance_is_refused',
+                  'duplicate_never_creates_game_window', 'duplicate_lock_preserves_active_save',
+                  'import_refuses_existing_profile_without_replacement',
+                  'changed_package_is_refused_before_import', 'original_journal_and_package_are_unchanged']
+        for profile in ('first','second'):
+            checks.extend(f'{profile}_'+suffix for suffix in (
+                'launcher_reports_normal_exit', 'cartridge_sram_remains_exact_size',
+                'session_log_created', 'session_log_has_actual_exit_status',
+                'launcher_and_native_prelaunch_backups_are_recoverable'))
+        report = dict(seed_sha256=self.late_sha, via_cmd=False, checks=checks,
+                      duplicate_exit_code=1, duplicate_error_dialog_seen=True)
+        packaging.verify_split_gui_package_gate(report, self.late_sha)
+        for field, value in [('seed_sha256','0'*64), ('via_cmd',True),
+                             ('duplicate_exit_code',0), ('duplicate_error_dialog_seen',False)]:
+            with self.subTest(field=field):
+                before = report[field]
+                report[field] = value
+                with self.assertRaises(ValueError):
+                    packaging.verify_split_gui_package_gate(report, self.late_sha)
+                report[field] = before
+        report['checks'].remove('first_launcher_and_native_prelaunch_backups_are_recoverable')
+        with self.assertRaises(ValueError):
+            packaging.verify_split_gui_package_gate(report, self.late_sha)
 
     def test_gui_options_require_both_evidence_and_full_native_retest(self):
         for options in (dict(production_journal_root=self.gui),

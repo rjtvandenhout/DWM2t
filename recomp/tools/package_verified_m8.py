@@ -263,6 +263,29 @@ def verify_original_build_artifact_manifest(path: Path, source: str, build_run: 
     return manifest
 
 
+def verify_split_gui_package_gate(report: dict, late_sha: str) -> None:
+    """Require the actual original-seed, profile, lock, backup and launcher checks."""
+    expected = {'authentic_later_journal_seed', 'windows_powershell_available',
+                'first_native_window_created', 'second_native_window_created',
+                'separate_profiles_run_concurrently', 'actual_duplicate_native_instance_is_refused',
+                'duplicate_never_creates_game_window', 'duplicate_lock_preserves_active_save',
+                'import_refuses_existing_profile_without_replacement',
+                'changed_package_is_refused_before_import', 'original_journal_and_package_are_unchanged'}
+    for profile in ('first', 'second'):
+        expected.update(f'{profile}_'+suffix for suffix in (
+            'launcher_reports_normal_exit', 'cartridge_sram_remains_exact_size',
+            'session_log_created', 'session_log_has_actual_exit_status',
+            'launcher_and_native_prelaunch_backups_are_recoverable'))
+    checks = report.get('checks')
+    if (report.get('seed_sha256') != late_sha or report.get('via_cmd') is not False
+            or not isinstance(checks, list) or any(not isinstance(value, str) for value in checks)
+            or not expected.issubset(checks)
+            or type(report.get('duplicate_exit_code')) is not int
+            or report['duplicate_exit_code'] == 0
+            or report.get('duplicate_error_dialog_seen') is not True):
+        raise ValueError('Separate production package gate lacks the original-seed and launcher checks')
+
+
 def verify_production_journal_attestation(
         path: Path, gui: Path, *, source: str, build_run: str, validation_run: str,
         retest: dict, executable_sha: str, executable_bytes: int, source_archive: Path,
@@ -308,8 +331,8 @@ def verify_production_journal_attestation(
         raise ValueError('Production link report used different GUI gate or helper scripts')
     return attestation, {'production-journal-attestation.json':path,
                          'original-build-artifacts.json':original_manifest,
-                         'same-file-alias.stderr.log':gui/SPLIT_GUI_REPORTS[4],
-                         'competing-player2.stderr.log':gui/SPLIT_GUI_REPORTS[5]}
+                         'same-file-alias-stderr.txt':gui/SPLIT_GUI_REPORTS[4],
+                         'competing-player2-stderr.txt':gui/SPLIT_GUI_REPORTS[5]}
 
 
 def full_rom_source_inputs(candidate: Path, archive: Path, source: str,
@@ -750,6 +773,8 @@ def package_run(root: Path, source: str, run: str, output: Path, *,
     package_report = passed_json(package_path, source, executable)
     if len(package_report['checks']) < 21:
         raise ValueError('Production package checks are incomplete')
+    if split_gui:
+        verify_split_gui_package_gate(package_report, late_stage['save_sha256'])
     evidence['player-package.json'] = package_path
     for label, folder, seed, owned in [
             ('late-journal', 'production-journal', next(s['save_sha256'] for s in manifest['stages'] if s['name']=='raygigas-birth'), 12),
