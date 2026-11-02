@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "kind": "original_firstfield_acquisition_generation_journal",
+  "status": "observed",
+  "platform": "Wine on Linux",
+  "game_source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "diagnostic_executable_sha256": "61a0e6d3ff84b5322b101247fc93ff6889f123a1bcd94df663135757fb3b9855",
+  "original_inputs_only": true,
+  "pre_c_original_journal_sha256": "1e1f07c5042f69743a9ecfc3974aabfcc39a88b5863e755bd2897bc72fe9edee",
+  "original_c_input_route": "recomp/tests/m8_c_class_victory_p1.txt",
+  "input_variation": "32 additional released-button frames at frame 34957, after champion announcement; subsequent assertions unpinned for exploratory run",
+  "c_victory_variant_journal_sha256": "a6d6dacf08d0ac86838a26bb797076916938b693f4ff2d92090317ccd70576cd",
+  "c_victory_original_journal_sha256": "613ab882b284768c3a973ed2fd553c8b7623147e9cc050340d9a180e380f0def",
+  "c_victory_save_differences": [
+    {
+      "offset": "3c17",
+      "baseline": 7,
+      "variant": 4
+    },
+    {
+      "offset": "3c18",
+      "baseline": 19,
+      "variant": 20
+    },
+    {
+      "offset": "3c90",
+      "baseline": 192,
+      "variant": 39
+    },
+    {
+      "offset": "3c91",
+      "baseline": 22,
+      "variant": 25
+    },
+    {
+      "offset": "3d30",
+      "baseline": 53,
+      "variant": 23
+    },
+    {
+      "offset": "3d31",
+      "baseline": 2,
+      "variant": 3
+    },
+    {
+      "offset": "3f98",
+      "baseline": 244,
+      "variant": 63
+    }
+  ],
+  "fresh_continue_after_c_victory": true,
+  "new_key": {
+    "unappraised_record": "fe041408",
+    "appraised_record": "00041408",
+    "seed_little_endian": "2719",
+    "name": "FirstField",
+    "appraisal_cost_g": 90,
+    "wallet_before_g": 160,
+    "wallet_after_g": 70
+  },
+  "appraised_journal_sha256": "67f0ccce0a65951e8dbab96d24e9f753a5c9cf916ca89340afec84da7fe4c7cf",
+  "fresh_continue_after_appraisal": true,
+  "world_context_hex": "00008700",
+  "in_world_original_journal_sha256": "55b117bab52296d990e904f3736474c7a7ccdf81e2ecfc10d31805c72ed59609",
+  "fresh_continue_after_in_world_journal": true,
+  "entire_sram_byte_identical_on_fresh_continue": true,
+  "working_and_backup_world_cache_identical": true,
+  "gameplay_state_comparisons": {
+    "keys": {
+      "bytes": 128,
+      "sha256": "a9d71dd316214c9afbdb0cac57b83ddf877b047d471b6348b856161fb901c445"
+    },
+    "seeds": {
+      "bytes": 64,
+      "sha256": "d827cf7827f5853a92cf700151644788351e50cdf39932caf10506771479a76d"
+    },
+    "quest": {
+      "bytes": 107,
+      "sha256": "2edd5038bfb7accd5aa9f1a13ac376089ac8b258eeb95194ab4dcbdb6b94e0b6"
+    },
+    "context": {
+      "bytes": 4,
+      "sha256": "5891941315844fd3e207eb8ca73e81c60836990e0ed2d80850bd1e0c0abbc68d"
+    },
+    "descriptor": {
+      "bytes": 404,
+      "sha256": "778d02cc7b24c44b989b5b8fd7ef5d9940ea70e0a227ab46e4c08512b6d36f40"
+    }
+  },
+  "failures_preserved": [
+    "A separate title-delay variant failed to produce a valid Journal; it is not a gameplay regression.",
+    "The diagnostic journal helper rejected random-world submode 1:5 before sending any input. The original menu was then used manually."
+  ],
+  "limitations": [
+    "Diagnostic executable under Wine, not a new native Windows acceptance.",
+    "One newly generated key and world; not all seeds, layouts or rewards.",
+    "Game SRAM snapshot was copied only after the original Journal explicitly confirmed recording; no bytes were edited."
+  ],
+  "evidence_files_sha256": {
+    "acquisition-to-world-trace.txt": "195f4e7f8ac6b5d1c2387e1621e6ac9b2e5691394c422fde6827e7db23c587c5",
+    "appraisal-fee.bmp": "532e478c4910e70f96fc75819cae9746f5b2c458054203560692dc543f05fd7e",
+    "appraised-firstfield.bmp": "d670a40e63538fd13373a000bec26a12295159707f1edb5ec864ec96492b911a",
+    "c-class-input-route.txt": "24a4254a68e227c4c291ce6ad47924bec1362156a663494aaeb9bfdd85ece7e5",
+    "fresh-continue.bmp": "88916461c2621b2d4ae073c370814f0672564bef78f5818f8a628d122f25dfe0",
+    "journal-confirmed.bmp": "262653dd3b436f7559d23f8e1e33298ab0b25b971ff4573f4aac9dfe4516d68c",
+    "journal-trace.txt": "033db105b31c1e1c2bc4af5f8cd3b848ea8895bc55cb57b68e71c9674949da49",
+    "production-continue-observation.json": "0c51c588aef5c2992d50259aef269656275746b24bdaf20a8561400565de85ca",
+    "production-continue-probe.py": "0ba5e653fd11c9e77e4f22b411271410c1d0d80558621d4e1cccc6da557674aa",
+    "production-fresh-continue.bmp": "81b1c96fe316cbff9e87808e5c789067e8fd4f5ceaa3634e998b46c59646f685",
+    "production-generated-castle.bmp": "af07f5320c4dcae8217656bebb517ba1c2ee9cbdb725433ecf98edb92fcd3525",
+    "production-generated-fresh-continue.bmp": "81b1c96fe316cbff9e87808e5c789067e8fd4f5ceaa3634e998b46c59646f685",
+    "production-generated-fresh-observation.json": "7809f54d59b5924baca0df2d42a44377ce44ed7bb2a4e25761fd8b7a7b30af93",
+    "production-generation-observation.json": "72e33155dfa438eeb17583cc26049c71868ca7b74578fa3dc2623f406d1b8c18",
+    "production-generation-probe.py": "1bddbbe3870e662964e56d045da35ec3ba7c449d180fe9de9bd9933b10170694",
+    "production-journal-confirmed.bmp": "5bbb3a2adbf0f5a71bc9b95e109aa47aaa7450526bd7d6b5ac13944eb815ca87",
+    "production-save-card.bmp": "59de263f2b0e369d35b24a25ee26354842ba6ff6fd5c4d9d47d55efeefb0ed3a",
+    "world-entry.bmp": "c7db039f01ce331d1cc448f01a7469eedd111b358dd4378a5f9015b8e70ffd77",
+    "world-readonly-source-observation.json": "b8c674686c42f3c3b16cd5fa43a32f0432d1bb7abcf34405dcdcb43e8ff7332c"
+  },
+  "host_modified_guest_memory_rng_or_journal": false,
+  "world_comparison": {
+    "FirstField": {
+      "terrain_class": 3,
+      "recipe": 9,
+      "size": [
+        4,
+        4
+      ],
+      "descriptor_sha256": "778d02cc7b24c44b989b5b8fd7ef5d9940ea70e0a227ab46e4c08512b6d36f40"
+    },
+    "QuietSea": {
+      "terrain_class": 8,
+      "recipe": 13,
+      "size": [
+        4,
+        4
+      ],
+      "descriptor_sha256": "0d97ee90ab65093865b48f5b81378e94a648d599461ef43386599a0f18eb8d90"
+    },
+    "source": "Fresh observed RAM snapshots; class and recipe indices follow original guest descriptors, not synthetic input."
+  },
+  "exact_production_executable_fresh_continue": {
+    "platform": "Wine on Linux",
+    "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+    "result": "passed",
+    "normal_shutdowns": 1,
+    "screen_similarity": 0.9951388888888889,
+    "all_checks": {
+      "source_journal_unchanged": true,
+      "game_exe_unchanged": true,
+      "entire_journal_identical": true,
+      "all_key_records_identical": true,
+      "all_key_seeds_identical": true,
+      "all_107_quest_bytes_identical": true,
+      "working_and_backup_cache_identical": true
+    }
+  },
+  "original_rom_map_reader_current_screen_matches_observed": true,
+  "exact_production_generation_and_fresh_continue": {
+    "platform": "Wine on Linux",
+    "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+    "generation_result": "passed",
+    "generation_checks": {
+      "size": true,
+      "original_key_records": true,
+      "original_key_seeds": true,
+      "original_quest_bytes": true,
+      "generated_working_cache": true,
+      "generated_backup_cache": true,
+      "original_input_seed_unchanged": true,
+      "executable_unchanged": true,
+      "normal_exit": true
+    },
+    "actual_original_journal_sha256": "11de7ea4ebcda84ff66dd1035df7754f92dd899ba19d286a57d2c2e6ca5a0335",
+    "fresh_continue_result": "passed",
+    "fresh_continue_checks": {
+      "source_journal_unchanged": true,
+      "game_exe_unchanged": true,
+      "entire_journal_identical": true,
+      "all_key_records_identical": true,
+      "all_key_seeds_identical": true,
+      "all_107_quest_bytes_identical": true,
+      "working_and_backup_cache_identical": true
+    },
+    "fresh_continue_screen_similarity": 0.9951388888888889
+  }
+}

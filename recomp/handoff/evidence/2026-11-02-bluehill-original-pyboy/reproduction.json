@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "emulator": "PyBoy 2.6.1",
+  "hardware": "CGB",
+  "rom_sha256": "8e38a7420ef5239c7196aa4fd4b1499e65db2823e875bbf8241bb2199e766d4e",
+  "journal_sha256": "5afe17c1e9817cf9229af195690ba0834fccbe8155bf9992e6415f6a45d4ee00",
+  "original_input_only": true,
+  "memory_edits": false,
+  "original_inputs_unchanged": true,
+  "events": [
+    {
+      "step": 15,
+      "frame": 14621,
+      "inventory_hex": "09350a010101012800000000000000000000000000000000",
+      "occupied_slots": 8,
+      "image_sha256": "a67a686380f73c103decf7462988ec40ebc1001895ad3b9838775bd6a646e162",
+      "reference_image_matches": true
+    },
+    {
+      "step": 42,
+      "frame": 17943,
+      "inventory_hex": "09350a010101012800000000000000000000000000000000",
+      "occupied_slots": 8,
+      "image_sha256": "c13a3cca1a3864a6f8ddce69155e2c11f2314c38c2e81737a041267c59258ade",
+      "reference_image_matches": true
+    },
+    {
+      "step": 44,
+      "frame": 18195,
+      "inventory_hex": "09350a010101012800000000000000000000000000000000",
+      "occupied_slots": 8,
+      "image_sha256": "3203fec392da8df0f573d0e4b0968926355042a9643d44d36c4f03f4095033a7",
+      "reference_image_matches": true
+    },
+    {
+      "step": 46,
+      "frame": 18447,
+      "inventory_hex": "09350a010101012819000000000000000000000000000000",
+      "occupied_slots": 9,
+      "image_sha256": "d77f27d049455beb226b76300869f2c8892674e89559855d1f4ab6e0ebb2939d",
+      "reference_image_matches": true
+    },
+    {
+      "step": 47,
+      "frame": 18569,
+      "inventory_hex": "09350a0101010128191b0000000000000000000000000000",
+      "occupied_slots": 10,
+      "image_sha256": "918050903dce2b9db73c7302120439ec109dfefe0070c662bffdb5c90cfcfeba",
+      "reference_image_matches": true
+    },
+    {
+      "step": 52,
+      "frame": 19179,
+      "inventory_hex": "09350a0101010128191b1a191c1b1a000000000000000000",
+      "occupied_slots": 15,
+      "image_sha256": "e46579acf201362011060cedee8cb4acd9a7b3cb1dfcac45d45bb71371357178",
+      "reference_image_matches": true
+    },
+    {
+      "step": 61,
+      "frame": 20277,
+      "inventory_hex": "09350a0101010128191b1a191c1b1a191c1b1a19191c1c1b",
+      "occupied_slots": 24,
+      "image_sha256": "3b9ec66125ed698cf9e389b7033ba27a022cc5f71c0d8f2c93485dd6ee49a9ba",
+      "reference_image_matches": true
+    },
+    {
+      "step": 62,
+      "frame": 20399,
+      "inventory_hex": "09350a0101010128191b1a191c1b1a191c1b1a19191c1c1b",
+      "occupied_slots": 24,
+      "image_sha256": "ba4f550ec5aab05124dc745b9d46eda8681459a0feeafb86345d253b65403961",
+      "reference_image_matches": true
+    },
+    {
+      "step": 63,
+      "frame": 20521,
+      "inventory_hex": "09350a0101010128191b1a191c1b1a191c1b1a19191c1c1b",
+      "occupied_slots": 24,
+      "image_sha256": "853431b287efaa03080f3740ae5a39f91b79d7510335ec71f3c379ada62184af",
+      "reference_image_matches": true
+    }
+  ]
+}

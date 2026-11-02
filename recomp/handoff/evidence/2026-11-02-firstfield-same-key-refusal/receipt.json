@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "original_firstfield_same_key_refusal",
+  "status": "observed",
+  "scope": "FirstField offered while this genuine saved game is in its world; trade denied and cancelled, reason under investigation; no fresh Continue claim.",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_seed_sha256": "1c073972fbe2206564c4bad3a2e75470b4204332d5993e2725082ac61b36eafc",
+  "firstfield_record": "c0041408",
+  "firstfield_seed_bytes": "2719",
+  "linked_exit_code": 0,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "files": {
+    "after-cancel-player1.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "after-cancel-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "confirm-player1.bmp": "92c91c258919c348f169191bcd07564c944007b65c04c3cd222094820bf199b7",
+    "confirm-player2.bmp": "45c410ab732740ddab62e1ace91308ff5617f27a2992fbd60dc4bec4ba8e2da2",
+    "link-events.jsonl": "5e7180a2fe8e4f7a73a7a39a50b7411804b604ab84e8f5d6ec0966c9657f27ba",
+    "link-report.json": "7aeaeedc7b9eea220a913171451988616fa664be54da8b4a90444ae6f4358839",
+    "refusal-player1.bmp": "8ffcf5518fc9e4217bd1176954cb4f7d14df7f80d264ed64f8d9cd4931bd0cfa",
+    "refusal-player2.bmp": "8ffcf5518fc9e4217bd1176954cb4f7d14df7f80d264ed64f8d9cd4931bd0cfa",
+    "trade-firstfield.py": "412404789c0786ed5f661d0778057e00efbfcd580e08be5180e702dd7cebe501"
+  }
+}

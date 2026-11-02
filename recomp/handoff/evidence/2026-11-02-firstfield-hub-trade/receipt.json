@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "kind": "original_firstfield_same_key_trade_from_hub",
+  "status": "passed",
+  "environment": "Wine on Linux",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "61510b4446b038f4034f90bfc5656b1861eb0f4abc6ae65ba65a44564c9ece3e",
+  "scope": "Same FirstField trade from genuine original GreatLog Journal, original input, two normal fresh Continues; no Tara, physical link, or repeated chest reward claimed",
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "linked_exit_code": 0,
+  "cache_changed_offsets": [
+    "0x4001",
+    "0x4178",
+    "0x417c",
+    "0x4180",
+    "0x4184",
+    "0x6001",
+    "0x6178",
+    "0x617c",
+    "0x6180",
+    "0x6184"
+  ],
+  "players": [
+    {
+      "player": 1,
+      "input_original_sha256": "61510b4446b038f4034f90bfc5656b1861eb0f4abc6ae65ba65a44564c9ece3e",
+      "before_continue_sha256": "afb8635caf35545c8d14066abc44c8def17838d19c4fb5296135d6b6480904da",
+      "after_continue_sha256": "7f2f70c9d0abb0a961dd241df4f701321ccc6623332cbdc96d25c26de8ba09eb",
+      "bytes": 32768,
+      "expected_received_key": "80041408",
+      "expected_received_seed": "2719",
+      "received_slots": [
+        7
+      ],
+      "owned_record_count": 17,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    },
+    {
+      "player": 2,
+      "input_original_sha256": "61510b4446b038f4034f90bfc5656b1861eb0f4abc6ae65ba65a44564c9ece3e",
+      "before_continue_sha256": "afb8635caf35545c8d14066abc44c8def17838d19c4fb5296135d6b6480904da",
+      "after_continue_sha256": "7f2f70c9d0abb0a961dd241df4f701321ccc6623332cbdc96d25c26de8ba09eb",
+      "bytes": 32768,
+      "expected_received_key": "80041408",
+      "expected_received_seed": "2719",
+      "received_slots": [
+        7
+      ],
+      "owned_record_count": 17,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "firstfield-selected-player1.bmp": "55221df54c9d371d9396ee050cd785ce75e9495853ef27afff289c02135a4bc7",
+    "firstfield-selected-player2.bmp": "55bec3dff45b8045ac051f0c87eca982f76f2ce7895f4899f138358754794dfc",
+    "fresh-events.jsonl": "6fe8ffb793119928e6d6005c68035293a22c01e15d301974c124ad3a48bb24aa",
+    "fresh-firstfield-hub.py": "23acc0f4af64569ef7a1d7ffa27aa2ba0ad7d326a54d5fba1f9963196b5a607d",
+    "fresh-player1.bmp": "503a2560db66ef3e12c03ec081477119705f81ffd0becf55c0bc1db5c62237d2",
+    "fresh-player2.bmp": "503a2560db66ef3e12c03ec081477119705f81ffd0becf55c0bc1db5c62237d2",
+    "fresh-report.json": "39cb22a2f6fa7b42be27aeb1d20cfa0bebf3e4183c65186dd7fc034f5e2ecd54",
+    "keys-traded-player2.bmp": "13f98facab7f7a8de97194309799305ca4b4ffa41fed99571f94e284431b0277",
+    "link-events.jsonl": "cac6bbe5a5a7a80ba97dd78e7cc9ffcdc65910d27c8a02383e785a52aeba6ee2",
+    "link-report.json": "c3c554ab3593e1dc8fccdd27ce8b3340f30dc6e0cbcea98787b73e2fcb629674",
+    "record-confirm-player1.bmp": "d46d17950027d7f73ee298daed2d437039c7c2e6448ba9b6a50b1260b86fb8f0",
+    "trade-confirm-player1.bmp": "e0683c10e395dc7e56b27b55d2eabe81f737994a8a703cbced88d0f02389c9c6",
+    "trade-confirm-player2.bmp": "153f00efb707ddd36bf1773166e5a9771393fddca10f5f26f8616cc22c3efcf1",
+    "trade-firstfield-hub.py": "0ed71ca2ada654fb72804aecbef45d6dc14daa4a473e0956430671f6942558e8"
+  }
+}

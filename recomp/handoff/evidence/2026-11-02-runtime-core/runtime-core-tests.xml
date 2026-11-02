@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="5"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="3b41ceeea395"
+	time="0"
+	timestamp="2026-11-02T09:01:19"
+	>
+	<testcase name="FullROM_memory_contracts" classname="FullROM_memory_contracts" time="0.0101077" status="run">
+		<properties/>
+		<system-out>HARDWARE_CASE memory mapper_physical_rom_and_wram PASS checks=7
+HARDWARE_CASE memory speed_switch_and_clock_domains PASS checks=8
+HARDWARE_CASE memory timer_overflow_reload_and_write_edges PASS checks=7
+HARDWARE_CASE memory general_vram_dma PASS checks=87
+HARDWARE_CASE memory hblank_dma_and_abort PASS checks=39
+HARDWARE_CONTRACTS_PASS memory checks=148 original_game_executed=false
+</system-out>
+	</testcase>
+	<testcase name="FullROM_runtime_contracts" classname="FullROM_runtime_contracts" time="0.0102889" status="run">
+		<properties/>
+		<system-out>HARDWARE_CASE runtime interrupt_priority_and_stack PASS checks=25
+HARDWARE_CASE runtime ei_di_reti_and_halt PASS checks=6
+HARDWARE_CASE runtime ei_halt_interrupt_return PASS checks=3
+HARDWARE_CASE runtime halt_idle_and_wake PASS checks=3
+HARDWARE_CASE runtime stop_wake_and_speed_opcode PASS checks=6
+HARDWARE_CASE runtime runtime_dma_stall_and_interrupt PASS checks=389
+HARDWARE_CASE runtime hram_entries_and_halt_bug PASS checks=7
+HARDWARE_CASE runtime sticky_trap_and_zero_aot_identity PASS checks=5
+HARDWARE_CONTRACTS_PASS runtime checks=444 original_game_executed=false
+</system-out>
+	</testcase>
+	<testcase name="FullROM_serial_contracts" classname="FullROM_serial_contracts" time="0.0201705" status="run">
+		<properties/>
+		<system-out>HARDWARE_CASE serial serial_unconnected_and_fast PASS checks=11
+HARDWARE_CASE serial serial_external_timeout_and_abort PASS checks=5
+HARDWARE_CASE serial serial_real_peer_bits_and_ack PASS checks=7
+HARDWARE_CASE serial serial_disconnect_and_peer_abort PASS checks=6
+HARDWARE_CASE serial serial_copy_isolation PASS checks=3
+HARDWARE_CASE serial serial_clock_handover_and_no_double_tick PASS checks=3
+HARDWARE_CASE serial serial_connected_runtime_interrupt PASS checks=2
+HARDWARE_CONTRACTS_PASS serial checks=37 original_game_executed=false
+</system-out>
+	</testcase>
+	<testcase name="FullROM_renderer_contracts" classname="FullROM_renderer_contracts" time="0.00678101" status="run">
+		<properties/>
+		<system-out>PASS: CGB/DMG object priorities and full-frame SCX/SCY publication
+</system-out>
+	</testcase>
+	<testcase name="FullROM_generated_aot_contracts" classname="FullROM_generated_aot_contracts" time="0.00987915" status="run">
+		<properties/>
+		<system-out>GENERATED_AOT_CONTRACTS_PASS checks=19 original_game_executed=false
+</system-out>
+	</testcase>
+</testsuite>

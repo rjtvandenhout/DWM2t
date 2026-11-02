@@ -1,5 +1,9 @@
 # Full-ROM implementation inventory — 2026-10-26
 
+For later observations, including original Arena B victory and additional
+generated-world and key-trade checks, see [validation progress on 2 November](VALIDATION_PROGRESS_2026-11-02.md).
+The historical inventory below retains its original observation dates.
+
 **The recorded Cobi/CGB campaign, postgame checkpoints and package gates now
 pass.** The [current result and playing guide](FULL_ROM_RESULT_2026-10-29.md)
 identifies the exact game source, separate continuation tooling, downloads and

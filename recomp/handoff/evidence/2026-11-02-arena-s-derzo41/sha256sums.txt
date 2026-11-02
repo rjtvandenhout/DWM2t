@@ -1,0 +1,9 @@
+b9cd4829d9d4aff8be7125c0c047c2d6bc74ac30a018441f2a76bac50661e700  ./README.md
+0e22d20bdd6fee1d36b5bd62041162f496f4ff6036e65c17445a177aee8b4805  ./commands_executed.txt
+2eb22513214812039a07c3d30b844d3b473bd04613c57897733deeeba08c0ae4  ./s-derzo41-attempt.log
+c858be7c84489f1ba4b8a5335c6b9841b171091a9a3aa02deacb0f1ac30170ef  ./s_derzo41_attempt.py
+fdda193a0120b4eaeda34b54ab864ce3f9c479c144549aa7dc1f35513f9e3bdc  ./screenshots/round-one-victory.bmp
+7bcbb6aaae8d48fc4e5c30f59ca3a59fe642a89230bbfa4116220dee3357628e  ./screenshots/round-three-loss.bmp
+fca4d1ecf53a3ec720846e96e9cdfcd213fc775b503d58232dae0c824e7a8609  ./screenshots/round-two-victory.bmp
+68344d8e6d27de065338b15b579bafc530603a3381e68643be15da5d5a096c4f  ./screenshots/s-entry.bmp
+9433dc21fd383f1e7e16618b5dfbcaf939e9294182b7adbc252b868107982fbd  ./trace_p1.txt

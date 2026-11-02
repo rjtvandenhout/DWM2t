@@ -1,0 +1,20 @@
+{"event": "cycle_start", "elapsed_seconds": 0.005, "cycle": 1}
+0 (5, 1, 0, 80, 64) (1, 0)
+1 (5, 0, 0, 144, 64) (1, 0)
+2 (5, 0, 0, 112, 64) (1, 0)
+3 (5, 0, 0, 112, 80) (1, 0)
+DESTINATION (5, 0, 0, 112, 80)
+{"event": "start", "elapsed_seconds": 0.0, "party": [{"index": 12, "status": 0, "level": 41, "exp": 329728, "hp": 222, "max_hp": 222, "mp": 292, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 340179, "hp": 181, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 322858, "hp": 207, "max_hp": 207, "mp": 248, "max_mp": 248}], "scope": "original P1 only; four encounters maximum"}
+{"event": "victory", "elapsed_seconds": 7.677, "party": [{"index": 12, "status": 0, "level": 41, "exp": 329869, "hp": 222, "max_hp": 222, "mp": 287, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 340320, "hp": 181, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 322999, "hp": 207, "max_hp": 207, "mp": 248, "max_mp": 248}], "number": 1}
+{"event": "victory", "elapsed_seconds": 30.569, "party": [{"index": 12, "status": 0, "level": 41, "exp": 330290, "hp": 222, "max_hp": 222, "mp": 287, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 340741, "hp": 181, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 323420, "hp": 194, "max_hp": 207, "mp": 248, "max_mp": 248}], "number": 2}
+{"event": "victory", "elapsed_seconds": 55.896, "party": [{"index": 12, "status": 0, "level": 41, "exp": 330711, "hp": 222, "max_hp": 222, "mp": 282, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 341162, "hp": 157, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 323841, "hp": 193, "max_hp": 207, "mp": 248, "max_mp": 248}], "number": 3}
+{"event": "victory", "elapsed_seconds": 69.41, "party": [{"index": 12, "status": 0, "level": 41, "exp": 330990, "hp": 219, "max_hp": 222, "mp": 277, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 341441, "hp": 157, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 324120, "hp": 193, "max_hp": 207, "mp": 248, "max_mp": 248}], "number": 4}
+{"event": "bounded_batch_complete", "elapsed_seconds": 69.429, "party": [{"index": 12, "status": 0, "level": 41, "exp": 330990, "hp": 219, "max_hp": 222, "mp": 277, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 341441, "hp": 157, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 324120, "hp": 193, "max_hp": 207, "mp": 248, "max_mp": 248}], "victories": 4, "movements": 137}
+{"event": "cycle_training_done", "elapsed_seconds": 73.747, "cycle": 1, "wins": 4, "party": [{"index": 12, "status": 0, "level": 41, "exp": 330990, "hp": 219, "max_hp": 222, "mp": 277, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 341441, "hp": 157, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 324120, "hp": 193, "max_hp": 207, "mp": 248, "max_mp": 248}]}
+Traceback (most recent call last):
+  File "/workspace/scratch/arena-b-2026-11-02/control/training_cycles.py", line 67, in <module>
+    require(won==4 and status()[1]==(1,5),'bounded training stopped early')
+  File "/workspace/scratch/arena-b-2026-11-02/control/training_cycles.py", line 25, in require
+    if not test:raise RuntimeError(message+'; observed '+repr(status()))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: bounded training stopped early; observed ((3, 5, 2, 48, 96), (1, 0), (1, 0, 128, 1))

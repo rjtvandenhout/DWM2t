@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "kind": "firstfield_production_fresh_continue",
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "55b117bab52296d990e904f3736474c7a7ccdf81e2ecfc10d31805c72ed59609",
+  "players": 2,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "serial_protocol_success_verified": false,
+  "completed_vs_match": false,
+  "prize_or_wager": false,
+  "full_game_verified": false,
+  "normal_shutdowns": 1,
+  "fresh_process_reload": true,
+  "events": [
+    {
+      "event": "launched",
+      "utc": "2026-11-02T09:23:43.585999+00:00",
+      "monotonic": 480562.247,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r4-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\key-validation-2026-11-02\\firstfield-prod-01\\profiles\\player1.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "production",
+      "pid": 80
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:24:15.697382+00:00",
+      "monotonic": 480594.358,
+      "player": 1,
+      "label": "production-title",
+      "screenshot": "production-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:24:16.611517+00:00",
+      "monotonic": 480595.272,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:24:16.744420+00:00",
+      "monotonic": 480595.405,
+      "player": 1,
+      "label": "production-saved-menu",
+      "screenshot": "production-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:24:18.568845+00:00",
+      "monotonic": 480597.229,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:24:18.689709+00:00",
+      "monotonic": 480597.35,
+      "player": 1,
+      "label": "original-save-card",
+      "screenshot": "original-save-card-player1.bmp",
+      "sha256": "59de263f2b0e369d35b24a25ee26354842ba6ff6fd5c4d9d47d55efeefb0ed3a"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:24:20.007778+00:00",
+      "monotonic": 480598.668,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:24:20.334723+00:00",
+      "monotonic": 480598.995,
+      "player": 1,
+      "label": "firstfield-fresh-continue",
+      "screenshot": "firstfield-fresh-continue-player1.bmp",
+      "sha256": "81b1c96fe316cbff9e87808e5c789067e8fd4f5ceaa3634e998b46c59646f685"
+    },
+    {
+      "event": "passed",
+      "utc": "2026-11-02T09:24:20.852531+00:00",
+      "monotonic": 480599.513,
+      "screen_similarity": 0.9951388888888889,
+      "checks": {
+        "source_journal_unchanged": true,
+        "game_exe_unchanged": true,
+        "entire_journal_identical": true,
+        "all_key_records_identical": true,
+        "all_key_seeds_identical": true,
+        "all_107_quest_bytes_identical": true,
+        "working_and_backup_cache_identical": true
+      }
+    }
+  ],
+  "executable_bytes": 729611264,
+  "seed_bytes": 32768,
+  "reference_manifest_sha256": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2",
+  "reference_game_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "script_sha256": "b2fd9e63f2dd9c5ea5e27cdf21b60b0bf84b78f0ee5ce3f98dcf3a52805e09bf",
+  "gui_helper_sha256": "56a76b0009b1df383f7507afc85d980cf5ad28d002efb58cf8a7b1dfe4e53c7c",
+  "firstfield_screen_similarity": 0.9951388888888889,
+  "checks": {
+    "source_journal_unchanged": true,
+    "game_exe_unchanged": true,
+    "entire_journal_identical": true,
+    "all_key_records_identical": true,
+    "all_key_seeds_identical": true,
+    "all_107_quest_bytes_identical": true,
+    "working_and_backup_cache_identical": true
+  },
+  "output_save_sha256": "55b117bab52296d990e904f3736474c7a7ccdf81e2ecfc10d31805c72ed59609",
+  "screenshots": {
+    "firstfield-fresh-continue-player1.bmp": "81b1c96fe316cbff9e87808e5c789067e8fd4f5ceaa3634e998b46c59646f685",
+    "original-save-card-player1.bmp": "59de263f2b0e369d35b24a25ee26354842ba6ff6fd5c4d9d47d55efeefb0ed3a",
+    "production-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "production-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+  }
+}

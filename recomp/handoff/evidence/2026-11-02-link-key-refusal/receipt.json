@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "kind": "original_key_trade_refusal_and_cancel",
+  "status": "passed",
+  "environment": "Wine on Linux",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "seed_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+  "scope": "Original fixed-key trade refusals, peer cancellation and fresh Continue; no successful different-key trade claimed.",
+  "original_inputs_only": true,
+  "game_memory_edits": false,
+  "linked_exit_code": 0,
+  "players": [
+    {
+      "player": 1,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    },
+    {
+      "player": 2,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "cancel-player1.bmp": "6aac3fea472a6712fda409477b94bd987574f60c07167716707d88da0434b1af",
+    "cancel-player2.bmp": "bea3843b74c82d30abeca2b35d1ac128de0005c85f4adba872a1941777d40024",
+    "fresh-events.jsonl": "e2de398a290200e46a3b77e3afaef67268ec23cd50dd55dc8612682d85e24dc1",
+    "fresh-player1.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-player2.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-report.json": "b0a13394885d6b82162930c1b3025a0714a30fc40f4f7bfc9b45c07360ef982a",
+    "fresh.py": "97da3d9165d6ed396067604e9e9500ec46326965917b3bd2e91c497478d798fc",
+    "greatlog-refused.bmp": "01ed02a967f1296da5c0a19e17270a63dcbec606153b8dfba3fa5b9e7e0e32b9",
+    "greatlog-selection.bmp": "72fc715c819768c6d22c6cb4c7c5f8d192b1dc2ae3f84b9b643891d60afd3520",
+    "link-events.jsonl": "56aeaf38f248567306d89c00e540f3a9dbeaf61fa75766eab66de100d684393d",
+    "link-report.json": "1c6a75976ec7a9a244a9991cb808ccc72ca87ac9776ef356b0788d96f2100c74",
+    "oasis-refused.bmp": "546fe3b92527b75010e79293d7f647c7dcc9fc904ab98946537402f5d0bde533",
+    "oasis-selection.bmp": "f7b8b35df2fbf5f3f992ce258254026692c4bee889fa4f8e44c791e7738c7c15",
+    "pirate-refused.bmp": "5c5fcaa62b12eba924b5ec6eb568a2a341fd995711d728e35bf8bdffb340716d",
+    "pirate-selection.bmp": "995c96252f91a83f75f14e9097bee957951466ad5b2d0b1da0623e6fe09881c5",
+    "probe.py": "fb557ef4644dca349446226b56cc486e42635217d7b9bb3af377858a671c5ee8",
+    "title-player1.bmp": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c",
+    "title-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+  }
+}

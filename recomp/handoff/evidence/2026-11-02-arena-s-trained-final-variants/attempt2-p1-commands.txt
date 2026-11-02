@@ -1,0 +1,229 @@
+walk R 112 120
+snapshot
+walk R 64 120
+snapshot
+walk U 64 120
+snapshot
+U 16 80
+snapshot
+walk L 112 120
+snapshot
+walk L 112 120
+snapshot
+walk U 32 120
+snapshot
+U 16 40
+R 16 40
+U 48 80
+snapshot
+walk U 16 120
+snapshot
+walk L 112 120
+snapshot
+walk L 64 120
+snapshot
+U 1 120
+A 6 180
+snapshot
+- 1 60
+snapshot
+- 1 148
+A 6 50
+D 6 35
+D 6 35
+D 6 35
+A 6 80
+A 6 100
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+snapshot
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+- 1 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+- 1 120
+snapshot
+quit

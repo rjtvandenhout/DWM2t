@@ -1,0 +1,374 @@
+walk U 16 120
+snapshot
+U 1 120
+A 6 180
+snapshot
+- 1 60
+snapshot
+A 6 50
+D 6 35
+D 6 35
+A 6 70
+A 6 100
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+snapshot
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+U 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+U 6 24
+U 6 24
+U 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+U 6 24
+U 6 24
+U 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+A 2 30
+snapshot
+- 1 8
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+- 1 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+- 1 120
+snapshot
+A 6 100
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 6 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+A 2 120
+snapshot
+- 1 120
+snapshot
+A 6 120
+snapshot
+- 1 1000
+B 6 300
+A 6 400
+snapshot
+A 6 100
+A 6 100
+snapshot
+A 6 100
+snapshot
+A 6 80
+B 6 80
+D 16 80
+D 16 80
+A 6 50
+snapshot
+B 6 40
+journal bluehill_a_champion
+snapshot
+walk U 16 120
+snapshot
+U 1 120
+A 6 180
+snapshot
+- 1 60
+snapshot
+A 6 60
+D 6 35
+D 6 35
+D 6 35
+A 6 70
+snapshot
+A 6 100
+snapshot
+quit

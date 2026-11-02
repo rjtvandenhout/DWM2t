@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "kind": "original_different_magic_key_trade",
+  "status": "passed",
+  "environment": "Wine on Linux",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "scope": "QuietSea \u2194 FirstField actual original local trade and fresh Continue; no Tara or physical link claim.",
+  "original_inputs_only": true,
+  "game_memory_edits": false,
+  "linked_exit_code": 0,
+  "players": [
+    {
+      "player": 1,
+      "input_original_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "before_continue_sha256": "de4700da34f334b81fe34025a020ba3740367e77d95e1602154ebd869513641c",
+      "after_continue_sha256": "ecddb6f4a31b8b53d912140f77ee1347ac638091ecf75bed3d74b6f21b01b8af",
+      "bytes": 32768,
+      "expected_received_key": "00041408",
+      "expected_received_seed": "2719",
+      "received_slots": [
+        6
+      ],
+      "owned_record_count": 17,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    },
+    {
+      "player": 2,
+      "input_original_sha256": "67f0ccce0a65951e8dbab96d24e9f753a5c9cf916ca89340afec84da7fe4c7cf",
+      "before_continue_sha256": "3d61ba908650df0bae370ea254985b0f8e36e911b1f4e437e714f39a222131e4",
+      "after_continue_sha256": "a9c7ad5d739bd5e471b4e167fecd754b8dd43421d065691b3d05090dbd83a8cb",
+      "bytes": 32768,
+      "expected_received_key": "80071308",
+      "expected_received_seed": "c016",
+      "received_slots": [
+        3
+      ],
+      "owned_record_count": 11,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "firstfield-selected.bmp": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32",
+    "fresh-events.jsonl": "a5bfc38f3046660a7b5ddebbbdcf670377b6d5446166dd6d1626aee0c0cd1aee",
+    "fresh-named.py": "69d4b0f0d6d7cbe7ed1f23e21388893be38aabc8e5055f39fe636d883194c3f6",
+    "fresh-player1.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-player2.bmp": "eaaae1557e67cb857c407e43c06c4902d8f62734137af67360b85ba4e07588db",
+    "fresh-report.json": "4f4cc3076ab8c10a0a0983916cb086dc3e7e035d66731830c8f91de31c458770",
+    "link-events.jsonl": "3fe8a55a6ef51b99a0ff326aeaf518160e4f03f451ce12a04babcfb6c7328d16",
+    "link-report.json": "260f67c357a605efa6d0a715771803e5ce4b545e70791d1631f5e57d11ef8bb1",
+    "player1-sees-firstfield.bmp": "0539a8f8e4348fdf9ae8e1abfba1fc0e7513a1fa226ba66eddce71762b2d3bc2",
+    "player2-sees-quietsea.bmp": "8be9dc6b7fd73350f76fcf9a9f7b45506b5805fae3bb5f27a6455c9cef09eea1",
+    "quietsea-selected.bmp": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af",
+    "record-player1.bmp": "cf3ec0feb9a14950ea99e3955c0dae5b2f897f8db15314449b80bbb71e50b2fe",
+    "record-player2.bmp": "adb436a15a78fac8c7eefb07d7d9519c2b3c6898c14df95c4cf491ef8e3e50a9",
+    "title-player1.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "title-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "trade-named.py": "72ae3782e4234dec797be92fb7147668e4b886630d0d2c5c59bf39ec179fbcf7",
+    "trading-player1.bmp": "d3f8b0fcf15329a8e763e75655c2bf0347cb6bce3b34e5ec8dae0ae48ec8ca63",
+    "trading-player2.bmp": "6dd676e9b274da3b82be6afc6513bd8c3e45da9a7affd2ffe990f3be0467714d"
+  }
+}

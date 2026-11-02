@@ -1,0 +1,479 @@
+{
+  "schema": 1,
+  "kind": "firstfield_production_generation",
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "67f0ccce0a65951e8dbab96d24e9f753a5c9cf916ca89340afec84da7fe4c7cf",
+  "players": 2,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "serial_protocol_success_verified": false,
+  "completed_vs_match": false,
+  "prize_or_wager": false,
+  "full_game_verified": false,
+  "normal_shutdowns": 0,
+  "fresh_process_reload": false,
+  "events": [
+    {
+      "event": "launched",
+      "utc": "2026-11-02T09:31:33.466406+00:00",
+      "monotonic": 481032.112,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r4-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\key-validation-2026-11-02\\firstfield-production-generation-02\\profiles\\player1.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "production",
+      "pid": 80
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:05.507262+00:00",
+      "monotonic": 481064.151,
+      "player": 1,
+      "label": "production-title",
+      "screenshot": "production-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:32:06.420164+00:00",
+      "monotonic": 481065.064,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:06.550090+00:00",
+      "monotonic": 481065.194,
+      "player": 1,
+      "label": "production-saved-menu",
+      "screenshot": "production-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:32:08.074949+00:00",
+      "monotonic": 481066.719,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.2
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:08.199777+00:00",
+      "monotonic": 481066.844,
+      "player": 1,
+      "label": "original-save-card",
+      "screenshot": "original-save-card-player1.bmp",
+      "sha256": "54c3ebc795cb735091ac7788bb095c7c2abfee6c7c196af289a3df192f40301f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:32:09.515547+00:00",
+      "monotonic": 481068.159,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:10.044544+00:00",
+      "monotonic": 481068.688,
+      "player": 1,
+      "label": "continue-in-key-shop",
+      "screenshot": "continue-in-key-shop-player1.bmp",
+      "sha256": "eaaae1557e67cb857c407e43c06c4902d8f62734137af67360b85ba4e07588db"
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:13.255123+00:00",
+      "monotonic": 481071.899,
+      "key": 40,
+      "hold_frames_requested": 65
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:15.515049+00:00",
+      "monotonic": 481074.159,
+      "key": 40,
+      "hold_frames_requested": 8
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:17.910008+00:00",
+      "monotonic": 481076.554,
+      "key": 40,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:20.302761+00:00",
+      "monotonic": 481078.946,
+      "key": 39,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:22.699009+00:00",
+      "monotonic": 481081.342,
+      "key": 40,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:25.089762+00:00",
+      "monotonic": 481083.733,
+      "key": 39,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:29.093243+00:00",
+      "monotonic": 481087.736,
+      "key": 40,
+      "hold_frames_requested": 112
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:33.096389+00:00",
+      "monotonic": 481091.74,
+      "key": 39,
+      "hold_frames_requested": 112
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:36.295647+00:00",
+      "monotonic": 481094.939,
+      "key": 39,
+      "hold_frames_requested": 64
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:39.489854+00:00",
+      "monotonic": 481098.133,
+      "key": 40,
+      "hold_frames_requested": 64
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:43.492989+00:00",
+      "monotonic": 481102.136,
+      "key": 37,
+      "hold_frames_requested": 112
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:47.493412+00:00",
+      "monotonic": 481106.136,
+      "key": 37,
+      "hold_frames_requested": 112
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:50.959166+00:00",
+      "monotonic": 481109.602,
+      "key": 37,
+      "hold_frames_requested": 80
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:53.353422+00:00",
+      "monotonic": 481111.996,
+      "key": 40,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:56.014388+00:00",
+      "monotonic": 481114.657,
+      "key": 37,
+      "hold_frames_requested": 32
+    },
+    {
+      "event": "original_p1_walk",
+      "utc": "2026-11-02T09:32:58.408252+00:00",
+      "monotonic": 481117.05,
+      "key": 38,
+      "hold_frames_requested": 16
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:58.527170+00:00",
+      "monotonic": 481117.169,
+      "player": 1,
+      "label": "original-key-door",
+      "screenshot": "original-key-door-player1.bmp",
+      "sha256": "96a3c98082a394c4ba659bc7f63a3de1ff66da439f3784c08dc2ce0c33772261"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:32:59.842281+00:00",
+      "monotonic": 481118.484,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:32:59.972566+00:00",
+      "monotonic": 481118.615,
+      "player": 1,
+      "label": "firstfield-selected",
+      "screenshot": "firstfield-selected-player1.bmp",
+      "sha256": "3ade1e80254bd71ae0d64ce622836826a2be64388118452dd8f31df15dd87f81"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:01.300506+00:00",
+      "monotonic": 481119.943,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:33:01.425336+00:00",
+      "monotonic": 481120.067,
+      "player": 1,
+      "label": "firstfield-use-selected",
+      "screenshot": "firstfield-use-selected-player1.bmp",
+      "sha256": "663726dee2a6d74a206938741df9455ca6e2d9a0653da8d39030f2382d7972e8"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:03.239548+00:00",
+      "monotonic": 481121.882,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:33:03.366271+00:00",
+      "monotonic": 481122.008,
+      "player": 1,
+      "label": "original-insert-key",
+      "screenshot": "original-insert-key-player1.bmp",
+      "sha256": "5f9decfa885ebfe8eedad197771f078f1f594ae4ad32ee00a0d1aaf684cb36ab"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:04.682282+00:00",
+      "monotonic": 481123.324,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:33:11.219508+00:00",
+      "monotonic": 481129.861,
+      "player": 1,
+      "label": "newly-generated-firstfield-castle",
+      "screenshot": "newly-generated-firstfield-castle-player1.bmp",
+      "sha256": "af07f5320c4dcae8217656bebb517ba1c2ee9cbdb725433ecf98edb92fcd3525"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:12.033777+00:00",
+      "monotonic": 481130.676,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:12.855631+00:00",
+      "monotonic": 481131.497,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:13.476818+00:00",
+      "monotonic": 481132.119,
+      "player": 1,
+      "virtual_key": 39,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:14.096249+00:00",
+      "monotonic": 481132.738,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:14.914158+00:00",
+      "monotonic": 481133.556,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:15.540211+00:00",
+      "monotonic": 481134.182,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:16.154123+00:00",
+      "monotonic": 481134.796,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:16.774120+00:00",
+      "monotonic": 481135.416,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:17.393592+00:00",
+      "monotonic": 481136.035,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:18.014174+00:00",
+      "monotonic": 481136.656,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.3
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:18.830520+00:00",
+      "monotonic": 481137.472,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:19.651995+00:00",
+      "monotonic": 481138.294,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:33:19.778418+00:00",
+      "monotonic": 481138.42,
+      "player": 1,
+      "label": "original-journal-prompt",
+      "screenshot": "original-journal-prompt-player1.bmp",
+      "sha256": "c5d659a8b82dfc7eb479420e87785fa910bb688c5529997193eb36b711e04239"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:20.789452+00:00",
+      "monotonic": 481139.431,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.7
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:33:21.515257+00:00",
+      "monotonic": 481140.157,
+      "player": 1,
+      "label": "original-journal-confirmed",
+      "screenshot": "original-journal-confirmed-player1.bmp",
+      "sha256": "5bbb3a2adbf0f5a71bc9b95e109aa47aaa7450526bd7d6b5ac13944eb815ca87"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:22.331701+00:00",
+      "monotonic": 481140.973,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:23.150309+00:00",
+      "monotonic": 481141.792,
+      "player": 1,
+      "virtual_key": 88,
+      "idle": 0.5
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:33:23.970964+00:00",
+      "monotonic": 481142.612,
+      "player": 1,
+      "virtual_key": 88,
+      "idle": 0.5
+    },
+    {
+      "event": "original_saved_world_checks",
+      "utc": "2026-11-02T09:33:24.539300+00:00",
+      "monotonic": 481143.181,
+      "checks": {
+        "size": true,
+        "original_key_records": true,
+        "original_key_seeds": true,
+        "original_quest_bytes": true,
+        "generated_working_cache": true,
+        "generated_backup_cache": true,
+        "original_input_seed_unchanged": true,
+        "executable_unchanged": true,
+        "normal_exit": true
+      },
+      "output_save_sha256": "11de7ea4ebcda84ff66dd1035df7754f92dd899ba19d286a57d2c2e6ca5a0335"
+    }
+  ],
+  "executable_bytes": 729611264,
+  "seed_bytes": 32768,
+  "reference_manifest_sha256": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2",
+  "reference_game_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "script_sha256": "b2fd9e63f2dd9c5ea5e27cdf21b60b0bf84b78f0ee5ce3f98dcf3a52805e09bf",
+  "gui_helper_sha256": "56a76b0009b1df383f7507afc85d980cf5ad28d002efb58cf8a7b1dfe4e53c7c",
+  "checks": {
+    "size": true,
+    "original_key_records": true,
+    "original_key_seeds": true,
+    "original_quest_bytes": true,
+    "generated_working_cache": true,
+    "generated_backup_cache": true,
+    "original_input_seed_unchanged": true,
+    "executable_unchanged": true,
+    "normal_exit": true
+  },
+  "output_save_sha256": "11de7ea4ebcda84ff66dd1035df7754f92dd899ba19d286a57d2c2e6ca5a0335",
+  "screenshots": {
+    "continue-in-key-shop-player1.bmp": "eaaae1557e67cb857c407e43c06c4902d8f62734137af67360b85ba4e07588db",
+    "firstfield-selected-player1.bmp": "3ade1e80254bd71ae0d64ce622836826a2be64388118452dd8f31df15dd87f81",
+    "firstfield-use-selected-player1.bmp": "663726dee2a6d74a206938741df9455ca6e2d9a0653da8d39030f2382d7972e8",
+    "newly-generated-firstfield-castle-player1.bmp": "af07f5320c4dcae8217656bebb517ba1c2ee9cbdb725433ecf98edb92fcd3525",
+    "original-insert-key-player1.bmp": "5f9decfa885ebfe8eedad197771f078f1f594ae4ad32ee00a0d1aaf684cb36ab",
+    "original-journal-confirmed-player1.bmp": "5bbb3a2adbf0f5a71bc9b95e109aa47aaa7450526bd7d6b5ac13944eb815ca87",
+    "original-journal-prompt-player1.bmp": "c5d659a8b82dfc7eb479420e87785fa910bb688c5529997193eb36b711e04239",
+    "original-key-door-player1.bmp": "96a3c98082a394c4ba659bc7f63a3de1ff66da439f3784c08dc2ce0c33772261",
+    "original-save-card-player1.bmp": "54c3ebc795cb735091ac7788bb095c7c2abfee6c7c196af289a3df192f40301f",
+    "production-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "production-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+  }
+}

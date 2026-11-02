@@ -1,0 +1,187 @@
+{
+  "binaries": {
+    "DWM2tGeneratedAotContracts": {
+      "bytes": 108072,
+      "path": "bin/DWM2tGeneratedAotContracts",
+      "sha256": "bf3b97db125d579e003a90043f1659a1f38889a7c77dd2f04706b33c1c7e5011"
+    },
+    "DWM2tRendererContracts": {
+      "bytes": 90752,
+      "path": "bin/DWM2tRendererContracts",
+      "sha256": "bdc64f67985311c6061078486dacb83530af176be1e29f0783d0f399b1bc0a4d"
+    },
+    "DWM2tRuntimeCoreContracts": {
+      "bytes": 131432,
+      "path": "bin/DWM2tRuntimeCoreContracts",
+      "sha256": "0c60df138cc2deb33735f41bba4e27b13bb1c166a87c2da556aaf49cbbfd28f2"
+    }
+  },
+  "binaries_unchanged_after_ctest": true,
+  "build_returncode": 0,
+  "campaign_verified": false,
+  "commands": {
+    "build": [
+      "/workspace/scratch/validation-2026-11-02/cmake-python/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/validation-2026-11-02/hardware-core-2/native",
+      "--config",
+      "Release",
+      "--parallel",
+      "2"
+    ],
+    "configure": [
+      "/workspace/scratch/validation-2026-11-02/cmake-python/cmake/data/bin/cmake",
+      "-S",
+      "/workspace/DWM2t/recomp/tests/runtime-core",
+      "-B",
+      "/workspace/scratch/validation-2026-11-02/hardware-core-2/native",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_TESTING=ON",
+      "-DPython3_EXECUTABLE=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+    ],
+    "ctest": [
+      "/workspace/scratch/validation-2026-11-02/cmake-python/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/validation-2026-11-02/hardware-core-2/native",
+      "-C",
+      "Release",
+      "--parallel",
+      "2",
+      "--output-on-failure",
+      "--output-junit",
+      "/workspace/scratch/validation-2026-11-02/hardware-core-2/runtime-core-tests.xml"
+    ]
+  },
+  "completed_utc": "2026-11-02T09:01:19.762120+00:00",
+  "configure_returncode": 0,
+  "ctest_returncode": 0,
+  "full_rom_coverage_claimed": false,
+  "generated_fixture": {
+    "bytes": 718,
+    "path": "evidence/generated-fixture-source.json",
+    "sha256": "0da2cdb6709aa78e980ca7fd18083ad122f24f01090938d1fffab87f4739187b"
+  },
+  "input_sha256": {
+    "recomp/include/recomp/apu.hpp": "4e09cdf76d88a2ba755382c2fc20de52d78e3449c39ef9eab2dced4222780093",
+    "recomp/include/recomp/atomic_sram.hpp": "df6c3add1359d4ba16dfb13e7573119f2bc897375dcbee0d645b20b6a68e062a",
+    "recomp/include/recomp/audio_device.hpp": "58782fe0b4841704a2969ce1f56973c5794847d2fc157521f8231b10f412b00e",
+    "recomp/include/recomp/audio_presentation.hpp": "22ce57f39aabccdda400b55a99a77d569d13063ee28b56ce815f4b362fb02ff7",
+    "recomp/include/recomp/bank0.hpp": "b561e0cdd29d70c96b83a24c9b6b8197ceb94c62ce1c3ded113f8d173dcb6755",
+    "recomp/include/recomp/cpu.hpp": "d3be9ed8573552f2fe33aac977122dc7ef2a3b3862c409b2f08c62f477298dce",
+    "recomp/include/recomp/generated.hpp": "89dd3940798d032edf8306a5b33ab805502486a6f567cd04e29c33a2e75ad491",
+    "recomp/include/recomp/hram_exec.hpp": "fb9f199f92d19d815923911c67b2ade2975bc4d9f341425a75605986d44f42d0",
+    "recomp/include/recomp/lr35902_exec.hpp": "b66b7b714a812d978d965c7cf1761ba7c4060072b0aeb1cb7a5890418822da75",
+    "recomp/include/recomp/m6.hpp": "1f32c137b7ee4cfe0545619fbd4f47eb828b167b10150932e869a1fd4ab7c9f7",
+    "recomp/include/recomp/m7.hpp": "2b480c418b9a4e7a57815986783299960be9d66c4efb985a3df166b9ff483265",
+    "recomp/include/recomp/m8.hpp": "469c4976d2cba9e1bc254076b3399e38a234b63d375a84bd6b65c07a6f68a0d9",
+    "recomp/include/recomp/memory.hpp": "f050397c170e67db8ae9fff2c28513e0f39946061a756653a333631d6680e600",
+    "recomp/include/recomp/renderer.hpp": "5d8fa0864c7575881e42fa130e06567eefe5d1f2840845578dbbaa1d80488b92",
+    "recomp/include/recomp/romx.hpp": "7a56192be404024220e241fc20f8720192d6752e92c8e7fa01ded04a433b74b4",
+    "recomp/include/recomp/runtime.hpp": "956f6d9c85c263ac27347d48f00ef3e0c89b9503e64686c35ef4b40a905ced0e",
+    "recomp/include/recomp/serial.hpp": "25265436a822d40b20b9a701921f58aacf680a34f1ed68f80bfc311906f5061e",
+    "recomp/include/recomp/window.hpp": "f23a0af736a4317a9d35fba0a65faf7899a901821793277d46c256900329ecf8",
+    "recomp/src/apu.cpp": "f1468115c991dc13671c25197687dc3c8298b500f8b1bcab0078bb1c4818f85b",
+    "recomp/src/hram_exec.cpp": "8c4d95158904e0c553742d9a0172c16b11dd32aa6ceee9755a85b5ec2f002a8d",
+    "recomp/src/memory.cpp": "19b9e559c5e95e2a6c886b008a7fcc0c50c5dd50d1a7eab8f9880cc549042290",
+    "recomp/src/renderer.cpp": "2bb0a546893125c969d5aa1394ef88b2d12a832879cd1574d2d2cfce0b35b941",
+    "recomp/src/runtime.cpp": "eeab50898407770488c13387a6fc1870da50efdd79a82fd3f448d8e0cdbf763d",
+    "recomp/tests/runtime-core/CMakeLists.txt": "be34b90072b37934f33f24d82dce842dba37a61389a85a05d4088c32464dc8b2",
+    "recomp/tests/runtime-core/generate_aot_contract_fixtures.py": "5c75a00d400b72082477877e0bc7de465099311f55446cce223642791026d540",
+    "recomp/tests/runtime-core/generated_aot_contracts.cpp": "8540acaa699bb1c591cde373a7d43b35254c6e3274b14ac2428601014c731dbe",
+    "recomp/tests/runtime-core/renderer_contracts.cpp": "d471f10aca2ebcf694738dd16a33efe845aa1f52a8d40c073dd8527a8f6c1d4f",
+    "recomp/tests/runtime-core/runtime_core_contracts.cpp": "f344bd4ce6ad04fdd5f71f8622207e3cbe5d77acc943ede7cabdea0c9f030518",
+    "recomp/tests/runtime-core/stub_dispatch.cpp": "b87082a6af9953208b2398c726b1a2513284eff56e2c8583429a8ac8470370b3",
+    "recomp/tools/full_rom_validation.py": "f2cbcfb73afb2b75dec26289902fb093a2299d557eb7a0943b665b77415ddd01",
+    "recomp/tools/generate_romx_dispatch.py": "94bd3c7d6cface2ab6209621d3ac33a3506203bba265b23ff8b31aae98a39221",
+    "recomp/tools/lr35902.py": "c95a3ff5e2e8bf72dca4e7cfe20c30f3e4135266a328cc244e6b77c204952914",
+    "recomp/tools/recompile_bank0.py": "b7dd5d7baf6aa006c808283c12e03568c18e48c3b98d8929aff3d8b83e8bba7a",
+    "recomp/tools/recompile_romx_bank.py": "446faaf0416dd8f147272c37a52f2f86d3c9521b6bb4cb9e7cf282fbc5512e72",
+    "recomp/tools/validate_runtime_core.py": "1f6f7e8991542eff74eddd04f6ea3a5fc1f864cd844e7fcd2b657fa0292024c3"
+  },
+  "kind": "full_rom_runtime_core_validation",
+  "lf_sha256": {
+    "recomp/include/recomp/apu.hpp": "4e09cdf76d88a2ba755382c2fc20de52d78e3449c39ef9eab2dced4222780093",
+    "recomp/include/recomp/atomic_sram.hpp": "df6c3add1359d4ba16dfb13e7573119f2bc897375dcbee0d645b20b6a68e062a",
+    "recomp/include/recomp/audio_device.hpp": "58782fe0b4841704a2969ce1f56973c5794847d2fc157521f8231b10f412b00e",
+    "recomp/include/recomp/audio_presentation.hpp": "22ce57f39aabccdda400b55a99a77d569d13063ee28b56ce815f4b362fb02ff7",
+    "recomp/include/recomp/bank0.hpp": "b561e0cdd29d70c96b83a24c9b6b8197ceb94c62ce1c3ded113f8d173dcb6755",
+    "recomp/include/recomp/cpu.hpp": "d3be9ed8573552f2fe33aac977122dc7ef2a3b3862c409b2f08c62f477298dce",
+    "recomp/include/recomp/generated.hpp": "89dd3940798d032edf8306a5b33ab805502486a6f567cd04e29c33a2e75ad491",
+    "recomp/include/recomp/hram_exec.hpp": "fb9f199f92d19d815923911c67b2ade2975bc4d9f341425a75605986d44f42d0",
+    "recomp/include/recomp/lr35902_exec.hpp": "b66b7b714a812d978d965c7cf1761ba7c4060072b0aeb1cb7a5890418822da75",
+    "recomp/include/recomp/m6.hpp": "1f32c137b7ee4cfe0545619fbd4f47eb828b167b10150932e869a1fd4ab7c9f7",
+    "recomp/include/recomp/m7.hpp": "2b480c418b9a4e7a57815986783299960be9d66c4efb985a3df166b9ff483265",
+    "recomp/include/recomp/m8.hpp": "469c4976d2cba9e1bc254076b3399e38a234b63d375a84bd6b65c07a6f68a0d9",
+    "recomp/include/recomp/memory.hpp": "f050397c170e67db8ae9fff2c28513e0f39946061a756653a333631d6680e600",
+    "recomp/include/recomp/renderer.hpp": "5d8fa0864c7575881e42fa130e06567eefe5d1f2840845578dbbaa1d80488b92",
+    "recomp/include/recomp/romx.hpp": "7a56192be404024220e241fc20f8720192d6752e92c8e7fa01ded04a433b74b4",
+    "recomp/include/recomp/runtime.hpp": "956f6d9c85c263ac27347d48f00ef3e0c89b9503e64686c35ef4b40a905ced0e",
+    "recomp/include/recomp/serial.hpp": "25265436a822d40b20b9a701921f58aacf680a34f1ed68f80bfc311906f5061e",
+    "recomp/include/recomp/window.hpp": "f23a0af736a4317a9d35fba0a65faf7899a901821793277d46c256900329ecf8",
+    "recomp/src/apu.cpp": "f1468115c991dc13671c25197687dc3c8298b500f8b1bcab0078bb1c4818f85b",
+    "recomp/src/hram_exec.cpp": "8c4d95158904e0c553742d9a0172c16b11dd32aa6ceee9755a85b5ec2f002a8d",
+    "recomp/src/memory.cpp": "19b9e559c5e95e2a6c886b008a7fcc0c50c5dd50d1a7eab8f9880cc549042290",
+    "recomp/src/renderer.cpp": "2bb0a546893125c969d5aa1394ef88b2d12a832879cd1574d2d2cfce0b35b941",
+    "recomp/src/runtime.cpp": "eeab50898407770488c13387a6fc1870da50efdd79a82fd3f448d8e0cdbf763d",
+    "recomp/tests/runtime-core/CMakeLists.txt": "be34b90072b37934f33f24d82dce842dba37a61389a85a05d4088c32464dc8b2",
+    "recomp/tests/runtime-core/generate_aot_contract_fixtures.py": "5c75a00d400b72082477877e0bc7de465099311f55446cce223642791026d540",
+    "recomp/tests/runtime-core/generated_aot_contracts.cpp": "8540acaa699bb1c591cde373a7d43b35254c6e3274b14ac2428601014c731dbe",
+    "recomp/tests/runtime-core/renderer_contracts.cpp": "d471f10aca2ebcf694738dd16a33efe845aa1f52a8d40c073dd8527a8f6c1d4f",
+    "recomp/tests/runtime-core/runtime_core_contracts.cpp": "f344bd4ce6ad04fdd5f71f8622207e3cbe5d77acc943ede7cabdea0c9f030518",
+    "recomp/tests/runtime-core/stub_dispatch.cpp": "b87082a6af9953208b2398c726b1a2513284eff56e2c8583429a8ac8470370b3",
+    "recomp/tools/full_rom_validation.py": "f2cbcfb73afb2b75dec26289902fb093a2299d557eb7a0943b665b77415ddd01",
+    "recomp/tools/generate_romx_dispatch.py": "94bd3c7d6cface2ab6209621d3ac33a3506203bba265b23ff8b31aae98a39221",
+    "recomp/tools/lr35902.py": "c95a3ff5e2e8bf72dca4e7cfe20c30f3e4135266a328cc244e6b77c204952914",
+    "recomp/tools/recompile_bank0.py": "b7dd5d7baf6aa006c808283c12e03568c18e48c3b98d8929aff3d8b83e8bba7a",
+    "recomp/tools/recompile_romx_bank.py": "446faaf0416dd8f147272c37a52f2f86d3c9521b6bb4cb9e7cf282fbc5512e72",
+    "recomp/tools/validate_runtime_core.py": "1f6f7e8991542eff74eddd04f6ea3a5fc1f864cd844e7fcd2b657fa0292024c3"
+  },
+  "orchestrator_inputs_match_source": true,
+  "original_game_executed": false,
+  "platform": "Linux",
+  "receipts": {
+    "FullROM_generated_aot_contracts": {
+      "bytes": 271,
+      "path": "evidence/FullROM_generated_aot_contracts.json",
+      "sha256": "44a023da0f525d599b6013176ebd643ec33118e8801af23c578e6e898c1fa6d9"
+    },
+    "FullROM_memory_contracts": {
+      "bytes": 841,
+      "path": "evidence/FullROM_memory_contracts.json",
+      "sha256": "698f22dd56839565c61a938db01b7e221f342f35b1ff51ba7a5bac0113940f77"
+    },
+    "FullROM_renderer_contracts": {
+      "bytes": 119,
+      "path": "evidence/FullROM_renderer_contracts.json",
+      "sha256": "35d6c1afc2b961600f8be601bc77d99ba09a7851f8457fc7991fcf6aa53e0b81"
+    },
+    "FullROM_runtime_contracts": {
+      "bytes": 1108,
+      "path": "evidence/FullROM_runtime_contracts.json",
+      "sha256": "a0605203aa3501ccf9ac6705ac8ba6775cd7de119369589ba9651d424497d184"
+    },
+    "FullROM_serial_contracts": {
+      "bytes": 1052,
+      "path": "evidence/FullROM_serial_contracts.json",
+      "sha256": "41a6cb79c3a0e40a821092137beda01c67c6b00e1ddb73c247b4082b225ccf48"
+    }
+  },
+  "schema": 1,
+  "scope": "Actual host hardware core with trapping ROM stubs, plus sparse production-emitted synthetic AOT contracts; no campaign or original full-ROM acceptance",
+  "source_commit": "50b0c4fbdd477f7ca09d4a8b0f1518329a997dce",
+  "source_identity": "actual_git_HEAD_and_unchanged_tracked_inputs",
+  "source_inventory_unchanged": true,
+  "source_root": "/workspace/DWM2t",
+  "started_utc": "2026-11-02T09:01:09.847678+00:00",
+  "status": "passed",
+  "test_names": [
+    "FullROM_memory_contracts",
+    "FullROM_runtime_contracts",
+    "FullROM_serial_contracts",
+    "FullROM_renderer_contracts",
+    "FullROM_generated_aot_contracts"
+  ],
+  "tests": 5,
+  "xml_bytes": 2698,
+  "xml_sha256": "0fe1558304b0b63ed76644d6a09526995ccbc9bb00c98987b5d32ff4c9303575"
+}

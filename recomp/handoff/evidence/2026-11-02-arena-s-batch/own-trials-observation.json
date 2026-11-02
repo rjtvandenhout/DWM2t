@@ -1,0 +1,45 @@
+{
+  "starting_original_journal_sha256": "a261d433e47f1ad62fbcdf43e6095d49afd170ad0ebe2aedf22f4964b572f797",
+  "common_tactics": [
+    "Defense",
+    "Charge",
+    "Charge"
+  ],
+  "outcomes": [
+    {
+      "trial": 1,
+      "idle_frames": 73,
+      "lost_round": 2,
+      "loss_capture": "m8_275.bmp",
+      "trace_sha256": "516e07486a4846b95c18e42e5ef8af067e16858a5cee77c60b13d857d2e87952"
+    },
+    {
+      "trial": 2,
+      "idle_frames": 147,
+      "lost_round": 3,
+      "loss_capture": "m8_283.bmp",
+      "trace_sha256": "8fc0eaad0e19ea7d98b7964ad8b6eca9e31734a976b9d9a85639209a9b574d27"
+    },
+    {
+      "trial": 3,
+      "idle_frames": 221,
+      "lost_round": 1,
+      "loss_capture": "m8_253.bmp",
+      "trace_sha256": "0f8cac1d584141af56a5749fe984d71fffb433f8c5ea14149991a0733eb4de45"
+    },
+    {
+      "trial": 4,
+      "idle_frames": 295,
+      "lost_round": 2,
+      "loss_capture": "m8_227.bmp",
+      "trace_sha256": "07ba916ee53c624f50706e244d207b0add84c8f601ba58157395440d2dc169de"
+    },
+    {
+      "trial": 5,
+      "idle_frames": 369,
+      "lost_round": 2,
+      "loss_capture": "m8_207.bmp",
+      "trace_sha256": "6c167eee7539571944995c59fe2f5e60a1ade74f4df59cf319fdcc09cd3f7d9f"
+    }
+  ]
+}

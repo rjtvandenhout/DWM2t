@@ -1,0 +1,7 @@
+# Original refusal of same FirstField key — 2026-11-02
+
+Using the exact verified production player under Wine and two independent copies of the genuine FirstField-cleared 386G Journal (SHA-256 `1c073972fbe2206564c4bad3a2e75470b4204332d5993e2725082ac61b36eafc`), both players originally selected the same [FirstField key](confirm-player1.bmp) ([player 2](confirm-player2.bmp)). The game displayed [“That key cannot be traded”](refusal-player1.bmp) ([player 2](refusal-player2.bmp)). The test then cancelled through the original menu and the linked process exited 0.
+
+Only original P1 input was used. The original Journal was left unchanged; no save or executable is included. This documents the rejection, not a successful key exchange or fresh Continue. The [receipt](receipt.json), [raw events](link-events.jsonl) and [original report](link-report.json) preserve exact inputs, source and checksums.
+
+An independent static trace of original bank `$1B:$5823–$5864` found that the game refuses an active random-world key when `CC44 & 0x80` is set and `CC42` equals the key's cache index. The input save's earlier fresh Continue showed `CC42..CC45 = 00 00 83 02`, matching its FirstField cache index 0. After the player exited by the original route and saved in GreatLog, the [same-key trade succeeded](../2026-11-02-firstfield-hub-trade/README.md). This is source analysis and an observed A/B gameplay comparison, not a captured instruction trace or independent emulator comparison.
