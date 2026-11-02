@@ -1,0 +1,11 @@
+START 2 idle_frames 147 party [222, 181, 209]
+ORIGINAL_TACTIC Garon 2
+ORIGINAL_TACTIC Slash 0
+ORIGINAL_TACTIC Derzo 0
+ORIGINAL_BATTLE_END (11, 0, 0, 32, 48)
+ROUND_END 2 1 location (11, 0, 0, 32, 48) mode (1, 1) text The challenger wins battle one
+ORIGINAL_BATTLE_END (11, 0, 0, 32, 48)
+ROUND_END 2 2 location (11, 0, 0, 32, 48) mode (1, 1) text That amazing Is this true
+ORIGINAL_BATTLE_END (4, 1, 0, 64, 48)
+ROUND_END 2 3 location (4, 1, 0, 64, 48) mode (1, 1) text Too bad you didn make it
+RESULT LOSS 2 round 3

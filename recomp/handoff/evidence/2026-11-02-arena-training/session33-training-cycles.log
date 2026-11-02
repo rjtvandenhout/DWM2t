@@ -1,0 +1,20 @@
+{"event": "cycle_start", "elapsed_seconds": 0.0, "cycle": 1}
+0 (5, 1, 0, 80, 64) (1, 0)
+1 (5, 0, 0, 144, 64) (1, 0)
+2 (5, 0, 0, 112, 64) (1, 0)
+3 (5, 0, 0, 112, 80) (1, 0)
+DESTINATION (5, 0, 0, 112, 80)
+{"event": "start", "elapsed_seconds": 0.0, "party": [{"index": 12, "status": 0, "level": 41, "exp": 332239, "hp": 222, "max_hp": 222, "mp": 292, "max_mp": 292}, {"index": 0, "status": 0, "level": 38, "exp": 342690, "hp": 181, "max_hp": 181, "mp": 119, "max_mp": 119}, {"index": 10, "status": 0, "level": 40, "exp": 325369, "hp": 207, "max_hp": 207, "mp": 248, "max_mp": 248}], "scope": "original P1 only; four encounters maximum"}
+Traceback (most recent call last):
+  File "/workspace/scratch/arena-b-2026-11-02/control/training_cycles.py", line 84, in <module>
+    result=runpy.run_path(str(HERE/'bounded_training.py'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/arena-b-2026-11-02/control/bounded_training.py", line 85, in <module>
+    if not advance():break
+           ^^^^^^^^^
+  File "/workspace/scratch/arena-b-2026-11-02/control/bounded_training.py", line 57, in advance
+    raise RuntimeError('Original recruitment/skill/name choice requires inspection')
+RuntimeError: Original recruitment/skill/name choice requires inspection

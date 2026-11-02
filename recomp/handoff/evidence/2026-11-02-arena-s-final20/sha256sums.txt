@@ -1,0 +1,8 @@
+f8b8c19fb127c9526fd23ef4ac52e42f6a344139b4f76432b15d68eb099a9583  ./README.md
+b710f8f060f4056361f61d6f42ca1a15f445bf0cbb4480f7b88248eb129b2ea2  ./commands_executed.txt
+2eb22513214812039a07c3d30b844d3b473bd04613c57897733deeeba08c0ae4  ./s-final20-attempt.log
+67dc353e12c47e42d702f10e8567c517438a5736ae1bc0af36aacc269c7db8db  ./s_final20_attempt.py
+fdda193a0120b4eaeda34b54ab864ce3f9c479c144549aa7dc1f35513f9e3bdc  ./screenshots/round-one-victory.bmp
+7bcbb6aaae8d48fc4e5c30f59ca3a59fe642a89230bbfa4116220dee3357628e  ./screenshots/round-three-loss.bmp
+3a5a7e88e130038d53dbb0aa5a10a3bd2184fb93e8273e672ff6c0bff212aef7  ./screenshots/round-two-victory.bmp
+d6d57e56deed6b73b854a2077013a0b17f083541eee30ddfe9d4e71be38734c5  ./trace_p1.txt
