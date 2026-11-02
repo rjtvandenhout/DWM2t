@@ -1,0 +1,772 @@
+{
+  "schema": 1,
+  "kind": "original_vs_repeat_and_fresh_continue",
+  "status": "exploratory",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+  "players": 2,
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "serial_protocol_success_verified": false,
+  "completed_vs_match": false,
+  "prize_or_wager": false,
+  "full_game_verified": false,
+  "normal_shutdowns": 0,
+  "fresh_process_reload": false,
+  "events": [
+    {
+      "event": "second_genuine_journal_copied",
+      "utc": "2026-11-02T09:15:48.783507+00:00",
+      "monotonic": 480087.461,
+      "sha256": "67f0ccce0a65951e8dbab96d24e9f753a5c9cf916ca89340afec84da7fe4c7cf",
+      "bytes": 32768
+    },
+    {
+      "event": "launched",
+      "utc": "2026-11-02T09:15:49.061365+00:00",
+      "monotonic": 480087.739,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r4-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-11-02\\link-distinct\\trade-distinct-02\\profiles\\player1.sav",
+        "--link-save",
+        "Z:\\workspace\\scratch\\full-rom-2026-11-02\\link-distinct\\trade-distinct-02\\profiles\\player2.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "linked",
+      "pid": 92
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:21.066818+00:00",
+      "monotonic": 480119.743,
+      "player": 1,
+      "label": "linked-p1-title",
+      "screenshot": "linked-p1-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:21.982717+00:00",
+      "monotonic": 480120.659,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:22.112732+00:00",
+      "monotonic": 480120.789,
+      "player": 1,
+      "label": "linked-p1-saved-menu",
+      "screenshot": "linked-p1-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:22.240856+00:00",
+      "monotonic": 480120.917,
+      "player": 2,
+      "label": "linked-p2-title",
+      "screenshot": "linked-p2-title-player2.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:23.153900+00:00",
+      "monotonic": 480121.83,
+      "player": 2,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:23.276758+00:00",
+      "monotonic": 480121.953,
+      "player": 2,
+      "label": "linked-p2-saved-menu",
+      "screenshot": "linked-p2-saved-menu-player2.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:23.943340+00:00",
+      "monotonic": 480122.62,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:24.264502+00:00",
+      "monotonic": 480122.941,
+      "player": 1,
+      "label": "p1-down1",
+      "screenshot": "p1-down1-player1.bmp",
+      "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:24.929694+00:00",
+      "monotonic": 480123.606,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:25.252218+00:00",
+      "monotonic": 480123.928,
+      "player": 1,
+      "label": "p1-down2",
+      "screenshot": "p1-down2-player1.bmp",
+      "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:25.918493+00:00",
+      "monotonic": 480124.595,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:26.238398+00:00",
+      "monotonic": 480124.915,
+      "player": 1,
+      "label": "p1-down3",
+      "screenshot": "p1-down3-player1.bmp",
+      "sha256": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:26.906943+00:00",
+      "monotonic": 480125.583,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:27.227518+00:00",
+      "monotonic": 480125.904,
+      "player": 2,
+      "label": "p2-down1",
+      "screenshot": "p2-down1-player2.bmp",
+      "sha256": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:27.896343+00:00",
+      "monotonic": 480126.573,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:28.216740+00:00",
+      "monotonic": 480126.893,
+      "player": 2,
+      "label": "p2-down2",
+      "screenshot": "p2-down2-player2.bmp",
+      "sha256": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:28.882562+00:00",
+      "monotonic": 480127.559,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 0.35
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:29.203951+00:00",
+      "monotonic": 480127.88,
+      "player": 2,
+      "label": "p2-down3",
+      "screenshot": "p2-down3-player2.bmp",
+      "sha256": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:46.123677+00:00",
+      "monotonic": 480144.799,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:46.246749+00:00",
+      "monotonic": 480144.922,
+      "player": 1,
+      "label": "manual-1",
+      "screenshot": "manual-1-player1.bmp",
+      "sha256": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:46.360791+00:00",
+      "monotonic": 480145.036,
+      "player": 2,
+      "label": "manual-1",
+      "screenshot": "manual-1-player2.bmp",
+      "sha256": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:48.180206+00:00",
+      "monotonic": 480146.856,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:48.304270+00:00",
+      "monotonic": 480146.98,
+      "player": 1,
+      "label": "manual-2",
+      "screenshot": "manual-2-player1.bmp",
+      "sha256": "12e18136b05ad0d58fc5b7cc0540577ceae4dedb7ab0a015c3d3970484264d52"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:48.419522+00:00",
+      "monotonic": 480147.095,
+      "player": 2,
+      "label": "manual-2",
+      "screenshot": "manual-2-player2.bmp",
+      "sha256": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:16:50.238790+00:00",
+      "monotonic": 480148.914,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:50.364351+00:00",
+      "monotonic": 480149.04,
+      "player": 1,
+      "label": "manual-3",
+      "screenshot": "manual-3-player1.bmp",
+      "sha256": "caf0fb9955947a1a068c103753310fcdf6c01055ba28b037daa6b0556dbc0799"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:16:50.481499+00:00",
+      "monotonic": 480149.157,
+      "player": 2,
+      "label": "manual-3",
+      "screenshot": "manual-3-player2.bmp",
+      "sha256": "db4c1ab9c364a151472fa4f6c923fbe69b154cb9dc57676114e94244296046de"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:08.054322+00:00",
+      "monotonic": 480166.729,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:08.178140+00:00",
+      "monotonic": 480166.853,
+      "player": 1,
+      "label": "manual-4",
+      "screenshot": "manual-4-player1.bmp",
+      "sha256": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:08.295933+00:00",
+      "monotonic": 480166.971,
+      "player": 2,
+      "label": "manual-4",
+      "screenshot": "manual-4-player2.bmp",
+      "sha256": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:10.114089+00:00",
+      "monotonic": 480168.789,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:10.235849+00:00",
+      "monotonic": 480168.911,
+      "player": 1,
+      "label": "manual-5",
+      "screenshot": "manual-5-player1.bmp",
+      "sha256": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:10.354507+00:00",
+      "monotonic": 480169.029,
+      "player": 2,
+      "label": "manual-5",
+      "screenshot": "manual-5-player2.bmp",
+      "sha256": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:12.173268+00:00",
+      "monotonic": 480170.848,
+      "player": 1,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:12.296356+00:00",
+      "monotonic": 480170.971,
+      "player": 1,
+      "label": "manual-6",
+      "screenshot": "manual-6-player1.bmp",
+      "sha256": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:12.413269+00:00",
+      "monotonic": 480171.088,
+      "player": 2,
+      "label": "manual-6",
+      "screenshot": "manual-6-player2.bmp",
+      "sha256": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:14.231009+00:00",
+      "monotonic": 480172.906,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:14.358570+00:00",
+      "monotonic": 480173.033,
+      "player": 1,
+      "label": "manual-7",
+      "screenshot": "manual-7-player1.bmp",
+      "sha256": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:14.472238+00:00",
+      "monotonic": 480173.147,
+      "player": 2,
+      "label": "manual-7",
+      "screenshot": "manual-7-player2.bmp",
+      "sha256": "8f0813369ed3aa14d867c9e5fafc199336d760d3c508f9efe870e65fe68d0212"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:16.291265+00:00",
+      "monotonic": 480174.966,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:16.415000+00:00",
+      "monotonic": 480175.09,
+      "player": 1,
+      "label": "manual-8",
+      "screenshot": "manual-8-player1.bmp",
+      "sha256": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:16.532561+00:00",
+      "monotonic": 480175.207,
+      "player": 2,
+      "label": "manual-8",
+      "screenshot": "manual-8-player2.bmp",
+      "sha256": "f979dab9f023792d9f0ca1a5d9dfbf187d56aaf52c1424dd1171ae89fa7a85b7"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:18.350969+00:00",
+      "monotonic": 480177.025,
+      "player": 2,
+      "virtual_key": 40,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:18.477573+00:00",
+      "monotonic": 480177.152,
+      "player": 1,
+      "label": "manual-9",
+      "screenshot": "manual-9-player1.bmp",
+      "sha256": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:18.596268+00:00",
+      "monotonic": 480177.271,
+      "player": 2,
+      "label": "manual-9",
+      "screenshot": "manual-9-player2.bmp",
+      "sha256": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:43.364817+00:00",
+      "monotonic": 480202.038,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:43.489736+00:00",
+      "monotonic": 480202.163,
+      "player": 1,
+      "label": "manual-10",
+      "screenshot": "manual-10-player1.bmp",
+      "sha256": "b11ee246e875eac8d9f4e4d00761b182a105d1516396342888b46c1e6306d7a4"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:43.605423+00:00",
+      "monotonic": 480202.279,
+      "player": 2,
+      "label": "manual-10",
+      "screenshot": "manual-10-player2.bmp",
+      "sha256": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:45.424407+00:00",
+      "monotonic": 480204.098,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:45.546763+00:00",
+      "monotonic": 480204.22,
+      "player": 1,
+      "label": "manual-11",
+      "screenshot": "manual-11-player1.bmp",
+      "sha256": "f18f5884029d2a800358fe46184b753614f4167e22d8feba637f68f183902c39"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:45.663976+00:00",
+      "monotonic": 480204.337,
+      "player": 2,
+      "label": "manual-11",
+      "screenshot": "manual-11-player2.bmp",
+      "sha256": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:47.483811+00:00",
+      "monotonic": 480206.157,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:47.607413+00:00",
+      "monotonic": 480206.281,
+      "player": 1,
+      "label": "manual-12",
+      "screenshot": "manual-12-player1.bmp",
+      "sha256": "f18f5884029d2a800358fe46184b753614f4167e22d8feba637f68f183902c39"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:47.724472+00:00",
+      "monotonic": 480206.398,
+      "player": 2,
+      "label": "manual-12",
+      "screenshot": "manual-12-player2.bmp",
+      "sha256": "7e6875c3495591cedf3c4c7df24b54d7606940b1fc830456ad60fd35d4406f4c"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:17:49.542692+00:00",
+      "monotonic": 480208.216,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:49.669220+00:00",
+      "monotonic": 480208.343,
+      "player": 1,
+      "label": "manual-13",
+      "screenshot": "manual-13-player1.bmp",
+      "sha256": "0539a8f8e4348fdf9ae8e1abfba1fc0e7513a1fa226ba66eddce71762b2d3bc2"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:17:49.784999+00:00",
+      "monotonic": 480208.458,
+      "player": 2,
+      "label": "manual-13",
+      "screenshot": "manual-13-player2.bmp",
+      "sha256": "8be9dc6b7fd73350f76fcf9a9f7b45506b5805fae3bb5f27a6455c9cef09eea1"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:07.506939+00:00",
+      "monotonic": 480226.18,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:07.629614+00:00",
+      "monotonic": 480226.302,
+      "player": 1,
+      "label": "manual-14",
+      "screenshot": "manual-14-player1.bmp",
+      "sha256": "cf3ec0feb9a14950ea99e3955c0dae5b2f897f8db15314449b80bbb71e50b2fe"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:07.748284+00:00",
+      "monotonic": 480226.421,
+      "player": 2,
+      "label": "manual-14",
+      "screenshot": "manual-14-player2.bmp",
+      "sha256": "8be9dc6b7fd73350f76fcf9a9f7b45506b5805fae3bb5f27a6455c9cef09eea1"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:09.566847+00:00",
+      "monotonic": 480228.24,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:09.696085+00:00",
+      "monotonic": 480228.369,
+      "player": 1,
+      "label": "manual-15",
+      "screenshot": "manual-15-player1.bmp",
+      "sha256": "cf3ec0feb9a14950ea99e3955c0dae5b2f897f8db15314449b80bbb71e50b2fe"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:09.812356+00:00",
+      "monotonic": 480228.485,
+      "player": 2,
+      "label": "manual-15",
+      "screenshot": "manual-15-player2.bmp",
+      "sha256": "adb436a15a78fac8c7eefb07d7d9519c2b3c6898c14df95c4cf491ef8e3e50a9"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:22.257967+00:00",
+      "monotonic": 480240.93,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:22.381188+00:00",
+      "monotonic": 480241.053,
+      "player": 1,
+      "label": "manual-16",
+      "screenshot": "manual-16-player1.bmp",
+      "sha256": "0097b2bcae907b6b962f227191689af1f7ec7c4d85c0fc59616799ae7e839c00"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:22.507327+00:00",
+      "monotonic": 480241.18,
+      "player": 2,
+      "label": "manual-16",
+      "screenshot": "manual-16-player2.bmp",
+      "sha256": "3cf5980fbba11aa85b8a4be774a37c189732d8d16b59838891faea9bbce0d535"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:24.334572+00:00",
+      "monotonic": 480243.007,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:24.459552+00:00",
+      "monotonic": 480243.132,
+      "player": 1,
+      "label": "manual-17",
+      "screenshot": "manual-17-player1.bmp",
+      "sha256": "d3f8b0fcf15329a8e763e75655c2bf0347cb6bce3b34e5ec8dae0ae48ec8ca63"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:24.577247+00:00",
+      "monotonic": 480243.249,
+      "player": 2,
+      "label": "manual-17",
+      "screenshot": "manual-17-player2.bmp",
+      "sha256": "6dd676e9b274da3b82be6afc6513bd8c3e45da9a7affd2ffe990f3be0467714d"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:44.160255+00:00",
+      "monotonic": 480262.832,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:44.287078+00:00",
+      "monotonic": 480262.959,
+      "player": 1,
+      "label": "manual-18",
+      "screenshot": "manual-18-player1.bmp",
+      "sha256": "0097b2bcae907b6b962f227191689af1f7ec7c4d85c0fc59616799ae7e839c00"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:44.416898+00:00",
+      "monotonic": 480263.088,
+      "player": 2,
+      "label": "manual-18",
+      "screenshot": "manual-18-player2.bmp",
+      "sha256": "893d03ea4c5a5597794372ec4fb401a03225262f565b14d169a41fb972065315"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:18:46.232983+00:00",
+      "monotonic": 480264.904,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1.5
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:46.364098+00:00",
+      "monotonic": 480265.036,
+      "player": 1,
+      "label": "manual-19",
+      "screenshot": "manual-19-player1.bmp",
+      "sha256": "cc8605d5c4416f61d63bfca01c390c28accb6699aa9fe331918d938049105c3a"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:46.496309+00:00",
+      "monotonic": 480265.168,
+      "player": 2,
+      "label": "manual-19",
+      "screenshot": "manual-19-player2.bmp",
+      "sha256": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:57.193807+00:00",
+      "monotonic": 480275.865,
+      "player": 1,
+      "label": "manual-19-poll-480275858000000",
+      "screenshot": "manual-19-poll-480275858000000-player1.bmp",
+      "sha256": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83"
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:18:57.308271+00:00",
+      "monotonic": 480275.979,
+      "player": 2,
+      "label": "manual-19-poll-480275974000000",
+      "screenshot": "manual-19-poll-480275974000000-player2.bmp",
+      "sha256": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c"
+    }
+  ],
+  "executable_bytes": 729611264,
+  "seed_bytes": 32768,
+  "reference_manifest_sha256": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2",
+  "reference_game_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "script_sha256": "b2fd9e63f2dd9c5ea5e27cdf21b60b0bf84b78f0ee5ce3f98dcf3a52805e09bf",
+  "gui_helper_sha256": "56a76b0009b1df383f7507afc85d980cf5ad28d002efb58cf8a7b1dfe4e53c7c",
+  "second_original_journal_sha256": "67f0ccce0a65951e8dbab96d24e9f753a5c9cf916ca89340afec84da7fe4c7cf",
+  "second_original_journal_path": "Z:\\workspace\\scratch\\key-validation-2026-11-02\\appraise-session\\firstfield_appraised.sav",
+  "linked_exit_code": 0,
+  "screenshots": {
+    "linked-p1-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "linked-p1-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "linked-p2-saved-menu-player2.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "linked-p2-title-player2.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "manual-1-player1.bmp": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e",
+    "manual-1-player2.bmp": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e",
+    "manual-10-player1.bmp": "b11ee246e875eac8d9f4e4d00761b182a105d1516396342888b46c1e6306d7a4",
+    "manual-10-player2.bmp": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32",
+    "manual-11-player1.bmp": "f18f5884029d2a800358fe46184b753614f4167e22d8feba637f68f183902c39",
+    "manual-11-player2.bmp": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32",
+    "manual-12-player1.bmp": "f18f5884029d2a800358fe46184b753614f4167e22d8feba637f68f183902c39",
+    "manual-12-player2.bmp": "7e6875c3495591cedf3c4c7df24b54d7606940b1fc830456ad60fd35d4406f4c",
+    "manual-13-player1.bmp": "0539a8f8e4348fdf9ae8e1abfba1fc0e7513a1fa226ba66eddce71762b2d3bc2",
+    "manual-13-player2.bmp": "8be9dc6b7fd73350f76fcf9a9f7b45506b5805fae3bb5f27a6455c9cef09eea1",
+    "manual-14-player1.bmp": "cf3ec0feb9a14950ea99e3955c0dae5b2f897f8db15314449b80bbb71e50b2fe",
+    "manual-14-player2.bmp": "8be9dc6b7fd73350f76fcf9a9f7b45506b5805fae3bb5f27a6455c9cef09eea1",
+    "manual-15-player1.bmp": "cf3ec0feb9a14950ea99e3955c0dae5b2f897f8db15314449b80bbb71e50b2fe",
+    "manual-15-player2.bmp": "adb436a15a78fac8c7eefb07d7d9519c2b3c6898c14df95c4cf491ef8e3e50a9",
+    "manual-16-player1.bmp": "0097b2bcae907b6b962f227191689af1f7ec7c4d85c0fc59616799ae7e839c00",
+    "manual-16-player2.bmp": "3cf5980fbba11aa85b8a4be774a37c189732d8d16b59838891faea9bbce0d535",
+    "manual-17-player1.bmp": "d3f8b0fcf15329a8e763e75655c2bf0347cb6bce3b34e5ec8dae0ae48ec8ca63",
+    "manual-17-player2.bmp": "6dd676e9b274da3b82be6afc6513bd8c3e45da9a7affd2ffe990f3be0467714d",
+    "manual-18-player1.bmp": "0097b2bcae907b6b962f227191689af1f7ec7c4d85c0fc59616799ae7e839c00",
+    "manual-18-player2.bmp": "893d03ea4c5a5597794372ec4fb401a03225262f565b14d169a41fb972065315",
+    "manual-19-player1.bmp": "cc8605d5c4416f61d63bfca01c390c28accb6699aa9fe331918d938049105c3a",
+    "manual-19-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "manual-19-poll-480275858000000-player1.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "manual-19-poll-480275974000000-player2.bmp": "3f006d3b4ea669e1b0d622d35bc7d75bc349cb308bd1dfc9a9b8a54c403e6b5c",
+    "manual-2-player1.bmp": "12e18136b05ad0d58fc5b7cc0540577ceae4dedb7ab0a015c3d3970484264d52",
+    "manual-2-player2.bmp": "568aa48283d4a5465516e675079683ebcde5d2f80ed6d2070a73adf2d41c114e",
+    "manual-3-player1.bmp": "caf0fb9955947a1a068c103753310fcdf6c01055ba28b037daa6b0556dbc0799",
+    "manual-3-player2.bmp": "db4c1ab9c364a151472fa4f6c923fbe69b154cb9dc57676114e94244296046de",
+    "manual-4-player1.bmp": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183",
+    "manual-4-player2.bmp": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4",
+    "manual-5-player1.bmp": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183",
+    "manual-5-player2.bmp": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4",
+    "manual-6-player1.bmp": "977c1ffc569244e6a62e193c7458d572db89d8991f9a1a89cb6a3eff2eca6183",
+    "manual-6-player2.bmp": "3d032e186f7905b5fecc14ce8a3410cffb3c707a6b3adc65867fcf83d3e60ae4",
+    "manual-7-player1.bmp": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af",
+    "manual-7-player2.bmp": "8f0813369ed3aa14d867c9e5fafc199336d760d3c508f9efe870e65fe68d0212",
+    "manual-8-player1.bmp": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af",
+    "manual-8-player2.bmp": "f979dab9f023792d9f0ca1a5d9dfbf187d56aaf52c1424dd1171ae89fa7a85b7",
+    "manual-9-player1.bmp": "d455f440552a9ea6675506a5179da93b2d4b4eb2be09509d76362645d63d38af",
+    "manual-9-player2.bmp": "596534ff5055fc77a3d4d4c6e18a7ab5d360270388bd52d8190ae381a5802a32",
+    "p1-down1-player1.bmp": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2",
+    "p1-down2-player1.bmp": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293",
+    "p1-down3-player1.bmp": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6",
+    "p2-down1-player2.bmp": "c5995366d760f42d4dfd129f3251b6a49878e90543a752945397cae5904e75a2",
+    "p2-down2-player2.bmp": "f2298561ed204b51eafc96a3d995fa606275b5b0eeb247967f8b2954aef12293",
+    "p2-down3-player2.bmp": "442b2e9a711c9758a80bb7ee28e647f459a840ebf5939d010ae71077ef6dadf6"
+  }
+}

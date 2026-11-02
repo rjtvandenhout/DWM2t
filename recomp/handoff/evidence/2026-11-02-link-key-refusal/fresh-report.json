@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "kind": "original_vs_repeat_and_fresh_continue",
+  "status": "passed",
+  "platform": "Wine on Linux",
+  "source": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "input_journal_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+  "players": [
+    {
+      "player": 1,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    },
+    {
+      "player": 2,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    }
+  ],
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "serial_protocol_success_verified": false,
+  "completed_vs_match": false,
+  "prize_or_wager": false,
+  "full_game_verified": false,
+  "normal_shutdowns": 0,
+  "fresh_process_reload": false,
+  "events": [
+    {
+      "event": "launched",
+      "utc": "2026-11-02T09:05:54.679579+00:00",
+      "monotonic": 479493.378,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r4-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-11-02\\link-distinct\\fresh-01\\profiles\\player1.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "fresh-p1",
+      "pid": 80
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:06:26.876894+00:00",
+      "monotonic": 479525.574,
+      "player": 1,
+      "label": "fresh-p1-title",
+      "screenshot": "fresh-p1-title-player1.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:06:27.789748+00:00",
+      "monotonic": 479526.486,
+      "player": 1,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:06:27.920876+00:00",
+      "monotonic": 479526.618,
+      "player": 1,
+      "label": "fresh-p1-saved-menu",
+      "screenshot": "fresh-p1-saved-menu-player1.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:06:29.245392+00:00",
+      "monotonic": 479527.942,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:06:29.384049+00:00",
+      "monotonic": 479528.081,
+      "player": 1,
+      "label": "save-card",
+      "screenshot": "save-card-player1.bmp",
+      "sha256": "ad403b4e091b44e1f5f591951dd5e591daa8eb8239f8a2fd3a60503d9374416f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:06:30.700943+00:00",
+      "monotonic": 479529.398,
+      "player": 1,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:06:31.237034+00:00",
+      "monotonic": 479529.934,
+      "player": 1,
+      "label": "fresh-original-quietsea",
+      "screenshot": "fresh-original-quietsea-player1.bmp",
+      "sha256": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3"
+    },
+    {
+      "event": "fresh_continue",
+      "utc": "2026-11-02T09:06:31.257212+00:00",
+      "monotonic": 479529.954,
+      "player": 1,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    },
+    {
+      "event": "launched",
+      "utc": "2026-11-02T09:06:31.536565+00:00",
+      "monotonic": 479530.233,
+      "command": [
+        "Z:\\workspace\\scratch\\full-rom-2026-10-26\\r4-audit\\production\\candidate\\DWM2t-M8-UNTESTED\\DWM2tRecomp.exe",
+        "--play",
+        "Z:\\workspace\\scratch\\full-rom-2026-11-02\\link-distinct\\fresh-01\\profiles\\player2.sav",
+        "--scale",
+        "1",
+        "--audio-volume",
+        "0"
+      ],
+      "label": "fresh-p2",
+      "pid": 108
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:07:03.448903+00:00",
+      "monotonic": 479562.144,
+      "player": 2,
+      "label": "fresh-p2-title",
+      "screenshot": "fresh-p2-title-player2.bmp",
+      "sha256": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:07:04.359709+00:00",
+      "monotonic": 479563.055,
+      "player": 2,
+      "virtual_key": 13,
+      "idle": 0.6
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:07:04.485938+00:00",
+      "monotonic": 479563.181,
+      "player": 2,
+      "label": "fresh-p2-saved-menu",
+      "screenshot": "fresh-p2-saved-menu-player2.bmp",
+      "sha256": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:07:05.799830+00:00",
+      "monotonic": 479564.495,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:07:05.933483+00:00",
+      "monotonic": 479564.629,
+      "player": 2,
+      "label": "save-card",
+      "screenshot": "save-card-player2.bmp",
+      "sha256": "ad403b4e091b44e1f5f591951dd5e591daa8eb8239f8a2fd3a60503d9374416f"
+    },
+    {
+      "event": "original_p1",
+      "utc": "2026-11-02T09:07:07.258503+00:00",
+      "monotonic": 479565.954,
+      "player": 2,
+      "virtual_key": 90,
+      "idle": 1
+    },
+    {
+      "event": "observed",
+      "utc": "2026-11-02T09:07:07.788932+00:00",
+      "monotonic": 479566.484,
+      "player": 2,
+      "label": "fresh-original-quietsea",
+      "screenshot": "fresh-original-quietsea-player2.bmp",
+      "sha256": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3"
+    },
+    {
+      "event": "fresh_continue",
+      "utc": "2026-11-02T09:07:07.813042+00:00",
+      "monotonic": 479566.508,
+      "player": 2,
+      "pre_continue_sha256": "1f5e72b98172e37945ed9017a642d42cf81e0d23fc8adddc036d431a6ff24af1",
+      "post_continue_sha256": "91b3690b8e7acee6a55118152497f0d57245236bce7c62d1b537ec0486180054",
+      "bytes": 32768,
+      "quest107_same": true,
+      "full_equal_seed": true,
+      "exit_code": 0
+    }
+  ],
+  "executable_bytes": 729611264,
+  "seed_bytes": 32768,
+  "reference_manifest_sha256": "10a64eaad546ce73c057eed433a693529b6c03620a1d611a16d13d88d3b8f1f2",
+  "reference_game_source": "81cfb26e2e30815640a5c80463c662eaf2f11ead",
+  "script_sha256": "b2fd9e63f2dd9c5ea5e27cdf21b60b0bf84b78f0ee5ce3f98dcf3a52805e09bf",
+  "gui_helper_sha256": "56a76b0009b1df383f7507afc85d980cf5ad28d002efb58cf8a7b1dfe4e53c7c",
+  "screenshots": {
+    "fresh-original-quietsea-player1.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-original-quietsea-player2.bmp": "2ba32af043f2543678cdccbee5a99a7b69c1a76d31f73c4f917add1160e083e3",
+    "fresh-p1-saved-menu-player1.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "fresh-p1-title-player1.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "fresh-p2-saved-menu-player2.bmp": "f2226b3f1803d2e4e88f1eeaa30c232deef29451b405aa7ab1456d3f7df57230",
+    "fresh-p2-title-player2.bmp": "f1a90c476e6908328b26890734ebc05977f22a6a5721e73f58bd84062ace833b",
+    "save-card-player1.bmp": "ad403b4e091b44e1f5f591951dd5e591daa8eb8239f8a2fd3a60503d9374416f",
+    "save-card-player2.bmp": "ad403b4e091b44e1f5f591951dd5e591daa8eb8239f8a2fd3a60503d9374416f"
+  }
+}

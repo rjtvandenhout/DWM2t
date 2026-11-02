@@ -1,0 +1,261 @@
+walk L 112 120
+snapshot
+walk L 32 120
+snapshot
+walk D 16 120
+snapshot
+L 32 60
+U 16 40
+A 6 50
+A 6 50
+A 6 120
+A 6 350
+- 1 450
+snapshot
+A 6 40
+D 6 40
+A 6 40
+A 6 150
+A 6 400
+- 1 500
+snapshot
+D 70 120
+snapshot
+D 16 90
+snapshot
+D 6 24
+A 6 420
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 6 24
+A 6 420
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 70
+R 1 20
+A 6 120
+snapshot
+A 6 120
+snapshot
+quit

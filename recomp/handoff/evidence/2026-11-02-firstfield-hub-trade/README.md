@@ -1,0 +1,13 @@
+# Original FirstField same-key trade from GreatLog — 2026-11-02
+
+On Wine, the exact verified Windows production executable (source `1351bcd058e491455a477045a2ff86bbc3bd7b1c`, SHA-256 `63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95`) used two independent copies of a genuine 386G Journal saved after the original player exited FirstField to GreatLog. The seed SHA-256 was `61510b4446b038f4034f90bfc5656b1861eb0f4abc6ae65ba65a44564c9ece3e`; no saves or executable are included here.
+
+Each player selected FirstField and the original menus showed both [trade confirmations](trade-confirm-player1.bmp) ([player 2](trade-confirm-player2.bmp)), the original record prompt and [the trade message](keys-traded-player2.bmp). Both returned to the original title menu and the linked process exited 0. Only original P1 input was used.
+
+The game replaced each completed FirstField record `c0041408` with `80041408` and retained seed bytes `2719` (0x1927). Comparing all 405 bytes of the working and backup cache records before and after each original fresh Continue showed precisely five changed bytes per copy: `4001`, `4178`, `417c`, `4180`, `4184` and mirrored `6001`, `6178`, `617c`, `6180`, `6184`. Both actual post-trade Journals were independently reopened using original Continue, reached their [original GreatLog location](fresh-player1.bmp) ([player 2](fresh-player2.bmp)), and exited 0. All 17 owned monster records and the 107 quest bytes matched the input. See the [receipt](receipt.json) and original events for exact hashes and byte-level observations.
+
+The earlier attempt while still inside FirstField was [refused by the original game](../2026-11-02-firstfield-same-key-refusal/README.md). Independent static inspection of original bank `$1B:$5823–$5864` ties that refusal to the active-world/cache-index condition; this is source analysis, not an independent emulator comparison or recorded instruction trace.
+
+An independent subsequent replay of the exchanged FirstField reached the same dungeon chest, which said [“But it was empty”](../2026-11-02-arena-b/retraded-steelfang-chest-empty.bmp): the cache-byte reset did **not** establish a repeatable SteelFang reward. See the [arena evidence](../2026-11-02-arena-b/README.md).
+
+The unmodified `fresh-report.json` comes from a helper originally written for VS: generic `fresh_process_reload` and `serial_protocol_success_verified` flags remain false, and do not certify VS or every serial mode. The actual `fresh_continue` events, resulting saves, screenshots and exit codes support the specific independent Continue observations above. Both raw reports and the P1 event logs are retained unchanged. No Tara counterpart or physical link-cable behavior is claimed.

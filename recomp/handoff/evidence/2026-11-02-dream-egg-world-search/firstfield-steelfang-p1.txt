@@ -1,0 +1,505 @@
+D 48 180
+D 24 300
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 6 24
+A 6 420
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 6 24
+A 6 420
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+R 1 20
+A 6 180
+A 6 120
+snapshot
+B 6 120
+L 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+- 1 180
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+D 24 180
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+B 6 120
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+- 1 180
+snapshot
+- 1 8
+snapshot
+R 6 24
+D 6 24
+snapshot
+- 1 8
+snapshot
+A 6 120
+snapshot
+R 16 90
+snapshot
+R 16 90
+snapshot
+U 16 90
+snapshot
+U 16 90
+snapshot
+L 16 90
+snapshot
+L 16 90
+snapshot
+U 16 90
+snapshot
+A 6 120
+snapshot
+R 6 24
+D 6 24
+A 6 96
+D 6 24
+D 6 24
+D 6 24
+D 6 24
+D 6 24
+A 6 96
+A 6 96
+snapshot
+quit

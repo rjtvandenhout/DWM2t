@@ -1,0 +1,220 @@
+D 70 180
+snapshot
+A 5 120
+snapshot
+R 1 40
+A 5 100
+snapshot
+D 1 35
+D 1 35
+A 5 100
+snapshot
+B 5 40
+D 1 35
+A 5 80
+A 5 130
+snapshot
+B 5 35
+B 5 35
+U 5 35
+A 5 50
+snapshot
+B 5 35
+D 5 35
+A 5 50
+A 5 200
+snapshot
+B 5 35
+B 5 35
+U 1 35
+A 5 50
+A 5 180
+snapshot
+B 5 35
+B 5 35
+D 1 35
+- 1 35
+snapshot
+U 1 3
+- 1 3
+snapshot
+A 1 3
+- 1 10
+snapshot
+B 1 20
+D 1 10
+snapshot
+U 1 0
+A 1 0
+snapshot
+- 1 40
+snapshot
+D 1 35
+snapshot
+R 1 35
+snapshot
+U 1 35
+L 1 35
+snapshot
+D 1 35
+snapshot
+B 1 35
+D 1 35
+A 1 35
+snapshot
+A 1 35
+snapshot
+A 6 60
+snapshot
+D 6 35
+D 6 35
+A 6 50
+snapshot
+A 6 180
+snapshot
+A 6 40
+B 6 40
+B 6 40
+B 6 40
+L 6 40
+D 6 40
+A 6 40
+snapshot
+A 6 35
+D 6 35
+A 6 50
+snapshot
+B 6 35
+B 6 35
+U 6 100
+snapshot
+U 16 60
+A 6 120
+snapshot
+B 6 35
+L 6 50
+U 1 30
+A 6 100
+snapshot
+talk 1600 16
+snapshot
+A 6 30
+D 6 30
+R 6 30
+A 6 40
+A 6 40
+D 6 30
+D 6 30
+A 6 40
+A 6 150
+snapshot
+talk 1600 16
+D 6 35
+A 6 35
+D 6 35
+A 6 35
+R 6 35
+snapshot
+A 6 35
+R 6 35
+snapshot
+B 6 35
+D 6 35
+A 6 35
+snapshot
+B 6 30
+B 6 30
+B 6 30
+U 6 30
+A 6 70
+A 6 70
+snapshot
+A 6 70
+snapshot
+talk 1000 16
+D 6 35
+R 32 35
+U 1 35
+A 6 90
+snapshot
+B 6 35
+U 16 35
+A 6 70
+snapshot
+B 6 35
+R 6 35
+U 1 35
+A 6 60
+snapshot
+D 6 35
+R 6 35
+A 6 35
+A 6 35
+D 6 35
+D 6 35
+A 6 35
+A 6 100
+snapshot
+A 6 35
+B 6 35
+B 6 35
+B 6 35
+B 6 35
+D 6 35
+R 32 35
+U 6 35
+A 6 90
+snapshot
+B 6 35
+D 6 35
+snapshot
+R 16 35
+snapshot
+U 16 35
+U 16 35
+R 1 35
+A 6 100
+snapshot
+B 6 35
+R 6 35
+A 6 70
+snapshot
+B 6 40
+snapshot
+D 16 35
+L 32 35
+D 30 90
+snapshot
+D 20 80
+snapshot
+D 16 90
+snapshot
+R 16 90
+snapshot
+D 16 90
+snapshot
+U 65 100
+snapshot
+A 6 100
+snapshot
+D 6 35
+D 6 35
+A 6 50
+A 6 200
+snapshot
+A 6 200
+snapshot
+- 1 400
+snapshot
+talk 2500 16
+snapshot
+walk D 16 120
+snapshot
+walk R 112 120
+snapshot
+walk R 64 120
+snapshot
+walk U 64 120
+snapshot
+U 16 120
+snapshot

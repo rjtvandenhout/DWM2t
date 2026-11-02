@@ -1,5 +1,11 @@
 # Full-ROM Cobi player — result and playing guide
 
+Additional original-input checks on 2 November cover further generated
+worlds, distinct-key trades and an Arena B victory. See the
+[additional validation progress](VALIDATION_PROGRESS_2026-11-02.md) for their
+exact builds, evidence and remaining gaps. The 29 October release below is
+unchanged; its historical scope statements describe the evidence at that date.
+
 The native Windows x64 player has passed the recorded main-story, postgame and package checks. It statically translates all 256 banks of the supplied Cobi ROM and embeds the original game data; it does not require a separate ROM file or a runtime opcode interpreter. It uses a CGB hardware runtime, including local two-player hosting.
 
 [Download the verified player and ending save](https://github.com/rjtvandenhout/DWM2t/actions/runs/40821196055/artifacts/12875666985) · [Final validation run](https://github.com/rjtvandenhout/DWM2t/actions/runs/40821196055)

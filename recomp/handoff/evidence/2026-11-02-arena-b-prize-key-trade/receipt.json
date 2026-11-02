@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "kind": "original_arena_b_prize_key_trade",
+  "status": "passed",
+  "environment": "Wine on Linux",
+  "source_commit": "1351bcd058e491455a477045a2ff86bbc3bd7b1c",
+  "executable_sha256": "63bf283dfeb7543c82d2787221788ab71e8651130b0a829b8987b368864a6f95",
+  "scope": "Cobi local original trade and both fresh Continues; no Tara or all-link proof",
+  "original_p1_only": true,
+  "game_memory_edits": false,
+  "linked_exit_code": 0,
+  "players": [
+    {
+      "player": 1,
+      "input_original_sha256": "61510b4446b038f4034f90bfc5656b1861eb0f4abc6ae65ba65a44564c9ece3e",
+      "before_continue_sha256": "cb00305fad433a086a12e75aa3676b383357cef1d824b934eb163337edfb1b9e",
+      "after_continue_sha256": "64885dd65dde73b5fa62144465d71420121e24e03c65adcb7682127a656dd821",
+      "bytes": 32768,
+      "expected_received_key": "fe03171b",
+      "expected_received_seed": "b723",
+      "received_slots": [
+        7
+      ],
+      "owned_record_count": 17,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    },
+    {
+      "player": 2,
+      "input_original_sha256": "7c5cd3cb1655c6d1d4439820a04c7ebed708a25ffd784161d0668e8a32d2dbed",
+      "before_continue_sha256": "cd2b2a8e0fbde0d52c759e6e1d5b111b22ba848a9727dbcbfd8394f2eb461b62",
+      "after_continue_sha256": "8e2ff4a7e8af0efdb9cac91abcbfd570da370f5252b87ebbaba294b753425770",
+      "bytes": 32768,
+      "expected_received_key": "82041408",
+      "expected_received_seed": "2719",
+      "received_slots": [
+        8
+      ],
+      "owned_record_count": 17,
+      "all_owned_records_unchanged": true,
+      "quest107_same": true,
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "firstfield-selected.bmp": "55bec3dff45b8045ac051f0c87eca982f76f2ce7895f4899f138358754794dfc",
+    "fresh-arena-b-prize.py": "506398b68e07564bd86202b1bccbb68aca253c0466b8a876927da40f5350d89e",
+    "fresh-events.jsonl": "e53df4184e6ef87d4814566fafd2df9393181689613e39a39bdf1731317d2d54",
+    "fresh-player1.bmp": "503a2560db66ef3e12c03ec081477119705f81ffd0becf55c0bc1db5c62237d2",
+    "fresh-player2.bmp": "74d5b22c114beb235c5ca6e339188137c11eb0fa94a55c6250f2d76395c5236f",
+    "fresh-report.json": "af1bf701d467ab9247a0d3c6112db56f27b77249010ae076944f03084591aba1",
+    "link-events.jsonl": "e5d83d4ee7dc232705df0d0c580789334957bc6bcd7c6419af27bfa5e63a2787",
+    "link-report.json": "970f0c1998557d5c4361d919d44c530224d70a490b230b5c3aadc3c01cc44c70",
+    "original-keys-traded.bmp": "a9bc15ed1d768fc021ea448087565921563b8bb5408a3fc6f3cc9ca1e73e74d6",
+    "player1-sees-prize.bmp": "46ceca1b9f6cc0462772d89a4a1092135ac62755f7633bac53b64496abef94db",
+    "player2-sees-firstfield.bmp": "e484f4c03b100f007b56baac04dd3e7e8d6814a2e3dafccae97fd9bd21693ff9",
+    "prize-magic-key-selected.bmp": "3127019614af3300ace0223a3b38efdee7dab7f2a9f9e7be999338e1104f59e7",
+    "record-confirm-player1.bmp": "44071aba85d3fb28a2a7a8a822e09994132d7f954ba48dd2298e3688661df9a5",
+    "returned-title-player2.bmp": "9804b22234b28268de431da7185eac9fe25823fea77aff7e4fdd76e206305e83",
+    "trade-arena-b-prize.py": "e7fb184b9d1d08f2fb6087e262d2d03e882e6bbc53c17e7dde165a1c220bcba6"
+  }
+}
