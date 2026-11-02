@@ -1,0 +1,7 @@
+START 3 idle_frames 221 party [222, 181, 207]
+ORIGINAL_TACTIC Garon 2
+ORIGINAL_TACTIC Slash 0
+ORIGINAL_TACTIC Derzo 0
+ORIGINAL_BATTLE_END (4, 1, 0, 64, 48)
+ROUND_END 3 1 location (4, 1, 0, 64, 48) mode (1, 1) text Too bad you didn make it
+RESULT LOSS 3 round 1
